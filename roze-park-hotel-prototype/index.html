@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roze Park Rooms — Liepāja, Latvia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Inspired by source template (deep blue primary) + Roze (rose) accent */
+      --primary: #1e4d7b;
+      --primary-dark: #163a5e;
+      --rose: #c4687a;
+      --rose-light: #f3e4e8;
+      --slate: #2a3342;
+      --slate-soft: #5a6474;
+      --warm-white: #faf9f7;
+      --cream: #f0ebe3;
+      --shadow: 0 4px 28px rgba(30, 77, 123, 0.12);
+      --radius: 12px;
+      --transition: 0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--slate);
+      background: var(--warm-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, 92vw);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(22, 58, 94, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #fff;
+    }
+
+    .logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.15);
+      padding: 4px;
+    }
+
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    .logo-text small {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 0.15rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      transition: opacity var(--transition);
+    }
+
+    .nav-desktop a:hover { opacity: 1; }
+
+    .header-cta {
+      color: #fff;
+      font-size: 0.85rem;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 6px;
+      transition: background var(--transition);
+    }
+
+    .header-cta:hover { background: rgba(255,255,255,0.12); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 58, 94, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://static31.travel-trends-now.com/uploads/hotel/324363/photo/roze-park-rooms_17415835102.jpg') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(22,58,94,0.35) 0%, rgba(22,58,94,0.55) 45%, rgba(22,58,94,0.78) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 8rem 1.5rem 6rem;
+      max-width: 820px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.75rem, 7vw, 4.75rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 300;
+      opacity: 0.94;
+      max-width: 580px;
+      margin: 0 auto 0.75rem;
+    }
+
+    .hero-price {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-price strong {
+      color: var(--rose-light);
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 2.1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--rose);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #b05567;
+      transform: translateY(-2px);
+    }
+
+    /* Booking */
+    .booking-section {
+      position: relative;
+      z-index: 10;
+      margin-top: -4rem;
+      padding-bottom: 4rem;
+    }
+
+    .booking-widget {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1.25rem;
+      align-items: end;
+      border-top: 4px solid var(--rose);
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #d8dde4;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--slate);
+      background: var(--warm-white);
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #d8dde4;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--slate);
+      background: var(--warm-white);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid #d8dde4;
+      border-radius: 6px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      z-index: 50;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .guest-row span { font-size: 0.9rem; }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #d8dde4;
+      border-radius: 50%;
+      background: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+
+    .guest-btn:hover { background: var(--rose-light); }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      padding: 0.85rem 2rem;
+      white-space: nowrap;
+      height: fit-content;
+      background: var(--primary);
+    }
+
+    .booking-widget .btn-primary:hover { background: var(--primary-dark); }
+
+    /* Sections */
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 660px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 600;
+      color: var(--slate);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--slate-soft);
+      font-size: 1.05rem;
+    }
+
+    /* Rooms */
+    .rooms { background: var(--cream); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .room-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(42, 51, 66, 0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-card-body { padding: 1.5rem; }
+
+    .room-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .room-card p {
+      font-size: 0.9rem;
+      color: var(--slate-soft);
+      margin-bottom: 1rem;
+    }
+
+    .room-price {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .room-price span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--slate-soft);
+    }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .amenity-item {
+      text-align: center;
+      padding: 1.5rem 0.75rem;
+      background: var(--warm-white);
+      border: 1px solid #e8eaed;
+      border-radius: var(--radius);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .amenity-item:hover {
+      border-color: var(--rose-light);
+      background: var(--rose-light);
+    }
+
+    .amenity-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.65rem;
+      line-height: 1;
+    }
+
+    .amenity-item span {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--slate-soft);
+    }
+
+    .amenity-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--slate-soft);
+      font-style: italic;
+    }
+
+    /* Gallery */
+    .gallery { background: var(--primary-dark); color: #fff; }
+    .gallery .section-title { color: #fff; }
+    .gallery .section-desc { color: rgba(255,255,255,0.72); }
+    .gallery .section-eyebrow { color: var(--rose-light); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 240px);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .gallery-item:first-child { grid-row: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .location-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .location-text p {
+      color: var(--slate-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .location-details { list-style: none; }
+
+    .location-details li {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--cream);
+      font-size: 0.92rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .location-details li strong {
+      min-width: 90px;
+      font-weight: 600;
+      color: var(--slate);
+    }
+
+    .map-placeholder {
+      background: var(--cream);
+      border-radius: var(--radius);
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed #c5ccd6;
+      color: var(--slate-soft);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.45;
+      color: var(--primary);
+    }
+
+    /* Trust */
+    .trust { background: var(--rose-light); }
+
+    .rating-badge {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 2px 16px rgba(42, 51, 66, 0.06);
+      margin-bottom: 2.5rem;
+    }
+
+    .rating-score {
+      text-align: center;
+      min-width: 120px;
+    }
+
+    .rating-score .score {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .rating-score .label {
+      font-size: 0.8rem;
+      color: var(--slate-soft);
+      margin-top: 0.35rem;
+    }
+
+    .rating-breakdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1rem;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .rating-item {
+      text-align: center;
+      padding: 0.75rem;
+      background: var(--warm-white);
+      border-radius: 8px;
+    }
+
+    .rating-item .val {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .rating-item .name {
+      font-size: 0.75rem;
+      color: var(--slate-soft);
+      margin-top: 0.2rem;
+    }
+
+    .rating-source {
+      width: 100%;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--slate-soft);
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--slate);
+      color: rgba(255,255,255,0.78);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo-text {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 340px;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: #fff;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-nav ul { list-style: none; }
+    .footer-nav li { margin-bottom: 0.6rem; }
+
+    .footer-nav a {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      transition: opacity var(--transition);
+    }
+
+    .footer-nav a:hover { opacity: 1; }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      opacity: 0.75;
+    }
+
+    .footer-contact a:hover { opacity: 1; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.78rem;
+      opacity: 0.55;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
+
+      .booking-widget { grid-template-columns: 1fr 1fr; }
+      .booking-widget .btn-primary { grid-column: span 2; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { height: 200px; }
+
+      .location-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 560px) {
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item { height: 220px; }
+      .rating-badge { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="https://static32.travel-trends-now.com/template/frontend/official2/images/favicon.png" alt="">
+        <span class="logo-text">
+          Roze Park Rooms
+          <small>Liepāja · Latvia</small>
+        </span>
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Book now</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#booking">Book now</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Liepāja, Latvia</p>
+      <h1>Roze Park Rooms</h1>
+      <p class="hero-tagline">Non-smoking guest rooms in central Liepāja — 500 metres from Liepāja Museum, with free WiFi and private parking.</p>
+      <p class="hero-price">Online booking · Best price guaranteed · <strong>From $53 / night</strong></p>
+      <a href="#booking" class="btn btn-primary">Check availability</a>
+    </div>
+  </section>
+
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomType">Room type</label>
+          <select id="roomType" name="roomType">
+            <option value="any">Any room</option>
+            <option value="double1">Double room (1 bed)</option>
+            <option value="quadruple">Quadruple room</option>
+            <option value="double2">Double room (2 beds)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Stay with us</p>
+        <h2 class="section-title">Rooms &amp; Accommodation</h2>
+        <p class="section-desc">Comfortable non-smoking rooms with flat-screen TV, private bathroom, and daily housekeeping — ideal for couples and families exploring Liepāja.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img src="https://static31.travel-trends-now.com/uploads/hotel-room/150947/photo/roze-park-rooms-double-room-1925_17415835161.jpg" alt="Divvietīgs numurs (1 gulta) at Roze Park Rooms">
+          <div class="room-card-body">
+            <h3>Divvietīgs numurs (1 gulta)</h3>
+            <p>Double room with one bed — private bathroom with shower, flat-screen TV, and streaming services.</p>
+            <p class="room-price">From $53 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://static31.travel-trends-now.com/uploads/hotel-room/150948/photo/roze-park-rooms-quadruple-room-480_17415835191.jpg" alt="Četrvietīgs numurs at Roze Park Rooms">
+          <div class="room-card-body">
+            <h3>Četrvietīgs numurs</h3>
+            <p>Quadruple room for up to four guests — family-friendly with soundproofing and daily cleaning.</p>
+            <p class="room-price">From $53 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://static31.travel-trends-now.com/uploads/hotel-room/150949/photo/roze-park-rooms-twin-room-1051_17415835231.jpg" alt="Divvietīgs numurs (2 gultas) at Roze Park Rooms">
+          <div class="room-card-body">
+            <h3>Divvietīgs numurs (2 gultas)</h3>
+            <p>Double room with two beds — electric kettle, refrigerator, and free toiletries included.</p>
+            <p class="room-price">From $53 <span>/ night</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">What we offer</p>
+        <h2 class="section-title">Amenities</h2>
+        <p class="section-desc">Facilities listed on the property's booking page — practical comforts for a relaxed stay in Liepāja.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item"><div class="amenity-icon">📶</div><span>Free WiFi</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🅿️</div><span>Free private parking</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🚿</div><span>Private bathroom</span></div>
+        <div class="amenity-item"><div class="amenity-icon">📺</div><span>Flat-screen TV</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🎬</div><span>Streaming (e.g. Netflix)</span></div>
+        <div class="amenity-item"><div class="amenity-icon">☕</div><span>Electric kettle</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🧊</div><span>Refrigerator</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🧹</div><span>Daily housekeeping</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🔑</div><span>Private check-in / check-out</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🚭</div><span>Non-smoking throughout</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🔇</div><span>Soundproof rooms</span></div>
+        <div class="amenity-item"><div class="amenity-icon">👨‍👩‍👧</div><span>Family rooms</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🌡️</div><span>Heating</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🍷</div><span>Wine (extra charge)</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🐾</div><span>No pets allowed</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🗣️</div><span>EN · ES · LV · RU</span></div>
+      </div>
+      <p class="amenity-note">Pool, spa, and breakfast are not listed on the source site.</p>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Discover</p>
+        <h2 class="section-title">Photo Gallery</h2>
+        <p class="section-desc">Images from the Roze Park Rooms property gallery.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://static31.travel-trends-now.com/uploads/hotel/324363/photo/roze-park-rooms_17415835102.jpg" alt="Roze Park Rooms exterior">
+        </div>
+        <div class="gallery-item">
+          <img src="https://static31.travel-trends-now.com/uploads/hotel/324363/photo/roze-park-rooms_174158351524.jpg" alt="Roze Park Rooms property">
+        </div>
+        <div class="gallery-item">
+          <img src="https://static31.travel-trends-now.com/uploads/hotel/324363/photo/roze-park-rooms_174158351211.jpg" alt="Roze Park Rooms common area">
+        </div>
+        <div class="gallery-item">
+          <img src="https://static31.travel-trends-now.com/uploads/hotel/324363/photo/roze-park-rooms_17415835113.jpg" alt="Roze Park Rooms interior">
+        </div>
+        <div class="gallery-item">
+          <img src="https://static31.travel-trends-now.com/uploads/hotel/324363/photo/roze-park-rooms_17415835114.jpg" alt="Roze Park Rooms feature">
+        </div>
+        <div class="gallery-item">
+          <img src="https://static31.travel-trends-now.com/uploads/hotel/324363/photo/roze-park-rooms_17415835115.jpg" alt="Roze Park Rooms detail">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Location</h2>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Hika iela 3, Liepāja</h3>
+          <p>A non-smoking guest house in the heart of Liepāja, within walking distance of museums, theatres, and the city's historic landmarks. Couples especially praise the location — rated 9.6 for location in guest reviews.</p>
+          <ul class="location-details">
+            <li><strong>500 m</strong> Liepāja Museum</li>
+            <li><strong>400 m</strong> Spoku koks (Ghost Tree)</li>
+            <li><strong>1.1 km</strong> Rožu laukums (Rose Square)</li>
+            <li><strong>1.2 km</strong> Holy Trinity Cathedral</li>
+            <li><strong>1.3 km</strong> Liepāja Theatre</li>
+            <li><strong>Nearby</strong> Concert garden "Pūt, vējiņi!", Lielais dzintars, St. Joseph's Cathedral</li>
+          </ul>
+        </div>
+        <div class="map-placeholder" aria-label="Map placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="margin-top:0.5rem;font-size:0.85rem;">Hika iela 3, Liepāja, LV-3401, Latvia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Guest reviews</p>
+        <h2 class="section-title">Trusted by travellers</h2>
+      </div>
+      <div class="rating-badge">
+        <div class="rating-score">
+          <div class="score">8.8</div>
+          <div class="label">Overall score</div>
+        </div>
+        <div class="rating-breakdown">
+          <div class="rating-item"><div class="val">9.6</div><div class="name">Location</div></div>
+          <div class="rating-item"><div class="val">9.1</div><div class="name">Cleanliness</div></div>
+          <div class="rating-item"><div class="val">8.8</div><div class="name">Comfort</div></div>
+          <div class="rating-item"><div class="val">8.8</div><div class="name">Value for money</div></div>
+          <div class="rating-item"><div class="val">8.7</div><div class="name">Facilities</div></div>
+        </div>
+        <p class="rating-source">Based on 1,013 guest reviews · as listed on source site</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-text" style="color:#fff;">Roze Park Rooms</div>
+          <p>Non-smoking guest accommodation in Liepāja with free WiFi and private parking. Check-in from 15:00 · Check-out until 12:00.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Book</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Hika iela 3<br>Liepāja, LV-3401<br>Latvia</p>
+          <a href="mailto:latvia@latvia.com">latvia@latvia.com</a>
+          <p style="margin-top:0.75rem;font-size:0.82rem;opacity:0.6;">Phone number not listed on source site.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Roze Park Rooms · Liepāja, Latvia · Prototype homepage</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('header');
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const navClose = document.getElementById('navClose');
+
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+      });
+
+      menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+      navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+      mobileNav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => mobileNav.classList.remove('open'));
+      });
+
+      const checkin = document.getElementById('checkin');
+      const checkout = document.getElementById('checkout');
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      const dayAfter = new Date(today);
+      dayAfter.setDate(today.getDate() + 3);
+      const fmt = d => d.toISOString().split('T')[0];
+      checkin.min = fmt(today);
+      checkout.min = fmt(tomorrow);
+      checkin.value = fmt(tomorrow);
+      checkout.value = fmt(dayAfter);
+
+      checkin.addEventListener('change', () => {
+        const ci = new Date(checkin.value);
+        const minCo = new Date(ci);
+        minCo.setDate(ci.getDate() + 1);
+        checkout.min = fmt(minCo);
+        if (new Date(checkout.value) <= ci) checkout.value = fmt(minCo);
+      });
+
+      let adults = 2;
+      let children = 0;
+      const adultsCount = document.getElementById('adultsCount');
+      const childrenCount = document.getElementById('childrenCount');
+      const guestSummary = document.getElementById('guestSummary');
+      const guestTrigger = document.getElementById('guestTrigger');
+      const guestDropdown = document.getElementById('guestDropdown');
+
+      function updateGuestSummary() {
+        let text = adults + ' adult' + (adults !== 1 ? 's' : '');
+        if (children > 0) text += ', ' + children + ' child' + (children !== 1 ? 'ren' : '');
+        guestSummary.textContent = text;
+        adultsCount.textContent = adults;
+        childrenCount.textContent = children;
+        document.getElementById('adultsMinus').disabled = adults <= 1;
+        document.getElementById('adultsPlus').disabled = adults >= 10;
+        document.getElementById('childrenMinus').disabled = children <= 0;
+        document.getElementById('childrenPlus').disabled = children >= 10;
+      }
+
+      guestTrigger.addEventListener('click', e => {
+        e.stopPropagation();
+        guestDropdown.classList.toggle('open');
+      });
+
+      document.addEventListener('click', e => {
+        if (!guestDropdown.contains(e.target) && e.target !== guestTrigger) {
+          guestDropdown.classList.remove('open');
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 10) { adults++; updateGuestSummary(); } });
+      document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+      document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 10) { children++; updateGuestSummary(); } });
+      document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+
+      updateGuestSummary();
+
+      document.getElementById('bookingForm').addEventListener('submit', e => {
+        e.preventDefault();
+        guestDropdown.classList.remove('open');
+        alert('Booking search is UI-only in this prototype.');
+      });
+    })();
+  </script>
+</body>
+</html>
