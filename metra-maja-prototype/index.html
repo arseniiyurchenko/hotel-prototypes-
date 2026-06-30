@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mētras Māja Aizputē — Viesu nams &amp; mākslas galerija</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f7f4ef;
+      --cream-dark: #ebe4d8;
+      --white-building: #fafafa;
+      --charcoal: #2a2622;
+      --charcoal-soft: #5c554c;
+      --accent: #e74c3c;
+      --accent-hover: #c0392b;
+      --accent-soft: rgba(231, 76, 60, 0.12);
+      --shadow: 0 4px 24px rgba(42, 38, 34, 0.12);
+      --radius: 12px;
+      --transition: 0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--white-building);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1200px, 92vw);
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(42, 38, 34, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      transition: opacity var(--transition), color var(--transition);
+    }
+
+    .nav-desktop a:hover { opacity: 1; color: #fff; }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-contact a {
+      color: #fff;
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(42, 38, 34, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://www.metra-a.lv/wp-content/uploads/2017/10/cropped-MetrasMaja-3.jpg') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(42,38,34,0.3) 0%, rgba(42,38,34,0.55) 50%, rgba(42,38,34,0.78) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 8rem 1.5rem 6rem;
+      max-width: 820px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.25rem);
+      font-weight: 600;
+      line-height: 1.08;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 300;
+      opacity: 0.92;
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .booking-section {
+      position: relative;
+      z-index: 10;
+      margin-top: -4rem;
+      padding-bottom: 4rem;
+    }
+
+    .booking-widget {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1.25rem;
+      align-items: end;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--cream-dark);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--cream);
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--cream-dark);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--cream);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--cream-dark);
+      border-radius: 6px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      z-index: 50;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .guest-row span { font-size: 0.9rem; }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--cream-dark);
+      border-radius: 50%;
+      background: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+
+    .guest-btn:hover { background: var(--cream); }
+
+    .guest-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .booking-widget .btn-primary {
+      padding: 0.85rem 2rem;
+      white-space: nowrap;
+      height: fit-content;
+    }
+
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--charcoal-soft);
+      font-size: 1.05rem;
+    }
+
+    .rooms { background: var(--cream); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .room-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(42,38,34,0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .room-card-body { padding: 1.5rem; }
+
+    .room-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .room-card p {
+      font-size: 0.9rem;
+      color: var(--charcoal-soft);
+      margin-bottom: 1rem;
+    }
+
+    .room-price {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal-soft);
+    }
+
+    .room-price.placeholder {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .room-price span {
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .amenity-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: var(--cream);
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .amenity-item:hover {
+      background: var(--cream-dark);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.65rem;
+      line-height: 1;
+    }
+
+    .amenity-item span {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--charcoal-soft);
+      display: block;
+    }
+
+    .gallery { background: var(--charcoal); color: #fff; }
+
+    .gallery .section-title { color: #fff; }
+    .gallery .section-desc { color: rgba(255,255,255,0.72); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 240px);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .gallery-item:first-child { grid-row: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .location-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .location-text p {
+      color: var(--charcoal-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .location-details { list-style: none; }
+
+    .location-details li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--cream-dark);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .location-details li strong {
+      min-width: 88px;
+      font-weight: 500;
+    }
+
+    .map-placeholder {
+      background: var(--cream);
+      border-radius: var(--radius);
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--cream-dark);
+      color: var(--charcoal-soft);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .trust { background: var(--cream); }
+
+    .cert-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: #fff;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.75rem;
+      margin-bottom: 2rem;
+      max-width: 640px;
+      margin-inline: auto;
+    }
+
+    .cert-badge strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: var(--charcoal);
+    }
+
+    .cert-badge span {
+      font-size: 0.85rem;
+      color: var(--charcoal-soft);
+    }
+
+    .trust-placeholder-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--charcoal-soft);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(42,38,34,0.06);
+      border-top: 3px solid var(--accent);
+    }
+
+    .testimonial-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.12rem;
+      font-style: italic;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--charcoal-soft);
+    }
+
+    .testimonial-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      margin-top: 0.5rem;
+    }
+
+    .site-footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.8);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand img {
+      height: 42px;
+      margin-bottom: 1rem;
+      opacity: 0.95;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 340px;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: #fff;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-nav ul { list-style: none; }
+
+    .footer-nav li { margin-bottom: 0.6rem; }
+
+    .footer-nav a {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      transition: opacity var(--transition);
+    }
+
+    .footer-nav a:hover { opacity: 1; }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      opacity: 0.75;
+    }
+
+    .footer-contact a:hover { opacity: 1; }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: background var(--transition);
+    }
+
+    .social-links a:hover { background: rgba(231, 76, 60, 0.45); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 900px) {
+      .nav-desktop, .header-contact { display: none; }
+      .menu-toggle { display: block; }
+
+      .booking-widget { grid-template-columns: 1fr 1fr; }
+      .booking-widget .btn-primary { grid-column: span 2; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { height: 200px; }
+
+      .location-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 560px) {
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="https://www.metra-a.lv/wp-content/uploads/2012/02/logo_metra-300x179.jpg" alt="Mētras Māja">
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Numuri</a></li>
+          <li><a href="#amenities">Ērtības</a></li>
+          <li><a href="#gallery">Galerija</a></li>
+          <li><a href="#location">Atrašanās vieta</a></li>
+        </ul>
+      </nav>
+      <div class="header-contact">
+        <a href="tel:+37163448413">+371 6344 8413</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Atvērt izvēlni">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav">
+    <button class="nav-close" id="navClose" aria-label="Aizvērt izvēlni">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Numuri</a>
+    <a href="#amenities">Ērtības</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Atrašanās vieta</a>
+    <a href="tel:+37163448413">+371 6344 8413</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Aizpute, Latvija</p>
+      <h1>Mētras Māja Aizputē</h1>
+      <p class="hero-tagline">Viesu nams pilsētas vecākajā daļā ar skatu uz 1254. gadā celtās Sv. Jāņa baznīcas un katoļu baznīcas torni.</p>
+      <a href="#booking" class="btn btn-primary">Pārbaudīt pieejamību</a>
+    </div>
+  </section>
+
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm">
+        <div class="form-group">
+          <label for="checkin">Ierašanās</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Aizbraukšana</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Viesi</label>
+          <button type="button" class="guest-trigger" id="guestTrigger">
+            <span id="guestSummary">2 pieaugušie</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown">
+            <div class="guest-row">
+              <span>Pieaugušie</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Mazāk pieaugušo">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Vairāk pieaugušo">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Bērni</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Mazāk bērnu">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Vairāk bērnu">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomType">Numura veids</label>
+          <select id="roomType" name="roomType">
+            <option value="any">Jebkurš numurs</option>
+            <option value="standard">Numuriņš</option>
+            <option value="two-room">Divistabu numurs</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Meklēt</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Viesu nams</p>
+        <h2 class="section-title">Numuri</h2>
+        <p class="section-desc">Viesu namā ir 12 numuriņi — katrā duša un WC. 2018. gadā veikta renovācija. Papildus iespējamas gultas līdz 34 vietām.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img src="https://www.metra-a.lv/wp-content/gallery/renovaation/metrasmaja_2.jpg" alt="Viesu nama numuriņš pēc renovācijas">
+          <div class="room-card-body">
+            <h3>Numuriņš</h3>
+            <p>Viesu nama standarta numurs ar privātu dušu un WC. Koplietošanas virtuve ar aprīkojumu un ēdamtelpa viesu rīcībā.</p>
+            <p class="room-price placeholder">Cena nav norādīta vietnē — sazinieties <span>/ nakts</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.metra-a.lv/wp-content/gallery/renovaation/metrasmaja_01.jpg" alt="Divistabu numurs Mētras Mājā">
+          <div class="room-card-body">
+            <h3>Divistabu numurs</h3>
+            <p>No 12 numuriņiem viens ir divistabu — piemērots ģimenēm vai ilgākam uzturēšanās laikam Aizputē.</p>
+            <p class="room-price placeholder">Cena nav norādīta vietnē — sazinieties <span>/ nakts</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.metra-a.lv/wp-content/gallery/renovaation/metrasmaja_4.jpg" alt="Renovēts apartaments Mētras Mājā">
+          <div class="room-card-body">
+            <h3>Apartamenti</h3>
+            <p>Renovācijas attēli no vietnes sadaļas &ldquo;Apartamenti&rdquo; — saistīti ar 2018. gada viesu nama atjaunošanu.</p>
+            <p class="room-price placeholder">Cena nav norādīta vietnē — sazinieties <span>/ nakts</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Zem viena jumta</p>
+        <h2 class="section-title">Ērtības &amp; pakalpojumi</h2>
+        <p class="section-desc">Spoži baltajā ēkā Pasta ielā 1a — viesu nams, tūrisma informācijas punkts, mākslas galerija, veikals un vairāk.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item"><div class="amenity-icon">🚿</div><span>Duša &amp; WC katrā numurā</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🍳</div><span>Virtuve ar aprīkojumu</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🍽️</div><span>Ēdamtelpa</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🥘</div><span>Pusdienas &amp; vakariņas pēc pasūtījuma</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🎨</div><span>Mākslas galerija (2 zāles)</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🎁</div><span>Dāvanu veikals</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🏛️</div><span>Konferenču &amp; banketu zāle</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🚗</div><span>Automašīnu noma</span></div>
+        <div class="amenity-item"><div class="amenity-icon">ℹ️</div><span>Tūrisma informācijas punkts</span></div>
+        <div class="amenity-item"><div class="amenity-icon">💇</div><span>Skaistumkopšanas salons</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🖌️</div><span>Mākslinieku darbnīca</span></div>
+        <div class="amenity-item"><div class="amenity-icon">📜</div><span>III kategorijas sertifikāts</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Aizpute &amp; Mētras Māja</p>
+        <h2 class="section-title">Foto galerija</h2>
+        <p class="section-desc">Ēka, numuri pēc renovācijas, mākslas galerija un Aizputes apkārtne — attēli no metra-a.lv.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://www.metra-a.lv/wp-content/uploads/2017/10/MetrasMaja-3.jpg" alt="Mētras Māja ēka Aizputē">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.metra-a.lv/wp-content/gallery/renovaation/metrasmaja_3.jpg" alt="Renovēts viesu nama numurs">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.metra-a.lv/wp-content/uploads/2016/11/andapoikane_metra.jpg" alt="Mākslas galerija Mētras Mājā">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.metra-a.lv/wp-content/uploads/2018/12/aizpute_web_kolekcija.jpg" alt="Aizpute — gleznaina pilsētiņa">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.metra-a.lv/wp-content/uploads/2019/11/65893533_1044454555765827_5314906399690457088_n-829x450.jpg" alt="Pasākums Mētras Mājā">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.metra-a.lv/wp-content/gallery/renovaation/metrasmaja_5.jpg" alt="Viesu nama interjers">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Kurzeme</p>
+        <h2 class="section-title">Atrašanās vieta</h2>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Aizpute starp Liepāju un Kuldīgu</h3>
+          <p>Aizpute ir gleznaina pilsētiņa starp Liepāju un Kuldīgu — ne velti šeit notiek mākslinieku plenēri. Viesu nams atrodas pilsētas vecākajā daļā.</p>
+          <p>No logiem paveras skats uz Sv. Jāņa baznīcu (1254) un nupat uzceltās katoļu baznīcas torni. Diennakts viesu namā: plkst. 16.00–11.00; ierašanās līdz 22.00.</p>
+          <ul class="location-details">
+            <li><strong>Adrese</strong> Pasta 1a, Aizpute, LV-3456</li>
+            <li><strong>Also</strong> Jāņa 8a, Aizpute, LV-3456</li>
+            <li><strong>Orientieri</strong> Sv. Jāņa baznīca, katoļu baznīca</li>
+            <li><strong>Reģions</strong> Starp Liepāju un Kuldīgu</li>
+          </ul>
+        </div>
+        <div class="map-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p><strong>Kartes vietturis</strong></p>
+          <p style="font-size:0.85rem;margin-top:0.5rem;">Pasta 1a, Aizpute, Latvija<br>GPS: 56.7213, 21.6028</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Uzticamība</p>
+        <h2 class="section-title">Viesu atsauksmes</h2>
+      </div>
+      <div class="cert-badge">
+        <strong>III kategorijas sertifikāts</strong>
+        <span>Viesu namam piešķirts III kategorijas sertifikāts — norādīts vietnē metra-a.lv</span>
+      </div>
+      <p class="trust-placeholder-note">Vietnē nav atrasts agregēts vērtējums (Booking, Google u.c.) — zemāk esošās atsauksmes ir skaidri atzīmētas kā vietturi prototipam.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>"Mākslas galerija un viesu nams vienā ēkā — neparasta pieredze Kurzemes pilsētiņā."</blockquote>
+          <p class="testimonial-author">— Vietturis A</p>
+          <span class="testimonial-badge">Paraugs — nav no avota vietnes</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Ērti numuri pēc renovācijas un skaists skats uz vecpilsētas baznīcām."</blockquote>
+          <p class="testimonial-author">— Vietturis B</p>
+          <span class="testimonial-badge">Paraugs — nav no avota vietnes</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Lieliska bāze, lai iepazītu Aizputi starp Liepāju un Kuldīgu."</blockquote>
+          <p class="testimonial-author">— Vietturis C</p>
+          <span class="testimonial-badge">Paraugs — nav no avota vietnes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://www.metra-a.lv/wp-content/uploads/2012/02/logo_metra-300x179.jpg" alt="Mētras Māja">
+          <p>SIA &ldquo;Mētra A&rdquo; — viesu nams, mākslas galerija un veikals spoži baltajā ēkā Aizputes centrā.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/metrasmaja" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <h4>Navigācija</h4>
+          <ul>
+            <li><a href="#rooms">Viesu nams</a></li>
+            <li><a href="#amenities">Mākslas galerija</a></li>
+            <li><a href="#amenities">Veikals</a></li>
+            <li><a href="#booking">Rezervēt</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Kontakti</h4>
+          <p>Pasta 1a, Aizpute, LV-3456</p>
+          <a href="tel:+37163448413">+371 6344 8413</a>
+          <a href="tel:+37129545975">+371 2954 5975</a>
+          <a href="mailto:hotel@metra-a.lv">hotel@metra-a.lv</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; SIA &ldquo;Mētra A&rdquo; — Prototipa demonstrācijas lapa</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+
+    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (checkin.value) {
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = checkout.min;
+        }
+      }
+    });
+
+    let adults = 2;
+    let children = 0;
+
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestDropdown = document.getElementById('guestDropdown');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' pieaugušais' : ' pieaugušie');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' bērns' : ' bērni');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      guestDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => guestDropdown.classList.remove('open'));
+    guestDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 8) { adults++; updateGuestSummary(); } });
+    document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+    document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 6) { children++; updateGuestSummary(); } });
+    document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+
+    updateGuestSummary();
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Rezervācijas meklēšana ir tikai UI prototips — sazinieties pa tālruni +371 6344 8413 vai e-pastu hotel@metra-a.lv.');
+    });
+  </script>
+</body>
+</html>
