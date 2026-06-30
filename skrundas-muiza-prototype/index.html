@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skrundas muiža – Viesnīca, Gardēžu Restorāns, SPA</title>
+  <meta name="description" content="Atjaunota vēsturiska muiža Ventas upes krastā Kurzemē — eleganta viesnīca, gardēžu restorāns un SPA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #00bd9c;
+      --teal-dark: #00987d;
+      --teal-light: rgba(0, 189, 156, 0.12);
+      --mauve: #cdb2c7;
+      --cream: #f3f5f6;
+      --warm-white: #fdfcfa;
+      --charcoal: #1a1a1a;
+      --text: #333;
+      --muted: #7a7a7a;
+      --border: #e2e6e8;
+      --price: #d7290f;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+      --radius: 10px;
+      --header-h: 76px;
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-body: "Noto Sans", system-ui, sans-serif;
+      --max: 1180px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--warm-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+
+    /* Header */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--header-h);
+      background: rgba(253, 252, 250, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    .header.scrolled { box-shadow: var(--shadow); }
+    .header__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100%; gap: 1rem;
+    }
+    .logo svg { height: 32px; width: auto; fill: var(--charcoal); transition: fill 0.2s; }
+    .logo:hover svg { fill: var(--teal); }
+    .nav { display: flex; gap: 1.75rem; align-items: center; }
+    .nav a {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--charcoal);
+      transition: color 0.2s;
+    }
+    .nav a:hover { color: var(--teal); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: 6px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; transition: all 0.25s;
+    }
+    .btn--primary { background: var(--teal); color: #fff; }
+    .btn--primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .btn--outline { border: 2px solid var(--teal); color: var(--teal); background: transparent; }
+    .btn--outline:hover { background: var(--teal); color: #fff; }
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--charcoal); transition: 0.3s; }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: 92vh; display: flex; align-items: flex-end;
+      margin-top: var(--header-h); overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute; inset: 0;
+      background: url('https://www.skrundasmuiza.lv/uploads/pages/skrunda-from-top.jpg') center/cover no-repeat;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.15) 100%);
+    }
+    .hero__content {
+      position: relative; z-index: 2; padding: 4rem 0 6rem; width: 100%;
+    }
+    .hero__badge {
+      display: inline-block; padding: 0.35rem 0.85rem;
+      background: rgba(0, 189, 156, 0.9); color: #fff;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; border-radius: 4px; margin-bottom: 1.25rem;
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.25rem);
+      font-weight: 600; color: #fff; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .hero__tagline {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: rgba(255,255,255,0.92); max-width: 580px; margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    /* Booking widget */
+    .booking {
+      position: relative; z-index: 10;
+      margin-top: -3.5rem; margin-bottom: 4rem;
+    }
+    .booking__card {
+      background: #fff; border-radius: var(--radius);
+      box-shadow: var(--shadow-lg); padding: 1.75rem 2rem;
+      display: grid; grid-template-columns: repeat(4, 1fr) auto; gap: 1rem; align-items: end;
+    }
+    .booking__field label {
+      display: block; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.4rem;
+    }
+    .booking__field input,
+    .booking__field select {
+      width: 100%; padding: 0.75rem 0.85rem;
+      border: 1px solid var(--border); border-radius: 6px;
+      font-family: inherit; font-size: 0.95rem; color: var(--charcoal);
+      background: var(--cream); transition: border-color 0.2s;
+    }
+    .booking__field input:focus,
+    .booking__field select:focus {
+      outline: none; border-color: var(--teal);
+      box-shadow: 0 0 0 3px var(--teal-light);
+    }
+    .booking__search { padding: 0.85rem 2rem; white-space: nowrap; }
+
+    /* Sections */
+    .section { padding: 5rem 0; }
+    .section--cream { background: var(--cream); }
+    .section__eyebrow {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem;
+    }
+    .section__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 600; color: var(--charcoal); margin-bottom: 0.75rem;
+    }
+    .section__desc { color: var(--muted); max-width: 620px; margin-bottom: 2.5rem; }
+    .section__header { text-align: center; margin-bottom: 3rem; }
+    .section__header .section__desc { margin-inline: auto; }
+
+    /* Rooms */
+    .rooms-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.75rem;
+    }
+    .room-card {
+      background: #fff; border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .room-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .room-card__img { aspect-ratio: 4/3; object-fit: cover; width: 100%; }
+    .room-card__body { padding: 1.5rem; }
+    .room-card__name {
+      font-family: var(--font-display); font-size: 1.35rem;
+      font-weight: 600; margin-bottom: 0.35rem;
+    }
+    .room-card__meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+    .room-card__price {
+      display: flex; align-items: baseline; gap: 0.5rem;
+    }
+    .room-card__price strong {
+      font-size: 1.25rem; color: var(--price); font-weight: 700;
+    }
+    .room-card__price del { font-size: 0.9rem; color: var(--muted); }
+    .room-card__price span { font-size: 0.82rem; color: var(--muted); }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.25rem;
+    }
+    .amenity {
+      background: #fff; border-radius: var(--radius); padding: 1.5rem 1rem;
+      text-align: center; border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .amenity:hover { border-color: var(--teal); transform: translateY(-2px); }
+    .amenity__icon {
+      width: 48px; height: 48px; margin: 0 auto 0.75rem;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--teal-light); border-radius: 50%; color: var(--teal);
+    }
+    .amenity__icon svg { width: 24px; height: 24px; }
+    .amenity__label { font-size: 0.88rem; font-weight: 600; color: var(--charcoal); line-height: 1.3; }
+
+    /* Gallery */
+    .gallery {
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 0.75rem;
+    }
+    .gallery__item { border-radius: var(--radius); overflow: hidden; position: relative; }
+    .gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .gallery__item:hover img { transform: scale(1.04); }
+    .gallery__item:nth-child(1) { grid-column: span 7; grid-row: span 2; min-height: 380px; }
+    .gallery__item:nth-child(2) { grid-column: span 5; min-height: 185px; }
+    .gallery__item:nth-child(3) { grid-column: span 5; min-height: 185px; }
+    .gallery__item:nth-child(4) { grid-column: span 4; min-height: 200px; }
+    .gallery__item:nth-child(5) { grid-column: span 4; min-height: 200px; }
+    .gallery__item:nth-child(6) { grid-column: span 4; min-height: 200px; }
+    .gallery__caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.65));
+      color: #fff; font-size: 0.82rem; font-weight: 500;
+    }
+
+    /* Location */
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+    .location__text p { margin-bottom: 1rem; color: var(--text); }
+    .location__details { list-style: none; margin-top: 1.5rem; }
+    .location__details li {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      padding: 0.65rem 0; border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+    .location__details svg { flex-shrink: 0; color: var(--teal); margin-top: 2px; }
+    .map-placeholder {
+      aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden;
+      background: var(--cream); border: 1px solid var(--border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--muted); text-align: center; padding: 2rem;
+    }
+    .map-placeholder svg { width: 48px; height: 48px; margin-bottom: 1rem; opacity: 0.5; }
+
+    /* Trust */
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;
+    }
+    .trust-card {
+      background: #fff; border-radius: var(--radius); padding: 2rem 1.5rem;
+      text-align: center; border: 1px solid var(--border);
+    }
+    .trust-card img { height: 64px; width: auto; margin: 0 auto 1rem; object-fit: contain; }
+    .trust-card__title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; }
+    .trust-card__text { font-size: 0.82rem; color: var(--muted); }
+
+    /* Footer */
+    .footer {
+      background: var(--charcoal); color: rgba(255,255,255,0.85);
+      padding: 4rem 0 2rem;
+    }
+    .footer__grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    .footer__brand svg { height: 36px; fill: #fff; margin-bottom: 1rem; }
+    .footer__brand p { font-size: 0.88rem; line-height: 1.7; opacity: 0.75; }
+    .footer__heading {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 1rem;
+    }
+    .footer__links { list-style: none; }
+    .footer__links li { margin-bottom: 0.5rem; }
+    .footer__links a { font-size: 0.88rem; opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
+    .footer__links a:hover { opacity: 1; color: var(--teal); }
+    .footer__contact { font-size: 0.88rem; line-height: 1.8; opacity: 0.8; }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+      font-size: 0.78rem; opacity: 0.6;
+    }
+    .footer__social { display: flex; gap: 0.75rem; }
+    .footer__social a {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); display: flex;
+      align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .footer__social a:hover { background: var(--teal); }
+    .footer__social svg { width: 16px; height: 16px; fill: #fff; }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(253,252,250,0.98); backdrop-filter: blur(8px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .mobile-nav__close { position: absolute; top: 1.25rem; right: 1.25rem; font-size: 1.5rem; color: var(--charcoal); }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .nav, .header .btn { display: none; }
+      .menu-toggle { display: flex; }
+      .booking__card { grid-template-columns: 1fr 1fr; }
+      .booking__search { grid-column: span 2; }
+      .location-grid { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+      .gallery__item:nth-child(n) { grid-column: span 6; min-height: 200px; }
+      .gallery__item:nth-child(1) { grid-column: span 12; }
+    }
+    @media (max-width: 600px) {
+      .booking__card { grid-template-columns: 1fr; padding: 1.25rem; }
+      .booking__search { grid-column: span 1; }
+      .hero__content { padding-bottom: 4rem; }
+      .section { padding: 3.5rem 0; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .gallery__item:nth-child(n) { grid-column: span 12; min-height: 220px; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="Skrundas muiža">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184.9 40" aria-hidden="true">
+          <path d="M31.3,30.4c-7.5,4.9-14.1,6.2-20.9,6.2c-5,0-10.6-1.9-10.4-7.8c0.3-5.5,5.2-11,12-14c4.7-2.1,8.9-2.6,13.2-2.5 c3.7,0.1,7.6,1.4,7.3,4.4c-0.2,2.7-3.3,5.5-6.8,7.2c-3.1,1.5-7,2.2-9,2.2c-0.9,0-2-0.3-1.9-1c0-0.8,0.9-1.3,1.6-1.4 c0.2,0,0.7-0.1,0.7,0.1c0,0.2-0.4,0.2-0.6,0.3c-0.4,0.1-1.2,0.4-1.2,0.9c0,0.3,0.7,0.4,1.4,0.4c2.3,0,5.9-1.4,8.3-2.6 c2.8-1.4,6.7-3.7,6.9-6.3c0.2-2.7-3.3-3.1-6.6-3.1c-3.7,0-7.8,0.8-12.5,2.8c-6,2.6-11.9,7.6-12.2,12.7c-0.2,5.4,5,6.9,9.8,6.9 c6.3,0,13-2.4,20-6.8c5.6-3.5,11.4-8.7,11.5-14c0.1-4.4-4.4-4.5-9.9-4.3c-5,0.1-9.3-1.1-9-4.4c0.3-4.1,7.5-6.4,12.6-6.3 c2.3,0,5.3,0.8,5.2,1.7c0,0.3-0.6,0.6-1.2,0.6c-0.3,0-0.5,0-0.6-0.2c-0.1-0.2,0.2-0.2,0.4-0.3c0.2-0.1,0.4-0.2,0.4-0.3 c0-0.3-3.3-0.4-4.2-0.4c-5,0-11.9,1.9-12.2,5.1c-0.2,2.6,5.3,2.4,8.5,2.4c5.6,0,10.5,1.2,10.4,6.4C42.3,20.7,37.5,26.3,31.3,30.4z"/>
+          <path d="M56.7,40c-3.6-0.1-6.8-3.8-8.7-8.6c-1.2-2.9-2.1-6.8-2.2-8.7c-0.9,2.6-3.2,7.7-4.3,9.5c-0.3,0.4-0.4,0.6-0.7,1 c-0.1,0.2-0.4,0.4-0.7,0.3c-0.3-0.1-0.5-0.4-0.5-1c0-1.3,0.4-3,0.9-4.1c0.9-2.3,2.1-3.8,3.4-5.3c0.6-1.6,1.4-3.6,1.9-4.7 c1-2.2,2.4-4.7,3.5-6.3c1.6-2.3,3.2-3.7,4.4-4.5c0.7-0.4,1.6-0.7,1.7-0.6c0.1,0.1-0.4,0.4-1.1,1.1c-0.9,0.9-2.3,2.6-3.4,4.4 c-1.1,1.8-2.6,4.6-3.5,6.4c-0.4,0.9-0.7,1.6-1.2,2.7c0.9-0.9,3.4-2.9,6-2.9c1.2,0,2,0.5,2,1.2c0,1.5-2.5,2.7-5.1,2.7 c-0.7,0-1.2,0-1.8-0.1c0.3,2.3,1,5.1,2.3,8.4c1.6,4.2,4.2,8.7,7.5,8.8c2.7,0.1,3.7-1.8,4-3.9l0.2,0c0.2,0.2,0.4,0.6,0.4,1.2 C61.6,39,59.1,40,56.7,40z"/>
+          <path d="M98.3,19.3c-0.5-0.2-0.9-0.5-1.3-0.8c-0.3,2.5-1.1,5.3-2.8,8.4c-1.7,3.2-5,6.5-6.9,6.2c-1.4-0.2-3-2.2-0.4-7.7 c1.3-2.7,3.7-5.1,6.8-5.9c0.5-0.1,0.8-0.1,0.8,0.1c0,0.1-0.4,0.2-0.8,0.3c-2,0.7-3.7,2.7-5.2,6.2c-1.1,2.8-2.1,6.2-0.9,6.4 c1,0.2,3.8-2.6,5.9-8.4c0.6-1.7,1.6-4.3,1.9-6.8c-0.3-0.4-0.7-0.8-1.1-1.2c-0.5-0.7-1.4-2-1.6-3.4c-0.3-1.7,0.2-3.1,1.1-3.2 c1.3-0.1,3,1.7,3.3,5.1c0.1,1,0.1,2.3,0,3.3c0.5,0.5,1.1,0.9,1.7,1.2c0.7,0.4,1.3,0.2,1.2,0.4C99.7,19.6,99,19.6,98.3,19.3z"/>
+          <path d="M140.5,26.7c-0.8,2-1.4,3.4-1.9,5.3c-0.1,0.3-0.1,0.6,0.1,0.7c0.2,0,0.7-0.2,1.1-0.7c0.2-0.2,0.3-0.3,0.4-0.3 c0.1,0.1,0,0.2-0.2,0.5c-0.8,0.9-1.9,1.7-2.6,1.6c-0.7-0.1-0.7-0.8-0.7-1.5c0.2-1.5,1.2-4.2,2-6c0.7-1.8,1.2-2.9,1.9-4.7 c0.1-0.2,0.3-0.6,0.1-0.7c-0.1-0.1-0.5,0.3-0.6,0.4c-1.4,1.4-2.3,2.4-3.7,4.1c-2.2,2.8-2.8,4.2-3.9,6.1c-0.3,0.5-0.4,0.5-0.7,0.8 c-0.3,0.3-0.7,0.6-1,0.5c-0.3-0.1-0.1-0.5,0.2-1.2c0.7-1.9,1.2-3.2,2.1-5.4c0.7-1.8,1.3-3,1.9-4.7c0.1-0.2,0.2-0.6,0.1-0.6 c-0.2-0.1-0.5,0.2-0.6,0.3c-1.4,1.4-2.3,2.4-3.7,4.1c-1.8,2.2-2.8,4.1-3.9,5.9c-0.3,0.5-0.5,0.6-0.8,1c-0.1,0.3-0.4,0.5-0.7,0.4 c-0.2-0.1-0.3-0.5-0.1-1c0.9-2.2,1.4-3.6,2.4-6.2c1.1-2.8,1.4-3.6,2.1-5.4c0.1-0.3,0-0.5-0.2-0.5c-0.2,0-0.8,0.3-1.1,0.5 c-0.2,0.1-0.3,0.2-0.3,0.1c-0.1-0.1,0-0.2,0.2-0.3c0.4-0.3,1.7-1.4,2.7-1.5c0.9-0.1,1,0.5,0.8,1.1c-0.6,2.2-2,4.9-3,7.8 c1.2-1.6,1.9-2.4,3.1-3.9c1.3-1.5,2.4-2.6,3.6-3.7c0.5-0.4,1.2-0.8,1.7-0.6c0.4,0.2,0.3,0.8,0.1,1.3c-0.9,2.3-1.8,4.3-2.8,6.8 c1.1-1.4,1.9-2.5,3.1-3.8c1.3-1.5,2.4-2.6,3.6-3.7c0.5-0.4,1.2-0.8,1.7-0.6c0.4,0.2,0.4,0.8,0.2,1.3 C142.1,22.8,141.3,24.4,140.5,26.7z"/>
+          <path d="M182.1,26.7c-0.7,2-1.8,4.2-2.6,5.7c0.7-0.9,2.1-2.3,2.6-2.7c0.6-0.5,1.3-0.9,1.7-1.1c0.1,0,0.3-0.1,0.3,0 c0.1,0.1,0,0.2-0.2,0.3c-0.4,0.2-1.4,1-2,1.6c-0.9,0.9-1.7,1.7-2.5,2.7c-0.4,0.4-0.8,0.9-1.4,0.8c-0.4,0-0.5-0.5-0.2-1.1 c0.8-1.7,2.3-5.5,3.4-8.4c-1.2,2.2-2.7,4.2-4.2,5.7c-1.3,1.4-2.5,2.3-3.3,2.2c-1,0-1.5-0.9-1.5-2.2c0-1,0.3-2.4,1-3.8 c0.7-1.6,2-3.3,3.5-4.7c1.5-1.5,3.3-2.5,4.7-2.5c1,0,1.3,0.7,1.4,1.2c0.1-0.3,0.4-0.7,0.5-0.9c0.3-0.4,0.5-0.6,1-0.5 c0.5,0.1,0.6,0.5,0.5,0.7C184.1,21.6,183.1,24.3,182.1,26.7z"/>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Galvenā navigācija">
+        <a href="#rooms">Viesnīca</a>
+        <a href="#amenities">SPA</a>
+        <a href="#gallery">Galerija</a>
+        <a href="#location">Atrašanās vieta</a>
+        <a href="#contact">Kontakti</a>
+      </nav>
+      <a href="#booking" class="btn btn--primary">Rezervācija</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Atvērt izvēlni" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <button class="mobile-nav__close" id="menuClose" aria-label="Aizvērt izvēlni">&times;</button>
+    <a href="#rooms">Viesnīca</a>
+    <a href="#amenities">SPA</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Atrašanās vieta</a>
+    <a href="#contact">Kontakti</a>
+    <a href="#booking" class="btn btn--primary">Rezervācija</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg" role="img" aria-label="Skrundas muiža no augšas, Ventas upes krastā"></div>
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <span class="hero__badge">4 zvaigžņu Superior · Hotelstars Union</span>
+      <h1 class="hero__title">Skrundas muiža</h1>
+      <p class="hero__tagline">Atjaunota vēsturiska ēka ar elegantu viesnīcu, gardēžu restorānu un SPA gleznainajā Ventas upes krastā.</p>
+      <a href="#booking" class="btn btn--primary">Pārbaudīt pieejamību</a>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <form class="booking__card" id="bookingForm" aria-label="Rezervācijas forma">
+        <div class="booking__field">
+          <label for="checkin">Ierašanās</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="booking__field">
+          <label for="checkout">Aizbraukšana</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="booking__field">
+          <label for="guests">Viesi</label>
+          <select id="guests" name="guests">
+            <option value="1">1 viesis</option>
+            <option value="2" selected>2 viesi</option>
+            <option value="3">3 viesi</option>
+            <option value="4">4 viesi</option>
+          </select>
+        </div>
+        <div class="booking__field">
+          <label for="rooms-count">Numuri</label>
+          <select id="rooms-count" name="rooms">
+            <option value="1" selected>1 numurs</option>
+            <option value="2">2 numuri</option>
+            <option value="3">3 numuri</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary booking__search">Meklēt</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Rooms -->
+  <section class="section" id="rooms">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__eyebrow">Viesnīca</p>
+        <h2 class="section__title">Numuri &amp; apartamenti</h2>
+        <p class="section__desc">Individuāli veidots dizains katrā numurā. Cenas norādītas par nakti saskaņā ar oficiālo mājaslapu.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img class="room-card__img" src="https://www.skrundasmuiza.lv/uploads/hotel/hotel-1.jpg" alt="Standarta divvietīgs numurs" loading="lazy">
+          <div class="room-card__body">
+            <h3 class="room-card__name">Standarta divvietīgs numurs</h3>
+            <p class="room-card__meta">2 personām · Guļamistaba, vannas istaba · Duša, Wi-Fi, TV, seifs, minibārs</p>
+            <div class="room-card__price">
+              <strong>95 €</strong>
+              <del>105 €</del>
+              <span>/ nakti</span>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <img class="room-card__img" src="https://www.skrundasmuiza.lv/uploads/hotel/hotel-2.jpg" alt="Superior klases divvietīgs numurs" loading="lazy">
+          <div class="room-card__body">
+            <h3 class="room-card__name">"Superior" klases divvietīgs numurs</h3>
+            <p class="room-card__meta">2 personām · 26,50 m² · Duša, Wi-Fi, TV, seifs, minibārs</p>
+            <div class="room-card__price">
+              <strong>131 €</strong>
+              <del>145 €</del>
+              <span>/ nakti</span>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <img class="room-card__img" src="https://www.skrundasmuiza.lv/uploads/hotel/hotel-3.jpg" alt="Ģimenes numurs" loading="lazy">
+          <div class="room-card__body">
+            <h3 class="room-card__name">Ģimenes numurs</h3>
+            <p class="room-card__meta">4 personām · 43,50 m² · Guļamistaba, atpūtas istaba · Vanna, Wi-Fi, TV</p>
+            <div class="room-card__price">
+              <strong>162 €</strong>
+              <del>180 €</del>
+              <span>/ nakti</span>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <img class="room-card__img" src="https://www.skrundasmuiza.lv/uploads/hotel/hotel-4.jpg" alt="Suite numurs" loading="lazy">
+          <div class="room-card__body">
+            <h3 class="room-card__name">"Suite" numurs</h3>
+            <p class="room-card__meta">2 personām · Guļamistaba, atpūtas zona · Vanna, Wi-Fi, TV, seifs, minibārs</p>
+            <div class="room-card__price">
+              <strong>162 €</strong>
+              <del>180 €</del>
+              <span>/ nakti</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities -->
+  <section class="section section--cream" id="amenities">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__eyebrow">Iespējas</p>
+        <h2 class="section__title">Ko piedāvā muiža</h2>
+        <p class="section__desc">Amenitātes un pakalpojumi, kas minēti oficiālajā mājaslapā. Autostāvvieta, brokastis un mājdzīvnieku politika nav norādīta — informācija nav pieejama.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity">
+          <div class="amenity__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <span class="amenity__label">SPA Kurzeme<br><small style="font-weight:400;color:var(--muted)">Baseins, sauna, pirts</small></span>
+        </div>
+        <div class="amenity">
+          <div class="amenity__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <span class="amenity__label">Gardēžu restorāns</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+          </div>
+          <span class="amenity__label">Bezmaksas Wi-Fi</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <span class="amenity__label">Seifs numurā</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="amenity__label">Kāzas &amp; svinības</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+          </div>
+          <span class="amenity__label">Konferences &amp; pasākumi</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="amenity__label">The Green Key<br><small style="font-weight:400;color:var(--muted)">Sertificēts</small></span>
+        </div>
+        <div class="amenity">
+          <div class="amenity__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg>
+          </div>
+          <span class="amenity__label">Lifts vēsturiskajā ēkā</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__eyebrow">Galerija</p>
+        <h2 class="section__title">Muiža &amp; apkārtne</h2>
+      </div>
+      <div class="gallery">
+        <figure class="gallery__item">
+          <img src="https://www.skrundasmuiza.lv/uploads/pages/skrunda-from-top.jpg" alt="Skrundas muiža no augšas" loading="lazy">
+          <figcaption class="gallery__caption">Skrundas muiža — skats no augšas</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="https://www.skrundasmuiza.lv/uploads/hotel/hotel-2.jpg" alt="Viesnīcas numurs" loading="lazy">
+          <figcaption class="gallery__caption">Viesnīcas numurs</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="https://www.skrundasmuiza.lv/uploads/galleries/9/spa-viesnica-kurzeme-6.jpg" alt="SPA baseins" loading="lazy">
+          <figcaption class="gallery__caption">SPA baseins</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="https://www.skrundasmuiza.lv/uploads/galleries/5/skrundas-muiza-restorans-4.jpg" alt="Skrundas muižas restorāns" loading="lazy">
+          <figcaption class="gallery__caption">Gardēžu restorāns</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="https://www.skrundasmuiza.lv/uploads/pages/skrundamanor-spa.jpg" alt="SPA Skrundas muiža" loading="lazy">
+          <figcaption class="gallery__caption">SPA Kurzeme</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="https://www.skrundasmuiza.lv/uploads/galleries/9/spa-viesnica-kurzeme-4.jpg" alt="SPA pirts" loading="lazy">
+          <figcaption class="gallery__caption">SPA pirts</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="section section--cream" id="location">
+    <div class="container">
+      <div class="location-grid">
+        <div class="location__text">
+          <p class="section__eyebrow">Atrašanās vieta</p>
+          <h2 class="section__title">Ventas upes krastā, Kurzemē</h2>
+          <p>Gleznainajā Ventas upes krastā atrodas viena no skaistākajām Latvijas muižām — 19. gadsimta arhitektūras pērle. Ar plašu skatu uz Ventu un skaisto Latvijas lauku dabu, muiža viesiem nodrošina lauku mieru un ērtu piekļuvi no Rīgas–Liepājas šosejas.</p>
+          <ul class="location__details">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Pils iela 2, Skrunda, LV-3326, Latvija</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z"/></svg>
+              <span>Ventas upe — viena no Latvijas zīmīgākajām upēm</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span>Ērta piekļuve no Rīgas–Liepājas šosejas</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Muižas parks un pastaigu taka gar Ventas upes krastu</span>
+            </li>
+          </ul>
+        </div>
+        <div class="map-placeholder" aria-label="Kartes vieta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <p><strong>Skrunda, Kurzeme</strong><br>Pils iela 2, LV-3326<br><span style="font-size:0.85rem;margin-top:0.5rem;display:block;">Statiska kartes vietturis — prototips</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="section" id="trust">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__eyebrow">Uzticība</p>
+        <h2 class="section__title">Sertifikāti &amp; atzinības</h2>
+        <p class="section__desc">Oficiālie apbalvojumi un sertifikāti no mājaslapas. Skaitliska vērtējuma (piem., TripAdvisor) mājaslapā nav norādīta.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card">
+          <img src="https://www.skrundasmuiza.lv/uploads/certificates/hotelstars.png" alt="Hotelstars Union logo">
+          <p class="trust-card__title">Hotelstars Union</p>
+          <p class="trust-card__text">4 zvaigžņu Superior sertifikāts — starptautiski atzīts viesnīcas kvalitātes standarts</p>
+        </div>
+        <div class="trust-card">
+          <img src="https://www.skrundasmuiza.lv/uploads/certificates/badge-skrundas-muiza.png" alt="Best Hotel Award">
+          <p class="trust-card__title">Best Hotel Award</p>
+          <p class="trust-card__text">Apbalvojums, kas redzams oficiālajā mājaslapā</p>
+        </div>
+        <div class="trust-card">
+          <img src="https://www.skrundasmuiza.lv/uploads/certificates/logo.png" alt="Booking.com award">
+          <p class="trust-card__title">Booking.com Award</p>
+          <p class="trust-card__text">Booking.com atzinības balva — saskaņā ar mājaslapu</p>
+        </div>
+        <div class="trust-card">
+          <img src="https://www.skrundasmuiza.lv/uploads/certificates/the_green_key_resized.jpg" alt="The Green Key">
+          <p class="trust-card__title">The Green Key</p>
+          <p class="trust-card__text">Starptautisks vides ilgtspējības sertifikāts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184.9 40" aria-hidden="true">
+            <path d="M31.3,30.4c-7.5,4.9-14.1,6.2-20.9,6.2c-5,0-10.6-1.9-10.4-7.8c0.3-5.5,5.2-11,12-14c4.7-2.1,8.9-2.6,13.2-2.5 c3.7,0.1,7.6,1.4,7.3,4.4c-0.2,2.7-3.3,5.5-6.8,7.2c-3.1,1.5-7,2.2-9,2.2c-0.9,0-2-0.3-1.9-1c0-0.8,0.9-1.3,1.6-1.4 c0.2,0,0.7-0.1,0.7,0.1c0,0.2-0.4,0.2-0.6,0.3c-0.4,0.1-1.2,0.4-1.2,0.9c0,0.3,0.7,0.4,1.4,0.4c2.3,0,5.9-1.4,8.3-2.6 c2.8-1.4,6.7-3.7,6.9-6.3c0.2-2.7-3.3-3.1-6.6-3.1c-3.7,0-7.8,0.8-12.5,2.8c-6,2.6-11.9,7.6-12.2,12.7c-0.2,5.4,5,6.9,9.8,6.9 c6.3,0,13-2.4,20-6.8c5.6-3.5,11.4-8.7,11.5-14c0.1-4.4-4.4-4.5-9.9-4.3c-5,0.1-9.3-1.1-9-4.4c0.3-4.1,7.5-6.4,12.6-6.3 c2.3,0,5.3,0.8,5.2,1.7c0,0.3-0.6,0.6-1.2,0.6c-0.3,0-0.5,0-0.6-0.2c-0.1-0.2,0.2-0.2,0.4-0.3c0.2-0.1,0.4-0.2,0.4-0.3 c0-0.3-3.3-0.4-4.2-0.4c-5,0-11.9,1.9-12.2,5.1c-0.2,2.6,5.3,2.4,8.5,2.4c5.6,0,10.5,1.2,10.4,6.4C42.3,20.7,37.5,26.3,31.3,30.4z"/>
+            <path d="M56.7,40c-3.6-0.1-6.8-3.8-8.7-8.6c-1.2-2.9-2.1-6.8-2.2-8.7c-0.9,2.6-3.2,7.7-4.3,9.5c-0.3,0.4-0.4,0.6-0.7,1 c-0.1,0.2-0.4,0.4-0.7,0.3c-0.3-0.1-0.5-0.4-0.5-1c0-1.3,0.4-3,0.9-4.1c0.9-2.3,2.1-3.8,3.4-5.3c0.6-1.6,1.4-3.6,1.9-4.7 c1-2.2,2.4-4.7,3.5-6.3c1.6-2.3,3.2-3.7,4.4-4.5c0.7-0.4,1.6-0.7,1.7-0.6c0.1,0.1-0.4,0.4-1.1,1.1c-0.9,0.9-2.3,2.6-3.4,4.4 c-1.1,1.8-2.6,4.6-3.5,6.4c-0.4,0.9-0.7,1.6-1.2,2.7c0.9-0.9,3.4-2.9,6-2.9c1.2,0,2,0.5,2,1.2c0,1.5-2.5,2.7-5.1,2.7 c-0.7,0-1.2,0-1.8-0.1c0.3,2.3,1,5.1,2.3,8.4c1.6,4.2,4.2,8.7,7.5,8.8c2.7,0.1,3.7-1.8,4-3.9l0.2,0c0.2,0.2,0.4,0.6,0.4,1.2 C61.6,39,59.1,40,56.7,40z"/>
+            <path d="M98.3,19.3c-0.5-0.2-0.9-0.5-1.3-0.8c-0.3,2.5-1.1,5.3-2.8,8.4c-1.7,3.2-5,6.5-6.9,6.2c-1.4-0.2-3-2.2-0.4-7.7 c1.3-2.7,3.7-5.1,6.8-5.9c0.5-0.1,0.8-0.1,0.8,0.1c0,0.1-0.4,0.2-0.8,0.3c-2,0.7-3.7,2.7-5.2,6.2c-1.1,2.8-2.1,6.2-0.9,6.4 c1,0.2,3.8-2.6,5.9-8.4c0.6-1.7,1.6-4.3,1.9-6.8c-0.3-0.4-0.7-0.8-1.1-1.2c-0.5-0.7-1.4-2-1.6-3.4c-0.3-1.7,0.2-3.1,1.1-3.2 c1.3-0.1,3,1.7,3.3,5.1c0.1,1,0.1,2.3,0,3.3c0.5,0.5,1.1,0.9,1.7,1.2c0.7,0.4,1.3,0.2,1.2,0.4C99.7,19.6,99,19.6,98.3,19.3z"/>
+            <path d="M140.5,26.7c-0.8,2-1.4,3.4-1.9,5.3c-0.1,0.3-0.1,0.6,0.1,0.7c0.2,0,0.7-0.2,1.1-0.7c0.2-0.2,0.3-0.3,0.4-0.3 c0.1,0.1,0,0.2-0.2,0.5c-0.8,0.9-1.9,1.7-2.6,1.6c-0.7-0.1-0.7-0.8-0.7-1.5c0.2-1.5,1.2-4.2,2-6c0.7-1.8,1.2-2.9,1.9-4.7 c0.1-0.2,0.3-0.6,0.1-0.7c-0.1-0.1-0.5,0.3-0.6,0.4c-1.4,1.4-2.3,2.4-3.7,4.1c-2.2,2.8-2.8,4.2-3.9,6.1c-0.3,0.5-0.4,0.5-0.7,0.8 c-0.3,0.3-0.7,0.6-1,0.5c-0.3-0.1-0.1-0.5,0.2-1.2c0.7-1.9,1.2-3.2,2.1-5.4c0.7-1.8,1.3-3,1.9-4.7c0.1-0.2,0.2-0.6,0.1-0.6 c-0.2-0.1-0.5,0.2-0.6,0.3c-1.4,1.4-2.3,2.4-3.7,4.1c-1.8,2.2-2.8,4.1-3.9,5.9c-0.3,0.5-0.5,0.6-0.8,1c-0.1,0.3-0.4,0.5-0.7,0.4 c-0.2-0.1-0.3-0.5-0.1-1c0.9-2.2,1.4-3.6,2.4-6.2c1.1-2.8,1.4-3.6,2.1-5.4c0.1-0.3,0-0.5-0.2-0.5c-0.2,0-0.8,0.3-1.1,0.5 c-0.2,0.1-0.3,0.2-0.3,0.1c-0.1-0.1,0-0.2,0.2-0.3c0.4-0.3,1.7-1.4,2.7-1.5c0.9-0.1,1,0.5,0.8,1.1c-0.6,2.2-2,4.9-3,7.8 c1.2-1.6,1.9-2.4,3.1-3.9c1.3-1.5,2.4-2.6,3.6-3.7c0.5-0.4,1.2-0.8,1.7-0.6c0.4,0.2,0.3,0.8,0.1,1.3c-0.9,2.3-1.8,4.3-2.8,6.8 c1.1-1.4,1.9-2.5,3.1-3.8c1.3-1.5,2.4-2.6,3.6-3.7c0.5-0.4,1.2-0.8,1.7-0.6c0.4,0.2,0.4,0.8,0.2,1.3 C142.1,22.8,141.3,24.4,140.5,26.7z"/>
+            <path d="M182.1,26.7c-0.7,2-1.8,4.2-2.6,5.7c0.7-0.9,2.1-2.3,2.6-2.7c0.6-0.5,1.3-0.9,1.7-1.1c0.1,0,0.3-0.1,0.3,0 c0.1,0.1,0,0.2-0.2,0.3c-0.4,0.2-1.4,1-2,1.6c-0.9,0.9-1.7,1.7-2.5,2.7c-0.4,0.4-0.8,0.9-1.4,0.8c-0.4,0-0.5-0.5-0.2-1.1 c0.8-1.7,2.3-5.5,3.4-8.4c-1.2,2.2-2.7,4.2-4.2,5.7c-1.3,1.4-2.5,2.3-3.3,2.2c-1,0-1.5-0.9-1.5-2.2c0-1,0.3-2.4,1-3.8 c0.7-1.6,2-3.3,3.5-4.7c1.5-1.5,3.3-2.5,4.7-2.5c1,0,1.3,0.7,1.4,1.2c0.1-0.3,0.4-0.7,0.5-0.9c0.3-0.4,0.5-0.6,1-0.5 c0.5,0.1,0.6,0.5,0.5,0.7C184.1,21.6,183.1,24.3,182.1,26.7z"/>
+          </svg>
+          <p>Viesnīca, gardēžu restorāns un SPA vēsturiskā muižā Ventas upes krastā. 19. gadsimta arhitektūras pērle Kurzemē.</p>
+        </div>
+        <div>
+          <p class="footer__heading">Navigācija</p>
+          <ul class="footer__links">
+            <li><a href="#rooms">Viesnīca</a></li>
+            <li><a href="#amenities">SPA Kurzeme</a></li>
+            <li><a href="#gallery">Galerija</a></li>
+            <li><a href="#location">Atrašanās vieta</a></li>
+            <li><a href="#trust">Sertifikāti</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">Pakalpojumi</p>
+          <ul class="footer__links">
+            <li><a href="https://www.skrundasmuiza.lv/lv/skrundas-muizas-restorans" target="_blank" rel="noopener">Restorāns</a></li>
+            <li><a href="https://www.skrundasmuiza.lv/lv/spa-skrundas-muiza" target="_blank" rel="noopener">SPA</a></li>
+            <li><a href="https://www.skrundasmuiza.lv/lv/kazu-svinibas-skrundas-muiza" target="_blank" rel="noopener">Kāzu svinības</a></li>
+            <li><a href="https://www.skrundasmuiza.lv/lv/pasakumi-un-atputa-skrundas-muiza" target="_blank" rel="noopener">Pasākumi</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">Kontakti</p>
+          <div class="footer__contact">
+            <p>A/S "Skrundas Muiža"<br>Pils iela 2<br>Skrunda, LV-3326<br>Latvija</p>
+            <p style="margin-top:0.75rem;">Tel.: +371 63370000<br>Mob.: +371 22113355<br>Fax.: +371 63331307</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 A/S "Skrundas Muiža". Prototips — nav oficiālā mājaslapa.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/SkrundaManor/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/explore/locations/313516548/skrundas-muiza-skrunda-manor" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+          </a>
+          <a href="https://www.tripadvisor.com/Hotel_Review-g3556184-d3544298-Reviews-Skrunda_Manor_Hotel-Skrunda_Kurzeme_Region.html" target="_blank" rel="noopener" aria-label="TripAdvisor">
+            <svg viewBox="0 0 24 24"><circle cx="8.5" cy="14" r="4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.5" cy="14" r="4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="8.5" cy="14" r="1.5" fill="#fff"/><circle cx="15.5" cy="14" r="1.5" fill="#fff"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('header');
+      const menuToggle = document.getElementById('menuToggle');
+      const menuClose = document.getElementById('menuClose');
+      const mobileNav = document.getElementById('mobileNav');
+      const checkin = document.getElementById('checkin');
+      const checkout = document.getElementById('checkout');
+      const form = document.getElementById('bookingForm');
+
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+      });
+
+      function openMenu() {
+        mobileNav.classList.add('open');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      menuToggle.addEventListener('click', openMenu);
+      menuClose.addEventListener('click', closeMenu);
+      mobileNav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      var today = new Date();
+      var tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      var dayAfter = new Date(today);
+      dayAfter.setDate(dayAfter.getDate() + 3);
+      function fmt(d) {
+        return d.toISOString().split('T')[0];
+      }
+      checkin.min = fmt(today);
+      checkin.value = fmt(tomorrow);
+      checkout.min = fmt(dayAfter);
+      checkout.value = fmt(dayAfter);
+
+      checkin.addEventListener('change', function () {
+        var ci = new Date(checkin.value);
+        var minOut = new Date(ci);
+        minOut.setDate(minOut.getDate() + 1);
+        checkout.min = fmt(minOut);
+        if (new Date(checkout.value) <= ci) {
+          checkout.value = fmt(minOut);
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Rezervācijas meklēšana — UI prototips.\n\nIerašanās: ' + checkin.value + '\nAizbraukšana: ' + checkout.value + '\nViesi: ' + document.getElementById('guests').value + '\nNumuri: ' + document.getElementById('rooms-count').value);
+      });
+    })();
+  </script>
+</body>
+</html>
