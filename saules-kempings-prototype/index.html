@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saules kempings — Mērsrags, Latvija</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #faa61a;
+      --orange-dark: #e8920f;
+      --navy: #0d1c41;
+      --navy-soft: #1a2f5c;
+      --sand: #f7f3eb;
+      --sand-dark: #ebe4d6;
+      --white: #ffffff;
+      --text: #2a3348;
+      --text-muted: #5c6478;
+      --shadow: 0 8px 32px rgba(13, 28, 65, 0.12);
+      --radius: 14px;
+      --transition: 0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--sand);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, 92vw);
+      margin-inline: auto;
+    }
+
+    h1, h2, h3, .logo-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0.85rem 0;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(13, 28, 65, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+    }
+
+    .logo-text {
+      color: var(--white);
+      font-size: 1.15rem;
+      display: none;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-desktop a {
+      color: rgba(255,255,255,0.92);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--orange); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(250, 166, 26, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.55);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .header-cta { display: none; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 200;
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-nav.open { transform: translateX(0); }
+
+    .mobile-nav a {
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-close {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,28,65,0.45) 0%, rgba(13,28,65,0.72) 100%),
+                  url('https://sauleskempings.lv/wp-content/uploads/2023/07/DJI_0844-1024x576.jpg') center/cover no-repeat;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 7rem 1.5rem 4rem;
+      max-width: 820px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 3.75rem);
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      max-width: 640px;
+      margin-inline: auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* Booking */
+    .booking {
+      margin-top: -3.5rem;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 1rem;
+    }
+
+    .booking-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.75rem;
+    }
+
+    .booking-card h2 {
+      font-size: 1.35rem;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.45rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--sand-dark);
+      border-radius: 10px;
+      font: inherit;
+      color: var(--text);
+      background: var(--sand);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: 2px solid var(--orange);
+      outline-offset: 1px;
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--sand-dark);
+      border-radius: 10px;
+      background: var(--sand);
+      font: inherit;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .guest-dropdown {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      display: none;
+      z-index: 20;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--sand-dark);
+      background: var(--white);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .guest-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* Sections */
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 4vw, 2.5rem);
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Rooms */
+    .rooms { background: var(--white); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--sand);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(13,28,65,0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .room-card-body { padding: 1.35rem; }
+
+    .room-card h3 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .room-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .room-price {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 1.05rem;
+    }
+
+    .room-price span {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .room-price.placeholder {
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .amenity-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.35rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(13,28,65,0.05);
+      transition: transform var(--transition);
+    }
+
+    .amenity-item:hover { transform: translateY(-2px); }
+
+    .amenity-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .amenity-item span {
+      display: block;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--navy);
+    }
+
+    /* Gallery */
+    .gallery { background: var(--white); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .location-text h3 {
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .location-text p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .location-details {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .location-details li {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--sand-dark);
+      font-size: 0.95rem;
+    }
+
+    .location-details strong {
+      color: var(--navy);
+      display: inline-block;
+      min-width: 6.5rem;
+    }
+
+    .map-placeholder {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--white);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.85;
+    }
+
+    /* Trust */
+    .trust { background: var(--sand); }
+
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--white);
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 10px rgba(13,28,65,0.08);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: 0 2px 12px rgba(13,28,65,0.06);
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.98rem;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 0.92rem;
+    }
+
+    .testimonial-source {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--orange-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.85);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand img {
+      height: 40px;
+      margin-bottom: 1rem;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      opacity: 0.85;
+      margin-bottom: 1.25rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .social-links a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--navy);
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: var(--white);
+      font-family: 'Fraunces', serif;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .footer-nav ul { list-style: none; }
+
+    .footer-nav li { margin-bottom: 0.55rem; }
+
+    .footer-nav a {
+      opacity: 0.85;
+      font-size: 0.95rem;
+      transition: color var(--transition);
+    }
+
+    .footer-nav a:hover { color: var(--orange); }
+
+    .footer-contact p,
+    .footer-contact a {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.85;
+    }
+
+    .footer-contact a:hover { color: var(--orange); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.65;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .booking-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-form .btn-primary {
+        grid-column: span 2;
+      }
+
+      .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle, .header-cta-mobile { display: block; }
+
+      .header-inner .btn-primary.header-cta-mobile {
+        display: none;
+      }
+
+      .menu-toggle { display: block; }
+
+      .hero { min-height: 85vh; }
+
+      .booking { margin-top: -2rem; }
+
+      .booking-form {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-form .btn-primary { grid-column: span 1; }
+
+      .rooms-grid,
+      .amenities-grid,
+      .testimonials-grid,
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        aspect-ratio: 16/9;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:first-child { grid-column: span 1; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="https://sauleskempings.lv/wp-content/uploads/2023/03/saules_kempings_logo.svg" alt="Saules kempings">
+        <span class="logo-text">Saules kempings</span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="#rooms">Nakšņošana</a>
+        <a href="#amenities">Ērtības</a>
+        <a href="#gallery">Galerija</a>
+        <a href="#location">Atrašanās vieta</a>
+        <a href="#trust">Atsauksmes</a>
+      </nav>
+      <a href="#booking" class="btn btn-primary header-cta">Rezervēt</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="nav-close" id="navClose" aria-label="Close menu">&times;</button>
+    <a href="#rooms">Nakšņošana</a>
+    <a href="#amenities">Ērtības</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Atrašanās vieta</a>
+    <a href="#trust">Atsauksmes</a>
+    <a href="#booking" class="btn btn-primary">Rezervēt tagad</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Saules kempings</span>
+      <h1>Saulainiem atpūtas mirkļiem</h1>
+      <p class="hero-tagline">Brīvdienu mājas, kempinga mājiņas, telts vietas un modernas kemperu vietas — viss, kas nepieciešams atpūtai netālu no jūras.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">Pārbaudīt pieejamību</a>
+        <a href="#rooms" class="btn btn-outline">Skatīt nakšņošanu</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="booking-card">
+        <h2>Meklēt brīvu vietu</h2>
+        <form class="booking-form" id="bookingForm">
+          <div class="form-group">
+            <label for="checkin">Ierašanās</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="form-group">
+            <label for="checkout">Aizbraukšana</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="form-group guest-selector">
+            <label>Viesi</label>
+            <button type="button" class="guest-trigger" id="guestTrigger">
+              <span id="guestSummary">2 pieaugušie</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="guest-dropdown" id="guestDropdown">
+              <div class="guest-row">
+                <span>Pieaugušie</span>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="adultsMinus" aria-label="Mazāk pieaugušo">−</button>
+                  <span id="adultsCount">2</span>
+                  <button type="button" class="guest-btn" id="adultsPlus" aria-label="Vairāk pieaugušo">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <span>Bērni</span>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="childrenMinus" aria-label="Mazāk bērnu">−</button>
+                  <span id="childrenCount">0</span>
+                  <button type="button" class="guest-btn" id="childrenPlus" aria-label="Vairāk bērnu">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="roomType">Nakšņošanas veids</label>
+            <select id="roomType" name="roomType">
+              <option value="any">Jebkurš</option>
+              <option value="saule">Brīvdienu māja Saule</option>
+              <option value="goba">Brīvdienu māja Goba</option>
+              <option value="liepa">Brīvdienu māja Liepa</option>
+              <option value="priedes">Kempinga mājiņas Priedes</option>
+              <option value="telts">Telts vietas</option>
+              <option value="kemperis">Kemperu vietas</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Meklēt</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Mēs piedāvājam</p>
+        <h2 class="section-title">Nakšņošanas iespējas</h2>
+        <p class="section-desc">Trīs dažāda izmēra brīvdienu mājas, četras kempinga mājiņas, telts vietas un kemperu novietnes ar ES standartiem atbilstošiem pieslēgumiem.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/Saues-Kempings-brivdienu-maja-Saule-21-2-1.jpg" alt="Brīvdienu māja Saule">
+          <div class="room-card-body">
+            <h3>Brīvdienu māja Saule</h3>
+            <p>Lielākā brīvdienu māja ar visām ērtībām — 2 līdz 6 personām. Papildus iespējama pirts vai āra džakuzi.</p>
+            <p class="room-price placeholder">Cena pēc pieprasījuma <span>(nav norādīta vietnē)</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/Saues-Kempings-brivdienu-maja-Goba-20-1.jpg" alt="Brīvdienu māja Goba">
+          <div class="room-card-body">
+            <h3>Brīvdienu māja Goba</h3>
+            <p>Vidēja izmēra māja ar pirti — brīvdienas divatā vai ar ģimeni. Papildus iespējams džakuzi.</p>
+            <p class="room-price placeholder">Cena pēc pieprasījuma <span>(nav norādīta vietnē)</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/Saues-Kempings-brivdienu-maja-Liepa-3-1.jpg" alt="Brīvdienu māja Liepa">
+          <div class="room-card-body">
+            <h3>Brīvdienu māja Liepa</h3>
+            <p>Mazākā brīvdienu māja — romantiska divvientulība vai mierīgs atpūtas mirklis pie jūras.</p>
+            <p class="room-price placeholder">Cena pēc pieprasījuma <span>(nav norādīta vietnē)</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/Saues-Kempings-majas-Priedes-7-1.jpg" alt="Kempinga mājiņas Priedes">
+          <div class="room-card-body">
+            <h3>Kempinga mājiņas Priedes</h3>
+            <p>Četras kempinga mājiņas neaizmirstamām nedēļas nogalēm vai atvaļinājumam pie jūras.</p>
+            <p class="room-price placeholder">Cena pēc pieprasījuma <span>(nav norādīta vietnē)</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/07/DJI_0844-1024x576.jpg" alt="Telts vietas">
+          <div class="room-card-body">
+            <h3>Telts vietas</h3>
+            <p>Telšu vietas ceļojot pa Latviju vai izbaudot telšu burvību netālu no jūras krasta.</p>
+            <p class="room-price">No €10 <span>/ persona / nakts</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/Saues-Kempings-majas-Priedes-5-2.jpg" alt="Kemperu vietas">
+          <div class="room-card-body">
+            <h3>Kemperu vietas</h3>
+            <p>Īpaši pielāgotas kemperu novietnes ar pieslēgumiem — atbilstoši ES standartiem.</p>
+            <p class="room-price">No €20 <span>/ nakts (2 personas)</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Kempinga ērtības</p>
+        <h2 class="section-title">Kas jums pieejams</h2>
+        <p class="section-desc">Visas ērtības, kas minētas oficiālajā vietnē — no jūras tuvuma līdz aktīvās atpūtas iespējām.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item"><div class="amenity-icon">🌊</div><span>Netālu no jūras</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🍳</div><span>Virtuve servisa mājā</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🚿</div><span>Dušas un tualetes</span></div>
+        <div class="amenity-item"><div class="amenity-icon">⚡</div><span>Elektrības pieslēgumi (ES)</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🐕</div><span>Suņiem draudzīgs</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🧖</div><span>Pirts (brīvdienu mājās)</span></div>
+        <div class="amenity-item"><div class="amenity-icon">💦</div><span>Āra džakuzi (papildus)</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🎠</div><span>Bērnu rotaļu laukums</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🏐</div><span>Volejbola laukums</span></div>
+        <div class="amenity-item"><div class="amenity-icon">⚽</div><span>Mini futbola vārti</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🏸</div><span>Badmintons &amp; spīdmintons</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🚲</div><span>Velosipēdu noma</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Iepazīstiet</p>
+        <h2 class="section-title">Foto galerija</h2>
+        <p class="section-desc">Īss ieskats kempinga teritorijā, brīvdienu mājās un koplietošanas zonās Mērsragā.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/07/DJI_0844-1024x576.jpg" alt="Saules kempings — skats no gaisa">
+        </div>
+        <div class="gallery-item">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/Saues-Kempings-brivdienu-maja-Saule-21-2-1.jpg" alt="Brīvdienu māja Saule">
+        </div>
+        <div class="gallery-item">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/Saues-Kempings-majas-Priedes-7-1.jpg" alt="Kempinga mājiņas Priedes">
+        </div>
+        <div class="gallery-item">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/Saules-kempings-voleibola-laukums-1.jpg" alt="Volejbola laukums">
+        </div>
+        <div class="gallery-item">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/Saues-Kempings-brivdienu-maja-Goba-20-1.jpg" alt="Brīvdienu māja Goba">
+        </div>
+        <div class="gallery-item">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/WhatsApp-Image-2023-04-06-at-15.52.25.jpeg" alt="Saules kempings teritorija">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Kur mēs atrodamies</p>
+        <h2 class="section-title">Atrašanās vieta</h2>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Rīgas jūras līča Kurzemes piekrastē</h3>
+          <p>Saules kempings atrodas Rīgas jūras līča Kurzemes piekrastē, nepilnus 100 km no Rīgas. Daži soļi līdz jūrai — miers, jūra un skaisti skati.</p>
+          <p>Kempinga teritorijā var iepazīt Mērsragu un tā apkārtni. Tuvumā ir arī pilsētas pludmale.</p>
+          <ul class="location-details">
+            <li><strong>Adrese</strong> Bākas iela 28A, Mērsrags, Talsu novads, Latvija</li>
+            <li><strong>Attālums</strong> ~100 km no Rīgas</li>
+            <li><strong>Orientieris</strong> Jūras krasts, Mērsrags</li>
+            <li><strong>Darba laiks</strong> P–Sv 09:00–17:00</li>
+          </ul>
+        </div>
+        <div class="map-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p><strong>Kartes vietturis</strong></p>
+          <p style="font-size:0.9rem;margin-top:0.5rem;opacity:0.85;">Bākas iela 28A, Mērsrags, Talsu novads</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Viesu pieredze</p>
+        <h2 class="section-title">Atsauksmes</h2>
+        <p class="section-desc">Īsas atsauksmes no Google un Facebook, kā tās publicētas oficiālajā vietnē. Vērtējuma emblēma vietnē nav atrasta.</p>
+      </div>
+      <div style="text-align:center;">
+        <span class="google-badge">★ Atsauksmes no Google &amp; Facebook</span>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>“Lieliska vieta atpūtai vasarā pašā jūras krastā. Vietas teltīm, laba kopīgi lietojama virtuve, dušas un tualetes.”</blockquote>
+          <p class="testimonial-author">Vita Pulina</p>
+          <span class="testimonial-source">Atsauksme no Google</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Suņiem draudzīgs kempings. Viss tīrs un sakopts! Daži soļi līdz jūrai un baudiet skaistos saulrietus, saullēktus. Noteikti iesakam!”</blockquote>
+          <p class="testimonial-author">Agnese Pujāte</p>
+          <span class="testimonial-source">Atsauksme no Facebook</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Ļoti atsaucīgi kempinga īpašnieki. Izpalīdzēja dažādos jautājumos. Mierīga apkaime, plaša vieta, kur atpūsties.”</blockquote>
+          <p class="testimonial-author">Laura</p>
+          <span class="testimonial-source">Atsauksme no Google</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://sauleskempings.lv/wp-content/uploads/2023/04/saules_kempings_logo_balts.svg" alt="Saules kempings">
+          <p>Brīvdienu mājas, kempinga mājiņas, telts un kemperu vietas pie jūras Mērsragā — kopš 2011. gada.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/sauleskempings/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/sauleskempings/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <h4>Pakalpojumi</h4>
+          <ul>
+            <li><a href="#rooms">Brīvdienu māja Saule</a></li>
+            <li><a href="#rooms">Brīvdienu māja Goba</a></li>
+            <li><a href="#rooms">Brīvdienu māja Liepa</a></li>
+            <li><a href="#rooms">Kempinga mājiņas Priedes</a></li>
+            <li><a href="#rooms">Telts &amp; kemperu vietas</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Kontakti</h4>
+          <p>Bākas iela 28A<br>Mērsrags, Talsu novads<br>Latvija</p>
+          <a href="tel:+37127797555">+371 27797555</a>
+          <a href="mailto:info@sauleskempings.lv">info@sauleskempings.lv</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Saules kempings — Prototipa demonstrācijas lapa</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+
+    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (checkin.value) {
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = checkout.min;
+        }
+      }
+    });
+
+    let adults = 2;
+    let children = 0;
+
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestDropdown = document.getElementById('guestDropdown');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' pieaugušais' : ' pieaugušie');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' bērns' : ' bērni');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      guestDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => guestDropdown.classList.remove('open'));
+    guestDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 8) { adults++; updateGuestSummary(); } });
+    document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+    document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 6) { children++; updateGuestSummary(); } });
+    document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+
+    updateGuestSummary();
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Rezervācijas meklēšana ir tikai UI prototips — nav savienota ar rezervāciju sistēmu.');
+    });
+  </script>
+</body>
+</html>
