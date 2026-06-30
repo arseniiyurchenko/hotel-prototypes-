@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klidziņa — Hotel &amp; cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --burgundy: #6d1313;
+      --burgundy-dark: #2c0808;
+      --burgundy-light: #8a2a2a;
+      --gray: #878787;
+      --cream: #f7f3ef;
+      --cream-dark: #ebe3da;
+      --warm-white: #faf8f6;
+      --charcoal: #2c2824;
+      --charcoal-soft: #5a524c;
+      --shadow: 0 4px 28px rgba(44, 8, 8, 0.14);
+      --radius: 12px;
+      --transition: 0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Arimo', sans-serif;
+      font-weight: 400;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, 92vw);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0.85rem 0;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(44, 8, 8, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo img {
+      height: 52px;
+      width: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: #fff;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      transition: opacity var(--transition);
+    }
+
+    .nav-desktop a:hover { opacity: 1; }
+
+    .header-contact a {
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      opacity: 0.95;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: var(--burgundy-dark);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+    }
+
+    .nav-mobile.open { transform: translateX(0); }
+
+    .nav-mobile a {
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/klidzina-no-lidojuma.jpg') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(44, 8, 8, 0.55) 0%,
+        rgba(44, 8, 8, 0.45) 40%,
+        rgba(44, 8, 8, 0.72) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 6rem 1.5rem 4rem;
+      max-width: 780px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      opacity: 0.92;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      max-width: 620px;
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 2.25rem;
+      border-radius: 6px;
+      font-family: 'Arimo', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--burgundy);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--burgundy-light);
+      transform: translateY(-2px);
+    }
+
+    /* Booking */
+    .booking-section {
+      margin-top: -3.5rem;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 1rem;
+    }
+
+    .booking-widget {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+      align-items: end;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.45rem;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--cream-dark);
+      border-radius: 6px;
+      font-family: 'Arimo', sans-serif;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--burgundy);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--cream-dark);
+      border-radius: 6px;
+      background: var(--warm-white);
+      font-family: 'Arimo', sans-serif;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 50;
+      display: none;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+    }
+
+    .guest-row + .guest-row { border-top: 1px solid var(--cream-dark); }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--cream-dark);
+      background: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--burgundy);
+      transition: background var(--transition);
+    }
+
+    .guest-btn:hover:not(:disabled) { background: var(--cream); }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      height: 46px;
+      width: 100%;
+    }
+
+    /* Sections */
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.85rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-desc {
+      color: var(--charcoal-soft);
+      font-size: 1rem;
+    }
+
+    /* Rooms */
+    .rooms { background: var(--cream); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .room-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(44, 8, 8, 0.07);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .room-card-body { padding: 1.4rem 1.5rem 1.6rem; }
+
+    .room-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--burgundy-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .room-price {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--burgundy);
+    }
+
+    .room-price span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--charcoal-soft);
+    }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .amenity-item {
+      text-align: center;
+      padding: 1.6rem 0.85rem;
+      background: var(--cream);
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .amenity-item:hover {
+      background: #fff;
+      border-color: var(--cream-dark);
+    }
+
+    .amenity-icon {
+      font-size: 1.85rem;
+      margin-bottom: 0.65rem;
+      line-height: 1;
+    }
+
+    .amenity-item span {
+      font-size: 0.82rem;
+      color: var(--charcoal-soft);
+      display: block;
+      line-height: 1.35;
+    }
+
+    .amenities-note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: var(--burgundy-dark);
+      color: #fff;
+    }
+
+    .gallery .section-title { color: #fff; }
+    .gallery .section-desc { color: rgba(255,255,255,0.72); }
+    .gallery .section-eyebrow { color: var(--cream-dark); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 240px);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .gallery-item:first-child { grid-row: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .location-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      color: var(--burgundy-dark);
+      margin-bottom: 1rem;
+    }
+
+    .location-text p {
+      color: var(--charcoal-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .location-details {
+      list-style: none;
+    }
+
+    .location-details li {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--cream-dark);
+      font-size: 0.92rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .location-details li strong {
+      min-width: 88px;
+      font-weight: 600;
+      color: var(--burgundy-dark);
+    }
+
+    .map-placeholder {
+      background: var(--cream);
+      border-radius: var(--radius);
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--cream-dark);
+      color: var(--charcoal-soft);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.45;
+      color: var(--burgundy);
+    }
+
+    /* Trust */
+    .trust { background: var(--cream); }
+
+    .trust-placeholder-note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--burgundy);
+      font-style: italic;
+      margin-bottom: 2rem;
+      padding: 0.65rem 1rem;
+      background: rgba(109, 19, 19, 0.08);
+      border-radius: 6px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(44, 8, 8, 0.06);
+    }
+
+    .testimonial-card blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--charcoal-soft);
+    }
+
+    .testimonial-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--cream-dark);
+      color: var(--burgundy);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--burgundy-dark);
+      color: rgba(255,255,255,0.82);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand img {
+      height: 44px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 340px;
+      opacity: 0.85;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: #fff;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-nav ul { list-style: none; }
+
+    .footer-nav li { margin-bottom: 0.55rem; }
+
+    .footer-nav a {
+      font-size: 0.88rem;
+      opacity: 0.75;
+      transition: opacity var(--transition);
+    }
+
+    .footer-nav a:hover { opacity: 1; }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.88rem;
+      display: block;
+      margin-bottom: 0.45rem;
+      opacity: 0.75;
+    }
+
+    .footer-contact a:hover { opacity: 1; }
+
+    .footer-hours {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      opacity: 0.65;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.78rem;
+      opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .nav-desktop, .header-contact { display: none; }
+      .menu-toggle { display: block; }
+
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-widget .btn-primary { grid-column: span 2; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { height: 200px; }
+
+      .location-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 560px) {
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/05/logotransparent.png" alt="Klidziņa">
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Viesnīca</a></li>
+          <li><a href="#amenities">Atpūta</a></li>
+          <li><a href="#gallery">Galerija</a></li>
+          <li><a href="#location">Atrašanās vieta</a></li>
+        </ul>
+      </nav>
+      <div class="header-contact">
+        <a href="tel:+37126339971">+371 26339971</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Viesnīca</a>
+    <a href="#amenities">Atpūta</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Atrašanās vieta</a>
+    <a href="tel:+37126339971">+371 26339971</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Skrīveri, Latvija · Daugavas loku krastā</p>
+      <h1>Klidziņa</h1>
+      <p class="hero-tagline">Laipni lūgti atpūtas kompleksā Klidziņa! Restorāns, viesnīca, konferenču zāle, bistro un veikals — pie mums tas viss ir vienuviet.</p>
+      <a href="#booking" class="btn btn-primary">Check availability</a>
+    </div>
+  </section>
+
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomType">Room type</label>
+          <select id="roomType" name="roomType">
+            <option value="any">Any room</option>
+            <option value="luksuss">Luksuss</option>
+            <option value="divvietigs">Divvietīgs</option>
+            <option value="divvietigs-1plus1">Divvietīgs (1+1)</option>
+            <option value="trivietigs-2plus1">Trīsvietīgs (2+1)</option>
+            <option value="trivietigs-1plus1plus1">Trīsvietīgs (1+1+1)</option>
+            <option value="cetrvietigs">Četrvietīgs</option>
+            <option value="hostel">Hosteļveida (5–16 pers.)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Numuriņi</p>
+        <h2 class="section-title">Rezervējiet numuriņu</h2>
+        <p class="section-desc">Daugavas loku krastā, pēc vispārējas renovācijas, durvis no jauna vērusi jau izsenis iecienītā “KLIDZIŅA”.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/2viet.jpg" alt="Luksuss numurs, Klidziņa">
+          <div class="room-card-body">
+            <h3>Luksuss</h3>
+            <p class="room-price">From €60 <span>/ nakts</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/2atsev.jpg" alt="Divvietīgs numurs, Klidziņa">
+          <div class="room-card-body">
+            <h3>Divvietīgs</h3>
+            <p class="room-price">From €50 <span>/ nakts</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/2plus1-320x240.jpg" alt="Divvietīgs (1+1), Klidziņa">
+          <div class="room-card-body">
+            <h3>Divvietīgs (1+1)</h3>
+            <p class="room-price">From €50 <span>/ nakts</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/3atsev.jpg" alt="Trīsvietīgs (2+1), Klidziņa">
+          <div class="room-card-body">
+            <h3>Trīsvietīgs (2+1)</h3>
+            <p class="room-price">From €60 <span>/ nakts</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/4atsev.jpg" alt="Četrvietīgs (2+1+1), Klidziņa">
+          <div class="room-card-body">
+            <h3>Četrvietīgs (2+1+1)</h3>
+            <p class="room-price">From €80 <span>/ nakts</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/hostel-320x240.jpg" alt="Hosteļveida numurs, Klidziņa">
+          <div class="room-card-body">
+            <h3>Hosteļveida (5–16 pers.)</h3>
+            <p class="room-price">From €20 <span>/ nakts (no personas)</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Atpūtas iespējas</p>
+        <h2 class="section-title">Amenities &amp; Activities</h2>
+        <p class="section-desc">Everything listed on klidzina.lv — from riverside dining to nature walks and water sports on the Daugava.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item"><div class="amenity-icon">🍽️</div><span>Restorāns</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🏨</div><span>Viesnīca</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🎤</div><span>Konferenču zāle</span></div>
+        <div class="amenity-item"><div class="amenity-icon">☕</div><span>Bistro</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🛒</div><span>Veikals</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🧖</div><span>Pirts un kubls</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🥾</div><span>Pastaigas pa dabas takām</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🌳</div><span>Dendroloģiskais parks</span></div>
+        <div class="amenity-item"><div class="amenity-icon">⛵</div><span>Brauciens ar kuģīti</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🏄</div><span>Ūdens sports</span></div>
+      </div>
+      <p class="amenities-note">Not listed on source site: swimming pool, breakfast, parking, pet policy — omitted rather than assumed.</p>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Galerija</p>
+        <h2 class="section-title">Photo Gallery</h2>
+        <p class="section-desc">Real photos from klidzina.lv — the riverside complex, rooms, restaurant, and leisure activities.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/klidzina-no-lidojuma.jpg" alt="Klidziņa aerial view on the Daugava">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2015/02/klidzina1-e1594205501416.jpg" alt="Klidziņa exterior">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/restorans-klidzina.jpg" alt="Restorāns Klidziņa">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/Canva-Water-Bucket-in-the-Sauna-scaled-e1593680089592.jpg" alt="Pirts un kubls">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/07/Canva-People-using-sup-boards-for-swimming-in-sea-e1594730266524.jpg" alt="Ūdens sports">
+        </div>
+        <div class="gallery-item">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2024/07/Canva-pastaiga.jpg" alt="Pastaigas pa dabas takām">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Atrašanās vieta</p>
+        <h2 class="section-title">Location</h2>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Daugavas loku krastā, Skrīveri</h3>
+          <p>Daugavas loku krastā, pēc vispārējas renovācijas, durvis no jauna vērusi jau izsenis iecienītā “KLIDZIŅA”. Apceļojiet Skrīverus un citas tuvākās vietas, dodieties pastaigā pa Laimes lāča dabas takām un dendroloģisko parku.</p>
+          <p>Kuģītis “Baltā Kaza” ļauj pārcelties no Klidziņas uz Jaunjelgavu. Iespējami arī ekskursijas braucieni pa Daugavu.</p>
+          <ul class="location-details">
+            <li><strong>Address</strong> Klidziņa, Rīgas iela 10, Skrīveri, Aizkraukles novads, LV-5125</li>
+            <li><strong>Landmark</strong> Laimes lāča dabas takas</li>
+            <li><strong>Nearby</strong> Dendroloģiskais parks, Jaunjelgava (kuģītis)</li>
+            <li><strong>Hours</strong> P.–S. 08:00–18:00 · Sv. 09:00–18:00</li>
+          </ul>
+        </div>
+        <div class="map-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="font-size:0.85rem;margin-top:0.5rem;">Rīgas iela 10, Skrīveri, Aizkraukles novads, LV-5125</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Viesu pieredze</p>
+        <h2 class="section-title">What Guests Say</h2>
+      </div>
+      <p class="trust-placeholder-note">No rating badge found on klidzina.lv — testimonials below are clearly marked placeholders for prototype purposes.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>"Mūsu pirts un kubls apvieno ķermeņa un prāta relaksāciju — a perfect end to a day on the river."</blockquote>
+          <p class="testimonial-author">— Placeholder Guest A</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"The boat trip on “Baltā Kaza” to Jaunjelgava was the highlight of our stay at Klidziņa."</blockquote>
+          <p class="testimonial-author">— Placeholder Guest B</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Wonderful walks along Laimes lāča nature trails — the dendrological park is a hidden gem near Skrīveri."</blockquote>
+          <p class="testimonial-author">— Placeholder Guest C</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://www.klidzina.lv/lapa/wp-content/uploads/2020/05/logotransparent.png" alt="Klidziņa">
+          <p>Atpūtas komplekss Daugavas loku krastā — restorāns, viesnīca, konferenču zāle, bistro un veikals vienuviet.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Viesnīca</a></li>
+            <li><a href="#amenities">Pirts namiņš</a></li>
+            <li><a href="#amenities">Pasākumi</a></li>
+            <li><a href="#gallery">Galerija</a></li>
+            <li><a href="#booking">Rezervēt</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Kontakti</h4>
+          <p>Klidziņa, Rīgas iela 10<br>Skrīveri, Aizkraukles novads, LV-5125</p>
+          <a href="tel:+37126339971">+371 26339971</a>
+          <a href="tel:+37128066866">+371 28066866</a>
+          <a href="mailto:info@klidzina.lv">info@klidzina.lv</a>
+          <p class="footer-hours">P.–S. 08:00–18:00 · Sv. 09:00–18:00</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Klidziņa — Hotel &amp; cafe · Prototype demo page</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+
+    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (checkin.value) {
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = checkout.min;
+        }
+      }
+    });
+
+    let adults = 2;
+    let children = 0;
+
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestDropdown = document.getElementById('guestDropdown');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' adult' : ' adults');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' child' : ' children');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      guestDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => guestDropdown.classList.remove('open'));
+    guestDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 16) { adults++; updateGuestSummary(); } });
+    document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+    document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 8) { children++; updateGuestSummary(); } });
+    document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+
+    updateGuestSummary();
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Booking search is a UI prototype only — no reservation system connected.');
+    });
+  </script>
+</body>
+</html>
