@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Restaurant Pļavas — Ainaži, Latvia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --beige: #e8dfd0;
+      --beige-light: #f5f0e8;
+      --beige-dark: #c9b99a;
+      --charcoal: #2c2824;
+      --charcoal-soft: #4a433c;
+      --warm-white: #faf8f5;
+      --accent: #8b7355;
+      --accent-hover: #6d5a43;
+      --shadow: 0 4px 24px rgba(44, 40, 36, 0.12);
+      --radius: 12px;
+      --transition: 0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1200px, 92vw);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(44, 40, 36, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      transition: opacity var(--transition);
+    }
+
+    .nav-desktop a:hover { opacity: 1; }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .header-contact a {
+      color: #fff;
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 40, 36, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://plavashotel.lv/wp-content/uploads/2022/06/IMG_7530_result.jpg') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(44,40,36,0.35) 0%, rgba(44,40,36,0.55) 50%, rgba(44,40,36,0.75) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 8rem 1.5rem 6rem;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 300;
+      opacity: 0.92;
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--beige);
+      color: var(--charcoal);
+    }
+
+    .btn-primary:hover {
+      background: var(--beige-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.6);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+    }
+
+    /* Booking widget */
+    .booking-section {
+      position: relative;
+      z-index: 10;
+      margin-top: -4rem;
+      padding-bottom: 4rem;
+    }
+
+    .booking-widget {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1.25rem;
+      align-items: end;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--beige-dark);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--beige-dark);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--beige-dark);
+      border-radius: 6px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      z-index: 50;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .guest-row span { font-size: 0.9rem; }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--beige-dark);
+      border-radius: 50%;
+      background: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+
+    .guest-btn:hover { background: var(--beige-light); }
+
+    .guest-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .booking-widget .btn-primary {
+      padding: 0.85rem 2rem;
+      white-space: nowrap;
+      height: fit-content;
+    }
+
+    /* Sections */
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--charcoal-soft);
+      font-size: 1.05rem;
+    }
+
+    /* Rooms */
+    .rooms { background: var(--beige-light); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .room-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(44,40,36,0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-card-body { padding: 1.5rem; }
+
+    .room-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .room-card p {
+      font-size: 0.9rem;
+      color: var(--charcoal-soft);
+      margin-bottom: 1rem;
+    }
+
+    .room-price {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .room-price span {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--charcoal-soft);
+    }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .amenity-item {
+      text-align: center;
+      padding: 1.75rem 1rem;
+      background: var(--beige-light);
+      border-radius: var(--radius);
+      transition: background var(--transition);
+    }
+
+    .amenity-item:hover { background: var(--beige); }
+
+    .amenity-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    .amenity-item span {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--charcoal-soft);
+    }
+
+    /* Gallery */
+    .gallery { background: var(--charcoal); color: #fff; }
+
+    .gallery .section-title { color: #fff; }
+    .gallery .section-desc { color: rgba(255,255,255,0.7); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 240px);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .location-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .location-text p {
+      color: var(--charcoal-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .location-details {
+      list-style: none;
+    }
+
+    .location-details li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--beige);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .location-details li strong {
+      min-width: 80px;
+      font-weight: 500;
+    }
+
+    .map-placeholder {
+      background: var(--beige-light);
+      border-radius: var(--radius);
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--beige-dark);
+      color: var(--charcoal-soft);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    /* Trust strip */
+    .trust { background: var(--beige-light); }
+
+    .trust-placeholder-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 2rem;
+      padding: 0.5rem 1rem;
+      background: rgba(139,115,85,0.1);
+      border-radius: 6px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(44,40,36,0.06);
+    }
+
+    .testimonial-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--charcoal-soft);
+    }
+
+    .testimonial-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--beige);
+      color: var(--accent);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.8);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand img {
+      height: 40px;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: #fff;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-nav ul { list-style: none; }
+
+    .footer-nav li { margin-bottom: 0.6rem; }
+
+    .footer-nav a {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      transition: opacity var(--transition);
+    }
+
+    .footer-nav a:hover { opacity: 1; }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      opacity: 0.75;
+    }
+
+    .footer-contact a:hover { opacity: 1; }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: background var(--transition);
+    }
+
+    .social-links a:hover { background: rgba(255,255,255,0.2); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-desktop, .header-contact { display: none; }
+      .menu-toggle { display: block; }
+
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-widget .btn-primary {
+        grid-column: span 2;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { height: 200px; }
+
+      .location-grid { grid-template-columns: 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 560px) {
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="https://plavashotel.lv/wp-content/uploads/elementor/thumbs/plavas_white_narrow_no_hotel-pr3401jki9x9zxy6l24fwvd993co0zdo1vs1sbw3qg.png" alt="Hotel Restaurant Pļavas">
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </nav>
+      <div class="header-contact">
+        <a href="tel:+37127555755">+371 27 555 755</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="tel:+37127555755">+371 27 555 755</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Ainaži, Latvia</p>
+      <h1>Hotel Restaurant Pļavas</h1>
+      <p class="hero-tagline">Nordic comfort fused with the simplicity and coziness of nature — five minutes from the Baltic Sea.</p>
+      <a href="#booking" class="btn btn-primary">Check availability</a>
+    </div>
+  </section>
+
+  <!-- Booking Widget -->
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomType">Room type</label>
+          <select id="roomType" name="roomType">
+            <option value="any">Any room</option>
+            <option value="twin">Twin room</option>
+            <option value="double">Double room</option>
+            <option value="triple">Triple room</option>
+            <option value="holiday">Holiday house</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Rooms -->
+  <section class="rooms" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Stay with us</p>
+        <h2 class="section-title">Rooms &amp; Accommodation</h2>
+        <p class="section-desc">Every nook meticulously planned with your wellbeing in mind — peace, quiet, and leisure in Nordic-beige tones.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img src="https://plavashotel.lv/wp-content/uploads/2022/07/IMG_7614-scaled.jpg" alt="Twin room at Hotel Restaurant Pļavas">
+          <div class="room-card-body">
+            <h3>Twin Room</h3>
+            <p>2 beds — ideal for friends or colleagues travelling together.</p>
+            <p class="room-price">From €60 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://plavashotel.lv/wp-content/uploads/2022/07/IMG_7680-scaled.jpg" alt="Double room at Hotel Restaurant Pļavas">
+          <div class="room-card-body">
+            <h3>Double Room</h3>
+            <p>1 bed — a cozy retreat for couples seeking quiet comfort.</p>
+            <p class="room-price">From €70 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://plavashotel.lv/wp-content/uploads/2022/07/IMG_7738-scaled.jpg" alt="Triple room at Hotel Restaurant Pļavas">
+          <div class="room-card-body">
+            <h3>Triple Room</h3>
+            <p>1 double bed + extra bed — spacious enough for small families.</p>
+            <p class="room-price">From €100 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://plavashotel.lv/wp-content/uploads/2022/06/IMG_7876_result-1.jpg" alt="Pļavas Holiday House">
+          <div class="room-card-body">
+            <h3>Holiday House</h3>
+            <p>Up to 4 guests, 2 double beds — garden, terrace, hot tub &amp; sauna access.</p>
+            <p class="room-price">From €260 <span>/ night</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities -->
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">What we offer</p>
+        <h2 class="section-title">Amenities</h2>
+        <p class="section-desc">Everything you might need for peace, quiet, and leisure — from dining to coastal exploration.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item"><div class="amenity-icon">🍽️</div><span>Restaurant</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🍷</div><span>Bar</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🛎️</div><span>24-hour reception</span></div>
+        <div class="amenity-item"><div class="amenity-icon">📶</div><span>WiFi</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🅿️</div><span>Private parking</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🌿</div><span>Garden</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🔥</div><span>Barbecue area</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🛁</div><span>Hot tub</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🧖</div><span>Sauna</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🎠</div><span>Children's playground</span></div>
+        <div class="amenity-item"><div class="amenity-icon">☀️</div><span>Summer patio</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🥾</div><span>Hiking &amp; coastal nature</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Discover</p>
+        <h2 class="section-title">Photo Gallery</h2>
+        <p class="section-desc">A glimpse of our hotel, restaurant, and holiday house in coastal Ainaži.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://plavashotel.lv/wp-content/uploads/2022/06/IMG_7530_result.jpg" alt="Hotel Restaurant Pļavas exterior">
+        </div>
+        <div class="gallery-item">
+          <img src="https://plavashotel.lv/wp-content/uploads/2022/07/IMG_7614-scaled.jpg" alt="Hotel room interior">
+        </div>
+        <div class="gallery-item">
+          <img src="https://plavashotel.lv/wp-content/uploads/2022/06/IMG_8092_result.jpg" alt="Restaurant at Pļavas">
+        </div>
+        <div class="gallery-item">
+          <img src="https://plavashotel.lv/wp-content/uploads/elementor/thumbs/plavas_7-pr36vs0abcfgdnnmoy160kgx7hvpkdnpv5yzanrb40.jpg" alt="Restaurant interior">
+        </div>
+        <div class="gallery-item">
+          <img src="https://plavashotel.lv/wp-content/uploads/2022/06/IMG_7876_result-1.jpg" alt="Holiday house">
+        </div>
+        <div class="gallery-item">
+          <img src="https://plavashotel.lv/wp-content/uploads/2022/07/IMG_7680-scaled.jpg" alt="Hotel room">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Location</h2>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Coastal Ainaži</h3>
+          <p>Restaurant Pļavas is located in Ainaži, where the air is fragrant with pine trees and the sea is just a five-minute walk away. Enjoy a beautiful view of the well-kept garden from a table in the restaurant or on the summer patio.</p>
+          <p>The holiday house accommodation is also just a 5-minute walk from the beach, with hiking trails to explore the beauty of coastal nature.</p>
+          <ul class="location-details">
+            <li><strong>Address</strong> Valdemāra iela 121, Ainaži, Latvija</li>
+            <li><strong>Beach</strong> 5-minute walk</li>
+            <li><strong>Surroundings</strong> Pine forests, coastal nature</li>
+          </ul>
+        </div>
+        <div class="map-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="font-size:0.85rem;margin-top:0.5rem;">Valdemāra iela 121, Ainaži, Latvia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Guest experiences</p>
+        <h2 class="section-title">What Guests Say</h2>
+      </div>
+      <p class="trust-placeholder-note">No rating badge found on the source website — testimonials below are clearly marked placeholders for prototype purposes.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>"A peaceful retreat by the sea — the Nordic interior and garden views made our stay unforgettable."</blockquote>
+          <p class="testimonial-author">— Placeholder Guest A</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"The restaurant exceeded expectations. Wonderful flavors and a cozy summer patio overlooking the garden."</blockquote>
+          <p class="testimonial-author">— Placeholder Guest B</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Perfect base for exploring the Latvian coast. The holiday house with sauna and hot tub was a highlight."</blockquote>
+          <p class="testimonial-author">— Placeholder Guest C</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://plavashotel.lv/wp-content/uploads/elementor/thumbs/plavas_white_narrow_no_hotel-pr3401jki9x9zxy6l24fwvd993co0zdo1vs1sbw3qg.png" alt="Hotel Restaurant Pļavas">
+          <p>Hotel, restaurant, and holiday house in coastal Ainaži — Nordic comfort minutes from the Baltic Sea.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/P%C4%BBAVAS-1466761063640279/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/plavas.hotel/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Hotel Rooms</a></li>
+            <li><a href="#rooms">Holiday House</a></li>
+            <li><a href="#amenities">Restaurant &amp; Bar</a></li>
+            <li><a href="#booking">Book Now</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Valdemāra iela 121<br>Ainaži, Latvija</p>
+          <a href="tel:+37127555755">+371 27 555 755</a>
+          <a href="mailto:plavas.hotel@gmail.com">plavas.hotel@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Hotel Restaurant Pļavas — Prototype demo page</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+
+    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    // Date inputs — set min to today
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (checkin.value) {
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = checkout.min;
+        }
+      }
+    });
+
+    // Guest selector
+    let adults = 2;
+    let children = 0;
+
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestDropdown = document.getElementById('guestDropdown');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' adult' : ' adults');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' child' : ' children');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      guestDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => guestDropdown.classList.remove('open'));
+    guestDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 8) { adults++; updateGuestSummary(); } });
+    document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+    document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 6) { children++; updateGuestSummary(); } });
+    document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+
+    updateGuestSummary();
+
+    // Booking form (UI only)
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Booking search is a UI prototype only — no reservation system connected.');
+    });
+  </script>
+</body>
+</html>
