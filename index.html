@@ -1,44 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baltā Pūce hotel | Jūrmala, Latvia</title>
-  <meta name="description" content="Welcome to cozy place in the heart of Jurmala! Perfect location, affordable prices, responsible staff, and friendly atmosphere in a renovated historical building.">
+  <title>Villa Santa Hotel — Cēsis, Latvia</title>
+  <meta name="description" content="Villa Santa Hotel — Dvēseles mieram un priekam. 30 numuri trīs villās pie Gaujas, Cēsis. SPA, restorāns, kāzas un konferences.">
   <style>
     :root {
-      --charcoal: #242323;
-      --charcoal-light: #3a3938;
-      --cream: #f7f4ef;
+      --gold: #E3B56F;
+      --gold-dark: #c99a4a;
+      --gold-light: #f0d4a8;
+      --forest: #1b3d2f;
+      --forest-light: #2a5c47;
+      --teal: #245269;
+      --charcoal: #212234;
+      --cream: #f8f5f0;
       --warm-white: #fdfcfa;
       --sand: #e8e2d8;
-      --accent: #5c6b5a;
-      --accent-hover: #4a5748;
-      --muted: #5f6360;
       --text: #2c2b2a;
+      --muted: #5f6360;
       --radius: 12px;
-      --shadow: 0 4px 24px rgba(36, 35, 35, 0.08);
-      --shadow-lg: 0 12px 48px rgba(36, 35, 35, 0.12);
+      --shadow: 0 4px 24px rgba(33, 34, 52, 0.1);
+      --shadow-lg: 0 16px 48px rgba(33, 34, 52, 0.14);
       --font-display: "Georgia", "Times New Roman", serif;
       --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       --max-width: 1200px;
-      --header-h: 72px;
+      --header-h: 80px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--font-body);
       color: var(--text);
       background: var(--warm-white);
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
-
     img { max-width: 100%; height: auto; display: block; }
-
     a { color: inherit; text-decoration: none; }
 
     .container {
@@ -49,210 +48,160 @@
     /* Header */
     .site-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
       height: var(--header-h);
-      background: rgba(253, 252, 250, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(36, 35, 35, 0.06);
-      transition: box-shadow 0.3s;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s, box-shadow 0.3s;
     }
-
-    .site-header.scrolled { box-shadow: var(--shadow); }
-
+    .site-header.scrolled {
+      background: rgba(33, 34, 52, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 100%;
-      gap: 1rem;
+      gap: 1.5rem;
+      width: 100%;
     }
-
-    .logo-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-shrink: 0;
-    }
-
-    .logo-img {
-      height: 40px;
-      width: auto;
-    }
-
-    .logo-text {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.2;
-    }
-
-    .logo-text span {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 400;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
+    .logo img { height: 52px; width: auto; }
     .nav-desktop {
       display: flex;
       align-items: center;
       gap: 1.75rem;
+      list-style: none;
     }
-
     .nav-desktop a {
-      font-size: 0.875rem;
+      color: #fff;
+      font-size: 0.82rem;
       font-weight: 500;
-      color: var(--charcoal);
-      transition: color 0.2s;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      transition: opacity 0.2s, color 0.2s;
     }
-
-    .nav-desktop a:hover { color: var(--accent); }
-
-    .btn {
+    .nav-desktop a:hover { opacity: 1; color: var(--gold); }
+    .header-cta {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
+      padding: 0.6rem 1.25rem;
+      background: var(--gold);
+      color: var(--charcoal);
+      font-size: 0.82rem;
       font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.2s;
     }
-
-    .btn:active { transform: scale(0.98); }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .btn-primary:hover { background: var(--accent-hover); }
-
-    .btn-outline {
-      background: transparent;
-      color: #fff;
-      border: 2px solid rgba(255,255,255,0.85);
-    }
-
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.12);
-    }
-
+    .header-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
     .menu-toggle {
       display: none;
       background: none;
       border: none;
+      color: #fff;
       cursor: pointer;
       padding: 0.5rem;
-      color: var(--charcoal);
     }
-
+    .menu-toggle svg { width: 28px; height: 28px; }
     .nav-mobile {
       display: none;
       position: fixed;
-      top: var(--header-h);
-      left: 0;
-      right: 0;
-      background: var(--warm-white);
-      border-bottom: 1px solid var(--sand);
-      padding: 1rem;
+      inset: 0;
+      z-index: 300;
+      background: rgba(33, 34, 52, 0.98);
       flex-direction: column;
-      gap: 0.25rem;
-      z-index: 99;
-      box-shadow: var(--shadow);
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
     }
-
     .nav-mobile.open { display: flex; }
-
     .nav-mobile a {
-      padding: 0.75rem 1rem;
-      font-weight: 500;
-      border-radius: 8px;
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
     }
-
-    .nav-mobile a:hover { background: var(--cream); }
+    .nav-close {
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
 
     /* Hero */
     .hero {
       position: relative;
-      min-height: 92vh;
+      min-height: 100vh;
       display: flex;
-      align-items: flex-end;
-      margin-top: var(--header-h);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
       overflow: hidden;
     }
-
     .hero-bg {
       position: absolute;
       inset: 0;
-      z-index: 0;
+      background: url('https://www.villasanta.lv/cache/images/1131564354/5c5d2d43539ab_200460091.jpg') center/cover no-repeat;
     }
-
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-overlay {
+    .hero-bg::after {
+      content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(36, 35, 35, 0.75) 0%,
-        rgba(36, 35, 35, 0.35) 45%,
-        rgba(36, 35, 35, 0.15) 100%
-      );
+      background: linear-gradient(to bottom, rgba(33,34,52,0.35) 0%, rgba(33,34,52,0.55) 50%, rgba(27,61,47,0.7) 100%);
     }
-
     .hero-content {
       position: relative;
       z-index: 1;
-      padding: 4rem 0 6rem;
-      color: #fff;
-      width: 100%;
+      padding: calc(var(--header-h) + 2rem) 1.5rem 4rem;
+      max-width: 820px;
     }
-
-    .hero-eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.85;
-      margin-bottom: 0.75rem;
-    }
-
+    .hero-logo { margin: 0 auto 1.5rem; height: 72px; width: auto; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); }
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.25rem, 5vw, 3.75rem);
-      font-weight: 600;
-      line-height: 1.15;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.25;
       margin-bottom: 1rem;
-      max-width: 14ch;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
-
-    .hero-tagline {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      max-width: 52ch;
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.15rem);
       opacity: 0.92;
       margin-bottom: 2rem;
-      line-height: 1.55;
+      max-width: 560px;
+      margin-inline: auto;
     }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--gold);
+      color: var(--charcoal);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(227, 181, 111, 0.35);
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(227, 181, 111, 0.45);
     }
 
     /* Booking widget */
@@ -262,86 +211,89 @@
       margin-top: -3.5rem;
       padding-bottom: 1rem;
     }
-
     .booking-widget {
       background: #fff;
       border-radius: var(--radius);
       box-shadow: var(--shadow-lg);
-      padding: 1.5rem;
+      padding: 1.75rem 2rem;
       display: grid;
-      grid-template-columns: repeat(4, 1fr) auto;
-      gap: 1rem;
+      grid-template-columns: 1fr 1fr 1.2fr auto;
+      gap: 1.25rem;
       align-items: end;
     }
-
-    .form-group label {
+    .field label {
       display: block;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
       color: var(--muted);
       margin-bottom: 0.4rem;
     }
-
-    .form-group input,
-    .form-group select {
+    .field input,
+    .field select {
       width: 100%;
-      padding: 0.7rem 0.85rem;
+      padding: 0.75rem 1rem;
       border: 1px solid var(--sand);
       border-radius: 8px;
-      font-family: var(--font-body);
+      font-family: inherit;
       font-size: 0.95rem;
       color: var(--text);
-      background: var(--warm-white);
+      background: var(--cream);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-
-    .form-group input:focus,
-    .form-group select:focus {
+    .field input:focus,
+    .field select:focus {
       outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(92, 107, 90, 0.15);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(227, 181, 111, 0.2);
     }
-
-    .guest-selector { position: relative; }
-
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--cream);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .guest-trigger::after { content: '▾'; font-size: 0.75rem; color: var(--muted); }
     .guest-panel {
       display: none;
       position: absolute;
       top: calc(100% + 0.5rem);
-      left: 0;
-      right: 0;
+      left: 0; right: 0;
       background: #fff;
       border: 1px solid var(--sand);
       border-radius: var(--radius);
-      padding: 1rem;
       box-shadow: var(--shadow-lg);
-      z-index: 20;
+      padding: 1.25rem;
+      z-index: 50;
     }
-
     .guest-panel.open { display: block; }
-
+    .guest-field { position: relative; }
     .guest-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 0.5rem 0;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--sand);
     }
-
-    .guest-row + .guest-row { border-top: 1px solid var(--sand); margin-top: 0.5rem; padding-top: 1rem; }
-
-    .guest-row label { font-size: 0.9rem; font-weight: 500; }
-
-    .guest-controls {
+    .guest-row:last-child { border-bottom: none; }
+    .guest-row span { font-size: 0.9rem; }
+    .counter {
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
-
-    .guest-btn {
-      width: 32px;
-      height: 32px;
+    .counter button {
+      width: 32px; height: 32px;
       border: 1px solid var(--sand);
       border-radius: 50%;
       background: #fff;
@@ -350,458 +302,272 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--charcoal);
-      transition: background 0.2s;
+      transition: background 0.2s, border-color 0.2s;
     }
-
-    .guest-btn:hover { background: var(--cream); }
-
-    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-
-    .guest-count { font-weight: 600; min-width: 1.5rem; text-align: center; }
-
-    .guest-done {
-      width: 100%;
-      margin-top: 0.75rem;
-      padding: 0.6rem;
-      background: var(--cream);
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .guest-done:hover { background: var(--sand); }
-
-    .booking-widget .btn-primary {
-      height: 46px;
-      padding-inline: 2rem;
-      white-space: nowrap;
-    }
+    .counter button:hover { background: var(--cream); border-color: var(--gold); }
+    .counter span { min-width: 1.5rem; text-align: center; font-weight: 600; }
+    .booking-widget .btn-primary { padding: 0.85rem 1.75rem; white-space: nowrap; }
 
     /* Sections */
     section { padding: 5rem 0; }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-header .eyebrow {
-      font-size: 0.75rem;
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
+      color: var(--gold-dark);
+      margin-bottom: 0.75rem;
     }
-
-    .section-header h2 {
+    .section-title {
       font-family: var(--font-display);
       font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 400;
       color: var(--charcoal);
       margin-bottom: 0.75rem;
     }
-
-    .section-header p {
+    .section-desc {
       color: var(--muted);
-      max-width: 56ch;
-      margin-inline: auto;
+      max-width: 620px;
+      margin-bottom: 2.5rem;
     }
-
-    /* About strip */
-    .about-strip {
-      background: var(--cream);
-      padding: 3.5rem 0;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-text h2 {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      margin-bottom: 1rem;
-      color: var(--charcoal);
-    }
-
-    .about-text p {
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .about-image {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .about-image img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-    }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header .section-desc { margin-inline: auto; }
 
     /* Rooms */
-    .rooms-grid {
+    .rooms { background: var(--cream); }
+    .room-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.75rem;
     }
-
     .room-card {
       background: #fff;
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-      transition: transform 0.25s, box-shadow 0.25s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .room-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
     }
-
-    .room-card-img {
-      aspect-ratio: 4/3;
-      overflow: hidden;
-    }
-
-    .room-card-img img {
+    .room-card img {
       width: 100%;
-      height: 100%;
+      height: 220px;
       object-fit: cover;
-      transition: transform 0.4s;
     }
-
-    .room-card:hover .room-card-img img { transform: scale(1.04); }
-
     .room-card-body { padding: 1.5rem; }
-
     .room-card h3 {
       font-family: var(--font-display);
       font-size: 1.25rem;
       margin-bottom: 0.5rem;
       color: var(--charcoal);
     }
-
     .room-card p {
       font-size: 0.9rem;
       color: var(--muted);
       margin-bottom: 1rem;
+      line-height: 1.55;
     }
-
     .room-price {
       font-size: 0.85rem;
       color: var(--muted);
-      padding-top: 1rem;
-      border-top: 1px solid var(--sand);
-    }
-
-    .room-price strong {
-      display: block;
-      font-size: 1rem;
-      color: var(--charcoal);
-      margin-top: 0.25rem;
-    }
-
-    .price-placeholder {
       font-style: italic;
-      color: var(--muted);
+    }
+    .room-price strong {
+      font-style: normal;
+      color: var(--forest);
+      font-size: 1rem;
     }
 
     /* Amenities */
-    .amenities-section { background: var(--charcoal); color: #fff; }
-
-    .amenities-section .section-header h2 { color: #fff; }
-    .amenities-section .section-header p { color: rgba(255,255,255,0.7); }
-
-    .amenities-grid {
+    .amenity-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1.25rem;
     }
-
-    .amenity-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius);
-      padding: 1.75rem;
+    .amenity-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      transition: background 0.2s;
+      padding: 1.5rem 1rem;
+      background: var(--cream);
+      border-radius: var(--radius);
+      transition: background 0.2s, transform 0.2s;
     }
-
-    .amenity-card:hover { background: rgba(255,255,255,0.1); }
-
+    .amenity-item:hover { background: var(--gold-light); transform: translateY(-2px); }
     .amenity-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 1rem;
+      width: 48px; height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.1);
+      background: var(--gold);
       border-radius: 50%;
+      margin-bottom: 0.75rem;
+      font-size: 1.35rem;
     }
-
-    .amenity-icon svg {
-      width: 24px;
-      height: 24px;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 1.75;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .amenity-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .amenity-card p {
+    .amenity-item span {
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.5;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.35;
     }
 
     /* Gallery */
+    .gallery { background: var(--charcoal); color: #fff; }
+    .gallery .section-title { color: #fff; }
+    .gallery .section-desc { color: rgba(255,255,255,0.7); }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      gap: 1rem;
+      grid-template-rows: repeat(2, 220px);
+      gap: 0.75rem;
     }
-
-    .gallery-item {
-      border-radius: var(--radius);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .gallery-item:first-child {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .gallery-item img {
+    .gallery-grid img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      aspect-ratio: 16/10;
-      transition: transform 0.4s;
+      border-radius: 8px;
+      transition: transform 0.4s, opacity 0.3s;
     }
-
-    .gallery-item:first-child img { aspect-ratio: auto; min-height: 100%; }
-
-    .gallery-item:hover img { transform: scale(1.03); }
-
-    .gallery-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 1rem;
-      background: linear-gradient(transparent, rgba(0,0,0,0.6));
-      color: #fff;
-      font-size: 0.8rem;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .gallery-item:hover .gallery-caption { opacity: 1; }
+    .gallery-grid img:hover { transform: scale(1.03); opacity: 0.92; }
+    .gallery-grid .wide { grid-column: span 2; }
 
     /* Location */
-    .location-section { background: var(--cream); }
-
     .location-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
-      align-items: start;
+      align-items: center;
     }
-
-    .location-text h2 {
+    .location-text h3 {
       font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-size: 1.35rem;
       margin-bottom: 1rem;
-      color: var(--charcoal);
     }
-
-    .location-address {
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: var(--charcoal);
-    }
-
-    .landmarks {
-      list-style: none;
+    .location-text p { color: var(--muted); margin-bottom: 1.25rem; }
+    .distances {
       display: grid;
-      gap: 0.75rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
-
-    .landmarks li {
-      display: flex;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-      color: var(--muted);
+    .distance-item {
+      padding: 1rem;
+      background: var(--cream);
+      border-radius: 8px;
+      text-align: center;
     }
-
-    .landmarks strong {
-      color: var(--charcoal);
-      min-width: 11rem;
-      flex-shrink: 0;
+    .distance-item .num {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--gold-dark);
+      line-height: 1;
     }
-
+    .distance-item .num span { font-size: 0.9rem; }
+    .distance-item .label { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
     .map-placeholder {
-      background: var(--sand);
-      border-radius: var(--radius);
       aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--forest-light) 0%, var(--teal) 100%);
+      border-radius: var(--radius);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 2rem;
+    }
+    .map-placeholder svg { width: 48px; height: 48px; margin-bottom: 1rem; opacity: 0.7; }
+    .map-placeholder p { font-size: 0.9rem; }
+
+    /* Trust */
+    .trust { background: var(--cream); }
+    .trust-label {
+      text-align: center;
+      font-size: 0.78rem;
       color: var(--muted);
-      border: 2px dashed rgba(95, 99, 96, 0.3);
+      font-style: italic;
+      margin-bottom: 2rem;
     }
-
-    .map-placeholder svg {
-      width: 40px;
-      height: 40px;
-      stroke: var(--muted);
-      fill: none;
-      stroke-width: 1.5;
-    }
-
-    .map-placeholder span { font-size: 0.85rem; }
-
-    /* Reviews */
-    .reviews-grid {
+    .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-
-    .review-card {
+    .testimonial-card {
       background: #fff;
+      padding: 2rem 1.75rem;
       border-radius: var(--radius);
-      padding: 2rem;
       box-shadow: var(--shadow);
-      border: 1px solid var(--sand);
+      position: relative;
     }
-
-    .review-card.featured {
-      border-color: var(--accent);
-      border-width: 2px;
-    }
-
-    .review-badges {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .review-badge {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.3rem 0.65rem;
-      background: var(--cream);
-      color: var(--accent);
-      border-radius: 100px;
-    }
-
-    .review-card blockquote {
+    .testimonial-card::before {
+      content: '\201C';
       font-family: var(--font-display);
-      font-size: 1rem;
-      font-style: italic;
-      line-height: 1.6;
-      color: var(--charcoal);
-      margin-bottom: 1rem;
+      font-size: 4rem;
+      color: var(--gold-light);
+      position: absolute;
+      top: 0.5rem; left: 1.25rem;
+      line-height: 1;
     }
-
-    .review-source {
-      font-size: 0.8rem;
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      padding-top: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-card cite {
+      font-style: normal;
+      font-size: 0.82rem;
       color: var(--muted);
     }
-
-    .review-card.placeholder {
-      opacity: 0.75;
-      border-style: dashed;
-    }
-
-    .placeholder-label {
+    .placeholder-badge {
       display: inline-block;
       font-size: 0.65rem;
-      font-weight: 700;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
       background: var(--sand);
+      color: var(--muted);
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
-      margin-bottom: 0.75rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
     }
 
     /* Footer */
     .site-footer {
       background: var(--charcoal);
-      color: rgba(255,255,255,0.8);
-      padding: 4rem 0 2rem;
+      color: rgba(255,255,255,0.85);
+      padding: 3.5rem 0 2rem;
     }
-
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
     }
-
-    .footer-brand .logo-text {
-      color: #fff;
-      font-size: 1.35rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      max-width: 32ch;
-    }
-
-    .footer-nav h4,
-    .footer-contact h4 {
-      color: #fff;
-      font-size: 0.8rem;
-      text-transform: uppercase;
+    .footer-brand img { height: 56px; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.9rem; opacity: 0.75; max-width: 280px; }
+    .footer-col h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
       letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
       margin-bottom: 1rem;
     }
-
-    .footer-nav ul,
-    .footer-contact ul {
-      list-style: none;
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .footer-nav a,
-    .footer-contact a {
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a {
       font-size: 0.9rem;
-      transition: color 0.2s;
+      opacity: 0.75;
+      transition: opacity 0.2s, color 0.2s;
     }
-
-    .footer-nav a:hover,
-    .footer-contact a:hover { color: #fff; }
-
+    .footer-col a:hover { opacity: 1; color: var(--gold); }
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,0.1);
       padding-top: 1.5rem;
@@ -810,70 +576,39 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
+      opacity: 0.6;
     }
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a {
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .social-links a:hover { opacity: 1; }
 
     /* Responsive */
-    @media (max-width: 1024px) {
+    @media (max-width: 960px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
       .booking-widget {
         grid-template-columns: 1fr 1fr;
       }
-
-      .booking-widget .btn-primary {
-        grid-column: span 2;
-      }
-
-      .rooms-grid,
-      .amenities-grid,
-      .reviews-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
+      .booking-widget .btn-primary { grid-column: span 2; justify-content: center; }
       .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
       }
-
-      .gallery-item:first-child {
-        grid-column: span 2;
-        grid-row: span 1;
-      }
+      .gallery-grid .wide { grid-column: span 1; }
+      .location-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
-
-    @media (max-width: 768px) {
-      .nav-desktop,
-      .header-inner > .btn-primary { display: none; }
-
-      .menu-toggle { display: block; }
-
-      .hero { min-height: 80vh; }
-
-      .hero-content { padding-bottom: 5rem; }
-
-      .booking-widget {
-        grid-template-columns: 1fr;
-        margin-top: -2rem;
-      }
-
+    @media (max-width: 600px) {
+      .booking-widget { grid-template-columns: 1fr; }
       .booking-widget .btn-primary { grid-column: span 1; }
-
-      .about-grid,
-      .location-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .rooms-grid,
-      .amenities-grid,
-      .reviews-grid,
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-item:first-child { grid-column: span 1; }
-
-      .landmarks strong { min-width: auto; }
-
-      .landmarks li { flex-direction: column; gap: 0.15rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .distances { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -881,523 +616,346 @@
 
   <header class="site-header" id="header">
     <div class="container header-inner">
-      <a href="#" class="logo-link">
-        <img
-          class="logo-img"
-          src="https://static.wixstatic.com/media/df9274_3d30080bc0134798807ddec50fddd00b~mv2.png/v1/fill/w_200,h_60,al_c,q_85/df9274_3d30080bc0134798807ddec50fddd00b~mv2.png"
-          alt="Baltā Pūce hotel logo"
-          width="200"
-          height="60"
-        >
-        <div class="logo-text">
-          Baltā Pūce
-          <span>Jūrmala, Latvia</span>
-        </div>
+      <a href="#" class="logo">
+        <img src="https://www.villasanta.lv/assets/img/logo.svg" alt="Villa Santa Hotel">
       </a>
-      <nav class="nav-desktop" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#rooms">Rooms</a>
-        <a href="#amenities">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#location">Location</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Numuri</a></li>
+          <li><a href="#amenities">Pakalpojumi</a></li>
+          <li><a href="#gallery">Galerija</a></li>
+          <li><a href="#location">Atrašanās vieta</a></li>
+          <li><a href="#trust">Atsauksmes</a></li>
+        </ul>
       </nav>
-      <a href="#booking" class="btn btn-primary">Book Now</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
+      <a href="tel:+37164177177" class="header-cta">+371 64177177</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
       </button>
     </div>
-    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
-      <a href="#about">About</a>
-      <a href="#rooms">Rooms</a>
-      <a href="#amenities">Services</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#location">Location</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-      <a href="#booking">Book Now</a>
-    </nav>
   </header>
 
-  <section class="hero" id="top">
-    <div class="hero-bg">
-      <img
-        src="https://static.wixstatic.com/media/df9274_fa2e9434bedb44f39047bf470e7c5d67~mv2.jpg/v1/fit/w_2000,h_1200,al_c/df9274_fa2e9434bedb44f39047bf470e7c5d67~mv2.jpg"
-        alt="Baltā Pūce hotel exterior"
-        width="2000"
-        height="1200"
-      >
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="container hero-content">
-      <p class="hero-eyebrow">Pilsoņu iela 7 &middot; Jūrmala, Latvia</p>
-      <h1>Baltā Pūce hotel</h1>
-      <p class="hero-tagline">Welcome to cozy place in the heart of Jurmala! Perfect location, affordable prices, responsible staff, and friendly atmosphere in a renovated historical building.</p>
-      <div class="hero-actions">
-        <a href="#booking" class="btn btn-primary">Check availability</a>
-        <a href="#about" class="btn btn-outline">Discover our hotel</a>
-      </div>
+  <nav class="nav-mobile" id="navMobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu">&times;</button>
+    <a href="#rooms">Numuri</a>
+    <a href="#amenities">Pakalpojumi</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Atrašanās vieta</a>
+    <a href="#booking">Rezervēt</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="Villa Santa Hotel exterior"></div>
+    <div class="hero-content">
+      <img class="hero-logo" src="https://www.villasanta.lv/assets/img/logo.svg" alt="Villa Santa Hotel">
+      <h1>Dvēseles mieram un priekam...</h1>
+      <p class="hero-sub">Trīs villas ar 30 numuriem pie Gaujas — viegls interjers ar vasarnīcu garu, SPA un restorāns ar skatu uz meža nogāzi.</p>
+      <a href="#booking" class="btn-primary">Pārbaudīt pieejamību</a>
     </div>
   </section>
 
   <section class="booking-section" id="booking">
     <div class="container">
-      <form class="booking-widget" id="bookingForm" onsubmit="return false;">
-        <div class="form-group">
-          <label for="checkin">Check-in</label>
+      <form class="booking-widget" onsubmit="return false;">
+        <div class="field">
+          <label for="checkin">Ierašanās</label>
           <input type="date" id="checkin" name="checkin" required>
         </div>
-        <div class="form-group">
-          <label for="checkout">Check-out</label>
+        <div class="field">
+          <label for="checkout">Aizbraukšana</label>
           <input type="date" id="checkout" name="checkout" required>
         </div>
-        <div class="form-group guest-selector">
-          <label for="guestsDisplay">Guests</label>
-          <input type="text" id="guestsDisplay" readonly value="2 adults" aria-haspopup="true" aria-expanded="false">
-          <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Select guests">
+        <div class="field guest-field">
+          <label for="guestTrigger">Viesi</label>
+          <button type="button" class="guest-trigger" id="guestTrigger">2 pieaugušie, 0 bērni</button>
+          <div class="guest-panel" id="guestPanel">
             <div class="guest-row">
-              <label>Adults</label>
-              <div class="guest-controls">
-                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">&minus;</button>
-                <span class="guest-count" id="adultsCount">2</span>
-                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              <span>Pieaugušie</span>
+              <div class="counter">
+                <button type="button" id="adultsMinus" aria-label="Mazāk pieaugušo">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" id="adultsPlus" aria-label="Vairāk pieaugušo">+</button>
               </div>
             </div>
             <div class="guest-row">
-              <label>Children</label>
-              <div class="guest-controls">
-                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">&minus;</button>
-                <span class="guest-count" id="childrenCount">0</span>
-                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              <span>Bērni</span>
+              <div class="counter">
+                <button type="button" id="childrenMinus" aria-label="Mazāk bērnu">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" id="childrenPlus" aria-label="Vairāk bērnu">+</button>
               </div>
             </div>
-            <button type="button" class="guest-done" id="guestDone">Done</button>
+            <div class="guest-row" style="border:none;padding-top:0.75rem;">
+              <span>Numura tips</span>
+              <select id="roomType" style="width:auto;padding:0.4rem 0.6rem;font-size:0.85rem;">
+                <option value="any">Jebkurš</option>
+                <option value="standarta">Standarta numurs</option>
+                <option value="superior">Superior numurs</option>
+                <option value="delux">Superior Delux numurs</option>
+                <option value="suite">Suite numurs</option>
+                <option value="prezidenta">Prezidenta numurs</option>
+              </select>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="rooms">Rooms</label>
-          <select id="rooms" name="rooms">
-            <option value="1">1 room</option>
-            <option value="2">2 rooms</option>
-            <option value="3">3 rooms</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary" id="searchBtn">Search</button>
+        <button type="submit" class="btn-primary" id="searchBtn">Meklēt</button>
       </form>
     </div>
   </section>
 
-  <section class="about-strip" id="about">
-    <div class="container about-grid">
-      <div class="about-text">
-        <h2>Enjoy your stay in Latvia in Baltā Pūce (White Owl) hotel!</h2>
-        <p>11 rooms on three floors — double and family rooms (3–4 people), plus a room for people with disabilities located on the ground floor. Some rooms can accommodate an extra bed.</p>
-        <p>A cozy retreat in a renovated historical building, just minutes from the Baltic Sea and Jūrmala's vibrant main street.</p>
-      </div>
-      <div class="about-image">
-        <img
-          src="https://static.wixstatic.com/media/df9274_792e1d9a285b4b7da41fce956551dac8~mv2.jpg/v1/fill/w_800,h_600,al_c,q_90/df9274_792e1d9a285b4b7da41fce956551dac8~mv2.jpg"
-          alt="White owl statue in front of the hotel building called Balta Puce"
-          width="800"
-          height="600"
-          loading="lazy"
-        >
-      </div>
-    </div>
-  </section>
-
-  <section id="rooms">
+  <section class="rooms" id="rooms">
     <div class="container">
       <div class="section-header">
-        <p class="eyebrow">Our Rooms</p>
-        <h2>Comfortable stays for every traveler</h2>
-        <p>11 rooms across three floors, from intimate doubles to spacious family accommodations.</p>
+        <span class="section-label">Numuri</span>
+        <h2 class="section-title">30 numuri trīs villās</h2>
+        <p class="section-desc">Viesnīcas kompleksā ietilpst trīs villas ar kopumā 30 numuriem un iespēju uzņemt vismaz 60 viesus. Istabiņu interjers veidots viegls, ar atsauci uz vasarnīcu garu.</p>
       </div>
-      <div class="rooms-grid">
+      <div class="room-grid">
         <article class="room-card">
-          <div class="room-card-img">
-            <img
-              src="https://static.wixstatic.com/media/df9274_e0969413196341898951577f6c92c664~mv2.jpg/v1/fill/w_600,h_450,al_c,q_90/df9274_e0969413196341898951577f6c92c664~mv2.jpg"
-              alt="Double room at Baltā Pūce hotel"
-              width="600"
-              height="450"
-              loading="lazy"
-            >
-          </div>
+          <img src="https://www.villasanta.lv/cache/images/1363905029/standarta-numurs_878916726.jpg" alt="Standarta numurs">
           <div class="room-card-body">
-            <h3>Double Room</h3>
-            <p>Comfortable double rooms on the upper floors. Extra bed available in select rooms upon request.</p>
-            <div class="room-price">
-              Nightly rate
-              <strong class="price-placeholder">Price on request — check availability</strong>
-            </div>
+            <h3>Standarta numurs</h3>
+            <p>Pelēkas sienas ar gaišām koka mēbelēm. Daļa numuru piemērota cilvēkiem ar kustību traucējumiem.</p>
+            <p class="room-price"><strong>Cena nav norādīta</strong> — nakts cena nav publicēta vietnē</p>
           </div>
         </article>
         <article class="room-card">
-          <div class="room-card-img">
-            <img
-              src="https://static.wixstatic.com/media/df9274_3223329816104acfbe6d4bcd1b82c2b4~mv2.jpg/v1/fill/w_600,h_450,al_c,q_90/df9274_3223329816104acfbe6d4bcd1b82c2b4~mv2.jpg"
-              alt="Balta Puce hotel"
-              width="600"
-              height="450"
-              loading="lazy"
-            >
-          </div>
+          <img src="https://www.villasanta.lv/cache/images/1363905029/superior-numurs_1906503235.jpg" alt="Superior numurs">
           <div class="room-card-body">
-            <h3>Family Room</h3>
-            <p>Family rooms accommodating 3–4 people. Ideal for a seaside holiday with loved ones.</p>
-            <div class="room-price">
-              Nightly rate
-              <strong class="price-placeholder">Price on request — check availability</strong>
-            </div>
+            <h3>Superior numurs</h3>
+            <p>Divvietīga gulta 180×200 cm, minibārs, TV un vīna pudeļu attaisāmais.</p>
+            <p class="room-price"><strong>Cena nav norādīta</strong> — nakts cena nav publicēta vietnē</p>
           </div>
         </article>
         <article class="room-card">
-          <div class="room-card-img">
-            <img
-              src="https://static.wixstatic.com/media/df9274_d121e58774ed4d37b31f9b08acf94c8b~mv2.jpg/v1/fill/w_600,h_450,al_c,q_90/df9274_d121e58774ed4d37b31f9b08acf94c8b~mv2.jpg"
-              alt="Hotel breakfast zone"
-              width="600"
-              height="450"
-              loading="lazy"
-            >
-          </div>
+          <img src="https://www.villasanta.lv/cache/images/1363905029/superior-delux-numurs_3365052836.jpg" alt="Superior Delux numurs">
           <div class="room-card-body">
-            <h3>Accessible Room</h3>
-            <p>Wheelchair-friendly room on the ground floor, designed for guests with disabilities.</p>
-            <div class="room-price">
-              Nightly rate
-              <strong class="price-placeholder">Price on request — check availability</strong>
-            </div>
+            <h3>Superior Delux numurs</h3>
+            <p>Īpašs interjers ar dēlīšu apšuvumu un krāsainiem stikliņiem — latviešu vasarnīcas noskaņa. Pieejams ar dušu vai vannu.</p>
+            <p class="room-price"><strong>Cena nav norādīta</strong> — nakts cena nav publicēta vietnē</p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.villasanta.lv/cache/images/1363905029/suite-numurs_282384106.jpg" alt="Suite numurs">
+          <div class="room-card-body">
+            <h3>Suite numurs</h3>
+            <p>Plašs numurs ar divvietīgu gultu, garderobi, minibāru un vīna pudeļu attaisāmo.</p>
+            <p class="room-price"><strong>Cena nav norādīta</strong> — nakts cena nav publicēta vietnē</p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.villasanta.lv/cache/images/1363905029/prezidenta-numurs_994885139.jpg" alt="Prezidenta numurs">
+          <div class="room-card-body">
+            <h3>Prezidenta numurs</h3>
+            <p>Divistabu numurs centrālajā villā ar antikvāra kumodi, virtuves zonu un 14 m² vannasistabu ar vitrāžas logiem.</p>
+            <p class="room-price"><strong>Cena nav norādīta</strong> — nakts cena nav publicēta vietnē</p>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="amenities-section" id="amenities">
+  <section class="amenities" id="amenities">
     <div class="container">
       <div class="section-header">
-        <p class="eyebrow">Our Services</p>
-        <h2>Everything you need for a relaxing stay</h2>
-        <p>Thoughtful amenities in a warm, welcoming atmosphere.</p>
+        <span class="section-label">Pakalpojumi</span>
+        <h2 class="section-title">Viss, ko piedāvā Villa Santa</h2>
+        <p class="section-desc">Amenitātes, kas minētas Villa Santa oficiālajā vietnē.</p>
       </div>
-      <div class="amenities-grid">
-        <div class="amenity-card">
-          <div class="amenity-icon">
-            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          </div>
-          <h3>Breakfast</h3>
-          <p>Scrambled eggs and delicious coffee? We got it!</p>
-        </div>
-        <div class="amenity-card">
-          <div class="amenity-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>Open Terrace</h3>
-          <p>Enjoy your evening at the hotel territory.</p>
-        </div>
-        <div class="amenity-card">
-          <div class="amenity-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-          </div>
-          <h3>Things to Do</h3>
-          <p>Ask the staff for rental possibilities and interesting places nearby.</p>
-        </div>
-        <div class="amenity-card">
-          <div class="amenity-icon">
-            <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-          </div>
-          <h3>Free WiFi</h3>
-          <p>Available on hotel territory, password provided at the reception.</p>
-        </div>
-        <div class="amenity-card">
-          <div class="amenity-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M10.5 6.5 8 22"/><path d="M15.5 6.5 18 22"/><path d="M6 12h12"/><path d="M5 18h14"/></svg>
-          </div>
-          <h3>Accessible Room</h3>
-          <p>Wheelchair friendly room on the ground floor.</p>
-        </div>
-        <div class="amenity-card">
-          <div class="amenity-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="1"/><path d="M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
-          </div>
-          <h3>Car Parking</h3>
-          <p>Place for 5–7 cars on hotel territory (free for guests).</p>
-        </div>
+      <div class="amenity-grid">
+        <div class="amenity-item"><div class="amenity-icon">📶</div><span>Bezmaksas WiFi</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🧖</div><span>SPA zona — tvaika pirts &amp; sauna</span></div>
+        <div class="amenity-item"><div class="amenity-icon">💆</div><span>Masāžas &amp; SPA procedūras</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🍽</div><span>Restorāns ar terasi</span></div>
+        <div class="amenity-item"><div class="amenity-icon">☕</div><span>Brokastu bufete (se./sv. 20 EUR)</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🛎</div><span>Apkalpošana numurā</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🧺</div><span>Veļas mazgāšana &amp; ķīmiskā tīrīšana</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🛏</div><span>Ikdienas numura uzkopšana</span></div>
+        <div class="amenity-item"><div class="amenity-icon">💒</div><span>Kāzas &amp; konferences</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🚌</div><span>Transporta pakalpojumi</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🗺</div><span>Ekskursiju organizēšana</span></div>
+        <div class="amenity-item"><div class="amenity-icon">🌲</div><span>Skats uz meža nogāzi &amp; Gauju</span></div>
       </div>
+      <p style="text-align:center;margin-top:2rem;font-size:0.85rem;color:var(--muted);font-style:italic;">
+        Baseins, autostāvvieta un mājdzīvnieku politika nav minēta oficiālajā vietnē.
+      </p>
     </div>
   </section>
 
-  <section id="gallery">
+  <section class="gallery" id="gallery">
     <div class="container">
       <div class="section-header">
-        <p class="eyebrow">Gallery</p>
-        <h2>A glimpse of Baltā Pūce</h2>
+        <span class="section-label" style="color:var(--gold);">Galerija</span>
+        <h2 class="section-title">Ieskats Villa Santa</h2>
+        <p class="section-desc">Fotogrāfijas no Villa Santa oficiālās vietnes.</p>
       </div>
       <div class="gallery-grid">
-        <figure class="gallery-item">
-          <img
-            src="https://static.wixstatic.com/media/df9274_fa2e9434bedb44f39047bf470e7c5d67~mv2.jpg/v1/fit/w_1200,h_800,al_c/df9274_fa2e9434bedb44f39047bf470e7c5d67~mv2.jpg"
-            alt="Baltā Pūce hotel exterior"
-            width="1200"
-            height="800"
-            loading="lazy"
-          >
-          <figcaption class="gallery-caption">Hotel exterior</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img
-            src="https://static.wixstatic.com/media/df9274_792e1d9a285b4b7da41fce956551dac8~mv2.jpg/v1/fill/w_600,h_400,al_c,q_90/df9274_792e1d9a285b4b7da41fce956551dac8~mv2.jpg"
-            alt="White owl statue in front of the hotel building called Balta Puce"
-            width="600"
-            height="400"
-            loading="lazy"
-          >
-          <figcaption class="gallery-caption">White Owl statue</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img
-            src="https://static.wixstatic.com/media/df9274_3223329816104acfbe6d4bcd1b82c2b4~mv2.jpg/v1/fill/w_600,h_400,al_c,q_90/df9274_3223329816104acfbe6d4bcd1b82c2b4~mv2.jpg"
-            alt="Balta Puce hotel"
-            width="600"
-            height="400"
-            loading="lazy"
-          >
-          <figcaption class="gallery-caption">Balta Puce hotel</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img
-            src="https://static.wixstatic.com/media/df9274_e5391609ac1c4960ac49a881b12fc43d~mv2.jpg/v1/fill/w_600,h_400,al_c,q_90/df9274_e5391609ac1c4960ac49a881b12fc43d~mv2.jpg"
-            alt="The hall of the hotel"
-            width="600"
-            height="400"
-            loading="lazy"
-          >
-          <figcaption class="gallery-caption">Hotel hall</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img
-            src="https://static.wixstatic.com/media/df9274_d121e58774ed4d37b31f9b08acf94c8b~mv2.jpg/v1/fill/w_600,h_400,al_c,q_90/df9274_d121e58774ed4d37b31f9b08acf94c8b~mv2.jpg"
-            alt="Hotel breakfast zone"
-            width="600"
-            height="400"
-            loading="lazy"
-          >
-          <figcaption class="gallery-caption">Breakfast zone</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img
-            src="https://static.wixstatic.com/media/df9274_e0969413196341898951577f6c92c664~mv2.jpg/v1/fill/w_600,h_400,al_c,q_90/df9274_e0969413196341898951577f6c92c664~mv2.jpg"
-            alt="Guest room at Baltā Pūce hotel"
-            width="600"
-            height="400"
-            loading="lazy"
-          >
-          <figcaption class="gallery-caption">Guest room</figcaption>
-        </figure>
+        <img class="wide" src="https://www.villasanta.lv/cache/images/1131564354/5c5d2d43539ab_200460091.jpg" alt="Villa Santa viesnīcas komplekss">
+        <img src="https://www.villasanta.lv/cache/images/3296482585/numuri_679412109.jpg" alt="Numuri">
+        <img src="https://www.villasanta.lv/cache/images/3296482585/restorans_1953019526.jpg" alt="Restorāns">
+        <img src="https://www.villasanta.lv/cache/images/3498056943/spa_2478532805.jpg" alt="SPA">
+        <img src="https://www.villasanta.lv/cache/images/1607911973/konferences-kazas-un-pasakumi_1994335253.jpg" alt="Konferences un kāzas">
       </div>
     </div>
   </section>
 
-  <section class="location-section" id="location">
-    <div class="container location-grid">
-      <div class="location-text">
-        <h2>In the heart of Jūrmala</h2>
-        <p class="location-address">Pilsoņu iela 7, Jurmala, Latvia</p>
-        <p style="color: var(--muted); margin-bottom: 1.5rem;">Steps from the sea, shops, and culture — yet tucked away in a quiet corner.</p>
-        <ul class="landmarks">
-          <li><strong>Majori beach</strong> 250m — Swimming, sunbathing or volleyball?</li>
-          <li><strong>Jomas street</strong> 250m — Main street for shopping, cafes and restaurants</li>
-          <li><strong>SPA Baltic Beach</strong> 400m — SPA, saunas and swimming pools</li>
-          <li><strong>Dzintari concert hall</strong> 650m — Festivals, concerts and stand-up shows</li>
-          <li><strong>Majori train station</strong> 650m — Visit Riga or other cities of Latvia</li>
-          <li><strong>Dzintari Forest Park</strong> 950m — Viewing tower, playgrounds, skate park and cafes</li>
-          <li><strong>Kemeri National Park</strong> 23km — Observe beautiful flora and fauna</li>
-        </ul>
-      </div>
-      <div class="map-placeholder" aria-label="Map placeholder">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Pilsoņu iela 7, Jurmala, Latvia</span>
-        <span style="font-size: 0.75rem; opacity: 0.7;">Static map placeholder</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="reviews">
+  <section class="location" id="location">
     <div class="container">
       <div class="section-header">
-        <p class="eyebrow">Guest Reviews</p>
-        <h2>What our guests say</h2>
-        <p>No aggregate rating badge found on the source site. Below is the verified guest review from baltapucehotel.lv.</p>
+        <span class="section-label">Atrašanās vieta</span>
+        <h2 class="section-title">Pie Gaujas, Cēsu priekšpilsētā</h2>
       </div>
-      <div class="reviews-grid">
-        <article class="review-card featured">
-          <div class="review-badges">
-            <span class="review-badge">Beautiful view</span>
-            <span class="review-badge">Calm atmosphere</span>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Gaujas iela 88, Cēsis, LV-4101</h3>
+          <p>Iebraukšana viesnīcas kompleksa teritorijā no Gaujas ielas. Veroties debešķīgā skatā uz meža nogāzi un priežu galotnēm — tikai 300 metru attālumā no Gaujas upes.</p>
+          <div class="distances">
+            <div class="distance-item"><div class="num">3 <span>km</span></div><div class="label">No Cēsīm</div></div>
+            <div class="distance-item"><div class="num">92 <span>km</span></div><div class="label">No Rīgas</div></div>
+            <div class="distance-item"><div class="num">297 <span>km</span></div><div class="label">No Tallinas</div></div>
+            <div class="distance-item"><div class="num">0,3 <span>km</span></div><div class="label">Līdz Gaujai</div></div>
           </div>
-          <blockquote>&ldquo;My wife and I stayed at the hotel in July and August. We really liked the hosts and the location. It's 5 minutes from the sea and the main street, Jomas, with its many restaurants and shops. The hotel is very quiet, clean, and the breakfasts are good. We'll try to come back next year.&rdquo;</blockquote>
-          <p class="review-source">Guest review from baltapucehotel.lv</p>
-        </article>
-        <article class="review-card placeholder">
-          <span class="placeholder-label">Placeholder</span>
-          <blockquote>&ldquo;Sample testimonial for layout demonstration only.&rdquo;</blockquote>
-          <p class="review-source">Not sourced from the hotel website</p>
-        </article>
-        <article class="review-card placeholder">
-          <span class="placeholder-label">Placeholder</span>
-          <blockquote>&ldquo;Sample testimonial for layout demonstration only.&rdquo;</blockquote>
-          <p class="review-source">Not sourced from the hotel website</p>
-        </article>
+        </div>
+        <div class="map-placeholder" aria-label="Map placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p><strong>Villa Santa Hotel</strong><br>Gaujas iela 88, Cēsis<br><span style="opacity:0.7;font-size:0.82rem;">57.311°N, 25.230°E</span></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer" id="contact">
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Atsauksmes</span>
+        <h2 class="section-title">Ko saka viesi</h2>
+      </div>
+      <p class="trust-label">Oficiālā vietne nerāda vērtējuma emblēmu — zemāk ir parauga atsauksmes, kas nav no reāliem avotiem.</p>
+      <div class="testimonial-grid">
+        <blockquote class="testimonial-card">
+          <p>Brīnišķīgs skats uz priežu galotnēm un mierīga atmosfēra — tieši tas, ko meklējām pēc nedēļas Rīgā.</p>
+          <cite>— Parauga atsauksme <span class="placeholder-badge">Placeholder</span></cite>
+        </blockquote>
+        <blockquote class="testimonial-card">
+          <p>Brokastu bufete brīvdienās ir iemesls atgriezties. SPA zona ar tvaika pirti — absolūta relaksācija.</p>
+          <cite>— Parauga atsauksme <span class="placeholder-badge">Placeholder</span></cite>
+        </blockquote>
+        <blockquote class="testimonial-card">
+          <p>Prezidenta numurs ar vitrāžas logiem vannasistabā pārspēja visas gaidas. Restorāna terase — neaizmirstama.</p>
+          <cite>— Parauga atsauksme <span class="placeholder-badge">Placeholder</span></cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <p class="logo-text">Baltā Pūce hotel</p>
-          <p>Welcome to cozy place in the heart of Jurmala! A renovated historical building with friendly atmosphere and responsible staff.</p>
+          <img src="https://www.villasanta.lv/assets/img/logo.svg" alt="Villa Santa Hotel">
+          <p>Dvēseles mieram un priekam — Villa Santa Hotel pie Gaujas, Cēsis.</p>
         </div>
-        <div class="footer-nav">
-          <h4>Navigate</h4>
+        <div class="footer-col">
+          <h4>Navigācija</h4>
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#rooms">Rooms</a></li>
-            <li><a href="#amenities">Services</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#location">Location</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="https://www.baltapucehotel.lv/booking-engine" target="_blank" rel="noopener">Book Now</a></li>
+            <li><a href="#rooms">Numuri</a></li>
+            <li><a href="#amenities">Pakalpojumi</a></li>
+            <li><a href="#gallery">Galerija</a></li>
+            <li><a href="#location">Atrašanās vieta</a></li>
+            <li><a href="#booking">Rezervēt</a></li>
           </ul>
         </div>
-        <div class="footer-contact">
-          <h4>Contact</h4>
+        <div class="footer-col">
+          <h4>Kontakti</h4>
           <ul>
-            <li><a href="tel:+37127524321">+371 2752 4321</a></li>
-            <li><a href="mailto:baltapucehotel@gmail.com">baltapucehotel@gmail.com</a></li>
-            <li>Pilsoņu iela 7, Jurmala, Latvia</li>
+            <li><a href="tel:+37164177177">+371 64177177</a></li>
+            <li>Gaujas iela 88, Cēsis, LV-4101</li>
+            <li><a href="https://www.facebook.com/villasantahotel" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.instagram.com/hotelvillasanta" target="_blank" rel="noopener">Instagram</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 Baltā Pūce hotel. All rights reserved.</span>
-        <span>Prototype homepage &mdash; content sourced from baltapucehotel.lv</span>
+        <span>&copy; Villa Santa, 2026. Visas tiesības aizsargātas.</span>
+        <div class="social-links">
+          <a href="https://www.facebook.com/villasantahotel" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+          <a href="https://www.instagram.com/hotelvillasanta" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script>
     (function () {
-      const header = document.getElementById('header');
-      const menuToggle = document.getElementById('menuToggle');
-      const navMobile = document.getElementById('navMobile');
-      const checkin = document.getElementById('checkin');
-      const checkout = document.getElementById('checkout');
-      const guestsDisplay = document.getElementById('guestsDisplay');
-      const guestPanel = document.getElementById('guestPanel');
-      const adultsCount = document.getElementById('adultsCount');
-      const childrenCount = document.getElementById('childrenCount');
-      const adultsMinus = document.getElementById('adultsMinus');
-      const adultsPlus = document.getElementById('adultsPlus');
-      const childrenMinus = document.getElementById('childrenMinus');
-      const childrenPlus = document.getElementById('childrenPlus');
-      const guestDone = document.getElementById('guestDone');
-      const bookingForm = document.getElementById('bookingForm');
-
-      let adults = 2;
-      let children = 0;
-
+      var header = document.getElementById('header');
       window.addEventListener('scroll', function () {
-        header.classList.toggle('scrolled', window.scrollY > 20);
+        header.classList.toggle('scrolled', window.scrollY > 60);
       });
 
-      menuToggle.addEventListener('click', function () {
-        const open = navMobile.classList.toggle('open');
-        menuToggle.setAttribute('aria-expanded', open);
+      var menuToggle = document.getElementById('menuToggle');
+      var navMobile = document.getElementById('navMobile');
+      var navClose = document.getElementById('navClose');
+      menuToggle.addEventListener('click', function () { navMobile.classList.add('open'); });
+      navClose.addEventListener('click', function () { navMobile.classList.remove('open'); });
+      navMobile.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { navMobile.classList.remove('open'); });
       });
 
-      navMobile.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          navMobile.classList.remove('open');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-
-      const today = new Date();
-      const tomorrow = new Date(today);
+      var today = new Date();
+      var tomorrow = new Date(today);
       tomorrow.setDate(tomorrow.getDate() + 1);
-      const fmt = function (d) { return d.toISOString().split('T')[0]; };
+      var checkout = new Date(today);
+      checkout.setDate(checkout.getDate() + 3);
+      function fmt(d) { return d.toISOString().split('T')[0]; }
+      document.getElementById('checkin').value = fmt(tomorrow);
+      document.getElementById('checkout').value = fmt(checkout);
+      document.getElementById('checkin').min = fmt(today);
+      document.getElementById('checkout').min = fmt(tomorrow);
 
-      checkin.min = fmt(today);
-      checkin.value = fmt(today);
-      checkout.min = fmt(tomorrow);
-      checkout.value = fmt(tomorrow);
-
-      checkin.addEventListener('change', function () {
-        const ci = new Date(checkin.value);
-        const minCo = new Date(ci);
-        minCo.setDate(minCo.getDate() + 1);
-        checkout.min = fmt(minCo);
-        if (new Date(checkout.value) <= ci) {
-          checkout.value = fmt(minCo);
+      document.getElementById('checkin').addEventListener('change', function () {
+        var ci = new Date(this.value);
+        ci.setDate(ci.getDate() + 1);
+        document.getElementById('checkout').min = fmt(ci);
+        if (new Date(document.getElementById('checkout').value) <= new Date(this.value)) {
+          document.getElementById('checkout').value = fmt(ci);
         }
       });
 
-      function updateGuestDisplay() {
-        const parts = [];
-        parts.push(adults + (adults === 1 ? ' adult' : ' adults'));
-        if (children > 0) {
-          parts.push(children + (children === 1 ? ' child' : ' children'));
-        }
-        guestsDisplay.value = parts.join(', ');
-        adultsMinus.disabled = adults <= 1;
-        childrenMinus.disabled = children <= 0;
+      var adults = 2, children = 0;
+      var guestTrigger = document.getElementById('guestTrigger');
+      var guestPanel = document.getElementById('guestPanel');
+
+      function updateGuestLabel() {
+        guestTrigger.textContent = adults + ' pieaugušie, ' + children + ' bērni';
       }
 
-      function toggleGuestPanel(show) {
-        guestPanel.classList.toggle('open', show);
-        guestsDisplay.setAttribute('aria-expanded', show);
-      }
-
-      guestsDisplay.addEventListener('click', function () {
-        toggleGuestPanel(!guestPanel.classList.contains('open'));
+      guestTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        guestPanel.classList.toggle('open');
       });
-
-      adultsPlus.addEventListener('click', function () {
-        if (adults < 8) { adults++; adultsCount.textContent = adults; updateGuestDisplay(); }
-      });
-
-      adultsMinus.addEventListener('click', function () {
-        if (adults > 1) { adults--; adultsCount.textContent = adults; updateGuestDisplay(); }
-      });
-
-      childrenPlus.addEventListener('click', function () {
-        if (children < 6) { children++; childrenCount.textContent = children; updateGuestDisplay(); }
-      });
-
-      childrenMinus.addEventListener('click', function () {
-        if (children > 0) { children--; childrenCount.textContent = children; updateGuestDisplay(); }
-      });
-
-      guestDone.addEventListener('click', function () { toggleGuestPanel(false); });
 
       document.addEventListener('click', function (e) {
-        if (!e.target.closest('.guest-selector')) {
-          toggleGuestPanel(false);
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove('open');
         }
       });
 
-      bookingForm.addEventListener('submit', function () {
-        alert('Booking search is a UI prototype only. Visit baltapucehotel.lv/booking-engine to reserve.');
+      document.getElementById('adultsPlus').addEventListener('click', function () {
+        if (adults < 10) { adults++; updateGuestLabel(); }
+      });
+      document.getElementById('adultsMinus').addEventListener('click', function () {
+        if (adults > 1) { adults--; updateGuestLabel(); }
+      });
+      document.getElementById('childrenPlus').addEventListener('click', function () {
+        if (children < 8) { children++; updateGuestLabel(); }
+      });
+      document.getElementById('childrenMinus').addEventListener('click', function () {
+        if (children > 0) { children--; updateGuestLabel(); }
       });
 
-      updateGuestDisplay();
+      document.getElementById('searchBtn').addEventListener('click', function () {
+        alert('Rezervācijas meklēšana — tikai UI prototips. Reāla rezervācija: +371 64177177');
+      });
     })();
   </script>
 </body>
