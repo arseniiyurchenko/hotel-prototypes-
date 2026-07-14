@@ -17,18 +17,6 @@ def main():
         page = browser.new_page(viewport={"width": 1280, "height": 800})
         page.goto(URL, wait_until="networkidle")
 
-        broken = page.evaluate(
-            """
-            () => {
-                const imgs = [...document.querySelectorAll('img')];
-                return imgs.filter(img => !img.complete || img.naturalWidth === 0)
-                    .map(img => img.src);
-            }
-            """
-        )
-        if broken:
-            errors.append(f"Broken images: {broken}")
-
         brand = page.locator(".hero-brand")
         if not brand.is_visible():
             errors.append("Hero brand not visible")
@@ -54,6 +42,36 @@ def main():
             box = page.locator(sel).bounding_box()
             if not box or box["height"] < 50:
                 errors.append(f"Section {sel} appears empty or collapsed")
+
+        # Force lazy images into view, then wait for decode
+        page.evaluate(
+            """
+            async () => {
+              for (const img of document.querySelectorAll('img')) {
+                img.scrollIntoView({ block: 'center' });
+                await new Promise(r => setTimeout(r, 120));
+              }
+              await Promise.all([...document.images].map(img =>
+                img.complete ? Promise.resolve() : new Promise(res => {
+                  img.onload = img.onerror = res;
+                })
+              ));
+            }
+            """
+        )
+        page.wait_for_timeout(800)
+
+        broken = page.evaluate(
+            """
+            () => {
+                const imgs = [...document.querySelectorAll('img')];
+                return imgs.filter(img => !img.complete || img.naturalWidth === 0)
+                    .map(img => img.src);
+            }
+            """
+        )
+        if broken:
+            errors.append(f"Broken images: {broken}")
 
         page.screenshot(path=str(ARTIFACTS / "krasta-maja-desktop.png"), full_page=True)
 
