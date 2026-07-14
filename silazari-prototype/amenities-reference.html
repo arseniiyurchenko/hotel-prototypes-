@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silazari — Amenities reference</title>
+  <style>
+    :root {
+      --ink: #062830;
+      --cream: #F7E6DE;
+      --coral: #E7B49C;
+      --seafoam: #85C1B0;
+      --mint: #D5EAE4;
+      --logo-teal: #0D5B6D;
+      --white: #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Lexend", "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 10% 0%, rgba(133, 193, 176, 0.35), transparent 50%),
+        radial-gradient(ellipse at 90% 20%, rgba(231, 180, 156, 0.28), transparent 45%),
+        linear-gradient(180deg, var(--cream) 0%, var(--mint) 100%);
+      min-height: 100vh;
+      line-height: 1.55;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+    .wrap { width: min(960px, 100%); margin-inline: auto; }
+    header { margin-bottom: 2.5rem; }
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--logo-teal);
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .lead { max-width: 42rem; color: #0b454f; opacity: 0.9; }
+    .source {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--logo-teal);
+    }
+    .source a { color: inherit; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.85rem;
+      margin: 2rem 0 1.5rem;
+    }
+    .item {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(6, 40, 48, 0.08);
+      border-radius: 14px;
+      padding: 1.1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(6, 40, 48, 0.1);
+    }
+    .icon {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 10px;
+      background: var(--mint);
+      color: var(--logo-teal);
+      display: grid;
+      place-items: center;
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+    .item strong { font-size: 0.95rem; }
+    .item span { font-size: 0.8rem; color: #0b454f; opacity: 0.75; }
+    .note {
+      background: rgba(6, 40, 48, 0.92);
+      color: var(--cream);
+      border-radius: 14px;
+      padding: 1.15rem 1.25rem;
+      font-size: 0.88rem;
+    }
+    .note strong { color: var(--coral); }
+    .jacuzzi {
+      margin: 2rem 0;
+      padding: 1.25rem 1.35rem;
+      border-left: 4px solid var(--coral);
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 0 14px 14px 0;
+    }
+    .jacuzzi h2 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .jacuzzi p { font-size: 0.9rem; opacity: 0.85; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(6, 40, 48, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Ērtības · Amenities reference</p>
+      <h1>Silazari — verified amenities</h1>
+      <p class="lead">
+        Grid items taken from silazari.lv house descriptions and the jacuzzi section.
+        Checklist gaps (pool, breakfast, parking, pets, sauna on official site) are called out below — not invented.
+      </p>
+      <p class="source">Primary: <a href="https://silazari.lv/">silazari.lv</a> · See also <code>AMENITIES.md</code></p>
+    </header>
+
+    <div class="grid" aria-label="Verified amenities">
+      <div class="item"><div class="icon" aria-hidden="true">🍳</div><strong>Pilnībā aprīkota virtuve</strong><span>Fully equipped kitchen</span></div>
+      <div class="item"><div class="icon" aria-hidden="true">❄️</div><strong>Kondicionieris &amp; apkure</strong><span>Air conditioning &amp; heating</span></div>
+      <div class="item"><div class="icon" aria-hidden="true">☕</div><strong>Kafijas automāts</strong><span>Coffee machine</span></div>
+      <div class="item"><div class="icon" aria-hidden="true">🪑</div><strong>Plaša terase</strong><span>Terrace + outdoor furniture</span></div>
+      <div class="item"><div class="icon" aria-hidden="true">♨️</div><strong>Džakuzi masāžas kubls</strong><span>Private jacuzzi · from €60/day</span></div>
+      <div class="item"><div class="icon" aria-hidden="true">🔥</div><strong>Grills &amp; šūpuļtīkls</strong><span>Grill &amp; hammock</span></div>
+      <div class="item"><div class="icon" aria-hidden="true">🎠</div><strong>Bērnu rotaļu laukums</strong><span>Children’s playground</span></div>
+      <div class="item"><div class="icon" aria-hidden="true">🌊</div><strong>Jūra 7 min</strong><span>Via Lāčupītes dendrārijs</span></div>
+    </div>
+
+    <aside class="jacuzzi">
+      <h2>Džakuzi masāžas kubls (silazari.lv)</h2>
+      <p>Paid add-on — show price in the amenities label or a note under the grid.</p>
+      <table>
+        <thead><tr><th>Days</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Pirmdiena – Ceturtdiena, Svētdiena</td><td>60 EUR/dienā</td></tr>
+          <tr><td>Piektdiena, Sestdiena</td><td>70 EUR/dienā</td></tr>
+        </tbody>
+      </table>
+    </aside>
+
+    <p class="note">
+      <strong>Not on silazari.lv (omit):</strong>
+      pool, breakfast, parking policy, pet policy, Wi‑Fi wording.
+      Secondary viesunamiem.lv listing adds sauna/pirts (€70), parking, and internet tags — keep those out of the official-site amenities grid unless re-verified on silazari.lv.
+    </p>
+  </div>
+</body>
+</html>
