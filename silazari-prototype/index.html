@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silazari Klapkalnciems — Atpūtas mājas pie jūras</title>
+  <meta name="description" content="Ģimenes projekts atpūtas māju izveidei piejūrā Klapkalnciemā, Silazaros. Lielā un Mazā māja ar džakuzi, 7 minūšu gājienā līdz Baltijas jūrai.">
+  <link rel="icon" href="https://silazari.lv/wp-content/uploads/2024/02/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "Granville";
+      src: url("https://silazari.lv/wp-content/themes/bootscore-main/granville-regular.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --teal: #062830;
+      --teal-mid: #0d5b6d;
+      --teal-deep: #0b454f;
+      --peach: #f7e6de;
+      --coral: #e7b49c;
+      --sage: #85c1b0;
+      --sage-light: #d5eae4;
+      --white: #ffffff;
+      --text: #062830;
+      --muted: #4a6a72;
+      --shadow: 0 12px 40px rgba(6, 40, 48, 0.14);
+      --radius: 10px;
+      --transition: 0.28s ease;
+      --header-h: 76px;
+      --font-display: "Granville", "Lexend Deca", Georgia, serif;
+      --font-body: "Lexend Deca", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--text);
+      background: var(--peach);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1160px, 92vw);
+      margin-inline: auto;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .site-header.scrolled {
+      background: rgba(6, 40, 48, 0.94);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    .logo img {
+      height: 44px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      transition: opacity var(--transition);
+    }
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-desktop a {
+      color: var(--peach);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      transition: opacity var(--transition), color var(--transition);
+    }
+    .nav-desktop a:hover { opacity: 1; color: var(--coral); }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem 1.25rem;
+      background: var(--coral);
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .header-cta:hover { background: var(--peach); transform: translateY(-1px); }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--peach);
+      cursor: pointer;
+      padding: 0.35rem;
+    }
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: var(--teal);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .nav-mobile.open { opacity: 1; pointer-events: auto; }
+    .nav-mobile a {
+      color: var(--peach);
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+    }
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--peach);
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: var(--peach);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url("https://silazari.lv/wp-content/uploads/2024/02/Photo1-scaled.jpg") center/cover no-repeat;
+      transform: scale(1.06);
+      animation: heroZoom 18s ease-out forwards;
+    }
+    @keyframes heroZoom {
+      to { transform: scale(1); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(6,40,48,0.35) 0%, rgba(6,40,48,0.15) 35%, rgba(6,40,48,0.78) 100%),
+        linear-gradient(90deg, rgba(6,40,48,0.45) 0%, transparent 55%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(1160px, 92vw);
+      margin: 0 auto;
+      padding: 0 0 7.5rem;
+      animation: heroRise 1s ease-out 0.2s both;
+    }
+    @keyframes heroRise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-brand {
+      display: block;
+      width: min(280px, 55vw);
+      height: auto;
+      margin-bottom: 1.25rem;
+      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.35));
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      color: var(--peach);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+    .hero-tagline {
+      max-width: 34rem;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      font-weight: 300;
+      opacity: 0.92;
+      margin-bottom: 1.75rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.6rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .btn-primary {
+      background: var(--coral);
+      color: var(--teal);
+    }
+    .btn-primary:hover { background: var(--peach); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--peach);
+      border-color: rgba(247, 230, 222, 0.55);
+    }
+    .btn-ghost:hover {
+      border-color: var(--peach);
+      background: rgba(247, 230, 222, 0.08);
+    }
+
+    /* Booking */
+    .booking-section {
+      margin-top: -3.5rem;
+      position: relative;
+      z-index: 5;
+      padding: 0 0 1rem;
+    }
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr 1.2fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.35rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(231, 180, 156, 0.35);
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; position: relative; }
+    .form-group label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid rgba(6, 40, 48, 0.15);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--teal);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      border-color: var(--teal-mid);
+    }
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+    .guest-dropdown {
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 0.85rem;
+      display: none;
+      z-index: 20;
+      border: 1px solid rgba(6, 40, 48, 0.08);
+    }
+    .guest-dropdown.open { display: block; }
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0;
+    }
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .guest-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(6, 40, 48, 0.2);
+      background: #fff;
+      cursor: pointer;
+      color: var(--teal);
+    }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .booking-widget .btn-primary {
+      height: fit-content;
+      padding: 0.85rem 1.5rem;
+      white-space: nowrap;
+    }
+
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 3rem;
+    }
+    .section-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal-mid);
+      margin-bottom: 0.7rem;
+      font-weight: 500;
+    }
+    .section-title {
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      color: var(--teal);
+      margin-bottom: 0.85rem;
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    /* Intro */
+    .intro {
+      background:
+        linear-gradient(165deg, var(--sage-light) 0%, var(--peach) 55%, #fff 100%);
+      padding: 4.5rem 0;
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .intro-text .section-title { text-align: left; }
+    .intro-text .section-eyebrow { text-align: left; }
+    .intro-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+    .intro-text .highlight {
+      color: var(--teal);
+      font-weight: 500;
+    }
+    .intro-image {
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      min-height: 340px;
+    }
+    .intro-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .intro-image:hover img { transform: scale(1.04); }
+
+    /* Rooms */
+    .rooms { background: #fff; }
+    .rooms-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: -1.5rem auto 2rem;
+      max-width: 640px;
+    }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .room-card {
+      background: var(--peach);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(231, 180, 156, 0.4);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .room-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+    .room-card-body { padding: 1.6rem 1.5rem 1.75rem; }
+    .room-card h3 {
+      font-size: 1.55rem;
+      margin-bottom: 0.45rem;
+      color: var(--teal);
+    }
+    .room-meta {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+    .room-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+    .room-price {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--teal-mid);
+    }
+    .room-price span {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--muted);
+    }
+    .price-table {
+      margin-top: 1.1rem;
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .price-table th,
+    .price-table td {
+      text-align: left;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(6, 40, 48, 0.08);
+    }
+    .price-table th {
+      font-weight: 500;
+      color: var(--teal);
+      width: 42%;
+    }
+    .price-table td { color: var(--muted); }
+
+    .jacuzzi-banner {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--teal);
+      color: var(--peach);
+    }
+    .jacuzzi-banner img {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+    }
+    .jacuzzi-copy { padding: 2.25rem 2rem; }
+    .jacuzzi-copy h3 {
+      font-size: 1.7rem;
+      margin-bottom: 0.85rem;
+      color: var(--peach);
+    }
+    .jacuzzi-copy p {
+      opacity: 0.88;
+      margin-bottom: 1.25rem;
+      font-size: 0.98rem;
+    }
+    .jacuzzi-rates {
+      list-style: none;
+      font-size: 0.95rem;
+    }
+    .jacuzzi-rates li {
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(247, 230, 222, 0.15);
+    }
+    .jacuzzi-rates strong { color: var(--coral); }
+
+    /* Amenities */
+    .amenities {
+      background:
+        radial-gradient(ellipse at top right, rgba(133, 193, 176, 0.25), transparent 50%),
+        var(--peach);
+    }
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .amenity-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(133, 193, 176, 0.35);
+      border-radius: var(--radius);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .amenity-item:hover {
+      transform: translateY(-3px);
+      border-color: var(--sage);
+    }
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 0.85rem;
+      color: var(--teal-mid);
+    }
+    .amenity-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .amenity-item span {
+      font-size: 0.84rem;
+      color: var(--muted);
+      display: block;
+      line-height: 1.35;
+    }
+    .amenities-missing {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: var(--teal);
+      color: var(--peach);
+    }
+    .gallery .section-title { color: var(--peach); }
+    .gallery .section-desc { color: rgba(247, 230, 222, 0.72); }
+    .gallery .section-eyebrow { color: var(--coral); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 0.75rem;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Location / surroundings */
+    .location { background: #fff; }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .location-text h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      color: var(--teal);
+    }
+    .location-text > p {
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .location-details { list-style: none; margin-bottom: 2rem; }
+    .location-details li {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(6, 40, 48, 0.08);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .location-details strong {
+      min-width: 95px;
+      font-weight: 500;
+      color: var(--teal);
+    }
+    .surroundings {
+      display: grid;
+      gap: 1rem;
+    }
+    .surround-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1rem;
+      align-items: center;
+      background: var(--peach);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(231, 180, 156, 0.35);
+    }
+    .surround-item img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+    }
+    .surround-item h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--teal);
+      margin-bottom: 0.25rem;
+    }
+    .surround-item p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-right: 0.75rem;
+      line-height: 1.4;
+    }
+    .map-placeholder {
+      margin-top: 1.5rem;
+      background: var(--sage-light);
+      border-radius: var(--radius);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px dashed var(--sage);
+      color: var(--muted);
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .map-placeholder svg {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.75rem;
+      color: var(--teal-mid);
+    }
+
+    /* Trust */
+    .trust {
+      background:
+        linear-gradient(180deg, var(--peach), var(--sage-light));
+    }
+    .trust-placeholder-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--teal-mid);
+      font-style: italic;
+      margin-bottom: 2rem;
+      padding: 0.55rem 1rem;
+      background: rgba(13, 91, 109, 0.08);
+      border-radius: 6px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 1.75rem;
+      border-radius: var(--radius);
+      border-top: 3px solid var(--coral);
+    }
+    .testimonial-card blockquote {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--teal);
+      margin-bottom: 1rem;
+      line-height: 1.45;
+    }
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .testimonial-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--peach);
+      color: var(--teal-mid);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--teal);
+      color: rgba(247, 230, 222, 0.8);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand img {
+      height: 48px;
+      width: auto;
+      margin-bottom: 1rem;
+      filter: brightness(0) invert(1);
+      opacity: 0.95;
+    }
+    .footer-brand p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      max-width: 340px;
+      opacity: 0.78;
+    }
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: var(--peach);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.15rem;
+      font-weight: 500;
+    }
+    .footer-nav ul { list-style: none; }
+    .footer-nav li { margin-bottom: 0.55rem; }
+    .footer-nav a,
+    .footer-contact a,
+    .footer-contact p {
+      font-size: 0.9rem;
+      opacity: 0.78;
+      display: block;
+      margin-bottom: 0.4rem;
+      transition: opacity var(--transition);
+    }
+    .footer-nav a:hover,
+    .footer-contact a:hover { opacity: 1; }
+    .socials {
+      display: flex;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+    .socials a {
+      opacity: 0.8;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid transparent;
+    }
+    .socials a:hover {
+      opacity: 1;
+      border-bottom-color: var(--coral);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(247, 230, 222, 0.12);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.78rem;
+      opacity: 0.5;
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 960px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary { grid-column: span 2; }
+      .intro-grid,
+      .rooms-grid,
+      .location-grid,
+      .jacuzzi-banner { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { height: 200px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .jacuzzi-banner img { min-height: 220px; }
+    }
+
+    @media (max-width: 560px) {
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item { height: 220px; }
+      .surround-item { grid-template-columns: 88px 1fr; }
+      .surround-item img { width: 88px; height: 88px; }
+      .hero-content { padding-bottom: 5.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="Silazari Klapkalnciems">
+        <img src="https://silazari.lv/wp-content/uploads/2024/01/Group-24.svg" alt="Silazari">
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Mājas</a></li>
+          <li><a href="#amenities">Ērtības</a></li>
+          <li><a href="#gallery">Galerija</a></li>
+          <li><a href="#location">Apkārtne</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Rezervēt</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Atvērt izvēlni">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Aizvērt">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Mājas</a>
+    <a href="#amenities">Ērtības</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Apkārtne</a>
+    <a href="#booking">Rezervēt</a>
+    <a href="tel:+37128304413">+371 28304413</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <img class="hero-brand" src="https://silazari.lv/wp-content/uploads/2024/01/Group-24.svg" alt="Silazari">
+      <h1>Silazari Klapkalnciems</h1>
+      <p class="hero-tagline">Ģimenes atpūtas mājas priežu meža ielokā — 7 minūšu gājienā līdz Baltijas jūrai caur Lāčupītes dendrāriju.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">Rezervēt uzturēšanos</a>
+        <a href="#rooms" class="btn btn-ghost">Skatīt mājas</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm">
+        <div class="form-group">
+          <label for="checkin">Ierašanās</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Izbraukšana</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Viesi</label>
+          <button type="button" class="guest-trigger" id="guestTrigger">
+            <span id="guestSummary">4 pieaugušie</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown">
+            <div class="guest-row">
+              <span>Pieaugušie</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Samazināt">−</button>
+                <span id="adultsCount">4</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Palielināt">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Bērni</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Samazināt">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Palielināt">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomType">Māja</label>
+          <select id="roomType" name="roomType">
+            <option value="any">Jebkura māja</option>
+            <option value="liela">Lielā Māja</option>
+            <option value="maza">Mazā Māja</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Meklēt</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="intro reveal">
+    <div class="container intro-grid">
+      <div class="intro-text">
+        <p class="section-eyebrow">Par mums</p>
+        <h2 class="section-title">Atpūtas mājas Klapkalnciemā</h2>
+        <p>Vairākus gadus kopts un lolots <span class="highlight">ģimenes projekts</span> atpūtas māju izveidei piejūrā — Tukuma novada Engures pagasta Klapkalnciemā, Silazaros.</p>
+        <p>Skaistākā un tīrākā Latvijas pludmale pašā Latvijas rivjērā ir tikai <span class="highlight">7 minūšu gājiena</span> attālumā caur pasakaino Lāčupītes dendrāriju.</p>
+      </div>
+      <div class="intro-image">
+        <img src="https://silazari.lv/wp-content/uploads/2024/01/silazari-outside.webp" alt="Silazari atpūtas mājas teritorija">
+      </div>
+    </div>
+  </section>
+
+  <section class="rooms reveal" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Mūsu viesu mājas</p>
+        <h2 class="section-title">Lielā un Mazā Māja</h2>
+        <p class="section-desc">Divas pilnībā aprīkotas brīvdienu mājas ar terasi, grillu un džakuzi — kā publicēts silazari.lv.</p>
+      </div>
+      <p class="rooms-note">Cena norādīta par 4 viesiem; katrs nākamais +20&nbsp;EUR. Bērnus līdz 8 gadu vecumam neiekļauj. Svētku laikā cenas var atšķirties.</p>
+
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img src="https://silazari.lv/wp-content/uploads/2024/01/big2x.webp" alt="Lielā Māja Silazari">
+          <div class="room-card-body">
+            <h3>Lielā Māja</h3>
+            <p class="room-meta">53 m² · līdz 6 viesiem · 1 king + 2 single + sofa bed</p>
+            <p class="room-desc">Divu atsevišķu guļamistabu māja ar izvelkamo dīvānu viesistabā. Privāts džakuzi uz terases, pilnībā aprīkota virtuve un vannasistaba, kondicionieris un apkure.</p>
+            <p class="room-price">No 160&nbsp;EUR <span>/ dienā (jūnijs, darba dienas)</span></p>
+            <table class="price-table" aria-label="Lielā Māja vasaras cenas">
+              <tbody>
+                <tr><th>Jūnijs</th><td>160–210 EUR/dienā</td></tr>
+                <tr><th>Jūlijs</th><td>180–230 EUR/dienā</td></tr>
+                <tr><th>Augusts</th><td>170–220 EUR/dienā</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <img src="https://silazari.lv/wp-content/uploads/2024/01/small2x.webp" alt="Mazā Māja Silazari">
+          <div class="room-card-body">
+            <h3>Mazā Māja</h3>
+            <p class="room-meta">35 m² · ērta līdz 4 · sagulēt var 6 · king + loft + sofa</p>
+            <p class="room-desc">Vienas guļamistabas māja ar pusstāvā esošu divguļamo vietu un izvelkamo dīvānu. Pilnībā aprīkota virtuve, vannasistaba, džakuzi, kondicionieris un apkure.</p>
+            <p class="room-price">No 150&nbsp;EUR <span>/ dienā (jūnijs, Sv–Ce)</span></p>
+            <table class="price-table" aria-label="Mazā Māja vasaras cenas">
+              <tbody>
+                <tr><th>Jūnijs</th><td>150–200 EUR/dienā</td></tr>
+                <tr><th>Jūlijs</th><td>170–220 EUR/dienā</td></tr>
+                <tr><th>Augusts</th><td>165–210 EUR/dienā</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+
+      <div class="jacuzzi-banner">
+        <img src="https://silazari.lv/wp-content/uploads/2024/03/dzakuzi.jpg" alt="Džakuzi masāžas kubls Silazari">
+        <div class="jacuzzi-copy">
+          <h3>Džakuzi masāžas kubls</h3>
+          <p>Atpūta džakuzi priežu mežu ielokā zem zvaigznēm — relaksācija siltajā ūdenī, klusumā un mierā.</p>
+          <ul class="jacuzzi-rates">
+            <li>Pirmdiena–Ceturtdiena, Svētdiena: <strong>60 EUR/dienā</strong></li>
+            <li>Piektdiena, Sestdiena: <strong>70 EUR/dienā</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="amenities reveal" id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Kas pieejams</p>
+        <h2 class="section-title">Ērtības</h2>
+        <p class="section-desc">Tikai tas, kas minēts oficiālajā Silazari mājaslapā.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 10h16v8H4z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v2"/></svg></div>
+          <span>Pilnībā aprīkota virtuve</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M6 18V9l6-4 6 4v9"/><path d="M10 18v-4h4v4"/></svg></div>
+          <span>Privāta terase ar āra mēbelēm</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
+          <span>Kondicionieris</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M12 3v10"/><path d="M8 8c0 4 4 6 4 9a2 2 0 0 0 4 0c0-3 4-5 4-9"/><path d="M8 8h12"/></svg></div>
+          <span>Apkure aukstajam periodam</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M5 14c2 0 3-2 7-2s5 2 7 2"/><path d="M5 18c2 0 3-2 7-2s5 2 7 2"/><path d="M8 8h8v4H8z"/></svg></div>
+          <span>Džakuzi masāžas kubls</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 20V10l5-5 5 5v10"/><circle cx="12" cy="13" r="2"/></svg></div>
+          <span>Kafijas automāts</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M6 18c2-4 4-6 6-6s4 2 6 6"/><path d="M8 10h8"/><path d="M9 7h6v3H9z"/></svg></div>
+          <span>Grills</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 16c3-6 13-6 16 0"/><path d="M7 16v2M17 16v2"/><path d="M12 8c-2 2-2 5 0 6 2-1 2-4 0-6z"/></svg></div>
+          <span>Šūpuļtīkls</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><circle cx="8" cy="7" r="2"/><circle cx="16" cy="7" r="2"/><path d="M4 20v-2a4 4 0 0 1 4-4h0"/><path d="M12 20v-2a4 4 0 0 1 4-4h0"/><path d="M12 14a3 3 0 0 0-3-3"/><path d="M20 20v-1a3 3 0 0 0-2-2.8"/></svg></div>
+          <span>Bērnu atrakciju laukums</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M3 14c4-6 14-6 18 0"/><path d="M3 18h18"/><path d="M12 6v4"/></svg></div>
+          <span>Jūra 7 minūšu gājienā</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M12 22c4-4 6-7.5 6-11a6 6 0 1 0-12 0c0 3.5 2 7 6 11z"/><circle cx="12" cy="11" r="2.2"/></svg></div>
+          <span>Sakopta teritorija priežu mežā</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M7 8h10v8H7z"/><path d="M9 16v2M15 16v2"/></svg></div>
+          <span>Privāta vannasistaba</span>
+        </div>
+      </div>
+      <p class="amenities-missing">Avotā nav norādīts: baseins, SPA, brokastis, autostāvvietas politika, mājdzīvnieku politika, Wi‑Fi — šajā sadaļā nav iekļauts.</p>
+    </div>
+  </section>
+
+  <section class="gallery reveal" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Ieskats</p>
+        <h2 class="section-title">Foto galerija</h2>
+        <p class="section-desc">Attēli no oficiālās Silazari Klapkalnciems mājaslapas.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://silazari.lv/wp-content/uploads/2024/02/Photo2-scaled.jpg" alt="Silazari māja un teritorija">
+        </div>
+        <div class="gallery-item">
+          <img src="https://silazari.lv/wp-content/uploads/2024/02/Photo3-scaled.jpg" alt="Silazari interjers">
+        </div>
+        <div class="gallery-item">
+          <img src="https://silazari.lv/wp-content/uploads/2024/02/Photo4-scaled.jpg" alt="Silazari terase">
+        </div>
+        <div class="gallery-item">
+          <img src="https://silazari.lv/wp-content/uploads/2024/02/Photo5-scaled.jpg" alt="Silazari eksterjers">
+        </div>
+        <div class="gallery-item">
+          <img src="https://silazari.lv/wp-content/uploads/2024/01/beach.jpg" alt="Klapkalnciema pludmale">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="location reveal" id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Kur mēs esam</p>
+        <h2 class="section-title">Atrašanās vieta un apkārtne</h2>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Klapkalnciems, Engures pagasts</h3>
+          <p>Ģimenes atpūtas mājas Silazaros — apmēram 60 km no Rīgas, Latvijas rivjērā Tukuma novadā.</p>
+          <ul class="location-details">
+            <li><strong>Adrese</strong> Klapkalnciems, Engures pag., Tukuma nov. “Silazari”, LV-3113</li>
+            <li><strong>GPS</strong> 57.043364, 23.354466</li>
+            <li><strong>Tālrunis</strong> +371 28304413</li>
+            <li><strong>Tālrunis</strong> +371 20330956</li>
+            <li><strong>E-pasts</strong> silazarihome@gmail.com</li>
+          </ul>
+          <div class="map-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <p><strong>Kartes vieta</strong></p>
+            <p style="font-size:0.85rem;margin-top:0.4rem;">Silazari, Klapkalnciems, LV-3113</p>
+          </div>
+        </div>
+        <div class="surroundings">
+          <article class="surround-item">
+            <img src="https://silazari.lv/wp-content/uploads/2024/01/silazari-forrest.jpg" alt="Lāčupītes dendrārijs">
+            <div>
+              <h4>Lāčupītes dendrārijs</h4>
+              <p>Īpaši aizsargājama dabas teritorija starp Apšuciemu un Klapkalnciemu — pastaigu taka ar vietējiem un svešzemju augiem.</p>
+            </div>
+          </article>
+          <article class="surround-item">
+            <img src="https://silazari.lv/wp-content/uploads/2024/01/Resturant-silazari.webp" alt="Klapkalnciema zivis un restorāni">
+            <div>
+              <h4>Klapkalnciema Zivis un Ragaciems</h4>
+              <p>Tuvējais tirdziņš ar svaigām zivīm, kā arī Ragaciema restorāni “Ribas” un “Bermudas”.</p>
+            </div>
+          </article>
+          <article class="surround-item">
+            <img src="https://silazari.lv/wp-content/uploads/2024/01/beach.jpg" alt="Klapkalnciema pludmale">
+            <div>
+              <h4>Pludmale un vasaras bārs</h4>
+              <p>Baltijas jūra 7 minūšu gājienā caur dendrāriju; vasaras sezonā darbojas arī bārs.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust reveal" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Viesu iespaidi</p>
+        <h2 class="section-title">Ko saka viesi</h2>
+      </div>
+      <p class="trust-placeholder-note">Oficiālajā silazari.lv nav atrasts reitinga badge vai viesu atsauksmju bloks — zemāk ir skaidri atzīmēti prototipa paraugteksti.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>“Mierīga atpūta priežu mežā ar īsu pastaigu līdz jūrai — tieši tas, ko meklējām ģimenes brīvdienām.”</blockquote>
+          <p class="testimonial-author">— Parauga viesis A</p>
+          <span class="testimonial-badge">Parauga atsauksme</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Lielā māja ar džakuzi uz terases bija ideāla kompānijai. Virtuve un terase ļāva ērti uzturēties visu dienu.”</blockquote>
+          <p class="testimonial-author">— Parauga viesis B</p>
+          <span class="testimonial-badge">Parauga atsauksme</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Bērniem patika laukums, mums — klusums un Lāčupītes taka. Rezervēsim atkal.”</blockquote>
+          <p class="testimonial-author">— Parauga viesis C</p>
+          <span class="testimonial-badge">Parauga atsauksme</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://silazari.lv/wp-content/uploads/2024/01/Group-24.svg" alt="Silazari">
+          <p>Ģimenes atpūtas mājas Klapkalnciemā, Silazaros — jūra, dendrārijs un mierīga Latvijas rivjēra.</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/Silazari" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.instagram.com/silazari_klapkalnciems/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://silazari.lv/" target="_blank" rel="noopener">silazari.lv</a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <h4>Izpētīt</h4>
+          <ul>
+            <li><a href="#rooms">Mājas un cenas</a></li>
+            <li><a href="#amenities">Ērtības</a></li>
+            <li><a href="#gallery">Galerija</a></li>
+            <li><a href="#booking">Rezervēt</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Kontakti</h4>
+          <p>Klapkalnciems, Engures pag., Tukuma nov. “Silazari”, LV-3113</p>
+          <a href="tel:+37128304413">+371 28304413</a>
+          <a href="tel:+37120330956">+371 20330956</a>
+          <a href="mailto:silazarihome@gmail.com">silazarihome@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Silazari Klapkalnciems — prototipa demonstrācija (avots: silazari.lv)</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+    checkin.addEventListener('change', () => {
+      if (checkin.value) {
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) checkout.value = checkout.min;
+      }
+    });
+
+    let adults = 4;
+    let children = 0;
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestDropdown = document.getElementById('guestDropdown');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' pieaugušais' : ' pieaugušie');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' bērns' : ' bērni');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      guestDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', () => guestDropdown.classList.remove('open'));
+    guestDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 8) { adults++; updateGuestSummary(); } });
+    document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+    document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 6) { children++; updateGuestSummary(); } });
+    document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+    updateGuestSummary();
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Rezervācijas meklēšana ir UI prototips — rezervāciju sistēma nav pieslēgta.');
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
