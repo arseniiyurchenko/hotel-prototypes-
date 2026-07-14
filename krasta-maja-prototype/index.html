@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krasta Māja — Brīvdienu māja Kurzemes jūrmalā</title>
+  <meta name="description" content="Krasta Māja — privāta brīvdienu māja pie jūras Kurzemē. Vesela māja jūsu ģimenei, ar saunu, dārzu un klusu skatu uz kāpām.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pine: #1c3a32;
+      --pine-deep: #142a24;
+      --sea: #3d6f7c;
+      --sea-soft: #6a9aaa;
+      --mist: #e6eef0;
+      --mist-deep: #d0dde1;
+      --stone: #f3f6f7;
+      --ink: #182422;
+      --ink-soft: #4a5854;
+      --wood: #7a6548;
+      --wood-soft: #a8926e;
+      --white: #ffffff;
+      --font-display: "Bricolage Grotesque", Georgia, serif;
+      --font-body: "Figtree", sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --header-h: 4.5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--stone);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1120px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.35s var(--ease), backdrop-filter 0.35s;
+    }
+
+    .site-header.scrolled {
+      background: rgba(20, 42, 36, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.84rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-desktop a:hover { color: var(--white); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 1.1rem;
+      background: var(--white);
+      color: var(--pine-deep) !important;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      border-radius: 2px;
+      transition: transform 0.25s var(--ease), background 0.2s;
+    }
+
+    .header-cta:hover {
+      background: var(--mist);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: var(--pine-deep);
+      padding: 1.5rem;
+      flex-direction: column;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .nav-mobile-top .logo { color: var(--white); }
+
+    .nav-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .nav-mobile ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .nav-mobile a {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .nav-mobile .header-cta {
+      margin-top: 2rem;
+      align-self: flex-start;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.06);
+      animation: hero ken 18s var(--ease) forwards;
+    }
+
+    @keyframes heroKen {
+      from { transform: scale(1.06); }
+      to { transform: scale(1); }
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 42, 36, 0.35) 0%, rgba(20, 42, 36, 0.15) 35%, rgba(20, 42, 36, 0.72) 100%),
+        linear-gradient(90deg, rgba(20, 42, 36, 0.45) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 0 clamp(3.5rem, 8vw, 5.5rem);
+      width: min(1120px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    .hero-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(3.4rem, 11vw, 7.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      transform: translateY(28px);
+      animation: riseIn 1s var(--ease) 0.15s forwards;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.35rem, 2.8vw, 2rem);
+      line-height: 1.25;
+      max-width: 18ch;
+      margin-bottom: 0.85rem;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: riseIn 1s var(--ease) 0.35s forwards;
+    }
+
+    .hero-support {
+      font-size: clamp(1rem, 1.6vw, 1.125rem);
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 34ch;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: riseIn 1s var(--ease) 0.5s forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: riseIn 1s var(--ease) 0.65s forwards;
+    }
+
+    @keyframes riseIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.45rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.25s var(--ease), background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--pine-deep);
+    }
+
+    .btn-primary:hover { background: var(--mist); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* —— Reveal on scroll —— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Intro —— */
+    .intro {
+      padding: clamp(4rem, 10vw, 7rem) 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(106, 154, 170, 0.18), transparent 60%),
+        radial-gradient(ellipse 70% 50% at 90% 80%, rgba(28, 58, 50, 0.08), transparent 55%),
+        var(--stone);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .intro-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sea);
+      margin-bottom: 0.85rem;
+    }
+
+    .intro h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--pine-deep);
+      margin-bottom: 1.1rem;
+      max-width: 14ch;
+    }
+
+    .intro p {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      max-width: 38ch;
+    }
+
+    .intro-visual {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 5 / 4;
+    }
+
+    .intro-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* —— Booking (interactive) —— */
+    .booking {
+      padding: clamp(3rem, 7vw, 5rem) 0;
+      background: var(--pine);
+      color: var(--white);
+    }
+
+    .booking-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: end;
+    }
+
+    .booking h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 12ch;
+    }
+
+    .booking-support {
+      margin-top: 0.75rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+      max-width: 28ch;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 0.65rem;
+      align-items: end;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .field label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .field input,
+    .field select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.7rem 0.75rem;
+      background: var(--white);
+      color: var(--ink);
+      border: none;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .guest-wrap { position: relative; }
+
+    .guest-trigger {
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      left: 0;
+      right: 0;
+      min-width: 220px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 1rem;
+      z-index: 20;
+      border-radius: 2px;
+      box-shadow: 0 12px 32px rgba(20, 42, 36, 0.18);
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.4rem 0;
+    }
+
+    .guest-row + .guest-row { border-top: 1px solid var(--mist-deep); }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .guest-controls button {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--mist-deep);
+      background: var(--stone);
+      border-radius: 2px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--pine);
+    }
+
+    .guest-controls span {
+      min-width: 1.2rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .booking-form .btn-primary {
+      height: 42px;
+      padding-inline: 1.25rem;
+      white-space: nowrap;
+    }
+
+    .booking-note {
+      grid-column: 1 / -1;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.55);
+      margin-top: 0.25rem;
+    }
+
+    /* —— Spaces —— */
+    .spaces {
+      padding: clamp(4rem, 9vw, 6.5rem) 0;
+      background: var(--white);
+    }
+
+    .section-head {
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      max-width: 36rem;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.8vw, 2.85rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--pine-deep);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-head p {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    .space-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--mist-deep);
+    }
+
+    .space-item {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+      border-bottom: 1px solid var(--mist-deep);
+      align-items: center;
+    }
+
+    .space-item:nth-child(even) .space-copy { order: 2; }
+    .space-item:nth-child(even) .space-photo { order: 1; }
+
+    .space-photo {
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+    }
+
+    .space-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease);
+    }
+
+    .space-item:hover .space-photo img { transform: scale(1.04); }
+
+    .space-copy h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+      font-weight: 700;
+      color: var(--pine-deep);
+      margin-bottom: 0.5rem;
+    }
+
+    .space-meta {
+      font-size: 0.85rem;
+      color: var(--sea);
+      font-weight: 600;
+      margin-bottom: 0.65rem;
+    }
+
+    .space-copy p {
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+      max-width: 38ch;
+      margin-bottom: 0.85rem;
+    }
+
+    .space-price {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--pine);
+    }
+
+    .space-price span {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    /* —— Atmosphere —— */
+    .atmosphere {
+      position: relative;
+      min-height: 70svh;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .atmosphere-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .atmosphere-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .atmosphere-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(20, 42, 36, 0.78) 0%, rgba(20, 42, 36, 0.35) 55%, rgba(20, 42, 36, 0.2) 100%);
+    }
+
+    .atmosphere-content {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, calc(100% - 2.5rem));
+      margin-inline: auto;
+      max-width: 28rem;
+    }
+
+    .atmosphere-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .atmosphere-content p {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .amenity-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .amenity-list li {
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .amenity-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 0.45rem;
+      height: 0.45rem;
+      background: var(--sea-soft);
+      border-radius: 1px;
+    }
+
+    /* —— Gallery —— */
+    .gallery {
+      padding: clamp(4rem, 9vw, 6.5rem) 0;
+      background:
+        linear-gradient(180deg, var(--mist) 0%, var(--stone) 100%);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 0.75rem;
+    }
+
+    .gallery-grid figure {
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .gallery-grid figure:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+
+    .gallery-grid figure:hover img { transform: scale(1.05); }
+
+    /* —— Location —— */
+    .location {
+      padding: clamp(4rem, 9vw, 6.5rem) 0;
+      background: var(--white);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: clamp(2rem, 5vw, 3.5rem);
+      align-items: start;
+    }
+
+    .location-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .location-item strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--pine-deep);
+      margin-bottom: 0.2rem;
+    }
+
+    .location-item span {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+
+    .map-placeholder {
+      aspect-ratio: 4 / 3;
+      background:
+        linear-gradient(135deg, var(--mist-deep), var(--mist)),
+        repeating-linear-gradient(
+          -18deg,
+          transparent,
+          transparent 12px,
+          rgba(61, 111, 124, 0.06) 12px,
+          rgba(61, 111, 124, 0.06) 13px
+        );
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--pine);
+      border: 1px solid var(--mist-deep);
+    }
+
+    .map-placeholder strong {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .map-placeholder span {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    /* —— Closing CTA —— */
+    .closing {
+      padding: clamp(4rem, 10vw, 7rem) 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 30%, rgba(106, 154, 170, 0.22), transparent 55%),
+        var(--pine-deep);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .closing h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.85rem;
+    }
+
+    .closing p {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.05rem;
+      max-width: 34ch;
+      margin: 0 auto 1.75rem;
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.75);
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-grid p { font-size: 0.92rem; max-width: 28ch; }
+
+    .footer-grid h3 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-grid ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .footer-grid a { font-size: 0.9rem; transition: color 0.2s; }
+    .footer-grid a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1.25rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.45);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 900px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
+
+      .intro-grid,
+      .booking-inner,
+      .location-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-form .btn-primary {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+
+      .space-item,
+      .space-item:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .space-item:nth-child(even) .space-copy,
+      .space-item:nth-child(even) .space-photo {
+        order: initial;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-grid figure:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        aspect-ratio: 16 / 10;
+      }
+
+      .gallery-grid figure { aspect-ratio: 4 / 3; }
+    }
+
+    @media (max-width: 560px) {
+      .booking-form { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="logo">Krasta Māja</a>
+      <nav aria-label="Galvenā navigācija">
+        <ul class="nav-desktop">
+          <li><a href="#intro">Māja</a></li>
+          <li><a href="#spaces">Telpas</a></li>
+          <li><a href="#atmosphere">Vieta</a></li>
+          <li><a href="#gallery">Galerija</a></li>
+          <li><a href="#location">Atrašanās</a></li>
+        </ul>
+      </nav>
+      <a class="header-cta" href="#booking">Rezervēt</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Atvērt izvēlni" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="mobileNav" hidden>
+    <div class="nav-mobile-top">
+      <span class="logo">Krasta Māja</span>
+      <button class="nav-close" id="navClose" aria-label="Aizvērt izvēlni">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+    </div>
+    <ul>
+      <li><a href="#intro">Māja</a></li>
+      <li><a href="#spaces">Telpas</a></li>
+      <li><a href="#atmosphere">Vieta</a></li>
+      <li><a href="#gallery">Galerija</a></li>
+      <li><a href="#location">Atrašanās</a></li>
+    </ul>
+    <a class="header-cta" href="#booking">Rezervēt</a>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Sākums">
+      <div class="hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1499793987933-ecf4cbb1b4a2?auto=format&fit=crop&w=2000&q=80"
+          alt="Koka brīvdienu māja pie jūras saules gaismā"
+          width="2000"
+          height="1333"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="hero-content">
+        <p class="hero-brand">Krasta Māja</p>
+        <h1 class="hero-headline">Privāta brīvdienu māja pie jūras</h1>
+        <p class="hero-support">Vesela māja jūsu ģimenei — klusa, gaisīga, ar skatu uz kāpām un saunu dārzā.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#booking">Skatīt pieejamību</a>
+          <a class="btn btn-ghost" href="#intro">Par māju</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro" id="intro">
+      <div class="container intro-grid reveal">
+        <div>
+          <p class="intro-label">Viesu nams · Kurzeme</p>
+          <h2>Māja, kurā atgriezties</h2>
+          <p>Krasta Māja ir neliela brīvdienu māja jūras tuvumā — ne viesnīca, bet mājas sajūta. Gatavojiet virtuvē, sēdiet uz terases, ejiet kājām līdz pludmalei un vakarus pavadiet saunā.</p>
+        </div>
+        <div class="intro-visual">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80"
+            alt="Gaiša interjera dzīvojamā istaba ar lieliem logiem"
+            width="1400"
+            height="933"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="booking">
+      <div class="container booking-inner reveal">
+        <div>
+          <h2>Rezervējiet savas dienas</h2>
+          <p class="booking-support">Māja tiek izīrēta kā viena vienība. Minimālais uzturēšanās laiks — 2 naktis.</p>
+        </div>
+        <form class="booking-form" id="bookingForm" action="#" method="get">
+          <div class="field">
+            <label for="checkin">Ierodas</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Aizbrauc</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field guest-wrap">
+            <label for="guestTrigger">Viesi</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestDropdown">2 pieaugušie</button>
+            <div class="guest-dropdown" id="guestDropdown" role="dialog" aria-label="Viesu skaits">
+              <div class="guest-row">
+                <span>Pieaugušie</span>
+                <div class="guest-controls">
+                  <button type="button" id="adultsMinus" aria-label="Mazāk pieaugušo">−</button>
+                  <span id="adultsCount">2</span>
+                  <button type="button" id="adultsPlus" aria-label="Vairāk pieaugušo">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <span>Bērni</span>
+                <div class="guest-controls">
+                  <button type="button" id="childrenMinus" aria-label="Mazāk bērnu">−</button>
+                  <span id="childrenCount">0</span>
+                  <button type="button" id="childrenPlus" aria-label="Vairāk bērnu">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="stayType">Uzturēšanās</label>
+            <select id="stayType" name="stayType">
+              <option value="whole-house" selected>Visa māja</option>
+              <option value="weekend">Nedēļas nogale</option>
+              <option value="week">Visa nedēļa</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Pārbaudīt</button>
+          <p class="booking-note" id="bookingNote">Prototips — rezervācija netiek nosūtīta.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="spaces" id="spaces">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Telpas mājā</h2>
+          <p>Trīs guļamistabas, plaša dzīvojamā zona un sauna — viss vienā privātā mājā līdz 8 viesiem.</p>
+        </div>
+        <div class="space-list">
+          <article class="space-item reveal">
+            <div class="space-copy">
+              <h3>Galvenā guļamistaba</h3>
+              <p class="space-meta">2 viesi · skats uz dārzu</p>
+              <p>Plaša istaba ar divguļamo gultu, darba galdu un izeju uz terasi. Rīta gaisma no austrumu logiem.</p>
+              <p class="space-price">no €180 <span>/ naktī visa māja</span></p>
+            </div>
+            <div class="space-photo">
+              <img
+                src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=80"
+                alt="Gaiša guļamistaba ar koka detaļām"
+                width="1200"
+                height="800"
+                loading="lazy"
+              >
+            </div>
+          </article>
+          <article class="space-item reveal">
+            <div class="space-copy">
+              <h3>Dzīvojamā istaba</h3>
+              <p class="space-meta">Virtuve · ēdamzona · kamīns</p>
+              <p>Atvērtais plānojums ar pilnu virtuvi, garu galdu un mīkstajām mēbelēm pie kamīna. Vakariem — grāmatas un klusa mūzika.</p>
+              <p class="space-price">Ietilpst <span>mājas īrē</span></p>
+            </div>
+            <div class="space-photo">
+              <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
+                alt="Atvērta dzīvojamā istaba ar ēdamgaldu"
+                width="1200"
+                height="800"
+                loading="lazy"
+              >
+            </div>
+          </article>
+          <article class="space-item reveal">
+            <div class="space-copy">
+              <h3>Sauna un dārzs</h3>
+              <p class="space-meta">Privāta pirts · āra duša</p>
+              <p>Neliela koka sauna dārza stūrī, ar āra dušu un vietu ugunskuram. Ideāli pēc dienas jūrā.</p>
+              <p class="space-price">Ietilpst <span>mājas īrē</span></p>
+            </div>
+            <div class="space-photo">
+              <img
+                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80"
+                alt="Koka saunas interjers ar siltu apgaismojumu"
+                width="1200"
+                height="800"
+                loading="lazy"
+              >
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="atmosphere" id="atmosphere">
+      <div class="atmosphere-media">
+        <img
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80"
+          alt="Pludmale ar mierīgu jūru saulrietā"
+          width="2000"
+          height="1333"
+          loading="lazy"
+        >
+      </div>
+      <div class="atmosphere-content reveal">
+        <h2>Jūra desmit minūšu gājienā</h2>
+        <p>Kāpas, priežu mežs un plaša pludmale — dienas ritms šeit ir lēns. Māja ir jūsu bāze; pārējais ir daba.</p>
+        <ul class="amenity-list">
+          <li>Pilna virtuve un veļas mašīna</li>
+          <li>Bezmaksas autostāvvieta pie mājas</li>
+          <li>Wi-Fi un velosipēdu novietne</li>
+          <li>Mājdzīvnieki pēc iepriekšējas vienošanās</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Galerija</h2>
+          <p>Gaismas, koks un jūra — ieskats mājā un apkārtnē.</p>
+        </div>
+        <div class="gallery-grid reveal">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1400&q=80" alt="Mājas eksterjers ar baseinu un dārzu" width="1400" height="933" loading="lazy">
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80" alt="Guļamistaba ar mīkstu apgaismojumu" width="900" height="675" loading="lazy">
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?auto=format&fit=crop&w=900&q=80" alt="Virtuves zona ar koka virsmām" width="900" height="675" loading="lazy">
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=900&q=80" alt="Priežu mežs pie jūras" width="900" height="675" loading="lazy">
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80" alt="Viļņi pie smilšainas pludmales" width="900" height="675" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container location-grid">
+        <div class="reveal">
+          <div class="section-head">
+            <h2>Atrašanās vieta</h2>
+            <p>Kurzemes jūrmala, netālu no Jūrkalnes — starp priežu mežu un atklāto jūru.</p>
+          </div>
+          <div class="location-details">
+            <div class="location-item">
+              <strong>Adrese</strong>
+              <span>Jūras iela 12, Jūrkalnes pagasts, Kuldīgas novads</span>
+            </div>
+            <div class="location-item">
+              <strong>Attālumi</strong>
+              <span>Pludmale 10 min · Kuldīga 45 min · Rīga 2 h 15 min</span>
+            </div>
+            <div class="location-item">
+              <strong>Kontakti</strong>
+              <span>+371 20 000 000 · info@krastamaja.lv</span>
+            </div>
+          </div>
+        </div>
+        <div class="map-placeholder reveal" aria-label="Kartes vietturis">
+          <div>
+            <strong>Jūrkalne, Kurzeme</strong>
+            <span>Statiska kartes vieta prototipam</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="trust">
+      <div class="container reveal">
+        <h2>Gatavi pie jūras?</h2>
+        <p>Rezervējiet Krasta Māju savai nākamajai atpūtai — privāti, mierīgi, pie pašas jūras.</p>
+        <a class="btn btn-primary" href="#booking">Rezervēt uzturēšanos</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Krasta Māja</p>
+          <p>Privāta brīvdienu māja Kurzemes jūrmalā. Vesela māja jūsu ģimenei.</p>
+        </div>
+        <div>
+          <h3>Navigācija</h3>
+          <ul>
+            <li><a href="#intro">Māja</a></li>
+            <li><a href="#spaces">Telpas</a></li>
+            <li><a href="#gallery">Galerija</a></li>
+            <li><a href="#booking">Rezervācija</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Kontakti</h3>
+          <ul>
+            <li><a href="tel:+37120000000">+371 20 000 000</a></li>
+            <li><a href="mailto:info@krastamaja.lv">info@krastamaja.lv</a></li>
+            <li>Jūrkalne, Kurzeme</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Krasta Māja. Prototips.</span>
+        <span>Viesu nams · brīvdienu māja</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileNav = document.getElementById("mobileNav");
+      const navClose = document.getElementById("navClose");
+
+      const onScroll = () => {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      const openNav = () => {
+        mobileNav.hidden = false;
+        mobileNav.classList.add("open");
+        menuToggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeNav = () => {
+        mobileNav.classList.remove("open");
+        mobileNav.hidden = true;
+        menuToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      };
+
+      menuToggle.addEventListener("click", openNav);
+      navClose.addEventListener("click", closeNav);
+      mobileNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeNav);
+      });
+
+      // Guest picker
+      let adults = 2;
+      let children = 0;
+      const guestTrigger = document.getElementById("guestTrigger");
+      const guestDropdown = document.getElementById("guestDropdown");
+      const adultsCount = document.getElementById("adultsCount");
+      const childrenCount = document.getElementById("childrenCount");
+
+      const syncGuests = () => {
+        adultsCount.textContent = String(adults);
+        childrenCount.textContent = String(children);
+        const parts = [`${adults} pieaugušie`];
+        if (children > 0) parts.push(`${children} bērni`);
+        guestTrigger.textContent = parts.join(", ");
+      };
+
+      guestTrigger.addEventListener("click", () => {
+        const open = guestDropdown.classList.toggle("open");
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.getElementById("adultsPlus").addEventListener("click", () => {
+        if (adults < 8) { adults += 1; syncGuests(); }
+      });
+      document.getElementById("adultsMinus").addEventListener("click", () => {
+        if (adults > 1) { adults -= 1; syncGuests(); }
+      });
+      document.getElementById("childrenPlus").addEventListener("click", () => {
+        if (children < 6) { children += 1; syncGuests(); }
+      });
+      document.getElementById("childrenMinus").addEventListener("click", () => {
+        if (children > 0) { children -= 1; syncGuests(); }
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".guest-wrap")) {
+          guestDropdown.classList.remove("open");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Booking form (prototype only)
+      const form = document.getElementById("bookingForm");
+      const note = document.getElementById("bookingNote");
+      const checkin = document.getElementById("checkin");
+      const checkout = document.getElementById("checkout");
+
+      const today = new Date();
+      const iso = (d) => d.toISOString().split("T")[0];
+      const inDate = new Date(today); inDate.setDate(today.getDate() + 7);
+      const outDate = new Date(today); outDate.setDate(today.getDate() + 10);
+      checkin.min = iso(today);
+      checkout.min = iso(today);
+      checkin.value = iso(inDate);
+      checkout.value = iso(outDate);
+
+      checkin.addEventListener("change", () => {
+        checkout.min = checkin.value;
+        if (checkout.value && checkout.value <= checkin.value) {
+          const next = new Date(checkin.value);
+          next.setDate(next.getDate() + 2);
+          checkout.value = iso(next);
+        }
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const stay = document.getElementById("stayType").selectedOptions[0].text;
+        note.textContent = `Pieejamība pārbaudīta (prototips): ${checkin.value} → ${checkout.value}, ${guestTrigger.textContent}, ${stay}.`;
+      });
+
+      // Scroll reveal
+      const reveals = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      );
+      reveals.forEach((el) => io.observe(el));
+    })();
+  </script>
+</body>
+</html>
