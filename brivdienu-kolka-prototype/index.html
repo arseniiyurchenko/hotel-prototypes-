@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brīvdienu Kolka — Holiday Homes near Cape Kolka, Latvia</title>
+  <meta name="description" content="Comfortable holiday cottages in Kolka village, steps from Kolkasrags — where the Baltic Sea meets the Gulf of Riga.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #183a37;
+      --forest-deep: #0f2422;
+      --forest-mid: #255b56;
+      --sea: #4ab5ac;
+      --sea-soft: #a5e5df;
+      --gold: #e6be69;
+      --gold-dark: #c9a04e;
+      --sand: #eef3f1;
+      --sand-deep: #dce6e3;
+      --ink: #1a2b29;
+      --ink-soft: #4a5c59;
+      --white: #ffffff;
+      --shadow: 0 8px 32px rgba(15, 36, 34, 0.12);
+      --radius: 10px;
+      --ease: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(165, 229, 223, 0.35), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 90% 20%, rgba(230, 190, 105, 0.12), transparent 50%),
+        linear-gradient(180deg, #f4f8f7 0%, var(--sand) 40%, #e8f0ee 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    .container {
+      width: min(1140px, 92vw);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: background var(--ease), box-shadow var(--ease), padding var(--ease);
+    }
+
+    .site-header.scrolled {
+      background: rgba(15, 36, 34, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      padding: 0.7rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+    }
+
+    .logo img {
+      height: 42px;
+      width: auto;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text .brand {
+      font-family: 'Lora', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--gold);
+    }
+
+    .logo-text .place {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 0.15rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      transition: opacity var(--ease), color var(--ease);
+    }
+
+    .nav-desktop a:hover { opacity: 1; color: var(--gold); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 1.15rem;
+      background: var(--gold);
+      color: var(--forest-deep);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: background var(--ease), transform var(--ease);
+    }
+
+    .header-cta:hover {
+      background: var(--gold-dark);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 36, 34, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: 'Lora', serif;
+      font-size: 1.6rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://brivdienukolka.lv/wp-content/uploads/2024/04/brivdienu-kolka-main-hero--1920x1080.jpg')
+        center/cover no-repeat;
+      transform: scale(1.04);
+      animation: heroDrift 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.04) translate(0, 0); }
+      to { transform: scale(1.08) translate(-1.5%, -1%); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(15,36,34,0.78) 0%, rgba(15,36,34,0.45) 48%, rgba(15,36,34,0.25) 100%),
+        linear-gradient(to top, rgba(15,36,34,0.88) 0%, rgba(15,36,34,0.2) 45%, rgba(15,36,34,0.35) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 0 7.5rem;
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.8rem, 8vw, 5.25rem);
+      font-weight: 700;
+      line-height: 1.02;
+      color: var(--white);
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+
+    .hero-brand span {
+      display: block;
+      color: var(--gold);
+    }
+
+    .hero-value {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 300;
+      max-width: 34rem;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      line-height: 1.55;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--forest-deep);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(230, 190, 105, 0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.45);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* Booking */
+    .booking-section {
+      position: relative;
+      z-index: 10;
+      margin-top: -3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .booking-widget {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1.75rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) auto;
+      gap: 1.15rem;
+      align-items: end;
+      border: 1px solid rgba(24, 58, 55, 0.06);
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--sand-deep);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--sand);
+      transition: border-color var(--ease);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--forest-mid);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--sand-deep);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--sand);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--sand-deep);
+      border-radius: 6px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      z-index: 50;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .guest-row span { font-size: 0.9rem; }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--sand-deep);
+      border-radius: 50%;
+      background: var(--white);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--ease);
+    }
+
+    .guest-btn:hover { background: var(--sand); }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      padding: 0.9rem 1.75rem;
+      white-space: nowrap;
+      height: fit-content;
+    }
+
+    .booking-note {
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    /* Sections */
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--forest-mid);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 0.85rem;
+      line-height: 1.2;
+    }
+
+    .section-desc {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    /* Accommodation */
+    .rooms { background: transparent; }
+
+    .rooms-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin: -1.5rem auto 2rem;
+      max-width: 520px;
+      font-style: italic;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(15, 36, 34, 0.07);
+      border: 1px solid rgba(24, 58, 55, 0.05);
+      transition: transform var(--ease), box-shadow var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .room-card-body {
+      padding: 1.35rem 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .room-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--forest);
+    }
+
+    .room-meta {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .room-price {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--forest-mid);
+    }
+
+    .room-price .placeholder {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      display: block;
+      margin-top: 0.15rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Amenities */
+    .amenities {
+      background:
+        linear-gradient(180deg, rgba(24, 58, 55, 0.04), transparent),
+        var(--white);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .amenity {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-radius: var(--radius);
+      background: var(--sand);
+      border: 1px solid transparent;
+      transition: border-color var(--ease), transform var(--ease);
+    }
+
+    .amenity:hover {
+      border-color: var(--sea-soft);
+      transform: translateY(-3px);
+    }
+
+    .amenity-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--forest);
+    }
+
+    .amenity-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity h3 {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: 0.25rem;
+    }
+
+    .amenity p {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      aspect-ratio: auto;
+      min-height: 320px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 1.25rem 1rem 0.9rem;
+      background: linear-gradient(transparent, rgba(15,36,34,0.75));
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    /* Location */
+    .location { background: var(--sand); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .location-text strong { color: var(--forest); font-weight: 500; }
+
+    .landmark-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .landmark-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    .landmark-list .pin {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--forest);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-top: 0.1rem;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(135deg, rgba(24,58,55,0.08), rgba(74,181,172,0.15)),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 18px,
+          rgba(24,58,55,0.03) 18px,
+          rgba(24,58,55,0.03) 19px
+        ),
+        #d5e4e1;
+      border-radius: var(--radius);
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      border: 1px solid rgba(24, 58, 55, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 2px solid rgba(24, 58, 55, 0.15);
+      top: 28%;
+      left: 42%;
+    }
+
+    .map-placeholder::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 8px rgba(230, 190, 105, 0.35);
+      top: calc(28% + 64px);
+      left: calc(42% + 64px);
+    }
+
+    .map-placeholder .map-label {
+      position: relative;
+      z-index: 1;
+      font-family: 'Lora', serif;
+      font-size: 1.25rem;
+      color: var(--forest);
+      margin-bottom: 0.35rem;
+    }
+
+    .map-placeholder .map-sub {
+      position: relative;
+      z-index: 1;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    /* Trust */
+    .trust { background: var(--white); }
+
+    .trust-badge {
+      display: none;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial {
+      background: var(--sand);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      border: 1px dashed rgba(24, 58, 55, 0.2);
+      position: relative;
+    }
+
+    .testimonial .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(24, 58, 55, 0.1);
+      color: var(--forest-mid);
+      padding: 0.25rem 0.55rem;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .testimonial blockquote {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+      line-height: 1.55;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--forest-deep);
+      color: rgba(255,255,255,0.85);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .brand {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      max-width: 280px;
+      line-height: 1.55;
+      opacity: 0.8;
+    }
+
+    .footer-col h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .footer-col a {
+      font-size: 0.92rem;
+      opacity: 0.8;
+      transition: opacity var(--ease), color var(--ease);
+    }
+
+    .footer-col a:hover {
+      opacity: 1;
+      color: var(--gold);
+    }
+
+    .footer-contact li {
+      font-size: 0.92rem;
+      opacity: 0.85;
+      line-height: 1.45;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.8rem;
+      opacity: 0.55;
+    }
+
+    .socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .socials a {
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      border-bottom: 1px solid transparent;
+    }
+
+    .socials a:hover {
+      opacity: 1;
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      background: var(--forest);
+      color: var(--white);
+      padding: 0.85rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow);
+      z-index: 300;
+      transition: transform 0.35s ease;
+      max-width: 90vw;
+      text-align: center;
+    }
+
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+      .location-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { min-height: 240px; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
+      .hero-content { padding-bottom: 6rem; }
+      .rooms-grid,
+      .amenities-grid,
+      .testimonials,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-item:first-child {
+        grid-column: span 1;
+        min-height: 220px;
+      }
+      .booking-widget { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .logo img { height: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="logo" aria-label="Brīvdienu Kolka home">
+        <img src="https://brivdienukolka.lv/wp-content/uploads/2024/04/brivdienu-kolka-logo-white.svg" alt="Brīvdienu Kolka logo" width="120" height="42">
+        <span class="logo-text">
+          <span class="brand">Brīvdienu Kolka</span>
+          <span class="place">Kolka · Latvia</span>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Homes</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <a href="#rooms">Homes</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+    <a href="#contact">Contact</a>
+    <a href="#booking">Check availability</a>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Welcome">
+      <div class="hero-bg" role="img" aria-label="Brīvdienu Kolka holiday homes exterior"></div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1 class="hero-brand">Brīvdienu<span>Kolka</span></h1>
+        <p class="hero-value">Izbaudi savu brīvdienu atpūtu — comfortable cottages in Kolka village, near Cape Kolka where the Baltic Sea meets the Gulf of Riga.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">Check availability</a>
+          <a href="#rooms" class="btn btn-ghost">Explore homes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking" aria-label="Booking">
+      <div class="container">
+        <form class="booking-widget" id="bookingForm" action="#" method="get">
+          <div class="form-group">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="form-group">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="form-group guest-selector">
+            <label for="guestTrigger">Guests</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-haspopup="true">
+              <span id="guestSummary">2 adults</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="guest-dropdown" id="guestDropdown" role="dialog" aria-label="Guest count">
+              <div class="guest-row">
+                <span>Adults</span>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="adultsMinus" aria-label="Fewer adults">−</button>
+                  <span id="adultsCount">2</span>
+                  <button type="button" class="guest-btn" id="adultsPlus" aria-label="More adults">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <span>Children</span>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="childrenMinus" aria-label="Fewer children">−</button>
+                  <span id="childrenCount">0</span>
+                  <button type="button" class="guest-btn" id="childrenPlus" aria-label="More children">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <p class="booking-note">Prototype booking widget — UI only. Contact us to confirm real availability.</p>
+      </div>
+    </section>
+
+    <section class="rooms" id="rooms">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Brīvdienu mājas</p>
+          <h2 class="section-title">Holiday homes for every getaway</h2>
+          <p class="section-desc">Comfortable cottages and apartments across two addresses in Kolka — for couples restarting together and families seeking quiet by the sea.</p>
+        </div>
+        <p class="rooms-note">Nightly rates are not published on the source site — prices below are placeholders.</p>
+        <div class="rooms-grid">
+          <article class="room-card">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2026/06/IMG-20260615-WA0012-1.jpg" alt="Apartamenti 1 interior" width="600" height="400" loading="lazy">
+            <div class="room-card-body">
+              <h3>Apartamenti 1</h3>
+              <p class="room-meta">Opened 2026. Private entrance, toilet, sink &amp; terrace. Shared shower building.</p>
+              <p class="room-price">From EUR — / night<span class="placeholder">Price placeholder — confirm on booking</span></p>
+            </div>
+          </article>
+          <article class="room-card">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2026/06/1000037072.jpg" alt="Apartamenti 2 exterior" width="600" height="400" loading="lazy">
+            <div class="room-card-body">
+              <h3>Apartamenti 2</h3>
+              <p class="room-meta">Suited for two. Double bed, TV, coffee, private terrace with table &amp; chairs.</p>
+              <p class="room-price">From EUR — / night<span class="placeholder">Price placeholder — confirm on booking</span></p>
+            </div>
+          </article>
+          <article class="room-card">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/05/austrumirietumi.jpg" alt="Rietumi cottage" width="600" height="400" loading="lazy">
+            <div class="room-card-body">
+              <h3>Rietumi</h3>
+              <p class="room-meta">24 m² · 2 guests · Kitchenette, bathroom, wide terrace with grill. Shared grounds with Austrumi.</p>
+              <p class="room-price">From EUR — / night<span class="placeholder">Price placeholder — confirm on booking</span></p>
+            </div>
+          </article>
+          <article class="room-card">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/05/1000012503.jpg" alt="Austrumi cottage" width="600" height="400" loading="lazy">
+            <div class="room-card-body">
+              <h3>Austrumi</h3>
+              <p class="room-meta">24 m² · up to 4 guests · Two sleeping zones, full kitchenette, heated bathroom floor, grill terrace.</p>
+              <p class="room-price">From EUR — / night<span class="placeholder">Price placeholder — confirm on booking</span></p>
+            </div>
+          </article>
+          <article class="room-card">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/05/IMG_20200517_174447.jpg" alt="Vārpas cottage" width="600" height="400" loading="lazy">
+            <div class="room-card-body">
+              <h3>Vārpas</h3>
+              <p class="room-meta">24 m² · up to 4 guests · Loft sleeping zone. Sauna &amp; hot tub available nearby for an extra fee.</p>
+              <p class="room-price">From EUR — / night<span class="placeholder">Price placeholder — confirm on booking</span></p>
+            </div>
+          </article>
+          <article class="room-card">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/06/MB6_8559.jpg" alt="Kolka cottage" width="600" height="400" loading="lazy">
+            <div class="room-card-body">
+              <h3>Kolka</h3>
+              <p class="room-meta">24 m² · couple or family of 3 · Romantic cottage with terrace grill; hot tub on terrace for extra fee.</p>
+              <p class="room-price">From EUR — / night<span class="placeholder">Price placeholder — confirm on booking</span></p>
+            </div>
+          </article>
+          <article class="room-card">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/04/IMG_20220605_184357.webp" alt="Sapņi cottage" width="600" height="400" loading="lazy">
+            <div class="room-card-body">
+              <h3>Sapņi</h3>
+              <p class="room-meta">25 m² + 25 m² terrace · up to 6 guests · Largest home; sauna &amp; hot tub available for extra fee.</p>
+              <p class="room-price">From EUR — / night<span class="placeholder">Price placeholder — confirm on booking</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Pakalpojumi &amp; comforts</p>
+          <h2 class="section-title">What awaits on the grounds</h2>
+          <p class="section-desc">Amenities and extras listed on the Brīvdienu Kolka site — from everyday comforts to optional nature experiences.</p>
+        </div>
+        <div class="amenities-grid">
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12.5c2-3 4-4.5 7-4.5s5 1.5 7 4.5M2 8c3.5-4 7-6 10-6s6.5 2 10 6M12 16v.01"/></svg>
+            </div>
+            <h3>Wi‑Fi</h3>
+            <p>Available at the cottages</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="8" rx="1"/><path d="M6 10V7a2 2 0 012-2h8a2 2 0 012 2v3M7 18v2M17 18v2"/></svg>
+            </div>
+            <h3>Parking</h3>
+            <p>Autostāvvieta on site</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 14h16v4H4zM6 14l2-6h8l2 6M9 8V5M15 8V5"/></svg>
+            </div>
+            <h3>Grill</h3>
+            <p>Terrace grill at cottages</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 14h18v6H3zM5 14V9l7-5 7 5v5"/></svg>
+            </div>
+            <h3>Terrace</h3>
+            <p>Furnished outdoor seating</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V10h4v10M14 20V7h4v13M8 7h8"/></svg>
+            </div>
+            <h3>Kitchenette</h3>
+            <p>Fully equipped corner kitchen</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4c0 4 5 6 5 9a5 5 0 01-10 0c0-3 5-5 5-9z"/><path d="M17 4c0 4 5 6 5 9a5 5 0 01-10 0c0-3 5-5 5-9z"/></svg>
+            </div>
+            <h3>Sauna (Pirts)</h3>
+            <p>For Vārpas &amp; Sapņi · from EUR 60</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="6"/><path d="M12 3v2M8 5l1 1.5M16 5l-1 1.5"/></svg>
+            </div>
+            <h3>Hot tub (Kubls)</h3>
+            <p>Extra · from EUR 60</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 18c-3 0-6-2-6-5 0-4 3-7 6-9 3 2 6 5 6 9 0 3-3 5-6 5z"/></svg>
+            </div>
+            <h3>Fire pit</h3>
+            <p>Ugunskura vieta on shared grounds</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6M8 10l-3 2M16 10l3 2"/></svg>
+            </div>
+            <h3>Playground</h3>
+            <p>Children’s play area on site</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 19h10M9 19V9l3-5 3 5v10M5 12h14"/><circle cx="12" cy="14" r="1.5"/></svg>
+            </div>
+            <h3>EV charging</h3>
+            <p>11 kW Type2 · EUR 0.25/kWh</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8.5 17h7M6 14.5V8l6-4 4 3v2"/></svg>
+            </div>
+            <h3>E‑bikes</h3>
+            <p>EUR 10/hour or EUR 25/day</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 16c2-4 5-7 8-7s6 3 8 7M3 8c1.5 1 3 1.5 4.5 1.5S11 9 12.5 8 15.5 6 18 6s3 .5 3 .5"/></svg>
+            </div>
+            <h3>SUP rental</h3>
+            <p>EUR 15/day for guests</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Photo gallery</p>
+          <h2 class="section-title">Homes, light, and Cape Kolka</h2>
+          <p class="section-desc">Real photos from Brīvdienu Kolka — cottages, interiors, and nearby landmarks.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/04/brivdienu-kolka-main-hero-.jpg" alt="Holiday homes grounds at Brīvdienu Kolka" width="1200" height="675" loading="lazy">
+            <figcaption>Property grounds</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2026/06/IMG-20260615-WA0012-1.jpg" alt="Apartment interior" width="600" height="800" loading="lazy">
+            <figcaption>Apartment interior</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/05/austrumirietumi.jpg" alt="Cottage terrace and exterior" width="800" height="600" loading="lazy">
+            <figcaption>Cottage terrace</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/05/Kolkas_rags.webp" alt="Cape Kolka shoreline" width="600" height="700" loading="lazy">
+            <figcaption>Kolkasrags</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/04/kolkas-baka-brivdienu-kolka.jpg" alt="Kolka lighthouse" width="600" height="700" loading="lazy">
+            <figcaption>Kolkas bāka</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://brivdienukolka.lv/wp-content/uploads/2024/06/MB6_8559.jpg" alt="Kolka cottage in garden setting" width="800" height="600" loading="lazy">
+            <figcaption>Mājiņa Kolka</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Kurzemē · spicākajā vietā</p>
+          <h2 class="section-title">At the tip of Latvia</h2>
+          <p class="section-desc">Forest, meadow, and the restless sea — with quiet that stays with you.</p>
+        </div>
+        <div class="location-grid">
+          <div class="location-text">
+            <p><strong>Brīvdienu Kolka</strong> sits in Kolka village, Kurzeme — very close to <strong>Kolkasrags (Cape Kolka)</strong>, where the Baltic Sea meets the Gulf of Riga.</p>
+            <p>Address listed on the site: <strong>Vīnkalni, Vārpas, Kolka, Latvia</strong>. Cottages are offered across two addresses nearby.</p>
+            <ul class="landmark-list">
+              <li><span class="pin">1</span><span><strong>Kolkasrags</strong> — about 3 min by car (listed on site)</span></li>
+              <li><span class="pin">2</span><span><strong>Kolkas bāka</strong> (lighthouse) — about 10 min on foot</span></li>
+              <li><span class="pin">3</span><span><strong>Zēņu dīķis</strong> — about 4 min by car</span></li>
+              <li><span class="pin">4</span><span><strong>Slīteres bāka</strong> &amp; nearby trails — featured in their sightseeing pages</span></li>
+            </ul>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Static map placeholder for Kolka, Latvia">
+            <p class="map-label">Kolka · Cape Kolka</p>
+            <p class="map-sub">Static map placeholder · Latvia’s northern tip</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" id="trust">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Guest voices</p>
+          <h2 class="section-title">What stays with you</h2>
+          <p class="section-desc">No public rating badge was found on the source site. Sample testimonials below are placeholders for layout only.</p>
+        </div>
+        <div class="testimonials">
+          <article class="testimonial">
+            <span class="badge">Placeholder</span>
+            <blockquote>“Quiet mornings, the smell of pine, and a short drive to the cape — exactly the reset we needed.”</blockquote>
+            <cite>— Sample guest · Couple</cite>
+          </article>
+          <article class="testimonial">
+            <span class="badge">Placeholder</span>
+            <blockquote>“The terrace grill and fenced garden made evenings easy with the kids after a day by the sea.”</blockquote>
+            <cite>— Sample guest · Family</cite>
+          </article>
+          <article class="testimonial">
+            <span class="badge">Placeholder</span>
+            <blockquote>“Simple comforts done well — Wi‑Fi when we needed it, and silence when we didn’t.”</blockquote>
+            <cite>— Sample guest · Friends</cite>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="brand">Brīvdienu Kolka</p>
+          <p>Holiday homes in Kolka village — near Cape Kolka, where sea and gulf meet.</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/mezmalikolka" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/_holidayhome_kolka" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Homes</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Check availability</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-contact">
+          <h4>Contact</h4>
+          <ul>
+            <li>Vīnkalni, Vārpas, Kolka, Latvia</li>
+            <li><a href="tel:+37126404053">+371 2640 4053</a></li>
+            <li><a href="mailto:baiba2002@inbox.lv">baiba2002@inbox.lv</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Brīvdienu Kolka · Prototype homepage (not affiliated)</span>
+        <span>Source: brivdienukolka.lv</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      var header = document.getElementById('siteHeader');
+      var menuToggle = document.getElementById('menuToggle');
+      var navMobile = document.getElementById('navMobile');
+      var navClose = document.getElementById('navClose');
+      var guestTrigger = document.getElementById('guestTrigger');
+      var guestDropdown = document.getElementById('guestDropdown');
+      var adults = 2;
+      var children = 0;
+      var adultsCount = document.getElementById('adultsCount');
+      var childrenCount = document.getElementById('childrenCount');
+      var guestSummary = document.getElementById('guestSummary');
+      var adultsMinus = document.getElementById('adultsMinus');
+      var adultsPlus = document.getElementById('adultsPlus');
+      var childrenMinus = document.getElementById('childrenMinus');
+      var childrenPlus = document.getElementById('childrenPlus');
+      var toast = document.getElementById('toast');
+      var form = document.getElementById('bookingForm');
+      var checkin = document.getElementById('checkin');
+      var checkout = document.getElementById('checkout');
+
+      function onScroll() {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      function openMenu() {
+        navMobile.hidden = false;
+        navMobile.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        navMobile.classList.remove('open');
+        navMobile.hidden = true;
+        document.body.style.overflow = '';
+      }
+      menuToggle.addEventListener('click', openMenu);
+      navClose.addEventListener('click', closeMenu);
+      navMobile.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      function updateGuests() {
+        adultsCount.textContent = adults;
+        childrenCount.textContent = children;
+        adultsMinus.disabled = adults <= 1;
+        childrenMinus.disabled = children <= 0;
+        var parts = [adults + (adults === 1 ? ' adult' : ' adults')];
+        if (children > 0) parts.push(children + (children === 1 ? ' child' : ' children'));
+        guestSummary.textContent = parts.join(', ');
+      }
+
+      guestTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = guestDropdown.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!guestDropdown.contains(e.target) && e.target !== guestTrigger) {
+          guestDropdown.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      adultsPlus.addEventListener('click', function () { adults = Math.min(12, adults + 1); updateGuests(); });
+      adultsMinus.addEventListener('click', function () { adults = Math.max(1, adults - 1); updateGuests(); });
+      childrenPlus.addEventListener('click', function () { children = Math.min(8, children + 1); updateGuests(); });
+      childrenMinus.addEventListener('click', function () { children = Math.max(0, children - 1); updateGuests(); });
+      updateGuests();
+
+      var today = new Date();
+      function iso(d) {
+        return d.toISOString().split('T')[0];
+      }
+      var t1 = new Date(today); t1.setDate(t1.getDate() + 1);
+      var t3 = new Date(today); t3.setDate(t3.getDate() + 3);
+      checkin.min = iso(today);
+      checkout.min = iso(t1);
+      checkin.value = iso(t1);
+      checkout.value = iso(t3);
+
+      checkin.addEventListener('change', function () {
+        var next = new Date(checkin.value);
+        next.setDate(next.getDate() + 1);
+        checkout.min = iso(next);
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = iso(next);
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        toast.textContent = 'Availability search is a prototype — please call or email to book.';
+        toast.classList.add('show');
+        setTimeout(function () { toast.classList.remove('show'); }, 3200);
+      });
+    })();
+  </script>
+</body>
+</html>
