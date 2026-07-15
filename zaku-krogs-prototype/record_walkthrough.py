@@ -65,9 +65,13 @@ def main():
         # Demonstrate smooth anchor navigation
         page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
         page.wait_for_timeout(700)
-        for href in ["#rooms", "#tavern", "#amenities", "#gallery", "#location", "#trust"]:
+        for href in ["#rooms", "#tavern", "#amenities", "#gallery", "#location"]:
             page.locator(f'.nav-desktop a[href="{href}"]').click()
             page.wait_for_timeout(1400)
+
+        # Trust has no header nav link — smooth-scroll into view
+        smooth_scroll(page, section_top(page, "#trust"), 1600)
+        page.wait_for_timeout(1000)
 
         # Booking widget interaction
         page.locator('a[href="#booking"]').first.click()

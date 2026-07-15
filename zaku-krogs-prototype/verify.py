@@ -40,9 +40,10 @@ def main():
         if behavior != "smooth":
             errors.append(f"html scroll-behavior is '{behavior}', expected 'smooth'")
 
-        for section in ["#rooms", "#tavern", "#amenities", "#gallery", "#location", "#trust", "#booking"]:
+        # Header/desktop nav + CTA anchors that exist in the sticky header
+        for section in ["#rooms", "#tavern", "#amenities", "#gallery", "#location", "#booking"]:
             before = page.evaluate("window.scrollY")
-            page.locator(f'a[href="{section}"]').first.click()
+            page.locator(f'.site-header a[href="{section}"], .nav-desktop a[href="{section}"]').first.click()
             page.wait_for_timeout(900)
             after = page.evaluate("window.scrollY")
             visible = page.locator(section).evaluate(
@@ -50,6 +51,12 @@ def main():
             )
             if not visible:
                 errors.append(f"Section {section} not in view after nav click (scroll {before}->{after})")
+
+        # Trust section is in-page only (no header nav link) — scroll into view
+        page.locator("#trust").scroll_into_view_if_needed()
+        page.wait_for_timeout(400)
+        if not page.locator("#trust").is_visible():
+            errors.append("Trust section not visible")
 
         # Booking widget
         page.locator("#checkin").fill("2026-07-20")
