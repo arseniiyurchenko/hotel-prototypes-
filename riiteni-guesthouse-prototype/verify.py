@@ -101,17 +101,22 @@ def main():
         page.wait_for_timeout(400)
         page.screenshot(path=str(ARTIFACTS / "riiteni-mobile-menu.png"), full_page=False)
 
-        # Mobile header spacing
+        # Mobile header spacing (logo left, menu toggle right)
         page.locator("#navClose").click()
+        page.wait_for_timeout(300)
         spacing_m = page.evaluate(
             """() => {
                 const brand = document.querySelector('.brand').getBoundingClientRect();
-                const cta = document.querySelector('.header-cta').getBoundingClientRect();
-                return { left: brand.left, right: window.innerWidth - cta.right };
+                const toggle = document.querySelector('#menuToggle').getBoundingClientRect();
+                return {
+                    left: brand.left,
+                    right: window.innerWidth - toggle.right,
+                    scrollX: window.scrollX
+                };
             }"""
         )
         print("Mobile header spacing:", spacing_m)
-        if spacing_m["left"] < 24 or spacing_m["right"] < 24:
+        if spacing_m["left"] < 28 or spacing_m["right"] < 28:
             errors.append(f"Mobile header cramped: {spacing_m}")
 
         browser.close()

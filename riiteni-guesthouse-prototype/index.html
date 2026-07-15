@@ -39,6 +39,7 @@
       background: var(--sand-light);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     h1, h2, h3, h4 {
@@ -90,6 +91,12 @@
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(15, 76, 92, 0.08);
       transition: background var(--ease), box-shadow var(--ease);
+      padding-inline: var(--header-pad);
+    }
+
+    .site-header .container {
+      padding-inline: 0;
+      max-width: 1160px;
     }
 
     .site-header.scrolled {
@@ -880,8 +887,11 @@
     }
 
     @media (max-width: 640px) {
-      .header-cta .btn { padding: 0.65rem 0.9rem; font-size: 0.82rem; }
-      .brand img { height: 34px; }
+      :root { --header-pad: 2rem; }
+
+      /* Keep logo + menu clear of edges; CTA lives in mobile drawer */
+      .header-cta { display: none; }
+      .brand img { height: 34px; max-width: min(180px, 55vw); }
       #hero { min-height: 78vh; }
       .hero-content { padding-bottom: 3.5rem; }
       .booking-form { grid-template-columns: 1fr; }
@@ -948,6 +958,7 @@
       <li><a href="#trust">Atsauksmes</a></li>
       <li><a href="#footer">Kontakti</a></li>
     </ul>
+    <a class="btn btn-gold" href="#booking" style="margin-top:2rem;align-self:flex-start;">Pārbaudīt pieejamību</a>
   </div>
 
   <main>
