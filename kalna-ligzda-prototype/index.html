@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalna Ligzda — 3★ Hotel | Smiltene, Latvia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-red: #9c0608;
+      --brand-red-deep: #7a0406;
+      --brand-red-soft: #c43a3c;
+      --forest: #2f4a3c;
+      --forest-mid: #3d5c4c;
+      --moss: #5a7a68;
+      --cream: #f6f1ea;
+      --cream-deep: #ebe4d8;
+      --mist: #e8f0ee;
+      --ink: #1c1a18;
+      --ink-soft: #4a4540;
+      --muted: #6e675f;
+      --white: #ffffff;
+      --shadow: 0 8px 32px rgba(28, 26, 24, 0.12);
+      --radius: 10px;
+      --transition: 0.28s ease;
+      --header-pad-x: clamp(32px, 4.5vw, 48px);
+      --section-pad: clamp(4.5rem, 8vw, 6.5rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1120px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad-x);
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(246, 241, 234, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(246, 241, 234, 0.97);
+      box-shadow: 0 4px 24px rgba(28, 26, 24, 0.08);
+      border-bottom-color: rgba(28, 26, 24, 0.06);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding-block: 0.85rem;
+      min-height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      width: 48px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-text .brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--brand-red);
+      letter-spacing: 0.01em;
+    }
+
+    .logo-text .place {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--brand-red); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.25rem;
+      background: var(--brand-red);
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      border-radius: 999px;
+      transition: background var(--transition), transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .header-cta:hover {
+      background: var(--brand-red-deep);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.35rem;
+      color: var(--ink);
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity var(--transition), visibility var(--transition);
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .nav-mobile a {
+      font-family: 'Fraunces', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .nav-mobile .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: var(--header-pad-x);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    /* —— Hero —— */
+    #hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      animation: heroKen 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroKen {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(28, 26, 24, 0.25) 0%, rgba(28, 26, 24, 0.55) 45%, rgba(28, 26, 24, 0.78) 100%),
+        linear-gradient(90deg, rgba(47, 74, 60, 0.35) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 0 clamp(3.5rem, 8vw, 5.5rem);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-stars {
+      display: inline-flex;
+      gap: 0.2rem;
+      margin-bottom: 0.85rem;
+      color: #f0c14b;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-content h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.8rem, 7vw, 4.6rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 12ch;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      font-weight: 300;
+      max-width: 36rem;
+      line-height: 1.55;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.6rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--brand-red);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(156, 6, 8, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-red-deep);
+      transform: translateY(-2px);
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--brand-red);
+    }
+
+    .btn-light:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* —— Booking —— */
+    #booking {
+      padding: 0;
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 10;
+      padding-bottom: var(--section-pad);
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.35rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(28, 26, 24, 0.06);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      position: relative;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid rgba(28, 26, 24, 0.14);
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      border-color: var(--forest-mid);
+      box-shadow: 0 0 0 3px rgba(47, 74, 60, 0.12);
+    }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid rgba(28, 26, 24, 0.1);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 20;
+      display: none;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(28, 26, 24, 0.18);
+      background: var(--cream);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .guest-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .booking-widget .btn-primary {
+      height: 48px;
+      padding-inline: 1.75rem;
+      white-space: nowrap;
+    }
+
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* —— Sections shared —— */
+    .section {
+      padding-block: var(--section-pad);
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 38rem;
+      font-weight: 300;
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    /* —— Rooms —— */
+    #rooms {
+      background: var(--white);
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(28, 26, 24, 0.05);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .room-card:nth-child(2) { animation-delay: 0.08s; }
+    .room-card:nth-child(3) { animation-delay: 0.16s; }
+    .room-card:nth-child(4) { animation-delay: 0.24s; }
+    .room-card:nth-child(5) { animation-delay: 0.32s; }
+    .room-card:nth-child(6) { animation-delay: 0.4s; }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .room-card-body {
+      padding: 1.25rem 1.35rem 1.5rem;
+    }
+
+    .room-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .room-card p {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+
+    .room-price {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--brand-red);
+    }
+
+    .room-price span {
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .room-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .room-meta span {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.55rem;
+      background: var(--mist);
+      color: var(--forest);
+      border-radius: 4px;
+    }
+
+    /* —— Amenities —— */
+    #amenities {
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(90, 122, 104, 0.12), transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(156, 6, 8, 0.06), transparent 45%),
+        var(--cream);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1.1rem 1.15rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid rgba(28, 26, 24, 0.05);
+      transition: transform var(--transition);
+    }
+
+    .amenity-item:hover { transform: translateY(-2px); }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--mist);
+      color: var(--forest);
+    }
+
+    .amenity-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .amenity-item span {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .amenity-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* —— Gallery —— */
+    #gallery {
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    #gallery .section-eyebrow { color: #a8c4b4; }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-desc { color: rgba(255, 255, 255, 0.78); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 220px;
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: var(--radius);
+      position: relative;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .gallery-item:hover figcaption { opacity: 1; }
+
+    /* —— Location —— */
+    #location {
+      background: var(--white);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .location-text h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .location-details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .location-details li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .location-details li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 0.45rem;
+      border-radius: 50%;
+      background: var(--brand-red);
+      flex-shrink: 0;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(145deg, var(--mist), var(--cream-deep));
+      border-radius: var(--radius);
+      border: 1px dashed rgba(47, 74, 60, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      color: var(--forest);
+      min-height: 320px;
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+
+    .map-placeholder p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      max-width: 18rem;
+    }
+
+    /* —— Trust —— */
+    #trust {
+      background:
+        linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+    }
+
+    .trust-badge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(28, 26, 24, 0.05);
+      margin-bottom: 2rem;
+    }
+
+    .trust-badge .stars {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--brand-red);
+      letter-spacing: 0.08em;
+    }
+
+    .trust-badge .trust-copy h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .trust-badge .trust-copy p {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    .trust-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+
+    .trust-categories span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: var(--mist);
+      color: var(--forest);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.35rem 1.4rem;
+      border: 1px solid rgba(28, 26, 24, 0.06);
+    }
+
+    .testimonial .placeholder-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--cream-deep);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .testimonial p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin-bottom: 0.85rem;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.78);
+      padding-top: 3.5rem;
+      padding-bottom: 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.92rem;
+      max-width: 28rem;
+      font-weight: 300;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 1rem;
+    }
+
+    .footer-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .footer-nav a:hover,
+    .footer-contact a:hover {
+      color: var(--white);
+    }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.92rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+      .header-cta { display: none; }
+
+      .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 180px;
+      }
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        min-height: 240px;
+      }
+      .location-grid { grid-template-columns: 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary {
+        grid-column: span 2;
+      }
+      .trust-categories { margin-left: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+      }
+      .gallery-item:first-child {
+        grid-column: span 1;
+      }
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .logo img { width: 40px; }
+      .hero-content h1 { max-width: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo">
+        <img src="https://www.kalnaligzda.lv/images/web_logo_ready.png" alt="Kalna Ligzda logo">
+        <span class="logo-text">
+          <span class="brand">Kalna Ligzda</span>
+          <span class="place">Smiltene · Latvia</span>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Awards</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Awards</a>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-media" aria-hidden="true">
+      <img
+        src="https://www.kalnaligzda.lv/images/2020/09/14/img_20200717_162125.jpg"
+        alt="Kalna Ligzda hotel exterior in Kalnamuiža, Smiltene"
+        width="2560"
+        height="1416"
+      >
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <div class="hero-stars" aria-label="3-star hotel">★★★</div>
+      <h1>Kalna Ligzda</h1>
+      <p class="hero-tagline">A three-star hotel on the approaches to Smiltene, set in the historic Kalnamuiža grounds — welcoming guests from around the world for over 25 years.</p>
+      <a href="#booking" class="btn btn-primary">Check availability</a>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm" action="#" method="get">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label id="guestsLabel">Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-labelledby="guestsLabel" aria-expanded="false" aria-controls="guestPanel">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestPanel" role="dialog" aria-label="Select guests">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p class="booking-note">Prototype booking widget — UI only. Reserve by phone +371 26556681 or email hotelkalnaligzda@inbox.lv.</p>
+    </div>
+  </section>
+
+  <section class="section" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Stay with us</p>
+        <h2 class="section-title">Rooms</h2>
+        <p class="section-desc">Ten rooms for up to 27 guests — singles, doubles, twins, triples, and quads. Free WiFi, TV, and breakfast included (prices as listed on the hotel site).</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img src="https://www.kalnaligzda.lv/images/WhatsApp_Image_2020-10-12_at_09.52.43.jpeg" alt="Vienvietīgs numurs — single room at Kalna Ligzda" width="1600" height="1403">
+          <div class="room-card-body">
+            <div class="room-meta"><span>Single</span><span>Non-smoking</span></div>
+            <h3>Vienvietīgs numurs</h3>
+            <p>One single bed; no extra bed. Shower, free toiletries, WiFi, and TV. Breakfast included.</p>
+            <p class="room-price">From EUR 33 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.kalnaligzda.lv/images/speasyimagegallery/albums/1/images/6.jpg" alt="Accessible single room at Kalna Ligzda" width="2560" height="1583">
+          <div class="room-card-body">
+            <div class="room-meta"><span>Single</span><span>Accessible</span></div>
+            <h3>Vienvietīgs numurs</h3>
+            <p>One single bed with optional extra bed. Suitable for guests with special needs. Breakfast included.</p>
+            <p class="room-price">From EUR 38 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.kalnaligzda.lv/images/speasyimagegallery/albums/1/images/9.jpg" alt="Divvietīgs numurs — double room at Kalna Ligzda" width="2560" height="1510">
+          <div class="room-card-body">
+            <div class="room-meta"><span>Double</span><span>1 bed</span></div>
+            <h3>Divvietīgs numurs</h3>
+            <p>Double bed; no extra bed. Shower, free toiletries, WiFi, and TV. Breakfast included.</p>
+            <p class="room-price">From EUR 56 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.kalnaligzda.lv/images/speasyimagegallery/albums/1/images/8.jpg" alt="Divvietīgs numurs — twin room at Kalna Ligzda" width="2560" height="1604">
+          <div class="room-card-body">
+            <div class="room-meta"><span>Twin</span><span>2 beds</span></div>
+            <h3>Divvietīgs numurs</h3>
+            <p>Two single beds; extra beds available. Shower, free toiletries, WiFi, and TV. Breakfast included.</p>
+            <p class="room-price">From EUR 56 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.kalnaligzda.lv/images/speasyimagegallery/albums/1/images/10.jpg" alt="Trīsvietīgs numurs — triple room at Kalna Ligzda" width="2560" height="1320">
+          <div class="room-card-body">
+            <div class="room-meta"><span>Triple</span><span>3 beds</span></div>
+            <h3>Trīsvietīgs numurs</h3>
+            <p>Three single beds; extra beds available. Shower, free toiletries, WiFi, and TV. Breakfast included.</p>
+            <p class="room-price">From EUR 69 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://www.kalnaligzda.lv/images/speasyimagegallery/albums/1/images/11.jpg" alt="Četrvietīgs numurs — quadruple room at Kalna Ligzda" width="2560" height="1678">
+          <div class="room-card-body">
+            <div class="room-meta"><span>Quad</span><span>4 beds</span></div>
+            <h3>Četrvietīgs numurs</h3>
+            <p>Four single beds; extra beds available. Shower, free toiletries, WiFi, and TV. Breakfast included.</p>
+            <p class="room-price">From EUR 94 <span>/ night</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">On the property</p>
+        <h2 class="section-title">Amenities</h2>
+        <p class="section-desc">Comforts listed on the Kalna Ligzda website — practical essentials for a calm stay in Kalnamuiža.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12.5c1.5-3 4-5 7-5s5.5 2 7 5"/><path d="M8.5 15a3.5 3.5 0 0 0 7 0"/><circle cx="12" cy="9" r="1"/></svg>
+          </div>
+          <span>Free WiFi</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 19h8"/></svg>
+          </div>
+          <span>TV in room</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3v10"/><path d="M8 8h8"/><path d="M6 21h12"/><path d="M9 13c0 2-1.5 4-3 5"/><path d="M15 13c0 2 1.5 4 3 5"/></svg>
+          </div>
+          <span>Private shower</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 12h16"/><path d="M6 12V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/><path d="M8 16h.01M12 16h.01M16 16h.01"/></svg>
+          </div>
+          <span>Breakfast included</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19h16"/><path d="M8 19V9"/><path d="M12 19V5"/><path d="M16 19v-6"/><circle cx="8" cy="7" r="1.5"/><path d="M4 4l2 2"/></svg>
+          </div>
+          <span>Non-smoking rooms</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3c-2 3-5 5-5 9a5 5 0 0 0 10 0c0-4-3-6-5-9z"/><path d="M9 18v2M15 18v2"/></svg>
+          </div>
+          <span>Free toiletries</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 14c2-4 4-6 6-6s4 2 6 6"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/><path d="M8 18c1.5 1 3 1.5 4 1.5S14.5 19 16 18"/></svg>
+          </div>
+          <span>Pets welcome</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="8" r="3"/><path d="M5 20a7 7 0 0 1 14 0"/><path d="M4 12h2M18 12h2"/></svg>
+          </div>
+          <span>Accessible room</span>
+        </div>
+      </div>
+      <p class="amenity-note">Restaurant, spa/sauna, conference facilities, and parking are not listed on the source site — omitted here rather than assumed.</p>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Kalnamuiža</p>
+        <h2 class="section-title">Photo gallery</h2>
+        <p class="section-desc">Real photos from the hotel website — the house, grounds, rooms, and nearby manor landmarks.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <img src="https://www.kalnaligzda.lv/images/2020/09/14/img_20200717_162125.jpg" alt="Hotel exterior and garden" width="2560" height="1416">
+          <figcaption>Hotel exterior</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://www.kalnaligzda.lv/images/2020/09/14/1.jpg" alt="Kalna Ligzda entrance sign at Kalnamuiža" width="2560" height="1684">
+          <figcaption>Entrance &amp; Kalnamuiža</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://www.kalnaligzda.lv/images/speasyimagegallery/albums/1/images/9.jpg" alt="Double room interior" width="2560" height="1510">
+          <figcaption>Double room</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://www.kalnaligzda.lv/images/speasyimagegallery/albums/1/images/8.jpg" alt="Twin room interior" width="2560" height="1604">
+          <figcaption>Twin room</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://www.kalnaligzda.lv/images/pilsdrupas.jpg" alt="Smiltene manor complex and castle ruins" width="1024" height="683">
+          <figcaption>Manor &amp; castle ruins</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://www.kalnaligzda.lv/images/sieranamins.jpg" alt="Historic cheese house in Kalnamuiža" width="683" height="1024">
+          <figcaption>Cheese house (1763)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Location</h2>
+        <p class="section-desc">Historic Kalnamuiža on the edge of Smiltene, Vidzeme — a short climb from town into parkland and manor heritage.</p>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Kalnamuiža-7, Smiltene parish</h3>
+          <p>The hotel sits in the Kalnamuiža territory where Smiltene’s history began — near the German Order castle ruins, wooden manor buildings, and a park that feels like a fairy-tale land in every season. The town centre is close; on foot, guests climb a staircase of 120 steps up the hill.</p>
+          <ul class="location-details">
+            <li><strong>Smiltene</strong> — town centre nearby (Vidzeme region)</li>
+            <li><strong>Vidus ezers</strong> — manor complex on the steep lakeside bank</li>
+            <li><strong>Castle ruins</strong> — German Sword Brothers Order (from 1370)</li>
+            <li><strong>Cheese house</strong> — historic sierūzis, Anno 1763</li>
+            <li><strong>“Pa firsta Līvena takām”</strong> — Prince Paul von Liven heritage trail</li>
+          </ul>
+        </div>
+        <div class="map-placeholder" aria-label="Map placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="margin-top:0.5rem;">Kalnamuiža-7, Smiltenes pagasts, Smiltenes novads, LV-4729, Latvia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Recognition</p>
+        <h2 class="section-title">Trusted stay</h2>
+        <p class="section-desc">Awards featured on the hotel site. Guest review quotes below are sample placeholders — not from the source website.</p>
+      </div>
+      <div class="trust-badge">
+        <div class="stars" aria-hidden="true">★★★</div>
+        <div class="trust-copy">
+          <h3>Annual Travelmyth awards 2022</h3>
+          <p>As stated on kalnaligzda.lv: Kalna Ligzda won 2 top ranking awards and is featured in 3 categories.</p>
+        </div>
+        <div class="trust-categories">
+          <span>Dog friendly</span>
+          <span>Small</span>
+          <span>3 star</span>
+        </div>
+      </div>
+      <div class="testimonials">
+        <article class="testimonial">
+          <span class="placeholder-tag">Placeholder</span>
+          <p>“A peaceful hilltop stay with manor history at the door — warm rooms and a quiet park for evening walks.”</p>
+          <cite>— Sample guest review</cite>
+        </article>
+        <article class="testimonial">
+          <span class="placeholder-tag">Placeholder</span>
+          <p>“Perfect base for exploring Smiltene and the Liven trails. Breakfast was included and the staff were kind.”</p>
+          <cite>— Sample guest review</cite>
+        </article>
+        <article class="testimonial">
+          <span class="placeholder-tag">Placeholder</span>
+          <p>“We travelled with our dog and appreciated the pet-friendly policy. Clean, simple, and close to nature.”</p>
+          <cite>— Sample guest review</cite>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">Kalna Ligzda</div>
+          <p>Three-star hotel in historic Kalnamuiža, Smiltene parish, Vidzeme. Guests from around the world for over 25 years.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Book</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Kalnamuiža-7<br>Smiltenes pagasts<br>Smiltenes novads, LV-4729</p>
+          <a href="tel:+37126556681">+371 26556681</a>
+          <a href="mailto:hotelkalnaligzda@inbox.lv">hotelkalnaligzda@inbox.lv</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Kalna Ligzda · Smiltene, Latvia · Prototype homepage</p>
+        <p>Source: kalnaligzda.lv</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('header');
+      const menuToggle = document.getElementById('menuToggle');
+      const navMobile = document.getElementById('navMobile');
+      const navClose = document.getElementById('navClose');
+
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      menuToggle.addEventListener('click', () => navMobile.classList.add('open'));
+      navClose.addEventListener('click', () => navMobile.classList.remove('open'));
+      navMobile.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => navMobile.classList.remove('open'));
+      });
+
+      const checkin = document.getElementById('checkin');
+      const checkout = document.getElementById('checkout');
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      const dayAfter = new Date(today);
+      dayAfter.setDate(today.getDate() + 3);
+      const fmt = d => d.toISOString().split('T')[0];
+      checkin.min = fmt(today);
+      checkout.min = fmt(tomorrow);
+      checkin.value = fmt(tomorrow);
+      checkout.value = fmt(dayAfter);
+
+      checkin.addEventListener('change', () => {
+        const ci = new Date(checkin.value);
+        const minCo = new Date(ci);
+        minCo.setDate(ci.getDate() + 1);
+        checkout.min = fmt(minCo);
+        if (new Date(checkout.value) <= ci) checkout.value = fmt(minCo);
+      });
+
+      let adults = 2;
+      let children = 0;
+      const adultsCount = document.getElementById('adultsCount');
+      const childrenCount = document.getElementById('childrenCount');
+      const guestSummary = document.getElementById('guestSummary');
+      const guestTrigger = document.getElementById('guestTrigger');
+      const guestPanel = document.getElementById('guestPanel');
+
+      function updateGuestSummary() {
+        let text = adults + ' adult' + (adults !== 1 ? 's' : '');
+        if (children > 0) text += ', ' + children + ' child' + (children !== 1 ? 'ren' : '');
+        guestSummary.textContent = text;
+        adultsCount.textContent = adults;
+        childrenCount.textContent = children;
+        document.getElementById('adultsMinus').disabled = adults <= 1;
+        document.getElementById('adultsPlus').disabled = adults >= 10;
+        document.getElementById('childrenMinus').disabled = children <= 0;
+        document.getElementById('childrenPlus').disabled = children >= 10;
+      }
+
+      guestTrigger.addEventListener('click', e => {
+        e.stopPropagation();
+        const open = guestPanel.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', e => {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger && !guestTrigger.contains(e.target)) {
+          guestPanel.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 10) { adults++; updateGuestSummary(); } });
+      document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+      document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 10) { children++; updateGuestSummary(); } });
+      document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+
+      updateGuestSummary();
+
+      document.getElementById('bookingForm').addEventListener('submit', e => {
+        e.preventDefault();
+        guestPanel.classList.remove('open');
+        guestTrigger.setAttribute('aria-expanded', 'false');
+        alert('Booking search is UI-only in this prototype. Please call +371 26556681 or email hotelkalnaligzda@inbox.lv.');
+      });
+    })();
+  </script>
+</body>
+</html>
