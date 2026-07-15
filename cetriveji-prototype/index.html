@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Četri Vēji — Viesu nams Jūrkalnē pie stāvkrasta</title>
+  <meta name="description" content="Atpūtieties mūsu mierpilnajā viesu namā pie stāvkrasta pludmales. Mājas, istabas un apartamenti 120 m no Jūrkalnes stāvkrasta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sea: #4D6179;
+      --sea-deep: #3a4b5f;
+      --sea-ink: #243442;
+      --amber: #FDA63A;
+      --amber-deep: #e8921f;
+      --foam: #e9eef3;
+      --mist: #f4f7f9;
+      --white: #ffffff;
+      --text: #243442;
+      --muted: #5c6b7a;
+      --line: rgba(77, 97, 121, 0.16);
+      --shadow: 0 12px 40px rgba(36, 52, 66, 0.12);
+      --radius: 16px;
+      --header-pad: clamp(32px, 4.5vw, 48px);
+      --max: 1180px;
+      --transition: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Outfit", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(77, 97, 121, 0.12), transparent 60%),
+        radial-gradient(900px 500px at 100% 8%, rgba(253, 166, 58, 0.1), transparent 55%),
+        linear-gradient(180deg, #eef3f7 0%, var(--mist) 28%, #f7f9fb 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    h1, h2, h3, .brand-name {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .section {
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+    }
+
+    .section-head {
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--sea-ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.9rem var(--header-pad);
+      background: rgba(36, 52, 66, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(36, 52, 66, 0.96);
+      box-shadow: 0 8px 28px rgba(36, 52, 66, 0.22);
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      height: 42px;
+      width: auto;
+    }
+
+    .logo .brand-fallback {
+      display: none;
+      color: var(--white);
+      font-size: 1.35rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--amber); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.8rem 1.45rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--sea-ink);
+    }
+
+    .btn-primary:hover {
+      background: var(--amber-deep);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(253, 166, 58, 0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .header-cta { flex-shrink: 0; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.45rem;
+      line-height: 0;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      background: var(--sea-ink);
+      z-index: 200;
+      padding: 1.5rem var(--header-pad);
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mobile-nav.open { transform: translateX(0); }
+
+    .mobile-nav-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .mobile-nav a {
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 860px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: drift 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      from { transform: scale(1.04) translate3d(0, 0, 0); }
+      to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(36, 52, 66, 0.35) 0%, rgba(36, 52, 66, 0.25) 35%, rgba(36, 52, 66, 0.78) 100%),
+        linear-gradient(90deg, rgba(36, 52, 66, 0.45) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: var(--max);
+      margin-inline: auto;
+      padding: 7rem var(--header-pad) 5.5rem;
+      animation: rise 0.9s ease both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-size: clamp(3rem, 8vw, 5.2rem);
+      margin-bottom: 0.35rem;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero-brand span {
+      display: block;
+      font-family: "Outfit", sans-serif;
+      font-size: 0.28em;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 0.55rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+      font-style: italic;
+      font-weight: 400;
+      max-width: 28ch;
+      margin-bottom: 1.1rem;
+      opacity: 0.96;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 42ch;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+    /* Booking */
+    #booking {
+      position: relative;
+      z-index: 5;
+      margin-top: -3.25rem;
+      padding-bottom: 1rem;
+    }
+
+    .booking-panel {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.25rem;
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1.2fr 1.2fr 1.1fr auto;
+      gap: 0.85rem;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .field select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--mist);
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .guest-trigger:focus {
+      border-color: var(--sea);
+      box-shadow: 0 0 0 3px rgba(77, 97, 121, 0.15);
+    }
+
+    .guest-wrap { position: relative; }
+
+    .guest-trigger {
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .guest-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      min-width: 260px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 20;
+    }
+
+    .guest-panel.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+    }
+
+    .guest-row + .guest-row { border-top: 1px solid var(--line); }
+
+    .guest-row strong { display: block; font-size: 0.95rem; }
+    .guest-row span { font-size: 0.8rem; color: var(--muted); }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .stepper button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--mist);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--sea-ink);
+    }
+
+    .stepper button:hover { background: var(--foam); }
+    .stepper output { min-width: 1.25rem; text-align: center; font-weight: 600; }
+
+    .booking-panel .btn { height: 52px; padding-inline: 1.6rem; white-space: nowrap; }
+
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Rooms */
+    #rooms { background: transparent; }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 28px rgba(36, 52, 66, 0.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--foam);
+    }
+
+    .room-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .room:hover .room-media img { transform: scale(1.05); }
+
+    .room-body {
+      padding: 1.35rem 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      flex: 1;
+    }
+
+    .room-body h3 { font-size: 1.65rem; }
+    .room-meta { font-size: 0.88rem; color: var(--muted); }
+    .room-body p { font-size: 0.95rem; color: var(--muted); font-weight: 300; flex: 1; }
+
+    .room-price {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--line);
+      margin-top: 0.25rem;
+    }
+
+    .room-price strong {
+      font-family: "Instrument Serif", serif;
+      font-size: 1.35rem;
+      color: var(--sea-ink);
+    }
+
+    .price-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Amenities */
+    #amenities {
+      background:
+        linear-gradient(180deg, rgba(77, 97, 121, 0.06), transparent 40%),
+        var(--foam);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem 1.5rem;
+    }
+
+    .amenity {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 0.35rem 0;
+    }
+
+    .amenity-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      color: var(--sea);
+    }
+
+    .amenity-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+    .amenity strong {
+      display: block;
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .amenity span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 140px;
+      gap: 0.85rem;
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-grid figure:hover img { transform: scale(1.04); }
+
+    .gallery-grid figure:nth-child(1) { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid figure:nth-child(2) { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid figure:nth-child(3),
+    .gallery-grid figure:nth-child(4),
+    .gallery-grid figure:nth-child(5),
+    .gallery-grid figure:nth-child(6) { grid-column: span 3; }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(transparent, rgba(36, 52, 66, 0.7));
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .location-copy p {
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      max-width: 48ch;
+    }
+
+    .location-list {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1.5rem;
+    }
+
+    .location-list li {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+    }
+
+    .location-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--amber);
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .map-placeholder {
+      border-radius: var(--radius);
+      min-height: 340px;
+      background:
+        linear-gradient(135deg, rgba(77, 97, 121, 0.18), rgba(253, 166, 58, 0.12)),
+        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(77, 97, 121, 0.05) 24px, rgba(77, 97, 121, 0.05) 25px),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(77, 97, 121, 0.05) 24px, rgba(77, 97, 121, 0.05) 25px),
+        #d7e0e8;
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--sea-ink);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(77, 97, 121, 0.12);
+      top: 18%;
+      left: 22%;
+    }
+
+    .map-placeholder::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(253, 166, 58, 0.22);
+      bottom: 22%;
+      right: 24%;
+    }
+
+    .map-pin {
+      position: relative;
+      z-index: 1;
+      width: 48px;
+      height: 48px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--amber);
+      transform: rotate(-45deg);
+      margin-bottom: 1.25rem;
+      box-shadow: 0 10px 24px rgba(253, 166, 58, 0.35);
+    }
+
+    .map-pin span {
+      position: absolute;
+      inset: 10px;
+      border-radius: 50%;
+      background: var(--white);
+    }
+
+    .map-placeholder h3,
+    .map-placeholder p,
+    .map-placeholder a {
+      position: relative;
+      z-index: 1;
+    }
+
+    .map-placeholder h3 { font-size: 1.5rem; margin-bottom: 0.35rem; }
+    .map-placeholder p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; }
+    .map-placeholder a { color: var(--sea); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Trust */
+    #trust { background: var(--sea-ink); color: var(--white); }
+
+    #trust .section-head h2 { color: var(--white); }
+    #trust .section-head p { color: rgba(255, 255, 255, 0.7); }
+
+    .placeholder-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(253, 166, 58, 0.18);
+      color: var(--amber);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .quote {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .quote p {
+      font-family: "Instrument Serif", serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.45;
+      margin-bottom: 1.1rem;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .quote footer {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.55);
+      font-style: normal;
+      font-family: "Outfit", sans-serif;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #1a2630;
+      color: rgba(255, 255, 255, 0.82);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .brand-name {
+      color: var(--white);
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      font-weight: 300;
+      max-width: 34ch;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .footer-grid h4 {
+      font-family: "Outfit", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .footer-grid ul { list-style: none; display: grid; gap: 0.55rem; }
+    .footer-grid a:hover { color: var(--amber); }
+    .footer-grid .contact-line { display: block; }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .socials { display: flex; gap: 1rem; }
+    .socials a { color: rgba(255, 255, 255, 0.7); }
+    .socials a:hover { color: var(--amber); }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .booking-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-panel .btn { grid-column: 1 / -1; width: 100%; }
+      .rooms-grid { grid-template-columns: 1fr; max-width: 520px; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 160px;
+      }
+      .gallery-grid figure:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+      .gallery-grid figure:nth-child(1),
+      .gallery-grid figure:nth-child(2) { grid-column: span 2; grid-row: span 2; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+      .header-cta { display: none; }
+      .booking-panel { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-content { padding-bottom: 4.5rem; }
+      .gallery-grid figure:nth-child(1),
+      .gallery-grid figure:nth-child(2) { grid-column: span 2; grid-row: span 1; min-height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="logo" href="#hero" aria-label="Četri Vēji sākums">
+        <img src="https://www.cetriveji.com/img/icons/logoLight.svg" alt="Četri Vēji" width="180" height="44"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="brand-fallback brand-name">Četri Vēji</span>
+      </a>
+
+      <nav aria-label="Galvenā navigācija">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Rezervācija</a></li>
+          <li><a href="#rooms">Naktsmītnes</a></li>
+          <li><a href="#amenities">Ērtības</a></li>
+          <li><a href="#gallery">Galerija</a></li>
+          <li><a href="#location">Atrašanās</a></li>
+          <li><a href="#trust">Atsauksmes</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-primary header-cta" href="#booking">Pārbaudīt pieejamību</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Atvērt izvēlni" aria-expanded="false">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="navMobile" aria-hidden="true">
+    <div class="mobile-nav-top">
+      <span class="brand-name" style="color:#fff;font-size:1.6rem;">Četri Vēji</span>
+      <button class="nav-close" id="navClose" aria-label="Aizvērt izvēlni">&times;</button>
+    </div>
+    <a href="#booking">Rezervācija</a>
+    <a href="#rooms">Naktsmītnes</a>
+    <a href="#amenities">Ērtības</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Atrašanās</a>
+    <a href="#trust">Atsauksmes</a>
+    <a class="btn btn-primary" href="#booking" style="margin-top:1.5rem;">Pārbaudīt pieejamību</a>
+  </div>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-media">
+        <img src="https://www.cetriveji.com/img/hero/pic4.jpg"
+             alt="Četri Vēji viesu nams un apkārtne pie Jūrkalnes stāvkrasta"
+             width="1600" height="900">
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-brand"><span>Viesu nams</span>Četri Vēji</p>
+        <h1>Atpūtieties mūsu mierpilnajā viesu namā pie stāvkrasta pludmales</h1>
+        <p class="hero-lead">Tikai 120 m no Jūrkalnes jūras stāvkrasta — tīri, gaiši numuri un dabas tuvums Baltijas jūrai.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#booking">Pārbaudīt pieejamību</a>
+          <a class="btn btn-ghost" href="#rooms">Skatīt naktsmītnes</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="container">
+        <form class="booking-panel" id="bookingForm" action="#" method="get">
+          <div class="field">
+            <label for="checkin">Iebraukšana</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Izbraukšana</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field guest-wrap">
+            <label for="guestTrigger">Viesi</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+              <span id="guestSummary">2 pieaugušie</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="guest-panel" id="guestPanel">
+              <div class="guest-row">
+                <div>
+                  <strong>Pieaugušie</strong>
+                  <span>No 18 gadiem</span>
+                </div>
+                <div class="stepper">
+                  <button type="button" id="adultsMinus" aria-label="Mazāk pieaugušo">−</button>
+                  <output id="adultsCount">2</output>
+                  <button type="button" id="adultsPlus" aria-label="Vairāk pieaugušo">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <div>
+                  <strong>Bērni</strong>
+                  <span>Līdz 17 gadiem</span>
+                </div>
+                <div class="stepper">
+                  <button type="button" id="childrenMinus" aria-label="Mazāk bērnu">−</button>
+                  <output id="childrenCount">0</output>
+                  <button type="button" id="childrenPlus" aria-label="Vairāk bērnu">+</button>
+                </div>
+              </div>
+              <div class="field" style="margin-top:0.85rem;">
+                <label for="roomType">Tips</label>
+                <select id="roomType" name="roomType">
+                  <option value="any">Jebkurš</option>
+                  <option value="majas">Mājas</option>
+                  <option value="istabas">Istabas</option>
+                  <option value="apartamenti">Apartamenti</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Meklēt</button>
+        </form>
+        <p class="booking-note">Demonstrācijas logrīks — uz reālās vietnes cenas parādās pēc datumu ievades.</p>
+      </div>
+    </section>
+
+    <section class="section" id="rooms">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Naktsmītnes</span>
+          <h2>Mājas, istabas un apartamenti</h2>
+          <p>Izvēlieties no dažāda tipa numuriem — ar privātu vai kopēju virtuvi un tualeti. Vairāk kā pusei numuru ir skats uz jūru.</p>
+        </div>
+
+        <div class="rooms-grid">
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="https://www.cetriveji.com/img/home/2DSC_4809-min.jpg"
+                   alt="Atsevišķa māja ar terasi — Četri Vēji" width="800" height="600" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Mājas</h3>
+              <p class="room-meta">2–4 viesi · privāta virtuve · terase</p>
+              <p>Atsevišķas mājas komforta cienītājiem, kas meklē privātumu. Aprīkotas ar privātu virtuvi, tualeti un āra terasi; pieejamas ar skatu uz jūru vai dārzu.</p>
+              <div class="room-price">
+                <strong>No EUR — /nakti</strong>
+                <span class="price-note">Cena nav publicēta</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="https://www.cetriveji.com/img/home/1IMG_4200-min.jpg"
+                   alt="Istaba viesu namā Četri Vēji" width="800" height="600" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Istabas</h3>
+              <p class="room-meta">2–3 viesi · privāta vai dalīta tualete</p>
+              <p>Istabas piemērotas pāriem. Pieejama labiekārtota koplietošanas virtuve ar plašu ēdamzāli viesu nama galvenajā ēkā.</p>
+              <div class="room-price">
+                <strong>No EUR — /nakti</strong>
+                <span class="price-note">Cena nav publicēta</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="https://www.cetriveji.com/img/home/apartment-min.jpg"
+                   alt="Apartaments viesu namā Četri Vēji" width="800" height="600" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Apartamenti</h3>
+              <p class="room-meta">4–5 viesi · privāta tualete</p>
+              <p>Apartamenti nelielām kompānijām un ģimenēm. Visos apartamentos ir vismaz viena privāta tualete, un pieejama koplietošanas virtuve ar ēdamzāli.</p>
+              <div class="room-price">
+                <strong>No EUR — /nakti</strong>
+                <span class="price-note">Cena nav publicēta</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="amenities">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Ērtības</span>
+          <h2>Viss, kas atrodams uz vietas</h2>
+          <p>Tikai ērtības, kas minētas uz cetriveji.com — bez izdomātiem solījumiem.</p>
+        </div>
+
+        <div class="amenities-grid reveal">
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M2 12h20M5 12a7 7 0 0 1 14 0"/><path d="M12 12v8"/></svg>
+            </div>
+            <div>
+              <strong>120 m līdz stāvkrastam</strong>
+              <span>Jūras un dabas tuvums</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12.5h14M8 12.5V8a4 4 0 0 1 8 0v4.5"/><path d="M4 16h16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2z"/></svg>
+            </div>
+            <div>
+              <strong>Bezmaksas Wi‑Fi</strong>
+              <span>Visos numuros</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 10h16v10H4z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M4 14h16"/></svg>
+            </div>
+            <div>
+              <strong>Virtuve</strong>
+              <span>Privāta vai koplietošanas</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 20V10l7-5 7 5v10"/><path d="M10 20v-6h4v6"/></svg>
+            </div>
+            <div>
+              <strong>Āra terase</strong>
+              <span>Mājās ar āra mēbelēm</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 18c2-4 4-6 7-6s5 2 7 6"/><path d="M8 10h.01M12 8h.01M16 10h.01"/><path d="M4 20h16"/></svg>
+            </div>
+            <div>
+              <strong>Grili</strong>
+              <span>Vairāki grili teritorijā</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="2"/><circle cx="16" cy="8" r="2"/><path d="M5 18c1.5-3 3.5-4.5 7-4.5S17.5 15 19 18"/></svg>
+            </div>
+            <div>
+              <strong>Bērnu rotaļu laukums</strong>
+              <span>Plašajā teritorijā</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 19V9l6-4 6 4v10"/><path d="M9 19v-5h6v5"/></svg>
+            </div>
+            <div>
+              <strong>Pasākumu zāle</strong>
+              <span>Kāzas, semināri, līdz ~80</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M7 12v6h10v-6"/><path d="M9 8h6v4H9z"/></svg>
+            </div>
+            <div>
+              <strong>Bāra lete</strong>
+              <span>Kafijas pauzēm un dzērieniem</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 10h10v8H7z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M5 18h14"/></svg>
+            </div>
+            <div>
+              <strong>Pasākumu virtuve</strong>
+              <span>Indukcijas plītis, cepeškrāsns</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v4"/><path d="M5 10h14"/><path d="M7 10v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg>
+            </div>
+            <div>
+              <strong>Attālināta reģistrācija</strong>
+              <span>Atslēgu saņemšana un nodošana</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 17c3-2 6-3 9-3s6 1 9 3"/><path d="M5 12c2.5-1.5 5-2.2 7-2.2S16.5 10.5 19 12"/><path d="M8 8c1.5-.8 2.8-1.2 4-1.2S14.5 7.2 16 8"/></svg>
+            </div>
+            <div>
+              <strong>Skats uz jūru</strong>
+              <span>Vairāk kā pusei numuru</span>
+            </div>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 19l3-8h6l3 8"/><path d="M9 11V8l3-3 3 3v3"/></svg>
+            </div>
+            <div>
+              <strong>Plaša teritorija</strong>
+              <span>Sportam, teltīm, nojumēm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Galerija</span>
+          <h2>Vējš, jūra un mājas sajūta</h2>
+          <p>Fotogrāfijas no oficiālās vietnes — eksterjers, numuri, kopējās telpas un teritorija.</p>
+        </div>
+
+        <div class="gallery-grid reveal">
+          <figure>
+            <img src="https://www.cetriveji.com/img/hero/pic3.jpg" alt="Skats pie Jūrkalnes stāvkrasta" width="1200" height="800" loading="lazy">
+            <figcaption>Stāvkrasts un jūra</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.cetriveji.com/img/home/IMG_0008-min.jpeg" alt="Viesu nama teritorija" width="1200" height="800" loading="lazy">
+            <figcaption>Teritorija</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.cetriveji.com/img/b/dot/1DSC_1523-min_1_11z.jpg" alt="Bungalo ar skatu uz jūru" width="600" height="400" loading="lazy">
+            <figcaption>Māja / bungalo</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.cetriveji.com/img/home/1IMG_4200-min.jpg" alt="Istaba" width="800" height="600" loading="lazy">
+            <figcaption>Istaba</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.cetriveji.com/img/hero/eventhall.jpg" alt="Pasākumu zāle" width="800" height="600" loading="lazy">
+            <figcaption>Pasākumu zāle</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.cetriveji.com/img/home/apartment-min.jpg" alt="Apartaments" width="800" height="600" loading="lazy">
+            <figcaption>Apartaments</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container">
+        <div class="location-grid">
+          <div class="location-copy reveal">
+            <span class="eyebrow">Atrašanās vieta</span>
+            <h2 style="font-size:clamp(2rem,4vw,2.75rem);margin-bottom:1rem;">Jūrkalne, pie Baltijas jūras stāvkrasta</h2>
+            <p>Viesu nams atrodas adrese <strong>"Birznieki", Jūrkalnes pagasts, Ventspils novads, LV-3626</strong> — tikai 120 metri no jūras stāvkrasta un pludmales.</p>
+            <p>Apkārtnē iespējamas āra aktivitātes, piemēram, vindsērfings, kaitbords, SUP un paraplāns, vai vienkārši atpūta ar skatu uz jūru.</p>
+            <ul class="location-list">
+              <li>Jūrkalnes stāvkrasts / jūras stāvkrasts — ~120 m</li>
+              <li>Baltijas jūras pludmale</li>
+              <li>Ventspils novads, Latvijas rietumu krasts</li>
+            </ul>
+          </div>
+          <div class="map-placeholder reveal" role="img" aria-label="Kartes viettura vietturis">
+            <div class="map-pin" aria-hidden="true"><span></span></div>
+            <h3>Kartes vietturis</h3>
+            <p>"Birznieki", Jūrkalnes pag., Ventspils nov., LV-3626</p>
+            <a href="https://goo.gl/maps/UxVNWZuKuvdcXRKn8" target="_blank" rel="noopener noreferrer">Atvērt Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="trust">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="placeholder-badge">Vietturis — vērtējums nav atrasts uz vietnes</div>
+          <h2>Ko saka viesi</h2>
+          <p>Oficiālajā vietnē publisks vērtējums nav rādīts, tāpēc zemāk ir trīs parauga atsauksmes demonstrācijai.</p>
+        </div>
+
+        <div class="trust-grid">
+          <blockquote class="quote reveal">
+            <p>“Mierīga atmosfēra un jūra tikai pāris soļu attālumā — ideāli, lai atslēgtos no ikdienas.”</p>
+            <footer>— Parauga atsauksme (vietturis)</footer>
+          </blockquote>
+          <blockquote class="quote reveal">
+            <p>“Tīri, gaiši numuri un ērta virtuve. Bērniem patika rotaļu laukums teritorijā.”</p>
+            <footer>— Parauga atsauksme (vietturis)</footer>
+          </blockquote>
+          <blockquote class="quote reveal">
+            <p>“Ērti ierasties vēlāk vakarā ar attālināto reģistrāciju. Stāvkrasta skati ir iespaidīgi.”</p>
+            <footer>— Parauga atsauksme (vietturis)</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-name">Četri Vēji</span>
+          <p>Viesu nams pie Jūrkalnes stāvkrasta — mājas, istabas un apartamenti ar jūras un dabas tuvumu.</p>
+        </div>
+        <div>
+          <h4>Kontakti</h4>
+          <ul>
+            <li><a class="contact-line" href="mailto:info@cetriveji.com">info@cetriveji.com</a></li>
+            <li><a class="contact-line" href="tel:+37129131329">+371 29131329</a></li>
+            <li>"Birznieki", Jūrkalnes pag., Ventspils nov., LV-3626</li>
+          </ul>
+          <div class="socials" style="margin-top:1rem;">
+            <a href="https://www.facebook.com/cetriveji/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/cetriveji/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+        <div>
+          <h4>Navigācija</h4>
+          <ul>
+            <li><a href="#booking">Rezervācija</a></li>
+            <li><a href="#rooms">Naktsmītnes</a></li>
+            <li><a href="#amenities">Ērtības</a></li>
+            <li><a href="#gallery">Galerija</a></li>
+            <li><a href="#location">Atrašanās</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Četri Vēji · Prototips (nav oficiālā vietne)</span>
+        <span>Avots: cetriveji.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMobile = document.getElementById("navMobile");
+      const navClose = document.getElementById("navClose");
+      const guestTrigger = document.getElementById("guestTrigger");
+      const guestPanel = document.getElementById("guestPanel");
+      const guestSummary = document.getElementById("guestSummary");
+      const adultsOut = document.getElementById("adultsCount");
+      const childrenOut = document.getElementById("childrenCount");
+      let adults = 2;
+      let children = 0;
+
+      function updateGuestSummary() {
+        adultsOut.textContent = String(adults);
+        childrenOut.textContent = String(children);
+        const parts = [adults + (adults === 1 ? " pieaugušais" : " pieaugušie")];
+        if (children > 0) parts.push(children + (children === 1 ? " bērns" : " bērni"));
+        guestSummary.textContent = parts.join(", ");
+      }
+
+      window.addEventListener("scroll", function () {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+      }, { passive: true });
+
+      menuToggle.addEventListener("click", function () {
+        navMobile.classList.add("open");
+        navMobile.setAttribute("aria-hidden", "false");
+        menuToggle.setAttribute("aria-expanded", "true");
+      });
+
+      function closeMobile() {
+        navMobile.classList.remove("open");
+        navMobile.setAttribute("aria-hidden", "true");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+
+      navClose.addEventListener("click", closeMobile);
+      navMobile.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMobile);
+      });
+
+      guestTrigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const open = guestPanel.classList.toggle("open");
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove("open");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.getElementById("adultsPlus").addEventListener("click", function () {
+        if (adults < 10) { adults += 1; updateGuestSummary(); }
+      });
+      document.getElementById("adultsMinus").addEventListener("click", function () {
+        if (adults > 1) { adults -= 1; updateGuestSummary(); }
+      });
+      document.getElementById("childrenPlus").addEventListener("click", function () {
+        if (children < 8) { children += 1; updateGuestSummary(); }
+      });
+      document.getElementById("childrenMinus").addEventListener("click", function () {
+        if (children > 0) { children -= 1; updateGuestSummary(); }
+      });
+
+      document.getElementById("bookingForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        const prev = btn.textContent;
+        btn.textContent = "Meklē…";
+        setTimeout(function () {
+          btn.textContent = "Nav rezultātu (demo)";
+          setTimeout(function () { btn.textContent = prev; }, 1600);
+        }, 500);
+      });
+
+      const today = new Date();
+      const iso = function (d) { return d.toISOString().split("T")[0]; };
+      const checkin = document.getElementById("checkin");
+      const checkout = document.getElementById("checkout");
+      const inDate = new Date(today); inDate.setDate(today.getDate() + 1);
+      const outDate = new Date(today); outDate.setDate(today.getDate() + 3);
+      checkin.min = iso(today);
+      checkout.min = iso(inDate);
+      checkin.value = iso(inDate);
+      checkout.value = iso(outDate);
+      checkin.addEventListener("change", function () {
+        const next = new Date(checkin.value);
+        next.setDate(next.getDate() + 1);
+        checkout.min = iso(next);
+        if (checkout.value <= checkin.value) checkout.value = iso(next);
+      });
+
+      const reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add("visible"); });
+      }
+    })();
+  </script>
+</body>
+</html>
