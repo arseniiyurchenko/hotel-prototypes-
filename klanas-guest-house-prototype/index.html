@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest house Klāņas — Engure, Latvia</title>
+  <meta name="description" content="Guest house Klāņas in Engure — a wonderful place to relax. Rooms, sauna, Turkish bath, banquet and conference halls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1e3d30;
+      --forest-deep: #14291f;
+      --forest-soft: #2f5643;
+      --sage: #5f7a68;
+      --mist: #e8eee9;
+      --mist-deep: #d5dfd8;
+      --sand: #f2f0eb;
+      --warm-white: #fafaf7;
+      --wood: #a67c52;
+      --wood-hover: #8f6843;
+      --text: #1c2a22;
+      --muted: #5a6b60;
+      --white: #ffffff;
+      --shadow: 0 8px 28px rgba(20, 41, 31, 0.12);
+      --radius: 14px;
+      --transition: 0.28s ease;
+      --header-pad: clamp(2rem, 4.5vw, 3rem);
+      --max: 1180px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Source Sans 3", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse 90% 50% at 10% -10%, rgba(95, 122, 104, 0.14), transparent 55%),
+        radial-gradient(ellipse 70% 40% at 100% 20%, rgba(166, 124, 82, 0.08), transparent 50%),
+        linear-gradient(180deg, var(--mist) 0%, var(--warm-white) 28%, var(--sand) 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    h1, h2, h3, .brand-name {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      width: min(100%, var(--max));
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--wood);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 3.5vw, 2.6rem);
+      color: var(--forest);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      max-width: 36rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      padding: 0.9rem 0;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(250, 250, 247, 0.97);
+      box-shadow: 0 4px 24px rgba(20, 41, 31, 0.08);
+      border-bottom-color: rgba(30, 61, 48, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 46px;
+      padding: 0.35rem 0.55rem;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(20, 41, 31, 0.08);
+    }
+
+    .logo-mark img {
+      height: 34px;
+      width: auto;
+    }
+
+    .brand-name {
+      font-size: 1.2rem;
+      color: var(--forest);
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 1.75rem);
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: var(--forest-soft);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--forest); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.7rem 1.35rem;
+      background: var(--forest);
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: 999px;
+      transition: background var(--transition), transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .header-cta:hover {
+      background: var(--forest-deep);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--forest);
+      cursor: pointer;
+      padding: 0.35rem;
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: var(--forest-deep);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: Fraunces, serif;
+      font-size: 1.6rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: var(--header-pad);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      animation: heroZoom 18s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 41, 31, 0.25) 0%, rgba(20, 41, 31, 0.55) 55%, rgba(20, 41, 31, 0.82) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(100%, var(--max));
+      margin-inline: auto;
+      padding: 0 var(--header-pad) clamp(3.5rem, 8vw, 5.5rem);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 4.6rem);
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+      max-width: 12ch;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+      font-weight: 300;
+      max-width: 28rem;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.75rem;
+      background: var(--wood);
+      color: var(--white);
+      font-weight: 600;
+      border-radius: 999px;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .hero-cta:hover {
+      background: var(--wood-hover);
+      transform: translateY(-2px);
+    }
+
+    /* —— Booking —— */
+    .booking-section {
+      padding: 0;
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .booking-card {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.2fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(30, 61, 48, 0.06);
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .field select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.8rem 0.95rem;
+      border: 1px solid var(--mist-deep);
+      border-radius: 10px;
+      background: var(--warm-white);
+      color: var(--text);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .guest-trigger:focus {
+      outline: none;
+      border-color: var(--forest-soft);
+      box-shadow: 0 0 0 3px rgba(47, 86, 67, 0.15);
+    }
+
+    .guest-field { position: relative; }
+
+    .guest-trigger {
+      text-align: left;
+      cursor: pointer;
+      appearance: none;
+    }
+
+    .guest-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      left: 0;
+      right: 0;
+      z-index: 20;
+      background: var(--white);
+      border: 1px solid var(--mist-deep);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+    }
+
+    .guest-panel.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+    }
+
+    .guest-row + .guest-row {
+      border-top: 1px solid var(--mist);
+    }
+
+    .guest-row span {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .guest-row small {
+      display: block;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .counter button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--mist-deep);
+      background: var(--warm-white);
+      cursor: pointer;
+      color: var(--forest);
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: background var(--transition);
+    }
+
+    .counter button:hover { background: var(--mist); }
+
+    .counter span {
+      min-width: 1.25rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .search-btn {
+      padding: 0.85rem 1.6rem;
+      background: var(--forest);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background var(--transition), transform var(--transition);
+      height: 48px;
+    }
+
+    .search-btn:hover {
+      background: var(--forest-deep);
+      transform: translateY(-1px);
+    }
+
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .booking-feedback {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--mist);
+      border-radius: 10px;
+      color: var(--forest);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .booking-feedback.show { display: block; }
+
+    /* —— Rooms —— */
+    .rooms-section {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+    }
+
+    .rooms-header {
+      text-align: center;
+      margin-bottom: 2.75rem;
+    }
+
+    .rooms-header .section-lead {
+      margin-inline: auto;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(30, 61, 48, 0.07);
+      box-shadow: 0 4px 18px rgba(20, 41, 31, 0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .room-card:nth-child(2) { animation-delay: 0.1s; }
+    .room-card:nth-child(3) { animation-delay: 0.2s; }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-body { padding: 1.35rem 1.4rem 1.5rem; }
+
+    .room-body h3 {
+      font-size: 1.25rem;
+      color: var(--forest);
+      margin-bottom: 0.45rem;
+    }
+
+    .room-body p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .room-meta {
+      font-size: 0.82rem;
+      color: var(--sage);
+      margin-bottom: 0.85rem;
+    }
+
+    .room-price {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--mist);
+    }
+
+    .room-price strong {
+      font-family: Fraunces, serif;
+      font-size: 1.15rem;
+      color: var(--forest);
+    }
+
+    .room-price small {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* —— Amenities —— */
+    .amenities-section {
+      padding: clamp(4rem, 8vw, 5.5rem) 0;
+      background:
+        linear-gradient(180deg, rgba(232, 238, 233, 0.85), rgba(213, 223, 216, 0.55));
+    }
+
+    .amenities-header {
+      margin-bottom: 2.5rem;
+      max-width: 36rem;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1.35rem 1.2rem;
+      background: rgba(250, 250, 247, 0.75);
+      border-radius: 12px;
+      border: 1px solid rgba(30, 61, 48, 0.06);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .amenity:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    .amenity-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .amenity span {
+      font-weight: 500;
+      font-size: 0.98rem;
+      color: var(--forest);
+    }
+
+    /* —— Gallery —— */
+    .gallery-section {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .gallery-header .section-lead { margin-inline: auto; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      grid-column: span 4;
+      min-height: 220px;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 8;
+      min-height: 320px;
+    }
+
+    .gallery-item:nth-child(2) {
+      grid-column: span 4;
+      min-height: 320px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.5rem 1rem 0.9rem;
+      background: linear-gradient(transparent, rgba(20, 41, 31, 0.75));
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* —— Location —— */
+    .location-section {
+      padding: clamp(4rem, 8vw, 5.5rem) 0;
+      background: var(--forest-deep);
+      color: var(--white);
+    }
+
+    .location-section .section-label { color: var(--wood); }
+    .location-section .section-title { color: var(--white); }
+    .location-section .section-lead { color: rgba(255, 255, 255, 0.72); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 2.5rem;
+      align-items: stretch;
+      margin-top: 2.25rem;
+    }
+
+    .location-text p {
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 1.25rem;
+      max-width: 34rem;
+    }
+
+    .location-details {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .location-details li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.98rem;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .location-details strong {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.15rem;
+      font-weight: 600;
+    }
+
+    .map-placeholder {
+      min-height: 320px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(95, 122, 104, 0.35), rgba(20, 41, 31, 0.2)),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 24px,
+          rgba(255, 255, 255, 0.04) 24px,
+          rgba(255, 255, 255, 0.04) 25px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 24px,
+          rgba(255, 255, 255, 0.04) 24px,
+          rgba(255, 255, 255, 0.04) 25px
+        ),
+        #243f33;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: 0.5rem;
+    }
+
+    .map-placeholder .pin {
+      width: 48px;
+      height: 48px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--wood);
+      transform: rotate(-45deg);
+      display: grid;
+      place-items: center;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .map-placeholder .pin span {
+      transform: rotate(45deg);
+      font-size: 1.1rem;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .map-placeholder p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.92rem;
+      max-width: 16rem;
+    }
+
+    .map-note {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* —— Trust —— */
+    .trust-section {
+      padding: clamp(4rem, 8vw, 5.5rem) 0;
+    }
+
+    .trust-header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .trust-header .section-lead { margin-inline: auto; }
+
+    .placeholder-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(166, 124, 82, 0.12);
+      color: var(--wood-hover);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .testimonial {
+      padding: 1.6rem 1.45rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px dashed rgba(166, 124, 82, 0.45);
+      position: relative;
+    }
+
+    .testimonial .tag {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--wood);
+      opacity: 0.8;
+    }
+
+    .testimonial p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin: 1.25rem 0 1rem;
+      font-style: italic;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--forest);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--forest-deep);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 3.5rem 0 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .brand-name {
+      color: var(--white);
+      font-size: 1.45rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 22rem;
+    }
+
+    .footer-col h4 {
+      font-family: Fraunces, serif;
+      color: var(--white);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      transition: color var(--transition);
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .nav-desktop,
+      .header-cta { display: none; }
+
+      .menu-toggle { display: block; }
+
+      .brand-name { display: none; }
+
+      .booking-card {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .search-btn {
+        grid-column: span 2;
+        width: 100%;
+      }
+
+      .rooms-grid,
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item,
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(2) {
+        grid-column: span 6;
+        min-height: 200px;
+      }
+
+      .gallery-item:nth-child(1) { min-height: 260px; }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .booking-card { grid-template-columns: 1fr; }
+
+      .search-btn { grid-column: span 1; }
+
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+
+      .gallery-item,
+      .gallery-item:nth-child(n) {
+        grid-column: span 12;
+        min-height: 200px;
+      }
+
+      .footer-grid { grid-template-columns: 1fr; }
+
+      .hero { min-height: 78vh; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-bg img,
+      .hero-content,
+      .room-card { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo" aria-label="Guest house Klāņas home">
+        <span class="logo-mark">
+          <img src="http://klanas.vip.lv/wp-content/uploads/2018/03/logo.jpg" alt="Klāņas logo">
+        </span>
+        <span class="brand-name">Klāņas</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img
+        src="http://klanas.lv/wp-content/uploads/2018/03/klanas_001.jpg"
+        alt="Guest house Klāņas exterior in Engure">
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <h1>Guest house Klāņas</h1>
+      <p class="hero-tagline">A wonderful place to relax — rooms, sauna &amp; celebrations in Engure</p>
+      <a href="#booking" class="hero-cta">Check availability</a>
+    </div>
+  </section>
+
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-card" id="bookingForm" onsubmit="return false;">
+        <div class="field">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="field">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="field guest-field">
+          <label for="guestTrigger">Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+            2 adults · 0 children
+          </button>
+          <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Guest selector">
+            <div class="guest-row">
+              <span>Adults<small>18+</small></span>
+              <div class="counter">
+                <button type="button" id="adultsMinus" aria-label="Fewer adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" id="adultsPlus" aria-label="More adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children<small>0–17</small></span>
+              <div class="counter">
+                <button type="button" id="childrenMinus" aria-label="Fewer children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" id="childrenPlus" aria-label="More children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="search-btn" id="searchBtn">Search</button>
+      </form>
+      <p class="booking-note">Prototype booking widget — availability is confirmed by phone (+371 26 444 123). No rates are published on the source site.</p>
+      <div class="booking-feedback" id="bookingFeedback" role="status"></div>
+    </div>
+  </section>
+
+  <section class="rooms-section" id="rooms">
+    <div class="container">
+      <div class="rooms-header">
+        <span class="section-label">Accommodation</span>
+        <h2 class="section-title">Rooms as listed on klanas.lv</h2>
+        <p class="section-lead">All guest rooms include WC and shower. Rates are not published on the source site — placeholders shown below.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img
+            src="http://klanas.lv/wp-content/uploads/2018/03/IMG_5047.jpg"
+            alt="Room for 2 persons at Guest house Klāņas">
+          <div class="room-body">
+            <h3>Rooms for 2 persons</h3>
+            <p class="room-meta">3 rooms · WC &amp; shower</p>
+            <p>Comfortable double rooms for couples or solo travellers, each with private WC and shower.</p>
+            <div class="room-price">
+              <strong>From EUR — /night</strong>
+              <small>Placeholder — ask by phone</small>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <img
+            src="http://klanas.lv/wp-content/uploads/2018/03/IMG_5023.jpg"
+            alt="Room for 3 persons at Guest house Klāņas">
+          <div class="room-body">
+            <h3>Rooms for 3 persons</h3>
+            <p class="room-meta">5 rooms · WC &amp; shower</p>
+            <p>Triple rooms suited to small families or friends travelling together, each with WC and shower.</p>
+            <div class="room-price">
+              <strong>From EUR — /night</strong>
+              <small>Placeholder — ask by phone</small>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <img
+            src="http://klanas.lv/wp-content/uploads/2012/04/telpa_svinibam-600x400.jpeg"
+            alt="Group room and banquet space at Guest house Klāņas">
+          <div class="room-body">
+            <h3>Group room — 27 bed places</h3>
+            <p class="room-meta">3rd floor · with WC</p>
+            <p>Large third-floor room with 27 bed places — suited to groups and gatherings.</p>
+            <div class="room-price">
+              <strong>From EUR — /night</strong>
+              <small>Placeholder — ask by phone</small>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="amenities-section" id="amenities">
+    <div class="container">
+      <div class="amenities-header">
+        <span class="section-label">Amenities</span>
+        <h2 class="section-title">What Klāņas offers</h2>
+        <p class="section-lead">Taken from the live site — hotel rooms, sauna complex, and halls for celebrations and seminars.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M6 19V9l6-4 6 4v10M9 19v-4h6v4"/></svg>
+          </div>
+          <span>Guest rooms with WC &amp; shower</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20c2-6 6-9 8-9s6 3 8 9M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+          </div>
+          <span>Sauna</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M8 5l1.5 2.5M16 5l-1.5 2.5M7 20h10a4 4 0 0 0-4-7h-2a4 4 0 0 0-4 7z"/></svg>
+          </div>
+          <span>Turkish bath</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 14c2 0 3-2 5-2s3 2 5 2 3-2 5-2M5 18h14M7 14v4m10-4v4M6 10h12a2 2 0 0 0 2-2V7H4v1a2 2 0 0 0 2 2z"/></svg>
+          </div>
+          <span>Swimming pools</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v10m0 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm-5-5h10"/></svg>
+          </div>
+          <span>Showers</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h16v9H4zM7 10V7a5 5 0 0 1 10 0v3M8 14h2m4 0h2"/></svg>
+          </div>
+          <span>Sauna hall for 10 persons</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-5h6v5"/></svg>
+          </div>
+          <span>Banquet hall</span>
+        </div>
+        <div class="amenity">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M6 19V8h12v11M8 8V5h8v3M9 12h6M9 15h4"/></svg>
+          </div>
+          <span>Conference &amp; seminar halls (50)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="gallery-header">
+        <span class="section-label">Gallery</span>
+        <h2 class="section-title">A look around the property</h2>
+        <p class="section-lead">Real photos from klanas.lv — exterior, rooms, terrace, sauna, garden and banquet hall.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <img src="http://klanas.lv/wp-content/uploads/2015/06/klanas_002.jpg" alt="Garden pond and grounds at Klāņas">
+          <figcaption class="gallery-caption">Garden &amp; grounds</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="http://klanas.lv/wp-content/uploads/2018/03/IMG_5023.jpg" alt="Guest room interior">
+          <figcaption class="gallery-caption">Guest room</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="http://klanas.lv/wp-content/uploads/2018/03/klanas_15.jpg" alt="Covered terrace with stone walls">
+          <figcaption class="gallery-caption">Terrace</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="http://klanas.lv/wp-content/uploads/2018/03/pirts-600x400.jpeg" alt="Traditional wooden sauna">
+          <figcaption class="gallery-caption">Sauna</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="http://klanas.lv/wp-content/uploads/2018/03/20140823_193840.jpg" alt="Evening terrace overlooking the garden">
+          <figcaption class="gallery-caption">Evening terrace</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="http://klanas.lv/wp-content/uploads/2012/04/telpa_svinibam-600x400.jpeg" alt="Banquet hall set for a celebration">
+          <figcaption class="gallery-caption">Banquet hall</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="location-section" id="location">
+    <div class="container">
+      <span class="section-label">Location</span>
+      <h2 class="section-title">Find us in Engure</h2>
+      <p class="section-lead">Address as published on klanas.lv — Engure, Engures pagasts, Engures county, Latvia.</p>
+      <div class="location-grid">
+        <div class="location-text">
+          <p>
+            Guest house Klāņas sits on Jūras iela (Juras street) 47 in Engure.
+            The source site lists the address in Engures pagasts, Engures county, Latvia —
+            and invites guests to call for more information.
+          </p>
+          <p>
+            Nearby landmarks such as Engure lake, the Gulf of Riga beach, or a nature park
+            are <em>not named</em> on the official website; this prototype therefore does not claim them.
+          </p>
+          <ul class="location-details">
+            <li>
+              <div>
+                <strong>Address</strong>
+                “Klāņas”, Juras street 47, Engure, Engures pagasts, Engures county, Latvia
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+37126444123">+371 26 444 123</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:klanas@klanas.lv">klanas@klanas.lv</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="map-placeholder" role="img" aria-label="Static map placeholder for Engure, Latvia">
+          <div class="pin"><span>K</span></div>
+          <p class="map-note">Map placeholder</p>
+          <p>Engure · Juras street 47<br>Static map — not an embedded service</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-section" id="trust">
+    <div class="container">
+      <div class="trust-header">
+        <span class="placeholder-badge">Placeholder content</span>
+        <span class="section-label">Guests</span>
+        <h2 class="section-title">What visitors say</h2>
+        <p class="section-lead">No guest rating badge was found on klanas.lv. The cards below are clearly marked sample placeholders.</p>
+      </div>
+      <div class="testimonials">
+        <blockquote class="testimonial">
+          <span class="tag">Placeholder</span>
+          <p>“A calm stay in Engure with a proper sauna after a long day — we would book the triple room again.”</p>
+          <cite>— Sample guest A</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <span class="tag">Placeholder</span>
+          <p>“The banquet hall worked well for our family celebration. Staff helped us plan by phone.”</p>
+          <cite>— Sample guest B</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <span class="tag">Placeholder</span>
+          <p>“Garden and terrace evenings were the highlight. Easy to reach and a friendly base for a weekend.”</p>
+          <cite>— Sample guest C</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">Guest house Klāņas</div>
+          <p>Viesu nams, pirts, telpas svinībām — a wonderful place to relax in Engure.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Check availability</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+37126444123">+371 26 444 123</a></li>
+            <li><a href="mailto:klanas@klanas.lv">klanas@klanas.lv</a></li>
+            <li>“Klāņas”, Juras street 47, Engure</li>
+            <li><a href="http://klanas.lv" target="_blank" rel="noopener">klanas.lv</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Guest house Klāņas · Prototype homepage</span>
+        <span>Content sourced from klanas.lv</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById("header");
+      var menuToggle = document.getElementById("menuToggle");
+      var navMobile = document.getElementById("navMobile");
+      var navClose = document.getElementById("navClose");
+      var guestTrigger = document.getElementById("guestTrigger");
+      var guestPanel = document.getElementById("guestPanel");
+      var adultsCount = document.getElementById("adultsCount");
+      var childrenCount = document.getElementById("childrenCount");
+      var adults = 2;
+      var children = 0;
+
+      function updateHeader() {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+      }
+      window.addEventListener("scroll", updateHeader, { passive: true });
+      updateHeader();
+
+      function openMobile(open) {
+        navMobile.classList.toggle("open", open);
+        menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+
+      menuToggle.addEventListener("click", function () { openMobile(true); });
+      navClose.addEventListener("click", function () { openMobile(false); });
+      navMobile.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () { openMobile(false); });
+      });
+
+      function syncGuests() {
+        adultsCount.textContent = String(adults);
+        childrenCount.textContent = String(children);
+        var label =
+          adults + (adults === 1 ? " adult" : " adults") +
+          " · " +
+          children + (children === 1 ? " child" : " children");
+        guestTrigger.textContent = label;
+      }
+
+      guestTrigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = !guestPanel.classList.contains("open");
+        guestPanel.classList.toggle("open", open);
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove("open");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.getElementById("adultsPlus").addEventListener("click", function () {
+        adults = Math.min(20, adults + 1);
+        syncGuests();
+      });
+      document.getElementById("adultsMinus").addEventListener("click", function () {
+        adults = Math.max(1, adults - 1);
+        syncGuests();
+      });
+      document.getElementById("childrenPlus").addEventListener("click", function () {
+        children = Math.min(10, children + 1);
+        syncGuests();
+      });
+      document.getElementById("childrenMinus").addEventListener("click", function () {
+        children = Math.max(0, children - 1);
+        syncGuests();
+      });
+
+      var checkin = document.getElementById("checkin");
+      var checkout = document.getElementById("checkout");
+      var today = new Date();
+      function iso(d) {
+        return d.toISOString().split("T")[0];
+      }
+      var inDate = new Date(today);
+      inDate.setDate(inDate.getDate() + 2);
+      var outDate = new Date(today);
+      outDate.setDate(outDate.getDate() + 4);
+      checkin.min = iso(today);
+      checkout.min = iso(today);
+      checkin.value = iso(inDate);
+      checkout.value = iso(outDate);
+
+      checkin.addEventListener("change", function () {
+        if (checkout.value && checkout.value <= checkin.value) {
+          var next = new Date(checkin.value);
+          next.setDate(next.getDate() + 1);
+          checkout.value = iso(next);
+        }
+        checkout.min = checkin.value;
+      });
+
+      document.getElementById("searchBtn").addEventListener("click", function () {
+        var feedback = document.getElementById("bookingFeedback");
+        feedback.textContent =
+          "Prototype only — please call +371 26 444 123 to check availability for " +
+          checkin.value + " → " + checkout.value + " (" + guestTrigger.textContent + ").";
+        feedback.classList.add("show");
+      });
+    })();
+  </script>
+</body>
+</html>
