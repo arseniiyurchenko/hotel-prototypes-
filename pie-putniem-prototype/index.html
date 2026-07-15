@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pie Putniem — Guest houses between lake and sea | Lapmežciems</title>
+  <meta name="description" content="Three nature cabins in Lapmežciems — between Kaņieris lake and the Gulf of Riga. Kitchen, terrace, sauna &amp; hot tub rental, birdwatching nearby.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1a3329;
+      --forest-mid: #2a4a3c;
+      --moss: #3d6b54;
+      --mist: #eef4f0;
+      --mist-deep: #dce8e1;
+      --sand: #f5f1ea;
+      --cream: #fbf9f6;
+      --ink: #1c2420;
+      --muted: #5a6b62;
+      --burgundy: #ba0c49;
+      --burgundy-dark: #950a3a;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(26, 51, 41, 0.12);
+      --radius: 16px;
+      --ease: 0.28s ease;
+      --header-pad: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5.5rem;
+    }
+
+    body {
+      font-family: "Nunito Sans", system-ui, sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    h1, h2, h3, .brand-name {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      width: min(1120px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251, 249, 246, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: background var(--ease), border-color var(--ease), box-shadow var(--ease);
+    }
+
+    .site-header.scrolled {
+      background: rgba(251, 249, 246, 0.96);
+      border-bottom-color: rgba(26, 51, 41, 0.08);
+      box-shadow: 0 4px 24px rgba(26, 51, 41, 0.06);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      min-height: 4.5rem;
+      padding-block: 0.65rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(26, 51, 41, 0.15);
+    }
+
+    .logo .brand-name {
+      font-size: 1.15rem;
+      color: var(--forest);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .logo .brand-sub {
+      display: block;
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: 0.02em;
+      margin-top: 0.1rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--forest-mid);
+      transition: color var(--ease);
+    }
+
+    .nav-desktop a:hover { color: var(--burgundy); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.8rem 1.45rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      border: none;
+      cursor: pointer;
+      transition: transform var(--ease), background var(--ease), box-shadow var(--ease), color var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--burgundy);
+      color: var(--white);
+      box-shadow: 0 6px 20px rgba(186, 12, 73, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--burgundy-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.18);
+      color: var(--white);
+      border: 1.5px solid rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: translateY(-1px);
+    }
+
+    .header-cta { flex-shrink: 0; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--forest);
+      cursor: pointer;
+      padding: 0.45rem;
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: var(--forest);
+      z-index: 200;
+      padding: 1.5rem var(--header-pad) 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .nav-mobile.open { transform: translateX(0); }
+
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .nav-mobile-top .brand-name { color: var(--white); font-size: 1.1rem; }
+
+    .nav-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.75rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.25rem;
+    }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-mobile .btn { margin-top: 1.5rem; align-self: flex-start; }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(26, 51, 41, 0.35) 0%, rgba(26, 51, 41, 0.15) 35%, rgba(26, 51, 41, 0.78) 100%),
+        linear-gradient(90deg, rgba(26, 51, 41, 0.45) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 7.5rem 0 4.5rem;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-size: clamp(2.6rem, 7vw, 4.4rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.85rem;
+      text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-line {
+      font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+      font-weight: 500;
+      max-width: 34rem;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+      font-family: "Nunito Sans", sans-serif;
+      letter-spacing: 0;
+      line-height: 1.45;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+    /* —— Booking —— */
+    .booking {
+      position: relative;
+      z-index: 5;
+      margin-top: -2.75rem;
+      padding-bottom: 1rem;
+    }
+
+    .booking-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.35rem 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+      border: 1px solid rgba(26, 51, 41, 0.06);
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .field select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1.5px solid var(--mist-deep);
+      border-radius: 10px;
+      background: var(--mist);
+      color: var(--ink);
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .guest-trigger:focus {
+      outline: none;
+      border-color: var(--moss);
+      box-shadow: 0 0 0 3px rgba(61, 107, 84, 0.15);
+    }
+
+    .guest-wrap { position: relative; }
+
+    .guest-trigger {
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .guest-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      right: 0;
+      min-width: 260px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(26, 51, 41, 0.08);
+      padding: 1rem;
+      z-index: 20;
+    }
+
+    .guest-panel.open { display: block; animation: fadeUp 0.2s ease; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+    }
+
+    .guest-row + .guest-row { border-top: 1px solid var(--mist-deep); }
+
+    .guest-row span { font-weight: 600; font-size: 0.92rem; }
+    .guest-row small { display: block; font-weight: 400; color: var(--muted); font-size: 0.75rem; }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .stepper button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--mist-deep);
+      background: var(--mist);
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--forest);
+      transition: background var(--ease);
+    }
+
+    .stepper button:hover { background: var(--mist-deep); }
+    .stepper .count { min-width: 1.25rem; text-align: center; font-weight: 700; }
+
+    .booking-search {
+      white-space: nowrap;
+      padding-inline: 1.6rem;
+      height: 48px;
+    }
+
+    .booking-note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.85rem;
+    }
+
+    /* —— Sections —— */
+    section { padding: 5rem 0; }
+
+    .section-head {
+      max-width: 36rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.85rem, 3.5vw, 2.45rem);
+      color: var(--forest);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* —— Rooms —— */
+    .rooms {
+      background:
+        radial-gradient(ellipse at 10% 0%, rgba(61, 107, 84, 0.08), transparent 45%),
+        var(--mist);
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(26, 51, 41, 0.08);
+      border: 1px solid rgba(26, 51, 41, 0.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--ease), box-shadow var(--ease);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .room-card:nth-child(2) { animation-delay: 0.1s; }
+    .room-card:nth-child(3) { animation-delay: 0.2s; }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(26, 51, 41, 0.14);
+    }
+
+    .room-card .media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--mist-deep);
+    }
+
+    .room-card .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .room-card:hover .media img { transform: scale(1.04); }
+
+    .room-body {
+      padding: 1.35rem 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.55rem;
+    }
+
+    .room-body h3 {
+      font-size: 1.35rem;
+      color: var(--forest);
+    }
+
+    .room-body p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .room-price {
+      font-weight: 700;
+      color: var(--burgundy);
+      font-size: 1.05rem;
+      margin-top: 0.35rem;
+    }
+
+    .room-price span {
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* —— Amenities —— */
+    .amenities {
+      background:
+        linear-gradient(160deg, var(--sand) 0%, var(--cream) 50%, var(--mist) 100%);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 1.1rem;
+      background: rgba(255, 255, 255, 0.72);
+      border-radius: 12px;
+      border: 1px solid rgba(26, 51, 41, 0.06);
+      transition: background var(--ease), transform var(--ease);
+    }
+
+    .amenity:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--forest);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+    }
+
+    .amenity-icon svg { width: 20px; height: 20px; }
+    .amenity span { font-weight: 600; font-size: 0.95rem; color: var(--forest-mid); }
+
+    /* —— Gallery —— */
+    .gallery {
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    .gallery .section-eyebrow { color: #e8a0b8; }
+    .gallery .section-head h2 { color: var(--white); }
+    .gallery .section-head p { color: rgba(255, 255, 255, 0.75); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      position: relative;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      aspect-ratio: auto;
+      min-height: 280px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.5rem 1rem 0.85rem;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* —— Location —— */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .landmark-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .landmark-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.98rem;
+      color: var(--forest-mid);
+    }
+
+    .landmark-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 0.5rem;
+      border-radius: 50%;
+      background: var(--burgundy);
+      flex-shrink: 0;
+    }
+
+    .map-placeholder {
+      border-radius: var(--radius);
+      min-height: 340px;
+      background:
+        linear-gradient(145deg, rgba(26, 51, 41, 0.08), rgba(186, 12, 73, 0.06)),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 18px,
+          rgba(26, 51, 41, 0.03) 18px,
+          rgba(26, 51, 41, 0.03) 19px
+        ),
+        var(--mist-deep);
+      border: 1.5px dashed rgba(26, 51, 41, 0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      gap: 0.5rem;
+    }
+
+    .map-placeholder strong {
+      color: var(--forest);
+      font-size: 1.1rem;
+      font-family: "Fraunces", serif;
+    }
+
+    .map-pin {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--burgundy);
+      color: white;
+      display: grid;
+      place-items: center;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 8px 20px rgba(186, 12, 73, 0.35);
+    }
+
+    /* —— Trust —— */
+    .trust {
+      background: var(--mist);
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(186, 12, 73, 0.1);
+      color: var(--burgundy);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .quote-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border: 1px solid rgba(26, 51, 41, 0.06);
+      box-shadow: 0 6px 22px rgba(26, 51, 41, 0.05);
+    }
+
+    .quote-card blockquote {
+      font-family: "Fraunces", serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--forest);
+      margin-bottom: 1rem;
+      line-height: 1.45;
+    }
+
+    .quote-card cite {
+      font-style: normal;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--forest);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .brand-name {
+      color: var(--white);
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      max-width: 28rem;
+      opacity: 0.8;
+    }
+
+    .footer-col h4 {
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-col a:hover { color: #fff; }
+    .footer-col a, .footer-col li { font-size: 0.95rem; }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      opacity: 0.65;
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .booking-card {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-search { width: 100%; grid-column: 1 / -1; }
+      .rooms-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-column: span 2; min-height: 220px; }
+      .location-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 780px) {
+      .nav-desktop { display: none; }
+      .header-cta { display: none; }
+      .menu-toggle { display: block; }
+      .logo .brand-name { font-size: 1rem; }
+      .logo img { height: 42px; width: 42px; }
+    }
+
+    @media (max-width: 560px) {
+      .booking-card { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:first-child { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero { min-height: 85vh; }
+      .hero-content { padding-bottom: 5.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-media img, .room-card, .hero-content { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#hero" class="logo" aria-label="Pie Putniem home">
+        <img src="https://www.pieputniem.lv/wp-content/uploads/2020/10/Logo_9_PIE_PUTNIEM_maja-e1602195649981.jpg" alt="Pie Putniem logo" width="96" height="96">
+        <span class="brand-name">
+          Pie Putniem
+          <span class="brand-sub">Atpūta pie jūras</span>
+        </span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#booking">Book</a>
+        <a href="#rooms">Stay</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#trust">Guests</a>
+      </nav>
+
+      <a href="#booking" class="btn btn-primary header-cta">Check availability</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <span class="brand-name">Pie Putniem</span>
+      <button class="nav-close" id="navClose" aria-label="Close menu" type="button">&times;</button>
+    </div>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Stay</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+    <a href="#booking" class="btn btn-primary">Check availability</a>
+  </div>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img
+          src="https://www.pieputniem.lv/wp-content/uploads/2020/10/IMG_20200229_152132-scaled.jpg"
+          alt=""
+          width="2560"
+          height="1440"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <h1 class="hero-brand">Pie Putniem</h1>
+        <p class="hero-line">Quiet cabins between the lake and the sea — bird song, forest hush, and the Gulf of Riga a short walk away.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">Check availability</a>
+          <a href="#rooms" class="btn btn-ghost">Explore cabins</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Booking -->
+    <section class="booking" id="booking">
+      <div class="container">
+        <form class="booking-card" id="bookingForm" action="#" method="get">
+          <div class="field">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field guest-wrap">
+            <label for="guestTrigger">Guests</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+              <span id="guestSummary">2 adults · 0 children</span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Guest selection">
+              <div class="guest-row">
+                <div>
+                  <span>Adults</span>
+                  <small>Ages 13+</small>
+                </div>
+                <div class="stepper">
+                  <button type="button" id="adultsMinus" aria-label="Fewer adults">−</button>
+                  <span class="count" id="adultsCount">2</span>
+                  <button type="button" id="adultsPlus" aria-label="More adults">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <div>
+                  <span>Children</span>
+                  <small>Ages 0–12</small>
+                </div>
+                <div class="stepper">
+                  <button type="button" id="childrenMinus" aria-label="Fewer children">−</button>
+                  <span class="count" id="childrenCount">0</span>
+                  <button type="button" id="childrenPlus" aria-label="More children">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="roomType">Cabin</label>
+            <select id="roomType" name="roomType">
+              <option value="any">Any cabin</option>
+              <option value="balozi">Baložu namiņš</option>
+              <option value="pupuki">Pupuķu namiņš</option>
+              <option value="cekuldukuri">Cekuldūkuru namiņš</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary booking-search">Search</button>
+        </form>
+        <p class="booking-note">UI prototype only — contact +371 20013565 or info@pieputniem.lv to book.</p>
+      </div>
+    </section>
+
+    <!-- 3. Accommodation -->
+    <section class="rooms" id="rooms">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">Naktsmītnes</p>
+          <h2>Three cabins in the forest fold</h2>
+          <p>Fully equipped rest houses in Lapmežciems — cook in your own kitchen, listen to the birds, and rent a sauna or hot tub next door.</p>
+        </div>
+        <div class="rooms-grid">
+          <article class="room-card">
+            <div class="media">
+              <img src="https://www.pieputniem.lv/wp-content/uploads/2020/10/Balozi.png" alt="Baložu namiņš exterior" width="1024" height="579" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Baložu namiņš</h3>
+              <p>Named for the wood pigeons of Lapmežciems — and the Baloži family. Bedroom, kitchenette, terrace views into the trees.</p>
+              <p class="room-price">From €100 <span>/ night · up to 4 guests</span></p>
+            </div>
+          </article>
+          <article class="room-card">
+            <div class="media">
+              <img src="https://www.pieputniem.lv/wp-content/uploads/2020/10/Pupuki.png" alt="Pupuķu namiņš exterior" width="1013" height="646" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Pupuķu namiņš</h3>
+              <p>Identical layout to Baloži in different colours — early risers may hear the hoopoe’s soft “pūpūpū” nearby.</p>
+              <p class="room-price">From €100 <span>/ night · up to 4 guests</span></p>
+            </div>
+          </article>
+          <article class="room-card">
+            <div class="media">
+              <img src="https://www.pieputniem.lv/wp-content/uploads/2020/10/Cekuldukuri.png" alt="Cekuldūkuru namiņš exterior" width="935" height="571" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Cekuldūkuru namiņš</h3>
+              <p>Inspired by the crested grebe of Kaņieris lake — a base for boat trips and birdwatching on the protected waters.</p>
+              <p class="room-price">From €100 <span>/ night · up to 4 guests</span></p>
+            </div>
+          </article>
+        </div>
+        <p style="margin-top:1.5rem;font-size:0.9rem;color:var(--muted);max-width:48rem;">
+          Seasonal rates from the live site: June &amp; August €120/day · July €130/day · Sept–May €100 first day then €50/day (up to 4 people; +€15 per extra guest; +€30 final cleaning). Holiday rates on request.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. Amenities -->
+    <section class="amenities" id="amenities">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">Comforts</p>
+          <h2>What awaits on site</h2>
+          <p>Amenities listed on pieputniem.lv — kitchen living, outdoor fire, and nature within a short stroll.</p>
+        </div>
+        <div class="amenities-grid">
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h16v10H4zM8 10V7a4 4 0 018 0v3"/></svg>
+            </div>
+            <span>Kitchenette</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h2M11 10h2"/></svg>
+            </div>
+            <span>Dishwasher</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v2M12 18v2M4 12H2M22 12h-2M6.3 6.3l-1.4-1.4M19.1 19.1l-1.4-1.4M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <span>Air conditioning</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c-2 3-4 5-4 8a4 4 0 008 0c0-3-2-5-4-8z"/><path d="M9 20h6"/></svg>
+            </div>
+            <span>Fireplace stove</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20h18M5 20V10l7-6 7 6v10"/><path d="M9 20v-6h6v6"/></svg>
+            </div>
+            <span>Terrace</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 18h14M7 18V9l5-4 5 4v9"/><path d="M9 14h6"/></svg>
+            </div>
+            <span>Grill</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="14" r="5"/><path d="M12 3v4M9 5c1 1 2 1.5 3 1.5S14 6 15 5"/></svg>
+            </div>
+            <span>Fire pit</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="14" rx="7" ry="4"/><path d="M5 14V10c0-2 3-4 7-4s7 2 7 4v4"/></svg>
+            </div>
+            <span>Sauna rental</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="6"/><path d="M8 13c1-2 2-3 4-3s3 1 4 3"/></svg>
+            </div>
+            <span>Hot tub rental</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M3 12c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M3 8c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/></svg>
+            </div>
+            <span>Beach nearby</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 14c0-3 2-6 4-8 2 2 4 5 4 8a4 4 0 11-8 0z"/><path d="M16 8c1.5-1 3-1.2 4-.5"/></svg>
+            </div>
+            <span>Birdwatching</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 18h16M6 18V8l6 3 6-3v10"/><path d="M12 11v7"/></svg>
+            </div>
+            <span>Events hall</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Gallery -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">Gallery</p>
+          <h2>Forest light, sea air, quiet stays</h2>
+          <p>Real photographs from pieputniem.lv — cabins, grounds, nature, and the new Meža un jūras telpa.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="https://www.pieputniem.lv/wp-content/uploads/2020/10/IMG_3872a-scaled.jpg" alt="Property grounds at Pie Putniem" width="2560" height="1707" loading="lazy">
+            <figcaption>Property grounds</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.pieputniem.lv/wp-content/uploads/2021/06/8-IMG_4101.jpg" alt="Cabin interior living space" width="1024" height="683" loading="lazy">
+            <figcaption>Cabin living space</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.pieputniem.lv/wp-content/uploads/2021/06/0-20210609_214147_vid.jpg" alt="Courtyard and common outdoor area" width="1024" height="768" loading="lazy">
+            <figcaption>Courtyard</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.pieputniem.lv/wp-content/uploads/2020/10/SAULLEKTS-AR-PUTNU6.png" alt="Sunrise with bird over the water" width="1200" height="800" loading="lazy">
+            <figcaption>Sunrise &amp; birds</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.pieputniem.lv/wp-content/uploads/2026/07/telpa1-1024x768.jpg" alt="Meža un jūras telpa events hall" width="1024" height="768" loading="lazy">
+            <figcaption>Meža un jūras telpa</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.pieputniem.lv/wp-content/uploads/2020/10/10-kubls-dienaa-scaled.jpg" alt="Outdoor hot tub on site" width="2560" height="1707" loading="lazy">
+            <figcaption>Hot tub rental</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Location -->
+    <section id="location">
+      <div class="container location-grid">
+        <div>
+          <div class="section-head" style="margin-bottom:0;">
+            <p class="section-eyebrow">Lapmežciems</p>
+            <h2>Between Kaņieris and the Gulf of Riga</h2>
+            <p>Niedru iela 12, Lapmežciems, Tukuma novads — about 45 km from Riga, in a quiet forest fold between lake and sea.</p>
+          </div>
+          <ul class="landmark-list">
+            <li>Gulf of Riga beach — about an 8-minute walk</li>
+            <li>Kaņieris lake boat base, birdwatching tower &amp; Riekstsala — about 8 minutes by car</li>
+            <li>Ķemeri National Park trails nearby (Zaļā kāpa, sulphur ponds, Great Ķemeri Bog boardwalk)</li>
+            <li>One of Latvia’s richest bird lakes — cabins named after local species</li>
+          </ul>
+        </div>
+        <div class="map-placeholder" role="img" aria-label="Static map placeholder for Niedru iela 12, Lapmežciems">
+          <div class="map-pin" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <strong>Map placeholder</strong>
+          <span>Niedru iela 12, Lapmežciems</span>
+          <span>Tukuma novads, Latvia</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Trust -->
+    <section class="trust" id="trust">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">Guests</p>
+          <h2>Words from the forest edge</h2>
+          <p>No public rating badge was found on the live site — sample placeholders below for layout only.</p>
+        </div>
+        <div class="trust-badge">Placeholder testimonials — not from pieputniem.lv</div>
+        <div class="trust-grid">
+          <article class="quote-card">
+            <blockquote>“Woke to birdsong and walked to the sea before breakfast. The cabin kitchen made family days easy.”</blockquote>
+            <cite>— Placeholder guest · Riga</cite>
+          </article>
+          <article class="quote-card">
+            <blockquote>“Perfect base for Kaņieris birdwatching. Quiet, warm, and the hot tub rental was a lovely evening ritual.”</blockquote>
+            <cite>— Placeholder guest · Tallinn</cite>
+          </article>
+          <article class="quote-card">
+            <blockquote>“Felt like a true nature pause — terrace hammock, grill, and forest all around. We’ll return in winter.”</blockquote>
+            <cite>— Placeholder guest · Berlin</cite>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="brand-name">Pie Putniem</p>
+          <p>Naktsmītnes starp ezeru un jūru — three cabins, sauna &amp; hot tub rental, and the new Meža un jūras telpa for gatherings in nature.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Cabins</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Check availability</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>Niedru iela 12, Lapmežciems</li>
+            <li>Tukuma novads, Latvia</li>
+            <li><a href="tel:+37120013565">+371 20013565</a></li>
+            <li><a href="mailto:info@pieputniem.lv">info@pieputniem.lv</a></li>
+            <li><a href="https://www.facebook.com/pieputniem" target="_blank" rel="noopener">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>SIA „Pie Putniem” · Reg. Nr. 40203091951</span>
+        <span>Prototype homepage · source pieputniem.lv</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.querySelector(".site-header");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMobile = document.getElementById("navMobile");
+      const navClose = document.getElementById("navClose");
+
+      const onScroll = () => {
+        header.classList.toggle("scrolled", window.scrollY > 24);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      const openNav = () => {
+        navMobile.classList.add("open");
+        navMobile.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+      const closeNav = () => {
+        navMobile.classList.remove("open");
+        navMobile.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      };
+
+      menuToggle.addEventListener("click", openNav);
+      navClose.addEventListener("click", closeNav);
+      navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
+
+      // Guest selector
+      const guestTrigger = document.getElementById("guestTrigger");
+      const guestPanel = document.getElementById("guestPanel");
+      const guestSummary = document.getElementById("guestSummary");
+      let adults = 2;
+      let children = 0;
+
+      const syncGuests = () => {
+        document.getElementById("adultsCount").textContent = adults;
+        document.getElementById("childrenCount").textContent = children;
+        guestSummary.textContent =
+          adults + " adult" + (adults === 1 ? "" : "s") +
+          " · " + children + " child" + (children === 1 ? "" : "ren");
+      };
+
+      guestTrigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const open = guestPanel.classList.toggle("open");
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove("open");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.getElementById("adultsPlus").addEventListener("click", () => {
+        if (adults < 12) { adults += 1; syncGuests(); }
+      });
+      document.getElementById("adultsMinus").addEventListener("click", () => {
+        if (adults > 1) { adults -= 1; syncGuests(); }
+      });
+      document.getElementById("childrenPlus").addEventListener("click", () => {
+        if (children < 8) { children += 1; syncGuests(); }
+      });
+      document.getElementById("childrenMinus").addEventListener("click", () => {
+        if (children > 0) { children -= 1; syncGuests(); }
+      });
+
+      // Date defaults
+      const checkin = document.getElementById("checkin");
+      const checkout = document.getElementById("checkout");
+      const today = new Date();
+      const inDate = new Date(today);
+      inDate.setDate(today.getDate() + 2);
+      const outDate = new Date(today);
+      outDate.setDate(today.getDate() + 5);
+      const iso = (d) => d.toISOString().slice(0, 10);
+      checkin.value = iso(inDate);
+      checkout.value = iso(outDate);
+      checkin.min = iso(today);
+      checkout.min = iso(inDate);
+
+      checkin.addEventListener("change", () => {
+        const next = new Date(checkin.value);
+        next.setDate(next.getDate() + 1);
+        checkout.min = iso(next);
+        if (checkout.value <= checkin.value) checkout.value = iso(next);
+      });
+
+      document.getElementById("bookingForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const msg = document.querySelector(".booking-note");
+        msg.textContent =
+          "Prototype search — " +
+          checkin.value + " → " + checkout.value +
+          ", " + guestSummary.textContent +
+          ". Call +371 20013565 to confirm.";
+      });
+    })();
+  </script>
+</body>
+</html>
