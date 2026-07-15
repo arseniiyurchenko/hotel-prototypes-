@@ -23,7 +23,7 @@
       --shadow: 0 8px 32px rgba(30, 67, 76, 0.12);
       --radius: 10px;
       --transition: 0.28s ease;
-      --header-pad: clamp(1.5rem, 4vw, 3rem);
+      --header-pad: clamp(2rem, 4vw, 3rem);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -724,7 +724,10 @@
       .gallery-item:nth-child(1) { height: 220px; min-height: 220px; }
       .hero { min-height: 85vh; }
       .hero-content { padding-bottom: 5.5rem; }
-      .header-cta .btn-primary span { display: none; }
+      .header-cta .btn-primary {
+        padding: 0.65rem 0.9rem;
+        font-size: 0.78rem;
+      }
       .logo img { height: 40px; }
     }
 

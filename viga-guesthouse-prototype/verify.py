@@ -47,9 +47,9 @@ def main():
               return { left: lr.left, right: window.innerWidth - cr.right };
             }"""
         )
-        if spacing["left"] < 24:
+        if spacing["left"] < 30:
             errors.append(f"Logo too close to left edge: {spacing['left']}px")
-        if spacing["right"] < 24:
+        if spacing["right"] < 30:
             errors.append(f"CTA too close to right edge: {spacing['right']}px")
 
         # Smooth scroll-behavior
