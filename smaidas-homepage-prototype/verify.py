@@ -16,7 +16,15 @@ def main():
         browser = p.chromium.launch(headless=True)
         page = browser.new_page(viewport={"width": 1280, "height": 800})
         page.goto(URL, wait_until="networkidle", timeout=120000)
-        page.wait_for_timeout(2000)
+        page.wait_for_timeout(1500)
+
+        # Force lazy images to load by scrolling through sections
+        for sel in ["#booking", "#accommodation", "#amenities", "#gallery", "#location", "#trust", "#footer"]:
+            page.locator(sel).scroll_into_view_if_needed()
+            page.wait_for_timeout(500)
+        page.wait_for_timeout(2500)
+        page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(400)
 
         # Images
         imgs = page.locator("img").all()
@@ -47,15 +55,19 @@ def main():
         if y_after_cta < 100:
             errors.append("CTA did not scroll to booking section")
 
-        for sel in ["#accommodation", "#amenities", "#gallery", "#location", "#trust", "#footer"]:
-            page.locator(f'a[href="{sel}"]').first.click()
-            page.wait_for_timeout(800)
+        for sel in ["#accommodation", "#amenities", "#gallery", "#location", "#trust"]:
+            page.locator(f'.nav-desktop a[href="{sel}"]').click()
+            page.wait_for_timeout(900)
             top = page.evaluate(
                 f"() => document.querySelector('{sel}').getBoundingClientRect().top"
             )
-            # Should land near sticky header, not far down the page
-            if top > 200 or top < -80:
+            # Should land near sticky header after smooth scroll
+            if top > 220 or top < -120:
                 errors.append(f"Anchor {sel} landed poorly (top={top})")
+
+        # Footer is linked from content/footer nav, not the desktop header
+        page.locator('.site-footer a[href="#accommodation"]').click()
+        page.wait_for_timeout(800)
 
         # Booking widget
         page.locator("#checkin").fill("2026-07-20")

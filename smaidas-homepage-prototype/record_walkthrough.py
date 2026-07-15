@@ -67,7 +67,7 @@ def main():
         # Back to top, demonstrate smooth anchor nav
         page.evaluate("window.scrollTo({ top: 0, behavior: 'smooth' })")
         page.wait_for_timeout(1400)
-        page.locator('a.nav-desktop >> text=Rooms').click()
+        page.locator('.nav-desktop a[href="#accommodation"]').click()
         page.wait_for_timeout(1600)
         page.locator('a.header-cta').click()
         page.wait_for_timeout(1400)
