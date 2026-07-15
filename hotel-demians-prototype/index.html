@@ -771,7 +771,7 @@
     @media (max-width: 960px) {
       .nav-desktop { display: none; }
       .menu-toggle { display: block; }
-      .header-cta .btn { padding: 0.75rem 1.2rem; font-size: 0.72rem; }
+      .header-cta { display: none; }
 
       .booking-widget {
         grid-template-columns: 1fr 1fr;
@@ -1207,8 +1207,10 @@
               io.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
         reveals.forEach(el => io.observe(el));
+        // Failsafe so content is never permanently hidden (print, slow IO, etc.)
+        setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 1800);
       } else {
         reveals.forEach(el => el.classList.add('visible'));
       }
