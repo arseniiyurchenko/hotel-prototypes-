@@ -104,7 +104,7 @@ def main():
         page.wait_for_timeout(700)
         page.locator("#menuToggle").click()
         page.wait_for_timeout(900)
-        page.locator('#navMobile a[href="#booking"]').click()
+        page.locator('#navMobile').get_by_role("link", name="Rezervācija").click()
         page.wait_for_timeout(1200)
         page.locator("#guestTrigger").click()
         page.wait_for_timeout(900)
