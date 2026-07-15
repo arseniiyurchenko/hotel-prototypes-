@@ -137,6 +137,7 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
+    .header-cta .cta-short { display: none; }
     .header-cta:hover {
       background: var(--forest-mid);
       transform: translateY(-1px);
@@ -820,6 +821,7 @@
     }
 
     @media (max-width: 640px) {
+      :root { --header-pad-x: 1.35rem; }
       .booking-panel { grid-template-columns: 1fr; }
       .amenity-grid { grid-template-columns: 1fr 1fr; }
       .gallery-grid {
@@ -831,7 +833,14 @@
       }
       .footer-grid { grid-template-columns: 1fr; }
       .hero { min-height: 78vh; }
-      .header-cta { padding: 0.55rem 0.9rem; font-size: 0.72rem; }
+      .header-cta {
+        padding: 0.55rem 0.85rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+      }
+      .header-cta .cta-full { display: none; }
+      .header-cta .cta-short { display: inline; }
+      .logo-name { font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -850,7 +859,7 @@
         <a href="#gallery">Galerija</a>
         <a href="#location">Atrašanās</a>
       </nav>
-      <a href="#booking" class="header-cta">Pārbaudīt pieejamību</a>
+      <a href="#booking" class="header-cta"><span class="cta-full">Pārbaudīt pieejamību</span><span class="cta-short">Rezervēt</span></a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Atvērt izvēlni" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
