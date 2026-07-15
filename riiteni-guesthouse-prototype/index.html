@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Viesu nams Rīteņi — mierīga atpūta 300 m no jūras Ķesterciemā. Numuriņi, brīvdienu mājas, pirts un banketu zāle.">
+  <title>Viesu nams &quot;Rīteņi&quot; — 300 m no jūras | Ķesterciems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sea: #0f4c5c;
+      --sea-deep: #0a3440;
+      --sea-mid: #1a6b7a;
+      --foam: #e6f0f2;
+      --sand: #e9e2d6;
+      --sand-light: #f4f0e8;
+      --dune: #c4b49a;
+      --gold: #d5a353;
+      --gold-deep: #b8863a;
+      --ink: #1c2428;
+      --muted: #5a656b;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(15, 76, 92, 0.12);
+      --radius: 4px;
+      --header-pad: clamp(1.75rem, 4vw, 3rem);
+      --ease: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--sand-light);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sea-mid);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 4vw, 2.65rem);
+      color: var(--sea-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 540px;
+      font-size: 1.05rem;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(244, 240, 232, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(15, 76, 92, 0.08);
+      transition: background var(--ease), box-shadow var(--ease);
+      padding-inline: var(--header-pad);
+    }
+
+    .site-header .container {
+      padding-inline: 0;
+      max-width: 1160px;
+    }
+
+    .site-header.scrolled {
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 24px rgba(15, 76, 92, 0.1);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      min-height: 72px;
+      padding-block: 0.65rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      height: 42px;
+      width: auto;
+      max-width: min(200px, 42vw);
+      object-fit: contain;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--sea-deep);
+      opacity: 0.85;
+      transition: opacity var(--ease), color var(--ease);
+    }
+
+    .nav-desktop a:hover { opacity: 1; color: var(--gold-deep); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.35rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--sea);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--sea-mid);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15, 76, 92, 0.25);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--sea-deep);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-deep);
+      color: var(--white);
+    }
+
+    .header-cta { flex-shrink: 0; }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(15, 76, 92, 0.2);
+      background: var(--white);
+      border-radius: var(--radius);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--sea-deep);
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: var(--sea-deep);
+      color: var(--foam);
+      padding: 1.5rem var(--header-pad);
+      flex-direction: column;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-close {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: transparent;
+      color: var(--white);
+      border-radius: var(--radius);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .nav-mobile ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .nav-mobile a {
+      font-family: 'Fraunces', serif;
+      font-size: 1.75rem;
+      color: var(--foam);
+    }
+
+    /* —— Hero —— */
+    #hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: heroKen 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroKen {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(10, 52, 64, 0.25) 0%, rgba(10, 52, 64, 0.55) 45%, rgba(10, 52, 64, 0.82) 100%),
+        linear-gradient(90deg, rgba(10, 52, 64, 0.35) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 0 0 4.5rem;
+    }
+
+    .hero-brand {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.6rem, 7vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 0.85rem;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-brand span {
+      display: block;
+      font-size: 0.38em;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 0.35rem;
+      font-family: 'Figtree', sans-serif;
+    }
+
+    .hero-lead {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      max-width: 28ch;
+      font-weight: 400;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+      animation: fadeUp 0.9s ease 0.12s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      animation: fadeUp 0.9s ease 0.22s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* —— Booking —— */
+    #booking {
+      padding: 0;
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .booking-panel {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1.35rem 1.5rem 1.15rem;
+      border: 1px solid rgba(15, 76, 92, 0.08);
+    }
+
+    .booking-panel h2 {
+      font-size: 1.15rem;
+      color: var(--sea-deep);
+      margin-bottom: 1rem;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr 1.2fr auto;
+      gap: 0.85rem;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .field input,
+    .field select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid rgba(15, 76, 92, 0.18);
+      border-radius: var(--radius);
+      background: var(--sand-light);
+      color: var(--ink);
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .guest-trigger:focus {
+      outline: none;
+      border-color: var(--sea-mid);
+      box-shadow: 0 0 0 3px rgba(26, 107, 122, 0.15);
+    }
+
+    .guest-wrap { position: relative; }
+
+    .guest-trigger {
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      min-width: 220px;
+      background: var(--white);
+      border: 1px solid rgba(15, 76, 92, 0.12);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 0.85rem;
+      z-index: 20;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .counter-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.45rem 0;
+    }
+
+    .counter-row + .counter-row {
+      border-top: 1px solid rgba(15, 76, 92, 0.08);
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .counter button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(15, 76, 92, 0.25);
+      background: var(--foam);
+      color: var(--sea);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .counter span {
+      min-width: 1.25rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .search-btn {
+      padding: 0.78rem 1.4rem;
+      white-space: nowrap;
+      height: 46px;
+    }
+
+    .booking-note {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* —— Rooms —— */
+    #rooms {
+      padding: 5rem 0 4.5rem;
+      background:
+        radial-gradient(ellipse at 10% 0%, rgba(213, 163, 83, 0.12), transparent 45%),
+        var(--sand-light);
+    }
+
+    .rooms-header {
+      text-align: center;
+      margin-bottom: 2.75rem;
+    }
+
+    .rooms-header .section-lead { margin-inline: auto; }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 76, 92, 0.08);
+      transition: transform var(--ease), box-shadow var(--ease);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .room-body { padding: 1.25rem 1.35rem 1.45rem; }
+
+    .room-body h3 {
+      font-size: 1.2rem;
+      color: var(--sea-deep);
+      margin-bottom: 0.45rem;
+    }
+
+    .room-body p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .room-price {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(15, 76, 92, 0.08);
+    }
+
+    .room-price strong {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      color: var(--sea);
+    }
+
+    .room-price small {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* —— Amenities —— */
+    #amenities {
+      padding: 4.75rem 0;
+      background:
+        linear-gradient(160deg, var(--sea-deep) 0%, var(--sea) 55%, #165968 100%);
+      color: var(--foam);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #amenities::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(213, 163, 83, 0.18), transparent 40%),
+        radial-gradient(circle at 10% 80%, rgba(230, 240, 242, 0.08), transparent 35%);
+      pointer-events: none;
+    }
+
+    #amenities .container { position: relative; }
+
+    #amenities .section-title { color: var(--white); }
+    #amenities .section-lead { color: rgba(230, 240, 242, 0.78); }
+    #amenities .section-label { color: var(--gold); }
+
+    .amenities-header { margin-bottom: 2.5rem; max-width: 560px; }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .amenity {
+      text-align: center;
+      padding: 1.2rem 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      transition: border-color var(--ease), background var(--ease), transform var(--ease);
+    }
+
+    .amenity:hover {
+      border-color: rgba(213, 163, 83, 0.55);
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .amenity svg {
+      width: 28px;
+      height: 28px;
+      margin: 0 auto 0.65rem;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity span {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    /* —— Gallery —— */
+    #gallery {
+      padding: 5rem 0;
+      background: var(--white);
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .gallery-header .section-lead { margin-inline: auto; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+      background: var(--sand);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item:nth-child(1) { grid-column: span 7; grid-row: span 2; min-height: 340px; }
+    .gallery-item:nth-child(2) { grid-column: span 5; min-height: 165px; }
+    .gallery-item:nth-child(3) { grid-column: span 5; min-height: 165px; }
+    .gallery-item:nth-child(4) { grid-column: span 4; min-height: 200px; }
+    .gallery-item:nth-child(5) { grid-column: span 4; min-height: 200px; }
+    .gallery-item:nth-child(6) { grid-column: span 4; min-height: 200px; }
+
+    .gallery-caption {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 1rem;
+      background: linear-gradient(transparent, rgba(10, 52, 64, 0.75));
+      color: var(--foam);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* —— Location —— */
+    #location {
+      padding: 5rem 0;
+      background:
+        linear-gradient(180deg, var(--foam) 0%, var(--sand-light) 100%);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.75rem;
+      align-items: center;
+    }
+
+    .location-facts {
+      display: grid;
+      gap: 0.85rem;
+      margin: 1.5rem 0 1.75rem;
+    }
+
+    .fact {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      padding: 0.9rem 1rem;
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .fact strong {
+      display: block;
+      font-family: 'Fraunces', serif;
+      color: var(--sea);
+      font-size: 1.05rem;
+    }
+
+    .fact span {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .map-placeholder {
+      aspect-ratio: 4 / 3;
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 60% 45%, rgba(213, 163, 83, 0.35) 0 8px, transparent 9px),
+        linear-gradient(145deg, #b7d0d4 0%, #7fa8b0 40%, #4d7f8a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--sea-deep);
+      text-align: center;
+      padding: 2rem;
+      border: 1px dashed rgba(15, 76, 92, 0.28);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      width: 140%;
+      height: 45%;
+      bottom: -10%;
+      left: -20%;
+      background: rgba(15, 76, 92, 0.18);
+      border-radius: 50%;
+    }
+
+    .map-placeholder > * { position: relative; z-index: 1; }
+
+    .map-placeholder svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--sea-deep);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .map-placeholder strong {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+    }
+
+    .map-placeholder small {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    /* —— Trust —— */
+    #trust {
+      padding: 4.75rem 0;
+      background: var(--sand);
+    }
+
+    .trust-header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .trust-header .section-lead { margin-inline: auto; }
+
+    .placeholder-badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      background: rgba(213, 163, 83, 0.18);
+      border-radius: 999px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .testimonial {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(15, 76, 92, 0.08);
+      position: relative;
+    }
+
+    .testimonial .tag {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      background: rgba(213, 163, 83, 0.15);
+      padding: 0.2rem 0.45rem;
+      border-radius: 3px;
+    }
+
+    .testimonial p {
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin: 0.5rem 0 1rem;
+      font-style: italic;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--sea);
+    }
+
+    /* —— Footer —— */
+    #footer {
+      background: var(--sea-deep);
+      color: rgba(230, 240, 242, 0.85);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-grid p { font-size: 0.92rem; max-width: 32ch; }
+
+    .footer-grid h4 {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+      font-family: 'Figtree', sans-serif;
+      font-weight: 700;
+    }
+
+    .footer-grid ul { list-style: none; }
+
+    .footer-grid li + li { margin-top: 0.45rem; }
+
+    .footer-grid a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .booking-form {
+        grid-template-columns: 1fr 1fr;
+      }
+      .search-btn { grid-column: 1 / -1; width: 100%; }
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 12; min-height: 240px; }
+      .gallery-item:nth-child(2),
+      .gallery-item:nth-child(3) { grid-column: span 6; }
+      .gallery-item:nth-child(4),
+      .gallery-item:nth-child(5),
+      .gallery-item:nth-child(6) { grid-column: span 4; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --header-pad: 2rem; }
+
+      /* Keep logo + menu clear of edges; CTA lives in mobile drawer */
+      .header-cta { display: none; }
+      .brand img { height: 34px; max-width: min(180px, 55vw); }
+      #hero { min-height: 78vh; }
+      .hero-content { padding-bottom: 3.5rem; }
+      .booking-form { grid-template-columns: 1fr; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(n) {
+        grid-column: span 12;
+        min-height: 200px;
+      }
+      .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-media img { animation: none; }
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="Viesu nams Rīteņi — sākums">
+        <img
+          src="https://site-665584.mozfiles.com/files/665584/medium/jaun-1.jpg?1528200251"
+          alt="Viesu nams Rīteņi"
+          width="200"
+          height="55"
+        >
+      </a>
+
+      <nav aria-label="Galvenā navigācija">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Rezervācija</a></li>
+          <li><a href="#rooms">Naktsmītnes</a></li>
+          <li><a href="#amenities">Ērtības</a></li>
+          <li><a href="#gallery">Galerija</a></li>
+          <li><a href="#location">Atrašanās</a></li>
+          <li><a href="#trust">Atsauksmes</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-primary header-cta" href="#booking">Pārbaudīt pieejamību</a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Atvērt izvēlni">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <div class="nav-mobile-top">
+      <strong style="font-family:'Fraunces',serif;font-size:1.25rem;color:#fff;">Rīteņi</strong>
+      <button class="nav-close" id="navClose" type="button" aria-label="Aizvērt izvēlni">×</button>
+    </div>
+    <ul>
+      <li><a href="#booking">Rezervācija</a></li>
+      <li><a href="#rooms">Naktsmītnes</a></li>
+      <li><a href="#amenities">Ērtības</a></li>
+      <li><a href="#gallery">Galerija</a></li>
+      <li><a href="#location">Atrašanās</a></li>
+      <li><a href="#trust">Atsauksmes</a></li>
+      <li><a href="#footer">Kontakti</a></li>
+    </ul>
+    <a class="btn btn-gold" href="#booking" style="margin-top:2rem;align-self:flex-start;">Pārbaudīt pieejamību</a>
+  </div>
+
+  <main>
+    <!-- 1. Hero -->
+    <section id="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img
+          src="https://site-665584.mozfiles.com/files/665584/banners/15088764/IMG_0901.jpg?938610"
+          alt=""
+          width="1493"
+          height="1120"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="container hero-content">
+        <h1 class="hero-brand">
+          <span>Viesu nams</span>
+          Rīteņi
+        </h1>
+        <p class="hero-lead">Mierīga atpūta ģimenēm un draugiem — tikai 300 m no jūras Ķesterciemā.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#booking">Pārbaudīt pieejamību</a>
+          <a class="btn btn-primary" href="#rooms" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.35);">Skatīt naktsmītnes</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Booking -->
+    <section id="booking">
+      <div class="container">
+        <div class="booking-panel">
+          <h2>Pārbaudīt pieejamību</h2>
+          <form class="booking-form" id="bookingForm" action="#" method="get">
+            <div class="field">
+              <label for="checkin">Iebraukšana</label>
+              <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="field">
+              <label for="checkout">Izbraukšana</label>
+              <input type="date" id="checkout" name="checkout" required>
+            </div>
+            <div class="field guest-wrap">
+              <label for="guestTrigger">Viesi</label>
+              <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestDropdown">
+                <span id="guestSummary">2 pieaugušie</span>
+              </button>
+              <div class="guest-dropdown" id="guestDropdown" role="group" aria-label="Viesu skaits">
+                <div class="counter-row">
+                  <span>Pieaugušie</span>
+                  <div class="counter">
+                    <button type="button" id="adultsMinus" aria-label="Mazāk pieaugušo">−</button>
+                    <span id="adultsCount">2</span>
+                    <button type="button" id="adultsPlus" aria-label="Vairāk pieaugušo">+</button>
+                  </div>
+                </div>
+                <div class="counter-row">
+                  <span>Bērni</span>
+                  <div class="counter">
+                    <button type="button" id="childrenMinus" aria-label="Mazāk bērnu">−</button>
+                    <span id="childrenCount">0</span>
+                    <button type="button" id="childrenPlus" aria-label="Vairāk bērnu">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="roomType">Naktsmītne</label>
+              <select id="roomType" name="roomType">
+                <option value="any">Jebkura</option>
+                <option value="double">Divvietīgs numurs</option>
+                <option value="quad">Četrvietīgs numurs</option>
+                <option value="lux">Četrvietīgs (LUX)</option>
+                <option value="cottage">Brīvdienu māja</option>
+                <option value="sauna">Pirts māja</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary search-btn">Meklēt</button>
+          </form>
+          <p class="booking-note">Demonstrācijas widgets — rezervācijai zvaniet +371 29142764 vai rakstiet viesunamsriteni@gmail.com</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Accommodation -->
+    <section id="rooms">
+      <div class="container">
+        <div class="rooms-header">
+          <p class="section-label">Naktsmītnes</p>
+          <h2 class="section-title">Izvēlieties savu vietu kompleksā</h2>
+          <p class="section-lead">Numuriņi viesu namā, brīvdienu mājas un pirts māja — cenas no oficiālās cenrāža lapas (nesezona).</p>
+        </div>
+        <div class="rooms-grid">
+          <article class="room-card">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/15122754/1600/IMG_0370-da178167.webp"
+              alt="Divvietīgs numuriņš viesu namā Rīteņi"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <div class="room-body">
+              <h3>Divvietīgs numurs</h3>
+              <p>Otrajā stāvā, ar dušu un tualeti. Cenā iekļauta koplietošanas virtuve 1. stāvā.</p>
+              <div class="room-price">
+                <strong>From EUR 80/night</strong>
+                <small>2 viesi · nesezona</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/15122754/1600/0N0A2215-cb2e05a2.webp"
+              alt="Četrvietīgs numuriņš"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <div class="room-body">
+              <h3>Četrvietīgs numurs</h3>
+              <p>Plašāks numuriņš līdz 4 viesiem. Virtuve un koplietošanas zonas viesu nama pirmajā stāvā.</p>
+              <div class="room-price">
+                <strong>From EUR 80/night</strong>
+                <small>2–4 viesi · nesezona</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/15122754/1600/0N0A2220-cc04f993.webp"
+              alt="Četrvietīgs LUX numuriņš"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <div class="room-body">
+              <h3>Četrvietīgs numurs (LUX)</h3>
+              <p>LUX kategorijas četrvietīgais numuriņš ar privātu dušu un tualeti.</p>
+              <div class="room-price">
+                <strong>From EUR 95/night</strong>
+                <small>2–4 viesi · nesezona</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/26655348/1600/20200809_221332-1-1452f0aa.webp"
+              alt="Brīvdienu māja Rīteņos"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <div class="room-body">
+              <h3>Brīvdienu māja</h3>
+              <p>36 m² mājiņa (2020): viesistaba, guļamistaba, duša, aprīkota virtuve. Līdz 4 viesiem.</p>
+              <div class="room-price">
+                <strong>From EUR 120/night</strong>
+                <small>līdz 3–4 viesiem · nesezona</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/15122665/1600/IMG-20180523-WA0008-3762da4a.webp"
+              alt="Pirts māja"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <div class="room-body">
+              <h3>Pirts māja</h3>
+              <p>Pirts, duša, atpūtas telpa ar kamīnu; otrajā stāvā guļvietas. Blakus — karstā ūdens kubls.</p>
+              <div class="room-price">
+                <strong>From EUR 135/night</strong>
+                <small>4–8 viesi · nakšņošana</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/15122634/1600/IMG-20200901-WA0006-2951a58d.webp"
+              alt="Banketu zāle"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <div class="room-body">
+              <h3>Banketu zāle</h3>
+              <p>110 m² zāle banketiem, semināriem un svinībām. Virtuve blakus ar plīti, cepeškrāsni un trauku mazgājamo.</p>
+              <div class="room-price">
+                <strong>From EUR 300</strong>
+                <small>īre · no cenrāža</small>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Amenities -->
+    <section id="amenities">
+      <div class="container">
+        <div class="amenities-header">
+          <p class="section-label">Ērtības</p>
+          <h2 class="section-title">Viss, kas vajadzīgs mierīgai un aktīvai atpūtai</h2>
+          <p class="section-lead">Tikai tas, kas norādīts uz riiteni.lv — bez izdomātiem plusiem.</p>
+        </div>
+        <div class="amenities-grid">
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18c2-4 4-6 8-6s6 2 8 6"/><path d="M8 10c0-2 1.5-4 4-4s4 2 4 4"/><path d="M12 6V4"/></svg>
+            <span>Pirts</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="6"/><path d="M8 9c1-3 7-3 8 0"/></svg>
+            <span>Karstā ūdens kubls</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16v8H4z"/><path d="M8 10V7h8v3"/><path d="M7 14h2M11 14h2M15 14h2"/></svg>
+            <span>Virtuve</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V8l9-4 9 4v12"/><path d="M9 20v-6h6v6"/></svg>
+            <span>Banketu zāle</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16c2-1 4-1 6 0s4 1 6 0"/><path d="M8 12h8M9 8h6"/></svg>
+            <span>Grils</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16"/><path d="M6 18V10l6-4 6 4v8"/><path d="M9 18v-5h6v5"/></svg>
+            <span>Lapene</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 18c-3-4-5-7-5-9a5 5 0 0 1 10 0c0 2-2 5-5 9z"/><circle cx="12" cy="9" r="1.5"/></svg>
+            <span>Ugunskura vieta</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+            <span>~300 m līdz jūrai</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
+            <span>Volejbols</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4.5 9.5c2.5 1 5 1.5 7.5 1.5s5-.5 7.5-1.5M4.5 14.5c2.5-1 5-1.5 7.5-1.5s5 .5 7.5 1.5"/></svg>
+            <span>Basketbols</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M12 6v12M3 12h18"/></svg>
+            <span>Galda teniss</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/><path d="M11 12h2"/></svg>
+            <span>Novuss</span>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18c2-5 4-8 6-10 2 2 4 5 6 10"/><path d="M9 14h6"/></svg>
+            <span>Kamīns (pirts māja)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Gallery -->
+    <section id="gallery">
+      <div class="container">
+        <div class="gallery-header">
+          <p class="section-label">Galerija</p>
+          <h2 class="section-title">Komplekss un daba blakus</h2>
+          <p class="section-lead">Fotogrāfijas no oficiālās vietnes galerijām.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/15122503/2600/DJI_20240529133907_0061_D-13ef145b.webp"
+              alt="Viesu nama Rīteņi kompleksa skats no gaisa"
+              width="2600"
+              height="1600"
+              loading="lazy"
+            >
+            <figcaption class="gallery-caption">Komplekss no gaisa</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/banners/15088764/IMG_0901.jpg?938610"
+              alt="Viesu nama eksterjers"
+              width="1493"
+              height="1120"
+              loading="lazy"
+            >
+            <figcaption class="gallery-caption">Eksterjers</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/15122754/1600/IMG_0370-da178167.webp"
+              alt="Numuriņš"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <figcaption class="gallery-caption">Numuriņš</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/26655348/1600/20200809_221332-1-1452f0aa.webp"
+              alt="Brīvdienu māja vakarā"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <figcaption class="gallery-caption">Brīvdienu māja</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/15122634/1600/IMG-20200901-WA0006-2951a58d.webp"
+              alt="Banketu zāle"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <figcaption class="gallery-caption">Banketu zāle</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://site-665584.mozfiles.com/files/665584/gallery2/15122503/1600/IMG-20180519-WA0010-cf7b36eb.webp"
+              alt="Daba un apkārtne pie Rīteņiem"
+              width="1600"
+              height="1000"
+              loading="lazy"
+            >
+            <figcaption class="gallery-caption">Apkārtne</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Location -->
+    <section id="location">
+      <div class="container">
+        <div class="location-grid">
+          <div>
+            <p class="section-label">Atrašanās vieta</p>
+            <h2 class="section-title">Ķesterciems — jūra četru minūšu gājienā</h2>
+            <p class="section-lead" style="max-width:none;margin-top:0.75rem;">
+              Viesu nams «Rīteņi» atrodas Ķesterciemā (Engures pagasts, LV-3113). Līdz jūrai aptuveni 300 metri — īsa pastaiga līdz pludmalei Rīgas līča krastā.
+            </p>
+            <div class="location-facts">
+              <div class="fact">
+                <div>
+                  <strong>~300 m</strong>
+                  <span>līdz jūrai (4 min pastaiga)</span>
+                </div>
+              </div>
+              <div class="fact">
+                <div>
+                  <strong>Ķesterciems</strong>
+                  <span>«Rīteņi», Engures pagasts, Latvija</span>
+                </div>
+              </div>
+              <div class="fact">
+                <div>
+                  <strong>Kontakti</strong>
+                  <span>+371 29142764 · viesunamsriteni@gmail.com</span>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:0.85rem;color:var(--muted);">
+              Piezīme: Engures ezers un citi tūrisma objekti nav minēti oficiālajā vietnē — šeit rādām tikai to, kas tur norādīts.
+            </p>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Kartes vietturis — Ķesterciems, Latvija">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <strong>Ķesterciems</strong>
+            <small>Statisks kartes vietturis · nav interaktīva karte</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Trust -->
+    <section id="trust">
+      <div class="container">
+        <div class="trust-header">
+          <p class="section-label">Uzticība</p>
+          <h2 class="section-title">Ko saka viesi</h2>
+          <p class="section-lead">Oficiālajā vietnē nav atrasts vērtējuma žetons — zemāk ir parauga atsauksmes demonstrācijai.</p>
+          <span class="placeholder-badge">Placeholder testimonials</span>
+        </div>
+        <div class="trust-grid">
+          <blockquote class="testimonial">
+            <span class="tag">Placeholder</span>
+            <p>«Klusa vieta ģimenei — pēc īsas pastaigas jau esam pludmalē. Bērniem patika volejbola laukums.»</p>
+            <cite>— Parauga viesis A</cite>
+          </blockquote>
+          <blockquote class="testimonial">
+            <span class="tag">Placeholder</span>
+            <p>«Brīvdienu māja bija ērta četriem. Virtuve un grils — viss, kas vajadzīgs ilgākai atpūtai.»</p>
+            <cite>— Parauga viesis B</cite>
+          </blockquote>
+          <blockquote class="testimonial">
+            <span class="tag">Placeholder</span>
+            <p>«Pirts un kubls pēc dienas pie jūras — tieši tas, ko meklējām draugu kompānijai.»</p>
+            <cite>— Parauga viesis C</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Viesu nams «Rīteņi»</p>
+          <p>Mierīga un komfortabla atpūta pie jūras ģimenes un draugu lokā. Ķesterciems, Latvija.</p>
+        </div>
+        <div>
+          <h4>Kontakti</h4>
+          <ul>
+            <li><a href="tel:+37129142764">+371 29142764</a></li>
+            <li><a href="mailto:viesunamsriteni@gmail.com">viesunamsriteni@gmail.com</a></li>
+            <li>«Rīteņi», Ķesterciems, LV-3113</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Navigācija</h4>
+          <ul>
+            <li><a href="#booking">Rezervācija</a></li>
+            <li><a href="#rooms">Naktsmītnes</a></li>
+            <li><a href="#amenities">Ērtības</a></li>
+            <li><a href="#gallery">Galerija</a></li>
+            <li><a href="#location">Atrašanās</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Prototips · saturs no riiteni.lv</span>
+        <span>Mājdzīvnieki kompleksā nav atļauti (Noteikumi)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById('siteHeader');
+      var menuToggle = document.getElementById('menuToggle');
+      var navMobile = document.getElementById('navMobile');
+      var navClose = document.getElementById('navClose');
+
+      function onScroll() {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      function openMenu() {
+        navMobile.hidden = false;
+        navMobile.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        navMobile.classList.remove('open');
+        navMobile.hidden = true;
+        document.body.style.overflow = '';
+      }
+      menuToggle.addEventListener('click', openMenu);
+      navClose.addEventListener('click', closeMenu);
+      navMobile.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      // Booking guest selector
+      var adults = 2;
+      var children = 0;
+      var guestTrigger = document.getElementById('guestTrigger');
+      var guestDropdown = document.getElementById('guestDropdown');
+      var adultsCount = document.getElementById('adultsCount');
+      var childrenCount = document.getElementById('childrenCount');
+      var guestSummary = document.getElementById('guestSummary');
+
+      function updateGuestSummary() {
+        adultsCount.textContent = adults;
+        childrenCount.textContent = children;
+        var parts = [adults + (adults === 1 ? ' pieaugušais' : ' pieaugušie')];
+        if (children > 0) {
+          parts.push(children + (children === 1 ? ' bērns' : ' bērni'));
+        }
+        guestSummary.textContent = parts.join(', ');
+      }
+
+      guestTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = guestDropdown.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!guestDropdown.contains(e.target) && e.target !== guestTrigger) {
+          guestDropdown.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', function () {
+        if (adults < 20) { adults++; updateGuestSummary(); }
+      });
+      document.getElementById('adultsMinus').addEventListener('click', function () {
+        if (adults > 1) { adults--; updateGuestSummary(); }
+      });
+      document.getElementById('childrenPlus').addEventListener('click', function () {
+        if (children < 10) { children++; updateGuestSummary(); }
+      });
+      document.getElementById('childrenMinus').addEventListener('click', function () {
+        if (children > 0) { children--; updateGuestSummary(); }
+      });
+
+      // Default dates
+      var checkin = document.getElementById('checkin');
+      var checkout = document.getElementById('checkout');
+      var today = new Date();
+      var inDate = new Date(today);
+      inDate.setDate(today.getDate() + 2);
+      var outDate = new Date(today);
+      outDate.setDate(today.getDate() + 5);
+      function iso(d) {
+        return d.toISOString().slice(0, 10);
+      }
+      checkin.value = iso(inDate);
+      checkout.value = iso(outDate);
+      checkin.min = iso(today);
+      checkout.min = iso(inDate);
+      checkin.addEventListener('change', function () {
+        checkout.min = checkin.value;
+        if (checkout.value && checkout.value < checkin.value) {
+          checkout.value = checkin.value;
+        }
+      });
+
+      document.getElementById('bookingForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var msg = 'Pieejamības pārbaude (demo): ' + checkin.value + ' → ' + checkout.value +
+          ', ' + guestSummary.textContent +
+          ', ' + document.getElementById('roomType').selectedOptions[0].text;
+        alert(msg + '\n\nReālai rezervācijai: +371 29142764');
+      });
+    })();
+  </script>
+</body>
+</html>
