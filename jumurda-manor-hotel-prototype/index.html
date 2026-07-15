@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jumurdas Muiža — lauku viesnīca pie Jumurdas ezera. Numuriņi trīs ēkās, restorāns, pirts, banketu zāles un parks Ērgļu novadā.">
+  <title>Jumurdas Muiža — Lauku viesnīca pie Jumurdas ezera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #303C0C;
+      --forest-mid: #5B6C42;
+      --forest-soft: #7B9159;
+      --sage: #DBE2D0;
+      --sage-light: #E9EEE3;
+      --mist: #F4F6F0;
+      --stone: #4F5247;
+      --ink: #2A2C26;
+      --muted: #6A6E63;
+      --white: #ffffff;
+      --gold: #A68B4B;
+      --gold-soft: #C4B07A;
+      --radius: 4px;
+      --shadow: 0 12px 40px rgba(42, 44, 38, 0.12);
+      --max: 1120px;
+      --header-pad-x: clamp(1.5rem, 4vw, 3rem);
+      --header-h: 76px;
+      --font-display: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+      --font-body: "Figtree", "Segoe UI", sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(219, 226, 208, 0.55), transparent 55%),
+        radial-gradient(ellipse 70% 40% at 90% 20%, rgba(233, 238, 227, 0.7), transparent 50%),
+        linear-gradient(180deg, var(--mist) 0%, var(--white) 35%, var(--sage-light) 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin-inline: auto;
+      padding-inline: var(--header-pad-x);
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      background: rgba(244, 246, 240, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+    }
+    .site-header.scrolled {
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom-color: rgba(91, 108, 66, 0.15);
+      box-shadow: 0 4px 24px rgba(42, 44, 38, 0.06);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      width: 100%;
+      max-width: var(--max);
+      margin-inline: auto;
+      padding-inline: var(--header-pad-x);
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+      min-width: 0;
+    }
+    .logo-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--forest);
+      line-height: 1.1;
+    }
+    .logo-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--forest-mid);
+    }
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 1.75rem);
+    }
+    .nav-desktop a {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--stone);
+      transition: color 0.2s;
+    }
+    .nav-desktop a:hover { color: var(--forest); }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem 1.35rem;
+      background: var(--forest);
+      color: var(--sage-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .header-cta:hover {
+      background: var(--forest-mid);
+      transform: translateY(-1px);
+    }
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(91, 108, 66, 0.25);
+      background: var(--white);
+      border-radius: var(--radius);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--forest);
+    }
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: var(--header-h) 0 0 0;
+      background: rgba(244, 246, 240, 0.98);
+      backdrop-filter: blur(12px);
+      padding: 1.5rem var(--header-pad-x) 2rem;
+      flex-direction: column;
+      gap: 0.25rem;
+      z-index: 99;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      padding: 0.9rem 0;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid rgba(91, 108, 66, 0.12);
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - var(--header-h));
+      min-height: calc(100svh - var(--header-h));
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      transform: scale(1.04);
+      animation: heroZoom 18s var(--ease) forwards;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(48, 60, 12, 0.25) 0%, rgba(42, 44, 38, 0.15) 35%, rgba(42, 44, 38, 0.78) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: clamp(2.5rem, 8vw, 5.5rem) var(--header-pad-x) clamp(3rem, 7vw, 5rem);
+      max-width: calc(var(--max) + 2 * var(--header-pad-x));
+      margin-inline: auto;
+      animation: fadeUp 1s var(--ease) 0.15s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-brand {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 9vw, 5.75rem);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.85rem;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+    }
+    .hero-lead {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-weight: 400;
+      max-width: 34rem;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+      color: var(--sage-light);
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.95rem 1.75rem;
+      background: var(--sage-light);
+      color: var(--forest);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: background 0.25s, transform 0.2s;
+    }
+    .hero-cta:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* —— Sections common —— */
+    section { scroll-margin-top: calc(var(--header-h) + 12px); }
+    .section {
+      padding: clamp(3.5rem, 8vw, 5.5rem) 0;
+    }
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--forest-mid);
+      margin-bottom: 0.65rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 38rem;
+      margin-bottom: 2.25rem;
+    }
+
+    /* —— Booking —— */
+    .booking {
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 5;
+      padding-bottom: 0;
+    }
+    .booking-panel {
+      background: var(--white);
+      border: 1px solid rgba(91, 108, 66, 0.18);
+      box-shadow: var(--shadow);
+      border-radius: 6px;
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      display: grid;
+      grid-template-columns: 1.2fr 1.2fr 1fr auto;
+      gap: 1rem;
+      align-items: end;
+    }
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--forest-mid);
+      margin-bottom: 0.45rem;
+    }
+    .field input,
+    .field select,
+    .guest-trigger {
+      width: 100%;
+      height: 48px;
+      padding: 0 0.9rem;
+      border: 1px solid rgba(91, 108, 66, 0.28);
+      border-radius: var(--radius);
+      background: var(--mist);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field input:focus,
+    .field select:focus,
+    .guest-trigger:focus {
+      border-color: var(--forest-mid);
+      box-shadow: 0 0 0 3px rgba(91, 108, 66, 0.15);
+    }
+    .guest-wrap { position: relative; }
+    .guest-trigger {
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .guest-trigger::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--forest-mid);
+    }
+    .guest-panel {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 6px);
+      background: var(--white);
+      border: 1px solid rgba(91, 108, 66, 0.2);
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 20;
+    }
+    .guest-panel.open { display: block; }
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+    }
+    .guest-row + .guest-row { border-top: 1px solid var(--sage); }
+    .guest-row span { font-size: 0.92rem; color: var(--ink); }
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .stepper button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(91, 108, 66, 0.35);
+      background: var(--mist);
+      color: var(--forest);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .stepper button:hover { background: var(--sage); }
+    .stepper output {
+      min-width: 1.25rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    .search-btn {
+      height: 48px;
+      padding: 0 1.5rem;
+      background: var(--forest);
+      color: var(--sage-light);
+      border: none;
+      border-radius: var(--radius);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .search-btn:hover {
+      background: var(--forest-mid);
+      transform: translateY(-1px);
+    }
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* —— Rooms —— */
+    .rooms { background: transparent; }
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .room-card {
+      background: var(--white);
+      border: 1px solid rgba(91, 108, 66, 0.12);
+      overflow: hidden;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s;
+    }
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .room-card figure {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--sage);
+    }
+    .room-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .room-card:hover img { transform: scale(1.05); }
+    .room-body { padding: 1.35rem 1.25rem 1.5rem; }
+    .room-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 0.4rem;
+    }
+    .room-body p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .room-price {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .room-price em {
+      font-style: normal;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.78rem;
+    }
+    .price-placeholder {
+      display: inline-block;
+      margin-top: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* —— Events —— */
+    .events {
+      background:
+        linear-gradient(135deg, rgba(48, 60, 12, 0.94), rgba(91, 108, 66, 0.9)),
+        url("https://www.hoteljumurda.lv/images/phocagallery/pirtszaale.jpg") center / cover;
+      color: var(--sage-light);
+    }
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+    }
+    .events .section-eyebrow { color: var(--gold-soft); }
+    .events .section-title { color: var(--white); }
+    .events .section-lead {
+      color: rgba(233, 238, 227, 0.88);
+      margin-bottom: 1.5rem;
+    }
+    .events-list {
+      display: grid;
+      gap: 0.65rem;
+      margin-bottom: 1.75rem;
+    }
+    .events-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+    .events-list li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold-soft);
+      flex-shrink: 0;
+    }
+    .events-photo {
+      border: 1px solid rgba(233, 238, 227, 0.25);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+    }
+    .events-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .events-cta {
+      display: inline-flex;
+      padding: 0.85rem 1.4rem;
+      border: 1px solid rgba(233, 238, 227, 0.55);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: background 0.2s, color 0.2s;
+    }
+    .events-cta:hover {
+      background: var(--sage-light);
+      color: var(--forest);
+    }
+
+    /* —— Amenities —— */
+    .amenity-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .amenity {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1.35rem 1.2rem;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(91, 108, 66, 0.12);
+      min-height: 100%;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .amenity:hover {
+      border-color: rgba(91, 108, 66, 0.35);
+      transform: translateY(-2px);
+    }
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      color: var(--forest-mid);
+    }
+    .amenity-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .amenity span {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* —— Gallery —— */
+    .gallery { background: rgba(219, 226, 208, 0.35); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 200px;
+      gap: 0.85rem;
+    }
+    .gallery-grid figure {
+      overflow: hidden;
+      position: relative;
+      background: var(--sage);
+    }
+    .gallery-grid figure:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+    .gallery-grid figure:hover img { transform: scale(1.06); }
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--white);
+      background: linear-gradient(transparent, rgba(42, 44, 38, 0.75));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-grid figure:hover figcaption { opacity: 1; }
+
+    /* —— Location —— */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: stretch;
+    }
+    .location-copy p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .location-landmarks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .location-landmarks span {
+      padding: 0.4rem 0.75rem;
+      background: var(--sage);
+      color: var(--forest);
+      font-size: 0.8rem;
+      font-weight: 500;
+      border-radius: var(--radius);
+    }
+    .map-placeholder {
+      min-height: 280px;
+      background:
+        linear-gradient(135deg, rgba(91, 108, 66, 0.08), rgba(48, 60, 12, 0.12)),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 24px,
+          rgba(91, 108, 66, 0.06) 24px,
+          rgba(91, 108, 66, 0.06) 25px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 24px,
+          rgba(91, 108, 66, 0.06) 24px,
+          rgba(91, 108, 66, 0.06) 25px
+        ),
+        var(--sage-light);
+      border: 1px solid rgba(91, 108, 66, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: 0.5rem;
+    }
+    .map-placeholder strong {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--forest);
+    }
+    .map-placeholder span {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* —— Trust —— */
+    .trust {
+      background: var(--forest);
+      color: var(--sage-light);
+    }
+    .trust .section-eyebrow { color: var(--gold-soft); }
+    .trust .section-title { color: var(--white); }
+    .trust .section-lead { color: rgba(233, 238, 227, 0.75); }
+    .placeholder-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px dashed rgba(196, 176, 122, 0.55);
+      color: var(--gold-soft);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.15rem;
+    }
+    .trust-card {
+      padding: 1.5rem 1.35rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(233, 238, 227, 0.12);
+    }
+    .trust-card p {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.45;
+      margin-bottom: 1rem;
+      color: var(--sage-light);
+    }
+    .trust-card cite {
+      font-style: normal;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--gold-soft);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(233, 238, 227, 0.78);
+      padding: 3.5rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .logo-name { color: var(--sage-light); }
+    .footer-brand .logo-tag { color: var(--forest-soft); }
+    .footer-brand p {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      max-width: 22rem;
+    }
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 0.85rem;
+    }
+    .footer-col a,
+    .footer-col p {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.45rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--sage-light); }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(233, 238, 227, 0.12);
+      font-size: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+    }
+
+    /* —— Reveal motion —— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .booking-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+      .search-btn { grid-column: 1 / -1; width: 100%; }
+      .room-grid,
+      .trust-grid { grid-template-columns: 1fr; }
+      .events-grid,
+      .location-grid { grid-template-columns: 1fr; }
+      .amenity-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 160px;
+      }
+      .gallery-grid figure:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        min-height: 220px;
+      }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .booking-panel { grid-template-columns: 1fr; }
+      .amenity-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+      }
+      .gallery-grid figure:first-child {
+        grid-column: span 1;
+      }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero { min-height: 78vh; }
+      .header-cta { padding: 0.55rem 0.9rem; font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="#hero" class="logo" aria-label="Jumurdas Muiža sākums">
+        <span class="logo-name">Jumurdas Muiža</span>
+        <span class="logo-tag">Lauku viesnīca</span>
+      </a>
+      <nav class="nav-desktop" aria-label="Galvenā navigācija">
+        <a href="#booking">Rezervācija</a>
+        <a href="#rooms">Numuri</a>
+        <a href="#events">Pasākumi</a>
+        <a href="#amenities">Ērtības</a>
+        <a href="#gallery">Galerija</a>
+        <a href="#location">Atrašanās</a>
+      </nav>
+      <a href="#booking" class="header-cta">Pārbaudīt pieejamību</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Atvērt izvēlni" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobilā navigācija">
+    <a href="#booking">Rezervācija</a>
+    <a href="#rooms">Numuri</a>
+    <a href="#events">Pasākumi</a>
+    <a href="#amenities">Ērtības</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Atrašanās</a>
+    <a href="#trust">Atsauksmes</a>
+    <a href="#footer">Kontakti</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-media">
+        <img
+          src="https://www.hoteljumurda.lv/images/phocagallery/01.jpg"
+          alt="Jumurdas Muiža — muižas ēka un teritorija"
+          width="640"
+          height="480"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-brand">Jumurdas Muiža</h1>
+        <p class="hero-lead">Gleznaina kultūrvēsturiska lauku viesnīca pie Jumurdas ezera — parks, numuriņi un svinību telpas Ērgļu novadā.</p>
+        <a href="#booking" class="hero-cta">Pārbaudīt pieejamību</a>
+      </div>
+    </section>
+
+    <section class="booking section" id="booking">
+      <div class="container">
+        <form class="booking-panel" id="bookingForm" onsubmit="return false;" aria-label="Pieejamības pārbaude">
+          <div class="field">
+            <label for="checkin">Ierašanās</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Izbraukšana</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field guest-wrap">
+            <label for="guestTrigger">Viesi</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+              2 pieaugušie · 0 bērni
+            </button>
+            <div class="guest-panel" id="guestPanel" hidden>
+              <div class="guest-row">
+                <span>Pieaugušie</span>
+                <div class="stepper">
+                  <button type="button" id="adultsMinus" aria-label="Mazāk pieaugušo">−</button>
+                  <output id="adultsCount">2</output>
+                  <button type="button" id="adultsPlus" aria-label="Vairāk pieaugušo">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <span>Bērni</span>
+                <div class="stepper">
+                  <button type="button" id="childrenMinus" aria-label="Mazāk bērnu">−</button>
+                  <output id="childrenCount">0</output>
+                  <button type="button" id="childrenPlus" aria-label="Vairāk bērnu">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="search-btn" id="searchBtn">Meklēt</button>
+        </form>
+        <p class="booking-note">Demonstrācijas forma — rezervācija tiek saskaņota individuāli. Cenas avota vietnē nav publicētas.</p>
+      </div>
+    </section>
+
+    <section class="rooms section" id="rooms">
+      <div class="container">
+        <p class="section-eyebrow reveal">Viesnīcas numuriņi</p>
+        <h2 class="section-title reveal">Trīs ēkas muižas parkā</h2>
+        <p class="section-lead reveal">Atpūtas kompleksā — Lielā māja, Baltā māja un Zīļu māja ar numuriņiem dažādiem viesu skaitiem. Kopā 102 pamatgultasvietas.</p>
+        <div class="room-grid">
+          <article class="room-card reveal">
+            <figure>
+              <img src="https://www.hoteljumurda.lv/images/galvena.jpg" alt="Lielā māja — Jumurdas Muiža" width="400" height="300" loading="lazy">
+            </figure>
+            <div class="room-body">
+              <h3>Lielā māja</h3>
+              <p>Galvenā ēka (kādreiz muižas stallis). Numuri no 2 līdz 7 vietām; dažos — virtuve, viesistaba un sauna.</p>
+              <p class="room-price">No EUR — / nakts <em>· cena pēc pieprasījuma</em></p>
+              <span class="price-placeholder">Cena nav norādīta avota vietnē</span>
+            </div>
+          </article>
+          <article class="room-card reveal">
+            <figure>
+              <img src="https://www.hoteljumurda.lv/images/kalpumaja.jpg" alt="Baltā māja — Jumurdas Muiža" width="400" height="300" loading="lazy">
+            </figure>
+            <div class="room-body">
+              <h3>Baltā māja</h3>
+              <p>Bijusī kalpu māja. 2–7 vietu numuri; Nr. 10 ar saunu un divām istabām.</p>
+              <p class="room-price">No EUR — / nakts <em>· cena pēc pieprasījuma</em></p>
+              <span class="price-placeholder">Cena nav norādīta avota vietnē</span>
+            </div>
+          </article>
+          <article class="room-card reveal">
+            <figure>
+              <img src="https://www.hoteljumurda.lv/images/zilumaja.jpg" alt="Zīļu māja — Jumurdas Muiža" width="400" height="300" loading="lazy">
+            </figure>
+            <div class="room-body">
+              <h3>Zīļu māja</h3>
+              <p>1–2 vietu numuri; Nr. 4 pielāgots viesiem ar kustību traucējumiem.</p>
+              <p class="room-price">No EUR — / nakts <em>· cena pēc pieprasījuma</em></p>
+              <span class="price-placeholder">Cena nav norādīta avota vietnē</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="events section" id="events">
+      <div class="container">
+        <div class="events-grid">
+          <div class="reveal">
+            <p class="section-eyebrow">Piedāvājumi pasākumiem</p>
+            <h2 class="section-title">Banketi, kāzas un konferences</h2>
+            <p class="section-lead">Zāles 40 m², 100 m² un 147 m², restorāna telpas ar vasaras terasi, kā arī 240 m² vasaras telts svinībām un sanāksmēm.</p>
+            <ul class="events-list">
+              <li>Banketu un svinību zāles</li>
+              <li>Konferenču zāle</li>
+              <li>Restorāns un vasaras terase</li>
+              <li>240 m² vasaras telts</li>
+            </ul>
+            <a href="#footer" class="events-cta">Sazināties par pasākumu</a>
+          </div>
+          <figure class="events-photo reveal">
+            <img src="https://www.hoteljumurda.lv/images/phocagallery/pirtszaale.jpg" alt="Banketu zāle Jumurdas Muižā" width="640" height="480" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenities section" id="amenities">
+      <div class="container">
+        <p class="section-eyebrow reveal">Atpūtas iespējas</p>
+        <h2 class="section-title reveal">Ērtības kompleksā</h2>
+        <p class="section-lead reveal">No avota vietnē minētajām iespējām — ēdināšana, pirts, parks un aktīvā atpūta pie ezera.</p>
+        <div class="amenity-grid">
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 11h16v8H4z"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><path d="M4 15h16"/></svg>
+            </div>
+            <span>Restorāns</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 18h18"/><path d="M5 18V10l7-5 7 5v8"/><path d="M9 18v-4h6v4"/></svg>
+            </div>
+            <span>Vasaras terase</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18"/><path d="M8 14h3"/></svg>
+            </div>
+            <span>Konferenču zāle</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3c-3 4-6 6.5-6 10a6 6 0 0 0 12 0c0-3.5-3-6-6-10z"/><path d="M10 17c.5 1.5 1.5 2 2 2s1.5-.5 2-2"/></svg>
+            </div>
+            <span>Pirts un pērtuve</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 19V9l6-4 6 4v10"/><path d="M9 19v-5h6v5"/></svg>
+            </div>
+            <span>Banketu zāles</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 19l2-8h8l2 8"/><path d="M9 11V8a3 3 0 0 1 6 0v3"/></svg>
+            </div>
+            <span>Vasaras telts (240 m²)</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 22c4-4 8-7.5 8-12a8 8 0 1 0-16 0c0 4.5 4 8 8 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </div>
+            <span>Parks (17 ha)</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <span>Sporta laukumi</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 16c2-3 5-5 9-5s7 2 9 5"/><path d="M4 19h16"/><circle cx="8" cy="10" r="1.5"/><circle cx="16" cy="9" r="1"/></svg>
+            </div>
+            <span>Peldvietas</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 17c2 0 2-1.5 4-1.5S9 17 11 17s2-1.5 4-1.5S17 17 19 17s2-1.5 4-1.5"/><path d="M5 14l4-7 3 4 3-5 4 8"/></svg>
+            </div>
+            <span>Laivu piestātne</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="8" rx="1"/><circle cx="8" cy="14" r="1.5"/><circle cx="16" cy="14" r="1.5"/><path d="M7 10V8h10v2"/></svg>
+            </div>
+            <span>Biljards</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 18l6-10 4 5 3-4 3 9"/><path d="M3 20h18"/></svg>
+            </div>
+            <span>Slēpošana (sezonā)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery section" id="gallery">
+      <div class="container">
+        <p class="section-eyebrow reveal">Foto galerija</p>
+        <h2 class="section-title reveal">Muiža, ezers un parks</h2>
+        <p class="section-lead reveal">Fotogrāfijas no Jumurdas Muižas vietnes — ēkas, numuriņi, restorāns un Jumurdas ezers.</p>
+        <div class="gallery-grid reveal">
+          <figure>
+            <img src="https://www.hoteljumurda.lv/images/phocagallery/01.jpg" alt="Jumurdas Muiža" width="640" height="480" loading="lazy">
+            <figcaption>Jumurdas Muiža</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.hoteljumurda.lv/images/phocagallery/istabe.jpg" alt="Viesnīcas numuriņš" width="640" height="480" loading="lazy">
+            <figcaption>Numuriņš</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.hoteljumurda.lv/images/phocagallery/10.jpg" alt="Restorāns Jumurdas Muižā" width="640" height="480" loading="lazy">
+            <figcaption>Restorāns</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.hoteljumurda.lv/images/phocagallery/pirtszaale.jpg" alt="Banketu zāle" width="640" height="480" loading="lazy">
+            <figcaption>Banketu zāle</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.hoteljumurda.lv/images/phocagallery/29.jpg" alt="Jumurdas ezers" width="640" height="480" loading="lazy">
+            <figcaption>Jumurdas ezers</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.hoteljumurda.lv/images/phocagallery/03.jpg" alt="Muižas parks" width="640" height="480" loading="lazy">
+            <figcaption>Parks</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="location section" id="location">
+      <div class="container">
+        <div class="location-grid">
+          <div class="location-copy reveal">
+            <p class="section-eyebrow">Apkārtne</p>
+            <h2 class="section-title">Pie Jumurdas ezera</h2>
+            <p>Mēs atrodamies gleznainā, kultūrvēsturiskā vietā pie Jumurdas ezera — Ērgļu novada Jumurdas pagastā, senajā muižas teritorijā ar plašu parku.</p>
+            <p>Netālu: Ērgļi, Vecpiebalga, Vestiena un Gaiziņkalns. Kompleksa rīcībā ir 17 hektāri ar sporta laukumiem un peldvietām.</p>
+            <div class="location-landmarks">
+              <span>Jumurdas ezers</span>
+              <span>Muižas parks</span>
+              <span>Ērgļi</span>
+              <span>Vecpiebalga</span>
+              <span>Gaiziņkalns</span>
+              <span>Laivu piestātne</span>
+            </div>
+          </div>
+          <div class="map-placeholder reveal" role="img" aria-label="Kartes vietturis — Jumurdas Muiža, Ērgļu novads">
+            <strong>Jumurdas Muiža</strong>
+            <span>Ērgļu novads · LV-4844</span>
+            <span>Statiska kartes vietturis (prototips)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust section" id="trust">
+      <div class="container">
+        <p class="section-eyebrow reveal">Viesu iespaidi</p>
+        <h2 class="section-title reveal">Uzticamība</h2>
+        <p class="section-lead reveal">Avota vietnē publisks vērtējuma žetons netika atrasts — zemāk ir parauga atsauksmes demonstrācijai.</p>
+        <div class="placeholder-badge reveal">Placeholder · nav no avota vietnes</div>
+        <div class="trust-grid">
+          <blockquote class="trust-card reveal">
+            <p>«Rāma vieta pie ezera — parks un muižas sajūta paliek atmiņā.»</p>
+            <cite>— Parauga atsauksme (placeholder)</cite>
+          </blockquote>
+          <blockquote class="trust-card reveal">
+            <p>«Ērts komplekss ģimenes svinībām; zāles un telts dod vietas izvēli.»</p>
+            <cite>— Parauga atsauksme (placeholder)</cite>
+          </blockquote>
+          <blockquote class="trust-card reveal">
+            <p>«Laba bāze, lai apskatītu Ērgļus, Vecpiebalgu un Gaiziņkalnu.»</p>
+            <cite>— Parauga atsauksme (placeholder)</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-name">Jumurdas Muiža</span>
+            <span class="logo-tag">Lauku viesnīca</span>
+          </div>
+          <p>Kultūrvēsturiska lauku viesnīca pie Jumurdas ezera — numuriņi, parks un pasākumu telpas Ērgļu novadā.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakti</h4>
+          <p>«Jumurdas Muiža»</p>
+          <p>Ērgļu novads, LV-4844</p>
+          <p><a href="tel:+37164871791">Tel.: +371 64871791</a></p>
+          <p><a href="tel:+37129282601">Mob.: +371 29282601</a></p>
+          <p><a href="mailto:info@jumurda.lv">info@jumurda.lv</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigācija</h4>
+          <a href="#rooms">Numuri</a>
+          <a href="#events">Pasākumi</a>
+          <a href="#amenities">Ērtības</a>
+          <a href="#gallery">Galerija</a>
+          <a href="#location">Atrašanās</a>
+          <a href="#booking">Rezervācija</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Jumurdas Muiža · Prototips demonstrācijai</span>
+        <span>Avots: hoteljumurda.lv</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById('header');
+      var menuToggle = document.getElementById('menuToggle');
+      var navMobile = document.getElementById('navMobile');
+      var adults = 2;
+      var children = 0;
+
+      function onScroll() {
+        header.classList.toggle('scrolled', window.scrollY > 24);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      menuToggle.addEventListener('click', function () {
+        var open = !navMobile.classList.contains('open');
+        navMobile.classList.toggle('open', open);
+        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      navMobile.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navMobile.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      var guestTrigger = document.getElementById('guestTrigger');
+      var guestPanel = document.getElementById('guestPanel');
+      var adultsCount = document.getElementById('adultsCount');
+      var childrenCount = document.getElementById('childrenCount');
+
+      function updateGuestLabel() {
+        var aLabel = adults === 1 ? '1 pieaugušais' : adults + ' pieaugušie';
+        var cLabel = children === 1 ? '1 bērns' : children + ' bērni';
+        guestTrigger.textContent = aLabel + ' · ' + cLabel;
+        adultsCount.textContent = adults;
+        childrenCount.textContent = children;
+      }
+
+      function setGuestOpen(open) {
+        guestPanel.classList.toggle('open', open);
+        guestPanel.hidden = !open;
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+
+      guestTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setGuestOpen(!guestPanel.classList.contains('open'));
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          setGuestOpen(false);
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', function () {
+        if (adults < 20) { adults += 1; updateGuestLabel(); }
+      });
+      document.getElementById('adultsMinus').addEventListener('click', function () {
+        if (adults > 1) { adults -= 1; updateGuestLabel(); }
+      });
+      document.getElementById('childrenPlus').addEventListener('click', function () {
+        if (children < 12) { children += 1; updateGuestLabel(); }
+      });
+      document.getElementById('childrenMinus').addEventListener('click', function () {
+        if (children > 0) { children -= 1; updateGuestLabel(); }
+      });
+
+      var checkin = document.getElementById('checkin');
+      var checkout = document.getElementById('checkout');
+      var today = new Date();
+      function iso(d) {
+        return d.toISOString().split('T')[0];
+      }
+      var minIn = new Date(today);
+      minIn.setDate(minIn.getDate() + 1);
+      checkin.min = iso(minIn);
+      checkout.min = iso(minIn);
+
+      checkin.addEventListener('change', function () {
+        if (checkin.value) {
+          var next = new Date(checkin.value);
+          next.setDate(next.getDate() + 1);
+          checkout.min = iso(next);
+          if (checkout.value && checkout.value <= checkin.value) {
+            checkout.value = iso(next);
+          }
+        }
+      });
+
+      document.getElementById('bookingForm').addEventListener('submit', function () {
+        var btn = document.getElementById('searchBtn');
+        var prev = btn.textContent;
+        btn.textContent = 'Pārbaudīts (demo)';
+        setTimeout(function () { btn.textContent = prev; }, 1800);
+      });
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+</html>
