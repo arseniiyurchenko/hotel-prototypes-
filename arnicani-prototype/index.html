@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arnicāni — Guest House in Ragaciems | Baltic Sea Coast</title>
+  <meta name="description" content="Arnicāni guest house in Ragaciems — 300 metres from the Baltic Sea beach. Rooms, garden, grill, sauna, and a warm family welcome.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand: #baaa70;
+      --sand-deep: #8f824e;
+      --sand-soft: #d4cba0;
+      --sea: #5a6f7a;
+      --sea-light: #97a5ad;
+      --sea-deep: #2c3a40;
+      --ink: #0c1c1f;
+      --ink-soft: #3d4a50;
+      --foam: #f4f6f5;
+      --mist: #e8ecea;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(12, 28, 31, 0.12);
+      --radius: 10px;
+      --transition: 0.28s ease;
+      --header-pad: clamp(1.75rem, 4vw, 3rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--foam);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1140px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244, 246, 245, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(90, 111, 122, 0.12);
+      transition: box-shadow var(--transition);
+    }
+
+    .site-header.scrolled { box-shadow: 0 4px 24px rgba(12, 28, 31, 0.08); }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding-block: 1rem;
+      min-height: 72px;
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+
+    .logo span {
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sea);
+      margin-top: 0.15rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--sand-deep); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.35rem;
+      background: var(--sea-deep);
+      color: var(--white) !important;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: background var(--transition), transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .header-cta:hover {
+      background: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 28, 31, 0.97);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: 'Fraunces', serif;
+      font-size: 1.65rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: var(--header-pad);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* —— Buttons —— */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.75rem;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--sand);
+      color: var(--ink);
+    }
+
+    .btn-primary:hover {
+      background: var(--sand-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(186, 170, 112, 0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.55);
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 860px);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(160deg, rgba(12, 28, 31, 0.55) 0%, rgba(44, 58, 64, 0.35) 45%, rgba(12, 28, 31, 0.7) 100%),
+        url('https://arnicani.lv/wp-content/uploads/2017/03/IMG_5832-web.jpg') center / cover no-repeat;
+      animation: heroDrift 28s ease-in-out infinite alternate;
+      transform-origin: center;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 0 0 5.5rem;
+      animation: fadeUp 1s ease 0.15s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3.2rem, 9vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+      font-weight: 400;
+      font-style: italic;
+      max-width: 28ch;
+      margin-bottom: 0.75rem;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .hero-support {
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 38ch;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+    /* —— Booking —— */
+    .booking-section {
+      position: relative;
+      z-index: 2;
+      margin-top: -2.5rem;
+      padding-bottom: 1rem;
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.1fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.35rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(90, 111, 122, 0.1);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; position: relative; }
+
+    .form-group label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sea);
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid var(--mist);
+      border-radius: 6px;
+      background: var(--foam);
+      color: var(--ink);
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      outline: 2px solid var(--sand);
+      outline-offset: 1px;
+    }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--mist);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 20;
+    }
+
+    .guest-panel.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--sea-light);
+      background: var(--foam);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .guest-btn:hover { background: var(--mist); }
+
+    .booking-widget .btn-primary {
+      height: 46px;
+      padding-inline: 1.75rem;
+      white-space: nowrap;
+    }
+
+    .booking-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-top: 0.85rem;
+    }
+
+    /* —— Sections shared —— */
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sand-deep);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.85rem, 4vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--ink-soft);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Rooms —— */
+    .rooms { background: var(--white); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--foam);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(90, 111, 122, 0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .room-card-body { padding: 1.35rem 1.4rem 1.5rem; }
+
+    .room-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .room-meta {
+      font-size: 0.82rem;
+      color: var(--sea);
+      margin-bottom: 0.85rem;
+    }
+
+    .room-price {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .room-price span {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+    }
+
+    .price-note {
+      display: block;
+      font-size: 0.68rem;
+      color: var(--sand-deep);
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+
+    /* —— Amenities —— */
+    .amenities {
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(186, 170, 112, 0.18), transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(151, 165, 173, 0.22), transparent 45%),
+        var(--foam);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .amenity-item {
+      text-align: center;
+      padding: 1.6rem 1rem;
+      transition: transform var(--transition);
+    }
+
+    .amenity-item:hover { transform: translateY(-3px); }
+
+    .amenity-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 0.9rem;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid rgba(186, 170, 112, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sea-deep);
+    }
+
+    .amenity-icon svg { width: 22px; height: 22px; }
+
+    .amenity-item span {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+    }
+
+    /* —— Gallery —— */
+    .gallery {
+      background: var(--sea-deep);
+      color: var(--white);
+    }
+
+    .gallery .section-eyebrow { color: var(--sand-soft); }
+    .gallery .section-title { color: var(--white); }
+    .gallery .section-desc { color: rgba(255,255,255,0.7); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .gallery-item:first-child { grid-row: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* —— Location —— */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .location-text h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .location-details { list-style: none; }
+
+    .location-details li {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--mist);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .location-details li strong {
+      min-width: 5.5rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(135deg, rgba(151, 165, 173, 0.25), rgba(186, 170, 112, 0.2)),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 18px,
+          rgba(90, 111, 122, 0.06) 18px,
+          rgba(90, 111, 122, 0.06) 19px
+        ),
+        var(--mist);
+      border-radius: var(--radius);
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(90, 111, 122, 0.2);
+      color: var(--ink-soft);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .map-placeholder svg {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 1rem;
+      opacity: 0.55;
+      color: var(--sea);
+    }
+
+    .map-placeholder strong {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    /* —— Trust —— */
+    .trust {
+      background:
+        linear-gradient(180deg, var(--mist) 0%, var(--foam) 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      padding: 1.75rem 1.5rem;
+      border-top: 2px solid var(--sand);
+    }
+
+    .testimonial-card blockquote {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .testimonial-source {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--sea);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--sea-deep);
+      color: rgba(255,255,255,0.78);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand .logo span { color: var(--sand-soft); }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: var(--white);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-nav ul { list-style: none; }
+    .footer-nav li { margin-bottom: 0.55rem; }
+    .footer-nav a {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: opacity var(--transition);
+    }
+    .footer-nav a:hover { opacity: 1; }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.45rem;
+      opacity: 0.8;
+    }
+
+    .footer-contact a:hover { opacity: 1; color: var(--sand-soft); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.78rem;
+      opacity: 0.5;
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .header-cta { display: none; }
+      .menu-toggle { display: block; }
+
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { height: 200px; }
+
+      .location-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-widget .btn-primary {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item { height: 220px; }
+
+      .hero { min-height: 78vh; }
+      .hero-content { padding-bottom: 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo">
+        ARNICĀNI
+        <span>Viesu nams</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+    <a href="#booking" class="btn btn-primary">Check availability</a>
+  </nav>
+
+  <!-- 1. Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" role="img" aria-label="Arnicāni guest house garden and grounds"></div>
+    <div class="hero-content">
+      <div class="container">
+        <h1 class="hero-brand">Arnicāni</h1>
+        <p class="hero-headline">A warm welcome by the Baltic Sea</p>
+        <p class="hero-support">Guest house in Ragaciems — 300 metres from the beach, with garden rooms and competitive rates for every taste.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">Check availability</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Booking -->
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm" action="#" method="get">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-panel" id="guestPanel">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p class="booking-note">Prototype widget — live bookings are directed via the property’s reservation page / Booking.com.</p>
+    </div>
+  </section>
+
+  <!-- 3. Accommodation -->
+  <section class="rooms" id="rooms">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Numuriņi</p>
+        <h2 class="section-title">Rooms &amp; stays</h2>
+        <p class="section-desc">Named rooms with balcony or terrace overlooking the garden. Shared kitchen and bathroom facilities.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card reveal">
+          <img src="https://arnicani.lv/wp-content/uploads/2017/03/72607151-1.jpg" alt="Zelta koks room at Arnicāni" loading="lazy">
+          <div class="room-card-body">
+            <h3>Zelta koks</h3>
+            <p class="room-meta">Up to 3 guests · 1 double bed</p>
+            <p class="room-price">From EUR — <span>/ night</span>
+              <span class="price-note">Placeholder — nightly rate not listed on source site</span>
+            </p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://arnicani.lv/wp-content/uploads/2017/03/72607147-1.jpg" alt="Dabas zaļais room at Arnicāni" loading="lazy">
+          <div class="room-card-body">
+            <h3>Dabas zaļais</h3>
+            <p class="room-meta">Up to 2 guests · 1 double bed</p>
+            <p class="room-price">From EUR — <span>/ night</span>
+              <span class="price-note">Placeholder — nightly rate not listed on source site</span>
+            </p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://arnicani.lv/wp-content/uploads/2017/03/49842573-1.jpg" alt="Vējam līdzi room at Arnicāni" loading="lazy">
+          <div class="room-card-body">
+            <h3>Vējam līdzi</h3>
+            <p class="room-meta">Up to 2 guests · 2 beds</p>
+            <p class="room-price">From EUR — <span>/ night</span>
+              <span class="price-note">Placeholder — nightly rate not listed on source site</span>
+            </p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://arnicani.lv/wp-content/uploads/2015/11/batch_IMG_5359.jpg" alt="Ķiršu kokteilis room at Arnicāni" loading="lazy">
+          <div class="room-card-body">
+            <h3>Ķiršu kokteilis</h3>
+            <p class="room-meta">Up to 2 guests · 2 beds</p>
+            <p class="room-price">From EUR — <span>/ night</span>
+              <span class="price-note">Placeholder — nightly rate not listed on source site</span>
+            </p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://arnicani.lv/wp-content/uploads/2015/11/batch_IMG_5365.jpg" alt="Kopā jautrāk room at Arnicāni" loading="lazy">
+          <div class="room-card-body">
+            <h3>Kopā jautrāk</h3>
+            <p class="room-meta">Up to 4 guests · 2 beds</p>
+            <p class="room-price">From EUR — <span>/ night</span>
+              <span class="price-note">Placeholder — nightly rate not listed on source site</span>
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Amenities -->
+  <section class="amenities" id="amenities">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Serviss</p>
+        <h2 class="section-title">Amenities</h2>
+        <p class="section-desc">Facilities listed on the Arnicāni website for a relaxed seaside stay.</p>
+      </div>
+      <div class="amenities-grid reveal">
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M5 12V8a2 2 0 012-2h10a2 2 0 012 2v4M4 16h16v2H4z"/></svg>
+          </div>
+          <span>Free parking</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h16v8H4zM8 10V7a4 4 0 018 0v3M7 14h2M15 14h2"/></svg>
+          </div>
+          <span>Shared kitchen</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12a7 7 0 0114 0M8.5 12a3.5 3.5 0 017 0M12 12v7M9 19h6"/></svg>
+          </div>
+          <span>Free Wi‑Fi</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14h16v4H4zM6 14V9l6-4 6 4v5"/></svg>
+          </div>
+          <span>Terrace &amp; garden</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4c-2 3-5 5-5 8a5 5 0 0010 0c0-3-3-5-5-8zM9 18h6"/></svg>
+          </div>
+          <span>Grill</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3"/><path d="M5 20c1.5-3.5 4-5 7-5s5.5 1.5 7 5"/></svg>
+          </div>
+          <span>Child-friendly garden</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18h16M6 18V9l6-4 6 4v9M9 12h6v6H9z"/></svg>
+          </div>
+          <span>Pirts (sauna)</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="14" rx="7" ry="4"/><path d="M5 14V11c0-2 3-4 7-4s7 2 7 4v3"/></svg>
+          </div>
+          <span>Baļļa rental</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M8.5 16h5M6 13.5l2-7h7l3 5"/></svg>
+          </div>
+          <span>Bike rental</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 14c2-4 5-6 9-6s7 2 9 6M5 18h14"/><circle cx="12" cy="9" r="1.5"/></svg>
+          </div>
+          <span>Beach 300 m</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16M6 19V8h4v11M14 19V5h4v14"/></svg>
+          </div>
+          <span>Balcony / terrace</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="12" rx="1"/><path d="M7 7V5h10v2M8 12h8"/></svg>
+          </div>
+          <span>Small banquets</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Galerija</p>
+        <h2 class="section-title">A glimpse of Arnicāni</h2>
+        <p class="section-desc">Exterior, rooms, shared spaces, and the coastal setting — photos from the property’s gallery.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <img src="https://arnicani.lv/wp-content/uploads/2017/03/72607143-1.jpg" alt="Arnicāni exterior and grounds" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://arnicani.lv/wp-content/uploads/2017/03/72607139-1.jpg" alt="Guest room interior" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://arnicani.lv/wp-content/uploads/2017/03/69635454-1.jpg" alt="Common area at Arnicāni" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://arnicani.lv/wp-content/uploads/2017/03/49841437-1.jpg" alt="Garden and outdoor space" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://arnicani.lv/wp-content/uploads/2017/03/49846067-1.jpg" alt="Seaside atmosphere near Ragaciems" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Location -->
+  <section id="location">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Ragaciems</p>
+        <h2 class="section-title">By the Baltic Sea</h2>
+        <p class="section-desc">A fishing village on Latvia’s west coast — sand beach, fish market, and lake nature nearby.</p>
+      </div>
+      <div class="location-grid reveal">
+        <div class="location-text">
+          <h3>Four minutes’ walk to the beach</h3>
+          <p>Arnicāni sits in Ragaciems, about 300 metres from the Baltic Sea shore and 350 metres from Kaņieris Lake. Around you: a tidy residential area, the Ragaciems fish market, a fish restaurant, cafés, and shops.</p>
+          <ul class="location-details">
+            <li><strong>Address</strong> LV-3118 Ragaciems, Latvia</li>
+            <li><strong>Beach</strong> ~300 m to Baltic Sea</li>
+            <li><strong>Lake</strong> Kaņieris (~350 m) — birds, fishing, boat base</li>
+            <li><strong>Nearby</strong> Ragaciems sedumi; Lapmežciems museum (~3 km)</li>
+          </ul>
+        </div>
+        <div class="map-placeholder" role="img" aria-label="Static map placeholder for Ragaciems, Latvia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <strong>Ragaciems, Latvia</strong>
+          <span>Static map placeholder — LV-3118</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Trust -->
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Atsauksmes</p>
+        <h2 class="section-title">What guests say</h2>
+        <p class="section-desc">Testimonials published on arnicani.lv. No public star rating badge was found on the source site.</p>
+      </div>
+      <div class="testimonials-grid reveal">
+        <article class="testimonial-card">
+          <blockquote>“Viesmīlīgo saimnieku dēļ jutāmies gaidīti un aprūpēti kā Tēva mājās… Dārzā skaisti ziedēja un smaržoja rozes un peonijas.”</blockquote>
+          <p class="testimonial-source">From arnicani.lv</p>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“Atsaucīgi un laipni saimnieki. Jutāmies kā mājās.”</blockquote>
+          <p class="testimonial-source">From arnicani.lv</p>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“Laba atrašanās vieta, autostāvvieta, izremontētās koplietošanas telpas.”</blockquote>
+          <p class="testimonial-source">From arnicani.lv</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="logo">
+            ARNICĀNI
+            <span>Viesu nams · Ragaciems</span>
+          </a>
+          <p>Guest house 300 metres from the Baltic Sea — garden, grill, sauna, and a family welcome in Ragaciems.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Book</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>LV-3118 Ragaciems, Latvia</p>
+          <a href="tel:+37129193503">+371 29 193 503</a>
+          <a href="mailto:info@arnicani.lv">info@arnicani.lv</a>
+          <a href="https://www.facebook.com/guesthousearnicani/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        Prototype homepage · Content sourced from arnicani.lv · © Arnicāni
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('header');
+      const menuToggle = document.getElementById('menuToggle');
+      const navMobile = document.getElementById('navMobile');
+      const navClose = document.getElementById('navClose');
+      const guestTrigger = document.getElementById('guestTrigger');
+      const guestPanel = document.getElementById('guestPanel');
+      const bookingForm = document.getElementById('bookingForm');
+
+      let adults = 2;
+      let children = 0;
+
+      function updateGuestSummary() {
+        document.getElementById('adultsCount').textContent = adults;
+        document.getElementById('childrenCount').textContent = children;
+        const parts = [adults + (adults === 1 ? ' adult' : ' adults')];
+        if (children > 0) parts.push(children + (children === 1 ? ' child' : ' children'));
+        document.getElementById('guestSummary').textContent = parts.join(', ');
+      }
+
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      menuToggle.addEventListener('click', function () {
+        navMobile.classList.add('open');
+      });
+
+      navClose.addEventListener('click', function () {
+        navMobile.classList.remove('open');
+      });
+
+      navMobile.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navMobile.classList.remove('open');
+        });
+      });
+
+      guestTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const open = guestPanel.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', function () {
+        adults = Math.min(12, adults + 1);
+        updateGuestSummary();
+      });
+      document.getElementById('adultsMinus').addEventListener('click', function () {
+        adults = Math.max(1, adults - 1);
+        updateGuestSummary();
+      });
+      document.getElementById('childrenPlus').addEventListener('click', function () {
+        children = Math.min(10, children + 1);
+        updateGuestSummary();
+      });
+      document.getElementById('childrenMinus').addEventListener('click', function () {
+        children = Math.max(0, children - 1);
+        updateGuestSummary();
+      });
+
+      bookingForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('This is a UI prototype. Live reservations are handled via arnicani.lv / Booking.com.');
+      });
+
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
+
+      // Sensible default dates for the demo widget
+      const today = new Date();
+      const checkin = new Date(today);
+      checkin.setDate(today.getDate() + 2);
+      const checkout = new Date(today);
+      checkout.setDate(today.getDate() + 5);
+      function fmt(d) {
+        return d.toISOString().slice(0, 10);
+      }
+      document.getElementById('checkin').value = fmt(checkin);
+      document.getElementById('checkout').value = fmt(checkout);
+      document.getElementById('checkin').min = fmt(today);
+      document.getElementById('checkout').min = fmt(checkin);
+    })();
+  </script>
+</body>
+</html>
