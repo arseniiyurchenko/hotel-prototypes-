@@ -21,36 +21,7 @@ def main():
         page = context.new_page()
 
         page.goto(URL, wait_until="networkidle", timeout=90000)
-        page.wait_for_timeout(2000)
-
-        imgs = page.locator("img").all()
-        for img in imgs:
-            src = img.get_attribute("src") or ""
-            ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
-            results["images"].append({"src": src, "ok": ok})
-            if not ok:
-                results["errors"].append(f"Broken image: {src}")
-
-        # Hero background is CSS — check it loaded via fetch
-        hero_ok = page.evaluate(
-            """async () => {
-              const bg = getComputedStyle(document.querySelector('.hero-bg')).backgroundImage;
-              const m = bg.match(/url\\(["']?(.*?)["']?\\)/);
-              if (!m) return false;
-              try {
-                const r = await fetch(m[1], { method: 'HEAD', mode: 'no-cors' });
-                return true;
-              } catch (e) {
-                const img = new Image();
-                return await new Promise(res => {
-                  img.onload = () => res(img.naturalWidth > 0);
-                  img.onerror = () => res(false);
-                  img.src = m[1];
-                });
-              }
-            }"""
-        )
-        results["interactions"].append(f"hero background load probe: {hero_ok}")
+        page.wait_for_timeout(1500)
 
         checkin = page.locator("#checkin")
         checkout = page.locator("#checkout")
@@ -74,9 +45,34 @@ def main():
             results["errors"].append(f"Unexpected guest summary: {summary}")
         page.locator("#guestTrigger").click()
 
+        # Scroll full page so lazy-loaded images enter the viewport and load
         for section in ["#rooms", "#amenities", "#gallery", "#location", "#trust", "#contact"]:
             page.locator(section).scroll_into_view_if_needed()
-            page.wait_for_timeout(200)
+            page.wait_for_timeout(600)
+        page.wait_for_timeout(2500)
+
+        imgs = page.locator("img").all()
+        for img in imgs:
+            src = img.get_attribute("src") or ""
+            ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
+            results["images"].append({"src": src, "ok": ok})
+            if not ok:
+                results["errors"].append(f"Broken image: {src}")
+
+        hero_ok = page.evaluate(
+            """() => new Promise(res => {
+              const bg = getComputedStyle(document.querySelector('.hero-bg')).backgroundImage;
+              const m = bg.match(/url\\(["']?(.*?)["']?\\)/);
+              if (!m) return res(false);
+              const img = new Image();
+              img.onload = () => res(img.naturalWidth > 0);
+              img.onerror = () => res(false);
+              img.src = m[1];
+            })"""
+        )
+        results["interactions"].append(f"hero background load probe: {hero_ok}")
+        if not hero_ok:
+            results["errors"].append("Hero background image failed to load")
 
         page.screenshot(path=str(ARTIFACTS / "brivdienu-kolka-desktop-full.png"), full_page=True)
 
