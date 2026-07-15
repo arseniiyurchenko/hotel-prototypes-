@@ -78,36 +78,24 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       color: var(--white);
     }
 
     .logo img {
-      height: 42px;
+      height: 48px;
       width: auto;
       filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
     }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .logo-text .brand {
-      font-family: 'Lora', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--gold);
-    }
-
-    .logo-text .place {
+    .logo-place {
       font-size: 0.65rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      opacity: 0.8;
-      margin-top: 0.15rem;
+      opacity: 0.75;
+      border-left: 1px solid rgba(255,255,255,0.25);
+      padding-left: 0.85rem;
+      line-height: 1.3;
     }
 
     .nav-desktop {
@@ -183,11 +171,17 @@
       position: absolute;
       top: 1.25rem;
       right: 1.25rem;
-      background: none;
-      border: none;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50%;
       color: var(--white);
       cursor: pointer;
-      padding: 0.5rem;
+      padding: 0.65rem;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Hero */
@@ -946,7 +940,8 @@
       }
       .booking-widget { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
-      .logo img { height: 36px; }
+      .logo img { height: 40px; }
+      .logo-place { display: none; }
     }
   </style>
 </head>
@@ -954,11 +949,8 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="#top" class="logo" aria-label="Brīvdienu Kolka home">
-        <img src="https://brivdienukolka.lv/wp-content/uploads/2024/04/brivdienu-kolka-logo-white.svg" alt="Brīvdienu Kolka logo" width="120" height="42">
-        <span class="logo-text">
-          <span class="brand">Brīvdienu Kolka</span>
-          <span class="place">Kolka · Latvia</span>
-        </span>
+        <img src="https://brivdienukolka.lv/wp-content/uploads/2024/04/brivdienu-kolka-logo-white.svg" alt="Brīvdienu Kolka" width="175" height="48">
+        <span class="logo-place">Kolka<br>Latvia</span>
       </a>
       <nav aria-label="Primary">
         <ul class="nav-desktop">
@@ -977,7 +969,7 @@
     </div>
   </header>
 
-  <div class="nav-mobile" id="navMobile" hidden>
+  <div class="nav-mobile" id="navMobile">
     <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
@@ -1369,13 +1361,11 @@
       onScroll();
 
       function openMenu() {
-        navMobile.hidden = false;
         navMobile.classList.add('open');
         document.body.style.overflow = 'hidden';
       }
       function closeMenu() {
         navMobile.classList.remove('open');
-        navMobile.hidden = true;
         document.body.style.overflow = '';
       }
       menuToggle.addEventListener('click', openMenu);
