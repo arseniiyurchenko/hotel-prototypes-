@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miera Osta — Bay of Harmony | Kempings pie jūras</title>
+  <meta name="description" content="Miers. Klusums. Lieliska atpūta. Romantiski namiņi kokā, ģimenes namiņš, telšu vietas un pirtiņa jūras krastā — Kempings Miera Osta pie Baltijas jūras.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sea: #1e4d5c;
+      --sea-deep: #143842;
+      --pine: #2f4f42;
+      --taupe: #9f8c6d;
+      --taupe-dark: #7f7057;
+      --sky: #6ec1e4;
+      --peach: #ffbc7d;
+      --sand: #eef2ef;
+      --sand-warm: #e4ebe6;
+      --foam: #f7faf8;
+      --ink: #1a2420;
+      --muted: #5a6862;
+      --white: #ffffff;
+      --line: rgba(30, 77, 92, 0.12);
+      --shadow: 0 18px 50px rgba(20, 56, 66, 0.12);
+      --radius: 16px;
+      --header-pad-x: clamp(32px, 4.5vw, 48px);
+      --ease: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(110, 193, 228, 0.18), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(159, 140, 109, 0.16), transparent 50%),
+        linear-gradient(180deg, var(--sand) 0%, var(--foam) 40%, var(--sand-warm) 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1160px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad-x);
+    }
+
+    h1, h2, h3, .brand-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+
+    .section {
+      padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--taupe-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      color: var(--sea-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 38rem;
+      font-size: 1.05rem;
+      font-weight: 400;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.95rem 0;
+      background: rgba(247, 250, 248, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: background var(--ease), box-shadow var(--ease), border-color var(--ease);
+    }
+
+    .site-header.scrolled {
+      background: rgba(247, 250, 248, 0.95);
+      border-bottom-color: var(--line);
+      box-shadow: 0 8px 28px rgba(20, 56, 66, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      height: 42px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--sea-deep);
+      line-height: 1;
+    }
+
+    .logo-text span {
+      display: block;
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--taupe-dark);
+      margin-top: 0.2rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .nav-desktop a {
+      font-size: 0.94rem;
+      font-weight: 500;
+      color: var(--sea);
+      transition: color var(--ease);
+    }
+
+    .nav-desktop a:hover { color: var(--taupe-dark); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.85rem 1.45rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.94rem;
+      border: none;
+      cursor: pointer;
+      transition: transform var(--ease), background var(--ease), box-shadow var(--ease), color var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--sea);
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(30, 77, 92, 0.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--sea-deep);
+      transform: translateY(-1px);
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--sea-deep);
+    }
+
+    .btn-light:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    .header-cta { flex-shrink: 0; }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--sea-deep);
+      border-radius: 2px;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(160deg, var(--sea-deep), var(--pine));
+      z-index: 200;
+      padding: 1.5rem var(--header-pad-x) 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .mobile-nav.open { transform: translateX(0); }
+
+    .mobile-nav-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .mobile-nav a {
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 1.35rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .nav-close {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      background: transparent;
+      color: var(--white);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 880px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 56, 66, 0.28) 0%, rgba(20, 56, 66, 0.18) 35%, rgba(20, 56, 66, 0.78) 100%),
+        linear-gradient(90deg, rgba(20, 56, 66, 0.45) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding-block: 7.5rem 4.5rem;
+    }
+
+    .brand-name {
+      font-size: clamp(3.2rem, 9vw, 6.2rem);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      text-shadow: 0 8px 40px rgba(0, 0, 0, 0.28);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-weight: 300;
+      max-width: 32rem;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+      animation: fadeUp 0.9s ease 0.12s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      animation: fadeUp 0.9s ease 0.22s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Booking */
+    #booking {
+      margin-top: -3rem;
+      position: relative;
+      z-index: 5;
+      padding-bottom: 0.5rem;
+    }
+
+    .booking-card {
+      background: var(--white);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow);
+      padding: clamp(1.35rem, 3vw, 1.85rem);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .booking-card h2 {
+      font-size: 1.55rem;
+      color: var(--sea-deep);
+      margin-bottom: 1.1rem;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.8rem 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--sand);
+      color: var(--ink);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      outline: 2px solid rgba(110, 193, 228, 0.7);
+      outline-offset: 1px;
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      position: absolute;
+      top: calc(100% + 0.45rem);
+      left: 0;
+      right: 0;
+      min-width: 240px;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      display: none;
+      z-index: 20;
+      border: 1px solid var(--line);
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--sand);
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--sea);
+    }
+
+    .guest-btn:hover { background: var(--sky); color: var(--white); border-color: var(--sky); }
+
+    .booking-note {
+      margin-top: 0.9rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Accommodation */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.35rem;
+      margin-top: 2.25rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(20, 56, 66, 0.06);
+      transition: transform var(--ease), box-shadow var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-body {
+      padding: 1.25rem 1.35rem 1.45rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      flex: 1;
+    }
+
+    .room-meta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--taupe-dark);
+    }
+
+    .room-card h3 {
+      font-size: 1.55rem;
+      color: var(--sea-deep);
+    }
+
+    .room-card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      flex: 1;
+    }
+
+    .room-price {
+      font-weight: 600;
+      color: var(--sea);
+      font-size: 1.05rem;
+    }
+
+    /* Amenities */
+    #amenities {
+      background:
+        linear-gradient(180deg, transparent, rgba(110, 193, 228, 0.08), transparent);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2.25rem;
+    }
+
+    .amenity {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.15rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      transition: background var(--ease), transform var(--ease);
+    }
+
+    .amenity:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(110, 193, 228, 0.25), rgba(159, 140, 109, 0.22));
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      color: var(--sea-deep);
+    }
+
+    .amenity-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity span {
+      font-weight: 500;
+      font-size: 0.96rem;
+      color: var(--sea-deep);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 0.85rem;
+      margin-top: 2.25rem;
+    }
+
+    .gallery-grid figure {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      margin: 0;
+    }
+
+    .gallery-grid figure:first-child {
+      grid-row: 1 / span 2;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-grid figure:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(transparent, rgba(20, 56, 66, 0.7));
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 2rem;
+      align-items: stretch;
+      margin-top: 2rem;
+    }
+
+    .location-copy p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .location-list {
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+
+    .location-list li {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      color: var(--sea-deep);
+      font-weight: 500;
+    }
+
+    .location-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sky);
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    .map-placeholder {
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 320px;
+      background:
+        linear-gradient(145deg, rgba(30, 77, 92, 0.08), rgba(159, 140, 109, 0.12)),
+        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(30, 77, 92, 0.04) 24px, rgba(30, 77, 92, 0.04) 25px),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(30, 77, 92, 0.04) 24px, rgba(30, 77, 92, 0.04) 25px);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--sea-deep);
+      gap: 0.65rem;
+    }
+
+    .map-placeholder strong {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem;
+    }
+
+    .map-placeholder a {
+      color: var(--taupe-dark);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Trust */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+      margin-top: 2rem;
+    }
+
+    .trust-note {
+      display: inline-block;
+      background: rgba(255, 188, 125, 0.22);
+      color: var(--taupe-dark);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border: 1px dashed rgba(159, 140, 109, 0.55);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+
+    .testimonial p {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--sea-deep);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: linear-gradient(160deg, var(--sea-deep), #0f2c34 55%, var(--pine));
+      color: rgba(255, 255, 255, 0.88);
+      padding: 3.5rem 0 2rem;
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-grid p { color: rgba(255, 255, 255, 0.72); max-width: 28rem; }
+
+    .footer-grid h3 {
+      font-size: 1.15rem;
+      color: var(--white);
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-grid ul {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .footer-grid a:hover { color: var(--peach); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .booking-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .amenities-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-grid figure:first-child {
+        grid-row: auto;
+        grid-column: 1 / -1;
+        min-height: 260px;
+      }
+
+      .gallery-grid figure { min-height: 180px; }
+
+      .location-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav-desktop,
+      .header-cta { display: none; }
+
+      .menu-toggle { display: inline-flex; }
+
+      .rooms-grid,
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-form {
+        grid-template-columns: 1fr;
+      }
+
+      .amenities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        padding-block: 6.5rem 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#hero" aria-label="Miera Osta sākums">
+        <img src="https://mieraosta.lv/wp-content/uploads/2022/01/cropped-cropped-miera-osta-logo-1.png" alt="Miera Osta logo" width="144" height="50">
+        <div class="logo-text">Miera Osta<span>Bay of Harmony</span></div>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Galvenā navigācija">
+        <a href="#booking">Rezervācija</a>
+        <a href="#rooms">Namiņi</a>
+        <a href="#amenities">Ērtības</a>
+        <a href="#gallery">Galerija</a>
+        <a href="#location">Atrašanās</a>
+        <a href="#trust">Atsauksmes</a>
+      </nav>
+
+      <a class="btn btn-primary header-cta" href="#booking">Check availability</a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Atvērt izvēlni">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="navMobile" aria-hidden="true">
+    <div class="mobile-nav-top">
+      <div class="logo-text" style="color:#fff">Miera Osta<span style="color:rgba(255,255,255,.7)">Bay of Harmony</span></div>
+      <button class="nav-close" id="navClose" type="button" aria-label="Aizvērt">×</button>
+    </div>
+    <a href="#booking">Rezervācija</a>
+    <a href="#rooms">Namiņi</a>
+    <a href="#amenities">Ērtības</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Atrašanās</a>
+    <a href="#trust">Atsauksmes</a>
+    <a class="btn btn-light" href="#booking" style="margin-top:1rem;align-self:flex-start">Check availability</a>
+  </div>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-media">
+        <img src="https://mieraosta.lv/wp-content/uploads/2022/02/mieraosta-22-scaled.jpg" alt="Baltijas jūras balto smilšu pludmale pie Miera Ostas" width="2560" height="1709">
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <h1 class="brand-name">Miera Osta</h1>
+        <p class="hero-tagline">Miers. Klusums. Lieliska atpūta pie jūras balto smilšu pludmalē un priežu meža paēnā.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#booking">Check availability</a>
+          <a class="btn" href="#rooms" style="border:1.5px solid rgba(255,255,255,.55);color:#fff;background:transparent">Skatīt namiņus</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="container">
+        <div class="booking-card">
+          <h2>Pārbaudīt pieejamību</h2>
+          <form class="booking-form" id="bookingForm" action="#" method="get">
+            <div class="form-group">
+              <label for="checkin">Ierašanās</label>
+              <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="form-group">
+              <label for="checkout">Aizbraukšana</label>
+              <input type="date" id="checkout" name="checkout" required>
+            </div>
+            <div class="form-group guest-selector">
+              <label for="guestTrigger">Viesi</label>
+              <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+                <span id="guestSummary">2 pieaugušie</span>
+                <span aria-hidden="true">▾</span>
+              </button>
+              <div class="guest-dropdown" id="guestPanel" role="dialog" aria-label="Viesu skaits">
+                <div class="guest-row">
+                  <span>Pieaugušie</span>
+                  <div class="guest-controls">
+                    <button type="button" class="guest-btn" id="adultsMinus" aria-label="Mazāk pieaugušo">−</button>
+                    <span id="adultsCount">2</span>
+                    <button type="button" class="guest-btn" id="adultsPlus" aria-label="Vairāk pieaugušo">+</button>
+                  </div>
+                </div>
+                <div class="guest-row">
+                  <span>Bērni</span>
+                  <div class="guest-controls">
+                    <button type="button" class="guest-btn" id="childrenMinus" aria-label="Mazāk bērnu">−</button>
+                    <span id="childrenCount">0</span>
+                    <button type="button" class="guest-btn" id="childrenPlus" aria-label="Vairāk bērnu">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="roomType">Tips</label>
+              <select id="roomType" name="roomType">
+                <option value="any">Jebkurš</option>
+                <option value="family">Namiņš ģimenei</option>
+                <option value="romantic">Romantiskais namiņš</option>
+                <option value="birch">Bērzu māja</option>
+                <option value="tree4">Māja kokā (4 pers.)</option>
+                <option value="tent">Telšu vieta</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" id="searchBtn">Meklēt</button>
+          </form>
+          <p class="booking-note">UI prototips — meklēšana neiesūta rezervāciju. Īstā rezervācija: mieraosta.lv</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rooms">
+      <div class="container">
+        <span class="section-label">Atpūtas iespējas</span>
+        <h2 class="section-title">Nakšņošana pie jūras</h2>
+        <p class="section-lead">Seši romantiski namiņi kokā, ērts 3 istabu namiņš ģimenei un plaša teritorija telts vietām priežu ēnā.</p>
+
+        <div class="rooms-grid">
+          <article class="room-card">
+            <img src="https://mieraosta.lv/wp-content/uploads/2026/07/1maja-00285.jpg" alt="Namiņš ģimenei priežu mežā" width="1920" height="1280" loading="lazy">
+            <div class="room-body">
+              <div class="room-meta">5 personām · 3 istabas</div>
+              <h3>Namiņš ģimenei</h3>
+              <p>Terase, ēdamzona, ledusskapis, atpūtas zona un gāzes apkures kamīns. Šī gada jaunums ģimenēm.</p>
+              <div class="room-price">No 90 € / nakts</div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="https://mieraosta.lv/wp-content/uploads/2022/01/romantiska-maja-kokaa.png" alt="Romantiskais namiņš kokā" width="350" height="250" loading="lazy">
+            <div class="room-body">
+              <div class="room-meta">Māja kokā · 2 personām</div>
+              <h3>Romantiskais namiņš</h3>
+              <p>Kompakts namiņš kokā ar king size gultu — mierpilnai atpūtai divatā priežu paēnā.</p>
+              <div class="room-price">No 75 € / nakts</div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="https://mieraosta.lv/wp-content/uploads/2022/01/veju-supoles-koka.png" alt="Vēju šūpoles māja kokā" width="350" height="250" loading="lazy">
+            <div class="room-body">
+              <div class="room-meta">Māja kokā · 4 personām</div>
+              <h3>Vēju šūpoles</h3>
+              <p>Divvietīga gulta un divas papildu vietas — ērti pārim vai nelielai ģimenei.</p>
+              <div class="room-price">No 80 € / nakts</div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="https://mieraosta.lv/wp-content/uploads/2022/01/telsu-vietas-mieraosta.png" alt="Telšu vietas pie jūras" width="350" height="250" loading="lazy">
+            <div class="room-body">
+              <div class="room-meta">Kempings · piejūras kāpas</div>
+              <h3>Telšu vietas</h3>
+              <p>Plaša teritorija telts vietām priežu ēnā. Pieejamas arī kemperu vietas un autostāvvieta.</p>
+              <div class="room-price">No 7–10 € / persona / nakts</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="amenities">
+      <div class="container">
+        <span class="section-label">Jūsu ērtībām</span>
+        <h2 class="section-title">Kas gaida teritorijā</h2>
+        <p class="section-lead">Ērtības, kas norādītas Miera Ostas mājaslapā — no pirtiņas jūras krastā līdz koplietošanas virtuvēm.</p>
+
+        <div class="amenities-grid">
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 20V10l5-6 5 6v10"/><path d="M10 14h4"/></svg>
+            </div>
+            <span>Pirts pie jūras</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 18c2-4 4-6 9-6s7 2 9 6"/><path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            </div>
+            <span>Jūras / pludmales piekļuve</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 20V8l8-4 8 4v12"/><path d="M9 20v-6h6v6"/></svg>
+            </div>
+            <span>Telšu vietas</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 10h16v10H4z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            </div>
+            <span>Lauku virtuves</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 20c2-6 4-9 6-9s4 3 6 9"/><path d="M12 11V4"/><path d="M9 7h6"/></svg>
+            </div>
+            <span>Grili un ugunskura vietas</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 4v6a5 5 0 0 0 10 0V4"/><path d="M5 20h14"/><path d="M12 15v5"/></svg>
+            </div>
+            <span>Dušas</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="8" rx="1"/><path d="M7 10V7h10v3"/><path d="M8 18v2"/><path d="M16 18v2"/></svg>
+            </div>
+            <span>Piknika nojumes</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M6 18V9l6-4 6 4v9"/><path d="M10 14h4v4h-4z"/></svg>
+            </div>
+            <span>Terase (ģimenes namiņš)</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M6 20c1.5-4 3.5-6 6-6s4.5 2 6 6"/><path d="M4 11h4"/><path d="M16 11h4"/></svg>
+            </div>
+            <span>Bērnu spēļu laukums</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 20c0-5 2-8 5-8s5 3 5 8"/><path d="M5 10c2-2 4-3 7-3s5 1 7 3"/><circle cx="9" cy="7" r="1"/><circle cx="15" cy="7" r="1"/></svg>
+            </div>
+            <span>Šūpoles un batuts</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="1"/><path d="M6 11V8l3-2h6l3 2v3"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
+            </div>
+            <span>Autostāvvieta</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 16c2-4 4-6 7-6s5 2 7 6"/><path d="M10 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/><path d="M15 12c.8-.8 1.3-1.8 1.3-3a2.7 2.7 0 0 0-5.2-1"/></svg>
+            </div>
+            <span>Suņi (ar uzraudzību)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <span class="section-label">Galerija</span>
+        <h2 class="section-title">Vieta, kur restartēties</h2>
+        <p class="section-lead">Īstas fotogrāfijas no Miera Ostas — jūra, namiņi, pirts un priežu mežs.</p>
+
+        <div class="gallery-grid">
+          <figure>
+            <img src="https://mieraosta.lv/wp-content/uploads/2022/02/mieraosta-22-scaled.jpg" alt="Baltijas jūras pludmale" width="2560" height="1709" loading="lazy">
+            <figcaption>Balto smilšu pludmale</figcaption>
+          </figure>
+          <figure>
+            <img src="https://mieraosta.lv/wp-content/uploads/2026/07/1maja-00285.jpg" alt="Ģimenes namiņš mežā" width="1920" height="1280" loading="lazy">
+            <figcaption>Namiņš ģimenei</figcaption>
+          </figure>
+          <figure>
+            <img src="https://mieraosta.lv/wp-content/uploads/2022/05/Foto_031-1.jpg" alt="Piknika galds un grils priežu mežā" width="2048" height="1365" loading="lazy">
+            <figcaption>Piknika zona</figcaption>
+          </figure>
+          <figure>
+            <img src="https://mieraosta.lv/wp-content/uploads/2022/07/DSC_8054.jpg" alt="Pirts interjers" width="1800" height="1202" loading="lazy">
+            <figcaption>Pirts</figcaption>
+          </figure>
+          <figure>
+            <img src="https://mieraosta.lv/wp-content/uploads/2022/01/pirts-pie-juras-mieraosta.png" alt="Pirts pie jūras smilšu pludmalē" width="350" height="250" loading="lazy">
+            <figcaption>Pirts pie jūras</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container">
+        <span class="section-label">Atrašanās vieta</span>
+        <h2 class="section-title">Pie Baltijas jūras</h2>
+        <div class="location-grid">
+          <div class="location-copy">
+            <p>Miera Osta (kempings „Miera osta”) aicina uz klusu atpūtu pie jūras — balto smilšu pludmalē un priežu meža paēnā, piejūras kāpu zonā.</p>
+            <p>Vietne saistīta ar Pāvilostas reģionu (Facebook: pavilostamieraosta) un Liepājas tūrisma partneriem. Precīza adrese / Saka upe mājaslapā nav norādīta — izmantojiet kartes saiti zemāk.</p>
+            <ul class="location-list">
+              <li>Baltijas jūra un balto smilšu pludmale</li>
+              <li>Priežu mežs un piejūras kāpas</li>
+              <li>Pāvilostas reģions (sociālie tīkli)</li>
+              <li>Ideāli nelielām radošām grupām un semināriem</li>
+            </ul>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Kartes vietturis — Kempings Miera osta">
+            <strong>Kempings „Miera osta”</strong>
+            <p>Statisks kartes vietturis (prototips)</p>
+            <a href="https://goo.gl/maps/tcGM4KnWZ2jw5upn7" target="_blank" rel="noopener">Atvērt Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="trust">
+      <div class="container">
+        <span class="section-label">Uzticība</span>
+        <h2 class="section-title">Viesu balss</h2>
+        <span class="trust-note">Placeholder — oficiāls vērtējums vietnē nav atrasts</span>
+        <div class="trust-grid">
+          <blockquote class="testimonial">
+            <p>„Rīts pie jūras, vakars pie pirtiņas — tieši tāda klusuma atpūta, kādu meklējām.”</p>
+            <cite>Placeholder viesu atsauksme · Ā. K.</cite>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p>„Namiņš kokā un priežu smarža — romantiski un bez lieka trokšņa.”</p>
+            <cite>Placeholder viesu atsauksme · M. L.</cite>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p>„Bērniem spēļu laukums, mums — pludmale un grils. Ģimenes namiņš bija ideāls.”</p>
+            <cite>Placeholder viesu atsauksme · Ģimenes ceļojums</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Miera Osta</div>
+          <p>Bay of Harmony — mierpilna vide dvēselei, garam un prātam. Kempings pie Baltijas jūras.</p>
+        </div>
+        <div>
+          <h3>Kontakti</h3>
+          <ul>
+            <li><a href="tel:+37120203073">+371 20 20 30 73</a></li>
+            <li><a href="mailto:info@mieraosta.lv">info@mieraosta.lv</a></li>
+            <li><a href="mailto:miera.osta@inbox.lv">miera.osta@inbox.lv</a></li>
+            <li><a href="https://www.facebook.com/pavilostamieraosta" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/mieraosta/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Navigācija</h3>
+          <ul>
+            <li><a href="#rooms">Namiņi</a></li>
+            <li><a href="#amenities">Ērtības</a></li>
+            <li><a href="#gallery">Galerija</a></li>
+            <li><a href="#booking">Rezervācija</a></li>
+            <li><a href="https://mieraosta.lv/noteikumi/" target="_blank" rel="noopener">Noteikumi</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>SIA „Sunkuri” · Reģ. Nr. 40203304461</span>
+        <span>Prototips demonstrācijai · avots: mieraosta.lv</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      const menuToggle = document.getElementById('menuToggle');
+      const navMobile = document.getElementById('navMobile');
+      const navClose = document.getElementById('navClose');
+
+      const onScroll = () => {
+        header.classList.toggle('scrolled', window.scrollY > 24);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const openNav = () => {
+        navMobile.classList.add('open');
+        navMobile.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+      const closeNav = () => {
+        navMobile.classList.remove('open');
+        navMobile.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      menuToggle.addEventListener('click', openNav);
+      navClose.addEventListener('click', closeNav);
+      navMobile.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeNav));
+
+      // Guest selector
+      const guestTrigger = document.getElementById('guestTrigger');
+      const guestPanel = document.getElementById('guestPanel');
+      let adults = 2;
+      let children = 0;
+
+      const updateSummary = () => {
+        const parts = [];
+        parts.push(adults + (adults === 1 ? ' pieaugušais' : ' pieaugušie'));
+        if (children > 0) {
+          parts.push(children + (children === 1 ? ' bērns' : ' bērni'));
+        }
+        document.getElementById('guestSummary').textContent = parts.join(', ');
+        document.getElementById('adultsCount').textContent = adults;
+        document.getElementById('childrenCount').textContent = children;
+      };
+
+      guestTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = guestPanel.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', () => {
+        adults = Math.min(12, adults + 1);
+        updateSummary();
+      });
+      document.getElementById('adultsMinus').addEventListener('click', () => {
+        adults = Math.max(1, adults - 1);
+        updateSummary();
+      });
+      document.getElementById('childrenPlus').addEventListener('click', () => {
+        children = Math.min(8, children + 1);
+        updateSummary();
+      });
+      document.getElementById('childrenMinus').addEventListener('click', () => {
+        children = Math.max(0, children - 1);
+        updateSummary();
+      });
+
+      // Default dates
+      const checkin = document.getElementById('checkin');
+      const checkout = document.getElementById('checkout');
+      const today = new Date();
+      const inDate = new Date(today);
+      inDate.setDate(today.getDate() + 2);
+      const outDate = new Date(today);
+      outDate.setDate(today.getDate() + 5);
+      const iso = (d) => d.toISOString().split('T')[0];
+      checkin.value = iso(inDate);
+      checkout.value = iso(outDate);
+      checkin.min = iso(today);
+      checkout.min = iso(inDate);
+
+      checkin.addEventListener('change', () => {
+        const next = new Date(checkin.value);
+        next.setDate(next.getDate() + 1);
+        checkout.min = iso(next);
+        if (checkout.value <= checkin.value) checkout.value = iso(next);
+      });
+
+      document.getElementById('bookingForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('searchBtn');
+        const prev = btn.textContent;
+        btn.textContent = 'Meklēts ✓';
+        setTimeout(() => { btn.textContent = prev; }, 1600);
+      });
+    })();
+  </script>
+</body>
+</html>
