@@ -244,7 +244,8 @@
     /* Hero */
     .hero {
       position: relative;
-      min-height: 100svh;
+      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: flex-end;
       color: #fff;
@@ -274,8 +275,11 @@
       width: min(100% - 2.5rem, var(--max));
       margin: 0 auto;
       padding: 7.5rem 0 4.5rem;
-      max-width: 40rem;
       animation: rise 1s var(--ease) 0.15s both;
+    }
+    .hero-copy-inner {
+      max-width: 38rem;
+      text-align: left;
     }
     .hero-brand {
       font-family: var(--font-display);
@@ -773,13 +777,15 @@
       </div>
       <div class="hero-veil" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="hero-brand">Břevnovský klášter</p>
-        <p class="hero-place">Břevnov · Praha 6 · Česká republika</p>
-        <h1>Uspořádejte váš event v&nbsp;barokním klenotu Prahy</h1>
-        <p class="hero-lead">Prostory pro 20 až 1&nbsp;100 hostů. Catering, technika i parkování – vše pod jednou střechou.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#kontakt">Domluvit prohlídku</a>
-          <a class="btn btn-ghost" href="#prostory">Prohlédnout prostory</a>
+        <div class="hero-copy-inner">
+          <p class="hero-brand">Břevnovský klášter</p>
+          <p class="hero-place">Břevnov · Praha 6 · Česká republika</p>
+          <h1>Uspořádejte váš event v&nbsp;barokním klenotu Prahy</h1>
+          <p class="hero-lead">Prostory pro 20 až 1&nbsp;100 hostů. Catering, technika i parkování – vše pod jednou střechou.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#kontakt">Domluvit prohlídku</a>
+            <a class="btn btn-ghost" href="#prostory">Prohlédnout prostory</a>
+          </div>
         </div>
       </div>
     </section>
