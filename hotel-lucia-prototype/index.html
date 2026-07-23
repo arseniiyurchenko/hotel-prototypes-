@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucia Hotel — Heart of Ludza, Latvia’s oldest town</title>
+  <meta name="description" content="Lucia Hotel in Ludza, Latgale — cozy rooms, sauna & jacuzzi, near the Great and Little Ludza lakes. Mid-range stay in Latvia’s oldest town.">
+  <!--
+    EXTRACTION NOTES (source analysis):
+    - https://lucia.lv is a women's clothing shop (Lučia), NOT this hotel.
+    - Real hotel site was luciahotel.lv (Mozello); live domain is now an unrelated affiliate portal.
+    - Content taken from Wayback archives of luciahotel.lv (2024–2025) + verified listing photos.
+    - Name: Lucia Hotel / Viesnīca Lucia. Tagline: heart of Latvia’s oldest city (Ludza).
+    - Rooms/prices from hotel page: Single 41€, Double 53€, Triple 63€, Family 82€, LUX 96/115€.
+    - Amenities on site: sauna, jacuzzi, restaurant (LV page notes closed indefinitely), outdoor dining,
+      free parking, free Wi-Fi, TV & fridge, breakfast (by reservation), banquet halls, catering/events.
+    - Pet policy / grill / guest kitchen: not stated on official pages — omitted.
+    - No logo asset or rating badge on site — text wordmark + placeholder testimonials.
+    - Tier: mid-range comfortable town hotel (3★ on listings).
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lake: #1f5c63;
+      --lake-deep: #143f45;
+      --lake-soft: #3a7a82;
+      --mist: #e8f1f0;
+      --sand: #f3eee6;
+      --sand-deep: #e4d9c8;
+      --ink: #1c2a2c;
+      --ink-soft: #4a5a5c;
+      --cream: #faf7f2;
+      --gold: #b08a4a;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(20, 63, 69, 0.12);
+      --radius: 10px;
+      --header-h: 76px;
+      --pad-x: clamp(1.5rem, 4vw, 3rem);
+      --max: 1120px;
+      --ease: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Nunito Sans", system-ui, sans-serif;
+      font-optical-sizing: auto;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, input, select {
+      font: inherit;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--max), 100%);
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+    }
+
+    .section {
+      padding: clamp(3.5rem, 8vw, 5.5rem) 0;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--lake-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.85rem, 4vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--lake-deep);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-lead {
+      max-width: 36rem;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      transition: transform var(--ease), background var(--ease), box-shadow var(--ease);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--lake);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(31, 92, 99, 0.28);
+    }
+
+    .btn-primary:hover { background: var(--lake-deep); }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.14);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.24); }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+
+    .site-header.scrolled {
+      border-bottom-color: rgba(31, 92, 99, 0.1);
+      box-shadow: 0 8px 28px rgba(20, 63, 69, 0.06);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      min-height: var(--header-h);
+      padding-block: 0.65rem;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.45rem, 2.5vw, 1.7rem);
+      font-weight: 700;
+      color: var(--lake-deep);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-sub {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lake-soft);
+      margin-top: 0.15rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 1.75rem);
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      transition: color var(--ease);
+    }
+
+    .nav-desktop a:hover { color: var(--lake); }
+
+    .header-cta { flex-shrink: 0; }
+
+    .header-cta .btn {
+      padding: 0.7rem 1.2rem;
+      font-size: 0.85rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(31, 92, 99, 0.2);
+      border-radius: 10px;
+      background: var(--white);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--lake-deep);
+      border-radius: 2px;
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(20, 63, 69, 0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--ease);
+    }
+
+    .nav-mobile.open {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-mobile-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(320px, 88vw);
+      height: 100%;
+      background: var(--cream);
+      padding: 1.5rem;
+      transform: translateX(12px);
+      transition: transform var(--ease);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-mobile.open .nav-mobile-panel { transform: translateX(0); }
+
+    .nav-mobile-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .nav-close {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: var(--mist);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.25rem;
+      color: var(--lake-deep);
+    }
+
+    .nav-mobile-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .nav-mobile-list a {
+      display: block;
+      padding: 0.85rem 0.5rem;
+      font-weight: 600;
+      color: var(--lake-deep);
+      border-bottom: 1px solid rgba(31, 92, 99, 0.08);
+    }
+
+    /* —— Hero —— */
+    #hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      animation: hero ken 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroKen {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 63, 69, 0.35) 0%, rgba(20, 63, 69, 0.15) 35%, rgba(20, 63, 69, 0.78) 100%),
+        radial-gradient(ellipse at 20% 80%, rgba(58, 122, 130, 0.35), transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2rem, 6vw, 4rem) 0 clamp(3rem, 8vw, 5rem);
+      max-width: 40rem;
+      animation: fadeUp 0.9s var(--ease) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(3rem, 9vw, 5.2rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-value {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 500;
+      max-width: 28rem;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .hero-wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 64px;
+      z-index: 3;
+      color: var(--cream);
+    }
+
+    /* —— Booking —— */
+    #booking {
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 5;
+      padding-top: 0;
+      padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+    }
+
+    .booking-widget {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: clamp(1.1rem, 2.5vw, 1.4rem);
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.2fr auto;
+      gap: 0.85rem;
+      align-items: end;
+      border: 1px solid rgba(31, 92, 99, 0.08);
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--lake-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid rgba(31, 92, 99, 0.18);
+      border-radius: 10px;
+      background: var(--sand);
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+
+    .field input:focus,
+    .guest-trigger:focus {
+      outline: none;
+      border-color: var(--lake);
+      box-shadow: 0 0 0 3px rgba(31, 92, 99, 0.12);
+    }
+
+    .guest-wrap { position: relative; }
+
+    .guest-trigger {
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--sand);
+    }
+
+    .guest-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      min-width: 260px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(31, 92, 99, 0.1);
+      padding: 1rem;
+      z-index: 20;
+    }
+
+    .guest-panel.open { display: block; animation: fadeUp 0.25s ease both; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+    }
+
+    .guest-row + .guest-row { border-top: 1px solid rgba(31, 92, 99, 0.08); }
+
+    .guest-row strong { display: block; font-size: 0.95rem; }
+    .guest-row span { font-size: 0.8rem; color: var(--ink-soft); }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .stepper button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(31, 92, 99, 0.25);
+      background: var(--mist);
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--lake-deep);
+    }
+
+    .stepper button:hover { background: var(--lake); color: white; border-color: var(--lake); }
+
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    .booking-search {
+      white-space: nowrap;
+      min-height: 48px;
+    }
+
+    /* —— Rooms —— */
+    #rooms {
+      background:
+        linear-gradient(180deg, var(--cream), var(--mist) 100%);
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.25rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(31, 92, 99, 0.08);
+      box-shadow: 0 8px 28px rgba(20, 63, 69, 0.06);
+      transition: transform var(--ease), box-shadow var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--sand-deep);
+    }
+
+    .room-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+
+    .room-card:hover .room-card-media img { transform: scale(1.05); }
+
+    .room-card-body {
+      padding: 1.25rem 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.45rem;
+    }
+
+    .room-card h3 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.35rem;
+      color: var(--lake-deep);
+    }
+
+    .room-meta {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    .room-price {
+      margin-top: auto;
+      padding-top: 0.9rem;
+      font-weight: 700;
+      color: var(--lake);
+      font-size: 1.05rem;
+    }
+
+    .room-price span {
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .room-placeholder {
+      aspect-ratio: 4 / 3;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, var(--mist), var(--sand));
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* —— Amenities —— */
+    #amenities {
+      background: var(--lake-deep);
+      color: var(--white);
+    }
+
+    #amenities .section-eyebrow { color: rgba(232, 241, 240, 0.7); }
+    #amenities .section-title { color: var(--white); }
+    #amenities .section-lead { color: rgba(232, 241, 240, 0.82); }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2.25rem;
+    }
+
+    .amenity {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.25rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      transition: background var(--ease), transform var(--ease);
+    }
+
+    .amenity:hover {
+      background: rgba(255, 255, 255, 0.11);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      display: grid;
+      place-items: center;
+    }
+
+    .amenity-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #9fd4d8;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity strong {
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .amenity p {
+      font-size: 0.84rem;
+      color: rgba(232, 241, 240, 0.72);
+      line-height: 1.45;
+    }
+
+    /* —— Gallery —— */
+    #gallery { background: var(--sand); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 160px;
+      gap: 0.75rem;
+      margin-top: 2.25rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: var(--sand-deep);
+    }
+
+    .gallery-item:nth-child(1) { grid-column: span 3; grid-row: span 2; }
+    .gallery-item:nth-child(2) { grid-column: span 3; grid-row: span 1; }
+    .gallery-item:nth-child(3) { grid-column: span 2; grid-row: span 1; }
+    .gallery-item:nth-child(4) { grid-column: span 1; grid-row: span 1; }
+    .gallery-item:nth-child(5) { grid-column: span 2; grid-row: span 1; }
+    .gallery-item:nth-child(6) { grid-column: span 4; grid-row: span 1; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease);
+    }
+
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(transparent, rgba(20, 63, 69, 0.75));
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 1.25rem;
+      background:
+        linear-gradient(160deg, #d5e6e8, #c5d8d4 50%, #b7cfc8);
+      color: var(--lake-deep);
+    }
+
+    .gallery-placeholder strong {
+      display: block;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .gallery-placeholder span {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* —— Location —— */
+    #location { background: var(--cream); }
+
+    .location-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2rem;
+      margin-top: 2rem;
+      align-items: stretch;
+    }
+
+    .location-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid rgba(31, 92, 99, 0.08);
+      box-shadow: 0 8px 28px rgba(20, 63, 69, 0.05);
+    }
+
+    .location-card h3 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.35rem;
+      color: var(--lake-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .location-card p { color: var(--ink-soft); margin-bottom: 1rem; }
+
+    .landmark-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .landmark-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+    }
+
+    .landmark-list .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lake);
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .map-placeholder {
+      border-radius: 16px;
+      min-height: 320px;
+      background:
+        linear-gradient(135deg, rgba(31, 92, 99, 0.08), rgba(176, 138, 74, 0.08)),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 24px,
+          rgba(31, 92, 99, 0.04) 24px,
+          rgba(31, 92, 99, 0.04) 25px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 24px,
+          rgba(31, 92, 99, 0.04) 24px,
+          rgba(31, 92, 99, 0.04) 25px
+        ),
+        var(--mist);
+      border: 1px dashed rgba(31, 92, 99, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--lake-deep);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(58, 122, 130, 0.18);
+      top: 28%;
+      left: 38%;
+    }
+
+    .map-pin {
+      position: relative;
+      z-index: 1;
+      width: 44px;
+      height: 44px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--lake);
+      transform: rotate(-45deg);
+      margin-bottom: 1rem;
+      box-shadow: 0 8px 20px rgba(31, 92, 99, 0.3);
+    }
+
+    .map-pin::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .map-placeholder strong {
+      position: relative;
+      z-index: 1;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.25rem;
+    }
+
+    .map-placeholder span {
+      position: relative;
+      z-index: 1;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      margin-top: 0.35rem;
+    }
+
+    /* —— Trust —— */
+    #trust {
+      background:
+        linear-gradient(180deg, var(--mist), var(--cream));
+    }
+
+    .trust-note {
+      display: inline-block;
+      margin-top: 0.5rem;
+      margin-bottom: 1.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(176, 138, 74, 0.12);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.4rem;
+      border: 1px dashed rgba(176, 138, 74, 0.45);
+      box-shadow: 0 8px 24px rgba(20, 63, 69, 0.04);
+    }
+
+    .testimonial .badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .testimonial p {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--lake-deep);
+      margin-bottom: 1rem;
+      line-height: 1.45;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    /* —— Footer —— */
+    #footer {
+      background: var(--lake-deep);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .logo-mark { color: white; }
+    .footer-brand .logo-sub { color: #9fd4d8; }
+
+    .footer-brand p {
+      margin-top: 1rem;
+      max-width: 28rem;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-col h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9fd4d8;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-col a { color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; }
+    .footer-col a:hover { color: white; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 980px) {
+      .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .booking-widget { grid-template-columns: 1fr 1fr; }
+      .booking-search { grid-column: 1 / -1; width: 100%; }
+      .location-layout { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 140px;
+      }
+      .gallery-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .header-cta { display: none; }
+      .rooms-grid,
+      .trust-grid,
+      .amenities-grid { grid-template-columns: 1fr; }
+      .booking-widget { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-brand { font-size: clamp(2.6rem, 12vw, 3.4rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-media img { animation: none; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="logo" aria-label="Lucia Hotel home">
+        <span class="logo-mark">Lucia Hotel</span>
+        <span class="logo-sub">Ludza · Latgale</span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a class="btn btn-primary" href="#booking">Check availability</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <div class="nav-mobile-panel">
+      <div class="nav-mobile-head">
+        <span class="logo-mark">Lucia Hotel</span>
+        <button class="nav-close" id="navClose" type="button" aria-label="Close menu">×</button>
+      </div>
+      <ul class="nav-mobile-list">
+        <li><a href="#booking">Book</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#trust">Guests</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <!-- 1. Hero -->
+    <section id="hero">
+      <div class="hero-media">
+        <img
+          src="https://lucia.hotel-in-latvia.com/data/Photos/OriginalPhoto/15807/1580726/1580726723/lucia-with-self-check-in-ludza-photo-2.JPEG"
+          alt="Lucia Hotel exterior in Ludza with garden and flower beds"
+          width="1600"
+          height="1067"
+          fetchpriority="high"
+        >
+        <div class="hero-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-brand">Lucia Hotel</h1>
+          <p class="hero-value">In the heart of Ludza — Latvia’s oldest town — with cozy rooms, sauna &amp; jacuzzi, and the lakes of Latgale nearby.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking">Check availability</a>
+            <a class="btn btn-ghost" href="#rooms">View rooms</a>
+          </div>
+        </div>
+      </div>
+      <svg class="hero-wave" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="currentColor" d="M0,32 C240,64 480,0 720,24 C960,48 1200,64 1440,28 L1440,64 L0,64 Z"></path>
+      </svg>
+    </section>
+
+    <!-- 2. Booking -->
+    <section class="section" id="booking">
+      <div class="container">
+        <form class="booking-widget" id="bookingForm" action="#" method="get">
+          <div class="field">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field guest-wrap">
+            <label for="guestTrigger">Guests</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+              <span id="guestLabel">2 adults · 0 children</span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Select guests">
+              <div class="guest-row">
+                <div>
+                  <strong>Adults</strong>
+                  <span>Ages 13+</span>
+                </div>
+                <div class="stepper">
+                  <button type="button" id="adultsMinus" aria-label="Fewer adults">−</button>
+                  <span id="adultsCount">2</span>
+                  <button type="button" id="adultsPlus" aria-label="More adults">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <div>
+                  <strong>Children</strong>
+                  <span>Ages 0–12</span>
+                </div>
+                <div class="stepper">
+                  <button type="button" id="childrenMinus" aria-label="Fewer children">−</button>
+                  <span id="childrenCount">0</span>
+                  <button type="button" id="childrenPlus" aria-label="More children">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary booking-search">Search rooms</button>
+        </form>
+        <p class="booking-note">Prototype booking widget — UI only. Reserve by phone <a href="tel:+37126253535">+371 26253535</a> or email <a href="mailto:hotellucia@inbox.lv">hotellucia@inbox.lv</a>.</p>
+      </div>
+    </section>
+
+    <!-- 3. Accommodation -->
+    <section class="section" id="rooms">
+      <div class="container">
+        <p class="section-eyebrow">Accommodation</p>
+        <h2 class="section-title">21 comfortable rooms</h2>
+        <p class="section-lead">Room types and nightly rates as listed on the Lucia Hotel site. Up to 47 guests without extra beds. Many rooms overlook Ludza’s churches and medieval castle ruins.</p>
+
+        <div class="rooms-grid">
+          <article class="room-card">
+            <div class="room-card-media">
+              <img
+                src="https://lucia.hotel-in-latvia.com/data/Photos/OriginalPhoto/641/64113/64113070/lucia-with-self-check-in-ludza-photo-40.JPEG"
+                alt="Single guest room at Lucia Hotel"
+                loading="lazy"
+                width="800"
+                height="600"
+              >
+            </div>
+            <div class="room-card-body">
+              <h3>Single</h3>
+              <p class="room-meta">2 rooms · TV, refrigerator, free Wi-Fi · private WC with shower or bath</p>
+              <p class="room-price">From EUR 41 <span>/ night</span></p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="room-card-media">
+              <img
+                src="https://lucia.hotel-in-latvia.com/data/Photos/OriginalPhoto/16129/1612971/1612971621/lucia-with-self-check-in-ludza-photo-5.JPEG"
+                alt="Double guest room at Lucia Hotel"
+                loading="lazy"
+                width="800"
+                height="600"
+              >
+            </div>
+            <div class="room-card-body">
+              <h3>Double</h3>
+              <p class="room-meta">12 rooms · beds together or separate · TV, refrigerator, free Wi-Fi</p>
+              <p class="room-price">From EUR 53 <span>/ night</span></p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="room-card-media">
+              <img
+                src="https://lucia.hotel-in-latvia.com/data/Photos/OriginalPhoto/16129/1612971/1612971663/lucia-with-self-check-in-ludza-photo-10.JPEG"
+                alt="Triple guest room at Lucia Hotel"
+                loading="lazy"
+                width="800"
+                height="600"
+              >
+            </div>
+            <div class="room-card-body">
+              <h3>Triple</h3>
+              <p class="room-meta">3 rooms · three beds · well-equipped bathroom</p>
+              <p class="room-price">From EUR 63 <span>/ night</span></p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="room-card-media">
+              <img
+                src="https://lucia.hotel-in-latvia.com/data/Photos/OriginalPhoto/15807/1580725/1580725941/lucia-with-self-check-in-ludza-photo-12.JPEG"
+                alt="Family suite living area at Lucia Hotel"
+                loading="lazy"
+                width="800"
+                height="600"
+              >
+            </div>
+            <div class="room-card-body">
+              <h3>Family</h3>
+              <p class="room-meta">2 rooms · suite with two rooms · four beds</p>
+              <p class="room-price">From EUR 82 <span>/ night</span></p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="room-card-media">
+              <div class="room-placeholder">Photo for LUX rooms not labeled on source gallery — placeholder</div>
+            </div>
+            <div class="room-card-body">
+              <h3>LUX</h3>
+              <p class="room-meta">2 rooms · one of them with sauna</p>
+              <p class="room-price">From EUR 96–115 <span>/ night</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Amenities -->
+    <section class="section" id="amenities">
+      <div class="container">
+        <p class="section-eyebrow">On site</p>
+        <h2 class="section-title">Amenities from the hotel</h2>
+        <p class="section-lead">Only facilities stated on Lucia Hotel’s own pages. Items not listed there (e.g. pet policy, grill) are omitted.</p>
+
+        <div class="amenities-grid">
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 18c2-3 4-4.5 8-4.5S18 15 20 18"/><path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+            </div>
+            <strong>Sauna</strong>
+            <p>Available as part of the hotel stay; one LUX room includes a private sauna.</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M6 12c0 4 2.5 7 6 7s6-3 6-7"/><path d="M8 8c.5-2 2-3.5 4-3.5S15.5 6 16 8"/></svg>
+            </div>
+            <strong>Jacuzzi</strong>
+            <p>Highlighted on the homepage together with the sauna for restful stays.</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 11h16v8H4z"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><path d="M4 15h16"/></svg>
+            </div>
+            <strong>Restaurant &amp; café</strong>
+            <p>International &amp; local cuisine; member of Latgale Culinary Heritage. LV site notes restaurant currently closed indefinitely — confirm before visiting.</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 14h16"/><path d="M6 14V9l6-4 6 4v5"/><path d="M9 18h6"/></svg>
+            </div>
+            <strong>Outdoor dining</strong>
+            <p>In warm weather, meals can be enjoyed outdoors in fresh air.</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 18V8l8-4 8 4v10"/><path d="M9 18v-5h6v5"/><path d="M4 18h16"/></svg>
+            </div>
+            <strong>Banquet &amp; events</strong>
+            <p>Halls for up to ~50 guests, banquet table setting, event service, and group catering.</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="8" rx="1"/><path d="M6 10V7h3v3M15 10V7h3v3"/><path d="M8 18v2M16 18v2"/></svg>
+            </div>
+            <strong>Free parking</strong>
+            <p>Spacious free parking on site.</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M8 8c1.5-2 3-3 4-3s2.5 1 4 3"/><path d="M8 16c1.5 2 3 3 4 3s2.5-1 4-3 2.5-1 4-3"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <strong>Free Wi-Fi</strong>
+            <p>Complimentary Wi-Fi in every room.</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 8h16v10H4z"/><path d="M8 8V6h8v2"/><path d="M9 13h6"/></svg>
+            </div>
+            <strong>Breakfast</strong>
+            <p>Served 8:00–10:00 with prior reservation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Gallery -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <p class="section-eyebrow">Gallery</p>
+        <h2 class="section-title">A look inside &amp; out</h2>
+        <p class="section-lead">Real property photos from hotel listings and NATTOUR. No lake photo was published on the hotel’s own site — nearby lakes are noted in Location.</p>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img
+              src="https://nattour.ludzasnovads.lv/storage/app/uploads/public/627/502/fc8/thumb_1226_1296_700_0_0_crop.jpg"
+              alt="Lucia Hotel exterior and garden in Ludza"
+              loading="lazy"
+              width="1296"
+              height="700"
+            >
+            <figcaption class="gallery-caption">Exterior &amp; garden</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://lucia.hotel-in-latvia.com/data/Photos/OriginalPhoto/15807/1580726/1580726627/lucia-with-self-check-in-ludza-photo-3.JPEG"
+              alt="Hotel lobby and reception seating"
+              loading="lazy"
+              width="800"
+              height="600"
+            >
+            <figcaption class="gallery-caption">Lobby</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://lucia.hotel-in-latvia.com/data/Photos/OriginalPhoto/16129/1612971/1612971621/lucia-with-self-check-in-ludza-photo-5.JPEG"
+              alt="Guest room with double bed"
+              loading="lazy"
+              width="800"
+              height="600"
+            >
+            <figcaption class="gallery-caption">Guest room</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://lucia.hotel-in-latvia.com/data/Photos/OriginalPhoto/15807/1580726/1580726641/lucia-with-self-check-in-ludza-photo-14.JPEG"
+              alt="Banquet hall set for an event"
+              loading="lazy"
+              width="800"
+              height="600"
+            >
+            <figcaption class="gallery-caption">Banquet hall</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://lucia.hotel-in-latvia.com/data/Photos/OriginalPhoto/15807/1580725/1580725941/lucia-with-self-check-in-ludza-photo-12.JPEG"
+              alt="Common lounge area with sofas"
+              loading="lazy"
+              width="800"
+              height="600"
+            >
+            <figcaption class="gallery-caption">Common lounge</figcaption>
+          </figure>
+          <div class="gallery-item">
+            <div class="gallery-placeholder">
+              <div>
+                <strong>Lakes of Ludza</strong>
+                <span>No hotel-owned lake photo on source site.<br>Great Ludza Lake beach — 600 m · Little Ludza Lake beach — 1.1 km</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Location -->
+    <section class="section" id="location">
+      <div class="container">
+        <p class="section-eyebrow">Ludza · Latgale</p>
+        <h2 class="section-title">Town of lakes, oldest city in Latvia</h2>
+        <p class="section-lead">Attractive location in the centre of Ludza — surrounded by the lakes of Latgale and steps from historic landmarks.</p>
+
+        <div class="location-layout">
+          <div class="location-card">
+            <h3>Find us</h3>
+            <p><strong>Kr. Barona 20, Ludza LV-5701, Latvia</strong><br>SIA LUCIA · +371 26253535 · hotellucia@inbox.lv</p>
+            <ul class="landmark-list">
+              <li><span class="dot" aria-hidden="true"></span><span>Great Ludza Lake (Lielais Ludzas ezers) beach — 600 m</span></li>
+              <li><span class="dot" aria-hidden="true"></span><span>Little Ludza Lake (Mazais Ludzas ezers) beach — 1.1 km</span></li>
+              <li><span class="dot" aria-hidden="true"></span><span>Views toward churches and Ludza medieval castle ruins from many rooms</span></li>
+              <li><span class="dot" aria-hidden="true"></span><span>Bus station — 160 m · Railway station — 2 km</span></li>
+              <li><span class="dot" aria-hidden="true"></span><span>Latgale Culinary Heritage — hotel restaurant is a member</span></li>
+            </ul>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Static map placeholder for Ludza, Latvia">
+            <div class="map-pin" aria-hidden="true"></div>
+            <strong>Map placeholder</strong>
+            <span>Ludza, Latgale · GPS approx. 56.547, 27.725</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Trust -->
+    <section class="section" id="trust">
+      <div class="container">
+        <p class="section-eyebrow">Guest voices</p>
+        <h2 class="section-title">What visitors say</h2>
+        <span class="trust-note">Placeholder testimonials — no rating badge published on the hotel’s own site</span>
+
+        <div class="trust-grid">
+          <article class="testimonial">
+            <div class="badge">Sample · Placeholder</div>
+            <p>“Quiet rooms in the old town, with the lake walk just a few minutes away.”</p>
+            <cite>Sample guest · Ludza weekend</cite>
+          </article>
+          <article class="testimonial">
+            <div class="badge">Sample · Placeholder</div>
+            <p>“Practical mid-range stay — parking on site and a warm welcome after a day exploring Latgale.”</p>
+            <cite>Sample guest · Family trip</cite>
+          </article>
+          <article class="testimonial">
+            <div class="badge">Sample · Placeholder</div>
+            <p>“We used a banquet hall for a small celebration — simple, central, and easy to reach.”</p>
+            <cite>Sample guest · Event stay</cite>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-mark">Lucia Hotel</span>
+            <span class="logo-sub">Ludza · Latgale</span>
+          </div>
+          <p>In the heart of Latvia’s oldest town — cozy rooms, sauna &amp; jacuzzi, and the lakes of Ludza nearby.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Check availability</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>Kr. Barona 20, Ludza LV-5701</li>
+            <li><a href="tel:+37126253535">+371 26253535</a></li>
+            <li><a href="mailto:hotellucia@inbox.lv">hotellucia@inbox.lv</a></li>
+            <li>Check-in from 14:00 · Check-out by 12:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> SIA LUCIA · Prototype homepage</span>
+        <span>Not affiliated with lucia.lv (clothing shop)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMobile = document.getElementById("navMobile");
+      const navClose = document.getElementById("navClose");
+
+      const onScroll = () => {
+        header.classList.toggle("scrolled", window.scrollY > 12);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const openNav = () => {
+        navMobile.classList.add("open");
+        navMobile.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+      const closeNav = () => {
+        navMobile.classList.remove("open");
+        navMobile.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      };
+
+      menuToggle.addEventListener("click", openNav);
+      navClose.addEventListener("click", closeNav);
+      navMobile.addEventListener("click", (e) => {
+        if (e.target === navMobile) closeNav();
+      });
+      navMobile.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", closeNav);
+      });
+
+      // Booking dates
+      const checkin = document.getElementById("checkin");
+      const checkout = document.getElementById("checkout");
+      const today = new Date();
+      const iso = (d) => d.toISOString().split("T")[0];
+      checkin.min = iso(today);
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dayAfter = new Date(today);
+      dayAfter.setDate(dayAfter.getDate() + 2);
+      checkin.value = iso(tomorrow);
+      checkout.min = iso(dayAfter);
+      checkout.value = iso(dayAfter);
+
+      checkin.addEventListener("change", () => {
+        if (!checkin.value) return;
+        const next = new Date(checkin.value);
+        next.setDate(next.getDate() + 1);
+        checkout.min = iso(next);
+        if (!checkout.value || checkout.value <= checkin.value) {
+          checkout.value = iso(next);
+        }
+      });
+
+      // Guests
+      let adults = 2;
+      let children = 0;
+      const guestTrigger = document.getElementById("guestTrigger");
+      const guestPanel = document.getElementById("guestPanel");
+      const guestLabel = document.getElementById("guestLabel");
+      const adultsCount = document.getElementById("adultsCount");
+      const childrenCount = document.getElementById("childrenCount");
+
+      const syncGuests = () => {
+        adultsCount.textContent = String(adults);
+        childrenCount.textContent = String(children);
+        const aLabel = adults === 1 ? "1 adult" : adults + " adults";
+        const cLabel = children === 1 ? "1 child" : children + " children";
+        guestLabel.textContent = aLabel + " · " + cLabel;
+      };
+
+      guestTrigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const open = guestPanel.classList.toggle("open");
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove("open");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.getElementById("adultsPlus").addEventListener("click", () => {
+        if (adults < 8) { adults += 1; syncGuests(); }
+      });
+      document.getElementById("adultsMinus").addEventListener("click", () => {
+        if (adults > 1) { adults -= 1; syncGuests(); }
+      });
+      document.getElementById("childrenPlus").addEventListener("click", () => {
+        if (children < 6) { children += 1; syncGuests(); }
+      });
+      document.getElementById("childrenMinus").addEventListener("click", () => {
+        if (children > 0) { children -= 1; syncGuests(); }
+      });
+
+      document.getElementById("bookingForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector(".booking-search");
+        const prev = btn.textContent;
+        btn.textContent = "Checking…";
+        setTimeout(() => {
+          btn.textContent = "UI only — call to book";
+          setTimeout(() => { btn.textContent = prev; }, 1800);
+        }, 600);
+      });
+
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    })();
+  </script>
+</body>
+</html>
