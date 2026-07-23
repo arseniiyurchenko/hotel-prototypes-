@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cavendish Banqueting Hall — Premium Wedding Venue in London</title>
+  <meta name="description" content="Cavendish Banqueting — a versatile venue in London for weddings, catering, and event management. Grand Hall in Colindale, NW9.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --ink-soft: #1c1a17;
+      --charcoal: #2e2b27;
+      --gold: #c8a040;
+      --gold-bright: #d4b056;
+      --gold-deep: #8a6e28;
+      --stone: #ebe6de;
+      --stone-deep: #d9d2c6;
+      --paper: #f6f3ee;
+      --muted: #6b6560;
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(10, 10, 10, 0.12);
+      --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Sora", sans-serif;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1140px, 90vw);
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    h1, h2, h3 {
+      font-family: "Marcellus", serif;
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--ink);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.55rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-bright);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+
+    .btn-ink {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .btn-ink:hover { background: var(--charcoal); }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      padding: 1.1rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(10, 10, 10, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+      padding: 0.7rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: var(--white);
+    }
+
+    .brand img {
+      width: 52px;
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-text strong {
+      font-family: "Marcellus", serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--gold-bright);
+    }
+
+    .brand-text span {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.72;
+      margin-top: 0.2rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--gold-bright); }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: transparent;
+      color: var(--white);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: currentColor;
+      position: relative;
+      transition: transform var(--transition);
+    }
+
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.98);
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      transform: translateX(100%);
+      transition: transform var(--transition);
+    }
+
+    .nav-mobile.open { transform: translateX(0); }
+
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-close {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: transparent;
+      color: var(--white);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .nav-mobile nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: "Marcellus", serif;
+      font-size: 1.6rem;
+    }
+
+    /* Hero — one composition */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      transform: scale(1.06);
+      animation: heroDrift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.06) translate3d(0, 0, 0); }
+      to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.28) 38%, rgba(10, 10, 10, 0.78) 100%),
+        radial-gradient(ellipse at 70% 20%, rgba(200, 160, 64, 0.18), transparent 55%);
+    }
+
+    .hero-content {
+      width: min(1140px, 90vw);
+      margin: 0 auto;
+      padding: 7.5rem 0 5.5rem;
+    }
+
+    .hero-brand {
+      font-family: "Marcellus", serif;
+      font-size: clamp(2.6rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      max-width: 12ch;
+      margin-bottom: 1.1rem;
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-brand em {
+      font-style: normal;
+      color: var(--gold-bright);
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+      color: rgba(255, 255, 255, 0.94);
+      max-width: 28ch;
+      margin-bottom: 0.85rem;
+      animation: fadeUp 1s ease 0.12s both;
+    }
+
+    .hero-lead {
+      max-width: 38ch;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1rem;
+      margin-bottom: 1.85rem;
+      animation: fadeUp 1s ease 0.22s both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      animation: fadeUp 1s ease 0.32s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Inquiry strip */
+    .inquiry {
+      position: relative;
+      z-index: 5;
+      margin-top: -2.75rem;
+      margin-bottom: 0;
+    }
+
+    .inquiry-panel {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 1.35rem 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+      border-top: 3px solid var(--gold);
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+      font-weight: 500;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      border: 1px solid var(--stone-deep);
+      background: var(--paper);
+      padding: 0.8rem 0.85rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .field input:focus,
+    .field select:focus { border-color: var(--gold); }
+
+    .inquiry-note {
+      grid-column: 1 / -1;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .inquiry-note a {
+      color: var(--gold-deep);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Sections */
+    section { padding: 5.5rem 0; }
+
+    .section-head {
+      max-width: 38rem;
+      margin-bottom: 2.75rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0.55rem 0 0.9rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Grand Hall */
+    .hall {
+      background:
+        linear-gradient(180deg, var(--paper), var(--stone) 100%);
+    }
+
+    .hall-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hall-visual {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    .hall-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .hall-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 1.75rem 0 2rem;
+    }
+
+    .hall-facts dt {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    .hall-facts dd {
+      font-family: "Marcellus", serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+    }
+
+    .hall-copy p + p { margin-top: 1rem; color: var(--muted); }
+
+    /* Features — not card-heavy: list with dividers */
+    .features {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .features .section-head h2 { color: var(--white); }
+    .features .eyebrow { color: var(--gold-bright); }
+    .features .section-head p { color: rgba(255, 255, 255, 0.62); }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(200, 160, 64, 0.28);
+    }
+
+    .feature-item {
+      padding: 1.85rem 1.5rem 1.85rem 0;
+      border-bottom: 1px solid rgba(200, 160, 64, 0.18);
+      border-right: 1px solid rgba(200, 160, 64, 0.18);
+      padding-right: 1.75rem;
+      padding-left: 1.5rem;
+    }
+
+    .feature-item:nth-child(3n) { border-right: none; }
+    .feature-item:nth-child(1),
+    .feature-item:nth-child(2),
+    .feature-item:nth-child(3) { padding-left: 0; }
+
+    .feature-item h3 {
+      color: var(--gold-bright);
+      font-size: 1.25rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .feature-item p {
+      font-size: 0.94rem;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    /* Events strip */
+    .events {
+      background: var(--paper);
+      padding-top: 4rem;
+      padding-bottom: 1rem;
+    }
+
+    .event-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .event-tags span {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      padding: 0.55rem 0.9rem;
+      border-bottom: 1px solid var(--gold);
+      color: var(--charcoal);
+      background: transparent;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: var(--paper);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.85rem;
+    }
+
+    .gallery-grid figure {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      background: var(--stone-deep);
+    }
+
+    .gallery-grid figure:first-child {
+      grid-row: 1 / span 2;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.1s var(--transition);
+    }
+
+    .gallery-grid figure:hover img { transform: scale(1.05); }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1.1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: linear-gradient(transparent, rgba(10, 10, 10, 0.72));
+    }
+
+    /* Location */
+    .location {
+      background:
+        linear-gradient(135deg, rgba(246, 243, 238, 0.92), rgba(235, 230, 222, 0.94)),
+        url("https://cavendishbanqueting.co.uk/wp-content/uploads/2023/07/Cavendish-Banqueting-4.jpg") center/cover;
+      background-blend-mode: lighten;
+    }
+
+    .location-panel {
+      background: rgba(246, 243, 238, 0.94);
+      padding: 2.5rem 2.25rem;
+      max-width: 36rem;
+      border-left: 3px solid var(--gold);
+    }
+
+    .location-panel address {
+      font-style: normal;
+      font-family: "Marcellus", serif;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      margin: 1rem 0 1.25rem;
+      color: var(--ink);
+    }
+
+    .location-panel ul {
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .location-panel li::before {
+      content: "";
+      display: inline-block;
+      width: 0.45rem;
+      height: 0.45rem;
+      background: var(--gold);
+      margin-right: 0.65rem;
+      vertical-align: middle;
+    }
+
+    /* Contact CTA */
+    .contact-cta {
+      background: var(--ink-soft);
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 4.5rem 0;
+    }
+
+    .contact-cta h2 {
+      color: var(--white);
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      margin: 0.5rem auto 0.9rem;
+      max-width: 16ch;
+    }
+
+    .contact-cta p {
+      max-width: 42ch;
+      margin: 0 auto 1.75rem;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .contact-cta .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.62);
+      padding: 3.5rem 0 2rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand img {
+      width: 72px;
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-brand strong {
+      display: block;
+      font-family: "Marcellus", serif;
+      color: var(--gold-bright);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.45rem;
+    }
+
+    .site-footer h3 {
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .site-footer a:hover { color: var(--gold-bright); }
+
+    .footer-list {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+    }
+
+    .source-note {
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: inline-flex; }
+
+      .inquiry-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .inquiry-panel .btn { width: 100%; }
+
+      .hall-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hall-visual { min-height: 360px; }
+
+      .feature-list { grid-template-columns: 1fr 1fr; }
+      .feature-item:nth-child(3n) { border-right: 1px solid rgba(200, 160, 64, 0.18); }
+      .feature-item:nth-child(2n) { border-right: none; }
+      .feature-item { padding-left: 0; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 200px 200px;
+      }
+
+      .gallery-grid figure:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 280px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brand-text span { display: none; }
+      .hero-content { padding: 6.5rem 0 4.5rem; }
+      .inquiry { margin-top: -1.5rem; }
+      .inquiry-panel { grid-template-columns: 1fr; }
+      .hall-facts { grid-template-columns: 1fr; }
+      .feature-list { grid-template-columns: 1fr; }
+      .feature-item { border-right: none !important; padding-left: 0; padding-right: 0; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-grid figure { min-height: 220px; }
+      .location-panel { padding: 1.75rem 1.35rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .hero-media img { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Cavendish Banqueting home">
+        <img src="https://cavendishbanqueting.co.uk/wp-content/uploads/2022/07/cavendish-logo-new-2023-2.png" alt="Cavendish Banqueting logo" width="52" height="30">
+        <span class="brand-text">
+          <strong>Cavendish Banqueting</strong>
+          <span>Weddings · Catering · Events</span>
+        </span>
+      </a>
+      <ul class="nav-desktop">
+        <li><a href="#hall">Grand Hall</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#inquiry">Enquire</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button"><span></span></button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <a class="brand" href="#top">
+        <img src="https://cavendishbanqueting.co.uk/wp-content/uploads/2022/07/cavendish-logo-new-2023-2.png" alt="" width="52" height="30">
+        <span class="brand-text"><strong>Cavendish Banqueting</strong></span>
+      </a>
+      <button class="nav-close" id="navClose" aria-label="Close menu" type="button">×</button>
+    </div>
+    <nav>
+      <a href="#hall">Grand Hall</a>
+      <a href="#features">Features</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Location</a>
+      <a href="#inquiry">Enquire</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Cavendish Banqueting hero">
+      <div class="hero-media">
+        <img
+          src="https://cavendishbanqueting.co.uk/wp-content/uploads/2023/12/Stunning-Venue-3.jpg"
+          alt="Decorated Grand Hall at Cavendish Banqueting with stage, floral backdrop, and banquet tables"
+          width="720"
+          height="1080"
+          fetchpriority="high">
+      </div>
+      <div class="hero-content">
+        <p class="hero-brand">Cavendish <em>Banqueting</em></p>
+        <h1>Premium wedding venue in London</h1>
+        <p class="hero-lead">A versatile venue in London where we help you make timeless memories.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-gold" href="#inquiry">Plan your event</a>
+          <a class="btn btn-ghost" href="#gallery">View the hall</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="inquiry" id="inquiry">
+      <div class="container">
+        <form class="inquiry-panel" id="inquiryForm" action="#" method="get">
+          <div class="field">
+            <label for="eventDate">Event date</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+          </div>
+          <div class="field">
+            <label for="guestBand">No. of guests</label>
+            <select id="guestBand" name="guestBand" required>
+              <option value="">Please select</option>
+              <option>Less than 100</option>
+              <option>100 to 150</option>
+              <option>150 to 200</option>
+              <option>200 to 250</option>
+              <option>250 to 300</option>
+              <option>300 to 350</option>
+              <option>350 to 400</option>
+              <option>400+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="functionType">Type of function</label>
+            <select id="functionType" name="functionType" required>
+              <option value="">Please select</option>
+              <option>Wedding Reception</option>
+              <option>Wedding &amp; Reception</option>
+              <option>Engagement</option>
+              <option>Bar / Bat Mitzwah</option>
+              <option>Birthday / Anniversary</option>
+              <option>Dinner &amp; Dance</option>
+              <option>Mehendi/Sangeet</option>
+              <option>Corporate events</option>
+              <option>Civil ceremony</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dayBand">Day of the week</label>
+            <select id="dayBand" name="dayBand">
+              <option value="">Please select</option>
+              <option>Mon – Thurs</option>
+              <option>Fri – Sun</option>
+            </select>
+          </div>
+          <button class="btn btn-ink" type="submit">Get a quote</button>
+          <p class="inquiry-note">Prototype enquiry form (UI only). On the live site, use the <a href="https://cavendishbanqueting.co.uk/costcalculator/" target="_blank" rel="noopener">cost calculator</a> for an instant online quote — fixed package prices are not published.</p>
+        </form>
+      </div>
+    </div>
+
+    <section class="hall" id="hall">
+      <div class="container hall-grid">
+        <div class="hall-visual reveal">
+          <img
+            src="https://cavendishbanqueting.co.uk/wp-content/uploads/2024/01/IMG-20231125-WA0871-840x473.jpg"
+            alt="Wide view of the Grand Hall set with round tables, chiavari chairs, and a stage sofa"
+            width="840"
+            height="473"
+            loading="lazy">
+        </div>
+        <div class="hall-copy reveal">
+          <p class="eyebrow">The space</p>
+          <h2>The Grand Hall</h2>
+          <p>Decorated in neutral colours and adaptable with lighting and fabrics. The versatile, air-conditioned Grand Hall is fully equipped with audiovisual facilities, an adjustable dance floor, and a stage.</p>
+          <p>A dedicated bridal room allows the bride and her party to prepare for the reception. Cavendish Banqueting works with clients from all cultures and hosts weddings, birthdays, fashion shows, banquets, and more.</p>
+          <dl class="hall-facts">
+            <div>
+              <dt>Floor area</dt>
+              <dd>Over 8,000 sq ft</dd>
+            </div>
+            <div>
+              <dt>Capacity</dt>
+              <dd>350+ guests</dd>
+            </div>
+            <div>
+              <dt>Upper capacity</dt>
+              <dd>Up to 400</dd>
+            </div>
+            <div>
+              <dt>Established</dt>
+              <dd>Since 2005</dd>
+            </div>
+          </dl>
+          <a class="btn btn-ink" href="#contact">Arrange a viewing</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="events">
+      <div class="container reveal">
+        <div class="section-head">
+          <p class="eyebrow">Celebrations</p>
+          <h2>Events we host</h2>
+          <p>Function types listed on the Cavendish Banqueting cost calculator and homepage.</p>
+        </div>
+        <div class="event-tags" aria-label="Event types">
+          <span>Wedding &amp; Reception</span>
+          <span>Engagement</span>
+          <span>Mehendi / Sangeet</span>
+          <span>Haldi</span>
+          <span>Bar / Bat Mitzvah</span>
+          <span>Birthday / Anniversary</span>
+          <span>Dinner &amp; Dance</span>
+          <span>Corporate</span>
+          <span>Civil ceremony</span>
+          <span>Fashion shows</span>
+          <span>Banquets</span>
+          <span>Concerts</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Our key features</p>
+          <h2>Everything for an unforgettable event</h2>
+          <p>Amenities and services described on the live Cavendish Banqueting site.</p>
+        </div>
+        <div class="feature-list">
+          <article class="feature-item reveal">
+            <h3>Exquisite culinary journey</h3>
+            <p>In-house catering teams create menus for your day, with partner specialists available including vegan, halal, and kosher.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Bar upon request</h3>
+            <p>Bar service is available on request for your event day, with welcome drink options via the online quote tools.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Dance floor &amp; stage</h3>
+            <p>An adjustable dance floor and stage give flexibility for receptions, performances, and first dances.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Decor &amp; lighting</h3>
+            <p>Neutral hall adaptable with fabrics and lighting; décor options include flower walls, mandaps, LED dance floor, chiavari chairs, and themed packages.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Event coordination</h3>
+            <p>Seamless planning from concept to execution, with attentive waitstaff and event managers.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Parking nearby</h3>
+            <p>Forecourt spaces can be reserved for hosts; over 500 spaces within a five-minute walk, noted as available 24/7.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Inside the venue</p>
+          <h2>Gallery</h2>
+          <p>Real photography from cavendishbanqueting.co.uk. A daytime building exterior was not found on the homepage; the entrance setup is shown instead.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="reveal">
+            <img src="https://cavendishbanqueting.co.uk/wp-content/uploads/2023/07/20221022_233349.jpg" alt="Couple dancing amid fog and sparklers in the Grand Hall" width="720" height="405" loading="lazy">
+            <figcaption>First dance · Grand Hall</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="https://cavendishbanqueting.co.uk/wp-content/uploads/2023/07/Cavendish-Banqueting-4.jpg" alt="Event entrance with pink lighting, drapery, and carpet runner" width="391" height="502" loading="lazy">
+            <figcaption>Entrance styling</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="https://cavendishbanqueting.co.uk/wp-content/uploads/2023/07/Cavendish-Banqueting-6.jpg" alt="Round banquet table with feather centrepiece and purple lighting" width="391" height="502" loading="lazy">
+            <figcaption>Table &amp; décor</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="https://cavendishbanqueting.co.uk/wp-content/uploads/2023/07/Cavendish-Banqueting.jpg" alt="Illuminated bar with glassware and formal service" width="391" height="348" loading="lazy">
+            <figcaption>Bar service</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="https://cavendishbanqueting.co.uk/wp-content/uploads/2023/12/Stunning-Venue-3.jpg" alt="Head table and floral stage setup in soft pink lighting" width="720" height="1080" loading="lazy">
+            <figcaption>Stage &amp; head table</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container">
+        <div class="location-panel reveal">
+          <p class="eyebrow">Colindale · London</p>
+          <h2>Heart of the city, easy to reach</h2>
+          <address>
+            Cavendish Banqueting<br>
+            Edgware Road (opp Mercedes Benz)<br>
+            Colindale, London, NW9 5AE
+          </address>
+          <ul>
+            <li>≈10-minute walk from Colindale &amp; Burnt Oak Underground</li>
+            <li>Bus routes 32 and 142 (ASDA / Mercedes Benz stops)</li>
+            <li>On the A5 Edgware Road — reachable from Central London and the M1</li>
+            <li>Nearest train: Mill Hill Broadway, then bus 142</li>
+          </ul>
+          <a class="btn btn-ink" href="https://cavendishbanqueting.co.uk/location/how-to-get-to-us/" target="_blank" rel="noopener">How to get to us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-cta" id="contact">
+      <div class="container reveal">
+        <p class="eyebrow" style="color: var(--gold-bright);">Get in touch</p>
+        <h2>Create cherished memories that endure</h2>
+        <p>Elevate your wedding, corporate function, or special celebration. Contact the venue team or request an instant online quote.</p>
+        <div class="btn-row">
+          <a class="btn btn-gold" href="mailto:info@cavendishbanqueting.co.uk">Email the venue</a>
+          <a class="btn btn-ghost" href="tel:+442082055012">+44 020 8205 5012</a>
+          <a class="btn btn-ghost" href="https://cavendishbanqueting.co.uk/costcalculator/" target="_blank" rel="noopener">Cost calculator</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="https://cavendishbanqueting.co.uk/wp-content/uploads/2022/07/cavendish-logo-new-2023-2.png" alt="Cavendish Banqueting" width="72" height="41">
+        <strong>Cavendish Banqueting Hall</strong>
+        <p>Weddings | Catering | Event Management. One of London’s spacious Asian wedding venues — Grand Hall in Colindale, NW9.</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul class="footer-list">
+          <li><a href="mailto:info@cavendishbanqueting.co.uk">info@cavendishbanqueting.co.uk</a></li>
+          <li><a href="tel:+442082055012">+44 020 8205 5012</a></li>
+          <li><a href="tel:+4407956581359">+44 079 565 81359</a></li>
+          <li>Licensed until midnight</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Visit</h3>
+        <ul class="footer-list">
+          <li>Edgware Road (opp Mercedes Benz)</li>
+          <li>Colindale, London NW9 5AE</li>
+          <li><a href="https://cavendishbanqueting.co.uk/testimonials/" target="_blank" rel="noopener">Client testimonials</a></li>
+          <li><a href="https://cavendishbanqueting.co.uk/" target="_blank" rel="noopener">Official website</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© Cavendish Banqueting. Homepage prototype for design reference.</p>
+      <p class="source-note">Source content &amp; images: cavendishbanqueting.co.uk</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const toggle = document.getElementById("menuToggle");
+      const mobile = document.getElementById("navMobile");
+      const closeBtn = document.getElementById("navClose");
+
+      const onScroll = () => {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      const openNav = () => {
+        mobile.classList.add("open");
+        mobile.setAttribute("aria-hidden", "false");
+      };
+      const closeNav = () => {
+        mobile.classList.remove("open");
+        mobile.setAttribute("aria-hidden", "true");
+      };
+
+      toggle.addEventListener("click", openNav);
+      closeBtn.addEventListener("click", closeNav);
+      mobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      document.getElementById("inquiryForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        const original = btn.textContent;
+        btn.textContent = "Quote requested";
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.disabled = false;
+        }, 2200);
+      });
+    })();
+  </script>
+</body>
+</html>
