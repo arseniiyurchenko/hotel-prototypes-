@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Madona — Madona, Vidzeme | 3-Star Hotel</title>
+  <meta name="description" content="Hotel Madona offers 43 comfortable rooms in the heart of Madona — ideal for business and leisure trips in Latvia’s charming countryside.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #407048;
+      --forest-deep: #243a2a;
+      --forest-mid: #355c3c;
+      --gold: #c49f75;
+      --gold-soft: #d4b896;
+      --mist: #e7f0ea;
+      --mist-deep: #d5e4da;
+      --paper: #f3f7f4;
+      --ink: #1c2a20;
+      --ink-soft: #4a5a4e;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(36, 58, 42, 0.12);
+      --radius: 14px;
+      --transition: 0.28s ease;
+      --header-pad: clamp(32px, 4.5vw, 48px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(64, 112, 72, 0.08), transparent 55%),
+        radial-gradient(900px 500px at 100% 20%, rgba(196, 159, 117, 0.10), transparent 50%),
+        linear-gradient(180deg, var(--paper) 0%, var(--mist) 48%, var(--paper) 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1180px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    section[id] { scroll-margin-top: 96px; }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.85rem 0;
+      background: rgba(36, 58, 42, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(36, 58, 42, 0.96);
+      box-shadow: 0 8px 28px rgba(28, 42, 32, 0.28);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 1.75rem);
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255,255,255,0.92);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--gold-soft); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.25rem;
+      background: var(--gold);
+      color: var(--forest-deep);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: background var(--transition), transform var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .header-cta:hover {
+      background: var(--gold-soft);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 42, 32, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: #fff;
+      font-family: 'Fraunces', serif;
+      font-size: 1.7rem;
+      font-weight: 500;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: var(--header-pad);
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* —— Buttons —— */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.6rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--forest-deep);
+      box-shadow: 0 10px 28px rgba(196, 159, 117, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-soft);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.45);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 860px);
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://hotelmadona.lv/wp-content/uploads/2020/06/viesn-2.jpg') center/cover no-repeat;
+      transform: scale(1.04);
+      animation: heroDrift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.04) translate3d(0, 0, 0); }
+      to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(28, 42, 32, 0.82) 0%, rgba(36, 58, 42, 0.55) 48%, rgba(28, 42, 32, 0.35) 100%),
+        linear-gradient(to top, rgba(28, 42, 32, 0.75) 0%, transparent 45%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 7.5rem 0 5.5rem;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 600;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.1rem;
+      max-width: 12ch;
+    }
+
+    .hero-value {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 300;
+      max-width: 34rem;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .hero-meta {
+      margin-top: 2.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.75rem;
+      align-items: center;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .hero-meta strong { color: #fff; font-weight: 600; }
+
+    /* —— Booking —— */
+    .booking-section {
+      position: relative;
+      z-index: 5;
+      margin-top: -3.25rem;
+      padding-bottom: 1rem;
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.35rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(64, 112, 72, 0.08);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.85rem 0.95rem;
+      border: 1px solid var(--mist-deep);
+      border-radius: 10px;
+      background: var(--paper);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      border-color: var(--forest);
+      box-shadow: 0 0 0 3px rgba(64, 112, 72, 0.15);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--mist-deep);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 20;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--mist-deep);
+      background: var(--paper);
+      cursor: pointer;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .guest-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      height: 48px;
+      padding-inline: 1.6rem;
+      align-self: end;
+    }
+
+    .booking-note {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    /* —— Sections —— */
+    .section {
+      padding: 5.5rem 0;
+    }
+
+    .section-header {
+      max-width: 40rem;
+      margin-bottom: 2.75rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--forest-deep);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-desc {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    /* —— Rooms —— */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(64, 112, 72, 0.08);
+      box-shadow: 0 8px 28px rgba(36, 58, 42, 0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .room-card-body {
+      padding: 1.25rem 1.3rem 1.45rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      flex: 1;
+    }
+
+    .room-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--forest-deep);
+    }
+
+    .room-card p {
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      font-weight: 300;
+    }
+
+    .room-meta {
+      font-size: 0.8rem;
+      color: var(--forest-mid);
+      font-weight: 500;
+    }
+
+    .room-price {
+      margin-top: auto;
+      padding-top: 0.85rem;
+      font-weight: 600;
+      color: var(--forest-deep);
+    }
+
+    .room-price span,
+    .price-placeholder {
+      font-weight: 400;
+      color: var(--ink-soft);
+      font-size: 0.85rem;
+    }
+
+    .price-placeholder {
+      display: inline-block;
+      margin-top: 0.15rem;
+      padding: 0.15rem 0.45rem;
+      background: rgba(196, 159, 117, 0.18);
+      border-radius: 6px;
+      color: #7a5c3a;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    /* —— Amenities —— */
+    .amenities {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(231, 240, 234, 0.9));
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1.1rem 1.15rem;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(64, 112, 72, 0.1);
+      border-radius: 12px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .amenity-item:hover {
+      border-color: rgba(64, 112, 72, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(64, 112, 72, 0.1);
+      color: var(--forest);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .amenity-icon svg { width: 22px; height: 22px; }
+
+    .amenity-item span {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* —— Gallery —— */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      min-height: 0;
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(transparent, rgba(28, 42, 32, 0.72));
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* —— Location —— */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .location-text h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.85rem;
+      color: var(--forest-deep);
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .location-details {
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+
+    .location-details li {
+      padding: 0.75rem 0.9rem;
+      background: rgba(255,255,255,0.7);
+      border-radius: 10px;
+      border: 1px solid rgba(64, 112, 72, 0.08);
+      font-size: 0.92rem;
+    }
+
+    .location-details strong {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 0.2rem;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(135deg, rgba(64, 112, 72, 0.12), rgba(196, 159, 117, 0.18)),
+        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(64,112,72,0.04) 24px, rgba(64,112,72,0.04) 25px),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(64,112,72,0.04) 24px, rgba(64,112,72,0.04) 25px);
+      border: 1px dashed rgba(64, 112, 72, 0.28);
+      border-radius: var(--radius);
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--forest-deep);
+    }
+
+    .map-placeholder svg {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 0.85rem;
+      color: var(--forest);
+    }
+
+    /* —— Trust —— */
+    .trust {
+      background: var(--forest-deep);
+      color: #fff;
+    }
+
+    .trust .section-eyebrow { color: var(--gold-soft); }
+    .trust .section-title { color: #fff; }
+    .trust .section-desc { color: rgba(255,255,255,0.75); }
+
+    .trust-badge-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.75rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+    }
+
+    .trust-copy h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.55rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .trust-copy p {
+      color: rgba(255,255,255,0.78);
+      max-width: 36rem;
+      font-weight: 300;
+    }
+
+    .trust-badge {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .trust-badge img {
+      height: 56px;
+      width: auto;
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: #17241c;
+      color: rgba(255,255,255,0.82);
+      padding: 3.5rem 0 1.75rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand img {
+      height: 42px;
+      width: auto;
+      margin-bottom: 1rem;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-brand p {
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      max-width: 28rem;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+    }
+
+    .footer-nav ul { list-style: none; display: grid; gap: 0.55rem; }
+    .footer-nav a:hover,
+    .footer-contact a:hover { color: #fff; }
+
+    .footer-contact {
+      display: grid;
+      gap: 0.45rem;
+      align-content: start;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.35rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    /* —— Reveal motion —— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 980px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { height: 220px; }
+      .location-grid,
+      .footer-grid { grid-template-columns: 1fr; }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary { grid-column: span 2; }
+    }
+
+    @media (max-width: 640px) {
+      .rooms-grid,
+      .amenities-grid,
+      .gallery-grid,
+      .booking-widget { grid-template-columns: 1fr; }
+
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .gallery-item { height: 210px; }
+      .hero { min-height: 86vh; }
+      .hero-content { padding: 6.5rem 0 4.5rem; }
+      .logo img { height: 38px; }
+      .header-cta { padding: 0.65rem 1rem; font-size: 0.75rem; }
+      .trust-badge-wrap { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo" aria-label="Hotel Madona home">
+        <img src="https://hotelmadona.lv/wp-content/uploads/2020/07/HMBALTS33.png" alt="Hotel Madona">
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Booking</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">About</a></li>
+        </ul>
+      </nav>
+      <a class="header-cta" href="#booking">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#booking">Booking</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">About</a>
+    <a href="#booking" class="btn btn-primary">Check availability</a>
+  </nav>
+
+  <!-- 1. Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" role="img" aria-label="Hotel Madona exterior"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1 class="hero-brand">Hotel Madona</h1>
+      <p class="hero-value">43 comfortable rooms in the heart of Madona — ideal for business, leisure, and exploring the lakes and hills of Vidzeme.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">Check availability</a>
+        <a href="#rooms" class="btn btn-ghost">Explore rooms</a>
+      </div>
+      <div class="hero-meta">
+        <span><strong>3-star</strong> certified hotel</span>
+        <span>Saieta laukums 10, Madona</span>
+        <span>Everyone is kindly welcome</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Booking widget -->
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm" novalidate>
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label for="guestTrigger">Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-haspopup="true" aria-expanded="false">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown" role="dialog" aria-label="Guest selector">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p class="booking-note">Prototype booking widget only — connect to Hotel Madona’s live booking channel when ready.</p>
+    </div>
+  </section>
+
+  <!-- 3. Accommodation -->
+  <section class="section" id="rooms">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Stay with us</p>
+        <h2 class="section-title">Accommodation</h2>
+        <p class="section-desc">43 renovated guest rooms — from standard singles to family and deluxe options — each with shower or bath, TV, and free WiFi.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card reveal">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/1-1-1.jpg" alt="Standard Single Room at Hotel Madona" loading="lazy">
+          <div class="room-card-body">
+            <h3>Standard Single Room</h3>
+            <p class="room-meta">14 m² · bed 210 × 120 cm · shower</p>
+            <p>Functional room suited to overnight business stays and leisure trips.</p>
+            <p class="room-price">From EUR — <span>/ night</span><br><span class="price-placeholder">Price not listed on source site</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2026/02/2v_kopeja.jpg" alt="Standard Twin Room at Hotel Madona" loading="lazy">
+          <div class="room-card-body">
+            <h3>Standard Twin Room</h3>
+            <p class="room-meta">18 m² · two beds 200 × 100 cm · shower</p>
+            <p>Comfortable twin setup for colleagues or friends travelling together.</p>
+            <p class="room-price">From EUR — <span>/ night</span><br><span class="price-placeholder">Price not listed on source site</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/2-2-2.jpg" alt="Standard Double Room at Hotel Madona" loading="lazy">
+          <div class="room-card-body">
+            <h3>Standard Double Room</h3>
+            <p class="room-meta">18 m² · double bed · baby cot available</p>
+            <p>A practical double for couples or a family with a small child.</p>
+            <p class="room-price">From EUR — <span>/ night</span><br><span class="price-placeholder">Price not listed on source site</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/3-1-4.jpg" alt="Triple Room at Hotel Madona" loading="lazy">
+          <div class="room-card-body">
+            <h3>Triple Room</h3>
+            <p class="room-meta">28 m² · three beds · shower</p>
+            <p>Spacious option for a small group or comfortable stays during local events.</p>
+            <p class="room-price">From EUR — <span>/ night</span><br><span class="price-placeholder">Price not listed on source site</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2026/02/Gimenes_311.jpg" alt="Family Room at Hotel Madona" loading="lazy">
+          <div class="room-card-body">
+            <h3>Family Room</h3>
+            <p class="room-meta">28 m² · king + single + pull-out chair</p>
+            <p>Designed for families who prefer to stay together in one room.</p>
+            <p class="room-price">From EUR — <span>/ night</span><br><span class="price-placeholder">Price not listed on source site</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/L-2.jpg" alt="Deluxe Room at Hotel Madona" loading="lazy">
+          <div class="room-card-body">
+            <h3>Deluxe Room</h3>
+            <p class="room-meta">28 m² lounge + bedroom · bathtub</p>
+            <p>Business-type double with seating area, fridge, and tea &amp; coffee facilities.</p>
+            <p class="room-price">From EUR — <span>/ night</span><br><span class="price-placeholder">Price not listed on source site</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Amenities -->
+  <section class="section amenities" id="amenities">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">On site</p>
+        <h2 class="section-title">Amenities</h2>
+        <p class="section-desc">Facilities listed on Hotel Madona’s website — practical comfort for overnight stays, seminars, and celebrations.</p>
+      </div>
+      <div class="amenities-grid reveal">
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12.5c2-3 4-4.5 7-4.5s5 1.5 7 4.5"/><path d="M12 18a2 2 0 100-4 2 2 0 000 4z"/><path d="M3 8h18"/></svg>
+          </div>
+          <span>Free WiFi</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="10" width="18" height="9" rx="1.5"/><path d="M6 10V7a3 3 0 013-3h6a3 3 0 013 3v3"/><circle cx="7.5" cy="14.5" r="1"/><circle cx="16.5" cy="14.5" r="1"/></svg>
+          </div>
+          <span>Free parking</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11h16v8H4z"/><path d="M8 11V8a4 4 0 018 0v3"/><path d="M9 15h6"/></svg>
+          </div>
+          <span>Breakfast buffet</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/><path d="M7 9h4M7 12h6"/></svg>
+          </div>
+          <span>Conference halls</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16"/><path d="M6 19V9l6-4 6 4v10"/><path d="M10 19v-5h4v5"/></svg>
+          </div>
+          <span>Banquet &amp; events</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20c4-3.5 7-6.5 7-10a7 7 0 10-14 0c0 3.5 3 6.5 7 10z"/><path d="M9 11c.5-2 2-3 3-3"/></svg>
+          </div>
+          <span>Fireplace hall</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M8 18v2M16 18v2"/><path d="M8 10h8"/></svg>
+          </div>
+          <span>TV in rooms</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 14c0 2 1.5 4 4 4s4-2 4-4"/><path d="M7 10h10"/><path d="M12 4v3"/><path d="M9 7h6"/></svg>
+          </div>
+          <span>Hairdryer</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3"/><path d="M7 8h10l-1 11H8L7 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+          </div>
+          <span>On-site catering</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M8 12h8M12 8v8"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg>
+          </div>
+          <span>Non-smoking rooms</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18h16"/><path d="M6 18V8l3 2 3-3 3 3 3-2v10"/></svg>
+          </div>
+          <span>City-centre access</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l4-8 4 5 3-4 7 7"/><path d="M14 7a2 2 0 104 0 2 2 0 00-4 0z"/></svg>
+          </div>
+          <span>Nature nearby</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Gallery -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">See the place</p>
+        <h2 class="section-title">Photo gallery</h2>
+        <p class="section-desc">Real photos from Hotel Madona — hotel exterior, rooms, event spaces, and the surrounding highlands.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <figure class="gallery-item">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/viesn-2.jpg" alt="Hotel Madona exterior">
+          <figcaption>Hotel exterior</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2026/02/400_1.jpg" alt="Guest room at Hotel Madona" loading="lazy">
+          <figcaption>Guest room</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/svinibas2.jpg" alt="Banquet hall at Hotel Madona" loading="lazy">
+          <figcaption>Banquet hall</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/konfer2.jpg" alt="Conference hall at Hotel Madona" loading="lazy">
+          <figcaption>Conference hall</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/lubans-1.jpg" alt="Lake Lubāns near Madona" loading="lazy">
+          <figcaption>Lake Lubāns</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/gaizins-1.jpg" alt="Gaiziņkalns in the Vidzeme highlands" loading="lazy">
+          <figcaption>Gaiziņkalns</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Location -->
+  <section class="section" id="location">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Location</h2>
+        <p class="section-desc">In the historic Market Square of Madona — a gateway to the Vidzeme highlands.</p>
+      </div>
+      <div class="location-grid reveal">
+        <div class="location-text">
+          <h3>Heart of Madona</h3>
+          <p>Hotel Madona sits on Saieta laukums in the centre of Madona, with the town’s sights, infrastructure, and sports facilities within easy reach. The surrounding Latvian countryside opens onto lakes and rolling hills often associated with the Vidzeme highlands.</p>
+          <p>Nearby places highlighted on the hotel’s site include Lake Lubāns, Gaiziņkalns, Cesvaine Palace, Kalsnava Arboretum, and Smeceres Sils recreation centre.</p>
+          <ul class="location-details">
+            <li><strong>Address</strong> Saieta laukums 10, Madona, Latvia, LV-4801</li>
+            <li><strong>Nearby landmarks</strong> Lake Lubāns · Gaiziņkalns · Cesvaine Palace · Kalsnava Arboretum</li>
+            <li><strong>Contact</strong> +371 27008414 · hotelmadona@inbox.lv</li>
+          </ul>
+        </div>
+        <div class="map-placeholder" aria-label="Static map placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="font-size:0.9rem;margin-top:0.45rem;color:var(--ink-soft);">Saieta laukums 10<br>Madona, Latvia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Trust -->
+  <section class="section trust" id="trust">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Recognised quality</p>
+        <h2 class="section-title">3-star hotel standards</h2>
+        <p class="section-desc">Hotel Madona presents a 3-star certificate on its website as evidence of European-standard hotel services.</p>
+      </div>
+      <div class="trust-badge-wrap reveal">
+        <div class="trust-copy">
+          <h3>Certified comfort for up to 82 guests</h3>
+          <p>43 renovated rooms, hospitable accommodation, and event spaces from a conference hall for up to 30 people to a banquet hall for up to 100 — as described on hotelmadona.lv.</p>
+        </div>
+        <div class="trust-badge">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/06/3-zvaigznes.png" alt="Hotel Madona 3-star certificate badge">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://hotelmadona.lv/wp-content/uploads/2020/07/HMBALTS33.png" alt="Hotel Madona">
+          <p>3-star hotel in the heart of Madona — 43 comfortable rooms for business, leisure, and celebrations in Vidzeme.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Booking</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Saieta laukums 10<br>Madona, Latvia, LV-4801</p>
+          <a href="tel:+37127008414">+371 27008414</a>
+          <a href="mailto:hotelmadona@inbox.lv">hotelmadona@inbox.lv</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Hotel Madona — homepage prototype (demo)</p>
+        <p>Source: hotelmadona.lv</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+
+    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (!checkin.value) return;
+      const nextDay = new Date(checkin.value);
+      nextDay.setDate(nextDay.getDate() + 1);
+      checkout.min = nextDay.toISOString().split('T')[0];
+      if (checkout.value && checkout.value <= checkin.value) {
+        checkout.value = checkout.min;
+      }
+    });
+
+    let adults = 2;
+    let children = 0;
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestDropdown = document.getElementById('guestDropdown');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' adult' : ' adults');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' child' : ' children');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = guestDropdown.classList.toggle('open');
+      guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', () => {
+      guestDropdown.classList.remove('open');
+      guestTrigger.setAttribute('aria-expanded', 'false');
+    });
+    guestDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => {
+      if (adults < 8) { adults++; updateGuestSummary(); }
+    });
+    document.getElementById('adultsMinus').addEventListener('click', () => {
+      if (adults > 1) { adults--; updateGuestSummary(); }
+    });
+    document.getElementById('childrenPlus').addEventListener('click', () => {
+      if (children < 6) { children++; updateGuestSummary(); }
+    });
+    document.getElementById('childrenMinus').addEventListener('click', () => {
+      if (children > 0) { children--; updateGuestSummary(); }
+    });
+
+    updateGuestSummary();
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Booking search is a UI prototype only — no reservation system connected.');
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach((el) => io.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
