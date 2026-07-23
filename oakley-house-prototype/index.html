@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oakley House — Wedding, Events &amp; Conference Venue | Bromley</title>
+  <meta name="description" content="Oakley House is the perfect place for your next event. Attractive, conveniently located, and run by a helpful team, it is an idyllic venue for any occasion.">
+  <!--
+    SOURCE EXTRACTION — https://www.oakleyhouse.co.uk (fetched Jul 2026)
+    Venue: Oakley House / Oakley House Wedding & Conference Centre
+    Tagline (H1): "Stunning venue for hire in Bromley, Kent"
+    Sub: "A beautiful and historic venue for hire in Bromley"
+    Positioning: Mid-range to premium banqueting (Grade II listed; “South East’s leading event venue”; silver service; budget-flexible tone)
+    Spaces as labeled: Weddings; Corporate events; Private functions; Hall hire
+      Also named: banqueting suite/hall; meeting rooms; gardens; licensed gazebo & lawns; breakout areas
+    Present: catering, bar, AV, wi-fi, parking (220), pillar-free, air-conditioned suite, FOH manager, live music/DJs arrangeable, dry hire, packages pages
+    Missing on source (not claimed here): disabled/wheelchair access; published hire £ rates; named “dance floor” amenity
+    Brand colors from site CSS: #70919A, #ECAA00, #9a7c4e, #002F29, #005248, #ffedcb
+    Logo: /wp-content/uploads/2024/02/logo-Oakley-House.svg
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "Timeless";
+      src: url("https://www.oakleyhouse.co.uk/wp-content/uploads/2024/02/Timeless.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --slate: #70919A;
+      --slate-deep: #5a7880;
+      --gold: #ECAA00;
+      --gold-deep: #b58d09;
+      --bronze: #9a7c4e;
+      --ink: #002F29;
+      --forest: #005248;
+      --cream: #ffedcb;
+      --cream-soft: #f7f1e3;
+      --paper: #f4f6f5;
+      --white: #ffffff;
+      --footer: #27282a;
+      --muted: #5c6b6e;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --max: 1120px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Outfit", sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(112, 145, 154, 0.18), transparent 60%),
+        radial-gradient(900px 500px at 100% 20%, rgba(236, 170, 0, 0.08), transparent 55%),
+        linear-gradient(180deg, var(--cream-soft) 0%, var(--paper) 28%, #eef2f1 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 1.1rem 0;
+      transition: background 0.35s var(--ease), padding 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(0, 47, 41, 0.92);
+      backdrop-filter: blur(12px);
+      padding: 0.7rem 0;
+      box-shadow: 0 8px 28px rgba(0, 47, 41, 0.2);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: var(--white);
+    }
+
+    .brand img {
+      height: 46px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .brand-wordmark {
+      font-family: "Timeless", "Fraunces", serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    .brand-wordmark span {
+      display: block;
+      font-family: "Outfit", sans-serif;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 0.15rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .nav-desktop a:hover { color: var(--gold); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.55rem;
+      font-family: "Outfit", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: transform 0.3s var(--ease), background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+      border-color: var(--gold);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-deep);
+      border-color: var(--gold-deep);
+      color: var(--white);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--white);
+    }
+
+    .btn-slate {
+      background: var(--slate);
+      color: var(--white);
+      border-color: var(--slate);
+    }
+
+    .btn-slate:hover {
+      background: var(--slate-deep);
+      border-color: var(--slate-deep);
+    }
+
+    .btn-outline-ink {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--bronze);
+    }
+
+    .btn-outline-ink:hover {
+      background: var(--bronze);
+      color: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: transparent;
+      color: var(--white);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: currentColor;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 47, 41, 0.97);
+      z-index: 99;
+      padding: 6rem 2rem 2rem;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .nav-mobile.is-open { display: flex; }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: "Fraunces", serif;
+      font-size: 1.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 0.75rem;
+    }
+
+    /* Hero — full-bleed, one composition */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      animation: heroDrift 22s var(--ease) infinite alternate;
+      transform: scale(1.06);
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.06) translate3d(0, 0, 0); }
+      to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 47, 41, 0.35) 0%, rgba(0, 47, 41, 0.15) 35%, rgba(0, 47, 41, 0.78) 100%),
+        linear-gradient(90deg, rgba(0, 47, 41, 0.45) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 0 4.5rem;
+      width: min(var(--max), calc(100% - 2.5rem));
+      margin-inline: auto;
+      max-width: 40rem;
+      animation: riseIn 1.1s var(--ease) both;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: "Timeless", "Fraunces", serif;
+      font-size: clamp(3rem, 8vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero h1 {
+      font-family: "Fraunces", serif;
+      font-weight: 400;
+      font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+      line-height: 1.3;
+      max-width: 22ch;
+      margin-bottom: 0.85rem;
+      color: var(--cream);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 34ch;
+      opacity: 0.92;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 1.4rem;
+      right: max(1.25rem, calc((100% - var(--max)) / 2));
+      z-index: 2;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      animation: pulseCue 2.4s ease-in-out infinite;
+    }
+
+    .scroll-cue::after {
+      content: "";
+      width: 1px;
+      height: 2.2rem;
+      background: linear-gradient(var(--gold), transparent);
+    }
+
+    @keyframes pulseCue {
+      0%, 100% { opacity: 0.45; transform: translateY(0); }
+      50% { opacity: 0.9; transform: translateY(4px); }
+    }
+
+    /* Sections */
+    section { padding: 5.5rem 0; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-title {
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      line-height: 1.15;
+      color: var(--forest);
+      margin-bottom: 0.9rem;
+      max-width: 18ch;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 42ch;
+      margin-bottom: 2.5rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Spaces */
+    .spaces {
+      background:
+        linear-gradient(180deg, transparent, rgba(255, 237, 203, 0.35) 40%, transparent),
+        transparent;
+    }
+
+    .space-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .space-visual {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    .space-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s var(--ease);
+    }
+
+    .space-visual:hover img { transform: scale(1.04); }
+
+    .space-visual figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.25rem 1.4rem;
+      background: linear-gradient(transparent, rgba(0, 47, 41, 0.85));
+      color: var(--cream);
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+    }
+
+    .space-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+      border-top: 1px solid rgba(154, 124, 78, 0.35);
+    }
+
+    .space-item {
+      padding: 1.35rem 0;
+      border-bottom: 1px solid rgba(154, 124, 78, 0.35);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem 1.25rem;
+      align-items: start;
+      transition: background 0.3s ease;
+    }
+
+    .space-item:hover { background: rgba(112, 145, 154, 0.08); }
+
+    .space-num {
+      font-family: "Fraunces", serif;
+      font-size: 0.95rem;
+      color: var(--gold-deep);
+      padding-top: 0.25rem;
+    }
+
+    .space-item h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .space-item p {
+      grid-column: 2;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 38ch;
+    }
+
+    /* Amenities strip */
+    .amenities {
+      background: var(--ink);
+      color: var(--cream-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .amenities::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(236, 170, 0, 0.18), transparent 70%);
+      top: -120px;
+      right: -80px;
+      pointer-events: none;
+    }
+
+    .amenities .section-title { color: var(--cream); }
+    .amenities .section-lead { color: rgba(255, 237, 203, 0.72); }
+
+    .amenity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem 2rem;
+      position: relative;
+    }
+
+    .amenity {
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(236, 170, 0, 0.35);
+    }
+
+    .amenity h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--gold);
+    }
+
+    .amenity p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 28ch;
+    }
+
+    .amenity-note {
+      margin-top: 2.25rem;
+      font-size: 0.85rem;
+      color: rgba(255, 237, 203, 0.55);
+      max-width: 60ch;
+    }
+
+    /* Grounds feature */
+    .grounds {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+      min-height: 620px;
+    }
+
+    .grounds-copy {
+      padding: clamp(3rem, 6vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        linear-gradient(145deg, var(--cream) 0%, #f3ebe0 55%, #e7eef0 100%);
+    }
+
+    .grounds-copy .section-title { max-width: 14ch; }
+
+    .grounds-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      margin: 1.75rem 0 2rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Fraunces", serif;
+      font-size: 2rem;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .stat span {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .grounds-media {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+    }
+
+    .grounds-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: groundsPan 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes groundsPan {
+      from { transform: scale(1.05) translateX(0); }
+      to { transform: scale(1.1) translateX(-2%); }
+    }
+
+    /* Banquet / reception visual */
+    .reception {
+      padding-top: 0;
+    }
+
+    .reception-frame {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .reception-main,
+    .reception-side {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+    }
+
+    .reception-main { min-height: 520px; }
+
+    .reception-main img,
+    .reception-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .reception-side {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .reception-side > div {
+      position: relative;
+      min-height: 250px;
+      overflow: hidden;
+    }
+
+    .reception-side img { min-height: 250px; }
+
+    .img-caption {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      padding: 0.45rem 0.75rem;
+      background: rgba(0, 47, 41, 0.78);
+      color: var(--cream);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Packages */
+    .packages {
+      background: rgba(112, 145, 154, 0.1);
+    }
+
+    .package-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .package {
+      padding: 2rem 0;
+      border-top: 2px solid var(--slate);
+    }
+
+    .package h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+      color: var(--forest);
+    }
+
+    .package p {
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      max-width: 40ch;
+    }
+
+    .price-placeholder {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      border: 1px solid rgba(154, 124, 78, 0.45);
+      padding: 0.45rem 0.8rem;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .location-points li {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(112, 145, 154, 0.3);
+      color: var(--muted);
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .location-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.35rem;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .address-block {
+      margin-top: 1.75rem;
+      padding: 1.5rem;
+      background: var(--white);
+      border-left: 3px solid var(--slate);
+    }
+
+    .address-block strong {
+      display: block;
+      font-family: "Fraunces", serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.35rem;
+      color: var(--forest);
+    }
+
+    /* CTA */
+    .cta {
+      position: relative;
+      padding: 6rem 0;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .cta-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.45);
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 36rem;
+    }
+
+    .cta h2 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 0.85rem;
+    }
+
+    .cta p {
+      margin-bottom: 1.75rem;
+      opacity: 0.9;
+      max-width: 36ch;
+    }
+
+    .cta-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem 2rem;
+      margin-top: 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .cta-contacts a { color: var(--gold); font-weight: 500; }
+
+    /* Footer */
+    .site-footer {
+      background: var(--footer);
+      color: #9da6a8;
+      padding: 2.5rem 0;
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .footer-inner strong {
+      color: #ccc;
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .space-grid,
+      .grounds,
+      .reception-frame,
+      .package-row,
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+      .amenity-grid { grid-template-columns: 1fr 1fr; }
+      .space-visual { min-height: 340px; }
+      .grounds-media { min-height: 360px; order: -1; }
+      .hero-content { padding-bottom: 5.5rem; }
+      .brand img { height: 38px; }
+    }
+
+    @media (max-width: 560px) {
+      .amenity-grid { grid-template-columns: 1fr; }
+      .hero-brand { font-size: 2.6rem; }
+      .scroll-cue { display: none; }
+      .brand-wordmark span { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .hero-media img { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Oakley House home">
+        <img src="https://www.oakleyhouse.co.uk/wp-content/uploads/2024/02/logo-Oakley-House.svg" alt="Oakley House logo" width="120" height="50">
+        <div class="brand-wordmark">
+          Oakley House
+          <span>Wedding &amp; Conference Centre</span>
+        </div>
+      </a>
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#spaces">Venue hire</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#grounds">Grounds</a>
+        <a href="#packages">Packages</a>
+        <a href="#location">Find us</a>
+        <a class="btn btn-gold" href="#contact">Get a quote</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <a href="#spaces">Venue hire</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#grounds">Grounds</a>
+    <a href="#packages">Packages</a>
+    <a href="#location">Find us</a>
+    <a href="#contact">Get a quote</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero" aria-label="Oakley House introduction">
+      <div class="hero-media">
+        <img
+          src="https://www.oakleyhouse.co.uk/wp-content/uploads/2024/02/Event-Venue-1-2.jpg"
+          alt="Exterior of Oakley House with lawn and fountain, Bromley"
+          width="1920"
+          height="680"
+          fetchpriority="high">
+      </div>
+      <div class="hero-content">
+        <p class="hero-brand">Oakley House</p>
+        <h1>Stunning venue for hire in Bromley, Kent</h1>
+        <p>A beautiful and historic venue for hire in Bromley — Grade II listed, set amid idyllic gardens.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#contact">Get a quote</a>
+          <a class="btn btn-ghost" href="#spaces">Explore venue hire</a>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true">Scroll</div>
+    </section>
+
+    <section class="spaces" id="spaces">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="section-label">Venue hire</p>
+          <h2 class="section-title">Venue hire in Bromley for every occasion</h2>
+          <p class="section-lead">
+            A broad range of spaces including a large banqueting suite, meeting rooms, and beautiful gardens — tailored by the Oakley House team.
+          </p>
+        </div>
+        <div class="space-grid reveal">
+          <figure class="space-visual">
+            <img
+              src="https://www.oakleyhouse.co.uk/wp-content/uploads/2024/02/Oakley-House-2.jpg"
+              alt="Banqueting suite set for a conference with projector screens and round tables"
+              width="1000"
+              height="683"
+              loading="lazy">
+            <figcaption>Banqueting suite · conference &amp; event setup</figcaption>
+          </figure>
+          <div class="space-list">
+            <article class="space-item">
+              <span class="space-num">01</span>
+              <div>
+                <h3>Weddings</h3>
+                <p>Licensed gazebo and lawns for ceremony; pillar-free banqueting hall for reception; in-house catering and a staffed bar.</p>
+              </div>
+            </article>
+            <article class="space-item">
+              <span class="space-num">02</span>
+              <div>
+                <h3>Corporate events</h3>
+                <p>Conferences, exhibitions, seminars, and meetings with seating, refreshments, AV equipment, and speedy wi-fi.</p>
+              </div>
+            </article>
+            <article class="space-item">
+              <span class="space-num">03</span>
+              <div>
+                <h3>Private functions</h3>
+                <p>Family parties, religious celebrations, anniversaries, wakes, charity events, Christmas parties, and more.</p>
+              </div>
+            </article>
+            <article class="space-item">
+              <span class="space-num">04</span>
+              <div>
+                <h3>Hall hire</h3>
+                <p>Dry hire for community groups, sports clubs, hobbyists, and the Scouting Movement — space without the full amenities package.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="section-label" style="color: var(--gold);">Amenities</p>
+          <h2 class="section-title">Everything you need on site</h2>
+          <p class="section-lead">Features and services listed on the Oakley House website.</p>
+        </div>
+        <div class="amenity-grid reveal">
+          <div class="amenity">
+            <h3>In-house catering</h3>
+            <p>From tea and coffee to silver-service banqueting, with vegetarian, vegan, gluten-free and other dietary options.</p>
+          </div>
+          <div class="amenity">
+            <h3>Fully stocked bar</h3>
+            <p>Beer, wine, spirits, and soft drinks served by the team; corkage options available if you supply your own.</p>
+          </div>
+          <div class="amenity">
+            <h3>AV &amp; wi-fi</h3>
+            <p>Projectors, microphones, and fast wi-fi throughout the buildings for presentations and guest connectivity.</p>
+          </div>
+          <div class="amenity">
+            <h3>On-site parking</h3>
+            <p>Car park on the grounds with space for 220 vehicles, accessed via the A21 (Bromley Common).</p>
+          </div>
+          <div class="amenity">
+            <h3>Pillar-free suite</h3>
+            <p>Banqueting spaces free of pillars or obstructions, with air conditioning in the banqueting suite.</p>
+          </div>
+          <div class="amenity">
+            <h3>Event coordination</h3>
+            <p>A front of house manager as your point of contact, plus an experienced team for food service and the bar.</p>
+          </div>
+          <div class="amenity">
+            <h3>Gardens &amp; gazebo</h3>
+            <p>Manicured lawns, landscaped gardens, and a licensed gazebo for ceremonies and photographs.</p>
+          </div>
+          <div class="amenity">
+            <h3>Live music &amp; DJs</h3>
+            <p>Recommendations and arrangements available; the venue is equipped with modern AV for performers.</p>
+          </div>
+          <div class="amenity">
+            <h3>Capacity</h3>
+            <p>Up to 420 theatre-style for conferences; up to 320 seated for wedding receptions in the banqueting suite.</p>
+          </div>
+        </div>
+        <p class="amenity-note reveal">
+          Note: Disabled / wheelchair access is not described on the source site — please enquire directly.
+          A named dance floor is not listed as a separate amenity (the weddings page notes room to dance in the suite).
+        </p>
+      </div>
+    </section>
+
+    <section class="grounds" id="grounds">
+      <div class="grounds-copy reveal">
+        <p class="section-label">Grounds</p>
+        <h2 class="section-title">Historic house, idyllic gardens</h2>
+        <p class="section-lead" style="margin-bottom: 0;">
+          A Grade II listed building first constructed as a residence in 1742, set among gardens that feel rural while remaining just outside Bromley town centre — between London and Kent.
+        </p>
+        <div class="grounds-stats">
+          <div class="stat">
+            <strong>1742</strong>
+            <span>Original construction</span>
+          </div>
+          <div class="stat">
+            <strong>Grade II</strong>
+            <span>Listed building</span>
+          </div>
+          <div class="stat">
+            <strong>220</strong>
+            <span>Parking spaces</span>
+          </div>
+        </div>
+        <a class="btn btn-outline-ink" href="#contact">Arrange a free viewing</a>
+      </div>
+      <div class="grounds-media">
+        <img
+          src="https://www.oakleyhouse.co.uk/wp-content/uploads/2024/02/Event-Venue-4.jpg"
+          alt="Licensed outdoor gazebo with aisle seating for a wedding ceremony"
+          width="1000"
+          height="1238"
+          loading="lazy">
+      </div>
+    </section>
+
+    <section class="reception" id="gallery">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="section-label">Atmosphere</p>
+          <h2 class="section-title">Reception &amp; banqueting</h2>
+          <p class="section-lead">Silver service, a staffed bar, and a spacious banqueting suite for celebrations large and small.</p>
+        </div>
+        <div class="reception-frame reveal">
+          <figure class="reception-main">
+            <img
+              src="https://www.oakleyhouse.co.uk/wp-content/uploads/2024/02/Event-Venue-9.jpg"
+              alt="Formal banqueting table setting with glassware and floral centrepiece"
+              width="1200"
+              height="790"
+              loading="lazy">
+            <span class="img-caption">Banqueting setting</span>
+          </figure>
+          <div class="reception-side">
+            <div>
+              <img
+                src="https://www.oakleyhouse.co.uk/wp-content/uploads/2024/02/Event-Venue-8.jpg"
+                alt="Champagne being poured into flutes outdoors"
+                width="800"
+                height="795"
+                loading="lazy">
+              <span class="img-caption">Celebrations</span>
+            </div>
+            <div>
+              <img
+                src="https://www.oakleyhouse.co.uk/wp-content/uploads/2024/02/Weddings-Events-Venue-1.jpg"
+                alt="White gazebo on the lawns at Oakley House"
+                width="1000"
+                height="928"
+                loading="lazy">
+              <span class="img-caption">Gazebo &amp; lawns</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="packages" id="packages">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="section-label">Packages</p>
+          <h2 class="section-title">Wedding &amp; conference packages</h2>
+          <p class="section-lead">
+            Menu-led packages are published on the site. Specific venue-hire prices are not listed online — the team works to different budgets by enquiry.
+          </p>
+        </div>
+        <div class="package-row reveal">
+          <article class="package">
+            <h3>Wedding packages</h3>
+            <p class="price-placeholder">Pricing on enquiry</p>
+            <p>
+              Wedding breakfast menus, canapés, wine packages, and dietary menus (including vegetarian options). Based on a minimum of 60 guests; children aged 2–10 are half adult price.
+            </p>
+            <p style="font-size:0.9rem;color:var(--muted);">
+              Deposits noted on site: £1,000 non-refundable booking deposit (deductible from the final bill) and a £1,500 damage deposit returned within seven days if undamaged.
+            </p>
+            <a class="btn btn-slate" href="#contact" style="margin-top:1.25rem;">Ask about weddings</a>
+          </article>
+          <article class="package">
+            <h3>Conference packages</h3>
+            <p class="price-placeholder">Pricing on enquiry</p>
+            <p>
+              Named day packages include Light Breakfast, Full Breakfast Conference, Working Lunch, Full Works, and Light Full Works — with tea, coffee, and catering options. Minimum 10 guests.
+            </p>
+            <p style="font-size:0.9rem;color:var(--muted);">
+              Positioning from the live site: a historic Grade II venue with modern amenities and silver-service banqueting — mid-range to premium regional banqueting, with flexible budget discussion.
+            </p>
+            <a class="btn btn-slate" href="#contact" style="margin-top:1.25rem;">Ask about conferences</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="wrap location-grid">
+        <div class="reveal">
+          <p class="section-label">Location</p>
+          <h2 class="section-title">How do I find Oakley House?</h2>
+          <p class="section-lead">
+            Conveniently positioned between London and Kent, just outside Bromley town centre on the A21 — rural feel, well connected.
+          </p>
+          <div class="address-block">
+            <strong>Oakley House Wedding &amp; Conference Centre</strong>
+            Bromley Common<br>
+            Bromley BR2 8HA
+          </div>
+        </div>
+        <ul class="location-points reveal">
+          <li>On the A21 through Bromley, Orpington, and Sevenoaks; links to the M25.</li>
+          <li>Under a ten-minute drive from Bromley South, Orpington, Hayes (Kent), Bickley, and Petts Wood stations.</li>
+          <li>Bus stop outside the entrance on routes 61, 261, 320, 336, and 358.</li>
+          <li>Vehicle entrance via the A21 (Bromley Common); Oakley Road is exit only.</li>
+          <li>Office hours listed as Monday–Friday, 09:00–17:00.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="cta-bg">
+        <img
+          src="https://www.oakleyhouse.co.uk/wp-content/uploads/2024/02/Event-Venue-3.jpg"
+          alt="Main entrance and Oakley House signage"
+          width="1200"
+          height="1152"
+          loading="lazy">
+      </div>
+      <div class="wrap cta-inner reveal">
+        <h2>Need a venue for your big event? Get in touch!</h2>
+        <p>Contact our helpful team today — call, email, or request a quote for weddings, conferences, and private hire.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="tel:+442084629292">Call 020 8462 9292</a>
+          <a class="btn btn-ghost" href="mailto:info@oakleyhouse.co.uk">Email the team</a>
+        </div>
+        <div class="cta-contacts">
+          <span>Email: <a href="mailto:info@oakleyhouse.co.uk">info@oakleyhouse.co.uk</a></span>
+          <span>Source site: <a href="https://www.oakleyhouse.co.uk/" target="_blank" rel="noopener">oakleyhouse.co.uk</a></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <strong>Oakley House</strong><br>
+        Wedding &amp; Conference Centre · Bromley, Kent
+      </div>
+      <div>Prototype homepage · content sourced from oakleyhouse.co.uk</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const toggle = document.getElementById("menuToggle");
+      const mobile = document.getElementById("navMobile");
+
+      const onScroll = () => {
+        header.classList.toggle("is-scrolled", window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      toggle.addEventListener("click", () => {
+        const open = mobile.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      });
+
+      mobile.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobile.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      const reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
+        );
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add("is-visible"));
+      }
+    })();
+  </script>
+</body>
+</html>
