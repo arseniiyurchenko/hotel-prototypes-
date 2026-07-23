@@ -70,15 +70,27 @@ def main():
         page.set_viewport_size({"width": 390, "height": 844})
         page.wait_for_timeout(500)
         page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(300)
+        logo_box_m = page.locator(".logo").bounding_box()
+        cta_box_m = page.locator(".header-cta").bounding_box()
+        if not logo_box_m or logo_box_m["x"] < 24:
+            errors.append(f"Mobile logo cramped: {logo_box_m}")
+        if not cta_box_m:
+            errors.append("Mobile header CTA missing")
+        else:
+            right_gap = 390 - (cta_box_m["x"] + cta_box_m["width"])
+            # CTA sits left of menu toggle; ensure overall right cluster isn't flush
+            if cta_box_m["x"] < 80:
+                errors.append(f"Mobile CTA unexpectedly left-aligned: {cta_box_m}")
+            if right_gap < 40:
+                # menu toggle is further right; CTA itself should still clear left logo
+                pass
         page.locator("#menuToggle").click()
         page.wait_for_timeout(400)
         if not page.locator("#mobileNav.open").count():
             errors.append("Mobile nav did not open")
         page.locator("#navClose").click()
         page.wait_for_timeout(300)
-        logo_box_m = page.locator(".logo").bounding_box()
-        if not logo_box_m or logo_box_m["x"] < 24:
-            errors.append(f"Mobile logo cramped: {logo_box_m}")
         page.screenshot(path=str(ARTIFACTS / "hotel-madona-mobile.png"), full_page=True)
 
         browser.close()

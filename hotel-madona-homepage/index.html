@@ -830,8 +830,15 @@
       .gallery-item { height: 210px; }
       .hero { min-height: 86vh; }
       .hero-content { padding: 6.5rem 0 4.5rem; }
-      .logo img { height: 38px; }
-      .header-cta { padding: 0.65rem 1rem; font-size: 0.75rem; }
+      .header-inner { gap: 0.75rem; }
+      .logo img { height: 32px; }
+      .header-cta {
+        display: inline-flex;
+        padding: 0.55rem 0.85rem;
+        font-size: 0.7rem;
+      }
+      .menu-toggle { padding: 0.35rem; }
+      .menu-toggle svg { width: 24px; height: 24px; }
       .trust-badge-wrap { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -853,7 +860,7 @@
           <li><a href="#trust">About</a></li>
         </ul>
       </nav>
-      <a class="header-cta" href="#booking">Check availability</a>
+      <a class="header-cta" href="#booking">Book now</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
       </button>
