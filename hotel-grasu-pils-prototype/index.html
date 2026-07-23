@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Grašu pils — Manor Hotel near Cesvaine, Latvia</title>
+  <meta name="description" content="Hotel Grašu pils — a beautiful place to rest in an 18th-century manor house near Cesvaine, Madona Municipality, Vidzeme.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Brand gold from source site (#b99365) + woodland manor palette */
+      --gold: #b99365;
+      --gold-soft: #c9ac88;
+      --gold-deep: #8f7148;
+      --forest: #1c3328;
+      --forest-mid: #2a4a3a;
+      --moss: #3d5c4a;
+      --mist: #e8eee9;
+      --mist-deep: #d5dfd7;
+      --stone: #f4f6f3;
+      --ink: #1a221e;
+      --ink-soft: #4a564f;
+      --white: #ffffff;
+      --shadow: 0 8px 32px rgba(28, 51, 40, 0.12);
+      --radius: 10px;
+      --transition: 0.28s ease;
+      --header-pad-x: clamp(2rem, 5vw, 3rem); /* 32–48px */
+      --header-pad-y: 1rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--stone);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1140px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad-x);
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--header-pad-y) 0;
+      background: transparent;
+      backdrop-filter: blur(0);
+      -webkit-backdrop-filter: blur(0);
+      transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(28, 51, 40, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: var(--header-pad-x);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+      color: var(--white);
+      min-width: 0;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      max-width: 170px;
+      object-fit: contain;
+      object-position: left center;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 6px;
+      padding: 4px 6px;
+    }
+
+    .logo-text {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .logo-text span {
+      display: block;
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 0.15rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(0.75rem, 1.5vw, 1.35rem);
+      list-style: none;
+      flex: 1;
+      min-width: 0;
+      flex-wrap: nowrap;
+    }
+
+    .nav-desktop a {
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      transition: opacity var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav-desktop a:hover { opacity: 1; }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.6rem 1.05rem;
+      background: var(--gold);
+      color: var(--forest);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      flex-shrink: 0;
+      white-space: nowrap;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .header-cta:hover {
+      background: var(--gold-soft);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 51, 40, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: 'Fraunces', serif;
+      font-size: 1.65rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: var(--header-pad-x);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('http://www.hotelgrasupils.lv/images/big_image_1.jpg') center/cover no-repeat;
+      transform: scale(1.04);
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to { transform: scale(1.1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(28, 51, 40, 0.45) 0%, rgba(28, 51, 40, 0.25) 35%, rgba(28, 51, 40, 0.78) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 7.5rem var(--header-pad-x) 5.5rem;
+      max-width: 1140px;
+      margin-inline: auto;
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.75rem, 7vw, 4.75rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      max-width: 14ch;
+    }
+
+    .hero-value {
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+      font-weight: 300;
+      opacity: 0.95;
+      max-width: 36ch;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.85rem;
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), border-color var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--forest);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-soft);
+      transform: translateY(-2px);
+    }
+
+    /* —— Booking —— */
+    .booking-section {
+      position: relative;
+      z-index: 10;
+      margin-top: -3.25rem;
+      padding-bottom: 4.5rem;
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr 1.2fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.35rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--mist-deep);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; position: relative; }
+
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--mist-deep);
+      border-radius: 6px;
+      background: var(--stone);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      border-color: var(--gold);
+    }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--mist-deep);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 20;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--mist-deep);
+      background: var(--stone);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--forest);
+    }
+
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      height: 46px;
+      padding-inline: 1.75rem;
+      white-space: nowrap;
+    }
+
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    /* —— Sections —— */
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1.15;
+      margin-bottom: 0.85rem;
+    }
+
+    .section-desc {
+      color: var(--ink-soft);
+      font-weight: 300;
+      font-size: 1.05rem;
+    }
+
+    /* —— Rooms —— */
+    #rooms { background: var(--mist); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(28, 51, 40, 0.06);
+      box-shadow: 0 4px 20px rgba(28, 51, 40, 0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-card-body {
+      padding: 1.35rem 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.55rem;
+    }
+
+    .room-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1.25;
+    }
+
+    .room-card p {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      flex: 1;
+    }
+
+    .room-price {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gold-deep);
+      margin-top: 0.35rem;
+    }
+
+    .room-price span {
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+    }
+
+    .room-card.featured {
+      grid-column: span 1;
+    }
+
+    /* —— Amenities —— */
+    #amenities { background: var(--stone); }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.85rem;
+      padding: 1.75rem 1rem;
+      background: linear-gradient(160deg, var(--white) 0%, var(--mist) 100%);
+      border-radius: var(--radius);
+      border: 1px solid var(--mist-deep);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .amenity-item:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .amenity-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--forest-mid);
+    }
+
+    .amenity-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .amenity-item span {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--forest);
+    }
+
+    /* —— Gallery —— */
+    #gallery { background: var(--forest); color: var(--white); }
+
+    #gallery .section-eyebrow { color: var(--gold-soft); }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-desc { color: rgba(255, 255, 255, 0.72); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      height: 260px;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      height: 340px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* —— Location —— */
+    #location { background: var(--mist); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .location-text h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--forest);
+      margin-bottom: 1rem;
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .location-details {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .location-details li {
+      padding: 0.85rem 1rem;
+      background: var(--white);
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
+      font-size: 0.95rem;
+    }
+
+    .location-details strong {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.2rem;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(145deg, var(--mist-deep) 0%, #c5d0c8 100%);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      color: var(--forest);
+      min-height: 320px;
+      border: 1px dashed var(--moss);
+      gap: 0.75rem;
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.7;
+    }
+
+    .map-placeholder .map-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      opacity: 0.7;
+    }
+
+    .map-link {
+      display: inline-flex;
+      margin-top: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      background: var(--forest);
+      color: var(--white);
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .map-link:hover { background: var(--forest-mid); }
+
+    /* —— Trust —— */
+    #trust { background: var(--stone); }
+
+    .trust-placeholder-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      background: var(--mist);
+      border: 1px dashed var(--moss);
+      border-radius: 8px;
+      padding: 0.85rem 1.25rem;
+      max-width: 720px;
+      margin: 0 auto 2rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      border: 1px solid var(--mist-deep);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .testimonial-card blockquote {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--forest);
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .testimonial-author {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    .testimonial-badge {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      background: var(--mist);
+      padding: 0.3rem 0.65rem;
+      border-radius: 3px;
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--forest);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .logo-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand img {
+      height: 52px;
+      width: auto;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 6px;
+      padding: 4px 6px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-weight: 300;
+      font-size: 0.95rem;
+      max-width: 36ch;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+    }
+
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+
+    .footer-nav a:hover,
+    .footer-contact a:hover { color: var(--gold-soft); }
+
+    .footer-contact p { margin-bottom: 0.75rem; font-weight: 300; }
+    .footer-contact a { display: block; margin-bottom: 0.35rem; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1.5rem;
+      font-size: 0.82rem;
+      opacity: 0.7;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      justify-content: space-between;
+    }
+
+    /* —— Reveal motion —— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 980px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+      .header-inner .header-cta { display: none; } /* CTA lives in mobile menu */
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary {
+        grid-column: span 2;
+        width: 100%;
+      }
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-column: span 2; height: 280px; }
+      .location-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 1100px) and (min-width: 981px) {
+      .logo-text { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --header-pad-x: 2rem; } /* keep ≥32px on mobile */
+      .logo-text { display: none; }
+      .logo img { max-width: 140px; height: 36px; }
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item,
+      .gallery-item:first-child {
+        grid-column: span 1;
+        height: 220px;
+      }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero-content { padding-bottom: 6.5rem; }
+      section { padding: 3.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky header: logo left, CTA right, generous edge padding -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="#hero" class="logo">
+        <img src="http://www.hotelgrasupils.lv/images/logo.png" alt="Hotel Grašu pils logo">
+        <div class="logo-text">
+          Hotel Grašu pils
+          <span>Manor hotel · Vidzeme</span>
+        </div>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+    <a href="#booking" class="header-cta">Check availability</a>
+  </nav>
+
+  <!-- 1. Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" role="img" aria-label="Hotel Grašu pils manor exterior"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-brand">Hotel Grašu pils</h1>
+      <p class="hero-value">A beautiful place to rest — in an 18th-century manor house near Cesvaine.</p>
+      <a href="#booking" class="btn btn-primary">Check availability</a>
+    </div>
+  </section>
+
+  <!-- 2. Booking widget -->
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm" novalidate>
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestDropdown">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown" hidden>
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomType">Room type</label>
+          <select id="roomType" name="roomType">
+            <option value="any">Any room</option>
+            <option value="single">Vienvietīgs numurs</option>
+            <option value="double1">Divvietīgs (1 gulta)</option>
+            <option value="double2">Divvietīgs (2 gultas)</option>
+            <option value="luxury">Luksusa divvietīgs</option>
+            <option value="dukati">Brīvdienu māja “Dukāti”</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p class="booking-note">Prototype booking widget — UI only; reservations via +371 29448937 or info@hotelgrasupils.lv</p>
+    </div>
+  </section>
+
+  <!-- 3. Accommodation -->
+  <section id="rooms">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Nakšņošana</p>
+        <h2 class="section-title">Rooms &amp; accommodation</h2>
+        <p class="section-desc">Manor rooms of various sizes with park views, plus a holiday house for families and groups.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card reveal">
+          <img src="http://www.hotelgrasupils.lv/images/img_1.jpg" alt="Vienvietīgs numurs at Hotel Grašu pils" loading="lazy">
+          <div class="room-card-body">
+            <h3>Vienvietīgs numurs</h3>
+            <p>A small, warm room with antique furniture, a large bed, shower and toilet — park and oak views.</p>
+            <p class="room-price">From EUR 60 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="http://www.hotelgrasupils.lv/images/grasupils-2.jpg" alt="Divvietīgs numurs with one bed" loading="lazy">
+          <div class="room-card-body">
+            <h3>Divvietīgs numurs (1 gulta)</h3>
+            <p>A spacious, cozy room with antique furniture, large bed, shower and toilet. Extra bed from EUR 12.</p>
+            <p class="room-price">From EUR 70 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="http://www.hotelgrasupils.lv/images/grasupils-3.jpg" alt="Divvietīgs numurs with two beds" loading="lazy">
+          <div class="room-card-body">
+            <h3>Divvietīgs numurs (2 gultas)</h3>
+            <p>A warm room with antique furniture, two beds, shower and toilet overlooking the manor park.</p>
+            <p class="room-price">From EUR 70 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="http://www.hotelgrasupils.lv/images/grasupils-4.jpg" alt="Luksusa divvietīgs numurs" loading="lazy">
+          <div class="room-card-body">
+            <h3>Luksusa divvietīgs numurs</h3>
+            <p>A spacious luxury room with antique furniture, large double bed, shower and toilet. Extra bed from EUR 12.</p>
+            <p class="room-price">From EUR 80 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="http://www.hotelgrasupils.lv/images/grasupils-6.jpg" alt="Brīvdienu māja Dukāti" loading="lazy">
+          <div class="room-card-body">
+            <h3>Brīvdienu māja “Dukāti”</h3>
+            <p>Whole house for up to 9 guests — kitchen, living room with fireplace, WC and showers. Extra bed from EUR 12.</p>
+            <p class="room-price">From EUR 230 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal" style="background: linear-gradient(160deg, var(--forest) 0%, var(--forest-mid) 100%); color: #fff; border: none;">
+          <div class="room-card-body" style="justify-content: center; min-height: 220px; gap: 1rem;">
+            <h3 style="color: #fff;">Breakfast available</h3>
+            <p style="color: rgba(255,255,255,0.8);">Breakfast is EUR 10 per person and is not included in the room rate — reserve separately.</p>
+            <a href="#booking" class="btn btn-primary" style="align-self: flex-start;">Check availability</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Amenities -->
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Pakalpojumi</p>
+        <h2 class="section-title">Amenities</h2>
+        <p class="section-desc">Services listed on the Hotel Grašu pils website — rest, events, and the manor grounds.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 14c2-4 4-6 8-6s6 2 8 6"/><path d="M8 14v2a4 4 0 0 0 8 0v-2"/><path d="M12 4v4"/></svg>
+          </div>
+          <span>Sauna / pirts</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg>
+          </div>
+          <span>Billiards</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 19V7l8-3 8 3v12"/><path d="M9 19v-6h6v6"/><path d="M4 10h16"/></svg>
+          </div>
+          <span>Event rooms</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 10h18v10H3z"/><path d="M7 10V6a5 5 0 0 1 10 0v4"/><path d="M8 14h.01M12 14h.01M16 14h.01"/></svg>
+          </div>
+          <span>Restaurant &amp; breakfast</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 11h16v9H4z"/><path d="M8 11V7h8v4"/><path d="M10 15h4"/></svg>
+          </div>
+          <span>Kitchen (Dukāti)</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <span>Manor park walks</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 20V9l6-4 6 4v11"/><path d="M10 20v-5h4v5"/><path d="M9 12h6"/></svg>
+          </div>
+          <span>Territory hire</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 19c2-6 4-9 7-9s5 3 7 9"/><path d="M12 4v6"/><path d="M9 8h6"/></svg>
+          </div>
+          <span>Fireplace lounge</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Gallery -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Gallery</p>
+        <h2 class="section-title">The manor &amp; grounds</h2>
+        <p class="section-desc">Exterior, rooms, common areas, and the parkland setting — photos from the hotel’s own site.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="http://www.hotelgrasupils.lv/images/big_image_1.jpg" alt="Hotel Grašu pils exterior — manor house" loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="http://www.hotelgrasupils.lv/images/img_1.jpg" alt="Manor guest room interior" loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="http://www.hotelgrasupils.lv/images/img_7.jpg" alt="Event and common area at the manor" loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="http://www.hotelgrasupils.lv/images/sauna-grasi.jpg" alt="Sauna at Hotel Grašu pils" loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="http://www.hotelgrasupils.lv/images/img_2.jpg" alt="Manor park and grounds" loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="http://www.hotelgrasupils.lv/images/img_4.jpg" alt="Hotel Grašu pils manor park feature" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Location -->
+  <section id="location">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Location</h2>
+        <p class="section-desc">In the heart of Vidzeme, near Cesvaine — set in a historic manor park.</p>
+      </div>
+      <div class="location-grid reveal">
+        <div class="location-text">
+          <h3>Grašu muiža · Cesvaine area</h3>
+          <p>The elegant Grašu manor house, built in 1784 and surrounded by parkland, stands in the centre of Vidzeme near Cesvaine. Guests can enjoy quiet walks among ancient trees in the manor park and visit nearby Cesvaine town, its castle, and park.</p>
+          <p>Hotel Grašu pils is located in Cesvaines pagasts, Madonas novads (Madona Municipality), Latvia.</p>
+          <ul class="location-details">
+            <li>
+              <strong>Address</strong>
+              Hotel Grašu Pils, Cesvaines pagasts, Madonas novads, LV-4871, Latvija
+            </li>
+            <li>
+              <strong>Nearby</strong>
+              Cesvaine town, Cesvaine castle &amp; park · manor park with century-old oaks
+            </li>
+            <li>
+              <strong>Contact</strong>
+              Tel. +371 29448937 · info@hotelgrasupils.lv
+            </li>
+          </ul>
+        </div>
+        <div class="map-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p class="map-label">Static map placeholder</p>
+          <p><strong>Cesvaines pagasts, Madonas novads</strong></p>
+          <p style="font-size:0.9rem;opacity:0.8;">LV-4871, Latvia</p>
+          <a class="map-link" href="https://goo.gl/maps/Wun6yPLYmWrEmJwe6" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Trust -->
+  <section id="trust">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Guest experiences</p>
+        <h2 class="section-title">What guests say</h2>
+      </div>
+      <p class="trust-placeholder-note reveal">No rating badge or guest reviews were found on hotelgrasupils.lv — the three cards below are clearly marked sample placeholders for this prototype.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <blockquote>“Waking up to birdsong and the manor park outside the window made our countryside stay unforgettable.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest A</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card reveal">
+          <blockquote>“The fireplace hall was perfect for our small celebration — warm hospitality in a historic setting.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest B</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card reveal">
+          <blockquote>“Quiet walks among the old oaks, then sauna and billiards in the evening — a true manor escape.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest C</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="http://www.hotelgrasupils.lv/images/logo.png" alt="Hotel Grašu pils">
+          <p class="logo-name">Hotel Grašu pils</p>
+          <p>An 18th-century manor hotel in Graši near Cesvaine — overnight stays, leisure, and event space hire.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Book</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Hotel Grašu Pils<br>Cesvaines pagasts, Madonas novads<br>LV-4871, Latvija</p>
+          <a href="tel:+37129448937">+371 29448937</a>
+          <a href="mailto:info@hotelgrasupils.lv">info@hotelgrasupils.lv</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Hotel Grašu pils — homepage prototype</p>
+        <p>Source data from hotelgrasupils.lv</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Header: transparent at top of hero, solid when scrolled
+    const header = document.getElementById('header');
+    function updateHeader() {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    // Date inputs
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (checkin.value) {
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = checkout.min;
+        }
+      }
+    });
+
+    // Guest selector
+    let adults = 2;
+    let children = 0;
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestDropdown = document.getElementById('guestDropdown');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' adult' : ' adults');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' child' : ' children');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    function setGuestOpen(open) {
+      guestDropdown.classList.toggle('open', open);
+      guestDropdown.hidden = !open;
+      guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setGuestOpen(!guestDropdown.classList.contains('open'));
+    });
+
+    document.addEventListener('click', () => setGuestOpen(false));
+    guestDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 9) { adults++; updateGuestSummary(); } });
+    document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+    document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 6) { children++; updateGuestSummary(); } });
+    document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+    updateGuestSummary();
+
+    // Booking form (UI only)
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Booking search is a UI prototype only — contact +371 29448937 or info@hotelgrasupils.lv to reserve.');
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach((el) => io.observe(el));
+    } else {
+      reveals.forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
