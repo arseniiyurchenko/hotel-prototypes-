@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Kaupo | Beautiful place to enjoy — near Sigulda, Latvia</title>
+  <meta name="description" content="Hotel Kaupo is a small but very cozy hotel near Sigulda, Latvia. Ten comfortable rooms, sauna, jacuzzi, restaurant, and free parking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1a3a2f;
+      --forest-deep: #102820;
+      --forest-mid: #2d5546;
+      --mist: #e7eee8;
+      --mist-deep: #d5e0d7;
+      --ivory: #f5f7f4;
+      --ink: #1c2420;
+      --ink-soft: #4a5650;
+      --burgundy: #7a3b32;
+      --burgundy-hover: #5f2d27;
+      --gold: #c9a227;
+      --gold-bright: #fccb32;
+      --white: #ffffff;
+      --shadow: 0 8px 32px rgba(16, 40, 32, 0.12);
+      --radius: 10px;
+      --ease: 0.28s ease;
+      --header-pad-x: clamp(32px, 5vw, 48px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(45, 85, 70, 0.08), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 90% 20%, rgba(122, 59, 50, 0.05), transparent 50%),
+        linear-gradient(180deg, var(--mist) 0%, var(--ivory) 35%, var(--mist) 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1140px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad-x);
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      padding: 0.9rem 0;
+      background: rgba(16, 40, 32, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: box-shadow var(--ease);
+    }
+
+    .site-header.scrolled {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      max-width: 1140px;
+      margin-inline: auto;
+      padding-inline: var(--header-pad-x);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-shrink: 0;
+      color: var(--white);
+    }
+
+    .logo img {
+      height: 52px;
+      width: auto;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 6px;
+      padding: 4px 8px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-text .brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .logo-text .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.72;
+      margin-top: 0.2rem;
+      font-weight: 400;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--ease);
+    }
+
+    .nav-desktop a:hover { color: var(--gold-bright); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.35rem;
+      background: var(--burgundy);
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background var(--ease), transform var(--ease);
+      flex-shrink: 0;
+    }
+
+    .header-cta:hover {
+      background: var(--burgundy-hover);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.35rem;
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      z-index: 250;
+      background: var(--forest-deep);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--ease), visibility var(--ease);
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: 'Fraunces', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: var(--header-pad-x);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* —— Buttons —— */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.75rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--burgundy-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(122, 59, 50, 0.28);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--white);
+    }
+
+    /* —— Hero —— */
+    #hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      animation: heroKen 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroKen {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(16, 40, 32, 0.35) 0%, rgba(16, 40, 32, 0.15) 35%, rgba(16, 40, 32, 0.78) 100%),
+        linear-gradient(90deg, rgba(16, 40, 32, 0.55) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1140px, 100%);
+      margin-inline: auto;
+      padding: 0 var(--header-pad-x) clamp(3.5rem, 8vw, 5.5rem);
+      max-width: 640px;
+      margin-right: auto;
+      margin-left: auto;
+      align-self: flex-end;
+      width: 100%;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-inner {
+      max-width: 560px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.75rem, 7vw, 4.25rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-brand span {
+      display: block;
+      font-size: 0.42em;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-value {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 300;
+      opacity: 0.92;
+      margin-bottom: 1.75rem;
+      max-width: 28ch;
+      line-height: 1.5;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+    /* —— Booking —— */
+    #booking {
+      position: relative;
+      z-index: 10;
+      margin-top: -2.5rem;
+      padding-bottom: 1rem;
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.2fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.35rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(26, 58, 47, 0.08);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; position: relative; }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--mist-deep);
+      border-radius: 6px;
+      background: var(--ivory);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--ease);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      border-color: var(--forest-mid);
+    }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--mist-deep);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      display: none;
+      z-index: 20;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--mist-deep);
+      background: var(--ivory);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--forest);
+      transition: background var(--ease);
+    }
+
+    .guest-btn:hover:not(:disabled) { background: var(--mist); }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      height: 48px;
+      padding-inline: 1.6rem;
+      white-space: nowrap;
+    }
+
+    /* —— Sections —— */
+    section { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
+
+    .section-header {
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--forest-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      color: var(--ink-soft);
+      font-size: 1rem;
+      max-width: 48ch;
+    }
+
+    /* —— Rooms —— */
+    #rooms { background: transparent; }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(26, 58, 47, 0.08);
+      box-shadow: 0 4px 18px rgba(16, 40, 32, 0.06);
+      transition: transform var(--ease), box-shadow var(--ease);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .room-card:nth-child(2) { animation-delay: 0.08s; }
+    .room-card:nth-child(3) { animation-delay: 0.16s; }
+    .room-card:nth-child(4) { animation-delay: 0.24s; }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-card-body { padding: 1.35rem 1.4rem 1.5rem; }
+
+    .room-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--forest-deep);
+      margin-bottom: 0.4rem;
+    }
+
+    .room-meta {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.85rem;
+    }
+
+    .room-price {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--burgundy);
+    }
+
+    .room-price span {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+    }
+
+    .rooms-note {
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    /* —— Amenities —— */
+    #amenities {
+      background: linear-gradient(180deg, rgba(26, 58, 47, 0.04), transparent);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.15rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 1.1rem;
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px solid rgba(26, 58, 47, 0.07);
+      transition: border-color var(--ease), transform var(--ease);
+    }
+
+    .amenity-item:hover {
+      border-color: rgba(45, 85, 70, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--mist);
+      color: var(--forest);
+    }
+
+    .amenity-icon svg { width: 20px; height: 20px; }
+
+    .amenity-item span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .amenity-note {
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    /* —— Gallery —— */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--mist-deep);
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(transparent, rgba(16, 40, 32, 0.75));
+      color: var(--white);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      transition: opacity var(--ease);
+    }
+
+    .gallery-item:hover figcaption { opacity: 1; }
+
+    /* —— Location —— */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .location-text h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      color: var(--forest-deep);
+      margin-bottom: 0.85rem;
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .location-details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .location-details li {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--ink);
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(26, 58, 47, 0.1);
+    }
+
+    .location-details strong {
+      color: var(--burgundy);
+      min-width: 5.5rem;
+      font-weight: 500;
+    }
+
+    .map-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.75rem;
+      min-height: 320px;
+      padding: 2rem;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(45, 85, 70, 0.12), rgba(26, 58, 47, 0.22)),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 12px,
+          rgba(255, 255, 255, 0.15) 12px,
+          rgba(255, 255, 255, 0.15) 13px
+        ),
+        var(--mist-deep);
+      border: 1px dashed rgba(26, 58, 47, 0.25);
+      color: var(--forest);
+    }
+
+    .map-placeholder svg {
+      width: 42px;
+      height: 42px;
+      opacity: 0.7;
+    }
+
+    .map-placeholder p { color: var(--ink-soft); font-size: 0.9rem; }
+
+    /* —— Trust —— */
+    #trust { background: var(--forest-deep); color: var(--white); }
+
+    #trust .section-title { color: var(--white); }
+    #trust .section-eyebrow { color: var(--gold-bright); }
+    #trust .section-desc { color: rgba(255, 255, 255, 0.7); }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .testimonial {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .testimonial.placeholder {
+      border-style: dashed;
+      opacity: 0.85;
+    }
+
+    .testimonial-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      margin-bottom: 0.85rem;
+      background: rgba(201, 162, 39, 0.2);
+      color: var(--gold-bright);
+    }
+
+    .testimonial.placeholder .testimonial-badge {
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .testimonial blockquote {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.45;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 0.82rem;
+      opacity: 0.7;
+    }
+
+    .trust-note {
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+      opacity: 0.6;
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: #0b1a14;
+      color: rgba(255, 255, 255, 0.82);
+      padding: 3.5rem 0 1.75rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-brand p { font-size: 0.92rem; max-width: 36ch; opacity: 0.75; }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-nav a { opacity: 0.8; transition: opacity var(--ease); font-size: 0.92rem; }
+    .footer-nav a:hover { opacity: 1; color: var(--gold-bright); }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.92rem;
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+
+    .footer-contact a:hover { color: var(--gold-bright); opacity: 1; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1.35rem;
+      font-size: 0.78rem;
+      opacity: 0.5;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+      .header-cta { display: none; }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary { grid-column: span 2; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 200px 200px;
+      }
+      .gallery-item:first-child { grid-column: span 2; grid-row: span 1; height: 260px; }
+      .location-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 640px) {
+      .logo-text .tag { display: none; }
+      .logo img { height: 44px; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-item,
+      .gallery-item:first-child {
+        grid-column: auto;
+        height: 220px;
+      }
+      .hero-content { padding-bottom: 4.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-media img,
+      .room-card,
+      .hero-content { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="#hero" class="logo">
+        <img
+          src="https://web.archive.org/web/20160315163631im_/http://hotelkaupo.lv/wp-content/uploads/2014/06/74056_412475352154180_1103973027_nsss.jpg"
+          alt="Hotel Kaupo logo">
+        <span class="logo-text">
+          <span class="brand">Hotel Kaupo</span>
+          <span class="tag">Beautiful place to enjoy</span>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+    <a href="#booking">Check availability</a>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-media" aria-hidden="true">
+      <img
+        src="https://web.archive.org/web/20160315161930im_/http://hotelkaupo.lv/wp-content/uploads/2013/10/kaupo-hotel.jpg"
+        alt="Hotel Kaupo exterior near Sigulda">
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-inner">
+        <h1 class="hero-brand"><span>Welcome to</span>Hotel Kaupo</h1>
+        <p class="hero-value">A small but very cozy hotel near Sigulda — beautiful place to enjoy.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">Check availability</a>
+          <a href="#rooms" class="btn btn-ghost">View rooms</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm" novalidate>
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label id="guestsLabel">Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-labelledby="guestsLabel" aria-expanded="false" aria-controls="guestDropdown">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown" role="dialog" aria-label="Select guests">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Stay with us</p>
+        <h2 class="section-title">Accommodation</h2>
+        <p class="section-desc">Ten comfortable and colorful rooms for up to 35 guests — room types and rates as listed on hotelkaupo.lv.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img
+            src="https://web.archive.org/web/20160510173827im_/http://hotelkaupo.lv/wp-content/uploads/2014/09/room-no.1-450x300.jpg"
+            alt="Standard room at Hotel Kaupo">
+          <div class="room-card-body">
+            <h3>Standard rooms</h3>
+            <p class="room-meta">Double bed · Occupancy 2</p>
+            <p class="room-price">From EUR 35 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img
+            src="https://web.archive.org/web/20160510174132im_/http://hotelkaupo.lv/wp-content/uploads/2014/09/DSC_0034-450x300.jpg"
+            alt="Comfort room at Hotel Kaupo">
+          <div class="room-card-body">
+            <h3>Comfort rooms</h3>
+            <p class="room-meta">Double bed · Occupancy 2</p>
+            <p class="room-price">From EUR 40 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img
+            src="https://web.archive.org/web/20160510174627im_/http://hotelkaupo.lv/wp-content/uploads/2013/10/room-no.6-450x300.jpg"
+            alt="Tourist room at Hotel Kaupo">
+          <div class="room-card-body">
+            <h3>Tourist rooms</h3>
+            <p class="room-meta">Single bed · Occupancy 4</p>
+            <p class="room-price">From EUR 45 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img
+            src="https://web.archive.org/web/20160510113926im_/http://hotelkaupo.lv/wp-content/uploads/2015/04/IMG_8090-450x300.jpg"
+            alt="Family room at Hotel Kaupo">
+          <div class="room-card-body">
+            <h3>Family rooms</h3>
+            <p class="room-meta">Single bed, Double bed · Occupancy 4</p>
+            <p class="room-price">From EUR 50 <span>/ night</span></p>
+          </div>
+        </article>
+      </div>
+      <p class="rooms-note">Restaurant hall for events also listed on the source site — from EUR 350 (occupancy 30). Not an overnight room type.</p>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">On site</p>
+        <h2 class="section-title">Amenities</h2>
+        <p class="section-desc">Facilities and extras published on the Hotel Kaupo website.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+          </div>
+          <span>Free Wi-Fi</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="10" width="18" height="8" rx="1"/><path d="M5 10V7a2 2 0 0 1 2-2h4l2 3h6v2M7 18v2M17 18v2"/></svg>
+          </div>
+          <span>Free car parking</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 18c2-4 4-6 8-6s6 2 8 6M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+          </div>
+          <span>Sauna &amp; jacuzzi</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>
+          </div>
+          <span>3 billiards tables</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="6" width="18" height="12" rx="1"/><circle cx="8" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/><path d="M12 9v6"/></svg>
+          </div>
+          <span>Air hockey &amp; snooker</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/><path d="M10 18h4"/></svg>
+          </div>
+          <span>Kids play room</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 11h16v9H4zM8 11V8a4 4 0 0 1 8 0v3"/><path d="M9 15h.01M15 15h.01"/></svg>
+          </div>
+          <span>Restaurant</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3c-2 4-6 6-6 10a6 6 0 0 0 12 0c0-4-4-6-6-10z"/><path d="M9 14h6"/></svg>
+          </div>
+          <span>Fireplace room</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M6 10h4M6 14h8"/><circle cx="17" cy="12" r="1.5"/></svg>
+          </div>
+          <span>Xbox</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 18V9l6-4 6 4v9"/><path d="M10 18v-5h4v5"/></svg>
+          </div>
+          <span>Gym</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19h16M6 19V9l6-4 6 4v10"/><path d="M9 13h6M9 16h6"/></svg>
+          </div>
+          <span>Banquet / events hall</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 20h18M5 20V10l7-5 7 5v10"/><path d="M9 20v-6h6v6"/></svg>
+          </div>
+          <span>10 colorful rooms</span>
+        </div>
+      </div>
+      <p class="amenity-note">Pet policy, terrace, grill, and kitchen were not listed as amenities on the source site — omitted here rather than assumed.</p>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">See the place</p>
+        <h2 class="section-title">Photo gallery</h2>
+        <p class="section-desc">Real images from the Hotel Kaupo gallery and homepage (archived originals).</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <img
+            src="https://web.archive.org/web/20160315161930im_/http://hotelkaupo.lv/wp-content/uploads/2013/10/kaupo-hotel.jpg"
+            alt="Hotel Kaupo exterior and parking">
+          <figcaption>Exterior</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img
+            src="https://web.archive.org/web/20151004211202im_/http://hotelkaupo.lv/wp-content/uploads/2014/06/164263_468219489913099_1984631180_n-450x300.jpg"
+            alt="Hotel Kaupo grounds with pond and terrace">
+          <figcaption>Grounds &amp; pond</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img
+            src="https://web.archive.org/web/20160510173827im_/http://hotelkaupo.lv/wp-content/uploads/2014/09/room-no.1-450x300.jpg"
+            alt="Guest room interior">
+          <figcaption>Guest room</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img
+            src="https://web.archive.org/web/20151004203405im_/http://hotelkaupo.lv/wp-content/uploads/2014/06/954731_504141402987574_816475890_n-450x300.jpg"
+            alt="Restaurant dining at Hotel Kaupo">
+          <figcaption>Restaurant</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img
+            src="https://web.archive.org/web/20151004202323im_/http://hotelkaupo.lv/wp-content/uploads/2014/06/1454796_570768839658163_1465327801_n-450x300.jpg"
+            alt="Hotel Kaupo exterior in winter at night">
+          <figcaption>Winter evening</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Location</h2>
+        <p class="section-desc">As described on the Hotel Kaupo site — one of the most beautiful places in Latvia, near Sigulda.</p>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Jaunbeites, 51.km, Sigulda</h3>
+          <p>Hotel Kaupo is a small but very cozy hotel located near Sigulda. Guest feedback on the site mentions it as a strong base for traveling through the nearby national park and for overnight stays when visiting Sigulda.</p>
+          <ul class="location-details">
+            <li><strong>Area</strong> Near Sigulda, Latvia</li>
+            <li><strong>Nature</strong> Nearby national park (guest review on source site)</li>
+            <li><strong>Train</strong> ~3 min by car from Sigulda station</li>
+            <li><strong>Bus</strong> ~3 min / ~2 km from Sigulda bus stop</li>
+            <li><strong>Airport</strong> ~1 hour from Riga International (RIX)</li>
+          </ul>
+          <p style="margin-top:1rem;font-size:0.85rem;color:var(--ink-soft);">Note: “Gauja river valley” / “Gauja National Park” by name were not used as marketing claims on the source homepage; Sigulda and a nearby national park are the landmarks referenced there.</p>
+        </div>
+        <div class="map-placeholder" aria-label="Static map placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <p><strong>Map placeholder</strong></p>
+          <p>Jaunbeites, 51.km, Sigulda, Latvia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">From guests</p>
+        <h2 class="section-title">What visitors say</h2>
+        <p class="section-desc">No numeric rating badge was published on the source site. Two quotes below are from the Hotel Kaupo homepage; the third is a clearly marked placeholder.</p>
+      </div>
+      <div class="trust-grid">
+        <article class="testimonial">
+          <span class="testimonial-badge">From source site</span>
+          <blockquote>“Nice staff, excellent value and location for traveling through the nearby national park. Family room was spacious and comfortable with all amenities… Included breakfast was very good. Kids enjoyed the game room.”</blockquote>
+          <cite>— Faye, with family</cite>
+        </article>
+        <article class="testimonial">
+          <span class="testimonial-badge">From source site · TripAdvisor</span>
+          <blockquote>“Staying at the Kaupo Hotel was a very nice experience and I can recommend the hotel for staying overnight during the visit to Sigulda city or simply touring through the Baltics…”</blockquote>
+          <cite>— Liena R</cite>
+        </article>
+        <article class="testimonial placeholder">
+          <span class="testimonial-badge">Placeholder</span>
+          <blockquote>“Sample guest comment for layout only — not a real review of Hotel Kaupo.”</blockquote>
+          <cite>— Placeholder guest</cite>
+        </article>
+      </div>
+      <p class="trust-note">TripAdvisor link present on source site; no star score or review count was displayed on-page.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">Hotel Kaupo</div>
+          <p>Beautiful place to enjoy — a small but very cozy hotel near Sigulda, Latvia.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Book</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Jaunbeites, 51.km<br>Sigulda, Latvia</p>
+          <p><a href="tel:+37129607356">+371 29 607 356</a></p>
+          <p><a href="mailto:info@hotelkaupo.lv">info@hotelkaupo.lv</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Hotel Kaupo · Near Sigulda, Latvia · Prototype homepage</p>
+        <p>Images via Wayback Machine archive of hotelkaupo.lv (live domain unresolved at build time)</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('header');
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const navClose = document.getElementById('navClose');
+
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+      navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+      mobileNav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => mobileNav.classList.remove('open'));
+      });
+
+      const checkin = document.getElementById('checkin');
+      const checkout = document.getElementById('checkout');
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      const dayAfter = new Date(today);
+      dayAfter.setDate(today.getDate() + 3);
+      const fmt = d => d.toISOString().split('T')[0];
+      checkin.min = fmt(today);
+      checkout.min = fmt(tomorrow);
+      checkin.value = fmt(tomorrow);
+      checkout.value = fmt(dayAfter);
+
+      checkin.addEventListener('change', () => {
+        const ci = new Date(checkin.value);
+        const minCo = new Date(ci);
+        minCo.setDate(ci.getDate() + 1);
+        checkout.min = fmt(minCo);
+        if (new Date(checkout.value) <= ci) checkout.value = fmt(minCo);
+      });
+
+      let adults = 2;
+      let children = 0;
+      const adultsCount = document.getElementById('adultsCount');
+      const childrenCount = document.getElementById('childrenCount');
+      const guestSummary = document.getElementById('guestSummary');
+      const guestTrigger = document.getElementById('guestTrigger');
+      const guestDropdown = document.getElementById('guestDropdown');
+
+      function updateGuestSummary() {
+        let text = adults + ' adult' + (adults !== 1 ? 's' : '');
+        if (children > 0) text += ', ' + children + ' child' + (children !== 1 ? 'ren' : '');
+        guestSummary.textContent = text;
+        adultsCount.textContent = adults;
+        childrenCount.textContent = children;
+        document.getElementById('adultsMinus').disabled = adults <= 1;
+        document.getElementById('adultsPlus').disabled = adults >= 10;
+        document.getElementById('childrenMinus').disabled = children <= 0;
+        document.getElementById('childrenPlus').disabled = children >= 10;
+      }
+
+      guestTrigger.addEventListener('click', e => {
+        e.stopPropagation();
+        const open = guestDropdown.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', e => {
+        if (!guestDropdown.contains(e.target) && e.target !== guestTrigger && !guestTrigger.contains(e.target)) {
+          guestDropdown.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 10) { adults++; updateGuestSummary(); } });
+      document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+      document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 10) { children++; updateGuestSummary(); } });
+      document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+
+      updateGuestSummary();
+
+      document.getElementById('bookingForm').addEventListener('submit', e => {
+        e.preventDefault();
+        guestDropdown.classList.remove('open');
+        guestTrigger.setAttribute('aria-expanded', 'false');
+        alert('Booking search is UI-only in this prototype.');
+      });
+    })();
+  </script>
+</body>
+</html>
