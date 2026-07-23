@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Villa Anna | Place to return — Apšuciems, Latvia</title>
+  <meta name="description" content="Villa Anna — a small, cozy seaside hotel in Apšuciems. Place to return. Rooms, restaurant, sauna, banquet hall, and breakfast on the terrace.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #BD945A;
+      --gold-deep: #9a7544;
+      --gold-soft: #d6b98b;
+      --ink: #1a2428;
+      --ink-soft: #3d4a50;
+      --mist: #e8eef1;
+      --sand: #f3f0ea;
+      --foam: #fafbfb;
+      --sea: #2c5563;
+      --sea-deep: #1e3d48;
+      --white: #ffffff;
+      --muted: #6a7579;
+      --line: rgba(26, 36, 40, 0.1);
+      --shadow: 0 12px 40px rgba(30, 61, 72, 0.12);
+      --radius: 10px;
+      --header-h: 76px;
+      --ease: 0.28s ease;
+      --pad-x: clamp(2rem, 4.5vw, 3rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(44, 85, 99, 0.08), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(189, 148, 90, 0.12), transparent 50%),
+        linear-gradient(180deg, #f7f5f1 0%, var(--mist) 42%, #eef3f5 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: min(1160px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(250, 251, 251, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(189, 148, 90, 0.18);
+      transition: box-shadow var(--ease);
+    }
+
+    .site-header.scrolled { box-shadow: 0 8px 28px rgba(30, 61, 72, 0.1); }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      min-height: var(--header-h);
+      padding-block: 0.65rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      height: 46px;
+      width: auto;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-text strong {
+      font-family: 'Gilda Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+
+    .logo-text span {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      font-weight: 500;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .nav-desktop a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--ink-soft);
+      transition: color var(--ease);
+    }
+
+    .nav-desktop a:hover { color: var(--gold-deep); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: transform var(--ease), background var(--ease), color var(--ease), box-shadow var(--ease);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-cta {
+      background: var(--sea);
+      color: var(--white);
+      padding: 0.72rem 1.35rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(44, 85, 99, 0.22);
+    }
+
+    .btn-cta:hover { background: var(--sea-deep); color: var(--white); }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+      padding: 0.95rem 1.75rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      box-shadow: 0 10px 28px rgba(189, 148, 90, 0.35);
+    }
+
+    .btn-gold:hover { background: var(--gold-deep); }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--foam);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--ink);
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: var(--header-h);
+      background: rgba(250, 251, 251, 0.98);
+      padding: 1.5rem var(--pad-x) 2rem;
+      z-index: 190;
+      transform: translateX(100%);
+      transition: transform var(--ease);
+    }
+
+    .nav-mobile.open {
+      display: block;
+      transform: translateX(0);
+    }
+
+    .nav-mobile ul { display: grid; gap: 0.25rem; }
+
+    .nav-mobile a {
+      display: block;
+      padding: 0.95rem 0.25rem;
+      border-bottom: 1px solid var(--line);
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .nav-mobile .btn-cta {
+      margin-top: 1.25rem;
+      width: 100%;
+    }
+
+    /* —— Hero —— */
+    #hero {
+      position: relative;
+      min-height: calc(100vh - var(--header-h));
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: heroDrift 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(100deg, rgba(20, 32, 36, 0.72) 0%, rgba(20, 32, 36, 0.35) 48%, rgba(20, 32, 36, 0.45) 100%),
+        linear-gradient(to top, rgba(20, 32, 36, 0.55) 0%, transparent 45%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3.5rem, 10vh, 6.5rem) 0 clamp(4rem, 9vh, 6rem);
+      max-width: 720px;
+    }
+
+    .hero-brand {
+      font-family: 'Gilda Display', serif;
+      font-size: clamp(3rem, 8vw, 5.2rem);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.85rem;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-tagline {
+      font-family: 'Gilda Display', serif;
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+      animation: fadeUp 0.9s ease 0.12s both;
+    }
+
+    .hero-lead {
+      font-weight: 300;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      max-width: 34rem;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+      animation: fadeUp 0.9s ease 0.22s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      animation: fadeUp 0.9s ease 0.32s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* —— Sections shared —— */
+    .section {
+      padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+      scroll-margin-top: calc(var(--header-h) + 12px);
+    }
+
+    .section-head {
+      max-width: 38rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-head.center {
+      text-align: center;
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-head h2 {
+      font-family: 'Gilda Display', serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-weight: 300;
+      font-size: 1.02rem;
+    }
+
+    /* —— Booking —— */
+    #booking {
+      margin-top: -2.75rem;
+      position: relative;
+      z-index: 5;
+      padding-top: 0;
+      padding-bottom: clamp(2rem, 4vw, 3rem);
+      scroll-margin-top: calc(var(--header-h) + 12px);
+    }
+
+    .booking-widget {
+      background: var(--foam);
+      border: 1px solid rgba(189, 148, 90, 0.28);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 1.35rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+      gap: 0.9rem;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .field select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--ink);
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .guest-trigger:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(189, 148, 90, 0.18);
+    }
+
+    .guest-wrap { position: relative; }
+
+    .guest-trigger {
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .guest-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.45rem);
+      left: 0;
+      right: 0;
+      min-width: 240px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 0.9rem;
+      z-index: 20;
+    }
+
+    .guest-panel.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+    }
+
+    .guest-row + .guest-row { border-top: 1px solid var(--line); }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--sea);
+      background: var(--white);
+      color: var(--sea);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .guest-btn:hover {
+      background: var(--sea);
+      color: var(--white);
+    }
+
+    .guest-count {
+      min-width: 1.25rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .btn-search {
+      background: var(--sea);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      cursor: pointer;
+      white-space: nowrap;
+      height: 48px;
+      transition: background var(--ease);
+    }
+
+    .btn-search:hover { background: var(--sea-deep); }
+
+    .booking-note {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* —— Rooms —— */
+    #rooms { background: transparent; }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.35rem;
+    }
+
+    .room-card {
+      background: var(--foam);
+      border: 1px solid rgba(44, 85, 99, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(30, 61, 72, 0.06);
+      transition: transform var(--ease), box-shadow var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card figure {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--mist);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .room-card:hover img { transform: scale(1.05); }
+
+    .room-body {
+      padding: 1.25rem 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.45rem;
+    }
+
+    .room-body h3 {
+      font-family: 'Gilda Display', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+
+    .room-meta {
+      font-size: 0.86rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .room-price {
+      margin-top: auto;
+      padding-top: 0.85rem;
+      font-weight: 600;
+      color: var(--sea-deep);
+      font-size: 1.05rem;
+    }
+
+    .room-price span {
+      font-weight: 400;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .price-hint {
+      font-size: 0.74rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* —— Amenities —— */
+    #amenities {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(232,238,241,0.9));
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .amenity {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-radius: 14px;
+      background: rgba(250, 251, 251, 0.85);
+      border: 1px solid rgba(189, 148, 90, 0.16);
+      transition: border-color var(--ease), transform var(--ease);
+    }
+
+    .amenity:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .amenity-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 0.9rem;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--sea), var(--sea-deep));
+      color: var(--white);
+      display: grid;
+      place-items: center;
+    }
+
+    .amenity-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .amenity p {
+      margin-top: 0.35rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .amenity-footnote {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* —— Gallery —— */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 180px;
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      grid-column: span 4;
+    }
+
+    .gallery-item:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+    .gallery-item:nth-child(2) { grid-column: span 5; }
+    .gallery-item:nth-child(3) { grid-column: span 5; }
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(6) { grid-column: span 4; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(transparent, rgba(20, 32, 36, 0.7));
+      color: var(--white);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      transition: opacity var(--ease);
+    }
+
+    .gallery-item:hover figcaption { opacity: 1; }
+
+    /* —— Location —— */
+    #location {
+      background: linear-gradient(160deg, #1e3d48 0%, #2c5563 55%, #3a6570 100%);
+      color: var(--white);
+    }
+
+    #location .eyebrow { color: var(--gold-soft); }
+    #location .section-head h2 { color: var(--white); }
+    #location .section-head p { color: rgba(255,255,255,0.78); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .location-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .location-card h3 {
+      font-family: 'Gilda Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .location-card p {
+      color: rgba(255,255,255,0.8);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .location-list {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .location-list li {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .location-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      margin-top: 0.45rem;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .map-placeholder {
+      min-height: 320px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,0.28);
+      background:
+        repeating-linear-gradient(-45deg, rgba(255,255,255,0.04) 0 12px, transparent 12px 24px),
+        rgba(0,0,0,0.18);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .map-placeholder strong {
+      display: block;
+      font-family: 'Gilda Display', serif;
+      font-size: 1.35rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    /* —— Trust —— */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.15rem;
+    }
+
+    .trust-card {
+      background: var(--foam);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.4rem;
+      position: relative;
+    }
+
+    .placeholder-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      background: rgba(189, 148, 90, 0.15);
+      border: 1px solid rgba(189, 148, 90, 0.35);
+      border-radius: 999px;
+      padding: 0.25rem 0.55rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .trust-card blockquote {
+      font-family: 'Gilda Display', serif;
+      font-size: 1.15rem;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .trust-card cite {
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .trust-note {
+      margin-top: 1.25rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* —— Footer —— */
+    #contact {
+      background: #142228;
+      color: rgba(255,255,255,0.82);
+      padding: 3.5rem 0 2rem;
+      scroll-margin-top: calc(var(--header-h) + 12px);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand img {
+      height: 48px;
+      width: auto;
+      margin-bottom: 0.9rem;
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+
+    .footer-brand p {
+      font-weight: 300;
+      max-width: 26rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-grid h3 {
+      font-family: 'Gilda Display', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-grid a {
+      display: block;
+      padding: 0.25rem 0;
+      color: rgba(255,255,255,0.75);
+      transition: color var(--ease);
+    }
+
+    .footer-grid a:hover { color: var(--gold-soft); }
+
+    .footer-bottom {
+      padding-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 980px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .btn-search { grid-column: 1 / -1; width: 100%; }
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-auto-rows: 150px; }
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(2),
+      .gallery-item:nth-child(3),
+      .gallery-item:nth-child(4),
+      .gallery-item:nth-child(5),
+      .gallery-item:nth-child(6) {
+        grid-column: span 6;
+        grid-row: span 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root { --pad-x: 2rem; --header-h: 68px; }
+      .logo-text { display: none; }
+      .logo img { height: 40px; }
+      .header-inner .btn-cta { padding: 0.62rem 1rem; font-size: 0.7rem; }
+      .booking-widget { grid-template-columns: 1fr; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:nth-child(n) {
+        grid-column: span 12 !important;
+        grid-row: span 1 !important;
+      }
+      .gallery-grid { grid-auto-rows: 200px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-media img { animation: none; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="logo" href="#hero" aria-label="Villa Anna home">
+        <img src="https://villaanna.lv/user/themes/hotel/images/logo/logo.png" alt="Villa Anna logo" width="120" height="46">
+        <span class="logo-text">
+          <strong>Villa Anna</strong>
+          <span>Place to return</span>
+        </span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#booking">Booking</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#trust">Guests</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn btn-cta" href="#booking">Check availability</a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <button type="button" id="navClose" class="btn btn-cta" style="width:auto;margin-bottom:1rem;background:transparent;color:var(--ink);box-shadow:none;border:1px solid var(--line);">Close</button>
+    <ul>
+      <li><a href="#booking">Booking</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#trust">Guests</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-cta" href="#booking">Check availability</a>
+  </div>
+
+  <main>
+    <!-- 1. Hero -->
+    <section id="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img
+          src="https://villaanna.lv/user/pages/widgets/_header-slider/Villa-Anna-HOTEL.jpg"
+          alt="Villa Anna hotel exterior by the sea"
+          width="1600"
+          height="1000"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-brand">Villa Anna</h1>
+          <p class="hero-tagline">Place to return</p>
+          <p class="hero-lead">A small, cozy seaside hotel in Apšuciems — peaceful rooms, wave views, and breakfast on the terrace.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#booking">Check availability</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Booking widget -->
+    <section id="booking" class="section" aria-labelledby="booking-title">
+      <div class="container">
+        <form class="booking-widget" id="bookingForm" action="#" method="get">
+          <div class="field">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field guest-wrap">
+            <label for="guestTrigger">Guests</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">2 adults · 0 children</button>
+            <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Guest selector">
+              <div class="guest-row">
+                <span>Adults</span>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="adultsMinus" aria-label="Fewer adults">−</button>
+                  <span class="guest-count" id="adultsCount">2</span>
+                  <button type="button" class="guest-btn" id="adultsPlus" aria-label="More adults">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <span>Children</span>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="childrenMinus" aria-label="Fewer children">−</button>
+                  <span class="guest-count" id="childrenCount">0</span>
+                  <button type="button" class="guest-btn" id="childrenPlus" aria-label="More children">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="roomType">Room type</label>
+            <select id="roomType" name="roomType">
+              <option value="any">Any room</option>
+              <option value="economy-double">Economy Double</option>
+              <option value="sea-view">Double with sea view</option>
+              <option value="economy-triple">Economy Triple</option>
+              <option value="triple">Triple Room</option>
+              <option value="quad">Quadruple Room</option>
+              <option value="luxury">Luxury / Suite</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-search" id="searchBtn">Search</button>
+        </form>
+        <p class="booking-note">Prototype booking widget — UI only. Real reservations: villaanna.lv or +371 26122679.</p>
+      </div>
+    </section>
+
+    <!-- 3. Accommodation -->
+    <section id="rooms" class="section" aria-labelledby="rooms-title">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Accommodation</span>
+          <h2 id="rooms-title">Rooms by the sea</h2>
+          <p>Comfortable rooms in light, nautical tones — from economy doubles to a luxury suite with sea views.</p>
+        </div>
+
+        <div class="rooms-grid">
+          <article class="room-card">
+            <figure>
+              <img src="https://villaanna.lv/user/pages/widgets/_booking-room/Sea-view-room.jpg" alt="Double room with sea view" width="800" height="600" loading="lazy">
+            </figure>
+            <div class="room-body">
+              <h3>Divvietīgs numurs ar skatu uz Jūru</h3>
+              <p class="room-meta">Double room with sea view · 2 guests · Breakfast</p>
+              <p class="room-price">From EUR 90<span> / night</span></p>
+              <p class="price-hint">Off-season from €90 · in season from €110 (source: villaanna.lv)</p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <figure>
+              <img src="https://villaanna.lv/user/pages/widgets/_text-with-two-images/Double-room.jpg" alt="Villa Anna guest room" width="800" height="600" loading="lazy">
+            </figure>
+            <div class="room-body">
+              <h3>Lukss numurs</h3>
+              <p class="room-meta">Luxury / suite · 2–3 guests · Sofa · Double bed · Breakfast</p>
+              <p class="room-price">From EUR 120<span> / night</span></p>
+              <p class="price-hint">Off-season from €120 · in season from €140 (source: villaanna.lv)</p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <figure>
+              <img src="https://villaanna.lv/images/c/b/0/f/6/cb0f628b2ddde6772ff5407e4a9d346bc9254054-economy-room.jpg" alt="Economy double room" width="800" height="600" loading="lazy">
+            </figure>
+            <div class="room-body">
+              <h3>Ekonomisks divvietīgs numurs</h3>
+              <p class="room-meta">Economy double · 2 guests · Attic · Twin beds · Breakfast</p>
+              <p class="room-price">From EUR 80<span> / night</span></p>
+              <p class="price-hint">Off-season from €80 · in season from €90 (source: villaanna.lv)</p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <figure>
+              <img src="https://villaanna.lv/images/e/d/e/c/4/edec421987ef156b317aa0189135283c7ce89ba4-triple-economy.jpg" alt="Economy triple room" width="800" height="600" loading="lazy">
+            </figure>
+            <div class="room-body">
+              <h3>Ekonomisks trīsvietīgs numurs</h3>
+              <p class="room-meta">Economy triple · 2–3 guests · Attic · Twin + single · Breakfast</p>
+              <p class="room-price">From EUR 90<span> / night</span></p>
+              <p class="price-hint">Off-season from €90 · in season from €110 (source: villaanna.lv)</p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <figure>
+              <img src="https://villaanna.lv/images/0/a/5/3/9/0a5397146444651976ce87f0c6a419a90e6d94a9-triple-room.jpeg" alt="Triple room" width="800" height="600" loading="lazy">
+            </figure>
+            <div class="room-body">
+              <h3>Trīsvietīgs numurs</h3>
+              <p class="room-meta">Triple room · Breakfast available</p>
+              <p class="room-price">From EUR 100<span> / night</span></p>
+              <p class="price-hint">Off-season from €100 · in season from €130 (source: villaanna.lv)</p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <figure>
+              <img src="https://villaanna.lv/images/d/f/f/c/9/dffc9e444f1456f6f4df713975c218807811c946-family-room.jpg" alt="Quadruple room" width="800" height="600" loading="lazy">
+            </figure>
+            <div class="room-body">
+              <h3>Četrvietīgs numurs</h3>
+              <p class="room-meta">Quadruple room · 4 guests · Breakfast</p>
+              <p class="room-price">From EUR 100<span> / night</span></p>
+              <p class="price-hint">Off-season from €100 · in season from €140 (source: villaanna.lv)</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Amenities -->
+    <section id="amenities" class="section" aria-labelledby="amenities-title">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">On site</span>
+          <h2 id="amenities-title">Amenities</h2>
+          <p>Facilities and services listed on the Villa Anna website.</p>
+        </div>
+
+        <div class="amenities-grid">
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 14c2-3 4-4 8-4s6 1 8 4"/><path d="M8 14v2"/><path d="M12 14v3"/><path d="M16 14v2"/><path d="M5 19h14"/></svg>
+            </div>
+            <h3>Sauna / Pirts</h3>
+            <p>Wood-fired sauna from €65 / 1.5 h (2 persons)</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 10h16v9H4z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M4 14h16"/></svg>
+            </div>
+            <h3>Restaurant</h3>
+            <p>Seafood &amp; local cuisine; breakfast offered</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 11h18"/><path d="M5 11V8l7-4 7 4v3"/><path d="M6 11v7h12v-7"/></svg>
+            </div>
+            <h3>Terrace</h3>
+            <p>Breakfast with sunrise views; open May–Sept</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 12h3M18 12h3M12 3v3M12 18v3"/></svg>
+            </div>
+            <h3>Sea &amp; beach</h3>
+            <p>Hotel sits right by the sea with beach walks</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 19V9l6-4 6 4v10"/><path d="M10 19v-5h4v5"/></svg>
+            </div>
+            <h3>Banquet hall</h3>
+            <p>Events &amp; weddings with sea views</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="12" rx="1"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+            </div>
+            <h3>Conferences</h3>
+            <p>Meeting space with sea panorama windows</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1.5-3.5 4-5 7-5s5.5 1.5 7 5"/></svg>
+            </div>
+            <h3>Children’s room</h3>
+            <p>Indoor play room &amp; outdoor play area</p>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 14c2 0 3-2 6-2s4 2 6 2"/><path d="M8 18c1.5 1 3 1.5 4 1.5s2.5-.5 4-1.5"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
+            </div>
+            <h3>Pets welcome</h3>
+            <p>Cats &amp; dogs by arrangement · €20 / night</p>
+          </div>
+        </div>
+        <p class="amenity-footnote">Parking, grill, and in-room kitchen were not listed as amenities on the source site — omitted here.</p>
+      </div>
+    </section>
+
+    <!-- 5. Gallery -->
+    <section id="gallery" class="section" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Gallery</span>
+          <h2 id="gallery-title">Moments by the water</h2>
+          <p>Photos from the Villa Anna website — exterior, rooms, sea, and gathering spaces.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="https://villaanna.lv/user/pages/widgets/_header-slider/IMG_7732.jpg" alt="Villa Anna exterior" width="1200" height="800" loading="lazy">
+            <figcaption>Hotel exterior</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://villaanna.lv/user/pages/widgets/_bilzu-galerija/Sea.jpeg" alt="Sea near Villa Anna" width="900" height="700" loading="lazy">
+            <figcaption>Sea &amp; coast</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://villaanna.lv/user/pages/widgets/_text-with-two-images/Double-room.jpg" alt="Double room interior" width="900" height="700" loading="lazy">
+            <figcaption>Guest room</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://villaanna.lv/user/pages/widgets/_bilzu-galerija/EdgarsFoto_WEB_1007.jpg" alt="Villa Anna grounds and nature" width="900" height="700" loading="lazy">
+            <figcaption>Grounds</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://villaanna.lv/user/pages/widgets/_bilzu-galerija-kazam/Zelta-zale-I.jpg" alt="Banquet hall" width="900" height="700" loading="lazy">
+            <figcaption>Banquet hall</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://villaanna.lv/user/pages/widgets/_bilzu-galerija/xrOZPUng.jpeg" alt="Seaside atmosphere at Villa Anna" width="900" height="700" loading="lazy">
+            <figcaption>Seaside atmosphere</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Location -->
+    <section id="location" class="section" aria-labelledby="location-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Find us</span>
+          <h2 id="location-title">Apšuciems, by the sea</h2>
+          <p>Address and landmarks as stated on villaanna.lv.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card">
+            <h3>Where we are</h3>
+            <p>Villa Anna is a small seaside hotel right by the water in Apšuciems — ideal for quiet stays, beach walks, and sunrise breakfasts on the terrace.</p>
+            <ul class="location-list">
+              <li><strong>Apšuciems</strong>, Tukuma novads, Engures pagasts</li>
+              <li>Located <strong>right by the sea</strong>, with views of the waves and beach</li>
+              <li>Evening walks along the coast</li>
+            </ul>
+            <p style="margin-top:1.25rem;font-size:0.85rem;color:rgba(255,255,255,0.65);">
+              Note: Lake Engure, Engure Nature Park, and “Gulf of Riga” were not named on the source website, so they are not claimed here.
+            </p>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Map placeholder for Apšuciems, Engures pagasts">
+            <div>
+              <strong>Map placeholder</strong>
+              Apšuciems · Engures pagasts · Tukuma novads<br>
+              Latvia — seaside
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Trust -->
+    <section id="trust" class="section" aria-labelledby="trust-title">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Guests</span>
+          <h2 id="trust-title">What stays feel like</h2>
+          <p>No public rating badge was found on villaanna.lv — sample testimonials below are clearly marked as placeholders.</p>
+        </div>
+
+        <div class="trust-grid">
+          <article class="trust-card">
+            <span class="placeholder-badge">Placeholder</span>
+            <blockquote>“Quiet mornings on the terrace and the sound of the sea — exactly the reset we needed.”</blockquote>
+            <cite>— Sample guest review (placeholder)</cite>
+          </article>
+          <article class="trust-card">
+            <span class="placeholder-badge">Placeholder</span>
+            <blockquote>“Friendly seaside hotel with comfortable rooms and a lovely banquet space for our celebration.”</blockquote>
+            <cite>— Sample guest review (placeholder)</cite>
+          </article>
+          <article class="trust-card">
+            <span class="placeholder-badge">Placeholder</span>
+            <blockquote>“Cozy nautical rooms and an easy base for walking the beach in Apšuciems.”</blockquote>
+            <cite>— Sample guest review (placeholder)</cite>
+          </article>
+        </div>
+        <p class="trust-note">Replace with real guest reviews or Booking.com / Google ratings when available.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://villaanna.lv/user/themes/hotel/images/logo/logo.png" alt="Villa Anna" width="120" height="48">
+          <p>Villa Anna — Place to return. A small, cozy hotel by the sea in Apšuciems.</p>
+          <p>mail@villaanna.lv</p>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <a href="https://maps.google.com/?q=Ap%C5%A1uciems+Engures+pagasts" rel="noopener">Apšuciems, Tukuma novads, Engures pagasts</a>
+          <a href="tel:+37126122679">Hotel: +371 26122679</a>
+          <a href="tel:+37129385567">Restaurant: +371 29385567</a>
+          <a href="mailto:mail@villaanna.lv">mail@villaanna.lv</a>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <a href="#rooms">Rooms</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#booking">Booking</a>
+          <a href="https://villaanna.lv/en" rel="noopener">Official website</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Villa Anna · Prototype homepage (demo)</span>
+        <a href="#hero">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.querySelector('.site-header');
+      const menuToggle = document.getElementById('menuToggle');
+      const navMobile = document.getElementById('navMobile');
+      const navClose = document.getElementById('navClose');
+      const guestTrigger = document.getElementById('guestTrigger');
+      const guestPanel = document.getElementById('guestPanel');
+      const adultsCount = document.getElementById('adultsCount');
+      const childrenCount = document.getElementById('childrenCount');
+      const bookingForm = document.getElementById('bookingForm');
+
+      let adults = 2;
+      let children = 0;
+
+      function updateGuestLabel() {
+        guestTrigger.textContent = adults + ' adult' + (adults === 1 ? '' : 's') + ' · ' + children + ' child' + (children === 1 ? '' : 'ren');
+      }
+
+      function setCount(el, value) {
+        el.textContent = String(value);
+      }
+
+      function openMobile(open) {
+        if (open) {
+          navMobile.hidden = false;
+          requestAnimationFrame(() => navMobile.classList.add('open'));
+          menuToggle.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        } else {
+          navMobile.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+          setTimeout(() => { navMobile.hidden = true; }, 280);
+        }
+      }
+
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+      }, { passive: true });
+
+      menuToggle.addEventListener('click', () => {
+        openMobile(!navMobile.classList.contains('open'));
+      });
+      navClose.addEventListener('click', () => openMobile(false));
+
+      navMobile.querySelectorAll('a').forEach((a) => {
+        a.addEventListener('click', () => openMobile(false));
+      });
+
+      guestTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = !guestPanel.classList.contains('open');
+        guestPanel.classList.toggle('open', open);
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', () => {
+        adults = Math.min(8, adults + 1);
+        setCount(adultsCount, adults);
+        updateGuestLabel();
+      });
+      document.getElementById('adultsMinus').addEventListener('click', () => {
+        adults = Math.max(1, adults - 1);
+        setCount(adultsCount, adults);
+        updateGuestLabel();
+      });
+      document.getElementById('childrenPlus').addEventListener('click', () => {
+        children = Math.min(6, children + 1);
+        setCount(childrenCount, children);
+        updateGuestLabel();
+      });
+      document.getElementById('childrenMinus').addEventListener('click', () => {
+        children = Math.max(0, children - 1);
+        setCount(childrenCount, children);
+        updateGuestLabel();
+      });
+
+      const today = new Date();
+      const iso = (d) => d.toISOString().slice(0, 10);
+      const in2 = new Date(today); in2.setDate(today.getDate() + 2);
+      const in5 = new Date(today); in5.setDate(today.getDate() + 5);
+      document.getElementById('checkin').value = iso(in2);
+      document.getElementById('checkout').value = iso(in5);
+      document.getElementById('checkin').min = iso(today);
+      document.getElementById('checkout').min = iso(in2);
+
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('searchBtn');
+        const prev = btn.textContent;
+        btn.textContent = 'Checking…';
+        setTimeout(() => {
+          btn.textContent = 'UI only — see villaanna.lv';
+          setTimeout(() => { btn.textContent = prev; }, 2200);
+        }, 600);
+      });
+    })();
+  </script>
+</body>
+</html>
