@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Viesnīca Kandava — Experience comfort and hospitality in the heart of Kandava, Latvia. Hotel and cafe since 1890.">
+  <title>Viesnīca Kandava — Hotel &amp; Cafe in Historic Kandava</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a140f;
+      --ink-soft: #3d3229;
+      --muted: #6b5e52;
+      --taupe: #5c4636;
+      --taupe-deep: #3f2f24;
+      --cream: #f3ebe0;
+      --cream-soft: #faf6f0;
+      --sand: #e8dccb;
+      --amber: #b45309;
+      --amber-bright: #d97706;
+      --amber-hover: #92400e;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(26, 20, 15, 0.12);
+      --radius: 10px;
+      --transition: 0.28s ease;
+      --header-pad: clamp(32px, 4.5vw, 48px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Karla', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--cream-soft);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1120px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    .section {
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 4vw, 2.65rem);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 540px;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .section-header {
+      margin-bottom: 2.75rem;
+    }
+
+    .section-header.centered {
+      text-align: center;
+    }
+
+    .section-header.centered .section-lead {
+      margin-inline: auto;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.9rem 0;
+      background: rgba(250, 246, 240, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(250, 246, 240, 0.97);
+      box-shadow: 0 4px 24px rgba(26, 20, 15, 0.08);
+      border-bottom-color: rgba(92, 70, 54, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 10px rgba(26, 20, 15, 0.15);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--taupe-deep);
+      line-height: 1.1;
+    }
+
+    .brand-sub {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--amber); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.35rem;
+      background: var(--amber-bright);
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .header-cta:hover {
+      background: var(--amber-hover);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 20, 15, 0.97);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: var(--cream);
+      font-family: 'Fraunces', serif;
+      font-size: 1.65rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: var(--header-pad);
+      background: none;
+      border: none;
+      color: var(--cream);
+      cursor: pointer;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url("https://www.hotelkandava.lv/lovable-uploads/images/285253205_131734876172812_9018238262355775392_n%20(2).jpg")
+        center / cover no-repeat;
+      transform: scale(1.04);
+      animation: heroDrift 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.04) translate(0, 0); }
+      to { transform: scale(1.1) translate(-1.5%, -1%); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(26, 20, 15, 0.25) 0%,
+        rgba(26, 20, 15, 0.35) 40%,
+        rgba(26, 20, 15, 0.78) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 0 0 clamp(3.5rem, 8vw, 5.5rem);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.6rem, 7vw, 4.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+      color: var(--white);
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 300;
+      max-width: 34rem;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+      line-height: 1.5;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--amber-bright);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--amber-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      margin-left: 0.75rem;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0; }
+
+    /* —— Booking —— */
+    .booking-section {
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 5;
+      padding-bottom: 1rem;
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.2fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.35rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(92, 70, 54, 0.08);
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--sand);
+      border-radius: 6px;
+      background: var(--cream-soft);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      border-color: var(--amber-bright);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 20;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--sand);
+      background: var(--cream-soft);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      height: 46px;
+      padding-inline: 1.6rem;
+      white-space: nowrap;
+    }
+
+    /* —— Rooms —— */
+    .rooms { background: var(--cream); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(92, 70, 54, 0.07);
+      box-shadow: 0 4px 20px rgba(26, 20, 15, 0.05);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card-media {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--sand);
+    }
+
+    .room-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .room-card:hover .room-card-media img { transform: scale(1.05); }
+
+    .room-card-body {
+      padding: 1.35rem 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.55rem;
+    }
+
+    .room-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .room-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .room-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    .room-features span {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.55rem;
+      background: var(--cream);
+      border-radius: 4px;
+      color: var(--ink-soft);
+    }
+
+    .room-price {
+      margin-top: auto;
+      padding-top: 1rem;
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--taupe-deep);
+    }
+
+    .room-price span {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    /* —— Amenities —— */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+    }
+
+    .amenity-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: linear-gradient(165deg, var(--white) 0%, var(--cream) 100%);
+      border-radius: var(--radius);
+      border: 1px solid rgba(92, 70, 54, 0.06);
+      transition: transform var(--transition);
+    }
+
+    .amenity-item:hover { transform: translateY(-3px); }
+
+    .amenity-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 0.85rem;
+      color: var(--amber);
+    }
+
+    .amenity-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .amenity-item span {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+
+    .amenity-note {
+      margin-top: 1.75rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* —— Gallery —— */
+    .gallery { background: var(--taupe-deep); color: var(--cream); }
+
+    .gallery .section-eyebrow { color: #fbbf24; }
+    .gallery .section-title { color: var(--cream-soft); }
+    .gallery .section-lead { color: rgba(243, 235, 224, 0.75); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      background: linear-gradient(transparent, rgba(26, 20, 15, 0.75));
+      color: var(--cream);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .gallery-item:hover figcaption { opacity: 1; }
+
+    /* —— Location —— */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .location-text p {
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .location-details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .location-details li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .location-details strong {
+      color: var(--amber);
+      min-width: 5.5rem;
+      font-weight: 600;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(145deg, var(--sand) 0%, #d4c4ae 100%);
+      border-radius: var(--radius);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--taupe);
+      border: 1px dashed rgba(92, 70, 54, 0.25);
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+
+    .missing-note {
+      margin-top: 1.5rem;
+      padding: 0.85rem 1rem;
+      background: rgba(180, 83, 9, 0.08);
+      border-left: 3px solid var(--amber);
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* —— Trust —— */
+    .trust { background: var(--cream); }
+
+    .placeholder-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      background: rgba(217, 119, 6, 0.12);
+      padding: 0.3rem 0.65rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .testimonial {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(92, 70, 54, 0.07);
+    }
+
+    .testimonial p {
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin-bottom: 1rem;
+      line-height: 1.55;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--taupe);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(243, 235, 224, 0.85);
+      padding: 3.5rem 0 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .brand-name {
+      color: var(--cream-soft);
+      font-size: 1.35rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.92rem;
+      opacity: 0.75;
+      max-width: 320px;
+      font-weight: 300;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fbbf24;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .footer-nav ul { list-style: none; }
+
+    .footer-nav a {
+      display: block;
+      padding: 0.3rem 0;
+      font-size: 0.95rem;
+      opacity: 0.8;
+      transition: opacity var(--transition);
+    }
+
+    .footer-nav a:hover { opacity: 1; }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-contact a:hover { color: #fbbf24; opacity: 1; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(243, 235, 224, 0.12);
+      padding-top: 1.25rem;
+      font-size: 0.8rem;
+      opacity: 0.55;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* —— Reveal motion —— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+      .header-cta { display: none; }
+
+      .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 200px 200px;
+      }
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .location-grid { grid-template-columns: 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brand-sub { display: none; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-item,
+      .gallery-item:first-child {
+        grid-column: span 1;
+        height: 220px;
+      }
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .btn-ghost { margin-left: 0; }
+      .hero { min-height: 78vh; }
+      .room-card-media { aspect-ratio: 16 / 11; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand">
+        <img src="https://www.hotelkandava.lv/logo.png" width="48" height="48" alt="Viesnīca Kandava logo">
+        <span class="brand-text">
+          <span class="brand-name">Viesnīca Kandava</span>
+          <span class="brand-sub">Hotel · Cafe · anno 1890</span>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+  </nav>
+
+  <!-- 1. Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" role="img" aria-label="Terrace overlooking the courtyard at Viesnīca Kandava"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="hero-meta">Kandava · Latvia · Since 1890</p>
+      <h1 class="hero-brand">Viesnīca Kandava</h1>
+      <p class="hero-tagline">Experience comfort and hospitality in the heart of Kandava</p>
+      <div class="hero-ctas">
+        <a href="#booking" class="btn btn-primary">Check availability</a>
+        <a href="#rooms" class="btn btn-ghost">Explore rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Booking widget -->
+  <section class="booking-section section" id="booking" style="padding-top:0;padding-bottom:2rem;">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm" action="#" method="get">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label id="guestsLabel">Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-labelledby="guestsLabel">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestPanel">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 3. Accommodation -->
+  <section class="rooms section" id="rooms">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <p class="section-eyebrow">Stay with us</p>
+        <h2 class="section-title">Our rooms</h2>
+        <p class="section-lead">Comfortable accommodations for every traveler — private bathrooms, city or courtyard views, from €45 per night.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hotelkandava.lv/lovable-uploads/images/662562698.jpg" alt="Double Room with sofa and private bathroom" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Double Room (1 bed &amp; sofa)</h3>
+            <p class="room-meta">Up to 3 guests · 24 m² · City view</p>
+            <div class="room-features">
+              <span>Private bathroom</span>
+              <span>Flat-screen TV</span>
+              <span>Free Wi-Fi</span>
+            </div>
+            <p class="room-price">From €70 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hotelkandava.lv/lovable-uploads/images/663100348.jpg" alt="Quadruple Room with private bathroom" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Quadruple Room</h3>
+            <p class="room-meta">Up to 4 guests · 40 m² · Courtyard view</p>
+            <div class="room-features">
+              <span>Private bathroom</span>
+              <span>Flat-screen TV</span>
+              <span>Free Wi-Fi</span>
+            </div>
+            <p class="room-price">From €70 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hotelkandava.lv/lovable-uploads/images/663100529.jpg" alt="Double Room with balcony" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Double Room with Balcony</h3>
+            <p class="room-meta">Up to 2 guests · 15 m² · City view</p>
+            <div class="room-features">
+              <span>Balcony</span>
+              <span>Private bathroom</span>
+              <span>Flat-screen TV</span>
+            </div>
+            <p class="room-price">From €55 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hotelkandava.lv/lovable-uploads/images/663099965.jpg" alt="Double Room with private bathroom" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Double Room</h3>
+            <p class="room-meta">Up to 2 guests · 14 m² · Courtyard view</p>
+            <div class="room-features">
+              <span>Private bathroom</span>
+              <span>Flat-screen TV</span>
+              <span>Free Wi-Fi</span>
+            </div>
+            <p class="room-price">From €50 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hotelkandava.lv/lovable-uploads/images/663099913.jpg" alt="Twin Room with private bathroom" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Twin Room</h3>
+            <p class="room-meta">Up to 2 guests · 14 m² · City view</p>
+            <div class="room-features">
+              <span>Private bathroom</span>
+              <span>Flat-screen TV</span>
+              <span>Free Wi-Fi</span>
+            </div>
+            <p class="room-price">From €50 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hotelkandava.lv/lovable-uploads/images/663102216.jpg" alt="Single Room with private bathroom" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Single Room</h3>
+            <p class="room-meta">1 guest · 12 m² · Courtyard view</p>
+            <div class="room-features">
+              <span>Private bathroom</span>
+              <span>Heating</span>
+              <span>Free Wi-Fi</span>
+            </div>
+            <p class="room-price">From €45 <span>/ night</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Amenities -->
+  <section class="section" id="amenities">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <p class="section-eyebrow">Hotel comforts</p>
+        <h2 class="section-title">Amenities</h2>
+        <p class="section-lead">Facilities listed on the Viesnīca Kandava website — practical comforts for a restful stay.</p>
+      </div>
+      <div class="amenities-grid reveal">
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12.5c2.5-4 5-6 7-6s4.5 2 7 6"/><path d="M8.5 14.5a3.5 3.5 0 0 0 7 0"/><circle cx="12" cy="14.5" r="1.2"/></svg>
+          </div>
+          <span>Free Wi-Fi</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="10" width="18" height="8" rx="1.5"/><path d="M5 10V8a2 2 0 0 1 2-2h4l2 2h4a2 2 0 0 1 2 2v2"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
+          </div>
+          <span>Parking</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16"/><path d="M6 19V9l6-4 6 4v10"/><path d="M10 19v-5h4v5"/></svg>
+          </div>
+          <span>Restaurant</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14h16v5H4z"/><path d="M6 14V9a6 6 0 0 1 12 0v5"/><path d="M9 9h6"/></svg>
+          </div>
+          <span>Terrace</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6"/><path d="M3 12h18v2a6 6 0 0 1-6 6h-6a6 6 0 0 1-6-6v-2z"/><path d="M9 16h6"/></svg>
+          </div>
+          <span>Private bathroom</span>
+        </div>
+      </div>
+      <p class="amenity-note">Restaurant open daily 10:00–20:00, Fri–Sat until 21:00. Sauna, kitchen, grill, banquet facilities, and pet policy are not listed on the source site.</p>
+    </div>
+  </section>
+
+  <!-- 5. Gallery -->
+  <section class="gallery section" id="gallery">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <p class="section-eyebrow">A closer look</p>
+        <h2 class="section-title">Photo gallery</h2>
+        <p class="section-lead">Real photos from the Viesnīca Kandava website — terrace, cafe, restaurant, and guest rooms.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <figure class="gallery-item">
+          <img src="https://www.hotelkandava.lv/lovable-uploads/images/285253205_131734876172812_9018238262355775392_n%20(2).jpg" alt="Sunny terrace with courtyard view" loading="lazy">
+          <figcaption>Terrace &amp; courtyard</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://www.hotelkandava.lv/lovable-uploads/c595f550-7634-4f25-bcfd-f70b07702255.png" alt="Hotel cafe and bar interior" loading="lazy">
+          <figcaption>Cafe &amp; bar</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://www.hotelkandava.lv/lovable-uploads/9b6752cc-f06c-4795-9e6c-3b15a38b8b6a.png" alt="Hotel restaurant dining room" loading="lazy">
+          <figcaption>Restaurant</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://www.hotelkandava.lv/lovable-uploads/images/662562698.jpg" alt="Double room interior" loading="lazy">
+          <figcaption>Double room</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://www.hotelkandava.lv/lovable-uploads/images/483298900%20(2).jpg" alt="Guest room detail" loading="lazy">
+          <figcaption>Room detail</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Location -->
+  <section class="section" id="location">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Location</h2>
+      </div>
+      <div class="location-grid reveal">
+        <div class="location-text">
+          <p>Nestled in the heart of historic Kandava, Viesnīca Kandava combines traditional Latvian charm with modern comfort in a beautifully restored building. The hotel sits in the very center of town, close to stores, cafés, and places of interest.</p>
+          <ul class="location-details">
+            <li><strong>Address</strong> Sabiles iela 3, Kandava, LV-3120, Latvia</li>
+            <li><strong>Setting</strong> Historic center of Kandava</li>
+            <li><strong>Reception</strong> Mon–Thu &amp; Sun 10:00–20:00 · Fri–Sat 10:00–21:00</li>
+          </ul>
+          <p class="missing-note">Abava River Valley / Abava Nature Park are not mentioned on the source website; this prototype only lists landmarks and setting claims found on hotelkandava.lv.</p>
+        </div>
+        <div class="map-placeholder" aria-label="Static map placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="margin-top:0.5rem;font-size:0.85rem;">Sabiles iela 3, Kandava, LV-3120</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Trust -->
+  <section class="trust section" id="trust">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <p class="section-eyebrow">Guest voices</p>
+        <h2 class="section-title">What guests say</h2>
+        <span class="placeholder-badge">Placeholder testimonials — no rating badge found on source site</span>
+      </div>
+      <div class="testimonials reveal">
+        <blockquote class="testimonial">
+          <p>“A warm welcome in the centre of Kandava — the cafe atmosphere made our evening feel special after a day exploring town.”</p>
+          <cite>— Sample guest · Placeholder</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>“Comfortable room with a private bathroom and a quiet courtyard view. Ideal base for a short Latvian getaway.”</p>
+          <cite>— Sample guest · Placeholder</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>“The terrace was lovely in the morning sun. Friendly hospitality and a proper hotel restaurant on site.”</p>
+          <cite>— Sample guest · Placeholder</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">Viesnīca Kandava</div>
+          <p style="margin-top:0.35rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;">Viesnīca · Kafejnīca · anno 1890</p>
+          <p style="margin-top:0.85rem;">Experience comfort and hospitality in the heart of Kandava. Rooms from €45 per night.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Book</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Sabiles iela 3<br>Kandava, LV-3120<br>Latvia</p>
+          <a href="tel:+37126406733">(+371) 26406733</a>
+          <a href="mailto:hotelkandava@gmail.com">hotelkandava@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Viesnīca Kandava · Prototype homepage</p>
+        <p>Source: hotelkandava.lv</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById('header');
+      var menuToggle = document.getElementById('menuToggle');
+      var mobileNav = document.getElementById('mobileNav');
+      var navClose = document.getElementById('navClose');
+      var guestTrigger = document.getElementById('guestTrigger');
+      var guestPanel = document.getElementById('guestPanel');
+      var adults = 2;
+      var children = 0;
+
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      menuToggle.addEventListener('click', function () {
+        mobileNav.classList.add('open');
+      });
+      navClose.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+      });
+      mobileNav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          mobileNav.classList.remove('open');
+        });
+      });
+
+      var checkin = document.getElementById('checkin');
+      var checkout = document.getElementById('checkout');
+      var today = new Date();
+      var tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      var dayAfter = new Date(today);
+      dayAfter.setDate(today.getDate() + 3);
+      function fmt(d) { return d.toISOString().split('T')[0]; }
+      checkin.min = fmt(today);
+      checkout.min = fmt(tomorrow);
+      checkin.value = fmt(tomorrow);
+      checkout.value = fmt(dayAfter);
+      checkin.addEventListener('change', function () {
+        var ci = new Date(checkin.value);
+        var minCo = new Date(ci);
+        minCo.setDate(ci.getDate() + 1);
+        checkout.min = fmt(minCo);
+        if (new Date(checkout.value) <= ci) checkout.value = fmt(minCo);
+      });
+
+      function updateGuests() {
+        var text = adults + ' adult' + (adults !== 1 ? 's' : '');
+        if (children > 0) text += ', ' + children + ' child' + (children !== 1 ? 'ren' : '');
+        document.getElementById('guestSummary').textContent = text;
+        document.getElementById('adultsCount').textContent = adults;
+        document.getElementById('childrenCount').textContent = children;
+        document.getElementById('adultsMinus').disabled = adults <= 1;
+        document.getElementById('adultsPlus').disabled = adults >= 10;
+        document.getElementById('childrenMinus').disabled = children <= 0;
+        document.getElementById('childrenPlus').disabled = children >= 8;
+      }
+
+      guestTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = guestPanel.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger && !guestTrigger.contains(e.target)) {
+          guestPanel.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', function () {
+        if (adults < 10) { adults++; updateGuests(); }
+      });
+      document.getElementById('adultsMinus').addEventListener('click', function () {
+        if (adults > 1) { adults--; updateGuests(); }
+      });
+      document.getElementById('childrenPlus').addEventListener('click', function () {
+        if (children < 8) { children++; updateGuests(); }
+      });
+      document.getElementById('childrenMinus').addEventListener('click', function () {
+        if (children > 0) { children--; updateGuests(); }
+      });
+      updateGuests();
+
+      document.getElementById('bookingForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        guestPanel.classList.remove('open');
+        guestTrigger.setAttribute('aria-expanded', 'false');
+        alert('Booking search is UI-only in this prototype.\n\n' +
+          checkin.value + ' → ' + checkout.value + '\n' +
+          document.getElementById('guestSummary').textContent);
+      });
+
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+</html>
