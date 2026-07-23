@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoffmanův dvůr — Svatební stodola v Praze</title>
+  <meta name="description" content="Jedinečné místo na svatbu přímo v Praze. Stodola, restaurace, dvůr a zahrada ve Vinoři — Praha 9.">
+  <!--
+    SOURCE NOTES (https://www.hoffmanuv-dvur.cz — fetched for this prototype)
+    Venue: Hoffmanův dvůr
+    Tagline (hero H1): Jedinečné místo na svatbu přímo v Praze
+    Schema line: Jedinečné místo pro Vaši svatbu na okraji Prahy.
+    Logo: /assets/images/logo_new.png
+    Brand colors from live CSS: header/btn #343b2f–#343b30, beige #e1d8c4, gold #daa520, font Exo
+    Location: Vinořské nám. 34, 190 17 Praha 9 – Vinoř (schema also lists Vinařské náměstí 34)
+    Spaces labeled on site: Restaurace – hlavní budova; Stodola; Sklípek; Dvůr se zahradou; Velká zahrada
+    Services labeled: Catering; Výzdoba; Koordinace (+ ozvučení, DJ/živá hudba, dekorace on request)
+    Stats on O nás: 20 min od centra Prahy; kapacita 1500; 40 parkovacích míst; 4 500 m² zahrady
+    Pricing/packages: NOT shown on site → inquiry placeholder only
+    Accommodation: NOT mentioned → omitted
+    Dedicated AV/conference gear list: NOT shown (restaurant described for prezentace/školení; ozvučení can be arranged)
+    Positioning: mid-to-premium rustic boutique (tone: prvotřídní služby, curated photography, private closed grounds)
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Libre+Bodoni:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --olive: #343b2f;
+      --olive-deep: #252a21;
+      --olive-soft: #4a5343;
+      --beige: #e1d8c4;
+      --beige-deep: #d4c9b0;
+      --gold: #daa520;
+      --gold-soft: #e8c45a;
+      --ink: #2a2e28;
+      --muted: #5c6358;
+      --paper: #f4f1ea;
+      --paper-warm: #ebe6da;
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(36, 42, 32, 0.18);
+      --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Exo 2", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, rgba(218, 165, 32, 0.12), transparent 55%),
+        radial-gradient(ellipse 70% 45% at 100% 0%, rgba(52, 59, 47, 0.08), transparent 50%),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 45%, #e7e2d6 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .container { width: min(1120px, 90vw); margin-inline: auto; }
+
+    /* —— Header —— */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: background var(--transition), backdrop-filter var(--transition), padding var(--transition);
+    }
+    .site-header.scrolled {
+      background: rgba(36, 42, 32, 0.94);
+      backdrop-filter: blur(14px);
+      padding: 0.7rem 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: var(--white);
+    }
+    .logo img {
+      height: 34px;
+      width: auto;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+    }
+    .logo-fallback {
+      font-family: "Libre Bodoni", serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-desktop a {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .nav-desktop a:hover { color: var(--gold-soft); }
+    .header-cta {
+      color: var(--olive-deep);
+      background: var(--beige);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.15rem;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .header-cta:hover { background: var(--white); transform: translateY(-1px); }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(37, 42, 33, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      color: var(--white);
+      font-size: 1.1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+    .nav-close svg { width: 28px; height: 28px; }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 45%;
+      transform: scale(1.06);
+      animation: heroDrift 22s ease-in-out infinite alternate;
+    }
+    @keyframes heroDrift {
+      from { transform: scale(1.06) translate3d(0, 0, 0); }
+      to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+    }
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(37,42,33,0.45) 0%, rgba(37,42,33,0.25) 35%, rgba(37,42,33,0.78) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1120px, 90vw);
+      margin: 0 auto;
+      padding: 0 0 4.5rem;
+      animation: riseIn 1.1s var(--transition) both;
+    }
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-brand {
+      font-family: "Libre Bodoni", serif;
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+      margin-bottom: 0.85rem;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+    .hero-brand span {
+      display: block;
+      font-size: 0.28em;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-family: "Exo 2", sans-serif;
+      font-weight: 500;
+      opacity: 0.85;
+      margin-bottom: 0.65rem;
+      color: var(--gold-soft);
+    }
+    .hero h1 {
+      font-family: "Exo 2", sans-serif;
+      font-weight: 500;
+      font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      max-width: 22ch;
+      margin-bottom: 0.9rem;
+      line-height: 1.35;
+    }
+    .hero-lead {
+      max-width: 38ch;
+      font-weight: 300;
+      font-size: 1.05rem;
+      opacity: 0.92;
+      margin-bottom: 1.75rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.45rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--beige);
+      color: var(--olive-deep);
+    }
+    .btn-primary:hover { background: var(--white); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.55);
+    }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* —— Shared sections —— */
+    section { padding: 5.5rem 0; }
+    .section-head {
+      max-width: 40rem;
+      margin-bottom: 2.75rem;
+    }
+    .section-head.center {
+      text-align: center;
+      margin-inline: auto;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--olive-soft);
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: "Libre Bodoni", serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--olive);
+      margin-bottom: 0.85rem;
+    }
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Intro —— */
+    .intro {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .intro-copy p + p { margin-top: 1rem; }
+    .intro-copy p { color: var(--muted); font-weight: 300; font-size: 1.05rem; }
+    .intro-copy strong { color: var(--olive); font-weight: 600; }
+    .intro-figure {
+      position: relative;
+      min-height: 420px;
+    }
+    .intro-figure img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      filter: saturate(0.95);
+    }
+    .intro-figure::after {
+      content: "";
+      position: absolute;
+      inset: auto -1.25rem -1.25rem auto;
+      width: 55%;
+      height: 55%;
+      border: 1px solid rgba(52, 59, 47, 0.28);
+      z-index: -1;
+    }
+
+    /* —— Facts —— */
+    .facts {
+      background:
+        linear-gradient(135deg, rgba(52,59,47,0.96), rgba(37,42,33,0.98)),
+        var(--olive);
+      color: var(--white);
+      padding: 3.25rem 0;
+    }
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .fact strong {
+      display: block;
+      font-family: "Libre Bodoni", serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 600;
+      color: var(--gold-soft);
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+    .fact span {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    /* —— Spaces —— */
+    .spaces { background: transparent; }
+    .space-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(52,59,47,0.15);
+    }
+    .space-row {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid rgba(52,59,47,0.15);
+    }
+    .space-row:nth-child(even) .space-visual { order: 2; }
+    .space-visual {
+      overflow: hidden;
+      min-height: 280px;
+    }
+    .space-visual img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 1.2s var(--transition);
+    }
+    .space-row:hover .space-visual img { transform: scale(1.04); }
+    .space-meta .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .space-meta h3 {
+      font-family: "Libre Bodoni", serif;
+      font-size: 1.75rem;
+      color: var(--olive);
+      margin-bottom: 0.75rem;
+    }
+    .space-meta p {
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    .space-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--olive);
+      font-weight: 500;
+    }
+    .space-specs span::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-right: 0.45rem;
+      vertical-align: middle;
+    }
+
+    /* —— Events —— */
+    .events {
+      background:
+        linear-gradient(180deg, rgba(225,216,196,0.55), rgba(225,216,196,0.2));
+    }
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .event-item {
+      padding: 1.5rem 0 0;
+      border-top: 2px solid var(--olive);
+    }
+    .event-item h3 {
+      font-family: "Libre Bodoni", serif;
+      font-size: 1.35rem;
+      color: var(--olive);
+      margin-bottom: 0.55rem;
+    }
+    .event-item p {
+      color: var(--muted);
+      font-weight: 300;
+      font-size: 0.98rem;
+    }
+
+    /* —— Services —— */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .service-stack {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .service-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(52,59,47,0.12);
+    }
+    .service-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .service-num {
+      font-family: "Libre Bodoni", serif;
+      color: var(--gold);
+      font-size: 1.25rem;
+      min-width: 2rem;
+    }
+    .service-item h3 {
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 0.35rem;
+    }
+    .service-item p {
+      color: var(--muted);
+      font-weight: 300;
+      font-size: 0.98rem;
+    }
+    .amenity-aside {
+      background: var(--olive);
+      color: var(--white);
+      padding: 2.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .amenity-aside::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -60px;
+      bottom: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(218,165,32,0.28), transparent 70%);
+    }
+    .amenity-aside h3 {
+      font-family: "Libre Bodoni", serif;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .amenity-aside ul {
+      list-style: none;
+      position: relative;
+      display: grid;
+      gap: 0.7rem;
+    }
+    .amenity-aside li {
+      font-weight: 300;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .amenity-aside li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--gold-soft);
+    }
+    .amenity-note {
+      margin-top: 1.5rem;
+      font-size: 0.88rem;
+      opacity: 0.8;
+      font-weight: 300;
+      position: relative;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      padding-top: 1rem;
+    }
+
+    /* —— Gallery —— */
+    .gallery-mosaic {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.75rem;
+    }
+    .gallery-mosaic a {
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-mosaic a:first-child {
+      grid-row: 1 / span 2;
+    }
+    .gallery-mosaic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s var(--transition);
+    }
+    .gallery-mosaic a:hover img { transform: scale(1.05); }
+    .gallery-caption {
+      margin-top: 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    /* —— Pricing note —— */
+    .pricing-note {
+      text-align: center;
+      padding: 3rem 0 0;
+    }
+    .pricing-box {
+      display: inline-block;
+      max-width: 36rem;
+      padding: 1.75rem 2rem;
+      border: 1px solid rgba(52,59,47,0.2);
+      background: rgba(255,255,255,0.45);
+    }
+    .pricing-box h3 {
+      font-family: "Libre Bodoni", serif;
+      color: var(--olive);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-box p {
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* —— Reviews —— */
+    .reviews { background: var(--olive-deep); color: var(--white); }
+    .reviews h2 { color: var(--beige); }
+    .reviews .section-head p { color: rgba(255,255,255,0.7); }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    .review {
+      border-top: 1px solid rgba(225,216,196,0.35);
+      padding-top: 1.25rem;
+    }
+    .review p {
+      font-weight: 300;
+      font-size: 0.98rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+    .review cite {
+      font-style: normal;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    /* —— Contact —— */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-details {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .contact-details dt {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--olive-soft);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .contact-details dd {
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .contact-details a:hover { color: var(--olive); }
+    .inquiry {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(52,59,47,0.14);
+      padding: 1.75rem;
+    }
+    .inquiry h3 {
+      font-family: "Libre Bodoni", serif;
+      font-size: 1.45rem;
+      color: var(--olive);
+      margin-bottom: 0.35rem;
+    }
+    .inquiry > p {
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+    .form-row.full { grid-template-columns: 1fr; }
+    .inquiry label {
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--olive-soft);
+      font-weight: 600;
+    }
+    .inquiry input,
+    .inquiry select,
+    .inquiry textarea {
+      width: 100%;
+      border: 1px solid rgba(52,59,47,0.22);
+      background: var(--white);
+      padding: 0.75rem 0.85rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .inquiry input:focus,
+    .inquiry select:focus,
+    .inquiry textarea:focus {
+      border-color: var(--olive);
+    }
+    .inquiry textarea { min-height: 110px; resize: vertical; }
+    .form-status {
+      display: none;
+      margin-top: 0.85rem;
+      font-size: 0.92rem;
+      color: var(--olive);
+    }
+    .form-status.show { display: block; }
+
+    /* —— Footer —— */
+    footer {
+      background: var(--olive-deep);
+      color: rgba(255,255,255,0.78);
+      padding: 2.5rem 0 2rem;
+      font-size: 0.9rem;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      align-items: end;
+    }
+    .footer-brand {
+      font-family: "Libre Bodoni", serif;
+      color: var(--beige);
+      font-size: 1.35rem;
+      margin-bottom: 0.35rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a:hover { color: var(--gold-soft); }
+    .footer-meta {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.8rem;
+      opacity: 0.75;
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .intro,
+      .space-row,
+      .space-row:nth-child(even) .space-visual,
+      .services-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .space-row:nth-child(even) .space-visual { order: 0; }
+      .facts-grid,
+      .event-grid,
+      .review-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gallery-mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 180px 180px;
+      }
+      .gallery-mosaic a:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 240px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
+      .hero-content { padding-bottom: 3.25rem; }
+      .facts-grid,
+      .event-grid,
+      .review-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .gallery-mosaic {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-mosaic a,
+      .gallery-mosaic a:first-child {
+        min-height: 220px;
+      }
+      .intro-figure,
+      .intro-figure img { min-height: 280px; }
+      .space-visual img { height: 240px; }
+      section { padding: 4rem 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media img { animation: none; transform: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Hoffmanův dvůr">
+        <img src="https://www.hoffmanuv-dvur.cz/assets/images/logo_new.png" alt="Hoffmanův dvůr" width="270" height="40">
+      </a>
+      <nav aria-label="Hlavní navigace">
+        <ul class="nav-desktop">
+          <li><a href="#prostory">Prostory</a></li>
+          <li><a href="#sluzby">Služby</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#reference">Reference</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a class="header-cta" href="#kontakt">Poptat pronájem</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Otevřít menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <button class="nav-close" id="navClose" aria-label="Zavřít menu" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <a href="#prostory">Prostory</a>
+    <a href="#akce">Akce</a>
+    <a href="#sluzby">Služby</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#reference">Reference</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Úvod">
+      <div class="hero-media">
+        <img
+          src="https://www.hoffmanuv-dvur.cz/assets/images/upload/homepage-2000-500.jpg"
+          alt="Exteriér Hoffmanova dvora se zahradou ve Vinoři"
+          width="2000"
+          height="500"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-brand"><span>Praha · Vinoř</span>Hoffmanův dvůr</p>
+        <h1>Jedinečné místo na svatbu přímo v Praze</h1>
+        <p class="hero-lead">Jedinečné místo pro Vaši svatbu na okraji Prahy — stodola, restaurace a zahrada s osobním přístupem.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#kontakt">Poptejte nás</a>
+          <a class="btn btn-ghost" href="#prostory">Prohlédnout prostory</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="objevte">
+      <div class="container intro reveal">
+        <div class="intro-copy">
+          <p class="eyebrow">Objevte kouzlo Hoffmanova dvora</p>
+          <h2>Elegance a přirozená krása v uzavřeném areálu</h2>
+          <p>
+            Prostory nabízejí jedinečnou kombinaci elegance a přirozené krásy — ať už plánujete intimní obřad
+            v kruhu nejbližších, nebo velkolepou oslavu s desítkami hostů.
+            <strong>Stodola</strong> se svým rustikálním kouzlem je ideálním místem pro romantický obřad nebo slavnostní hostinu.
+            Přilehlá <strong>restaurace</strong> s vkusným interiérem poskytuje útulné prostředí pro kulinářské zážitky.
+          </p>
+          <p>
+            <strong>Okouzlující zahrada</strong> nabízí klidné útočiště pod širým nebem.
+            <strong>Útulný dvůr</strong> je ideálním místem pro posezení s hosty a oslavu pod hvězdami.
+            Areál leží v klidné pražské městské části Vinoř, na samém okraji města.
+          </p>
+        </div>
+        <div class="intro-figure">
+          <img
+            src="https://www.hoffmanuv-dvur.cz/assets/images/gallery/optim/photo-0013.jpg"
+            alt="Velká zahrada a budova Hoffmanova dvora"
+            width="1200"
+            height="800"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="facts" aria-label="Základní údaje">
+      <div class="container facts-grid reveal">
+        <div class="fact"><strong>20 min</strong><span>od centra Prahy</span></div>
+        <div class="fact"><strong>1 500</strong><span>maximální kapacita</span></div>
+        <div class="fact"><strong>40</strong><span>parkovacích míst</span></div>
+        <div class="fact"><strong>4 500</strong><span>m² zahrady</span></div>
+      </div>
+    </section>
+
+    <section class="spaces" id="prostory">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Části Hoffmanova dvora</p>
+          <h2>Prostory, jak je uvádí místo</h2>
+          <p>Uzavřený areál s bývalou konírnou, stodolou, sklípkem, dvorem a velkou zahradou se stoletým dubem.</p>
+        </div>
+
+        <div class="space-list">
+          <article class="space-row reveal">
+            <div class="space-visual">
+              <img src="https://www.hoffmanuv-dvur.cz/assets/images/restaurace.jpg" alt="Restaurace – hlavní budova" width="720" height="480" loading="lazy">
+            </div>
+            <div class="space-meta">
+              <p class="label">Hlavní budova</p>
+              <h3>Restaurace</h3>
+              <p>Zrekonstruovaný prostor bývalé konírny — samostatně uzavíratelný sál pro hostiny, prezentace či školení, se stylovým barem a zázemím propojeným s kuchyní.</p>
+              <div class="space-specs">
+                <span>až 200 hostů</span>
+                <span>250 m²</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <div class="space-visual">
+              <img src="https://www.hoffmanuv-dvur.cz/assets/images/gallery/optim/photo-0001.jpg" alt="Stodola připravená na svatební hostinu" width="1200" height="800" loading="lazy">
+            </div>
+            <div class="space-meta">
+              <p class="label">Svatební stodola</p>
+              <h3>Stodola</h3>
+              <p>Rustikální zázemí pro letní akce — svatební obřady a hostiny, koncerty, výstavy či semináře. Při dešti slouží i jako náhradní místo pro obřad.</p>
+              <div class="space-specs">
+                <span>až 200 hostů</span>
+                <span>240 m²</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <div class="space-visual">
+              <img src="https://www.hoffmanuv-dvur.cz/assets/images/dvur.jpg" alt="Dvůr se zahradou" width="720" height="480" loading="lazy">
+            </div>
+            <div class="space-meta">
+              <p class="label">Venkovní areál</p>
+              <h3>Dvůr se zahradou</h3>
+              <p>Srdce areálu — vydlážděné cesty a travnaté plochy, obřad na centrálním oválu, večerní osvětlení a prostor pro pódiá či párty stany.</p>
+              <div class="space-specs">
+                <span>až 1 000 hostů</span>
+                <span>4 500 m²</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <div class="space-visual">
+              <img src="https://www.hoffmanuv-dvur.cz/assets/images/gallery/optim/photo-0025.jpg" alt="Velká zahrada se stoletým dubem" width="1200" height="800" loading="lazy">
+            </div>
+            <div class="space-meta">
+              <p class="label">Obřad pod dubem</p>
+              <h3>Velká zahrada</h3>
+              <p>Rozlehlá travnatá plocha, kde se svatební obřady často konají pod majestátním stoletým dubem — i pro doprovodný program a odpočinek.</p>
+              <div class="space-specs">
+                <span>obřady pod širým nebem</span>
+                <span>stoletý dub</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <div class="space-visual">
+              <img src="https://www.hoffmanuv-dvur.cz/assets/images/sklipek.jpg" alt="Sklípek pod stodolou" width="720" height="480" loading="lazy">
+            </div>
+            <div class="space-meta">
+              <p class="label">Pod stodolou</p>
+              <h3>Sklípek</h3>
+              <p>Prostor z původního pískovce a cihel — vhodné místo pro vinné degustace, čajové rituály či klidný doprovodný program.</p>
+              <div class="space-specs">
+                <span>až 40 hostů</span>
+                <span>40 m²</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="events" id="akce">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow">Pronájmy</p>
+          <h2>Svatby, firemní akce i oslavy</h2>
+          <p>Areál lze pronajmout na soukromé i veřejné akce. Pro svatby uvádí místo ideální kapacitu 50–200 osob.</p>
+        </div>
+        <div class="event-grid reveal">
+          <article class="event-item">
+            <h3>Svatby</h3>
+            <p>Víkendový pronájem: den předem od 16:00, svatební den do 2:00, den poté dopoledne na předání.</p>
+          </article>
+          <article class="event-item">
+            <h3>Firemní akce</h3>
+            <p>Firemní večírky, školení a setkání — restaurace jako zázemí pro menší i větší události.</p>
+          </article>
+          <article class="event-item">
+            <h3>Oslavy</h3>
+            <p>Narozeniny, jubilea a soukromé oslavy v kruhu nejbližších s cateringem a servisem.</p>
+          </article>
+          <article class="event-item">
+            <h3>Veřejné akce</h3>
+            <p>Kulturní večery, koncerty a komunitní setkání v uzavřeném historickém areálu.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sluzby">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Služby</p>
+          <h2>Postaráme se o Vás od A do Z</h2>
+          <p>Na webu jsou jako hlavní služby uvedeny catering, výzdoba a koordinace — s možností doplnit program a techniku.</p>
+        </div>
+        <div class="services-grid reveal">
+          <div class="service-stack">
+            <div class="service-item">
+              <span class="service-num">01</span>
+              <div>
+                <h3>Catering</h3>
+                <p>Vynikající jídlo a pečlivý servis; recenze zmiňují i raut a grilování. Profesionální menu pro hosty v restauraci.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="service-num">02</span>
+              <div>
+                <h3>Výzdoba</h3>
+                <p>Dekorace a příprava místa podle domluveného plánu; u svateb uvádí stránka dekorace v ceně a zázemí pro nevěstu.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="service-num">03</span>
+              <div>
+                <h3>Koordinace</h3>
+                <p>Od prvního setkání po den akce — harmonogram, speciální přání a na přání svatební koordinace.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="service-num">04</span>
+              <div>
+                <h3>Program &amp; ozvučení</h3>
+                <p>Na přání živá hudba nebo DJ a ozvučení — jak uvádí stránka Pronájmy.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="amenity-aside">
+            <h3>Co areál nabízí</h3>
+            <ul>
+              <li>Parkoviště — 40 míst</li>
+              <li>Uzavřený soukromý areál</li>
+              <li>Zahrada 4 500 m² se stoletým dubem</li>
+              <li>Vytápěná restaurace v zimě</li>
+              <li>Terasové plynové ohřívače ve stodole</li>
+              <li>Večerní osvětlení dvora</li>
+            </ul>
+            <p class="amenity-note">
+              Ubytování na webu není nabízeno.
+              Veřejný ceník ani balíčky stránky neuvádějí — ceny na poptávku.
+              Samostatný seznam AV / konferenční techniky na webu chybí.
+            </p>
+          </aside>
+        </div>
+
+        <div class="pricing-note reveal">
+          <div class="pricing-box">
+            <h3>Ceny a balíčky</h3>
+            <p>Na zdrojovém webu není zveřejněn ceník ani pevné balíčky. Pro termín a nabídku využijte poptávku níže — stejně jako výzva „Poptejte nás“ / „Poptat pronájem“ na původní stránce.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galerie">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow">Fotogalerie</p>
+          <h2>Atmosféra místa</h2>
+          <p>„Pohled na útulné zákoutí restaurace, stodoly a zahrady pro vaše jedinečné události“</p>
+        </div>
+        <div class="gallery-mosaic reveal">
+          <a href="https://www.hoffmanuv-dvur.cz/fotogalerie" target="_blank" rel="noopener">
+            <img src="https://www.hoffmanuv-dvur.cz/assets/images/gallery/optim/photo-0001.jpg" alt="Interiér stodoly při svatbě" width="1200" height="800" loading="lazy">
+          </a>
+          <a href="https://www.hoffmanuv-dvur.cz/fotogalerie" target="_blank" rel="noopener">
+            <img src="https://www.hoffmanuv-dvur.cz/assets/images/gallery/optim/photo-0018.jpg" alt="Svatební pár na zahradě u stodoly" width="1200" height="800" loading="lazy">
+          </a>
+          <a href="https://www.hoffmanuv-dvur.cz/fotogalerie" target="_blank" rel="noopener">
+            <img src="https://www.hoffmanuv-dvur.cz/assets/images/dvur.jpg" alt="Dvůr Hoffmanova dvora" width="720" height="480" loading="lazy">
+          </a>
+          <a href="https://www.hoffmanuv-dvur.cz/fotogalerie" target="_blank" rel="noopener">
+            <img src="https://www.hoffmanuv-dvur.cz/assets/images/gallery/optim/photo-0025.jpg" alt="Posezení pod stoletým dubem" width="1200" height="800" loading="lazy">
+          </a>
+          <a href="https://www.hoffmanuv-dvur.cz/fotogalerie" target="_blank" rel="noopener">
+            <img src="https://www.hoffmanuv-dvur.cz/assets/images/restaurace.jpg" alt="Restaurace v hlavní budově" width="720" height="480" loading="lazy">
+          </a>
+        </div>
+        <p class="gallery-caption">Fotografie z oficiální galerie hoffmanuv-dvur.cz</p>
+      </div>
+    </section>
+
+    <section class="reviews" id="reference">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow" style="color: var(--gold-soft);">Vybrané recenze</p>
+          <h2>Přečtěte si, co o spolupráci s námi říkají</h2>
+          <p>Úryvky z recenzí zveřejněných na homepage zdrojového webu.</p>
+        </div>
+        <div class="review-grid reveal">
+          <blockquote class="review">
+            <p>„Měli jsme tady svatbu… Personál dvora byl velice milý a raut i grilování nemělo chybu. Ocenili jsme i možnost pořádání obřadu ve stodole při nepříznivém počasí.“</p>
+            <cite>Michal Prazak</cite>
+          </blockquote>
+          <blockquote class="review">
+            <p>„Příjemné svatební místo, ještě příjemnější, vstřícný personál, skvělá domluva. Nemohli jsme si vybrat lépe.“</p>
+            <cite>Zlata Mynnářová</cite>
+          </blockquote>
+          <blockquote class="review">
+            <p>„Obřad na louce u majestátného stromu, hostina poté na nádvoří nebo uvnitř… Milý personál, výborné jídlo.“</p>
+            <cite>DJJ Ozzby</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <p class="eyebrow">Kontakt</p>
+          <h2>Poptejte termín</h2>
+          <p style="color: var(--muted); font-weight: 300; margin-bottom: 1.75rem;">
+            Návštěvy a prohlídky jsou možné pouze na základě předchozí domluvy.
+          </p>
+          <dl class="contact-details">
+            <div>
+              <dt>Adresa</dt>
+              <dd>Hoffmanův dvůr<br>Vinořské nám. 34<br>190 17, Praha 9 – Vinoř<br>Česká republika</dd>
+            </div>
+            <div>
+              <dt>Telefon</dt>
+              <dd><a href="tel:+420725179594">+420 725 179 594</a></dd>
+            </div>
+            <div>
+              <dt>E-mail</dt>
+              <dd><a href="mailto:info@hoffmanuv-dvur.cz">info@hoffmanuv-dvur.cz</a></dd>
+            </div>
+            <div>
+              <dt>Dostupnost</dt>
+              <dd>Autem cca 20 min od centra Prahy · MHD cca 35 min na Václavské náměstí</dd>
+            </div>
+            <div>
+              <dt>Sledujte nás</dt>
+              <dd>
+                <a href="https://www.instagram.com/hoffmanuvdvur.cz/" target="_blank" rel="noopener">Instagram</a>
+                ·
+                <a href="https://www.facebook.com/hoffmanuvdvur34/" target="_blank" rel="noopener">Facebook</a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <form class="inquiry reveal" id="inquiryForm" action="#" method="post">
+          <h3>Poptávka pronájmu</h3>
+          <p>Prototypový formulář — neodesílá data na server. Na živém webu kontaktujte místo přímo.</p>
+          <div class="form-row">
+            <label>Jméno
+              <input type="text" name="name" id="name" autocomplete="name" required>
+            </label>
+            <label>E-mail
+              <input type="email" name="email" id="email" autocomplete="email" required>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Telefon
+              <input type="tel" name="phone" id="phone" autocomplete="tel">
+            </label>
+            <label>Typ akce
+              <select name="eventType" id="eventType">
+                <option value="svatba">Svatba</option>
+                <option value="firemni">Firemní akce</option>
+                <option value="oslava">Oslava</option>
+                <option value="verejna">Veřejná akce</option>
+                <option value="jine">Jiné</option>
+              </select>
+            </label>
+          </div>
+          <div class="form-row full">
+            <label>Preferovaný termín
+              <input type="date" name="eventDate" id="eventDate">
+            </label>
+          </div>
+          <div class="form-row full">
+            <label>Zpráva
+              <textarea name="message" id="message" placeholder="Počet hostů, prostory, další požadavky…"></textarea>
+            </label>
+          </div>
+          <button class="btn btn-primary" type="submit">Odeslat poptávku</button>
+          <p class="form-status" id="formStatus" role="status">Děkujeme — v tomto prototypu se poptávka neodesílá. Kontaktujte info@hoffmanuv-dvur.cz.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <p class="footer-brand">Hoffmanův dvůr</p>
+          <p>Svatební místo se stodolou v Praze</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://www.hoffmanuv-dvur.cz/" target="_blank" rel="noopener">Originální web</a>
+          <a href="https://www.hoffmanuv-dvur.cz/kalendar" target="_blank" rel="noopener">Kalendář</a>
+          <a href="tel:+420725179594">+420 725 179 594</a>
+        </div>
+      </div>
+      <p class="footer-meta">
+        Prototyp homepage podle veřejných údajů z hoffmanuv-dvur.cz · Provozovatel dle webu: Just Bite s.r.o. ·
+        Pozicování (odvozené z tónu prezentace): mid-to-premium rustic boutique
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMobile = document.getElementById("navMobile");
+      const navClose = document.getElementById("navClose");
+
+      const onScroll = () => {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const openMenu = () => {
+        navMobile.hidden = false;
+        navMobile.classList.add("open");
+        document.body.style.overflow = "hidden";
+      };
+      const closeMenu = () => {
+        navMobile.classList.remove("open");
+        navMobile.hidden = true;
+        document.body.style.overflow = "";
+      };
+
+      menuToggle.addEventListener("click", openMenu);
+      navClose.addEventListener("click", closeMenu);
+      navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+      const reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add("visible"));
+      }
+
+      const form = document.getElementById("inquiryForm");
+      const status = document.getElementById("formStatus");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        status.classList.add("show");
+      });
+    })();
+  </script>
+</body>
+</html>
