@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel SPA Arkadia — Apšuciems, Latvia</title>
+  <meta name="description" content="Hotel SPA Arkadia — a peaceful oasis near the sea and pine forests in Apšuciems, Engures pagasts. Rooms, conferences, and banquets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1e3a6e;
+      --navy-deep: #152a52;
+      --navy-ink: #0f1f3d;
+      --coral: #e45858;
+      --coral-dark: #d14545;
+      --gold: #c9a84c;
+      --seafoam: #5a8f8a;
+      --seafoam-soft: #d8e8e5;
+      --sand: #f3efe8;
+      --sand-deep: #e5ddd0;
+      --fog: #f7f9f8;
+      --text: #1c2433;
+      --muted: #5c6575;
+      --white: #ffffff;
+      --radius: 10px;
+      --shadow: 0 8px 32px rgba(15, 31, 61, 0.12);
+      --header-h: 80px;
+      --pad-x: clamp(2rem, 4.5vw, 3rem);
+      --max: 1180px;
+      --transition: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Source Sans 3", sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--fog);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: calc(var(--max) + 2 * var(--pad-x));
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 300;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      background: rgba(15, 31, 61, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(15, 31, 61, 0.98);
+      box-shadow: 0 4px 24px rgba(15, 31, 61, 0.28);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2.2vw, 1.85rem);
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--gold); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.7rem 1.35rem;
+      background: var(--coral);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      flex-shrink: 0;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .header-cta:hover {
+      background: var(--coral-dark);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 31, 61, 0.98);
+      z-index: 400;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.85rem;
+      font-weight: 600;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: var(--pad-x);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    /* —— Hero —— */
+    #hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: heroDrift 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(15, 31, 61, 0.78) 0%, rgba(15, 31, 61, 0.35) 48%, rgba(30, 58, 110, 0.55) 100%),
+        linear-gradient(to top, rgba(15, 31, 61, 0.88) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 7rem 0 7.5rem;
+    }
+
+    .hero-brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.85rem;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-brand span {
+      display: block;
+      font-size: 0.32em;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 0.55rem;
+      font-family: "Source Sans 3", sans-serif;
+    }
+
+    .hero-value {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 300;
+      max-width: 34rem;
+      opacity: 0.92;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.9s 0.15s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      animation: fadeUp 0.9s 0.28s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.95rem 1.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), border-color var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--coral-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* —— Booking —— */
+    #booking {
+      position: relative;
+      z-index: 10;
+      margin-top: -3.25rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .booking-widget {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1.65rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1.1rem;
+      align-items: end;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.78rem 0.9rem;
+      border: 1px solid var(--sand-deep);
+      border-radius: 6px;
+      color: var(--text);
+      background: var(--sand);
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--navy);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      padding: 0.78rem 0.9rem;
+      border: 1px solid var(--sand-deep);
+      border-radius: 6px;
+      background: var(--sand);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .guest-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      min-width: 220px;
+      background: var(--white);
+      border: 1px solid var(--sand-deep);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      z-index: 40;
+    }
+
+    .guest-panel.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--sand-deep);
+      border-radius: 50%;
+      background: var(--white);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+
+    .guest-btn:hover { background: var(--sand); }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      height: 46px;
+      white-space: nowrap;
+      padding-inline: 1.5rem;
+    }
+
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* —— Sections shared —— */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      max-width: 640px;
+      margin: 0 auto 2.75rem;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--seafoam);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      font-weight: 600;
+      color: var(--navy-ink);
+      line-height: 1.15;
+      margin-bottom: 0.85rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    /* —— Rooms —— */
+    #rooms {
+      background: var(--sand);
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 18px rgba(15, 31, 61, 0.07);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card-media {
+      position: relative;
+      height: 210px;
+      background: linear-gradient(145deg, var(--navy-deep), var(--seafoam));
+      overflow: hidden;
+    }
+
+    .room-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .room-card-media .ph {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .room-card-body {
+      padding: 1.35rem 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.55rem;
+    }
+
+    .room-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--navy-ink);
+      line-height: 1.2;
+    }
+
+    .room-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .room-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 300;
+      flex: 1;
+    }
+
+    .room-price {
+      margin-top: 0.5rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--coral);
+    }
+
+    .room-price span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .room-price.placeholder {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    /* —— Amenities —— */
+    #amenities {
+      background: var(--fog);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .amenity {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1.35rem 1.25rem;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid var(--sand-deep);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .amenity:hover {
+      border-color: var(--seafoam);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--seafoam-soft);
+      color: var(--navy);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .amenity-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity strong {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--navy-ink);
+    }
+
+    .amenity p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .amenities-note {
+      margin-top: 1.75rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* —— Gallery —— */
+    #gallery {
+      background: var(--navy-ink);
+      color: var(--white);
+    }
+
+    #gallery .section-eyebrow { color: var(--gold); }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-desc { color: rgba(255, 255, 255, 0.72); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 220px;
+      gap: 0.85rem;
+    }
+
+    .gallery-grid figure {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      margin: 0;
+    }
+
+    .gallery-grid figure:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-grid figure:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      background: linear-gradient(transparent, rgba(15, 31, 61, 0.75));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .gallery-grid figure:hover figcaption { opacity: 1; }
+
+    /* —— Location —— */
+    #location {
+      background: var(--sand);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .location-copy h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--navy-ink);
+      margin: 1rem 0 0.85rem;
+    }
+
+    .location-copy p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .location-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin: 1.25rem 0 1.75rem;
+    }
+
+    .location-list li {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .location-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 0.45rem;
+      border-radius: 50%;
+      background: var(--seafoam);
+      flex-shrink: 0;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(160deg, rgba(30, 58, 110, 0.12), rgba(90, 143, 138, 0.18)),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 39px,
+          rgba(30, 58, 110, 0.05) 40px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 39px,
+          rgba(30, 58, 110, 0.05) 40px
+        ),
+        var(--seafoam-soft);
+      border-radius: var(--radius);
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      border: 1px solid var(--sand-deep);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(228, 88, 88, 0.2);
+      border: 2px solid var(--coral);
+      animation: pulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.85); opacity: 0.55; }
+      50% { transform: scale(1.15); opacity: 0.15; }
+    }
+
+    .map-pin {
+      position: relative;
+      z-index: 1;
+      width: 18px;
+      height: 18px;
+      background: var(--coral);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 4px 12px rgba(228, 88, 88, 0.4);
+      margin-bottom: 1.25rem;
+    }
+
+    .map-placeholder strong {
+      position: relative;
+      z-index: 1;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      color: var(--navy-ink);
+    }
+
+    .map-placeholder p {
+      position: relative;
+      z-index: 1;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    .map-placeholder a {
+      position: relative;
+      z-index: 1;
+      margin-top: 1.1rem;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.88rem;
+      border-bottom: 1px solid currentColor;
+    }
+
+    /* —— Trust —— */
+    #trust {
+      background: var(--fog);
+    }
+
+    .trust-badge-missing {
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+      font-style: italic;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border: 1px dashed var(--sand-deep);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.5rem;
+    }
+
+    .testimonial .tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.85rem;
+    }
+
+    .testimonial blockquote {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--navy-ink);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial cite {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* —— Footer —— */
+    #footer {
+      background: var(--navy-ink);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand img {
+      height: 44px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-weight: 300;
+      font-size: 0.95rem;
+      max-width: 28rem;
+    }
+
+    .footer-col h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 980px) {
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 180px;
+      }
+      .gallery-grid figure:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        min-height: 240px;
+      }
+      .location-grid,
+      .footer-grid,
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-desktop,
+      .header-cta { display: none; }
+      .menu-toggle { display: block; }
+      .logo img { height: 40px; }
+      .booking-widget { grid-template-columns: 1fr; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+      }
+      .gallery-grid figure:first-child {
+        grid-column: span 1;
+      }
+      #hero { min-height: 88vh; }
+      .hero-content { padding: 6rem 0 8.5rem; }
+      .hero-brand { font-size: clamp(2.2rem, 10vw, 3rem); }
+      .hero-value { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="logo" href="#hero" aria-label="Hotel SPA Arkadia home">
+        <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/arkadia_logo.svg" alt="Hotel SPA Arkadia">
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+      <a class="header-cta" href="#booking">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <button class="nav-close" id="navClose" type="button" aria-label="Close menu">&times;</button>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+    <a href="#footer">Contact</a>
+  </div>
+
+  <section id="hero">
+    <div class="hero-media">
+      <img
+        src="https://www.hotelarkadia.lv/image/cache/catalog/arkadia/building-1920x1080.jpg"
+        alt="Hotel SPA Arkadia exterior building"
+        fetchpriority="high"
+      >
+      <div class="hero-overlay" aria-hidden="true"></div>
+    </div>
+    <div class="container hero-content">
+      <h1 class="hero-brand">
+        <span>Hotel SPA Arkadia</span>
+        Welcome to Hotel Arkadia
+      </h1>
+      <p class="hero-value">A peaceful oasis close to the sea and pine forests — calm air and an unhurried atmosphere in Apšuciems.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#booking">Check availability</a>
+        <a class="btn btn-ghost" href="#rooms">Explore rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm" action="#" method="get" onsubmit="return false;">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label for="guestTrigger">Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+            <span id="guestLabel">2 adults · 0 children</span>
+            <span aria-hidden="true">▾</span>
+          </button>
+          <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Select guests">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Fewer adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="More adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Fewer children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="More children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomPref">Room preference</label>
+          <select id="roomPref" name="room">
+            <option value="any">Any room</option>
+            <option value="twin">Klasiskais Twin</option>
+            <option value="double">Divvietīgs numurs</option>
+            <option value="balcony">Twin ar balkonu</option>
+            <option value="triple">Trīsvietīgs</option>
+            <option value="family">Ģimenes numurs</option>
+            <option value="suite">Lukss numurs</option>
+            <option value="terrace">Triple ar terasi</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" id="searchBtn">Search</button>
+      </form>
+      <p class="booking-note">Prototype booking widget — UI only. Live reservations: hotelarkadia.lv / +371 29132765</p>
+    </div>
+  </section>
+
+  <section class="section" id="rooms">
+    <div class="container">
+      <header class="section-header">
+        <p class="section-eyebrow">Accommodation</p>
+        <h2 class="section-title">Rooms for every stay</h2>
+        <p class="section-desc">Seven room types from the live booking site. Prices shown are as listed for a one-night search on hotelarkadia.lv.</p>
+      </header>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <div class="room-card-media">
+            <div class="ph">Photo not published on source site</div>
+          </div>
+          <div class="room-card-body">
+            <h3>Divvietīgs numurs</h3>
+            <p class="room-meta">18 m² · Double bed</p>
+            <p class="room-desc">Double bed, work desk, private bathroom with shower and WC. TV, Wi-Fi, and kettle included.</p>
+            <p class="room-price">From €70 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-card-media">
+            <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/twin-st-1.jpeg" alt="Klasiskais Twin room">
+          </div>
+          <div class="room-card-body">
+            <h3>Klasiskais Twin</h3>
+            <p class="room-meta">24 m² · Two single beds</p>
+            <p class="room-desc">Two separate beds, work desk, private bathroom with shower and WC. TV, Wi-Fi, and kettle included.</p>
+            <p class="room-price">From €60 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-card-media">
+            <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/twin-balcony-1.jpeg" alt="Twin room with balcony">
+          </div>
+          <div class="room-card-body">
+            <h3>Twin ar balkonu</h3>
+            <p class="room-meta">24 m² · Balcony</p>
+            <p class="room-desc">Two separate beds with balcony, work desk, and private bathroom. TV, Wi-Fi, and kettle included.</p>
+            <p class="room-price">From €70 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-card-media">
+            <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/triple-st-1.jpeg" alt="Triple room">
+          </div>
+          <div class="room-card-body">
+            <h3>Trīsvietīgs</h3>
+            <p class="room-meta">28 m² · Three beds</p>
+            <p class="room-desc">Three separate beds, work desk, private bathroom with shower and WC. TV, Wi-Fi, and kettle included.</p>
+            <p class="room-price">From €80 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-card-media">
+            <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/family-1.jpeg" alt="Family room">
+          </div>
+          <div class="room-card-body">
+            <h3>Ģimenes numurs</h3>
+            <p class="room-meta">40 m² · Two rooms · Five beds</p>
+            <p class="room-desc">Two-room layout with five separate beds, work desk, and private bathroom. TV, Wi-Fi, and kettle included.</p>
+            <p class="room-price placeholder">Price on request — not shown for selected dates on live site</p>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-card-media">
+            <div class="ph">Photo not published on source site</div>
+          </div>
+          <div class="room-card-body">
+            <h3>Lukss numurs</h3>
+            <p class="room-meta">55 m² · Suite · Large bath</p>
+            <p class="room-desc">Spacious room with double bed, soft seating lounge, work desk, and private bathroom with a large double bath.</p>
+            <p class="room-price">From €100 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-card-media">
+            <div class="ph">Photo not published on source site</div>
+          </div>
+          <div class="room-card-body">
+            <h3>Triple ar terasi</h3>
+            <p class="room-meta">Three beds · Balcony / terrace</p>
+            <p class="room-desc">Three separate beds with balcony, work desk, and private bathroom with shower and WC. TV, Wi-Fi, and kettle included.</p>
+            <p class="room-price">From €90 <span>/ night</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="amenities">
+    <div class="container">
+      <header class="section-header">
+        <p class="section-eyebrow">On site</p>
+        <h2 class="section-title">Amenities from the hotel</h2>
+        <p class="section-desc">Only facilities and policies confirmed on hotelarkadia.lv (booking pages, contact, and house rules).</p>
+      </header>
+      <div class="amenities-grid">
+        <div class="amenity">
+          <span class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 12h18M5 12V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M7 16v2M17 16v2"/></svg>
+          </span>
+          <strong>Parking</strong>
+          <p>Car parking included with room stays</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 12.5c2-3 4-4.5 7-4.5s5 1.5 7 4.5M8 16h.01M12 16h.01M16 16h.01"/><path d="M2 8c3-2 6-3 10-3s7 1 10 3"/></svg>
+          </span>
+          <strong>Wi-Fi</strong>
+          <p>Included in guest rooms</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1.5-3.5 4-5 7-5s5.5 1.5 7 5"/><path d="M17 4l2 2-2 2"/></svg>
+          </span>
+          <strong>Children’s playroom</strong>
+          <p>Playroom visit included with rooms</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M8 22h8M12 18v4"/></svg>
+          </span>
+          <strong>Conference halls</strong>
+          <p>Venues for meetings (up to 150 guests on site)</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 10h16v10H4zM8 10V7a4 4 0 0 1 8 0v3"/><path d="M9 14h6"/></svg>
+          </span>
+          <strong>Banquets &amp; events</strong>
+          <p>Banquet reservation with catering menus</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 14h16M6 14V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5"/><path d="M8 18h8"/></svg>
+          </span>
+          <strong>Balcony / terrace</strong>
+          <p>Selected rooms (Twin ar balkonu, Triple ar terasi)</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 16c2-4 5-6 8-6s6 2 8 6"/><path d="M8 10c.5-2 2-3.5 4-3.5S15.5 8 16 10"/><path d="M3 19h18"/></svg>
+          </span>
+          <strong>Sea &amp; pine forest</strong>
+          <p>Located close to the sea, surrounded by pines</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 13c0-2.5 2-4.5 4.5-4.5S16 10.5 16 13"/><path d="M5 18c1.5-2 3.5-3 7-3s5.5 1 7 3"/><circle cx="9" cy="9" r="1.2"/><circle cx="15" cy="9" r="1.2"/></svg>
+          </span>
+          <strong>Pets (by arrangement)</strong>
+          <p>€20–€30 / night depending on size — prior approval required</p>
+        </div>
+      </div>
+      <p class="amenities-note">Note: The brand name includes “SPA”; detailed spa facility listings (pools, saunas, etc.) were not present on the scraped live pages, so they are omitted here.</p>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <div class="container">
+      <header class="section-header">
+        <p class="section-eyebrow">Gallery</p>
+        <h2 class="section-title">A glimpse of Arkadia</h2>
+        <p class="section-desc">Real hotel photos from hotelarkadia.lv. No dedicated beach, nature-park, or spa-interior gallery images were published; venue-page stock art was omitted.</p>
+      </header>
+      <div class="gallery-grid">
+        <figure>
+          <img src="https://www.hotelarkadia.lv/image/cache/catalog/arkadia/building-1920x1080.jpg" alt="Hotel exterior with restaurant and conference signage">
+          <figcaption>Exterior · Restorāns / Konferenču zāle / Bistro / SPA</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/twin-st-1.jpeg" alt="Twin room">
+          <figcaption>Klasiskais Twin</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/twin-balcony-1.jpeg" alt="Room with balcony">
+          <figcaption>Twin with balcony</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/triple-st-1.jpeg" alt="Triple room">
+          <figcaption>Trīsvietīgs</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/family-1.jpeg" alt="Family room">
+          <figcaption>Family room</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/building.jpg" alt="Hotel SPA Arkadia building">
+          <figcaption>Building</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="location">
+    <div class="container">
+      <header class="section-header">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Apšuciems, Engures pagasts</h2>
+        <p class="section-desc">Address and setting as published by the hotel.</p>
+      </header>
+      <div class="location-grid">
+        <div class="location-copy">
+          <h3>Hotel SPA Arkadia</h3>
+          <p>Apšuciems P128<br>Engures pagasts<br>LV-3113, Latvia</p>
+          <p>A quiet stay away from everyday bustle — close to the sea and surrounded by pine forest, where fresh air and a calm pace set the mood.</p>
+          <ul class="location-list">
+            <li><strong>Apšuciems</strong> — property address on the coast of Engures pagasts</li>
+            <li><strong>Sea &amp; pine forest</strong> — setting described on the hotel homepage</li>
+            <li><strong>Not listed on source site:</strong> Lake Engure / Engure Nature Park / “Gulf of Riga” by name — omitted rather than assumed</li>
+          </ul>
+          <p>
+            <a href="tel:+37129132765">+371 29132765</a> ·
+            <a href="mailto:mail@hotelarkadia.lv">mail@hotelarkadia.lv</a><br>
+            Contact hours: 09:00–21:00
+          </p>
+        </div>
+        <div class="map-placeholder" role="img" aria-label="Static map placeholder for Apšuciems">
+          <div class="map-pin" aria-hidden="true"></div>
+          <strong>Map placeholder</strong>
+          <p>57.0565° N, 23.3126° E<br>(coordinates from hotel contact page)</p>
+          <a href="https://maps.google.com/maps?q=57.0564848%2C23.3126483&amp;hl=en&amp;t=m&amp;z=15" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trust">
+    <div class="container">
+      <header class="section-header">
+        <p class="section-eyebrow">Guest voices</p>
+        <h2 class="section-title">What stays with you</h2>
+        <p class="section-desc">No public rating badge was found on the live site.</p>
+      </header>
+      <p class="trust-badge-missing">Placeholder testimonials below — not sourced from hotelarkadia.lv.</p>
+      <div class="trust-grid">
+        <article class="testimonial">
+          <span class="tag">Placeholder</span>
+          <blockquote>“Quiet nights, pine air in the morning, and an easy drive from Riga — exactly the reset we needed.”</blockquote>
+          <cite>— Sample guest · Family stay</cite>
+        </article>
+        <article class="testimonial">
+          <span class="tag">Placeholder</span>
+          <blockquote>“We used the hall for a small conference; staff kept the day simple and on schedule.”</blockquote>
+          <cite>— Sample guest · Business event</cite>
+        </article>
+        <article class="testimonial">
+          <span class="tag">Placeholder</span>
+          <blockquote>“The twin with balcony was bright and practical. Parking and the kids’ playroom made the weekend easier.”</blockquote>
+          <cite>— Sample guest · Twin ar balkonu</cite>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/arkadia_logo.svg" alt="Hotel SPA Arkadia">
+          <p>Hotel SPA Arkadia — a peaceful seaside stay in Apšuciems, Engures pagasts. Rooms, conferences, and banquets.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Check availability</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>Apšuciems P128, Engures pagasts, LV-3113</li>
+            <li><a href="tel:+37129132765">+371 29132765</a></li>
+            <li><a href="tel:+37163143130">+371 63143130</a></li>
+            <li><a href="mailto:mail@hotelarkadia.lv">mail@hotelarkadia.lv</a></li>
+            <li>09:00–21:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Hotel Arkadia. Prototype homepage for demonstration.</span>
+        <span>Source: hotelarkadia.lv</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.querySelector(".site-header");
+      var menuToggle = document.getElementById("menuToggle");
+      var navMobile = document.getElementById("navMobile");
+      var navClose = document.getElementById("navClose");
+
+      function onScroll() {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      function openMenu() {
+        navMobile.hidden = false;
+        navMobile.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeMenu() {
+        navMobile.classList.remove("open");
+        navMobile.hidden = true;
+        document.body.style.overflow = "";
+      }
+      menuToggle.addEventListener("click", openMenu);
+      navClose.addEventListener("click", closeMenu);
+      navMobile.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", closeMenu);
+      });
+
+      var adults = 2;
+      var children = 0;
+      var guestTrigger = document.getElementById("guestTrigger");
+      var guestPanel = document.getElementById("guestPanel");
+      var guestLabel = document.getElementById("guestLabel");
+      var adultsCount = document.getElementById("adultsCount");
+      var childrenCount = document.getElementById("childrenCount");
+      var adultsMinus = document.getElementById("adultsMinus");
+      var adultsPlus = document.getElementById("adultsPlus");
+      var childrenMinus = document.getElementById("childrenMinus");
+      var childrenPlus = document.getElementById("childrenPlus");
+
+      function syncGuests() {
+        adultsCount.textContent = String(adults);
+        childrenCount.textContent = String(children);
+        guestLabel.textContent =
+          adults + (adults === 1 ? " adult" : " adults") +
+          " · " +
+          children + (children === 1 ? " child" : " children");
+        adultsMinus.disabled = adults <= 1;
+        childrenMinus.disabled = children <= 0;
+        adultsPlus.disabled = adults >= 8;
+        childrenPlus.disabled = children >= 6;
+      }
+
+      guestTrigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = guestPanel.classList.toggle("open");
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      document.addEventListener("click", function (e) {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove("open");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+      adultsPlus.addEventListener("click", function () { adults = Math.min(8, adults + 1); syncGuests(); });
+      adultsMinus.addEventListener("click", function () { adults = Math.max(1, adults - 1); syncGuests(); });
+      childrenPlus.addEventListener("click", function () { children = Math.min(6, children + 1); syncGuests(); });
+      childrenMinus.addEventListener("click", function () { children = Math.max(0, children - 1); syncGuests(); });
+      syncGuests();
+
+      var checkin = document.getElementById("checkin");
+      var checkout = document.getElementById("checkout");
+      var today = new Date();
+      function iso(d) {
+        return d.toISOString().slice(0, 10);
+      }
+      var inDate = new Date(today);
+      inDate.setDate(inDate.getDate() + 1);
+      var outDate = new Date(today);
+      outDate.setDate(outDate.getDate() + 2);
+      checkin.value = iso(inDate);
+      checkout.value = iso(outDate);
+      checkin.min = iso(today);
+      checkout.min = iso(inDate);
+      checkin.addEventListener("change", function () {
+        var next = new Date(checkin.value);
+        next.setDate(next.getDate() + 1);
+        checkout.min = iso(next);
+        if (checkout.value <= checkin.value) checkout.value = iso(next);
+      });
+
+      document.getElementById("bookingForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var btn = document.getElementById("searchBtn");
+        var prev = btn.textContent;
+        btn.textContent = "Checking…";
+        setTimeout(function () {
+          btn.textContent = "UI only — see hotelarkadia.lv";
+          setTimeout(function () { btn.textContent = prev; }, 2200);
+        }, 600);
+      });
+    })();
+  </script>
+</body>
+</html>
