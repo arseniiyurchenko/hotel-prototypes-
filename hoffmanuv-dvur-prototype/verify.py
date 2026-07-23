@@ -23,6 +23,17 @@ def main():
         page.goto(URL, wait_until="networkidle")
         page.wait_for_timeout(1500)
 
+        for sel in ["#prostory", "#akce", "#sluzby", "#galerie", "#reference", "#kontakt"]:
+            page.locator(sel).scroll_into_view_if_needed()
+            page.wait_for_timeout(700)
+
+        # Ensure lazy-loaded images have time to fetch after scroll
+        page.locator("#galerie").scroll_into_view_if_needed()
+        page.wait_for_function(
+            "() => [...document.images].every(img => img.complete && img.naturalWidth > 0)",
+            timeout=20000,
+        )
+
         imgs = page.locator("img").all()
         for img in imgs:
             src = img.get_attribute("src") or ""
@@ -31,10 +42,7 @@ def main():
             if not ok:
                 results["errors"].append(f"Broken image: {src}")
 
-        for sel in ["#prostory", "#akce", "#sluzby", "#galerie", "#reference", "#kontakt"]:
-            page.locator(sel).scroll_into_view_if_needed()
-            page.wait_for_timeout(350)
-
+        page.locator("#kontakt").scroll_into_view_if_needed()
         page.locator("#name").fill("Test Host")
         page.locator("#email").fill("test@example.com")
         page.locator("#eventType").select_option("svatba")
@@ -45,8 +53,10 @@ def main():
         else:
             results["interactions"].append("inquiry form submitted (prototype)")
 
-        page.screenshot(path=str(ARTIFACTS / "hoffman-desktop-full.png"), full_page=True)
+        page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(400)
         page.locator(".hero").screenshot(path=str(ARTIFACTS / "hoffman-hero.png"))
+        page.screenshot(path=str(ARTIFACTS / "hoffman-desktop-full.png"), full_page=True)
 
         page.set_viewport_size({"width": 390, "height": 844})
         page.wait_for_timeout(500)
