@@ -55,25 +55,22 @@
 
     /* —— Header —— */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: var(--header-pad-y) 0;
-      background: rgba(28, 51, 40, 0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      transition: background var(--transition), box-shadow var(--transition);
-    }
-
-    .site-header.at-top {
-      background: transparent;
       position: fixed;
+      top: 0;
       left: 0;
       right: 0;
+      z-index: 100;
+      padding: var(--header-pad-y) 0;
+      background: transparent;
+      backdrop-filter: blur(0);
+      -webkit-backdrop-filter: blur(0);
+      transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
     }
 
     .site-header.scrolled {
       background: rgba(28, 51, 40, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
     }
 
@@ -864,7 +861,7 @@
 <body>
 
   <!-- Sticky header: logo left, CTA right, generous edge padding -->
-  <header class="site-header at-top" id="header">
+  <header class="site-header" id="header">
     <div class="header-inner">
       <a href="#hero" class="logo">
         <img src="https://www.hotelgrasupils.lv/images/logo.png" alt="Hotel Grašu pils logo">
@@ -1226,9 +1223,7 @@
     // Header: transparent at top of hero, solid when scrolled
     const header = document.getElementById('header');
     function updateHeader() {
-      const scrolled = window.scrollY > 40;
-      header.classList.toggle('scrolled', scrolled);
-      header.classList.toggle('at-top', !scrolled);
+      header.classList.toggle('scrolled', window.scrollY > 40);
     }
     window.addEventListener('scroll', updateHeader, { passive: true });
     updateHeader();
