@@ -183,7 +183,7 @@
       position: relative;
       min-height: min(92vh, 820px);
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       color: var(--white);
       overflow: hidden;
     }
@@ -218,7 +218,7 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 7.5rem 0 5.5rem;
+      padding: 7rem 0 7.5rem;
     }
 
     .hero-brand {
@@ -956,8 +956,10 @@
       .gallery-grid figure:first-child {
         grid-column: span 1;
       }
-      #hero { min-height: 78vh; }
-      .hero-content { padding: 6.5rem 0 4.5rem; }
+      #hero { min-height: 88vh; }
+      .hero-content { padding: 6rem 0 8.5rem; }
+      .hero-brand { font-size: clamp(2.2rem, 10vw, 3rem); }
+      .hero-value { font-size: 1rem; }
     }
   </style>
 </head>
@@ -1235,12 +1237,12 @@
       <header class="section-header">
         <p class="section-eyebrow">Gallery</p>
         <h2 class="section-title">A glimpse of Arkadia</h2>
-        <p class="section-desc">Real photos from the hotel’s website. No dedicated beach or spa gallery images were published on the live catalog.</p>
+        <p class="section-desc">Real hotel photos from hotelarkadia.lv. No dedicated beach, nature-park, or spa-interior gallery images were published; venue-page stock art was omitted.</p>
       </header>
       <div class="gallery-grid">
         <figure>
-          <img src="https://www.hotelarkadia.lv/image/cache/catalog/arkadia/building-1920x1080.jpg" alt="Hotel exterior">
-          <figcaption>Exterior</figcaption>
+          <img src="https://www.hotelarkadia.lv/image/cache/catalog/arkadia/building-1920x1080.jpg" alt="Hotel exterior with restaurant and conference signage">
+          <figcaption>Exterior · Restorāns / Konferenču zāle / Bistro / SPA</figcaption>
         </figure>
         <figure>
           <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/twin-st-1.jpeg" alt="Twin room">
@@ -1251,16 +1253,16 @@
           <figcaption>Twin with balcony</figcaption>
         </figure>
         <figure>
+          <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/triple-st-1.jpeg" alt="Triple room">
+          <figcaption>Trīsvietīgs</figcaption>
+        </figure>
+        <figure>
           <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/rooms/family-1.jpeg" alt="Family room">
           <figcaption>Family room</figcaption>
         </figure>
         <figure>
-          <img src="https://www.hotelarkadia.lv/image/cache/catalog/arkadia/venue/venue-001-800x600.jpg" alt="Conference venue">
-          <figcaption>Venue</figcaption>
-        </figure>
-        <figure>
-          <img src="https://www.hotelarkadia.lv/image/cache/catalog/arkadia/venue/venue-002-800x600.jpg" alt="Event hall">
-          <figcaption>Event hall</figcaption>
+          <img src="https://www.hotelarkadia.lv/image/catalog/arkadia/building.jpg" alt="Hotel SPA Arkadia building">
+          <figcaption>Building</figcaption>
         </figure>
       </div>
     </div>

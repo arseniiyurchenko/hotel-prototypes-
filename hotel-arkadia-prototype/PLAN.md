@@ -44,16 +44,16 @@ Parking, Wi-Fi, children’s playroom, conference halls, banquet / events, balco
 
 **Not listed as facilities on scraped pages:** spa pool / sauna / jacuzzi details, grill, kitchen, ratings/reviews. Brand name includes “SPA”; amenities grid will not invent spa hardware.
 
-### Image URLs (HTTP 200 verified)
+### Image URLs used in prototype (HTTP 200 verified)
 
 1. Hero/exterior: `…/image/cache/catalog/arkadia/building-1920x1080.jpg`
 2. Twin room: `…/image/catalog/arkadia/rooms/twin-st-1.jpeg`
 3. Twin + balcony: `…/image/catalog/arkadia/rooms/twin-balcony-1.jpeg`
 4. Triple: `…/image/catalog/arkadia/rooms/triple-st-1.jpeg`
 5. Family: `…/image/catalog/arkadia/rooms/family-1.jpeg`
-6. Venue / common: `…/image/cache/catalog/arkadia/venue/venue-001-800x600.jpg` (+ venue-002)
+6. Building (catalog): `…/image/catalog/arkadia/building.jpg`
 
-No dedicated beach / nature / spa feature photos found in the live catalog.
+Venue-page assets (`venue-001/002`) exist on the live site but are generic stock (not identifiable hotel interiors) — omitted from the gallery. No dedicated beach / spa-interior photos found.
 
 ## Design direction
 
