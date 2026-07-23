@@ -21,6 +21,20 @@ def main():
         page = context.new_page()
 
         page.goto(URL, wait_until="networkidle", timeout=60000)
+        page.wait_for_timeout(1500)
+
+        # Eager-load + scroll so lazy images resolve before checks
+        page.evaluate(
+            """async () => {
+              document.querySelectorAll('img').forEach(img => { img.loading = 'eager'; });
+              const h = document.body.scrollHeight;
+              for (let y = 0; y < h; y += 500) {
+                window.scrollTo(0, y);
+                await new Promise(r => setTimeout(r, 150));
+              }
+              window.scrollTo(0, 0);
+            }"""
+        )
         page.wait_for_timeout(2000)
 
         # Images
