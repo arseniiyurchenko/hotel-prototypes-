@@ -590,8 +590,8 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: 1.35fr 1fr 1fr;
-      grid-template-rows: 240px 240px;
+      grid-template-columns: 1.25fr 1fr 1fr;
+      grid-template-rows: repeat(3, minmax(180px, 22vh));
       gap: 0.85rem;
     }
 
@@ -600,10 +600,15 @@
       overflow: hidden;
       border-radius: 16px;
       position: relative;
+      min-height: 180px;
     }
 
     .gallery-grid figure:first-child {
       grid-row: 1 / span 2;
+    }
+
+    .gallery-grid figure:nth-child(6) {
+      grid-column: 2 / span 2;
     }
 
     .gallery-grid img {
@@ -797,6 +802,7 @@
     @media (max-width: 980px) {
       .nav-desktop { display: none; }
       .menu-toggle { display: inline-flex; }
+      .header-cta { display: none; }
       .booking-form { grid-template-columns: 1fr 1fr; }
       .rooms-grid { grid-template-columns: 1fr; }
       .amenities-grid { grid-template-columns: 1fr 1fr; }
@@ -815,7 +821,9 @@
     }
 
     @media (max-width: 640px) {
-      .header-cta { padding-inline: 1rem; }
+      .header-inner {
+        padding-inline: clamp(1.5rem, 6vw, 2rem);
+      }
       .booking-form { grid-template-columns: 1fr; }
       .amenities-grid { grid-template-columns: 1fr; }
       .gallery-grid {
@@ -824,6 +832,9 @@
       }
       .gallery-grid figure { min-height: 210px; }
       .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-content {
+        padding-inline: clamp(1.5rem, 6vw, 2rem);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -864,7 +875,7 @@
 
   <div class="nav-mobile" id="navMobile" aria-hidden="true">
     <button class="nav-close" id="navClose" aria-label="Close menu" type="button">×</button>
-    <a href="#booking">Book</a>
+    <a href="#booking">Check availability</a>
     <a href="#accommodation">Rooms</a>
     <a href="#amenities">Amenities</a>
     <a href="#gallery">Gallery</a>
