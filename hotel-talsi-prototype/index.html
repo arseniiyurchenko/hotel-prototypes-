@@ -202,6 +202,8 @@
       color: var(--ink);
     }
 
+    .header-cta .cta-short { display: none; }
+
     .menu-toggle {
       display: none;
       background: none;
@@ -304,7 +306,18 @@
       letter-spacing: 0.04em;
       max-width: 28ch;
       margin-bottom: 0.65rem;
-      color: var(--gold-soft);
+      color: #fff;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.45);
+    }
+
+    .hero-headline::after {
+      content: "";
+      display: block;
+      width: 3.5rem;
+      height: 3px;
+      margin-top: 0.75rem;
+      background: var(--gold);
+      border-radius: 2px;
     }
 
     .hero-support {
@@ -828,6 +841,7 @@
     @media (max-width: 980px) {
       .nav-desktop { display: none; }
       .menu-toggle { display: block; }
+      .header-cta { padding: 0.55rem 0.85rem; font-size: 0.68rem; }
 
       .rooms-grid { grid-template-columns: 1fr 1fr; }
       .amenities-grid { grid-template-columns: 1fr 1fr; }
@@ -852,11 +866,22 @@
       .rooms-grid { grid-template-columns: 1fr; }
       .amenities-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-item:first-child { grid-column: span 1; }
+      .gallery-item:first-child {
+        grid-column: span 1;
+        grid-row: span 1;
+        aspect-ratio: 16 / 9;
+      }
       .booking-widget { grid-template-columns: 1fr; }
       .booking-widget .btn-primary { grid-column: span 1; width: 100%; }
-      .header-cta { padding: 0.6rem 0.9rem; font-size: 0.7rem; }
-      .brand img { height: 34px; }
+      .header-cta {
+        display: inline-flex;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.68rem;
+      }
+      .header-cta .cta-full { display: none; }
+      .header-cta .cta-short { display: inline; }
+      .brand img { height: 30px; max-width: min(150px, 42vw); object-fit: contain; }
+      .header-inner { gap: 0.5rem; }
     }
   </style>
 </head>
@@ -877,7 +902,7 @@
         </ul>
       </nav>
       <div class="header-actions">
-        <a class="header-cta" href="#booking">Check availability</a>
+        <a class="header-cta" href="#booking"><span class="cta-full">Check availability</span><span class="cta-short">Book</span></a>
         <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>

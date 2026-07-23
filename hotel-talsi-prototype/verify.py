@@ -130,23 +130,29 @@ def main():
 
         # Mobile
         page.set_viewport_size({"width": 390, "height": 844})
-        page.wait_for_timeout(500)
+        page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(600)
         mobile_spacing = page.evaluate(
             """() => {
               const brand = document.querySelector('.brand');
               const cta = document.querySelector('.header-cta');
+              const toggle = document.querySelector('#menuToggle');
               const br = brand.getBoundingClientRect();
               const cr = cta.getBoundingClientRect();
+              const tr = toggle.getBoundingClientRect();
               return {
                 leftGap: br.left,
-                rightGap: window.innerWidth - cr.right,
+                rightGap: window.innerWidth - tr.right,
                 logoOk: br.left >= 16,
-                ctaOk: (window.innerWidth - cr.right) >= 16
+                ctaVisible: cr.width > 0 && cr.right <= window.innerWidth - 8,
+                toggleOk: tr.right <= window.innerWidth - 8 && tr.left >= 0,
+                toggleRect: {left: tr.left, right: tr.right},
+                ctaRect: {left: cr.left, right: cr.right, width: cr.width}
               };
             }"""
         )
         results["layout"].append({"mobile": mobile_spacing})
-        if not mobile_spacing["logoOk"] or not mobile_spacing["ctaOk"]:
+        if not mobile_spacing["logoOk"] or not mobile_spacing["toggleOk"] or not mobile_spacing["ctaVisible"]:
             results["errors"].append(f"Mobile header cramped: {mobile_spacing}")
 
         page.locator("#menuToggle").click()
@@ -155,8 +161,9 @@ def main():
         page.locator("#navClose").click()
         page.wait_for_timeout(300)
 
-        page.locator("#guestTrigger").scroll_into_view_if_needed()
-        page.locator("#guestTrigger").click()
+        page.locator("#booking").scroll_into_view_if_needed()
+        page.wait_for_timeout(300)
+        page.locator("#guestTrigger").click(force=True)
         page.wait_for_timeout(300)
         page.screenshot(path=str(ARTIFACTS / "hotel-talsi-mobile-booking.png"))
 
