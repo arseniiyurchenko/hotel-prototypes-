@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schloss Gusow — Ein Ort für Momente, die bleiben.</title>
+  <meta name="description" content="Schloss Gusow in Gusow-Platkow, Brandenburg: Hochzeiten &amp; Events in neugotischer Architektur, zwei Festsäle, Park und 14 Zimmern.">
+  <!--
+    SOURCE ANALYSIS — https://schlossgusow.de (fetched live)
+    ============================================================
+    Venue name: Schloss Gusow
+    Tagline: „Ein Ort für Momente, die bleiben.“
+    Supporting headline: „Schloss Gusow – Dein Schloss. Deine Geschichte.“
+    Eyebrow: HOCHZEITEN & EVENTS
+    Logo: https://schlossgusow.de/wp-content/uploads/2026/01/schloss-gusow-klein.png
+    Brand colors (from site CSS / inline):
+      --custom-color-1 / primary: #680010
+      Soft green (map/cover): #e3f1ea
+      Gray accent: #8c8c8c
+      Text gray seen on site: #4a4a4a
+      Base: #ffffff
+    Location: Schloßstrasse 7, 15306 Gusow-Platkow
+      Nearby: Berlin/Brandenburg; Berlin ~60 Min; Frankfurt/Oder ~40 Min
+    Spaces labeled on site:
+      Marwitz-Saal, Derfflinger-Saal, Trauzimmer, Schlossgarten / Park (2 ha),
+      historischer Wassergraben, Salons & Break-Out Rooms, Gemeinschaftsküchen
+    Amenities / features stated:
+      Exclusive use (one event), freie Trauung (Park / Wasser / Saal),
+      keine Sperrstunde, keine Cateringbindung, kein Korkgeld,
+      Kapazität bis 150 Personen, 14 Doppelzimmer, digitale Event-Website (optional),
+      Partnernetzwerk, neugotische Architektur 1870–1873, Uhrenturm / Ecktürme
+    Pricing / packages: NOT shown. Site states no off-the-shelf packages.
+    Parking: NOT mentioned on source pages reviewed → neutral note below.
+    Positioning: Premium boutique castle venue (exclusive, authentic, DIY-flexible;
+      not positioned as budget; not an anonymous luxury hotel chain).
+    Image URLs used (live site uploads):
+      Hero/exterior: .../2026/04/DJI_0458-1-2048x1536.jpg
+      Marwitz-Saal: .../2025/12/Gross-251122_SchlossGusow_0124.jpeg
+      Park/grounds: .../2026/01/schloss-gusow-heiraten-park.jpg
+      Historic exterior/towers: .../2025/12/Gross-251122_SchlossGusow_1116.jpeg
+      Derfflinger-Saal: .../2026/01/251122_SchlossGusow_0518.jpg
+      Historic facade detail: .../2025/10/IMG_0482-2048x1240.jpeg
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --burgundy: #680010;
+      --burgundy-deep: #4a000b;
+      --mint: #e3f1ea;
+      --mint-deep: #c5ddd0;
+      --ink: #1a1214;
+      --ink-soft: #4a4a4a;
+      --gray: #8c8c8c;
+      --paper: #f7faf8;
+      --white: #ffffff;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --header-h: 4.5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; border: 0; background: none; cursor: pointer; }
+    ul { list-style: none; }
+
+    .wrap {
+      width: min(1120px, 90vw);
+      margin-inline: auto;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.4s var(--ease), backdrop-filter 0.4s var(--ease);
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(26, 18, 20, 0.88);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      width: min(1120px, 90vw);
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand img {
+      height: 2.1rem;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.25s var(--ease);
+    }
+
+    .nav a:hover { color: var(--white); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem 1.15rem;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      color: var(--white) !important;
+      letter-spacing: 0.1em;
+      transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+    }
+
+    .nav-cta:hover {
+      background: var(--white);
+      color: var(--burgundy) !important;
+      border-color: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      color: var(--white);
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 1.5px;
+      background: currentColor;
+      transition: transform 0.3s var(--ease);
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: hero-drift 22s var(--ease) infinite alternate;
+      transform-origin: center 40%;
+    }
+
+    @keyframes hero-drift {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(26, 18, 20, 0.35) 0%, rgba(26, 18, 20, 0.15) 35%, rgba(74, 0, 11, 0.72) 100%),
+        radial-gradient(ellipse at 20% 80%, rgba(104, 0, 16, 0.45), transparent 55%);
+    }
+
+    .hero-copy {
+      width: min(1120px, 90vw);
+      margin: 0 auto;
+      padding: calc(var(--header-h) + 4rem) 0 4.5rem;
+      max-width: 38rem;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(3.4rem, 9vw, 6.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.15rem;
+    }
+
+    .hero-tagline {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+      font-weight: 400;
+      line-height: 1.35;
+      max-width: 22ch;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.55rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--burgundy);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); background: var(--mint); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-solid {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .btn-solid:hover {
+      background: var(--burgundy-deep);
+      transform: translateY(-2px);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* —— Shared sections —— */
+    section { padding: clamp(4rem, 9vw, 7rem) 0; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(2.1rem, 4.5vw, 3.35rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      max-width: 18ch;
+      margin-bottom: 1rem;
+    }
+
+    .section-lead {
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+      max-width: 42rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+
+    .reveal.is-in { opacity: 1; transform: none; }
+
+    /* —— Intro —— */
+    .intro {
+      background:
+        linear-gradient(160deg, var(--mint) 0%, var(--paper) 48%, var(--white) 100%);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: center;
+    }
+
+    .intro-copy p + p { margin-top: 1rem; }
+
+    .intro-copy strong { color: var(--ink); font-weight: 600; }
+
+    .intro-figure {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+
+    .intro-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .intro-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.25rem 1.35rem;
+      background: linear-gradient(transparent, rgba(26, 18, 20, 0.78));
+      color: var(--white);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* —— Spaces —— */
+    .spaces { background: var(--white); }
+
+    .space-list {
+      margin-top: 3rem;
+      display: grid;
+      gap: 0;
+    }
+
+    .space-row {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      align-items: center;
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(104, 0, 16, 0.12);
+    }
+
+    .space-row:last-child { border-bottom: 1px solid rgba(104, 0, 16, 0.12); }
+
+    .space-row:nth-child(even) .space-media { order: 2; }
+
+    .space-media {
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+    }
+
+    .space-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.1s var(--ease);
+    }
+
+    .space-row:hover .space-media img { transform: scale(1.04); }
+
+    .space-kicker {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.55rem;
+    }
+
+    .space-row h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.8rem, 3vw, 2.45rem);
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .space-row p { color: var(--ink-soft); max-width: 34rem; }
+
+    /* —— Features —— */
+    .features {
+      background:
+        linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+      color: var(--white);
+    }
+
+    .features .section-label { color: rgba(255, 255, 255, 0.65); }
+    .features .section-lead { color: rgba(255, 255, 255, 0.78); }
+
+    .feature-grid {
+      margin-top: 2.75rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem 2.25rem;
+    }
+
+    .feature-item h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.55rem;
+      font-weight: 500;
+      margin-bottom: 0.55rem;
+    }
+
+    .feature-item p {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.95rem;
+    }
+
+    .feature-note {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.9rem;
+      max-width: 48rem;
+    }
+
+    /* —— Stay —— */
+    .stay {
+      background:
+        radial-gradient(circle at 85% 15%, rgba(227, 241, 234, 0.9), transparent 40%),
+        var(--paper);
+    }
+
+    .stay-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .stay-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .stay-visual figure {
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+    }
+
+    .stay-visual figure:first-child {
+      aspect-ratio: 4 / 5;
+      grid-row: span 2;
+      align-self: stretch;
+    }
+
+    .stay-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stay-meta {
+      margin-top: 1.75rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .stay-meta li {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(104, 0, 16, 0.12);
+      font-size: 0.95rem;
+    }
+
+    .stay-meta span {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 600;
+      padding-top: 0.2rem;
+    }
+
+    /* —— Location —— */
+    .location { background: var(--white); }
+
+    .location-panel {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 0;
+      background: var(--mint);
+      overflow: hidden;
+    }
+
+    .location-copy {
+      padding: clamp(1.75rem, 4vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .location-copy address {
+      font-style: normal;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.55rem;
+      line-height: 1.35;
+    }
+
+    .location-copy p { color: var(--ink-soft); }
+
+    .location-map {
+      min-height: 280px;
+      background: #d7e8df center / cover no-repeat;
+      position: relative;
+    }
+
+    .location-map a {
+      position: absolute;
+      inset: auto 1.25rem 1.25rem auto;
+      background: var(--burgundy);
+      color: var(--white);
+      padding: 0.75rem 1.1rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* —— CTA —— */
+    .finale {
+      text-align: center;
+      background:
+        linear-gradient(180deg, var(--paper), var(--mint));
+    }
+
+    .finale .section-title {
+      margin-inline: auto;
+      max-width: 16ch;
+    }
+
+    .finale .section-lead {
+      margin-inline: auto;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-note {
+      margin: 1.75rem auto 0;
+      max-width: 36rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    /* —— Footer —— */
+    footer {
+      background: var(--burgundy);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand img {
+      height: 2.4rem;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-brand p { font-size: 0.95rem; line-height: 1.7; }
+
+    .footer-brand a { text-decoration: underline; text-underline-offset: 3px; }
+
+    .footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .source-chip {
+      margin-top: 1.25rem;
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* —— Motion reduce —— */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-media img { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .space-media img, .btn { transition: none; }
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 900px) {
+      .intro-grid,
+      .stay-layout,
+      .location-panel,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .space-row,
+      .space-row:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .space-row:nth-child(even) .space-media { order: 0; }
+
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+
+      .nav { display: none; }
+      .nav.is-open {
+        display: flex;
+        position: absolute;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(26, 18, 20, 0.96);
+        padding: 0.5rem 5vw 1.25rem;
+      }
+      .nav.is-open a {
+        padding: 0.9rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .menu-toggle { display: flex; }
+    }
+
+    @media (max-width: 640px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .stay-meta li { grid-template-columns: 1fr; gap: 0.25rem; }
+      .hero-copy { padding-bottom: 3.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Schloss Gusow">
+        <img src="https://schlossgusow.de/wp-content/uploads/2026/01/schloss-gusow-klein.png" alt="Schloss Gusow Logo" width="200" height="71">
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="site-nav" aria-label="Hauptnavigation">
+        <a href="#raeume">Räume</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#beherbergung">Zimmer</a>
+        <a href="#lage">Lage</a>
+        <a class="nav-cta" href="#anfrage">Anfrage</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Willkommen">
+      <div class="hero-media">
+        <img
+          src="https://schlossgusow.de/wp-content/uploads/2026/04/DJI_0458-1-2048x1536.jpg"
+          alt="Luftaufnahme von Schloss Gusow mit Park und Umgebung"
+          width="2048"
+          height="1536"
+          fetchpriority="high">
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-copy reveal is-in">
+        <p class="eyebrow">Hochzeiten &amp; Events</p>
+        <h1>Schloss Gusow</h1>
+        <p class="hero-tagline">Ein Ort für Momente, die bleiben.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#anfrage">Anfrage starten</a>
+          <a class="btn btn-ghost" href="#raeume">Räume entdecken</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro" id="geschichte" aria-labelledby="intro-title">
+      <div class="wrap intro-grid">
+        <div class="intro-copy reveal">
+          <p class="section-label">Dein Schloss. Deine Geschichte.</p>
+          <h2 class="section-title" id="intro-title">Schloss Gusow – Dein Schloss. Deine Geschichte.</h2>
+          <p><strong>Ein Ort für echte Begegnungen: Romantische Hochzeiten, visionäre Firmenevents und Feste für die Ewigkeit.</strong></p>
+          <p>Genießt neugotische Architektur von 1873 und die grüne Freiheit Brandenburgs. Kein anonymes Hotel, sondern ein Zuhause auf Zeit — mit Charakter, Geschichte und Raum für eure Vision.</p>
+        </div>
+        <figure class="intro-figure reveal">
+          <img
+            src="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_1116.jpeg"
+            alt="Schloss Gusow mit markanten Türmen und historischer Fassade"
+            width="854"
+            height="1280"
+            loading="lazy">
+          <figcaption class="intro-caption">Neugotik · Ecktürme · Uhrenturm</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="spaces" id="raeume" aria-labelledby="spaces-title">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="section-label">Die Location</p>
+          <h2 class="section-title" id="spaces-title">Säle, Garten und Geschichte</h2>
+          <p class="section-lead">Zwei große Festsäle, Park und Schlossambiente — flexibel für Trauung, Dinner und Party, bis zu 150 Personen.</p>
+        </div>
+
+        <div class="space-list">
+          <article class="space-row reveal">
+            <figure class="space-media">
+              <img
+                src="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_0124.jpeg"
+                alt="Marwitz-Saal im Schloss Gusow"
+                width="854"
+                height="1280"
+                loading="lazy">
+            </figure>
+            <div>
+              <p class="space-kicker">Festsaal</p>
+              <h3>Marwitz-Saal</h3>
+              <p>Der prächtige Saal für das große Dinner — herrschaftliches Ambiente, ohne steif zu wirken.</p>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <figure class="space-media">
+              <img
+                src="https://schlossgusow.de/wp-content/uploads/2026/01/251122_SchlossGusow_0518.jpg"
+                alt="Derfflinger-Saal im Schloss Gusow"
+                width="1667"
+                height="2500"
+                loading="lazy">
+            </figure>
+            <div>
+              <p class="space-kicker">Festsaal</p>
+              <h3>Derfflinger-Saal</h3>
+              <p>Der großzügige Saal für Feierlichkeiten — auch für Fokus-Workshops und Feiern bis in die Nacht.</p>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <figure class="space-media">
+              <img
+                src="https://schlossgusow.de/wp-content/uploads/2026/01/schloss-gusow-heiraten-park.jpg"
+                alt="Park und Schlossgarten von Schloss Gusow"
+                width="1667"
+                height="2500"
+                loading="lazy">
+            </figure>
+            <div>
+              <p class="space-kicker">Draußen</p>
+              <h3>Schlossgarten &amp; Park</h3>
+              <p>Zwei Hektar Parkanlage und historischer Wassergraben — ideal für freie Trauungen unter freiem Himmel und Empfänge im Grünen.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="highlights" aria-labelledby="features-title">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="section-label">Die Highlights</p>
+          <h2 class="section-title" id="features-title">Freiheit statt Fertigpaket</h2>
+          <p class="section-lead">Das Schloss gehört euch allein. Keine parallelen Events — Raum für Individualität statt „Pakete von der Stange“.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-item reveal">
+            <h3>Exklusivität</h3>
+            <p>Das Schloss gehört euch und euren Gästen allein — absolute Privatsphäre für euren Tag.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Ohne Sperrstunde</h3>
+            <p>Feiern ohne Blick auf die Uhr. Nach draußen folgt drinnen — die Nacht gehört euch.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Keine Cateringbindung</h3>
+            <p>Food-Truck oder Buffet — ihr entscheidet. Ohne Cateringpflicht, ohne Korkgeld.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Freie Trauung</h3>
+            <p>Im Park, am Wasser oder im Saal — der Rahmen steht, die Vision bringt ihr.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Gemeinschaftsküchen</h3>
+            <p>Zwei voll ausgestattete Schloss-Küchen für Küchen-Party und Katerfrühstück am nächsten Morgen.</p>
+          </article>
+          <article class="feature-item reveal">
+            <h3>Digitale Event-Seite</h3>
+            <p>Auf Wunsch: passwortgeschützte Event-Website mit RSVP, Infos und Gästeübersicht.</p>
+          </article>
+        </div>
+
+        <p class="feature-note reveal">
+          Hinweis aus der Quellenanalyse: Parkplätze werden auf der Website nicht ausdrücklich beschrieben.
+          Preise und feste Hochzeitspakete sind nicht ausgewiesen — Anfragen sind individuell.
+        </p>
+      </div>
+    </section>
+
+    <section class="stay" id="beherbergung" aria-labelledby="stay-title">
+      <div class="wrap stay-layout">
+        <div class="stay-visual reveal" aria-hidden="true">
+          <figure>
+            <img
+              src="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_1038.jpeg"
+              alt=""
+              width="854"
+              height="1280"
+              loading="lazy">
+          </figure>
+          <figure>
+            <img
+              src="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_1068.jpeg"
+              alt=""
+              width="854"
+              height="1280"
+              loading="lazy">
+          </figure>
+          <figure>
+            <img
+              src="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_1005.jpeg"
+              alt=""
+              width="1280"
+              height="854"
+              loading="lazy">
+          </figure>
+        </div>
+        <div class="reveal">
+          <p class="section-label">Beherbergung</p>
+          <h2 class="section-title" id="stay-title">Obergeschoss &amp; Zimmer</h2>
+          <p class="section-lead">Im 1. Obergeschoss befinden sich 14 individuell eingerichtete Doppelzimmer. Alle Zimmer atmen die Geschichte des Hauses und bieten einen weiten Blick ins Grüne.</p>
+          <ul class="stay-meta">
+            <li><span>Kapazität</span><div>Flexibel bis zu 150 Personen</div></li>
+            <li><span>Zimmer</span><div>14 historische Doppelzimmer</div></li>
+            <li><span>Weitere Räume</span><div>Trauzimmer · Salons &amp; Break-Out Rooms</div></li>
+            <li><span>Architektur</span><div>Neugotik 1870–1873 · Uhrenturm · preußische Baukunst</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="lage" aria-labelledby="lage-title">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="section-label">Lage</p>
+          <h2 class="section-title" id="lage-title">Gusow, Brandenburg — nah an Berlin</h2>
+          <p class="section-lead">Absolute Privatsphäre, aber nah genug für Gäste aus Berlin (60 Min) und Frankfurt/Oder (40 Min).</p>
+        </div>
+
+        <div class="location-panel reveal">
+          <div class="location-copy">
+            <address>
+              Schloss Gusow<br>
+              Schloßstrasse 7<br>
+              15306 Gusow-Platkow
+            </address>
+            <p>Hochzeitslocation in Berlin/Brandenburg — echte Schlossatmosphäre, umgeben von Natur und dem Charme vergangener Zeiten.</p>
+            <p><a href="mailto:info@schlossgusow.de">info@schlossgusow.de</a></p>
+          </div>
+          <div
+            class="location-map"
+            style="background-image: url('https://schlossgusow.de/wp-content/uploads/2026/01/Schloss-Gusow_Karte.png');"
+            role="img"
+            aria-label="Kartenausschnitt Schloss Gusow">
+            <a
+              href="https://maps.google.com/maps?ll=52.572281,14.346235&amp;z=16&amp;t=m&amp;hl=de&amp;gl=DE&amp;mapclient=embed&amp;cid=17141451685789645238"
+              target="_blank"
+              rel="noopener noreferrer">
+              Auf Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="finale" id="anfrage" aria-labelledby="cta-title">
+      <div class="wrap reveal">
+        <p class="section-label">Termincheck</p>
+        <h2 class="section-title" id="cta-title">Startet jetzt die Planung eures Traumevents.</h2>
+        <p class="section-lead">Fragt euren Wunschtermin unverbindlich an.</p>
+        <a class="btn btn-solid" href="https://schlossgusow.de/kontakt/" target="_blank" rel="noopener noreferrer">Anfrage starten</a>
+        <p class="pricing-note">
+          Preisangaben und Pakete sind auf der Quellseite nicht veröffentlicht.
+          Die Location positioniert sich als exklusives Schloss-Erlebnis mit individueller Gestaltung (Premium-Boutique-Charakter).
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://schlossgusow.de/wp-content/uploads/2026/01/schloss-gusow-klein.png" alt="Schloss Gusow" width="200" height="71">
+          <p>
+            Schloss Gusow<br>
+            Schloßstrasse 7<br>
+            15306 Gusow-Platkow
+          </p>
+          <p style="margin-top: 1rem;">
+            <a href="https://schlossgusow.de/" target="_blank" rel="noopener noreferrer">www.schlossgusow.de</a><br>
+            <a href="mailto:info@schlossgusow.de">info@schlossgusow.de</a>
+          </p>
+          <p class="source-chip">Prototype based on live content from schlossgusow.de</p>
+        </div>
+        <div>
+          <p style="margin-bottom: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.72rem; color: rgba(255,255,255,0.55);">Seiten</p>
+          <p style="line-height: 2;">
+            <a href="https://schlossgusow.de/hochzeit/" target="_blank" rel="noopener noreferrer">Hochzeit</a><br>
+            <a href="https://schlossgusow.de/events/" target="_blank" rel="noopener noreferrer">Events</a><br>
+            <a href="https://schlossgusow.de/kontakt/" target="_blank" rel="noopener noreferrer">Kontakt</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <span>© 2026 schlossgusow.de · Prototype</span>
+        <span>Gusow-Platkow · Brandenburg</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById("site-header");
+      var toggle = document.getElementById("menu-toggle");
+      var nav = document.getElementById("site-nav");
+
+      function onScroll() {
+        header.classList.toggle("is-scrolled", window.scrollY > 24);
+      }
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-in");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          io.observe(el);
+        });
+      } else {
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          el.classList.add("is-in");
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
