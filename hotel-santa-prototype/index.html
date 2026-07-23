@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Viesnīca Santa — a small hotel near Sigulda with charm, atmosphere, and the beauty of nature. Rooms from €75, SPA zone, restaurant, and events.">
+  <title>Viesnīca Santa | Hotel near Sigulda, Latvia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Brand colors extracted from hotelsanta.lv Elementor CSS + logo palette */
+      --wine: #62201d;
+      --wine-deep: #5e2121;
+      --wine-accent: #801e03;
+      --ink: #0c0c0c;
+      --ink-soft: #2d2222;
+      --forest: #1f3a2f;
+      --mist: #e8eee9;
+      --paper: #f7f8f6;
+      --stone: #6b6560;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(12, 12, 12, 0.12);
+      --radius: 10px;
+      --transition: 0.28s ease;
+      --header-pad: clamp(1.5rem, 4vw, 3rem); /* 24–48px breathing room */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      color: var(--ink-soft);
+      background:
+        radial-gradient(ellipse 120% 80% at 10% -10%, rgba(31, 58, 47, 0.08), transparent 55%),
+        radial-gradient(ellipse 90% 60% at 100% 20%, rgba(98, 32, 29, 0.06), transparent 50%),
+        linear-gradient(180deg, var(--paper) 0%, var(--mist) 45%, var(--paper) 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1120px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    .section {
+      padding: clamp(3.5rem, 8vw, 5.5rem) 0;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--wine-accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 2.85rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      color: var(--stone);
+      max-width: 34rem;
+      font-size: 1.02rem;
+      font-weight: 300;
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding-block: 0.85rem;
+      padding-inline: 0;
+      background: rgba(247, 248, 246, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(247, 248, 246, 0.96);
+      border-bottom-color: rgba(98, 32, 29, 0.08);
+      box-shadow: 0 8px 28px rgba(12, 12, 12, 0.06);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      max-width: 1120px;
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      height: 46px;
+      width: auto;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--wine);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      opacity: 0.82;
+      transition: opacity var(--transition), color var(--transition);
+    }
+
+    .nav-desktop a:hover {
+      opacity: 1;
+      color: var(--wine);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.8rem 1.45rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--wine);
+      color: var(--white);
+      box-shadow: 0 8px 22px rgba(98, 32, 29, 0.28);
+    }
+
+    .btn-primary:hover { background: var(--wine-accent); }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.14);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.24); }
+
+    .header-cta { flex-shrink: 0; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(98, 32, 29, 0.2);
+      border-radius: 8px;
+      color: var(--wine);
+      cursor: pointer;
+      padding: 0.45rem;
+    }
+
+    .menu-toggle svg { width: 22px; height: 22px; display: block; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 12, 12, 0.96);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: var(--header-pad);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: heroDrift 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(12, 12, 12, 0.28) 0%, rgba(12, 12, 12, 0.15) 35%, rgba(12, 12, 12, 0.72) 100%),
+        linear-gradient(90deg, rgba(31, 58, 47, 0.35) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: clamp(3rem, 8vw, 5rem) 0 clamp(3.5rem, 7vw, 4.5rem);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5.2rem);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-headline {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.92;
+      margin-bottom: 0.85rem;
+      max-width: 28rem;
+    }
+
+    .hero-support {
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 32rem;
+      opacity: 0.88;
+      margin-bottom: 1.75rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+    /* —— Booking —— */
+    .booking-section {
+      margin-top: -2.25rem;
+      position: relative;
+      z-index: 5;
+      padding-bottom: 1rem;
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.35rem 1.4rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(98, 32, 29, 0.06);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      border: 1px solid rgba(45, 34, 34, 0.14);
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+      background: var(--paper);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      border-color: var(--wine);
+      box-shadow: 0 0 0 3px rgba(98, 32, 29, 0.12);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(12, 12, 12, 0.08);
+      padding: 0.85rem;
+      z-index: 20;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0.2rem;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(98, 32, 29, 0.25);
+      background: var(--paper);
+      color: var(--wine);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      height: 48px;
+      padding-inline: 1.6rem;
+      white-space: nowrap;
+    }
+
+    .booking-note {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--stone);
+      text-align: center;
+    }
+
+    /* —— Rooms —— */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(12, 12, 12, 0.06);
+      box-shadow: 0 6px 24px rgba(12, 12, 12, 0.05);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .room-card:nth-child(2) { animation-delay: 0.08s; }
+    .room-card:nth-child(3) { animation-delay: 0.16s; }
+    .room-card:nth-child(4) { animation-delay: 0.24s; }
+    .room-card:nth-child(5) { animation-delay: 0.32s; }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .room-card-body { padding: 1.25rem 1.3rem 1.45rem; }
+
+    .room-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 0.4rem;
+      color: var(--wine-deep);
+    }
+
+    .room-card p {
+      font-size: 0.92rem;
+      color: var(--stone);
+      margin-bottom: 0.9rem;
+    }
+
+    .room-meta {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .room-meta li {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.28rem 0.55rem;
+      border-radius: 6px;
+      background: var(--mist);
+      color: var(--forest);
+    }
+
+    .room-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .room-price span {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--stone);
+    }
+
+    .rooms-grid .room-card:nth-child(4),
+    .rooms-grid .room-card:nth-child(5) {
+      grid-column: span 1;
+    }
+
+    /* —— Amenities —— */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1.05rem 1.1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(31, 58, 47, 0.08);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .amenity-item:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: linear-gradient(145deg, rgba(98, 32, 29, 0.1), rgba(31, 58, 47, 0.12));
+      color: var(--wine);
+      display: grid;
+      place-items: center;
+    }
+
+    .amenity-icon svg { width: 20px; height: 20px; }
+
+    .amenity-item span {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+
+    /* —— Gallery —— */
+    .gallery {
+      background: linear-gradient(180deg, transparent, rgba(31, 58, 47, 0.05), transparent);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 210px;
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      min-height: 200px;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(transparent, rgba(12, 12, 12, 0.65));
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* —— Location —— */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .location-text h3 {
+      font-size: 1.6rem;
+      color: var(--wine-deep);
+      margin: 0.4rem 0 0.9rem;
+    }
+
+    .location-text p {
+      color: var(--stone);
+      margin-bottom: 1rem;
+    }
+
+    .location-details {
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+
+    .location-details li {
+      font-size: 0.95rem;
+      padding-left: 0.9rem;
+      border-left: 2px solid var(--wine-accent);
+    }
+
+    .location-details strong {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--wine);
+      margin-bottom: 0.15rem;
+    }
+
+    .map-placeholder {
+      border-radius: 14px;
+      background:
+        linear-gradient(145deg, rgba(31, 58, 47, 0.08), rgba(98, 32, 29, 0.08)),
+        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(12, 12, 12, 0.03) 24px, rgba(12, 12, 12, 0.03) 25px),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(12, 12, 12, 0.03) 24px, rgba(12, 12, 12, 0.03) 25px),
+        var(--mist);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--forest);
+      min-height: 320px;
+      border: 1px dashed rgba(31, 58, 47, 0.25);
+    }
+
+    .map-placeholder svg {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 0.85rem;
+      opacity: 0.75;
+    }
+
+    /* —— Trust —— */
+    .trust-note {
+      font-size: 0.85rem;
+      color: var(--stone);
+      background: rgba(128, 30, 3, 0.06);
+      border-left: 3px solid var(--wine-accent);
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.75rem;
+      max-width: 46rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.15rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.35rem;
+      border: 1px solid rgba(12, 12, 12, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .testimonial-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      flex: 1;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--stone);
+    }
+
+    .testimonial-badge {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--wine-accent);
+      background: rgba(128, 30, 3, 0.08);
+      padding: 0.3rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: linear-gradient(165deg, var(--ink) 0%, #1a1514 55%, var(--forest) 140%);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 3.5rem 0 1.75rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand img {
+      height: 52px;
+      width: auto;
+      margin-bottom: 1rem;
+      filter: brightness(1.05);
+    }
+
+    .footer-brand p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      max-width: 22rem;
+      opacity: 0.8;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 1rem;
+    }
+
+    .footer-nav ul { list-style: none; display: grid; gap: 0.55rem; }
+
+    .footer-nav a:hover,
+    .footer-contact a:hover { color: #fff; }
+
+    .footer-contact {
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.35rem;
+      text-align: center;
+      font-size: 0.78rem;
+      opacity: 0.5;
+    }
+
+    /* —— Reveal motion —— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 980px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 200px;
+      }
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .gallery-item { min-height: 200px; }
+      .location-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary { grid-column: span 2; }
+    }
+
+    @media (max-width: 600px) {
+      .brand-name { display: none; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+      .gallery-item:nth-child(1) { grid-column: span 1; }
+      .gallery-item { min-height: 220px; }
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; width: 100%; }
+      .hero { min-height: 78vh; }
+      .header-cta .btn { padding: 0.7rem 1.05rem; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky header -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="#hero" class="brand" aria-label="Viesnīca Santa home">
+        <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/cropped-LOGO-GATAVS.jpg" alt="Viesnīca Santa logo">
+        <span class="brand-name">Viesnīca Santa</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="btn btn-primary header-cta">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+  </nav>
+
+  <!-- 1. Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-media" aria-hidden="true">
+      <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/OBD1125-scaled.jpg" alt="" width="2560" height="1707">
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <h1 class="hero-brand">Viesnīca Santa</h1>
+      <p class="hero-headline">Near Sigulda · Nature &amp; quiet</p>
+      <p class="hero-support">A small hotel with its own charm, atmosphere, and the beauty of nature — for peaceful holidays away from the city.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">Check availability</a>
+        <a href="#rooms" class="btn btn-ghost">View rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Booking widget -->
+  <section class="booking-section section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm" novalidate>
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestDropdown">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown" role="dialog" aria-label="Guest count">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p class="booking-note">Prototype booking widget — UI only. Call +371 29219438 or email info@hotelsanta.lv to reserve.</p>
+    </div>
+  </section>
+
+  <!-- 3. Accommodation -->
+  <section class="section" id="rooms">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Nakšņošana</p>
+        <h2 class="section-title">Rooms &amp; accommodation</h2>
+        <p class="section-lead">Five room types as listed on hotelsanta.lv. Prices include breakfast; each room has WC, shower, TV, and Wi-Fi.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card reveal">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/TWIN-scaled.jpg" alt="TWIN room at Viesnīca Santa" width="2560" height="1707" loading="lazy">
+          <div class="room-card-body">
+            <h3>TWIN numurs</h3>
+            <p>Two single beds (90×200).</p>
+            <ul class="room-meta">
+              <li>2 beds 90×200</li>
+              <li>Breakfast</li>
+              <li>Wi-Fi</li>
+            </ul>
+            <p class="room-price">From €75 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/DBL-scaled.jpg" alt="DBL room at Viesnīca Santa" width="2560" height="1707" loading="lazy">
+          <div class="room-card-body">
+            <h3>DBL numurs</h3>
+            <p>One double bed (160×200).</p>
+            <ul class="room-meta">
+              <li>1 bed 160×200</li>
+              <li>Breakfast</li>
+              <li>Wi-Fi</li>
+            </ul>
+            <p class="room-price">From €80 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/TRIPLR-NR-1024x683.jpg" alt="TRIPLE room at Viesnīca Santa" width="1024" height="683" loading="lazy">
+          <div class="room-card-body">
+            <h3>TRIPLE numurs</h3>
+            <p>Three single beds (90×200).</p>
+            <ul class="room-meta">
+              <li>3 beds 90×200</li>
+              <li>Breakfast</li>
+              <li>Wi-Fi</li>
+            </ul>
+            <p class="room-price">From €90 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2022/02/nr12-1024x684.jpg" alt="Family room at Viesnīca Santa" width="1024" height="684" loading="lazy">
+          <div class="room-card-body">
+            <h3>Family numurs</h3>
+            <p>One large bed (180×200) plus one single (90×200).</p>
+            <ul class="room-meta">
+              <li>€80 / 2 pers.</li>
+              <li>€90 / 2+1</li>
+              <li>Breakfast</li>
+            </ul>
+            <p class="room-price">From €80 <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card reveal">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/LUX-1024x683.jpg" alt="LUX room at Viesnīca Santa" width="1024" height="683" loading="lazy">
+          <div class="room-card-body">
+            <h3>LUX numurs</h3>
+            <p>Double bed (160×200) with anteroom and fireplace.</p>
+            <ul class="room-meta">
+              <li>Fireplace anteroom</li>
+              <li>Breakfast</li>
+              <li>Wi-Fi</li>
+            </ul>
+            <p class="room-price">From €100 <span>/ night</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Amenities -->
+  <section class="section" id="amenities">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">On site</p>
+        <h2 class="section-title">Amenities</h2>
+        <p class="section-lead">Facilities and services actually listed on the Hotel Santa website.</p>
+      </div>
+      <div class="amenities-grid reveal">
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 20V10l8-6 8 6v10H4z"/><path d="M9 20v-6h6v6"/></svg>
+          </div>
+          <span>Sauna</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 18c2-4 4-6 8-6s6 2 8 6"/><circle cx="8" cy="9" r="1.5"/><circle cx="12" cy="7" r="1.5"/><circle cx="16" cy="9" r="1.5"/></svg>
+          </div>
+          <span>Steam bath (tvaika pirts)</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 12h16v4a4 4 0 01-4 4H8a4 4 0 01-4-4v-4z"/><path d="M6 12V8a6 6 0 0112 0v4"/></svg>
+          </div>
+          <span>SPA bath</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3c-2 3-5 5-5 9a5 5 0 0010 0c0-4-3-6-5-9z"/><path d="M9 20h6"/></svg>
+          </div>
+          <span>SPA lounge with fireplace</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 11h16v9H4z"/><path d="M8 11V7a4 4 0 018 0v4"/><path d="M4 15h16"/></svg>
+          </div>
+          <span>Restaurant &amp; breakfast</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 10h18v10H3z"/><path d="M7 10V7a5 5 0 0110 0v3"/><circle cx="12" cy="15" r="1.5"/></svg>
+          </div>
+          <span>Banquets (up to 45 guests)</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8M12 18v2"/></svg>
+          </div>
+          <span>Seminars &amp; coffee breaks</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14"/><path d="M12 5a7 7 0 017 7 7 7 0 01-7 7 7 7 0 01-7-7 7 7 0 017-7z"/></svg>
+          </div>
+          <span>Wi-Fi</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 20h8"/></svg>
+          </div>
+          <span>TV in room</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M8 4h8v6H8z"/><path d="M6 10h12v10H6z"/><path d="M10 14h4"/></svg>
+          </div>
+          <span>Private bathroom</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 14c2 3 5 5 9 5s7-2 9-5"/><path d="M4 10c1.5-2 3.5-3 8-3s6.5 1 8 3"/></svg>
+          </div>
+          <span>Lake-view rooms (package)</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+          </div>
+          <span>Sigulda area nature access</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Gallery -->
+  <section class="section gallery" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Galerija</p>
+        <h2 class="section-title">Photo gallery</h2>
+        <p class="section-lead">Real photographs from hotelsanta.lv — exterior, rooms, common spaces, SPA, and views.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <figure class="gallery-item">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/OBD1125-scaled.jpg" alt="Hotel Santa exterior" width="2560" height="1707" loading="lazy">
+          <figcaption>Exterior</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/DBL-scaled.jpg" alt="Double room interior" width="2560" height="1707" loading="lazy">
+          <figcaption>Room</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2022/02/vestibils.jpg" alt="Hotel lobby" width="1600" height="1067" loading="lazy">
+          <figcaption>Lobby</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/skats-scaled.jpg" alt="Nature view from Hotel Santa" width="2560" height="1440" loading="lazy">
+          <figcaption>Nature view</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2022/01/sauna1-wecompress.com_-scaled.jpeg" alt="Sauna at Hotel Santa SPA" width="1920" height="2560" loading="lazy">
+          <figcaption>Sauna / SPA</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2022/02/restorans.jpg" alt="Restaurant at Hotel Santa" width="1600" height="1067" loading="lazy">
+          <figcaption>Restaurant</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Location -->
+  <section class="section" id="location">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Kontakti</p>
+        <h2 class="section-title">Location</h2>
+      </div>
+      <div class="location-grid reveal">
+        <div class="location-text">
+          <h3>Kalnjāņi, near Sigulda</h3>
+          <p>Viesnīca Santa is a small suburban hotel in Sigulda municipality (Siguldas novads), Latvia. The hotel helps guests plan time in Sigulda — including castle visits and boat trips on the Gauja river.</p>
+          <p><em>Note:</em> The live site does not explicitly name “Gauja National Park.” Location copy here sticks to landmarks the site itself mentions: Sigulda and the Gauja river.</p>
+          <ul class="location-details">
+            <li>
+              <strong>Address</strong>
+              „Kalnjāņi”, Siguldas novads, Sigulda, LV-2150
+            </li>
+            <li>
+              <strong>Nearby</strong>
+              Sigulda · Gauja river (boat trips)
+            </li>
+            <li>
+              <strong>Phone</strong>
+              +371 29219438 · +371 67705271
+            </li>
+            <li>
+              <strong>Email</strong>
+              info@hotelsanta.lv
+            </li>
+          </ul>
+        </div>
+        <div class="map-placeholder" role="img" aria-label="Static map placeholder for Kalnjāņi, Sigulda">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="font-size:0.9rem;margin-top:0.45rem;max-width:16rem;opacity:0.85;">Kalnjāņi, Sigulda, LV-2150, Latvia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Trust -->
+  <section class="section" id="trust">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Guests</p>
+        <h2 class="section-title">What guests say</h2>
+      </div>
+      <p class="trust-note reveal">No public rating badge was found on hotelsanta.lv. The three cards below are clearly marked sample placeholders for this prototype.</p>
+      <div class="testimonials-grid reveal">
+        <div class="testimonial-card">
+          <blockquote>“Quiet nights near Sigulda and a warm welcome — exactly the escape we needed from the city.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest A</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“The SPA zone with sauna and steam bath was the highlight after a day exploring Sigulda.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest B</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Comfortable LUX room with fireplace anteroom, and breakfast set us up for a Gauja boat trip.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest C</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://hotelsanta.lv/wp-content/uploads/2019/12/cropped-LOGO-GATAVS.jpg" alt="Viesnīca Santa">
+          <p>Viesnīca „Santa” — a small hotel near Sigulda with charm, atmosphere, and the beauty of nature. Open since November 1999.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Check availability</a></li>
+            <li><a href="#location">Location</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>„Kalnjāņi”, Siguldas novads<br>Sigulda, LV-2150</p>
+          <a href="tel:+37129219438">+371 29219438</a>
+          <a href="tel:+37167705271">+371 67705271</a>
+          <a href="mailto:info@hotelsanta.lv">info@hotelsanta.lv</a>
+          <a href="https://www.facebook.com/Hotel-Santa-602247933138514/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Viesnīca Santa — homepage prototype demo (not an official site)</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const navClose = document.getElementById('navClose');
+
+      menuToggle.addEventListener('click', function () {
+        mobileNav.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+      navClose.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      mobileNav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      const today = new Date().toISOString().split('T')[0];
+      const checkin = document.getElementById('checkin');
+      const checkout = document.getElementById('checkout');
+      checkin.min = today;
+      checkout.min = today;
+
+      checkin.addEventListener('change', function () {
+        if (!checkin.value) return;
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = checkout.min;
+        }
+      });
+
+      let adults = 2;
+      let children = 0;
+      const guestTrigger = document.getElementById('guestTrigger');
+      const guestDropdown = document.getElementById('guestDropdown');
+      const guestSummary = document.getElementById('guestSummary');
+      const adultsCount = document.getElementById('adultsCount');
+      const childrenCount = document.getElementById('childrenCount');
+      const adultsMinus = document.getElementById('adultsMinus');
+      const childrenMinus = document.getElementById('childrenMinus');
+
+      function updateGuestSummary() {
+        let text = adults + (adults === 1 ? ' adult' : ' adults');
+        if (children > 0) {
+          text += ', ' + children + (children === 1 ? ' child' : ' children');
+        }
+        guestSummary.textContent = text;
+        adultsCount.textContent = String(adults);
+        childrenCount.textContent = String(children);
+        adultsMinus.disabled = adults <= 1;
+        childrenMinus.disabled = children <= 0;
+      }
+
+      guestTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const open = guestDropdown.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', function () {
+        guestDropdown.classList.remove('open');
+        guestTrigger.setAttribute('aria-expanded', 'false');
+      });
+      guestDropdown.addEventListener('click', function (e) { e.stopPropagation(); });
+
+      document.getElementById('adultsPlus').addEventListener('click', function () {
+        if (adults < 8) { adults++; updateGuestSummary(); }
+      });
+      adultsMinus.addEventListener('click', function () {
+        if (adults > 1) { adults--; updateGuestSummary(); }
+      });
+      document.getElementById('childrenPlus').addEventListener('click', function () {
+        if (children < 6) { children++; updateGuestSummary(); }
+      });
+      childrenMinus.addEventListener('click', function () {
+        if (children > 0) { children--; updateGuestSummary(); }
+      });
+      updateGuestSummary();
+
+      document.getElementById('bookingForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Booking search is a UI prototype only — no reservation system connected. Please call +371 29219438 or email info@hotelsanta.lv.');
+      });
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+</html>
