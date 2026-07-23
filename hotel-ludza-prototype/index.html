@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Ludza — Viesnīca Ludza | 3-star Hotel in Ludza, Latvia</title>
+  <meta name="description" content="Hotel Ludza (Viesnīca Ludza) — a 3-star hotel in Ludza offering comfortable guest rooms, restaurant, banquet hall, sauna, and more. 1. maija iela 1, Ludza, LV-5701.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lake-deep: #1a3a3f;
+      --lake-mid: #2a5a62;
+      --lake-soft: #3d7a84;
+      --water: #c8dde0;
+      --mist: #e8f1f2;
+      --sand: #eef4f4;
+      --sand-deep: #d5e3e4;
+      --wood: #3d5c52;
+      --ink: #1e2a2c;
+      --ink-soft: #4a5a5c;
+      --cream: #f3f7f7;
+      --white: #ffffff;
+      --accent: #2a6f78;
+      --accent-hover: #1f575e;
+      --shadow: 0 8px 32px rgba(26, 58, 63, 0.12);
+      --radius: 10px;
+      --header-pad: clamp(1.5rem, 4vw, 3rem);
+      --transition: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1140px, calc(100% - 2 * var(--header-pad)));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: clamp(3.5rem, 8vw, 6rem) 0;
+    }
+
+    .section-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lake-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.85rem, 4vw, 2.65rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--lake-deep);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 36rem;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(42, 111, 120, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.14);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.24); }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(26, 58, 63, 0.08);
+      transition: box-shadow var(--transition);
+    }
+
+    .site-header.scrolled { box-shadow: 0 4px 24px rgba(26, 58, 63, 0.1); }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 0.9rem 0;
+      min-height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #1a1a1a;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-text .brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--lake-deep);
+    }
+
+    .logo-text .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--lake-deep); }
+
+    .header-cta { flex-shrink: 0; }
+
+    .header-cta .btn { padding: 0.7rem 1.25rem; font-size: 0.85rem; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--lake-deep);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 58, 63, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: 'Fraunces', serif;
+      font-size: 1.65rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: var(--header-pad);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: heroZoom 18s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(26,58,63,0.25) 0%, rgba(26,58,63,0.55) 45%, rgba(26,58,63,0.88) 100%),
+        linear-gradient(90deg, rgba(26,58,63,0.55) 0%, transparent 60%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(4rem, 10vw, 6.5rem) 0 clamp(3.5rem, 8vw, 5rem);
+      max-width: 40rem;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.6rem, 7vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-prop {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 300;
+      opacity: 0.92;
+      margin-bottom: 1.75rem;
+      max-width: 28rem;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+    .hero-meta {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+      letter-spacing: 0.04em;
+    }
+
+    /* —— Booking —— */
+    #booking {
+      background: var(--lake-deep);
+      color: var(--white);
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 5;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .booking-card {
+      background: var(--white);
+      color: var(--ink);
+      border-radius: var(--radius);
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .field select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--sand-deep);
+      border-radius: 6px;
+      background: var(--sand);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .guest-trigger:focus {
+      border-color: var(--lake-soft);
+      box-shadow: 0 0 0 3px rgba(61, 122, 132, 0.18);
+    }
+
+    .guest-wrap { position: relative; }
+
+    .guest-trigger {
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .guest-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      min-width: 240px;
+      background: var(--white);
+      border: 1px solid var(--sand-deep);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 20;
+    }
+
+    .guest-panel.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+    }
+
+    .guest-row + .guest-row { border-top: 1px solid var(--mist); }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .stepper button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--sand-deep);
+      background: var(--sand);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--lake-deep);
+    }
+
+    .stepper button:hover { background: var(--mist); }
+
+    .booking-note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .booking-search { white-space: nowrap; height: 48px; align-self: end; }
+
+    /* —— Rooms —— */
+    #rooms { background: var(--cream); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(26, 58, 63, 0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card .media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--mist);
+    }
+
+    .room-card .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .room-card:hover .media img { transform: scale(1.04); }
+
+    .room-body { padding: 1.35rem 1.35rem 1.5rem; }
+
+    .room-body h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      color: var(--lake-deep);
+      margin-bottom: 0.4rem;
+    }
+
+    .room-body p {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .room-price {
+      font-weight: 600;
+      color: var(--wood);
+      font-size: 0.95rem;
+    }
+
+    .room-price span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      margin-top: 0.15rem;
+    }
+
+    /* —— Amenities —— */
+    #amenities {
+      background:
+        linear-gradient(160deg, var(--mist) 0%, var(--sand) 100%);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .amenity {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1.35rem;
+      background: rgba(255,255,255,0.7);
+      border-radius: var(--radius);
+      border: 1px solid rgba(26, 58, 63, 0.06);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .amenity:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .amenity svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--lake-mid);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity span {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--lake-deep);
+    }
+
+    .amenity small {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    /* —— Gallery —— */
+    #gallery { background: var(--lake-deep); color: var(--white); }
+
+    #gallery .section-label { color: var(--water); }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-lead { color: rgba(255,255,255,0.75); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 220px;
+      gap: 0.85rem;
+      margin-top: 2.5rem;
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-grid figure:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-grid figure:hover img { transform: scale(1.05); }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.65));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .gallery-grid figure:hover figcaption { opacity: 1; }
+
+    .gallery-note {
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* —— Location —— */
+    #location { background: var(--cream); }
+
+    .location-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      align-items: stretch;
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .location-details {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .location-details li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+    }
+
+    .location-details strong { color: var(--lake-deep); display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .map-placeholder {
+      background:
+        linear-gradient(135deg, var(--mist), var(--water)),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 18px,
+          rgba(26, 58, 63, 0.04) 18px,
+          rgba(26, 58, 63, 0.04) 19px
+        );
+      border-radius: var(--radius);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      border: 1px solid rgba(26, 58, 63, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(61, 122, 132, 0.25);
+      top: 28%;
+      left: 42%;
+      filter: blur(2px);
+    }
+
+    .map-pin {
+      position: relative;
+      z-index: 1;
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 8px 20px rgba(42, 111, 120, 0.35);
+      margin-bottom: 1.25rem;
+    }
+
+    .map-pin::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: var(--white);
+      border-radius: 50%;
+      top: 16px;
+      left: 16px;
+    }
+
+    .map-placeholder p {
+      position: relative;
+      z-index: 1;
+      color: var(--lake-deep);
+      font-weight: 600;
+    }
+
+    .map-placeholder small {
+      position: relative;
+      z-index: 1;
+      color: var(--ink-soft);
+      margin-top: 0.35rem;
+      display: block;
+    }
+
+    /* —— Trust —— */
+    #trust { background: var(--sand); }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border: 1px dashed rgba(26, 58, 63, 0.2);
+      position: relative;
+    }
+
+    .placeholder-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--lake-mid);
+      background: rgba(42, 111, 120, 0.12);
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      margin-bottom: 0.85rem;
+    }
+
+    .testimonial blockquote {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--lake-deep);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.8);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-grid h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--water);
+      margin-bottom: 1rem;
+    }
+
+    .footer-grid ul { list-style: none; }
+
+    .footer-grid li + li { margin-top: 0.5rem; }
+
+    .footer-grid a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+      .booking-card {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-search { grid-column: 1 / -1; width: 100%; }
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 180px;
+      }
+      .gallery-grid figure:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        min-height: 240px;
+      }
+      .location-layout { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .rooms-grid { grid-template-columns: 1fr; }
+      .booking-card { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+      }
+      .gallery-grid figure:first-child {
+        grid-column: span 1;
+      }
+      .header-cta .btn span.short { display: inline; }
+      .header-cta .btn span.full { display: none; }
+    }
+
+    @media (min-width: 601px) {
+      .header-cta .btn span.short { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-media img { animation: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#hero" class="logo" aria-label="Hotel Ludza home">
+        <img src="https://web.archive.org/web/20140519120057id_/http://hotelludza.lv/images/yootheme/logo.png" alt="Hotel Ludza logo" width="44" height="44">
+        <span class="logo-text">
+          <span class="brand">Hotel Ludza</span>
+          <span class="tag">3-star · Ludza</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a class="btn btn-primary" href="#booking">
+          <span class="full">Check availability</span>
+          <span class="short">Book</span>
+        </a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+  </div>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-media">
+        <img
+          src="https://web.archive.org/web/20160505215151id_/http://hotelludza.lv/images/stories/01.jpg"
+          alt="Exterior of Hotel Ludza on 1. maija iela in Ludza"
+          width="1400"
+          height="900"
+          fetchpriority="high">
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-brand">Hotel Ludza</h1>
+          <p class="hero-prop">A welcoming 3-star stay in Ludza — comfortable guest rooms, restaurant, and spaces for gatherings.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking">Check availability</a>
+            <a class="btn btn-ghost" href="#rooms">View rooms</a>
+          </div>
+          <p class="hero-meta">Viesnīca “Ludza” · 1. maija iela 1, Ludza, LV-5701</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Booking widget -->
+    <section class="section" id="booking">
+      <div class="container">
+        <span class="section-label" style="color: var(--water);">Reservations</span>
+        <h2 class="section-title" style="color: var(--white);">Check availability</h2>
+        <p class="section-lead" style="color: rgba(255,255,255,0.72);">Prototype booking widget — UI only. For a real reservation, call or email the hotel.</p>
+
+        <form class="booking-card" id="bookingForm" onsubmit="return handleSearch(event)">
+          <div class="field">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field guest-wrap">
+            <label for="guestTrigger">Guests</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+              <span id="guestSummary">2 adults · 0 children</span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Guest count">
+              <div class="guest-row">
+                <span>Adults</span>
+                <div class="stepper">
+                  <button type="button" id="adultsMinus" aria-label="Fewer adults">−</button>
+                  <span id="adultsCount">2</span>
+                  <button type="button" id="adultsPlus" aria-label="More adults">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <span>Children</span>
+                <div class="stepper">
+                  <button type="button" id="childrenMinus" aria-label="Fewer children">−</button>
+                  <span id="childrenCount">0</span>
+                  <button type="button" id="childrenPlus" aria-label="More children">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="roomPref">Preference</label>
+            <select id="roomPref" name="roomPref">
+              <option value="any">Any guest room</option>
+              <option value="quiet">Quieter room</option>
+              <option value="family">Larger room</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary booking-search" id="searchBtn">Search</button>
+        </form>
+        <p class="booking-note" id="searchFeedback" hidden></p>
+        <p class="booking-note">Room rates are not published on hotelludza.lv — confirm pricing when you book. Tel. +371 29104055</p>
+      </div>
+    </section>
+
+    <!-- 3. Accommodation -->
+    <section class="section" id="rooms">
+      <div class="container">
+        <span class="section-label">Accommodation</span>
+        <h2 class="section-title">Comfortable guest rooms</h2>
+        <p class="section-lead">The hotel site presents guest rooms as a single category — “comfortable guest rooms” — without named room types or published nightly rates. Photos below are from the property’s own gallery.</p>
+
+        <div class="rooms-grid">
+          <article class="room-card">
+            <div class="media">
+              <img
+                src="https://web.archive.org/web/20160505185313id_/http://hotelludza.lv/images/stories/hotel-ludza.JPG"
+                alt="Guest room with wooden double bed at Hotel Ludza"
+                width="800"
+                height="600"
+                loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Guest room</h3>
+              <p>Warm, simply furnished room with wooden furnishings — as shown on the hotel’s rooms page.</p>
+              <p class="room-price">From EUR — / night<span>Placeholder — price not listed on source site</span></p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="media">
+              <img
+                src="https://web.archive.org/web/20160505162514id_/http://hotelludza.lv/images/stories/hotel-ludza-3.JPG"
+                alt="Guest room with twin beds at Hotel Ludza"
+                width="800"
+                height="600"
+                loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Guest room</h3>
+              <p>Another guest room layout from the property gallery — twin beds with natural wood frames.</p>
+              <p class="room-price">From EUR — / night<span>Placeholder — price not listed on source site</span></p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="media">
+              <img
+                src="https://web.archive.org/web/20160505162928id_/http://hotelludza.lv/images/stories/dsc_0740.jpg"
+                alt="Larger guest room with multiple beds and sofa at Hotel Ludza"
+                width="800"
+                height="600"
+                loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Guest room</h3>
+              <p>Spacious guest room configuration from the hotel gallery — suitable for families or small groups.</p>
+              <p class="room-price">From EUR — / night<span>Placeholder — price not listed on source site</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Amenities -->
+    <section class="section" id="amenities">
+      <div class="container">
+        <span class="section-label">Facilities</span>
+        <h2 class="section-title">On-site amenities</h2>
+        <p class="section-lead">Features listed on the Hotel Ludza / Relax center “Ludza” website. Items not mentioned there (parking, pets, terrace, grill, lake access) are omitted.</p>
+
+        <div class="amenities-grid">
+          <div class="amenity">
+            <svg viewBox="0 0 24 24"><path d="M4 18h16M6 18V9l6-4 6 4v9M9 18v-5h6v5"/></svg>
+            <span>Guest rooms</span>
+            <small>Comfortable hotel rooms</small>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24"><path d="M4 10h16v8H4zM7 10V7a5 5 0 0 1 10 0v3"/><circle cx="12" cy="14" r="1.5"/></svg>
+            <span>Sauna</span>
+            <small>Sauna, large jacuzzi, shower massage</small>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24"><path d="M3 7h18v12H3zM7 7V5h10v2M8 11h8M8 15h5"/></svg>
+            <span>Banquet hall</span>
+            <small>Up to ~100 guests; DJ, photo &amp; décor options</small>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24"><path d="M4 19V5h16v14M8 9h8M8 13h6"/></svg>
+            <span>Conference hall</span>
+            <small>Meetings and events in a quiet setting</small>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24"><path d="M4 18h16M6 18l2-8h8l2 8M9 10V7h6v3"/></svg>
+            <span>Restaurant</span>
+            <small>European cuisine; breakfast, lunch, dinner</small>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24"><path d="M8 21V10M5 10h6M16 21V3l4 4v14"/></svg>
+            <span>Bar &amp; karaoke</span>
+            <small>Bar drinks and karaoke bar</small>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 5v2M12 17v2M5 12h2M17 12h2M7 7l1.5 1.5M15.5 15.5L17 17M17 7l-1.5 1.5M7 17l1.5-1.5"/></svg>
+            <span>Gym</span>
+            <small>Fitness hall with month-ticket option</small>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M8 8c2 0 3 4 4 4s2-4 4-4 3 2 3 4-1 4-3 4-3-4-4-4-2 4-4 4-3-2-3-4 1-4 3-4z"/></svg>
+            <span>Free Wi‑Fi</span>
+            <small>Free Wi‑Fi zone on property</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Gallery -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <span class="section-label">Gallery</span>
+        <h2 class="section-title">A look inside</h2>
+        <p class="section-lead">Real photographs from the Hotel Ludza website (archived). No dedicated lake or nature photos were published on the source site.</p>
+
+        <div class="gallery-grid">
+          <figure>
+            <img
+              src="https://web.archive.org/web/20160505215151id_/http://hotelludza.lv/images/stories/01.jpg"
+              alt="Daytime exterior of Hotel Ludza"
+              width="1200"
+              height="800"
+              loading="lazy">
+            <figcaption>Hotel exterior · 1. maija iela, Ludza</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://web.archive.org/web/20160505185313id_/http://hotelludza.lv/images/stories/hotel-ludza.JPG"
+              alt="Guest room interior"
+              width="800"
+              height="600"
+              loading="lazy">
+            <figcaption>Guest room</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://web.archive.org/web/20140519115546id_/http://hotelludza.lv/cache/widgetkit/gallery/45/02-2483ccbf81.jpg"
+              alt="Restaurant and bar common area"
+              width="800"
+              height="600"
+              loading="lazy">
+            <figcaption>Restaurant &amp; bar</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://web.archive.org/web/20140519130450id_/http://hotelludza.lv/cache/widgetkit/gallery/45/01-85d4f7224c.jpg"
+              alt="Banquet hall set for an event"
+              width="800"
+              height="600"
+              loading="lazy">
+            <figcaption>Banquet hall</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://web.archive.org/web/20160505172747id_/http://hotelludza.lv/images/stories/SAUNA.jpg"
+              alt="Sauna and jacuzzi facilities"
+              width="800"
+              height="600"
+              loading="lazy">
+            <figcaption>Sauna &amp; jacuzzi</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://web.archive.org/web/20140519132559id_/http://hotelludza.lv/cache/widgetkit/gallery/45/03-ac9a4d01a0.jpg"
+              alt="Restaurant dining hall at Hotel Ludza"
+              width="800"
+              height="600"
+              loading="lazy">
+            <figcaption>Dining hall</figcaption>
+          </figure>
+        </div>
+        <p class="gallery-note">Nature / lake feature photo: not available on source site — placeholder omitted rather than fabricated.</p>
+      </div>
+    </section>
+
+    <!-- 6. Location -->
+    <section class="section" id="location">
+      <div class="container">
+        <span class="section-label">Find us</span>
+        <h2 class="section-title">In the heart of Ludza</h2>
+        <div class="location-layout">
+          <div class="location-text">
+            <p>Hotel Ludza is located at <strong>1. maija iela 1, Ludza, LV-5701</strong> — in the town of Ludza in Latvia’s Latgale region, often called a town of lakes for the many lakes around it.</p>
+            <p>The hotel’s own site focuses on the town address and on-site facilities rather than specific lake access. Use the contact details below for directions and local tips.</p>
+            <ul class="location-details">
+              <li>
+                <div>
+                  <strong>Address</strong>
+                  1. maija iela 1, Ludza, LV-5701
+                </div>
+              </li>
+              <li>
+                <div>
+                  <strong>Phone</strong>
+                  <a href="tel:+37129104055">+371 29104055</a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:hotelludza@hotelludza.lv">hotelludza@hotelludza.lv</a><br>
+                  <a href="mailto:hotelludza@inbox.lv">hotelludza@inbox.lv</a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <strong>Operator</strong>
+                  SIA “Saule 5” (as listed on the site footer)
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Static map placeholder for Hotel Ludza in Ludza">
+            <div class="map-pin" aria-hidden="true"></div>
+            <p>Map placeholder</p>
+            <small>Ludza · Latgale · Latvia<br>Interactive map not embedded in this prototype</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Trust -->
+    <section class="section" id="trust">
+      <div class="container">
+        <span class="section-label">Guest voices</span>
+        <h2 class="section-title">What travellers say</h2>
+        <p class="section-lead">No live rating badge was found on hotelludza.lv. The cards below are clearly marked sample placeholders for layout only.</p>
+
+        <div class="trust-grid">
+          <article class="testimonial">
+            <span class="placeholder-badge">Placeholder</span>
+            <blockquote>“Sample review text for layout — not a real guest quote.”</blockquote>
+            <cite>— Sample guest, placeholder</cite>
+          </article>
+          <article class="testimonial">
+            <span class="placeholder-badge">Placeholder</span>
+            <blockquote>“Another placeholder testimonial for the trust strip design.”</blockquote>
+            <cite>— Sample guest, placeholder</cite>
+          </article>
+          <article class="testimonial">
+            <span class="placeholder-badge">Placeholder</span>
+            <blockquote>“Third sample card — replace with verified reviews when available.”</blockquote>
+            <cite>— Sample guest, placeholder</cite>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Footer -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Hotel Ludza</p>
+          <p>Viesnīca “Ludza” — 3-star hotel in Ludza. Comfortable rooms, restaurant, banquet &amp; conference spaces, sauna, and gym.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Book</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>1. maija iela 1, Ludza, LV-5701</li>
+            <li><a href="tel:+37129104055">+371 29104055</a></li>
+            <li><a href="mailto:hotelludza@hotelludza.lv">hotelludza@hotelludza.lv</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Hotel Ludza · SIA “Saule 5”</span>
+        <span>Prototype homepage — content drawn from hotelludza.lv (archived)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.querySelector('.site-header');
+      var menuToggle = document.getElementById('menuToggle');
+      var navMobile = document.getElementById('navMobile');
+      var navClose = document.getElementById('navClose');
+
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      function openNav() {
+        navMobile.classList.add('open');
+        navMobile.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeNav() {
+        navMobile.classList.remove('open');
+        navMobile.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      menuToggle.addEventListener('click', openNav);
+      navClose.addEventListener('click', closeNav);
+      navMobile.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+      });
+
+      // Dates
+      var checkin = document.getElementById('checkin');
+      var checkout = document.getElementById('checkout');
+      var today = new Date();
+      function iso(d) {
+        return d.toISOString().slice(0, 10);
+      }
+      var inDate = new Date(today);
+      inDate.setDate(inDate.getDate() + 1);
+      var outDate = new Date(today);
+      outDate.setDate(outDate.getDate() + 3);
+      checkin.min = iso(today);
+      checkout.min = iso(inDate);
+      checkin.value = iso(inDate);
+      checkout.value = iso(outDate);
+      checkin.addEventListener('change', function () {
+        var next = new Date(checkin.value);
+        next.setDate(next.getDate() + 1);
+        checkout.min = iso(next);
+        if (checkout.value <= checkin.value) checkout.value = iso(next);
+      });
+
+      // Guests
+      var adults = 2;
+      var children = 0;
+      var guestTrigger = document.getElementById('guestTrigger');
+      var guestPanel = document.getElementById('guestPanel');
+      var guestSummary = document.getElementById('guestSummary');
+      var adultsCount = document.getElementById('adultsCount');
+      var childrenCount = document.getElementById('childrenCount');
+
+      function syncGuests() {
+        adultsCount.textContent = adults;
+        childrenCount.textContent = children;
+        guestSummary.textContent = adults + ' adult' + (adults === 1 ? '' : 's') +
+          ' · ' + children + ' child' + (children === 1 ? '' : 'ren');
+      }
+
+      guestTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = guestPanel.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.getElementById('adultsPlus').addEventListener('click', function () {
+        if (adults < 8) { adults++; syncGuests(); }
+      });
+      document.getElementById('adultsMinus').addEventListener('click', function () {
+        if (adults > 1) { adults--; syncGuests(); }
+      });
+      document.getElementById('childrenPlus').addEventListener('click', function () {
+        if (children < 6) { children++; syncGuests(); }
+      });
+      document.getElementById('childrenMinus').addEventListener('click', function () {
+        if (children > 0) { children--; syncGuests(); }
+      });
+
+      window.handleSearch = function (e) {
+        e.preventDefault();
+        var fb = document.getElementById('searchFeedback');
+        fb.hidden = false;
+        fb.textContent = 'Demo only — no live inventory. Call +371 29104055 or email hotelludza@hotelludza.lv to book ' +
+          checkin.value + ' → ' + checkout.value + ' for ' + guestSummary.textContent + '.';
+        return false;
+      };
+    })();
+  </script>
+</body>
+</html>
