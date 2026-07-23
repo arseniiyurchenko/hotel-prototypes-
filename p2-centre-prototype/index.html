@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P2 Centre — Prestigious and vibrant event venue | Erith, London</title>
+  <meta name="description" content="P2 Centre — a prestigious events, hall &amp; banqueting venue in Erith Town Centre, South East London. Royal, Kings and Princess halls for weddings, conferences and celebrations.">
+  <!--
+    SOURCE RESEARCH NOTES (from https://www.p2centre.com — fetched live):
+    Venue name: P2 Centre (also “P2 Events Centre Erith” / “P2 CENTRE”)
+    Tagline: “Prestigious and vibrant event venue”
+    Hero line: “A Prestigious And Vibrant EVENTS, HALL & BANQUETING VENUE”
+    Logo: https://www.p2centre.com/wp-content/uploads/2025/07/P2centre-logo.jpg (black + metallic gold)
+    Dominant page colours: deep teal #003D4B, mint #D1E4DE, black/white; kit accents #6EC1E4 / #61CE70; halls gold #CB9F02
+    Location: 5 Pier Road, Erith Town Centre, Erith DA8 1TA; Bexley; London / Hall Hire in London;
+              Pier Road & Queens Road (A206); opposite large car park; near Erith Riverside Shopping Centre
+    Halls (homepage labels): ROYAL Hall (450–320 seating, 500 standing); KINGS Hall (100 seating, 160 standing);
+              PRINCESS Hall (30 sitting, 50 standing). Halls page also lists Royal as 450 seating / 600 standing.
+              Services page also mentions five halls (350/100/90/80/60) — not used here beyond labelled names.
+    Amenities present on site: catering/chefs & multi-cuisine; bar; drinks; parking (200–300 spaces, free 3hrs then 50p/hr);
+              Wi‑Fi / internet; air conditioning; décor packages (tablecloths, crockery, cutlery, centre pieces,
+              chair covers & sashes, stage décor); events team / full events planning; kitchen & security staff options;
+              DJ/sound, photography, videography, cakes, etc. Mezzanine; 1930s Art Deco main hall.
+    NOT found on site (not claimed): dance floor; fixed price list; clear exterior building photo as labelled exterior.
+    Pricing: no £ amounts for hall hire; “full or part packages” / tailor-made; parking rates only.
+    Positioning: aspirational premium / mid–premium (“prestigious”, “exceptional glamour”, “high-end” events team).
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #003d4b;
+      --teal-deep: #002a34;
+      --mint: #d1e4de;
+      --mint-soft: #e8f2ef;
+      --gold: #c9a227;
+      --gold-soft: #e4c96a;
+      --ink: #121417;
+      --ink-soft: #3d454c;
+      --paper: #f4f7f6;
+      --white: #ffffff;
+      --max: 1120px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(209, 228, 222, 0.55), transparent 55%),
+        radial-gradient(900px 500px at 100% 20%, rgba(201, 162, 39, 0.08), transparent 50%),
+        var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; height: auto; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      padding: 1rem 0;
+      transition: background 0.35s var(--ease), backdrop-filter 0.35s var(--ease), padding 0.35s var(--ease);
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(0, 42, 52, 0.92);
+      backdrop-filter: blur(12px);
+      padding: 0.65rem 0;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand img {
+      width: 72px;
+      height: auto;
+      border-radius: 999px;
+      box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.35);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      color: var(--white);
+    }
+
+    .brand-text strong {
+      font-family: "Fraunces", serif;
+      font-size: 1.35rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    .brand-text span {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.78;
+      font-weight: 500;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .nav a {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.3rem;
+      width: 100%;
+      height: 1px;
+      background: var(--gold-soft);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .nav a:hover { color: var(--white); }
+    .nav a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      padding: 0.55rem 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      color: var(--white) !important;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink) !important;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: var(--white);
+      width: 2.6rem;
+      height: 2.6rem;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 1.1rem;
+      height: 1.5px;
+      margin: 0.28rem auto;
+      background: currentColor;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.06);
+      animation: heroZoom 18s var(--ease) forwards;
+    }
+
+    @keyframes heroZoom {
+      to { transform: scale(1); }
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 42, 52, 0.55) 0%, rgba(0, 42, 52, 0.28) 38%, rgba(0, 30, 38, 0.82) 100%),
+        linear-gradient(90deg, rgba(0, 61, 75, 0.45), transparent 55%);
+    }
+
+    .hero-content {
+      width: min(var(--max), calc(100% - 2.5rem));
+      margin: 0 auto 5.5rem;
+      max-width: 40rem;
+      opacity: 0;
+      transform: translateY(28px);
+      animation: riseIn 0.9s 0.2s var(--ease) forwards;
+    }
+
+    @keyframes riseIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: "Fraunces", serif;
+      font-size: clamp(3.2rem, 9vw, 5.6rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-brand em {
+      font-style: normal;
+      color: var(--gold-soft);
+    }
+
+    .hero h1 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+      font-weight: 500;
+      line-height: 1.25;
+      max-width: 22ch;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      max-width: 38ch;
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 1.75rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.45rem;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.25s var(--ease), background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn-primary:hover { background: var(--gold-soft); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--white);
+    }
+
+    .btn-dark {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .btn-dark:hover { background: var(--teal-deep); }
+
+    /* —— Sections —— */
+    section { padding: clamp(4rem, 8vw, 6.5rem) 0; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-title {
+      font-family: "Fraunces", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 650;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--teal);
+      max-width: 18ch;
+      margin-bottom: 1rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 52ch;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Place —— */
+    .place {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .place-visual {
+      position: relative;
+      min-height: 28rem;
+      overflow: hidden;
+    }
+
+    .place-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 28rem;
+      object-fit: cover;
+    }
+
+    .place-visual::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 40%;
+      background: linear-gradient(transparent, rgba(0, 61, 75, 0.55));
+      pointer-events: none;
+    }
+
+    .place-caption {
+      position: absolute;
+      left: 1.25rem;
+      bottom: 1.25rem;
+      color: var(--white);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      z-index: 1;
+    }
+
+    .place-copy .meta {
+      margin-top: 1.75rem;
+      display: grid;
+      gap: 0.85rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 61, 75, 0.15);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .place-copy .meta strong {
+      display: block;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 0.15rem;
+    }
+
+    /* —— Halls —— */
+    .halls {
+      background:
+        linear-gradient(180deg, var(--teal) 0%, var(--teal-deep) 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .halls::before {
+      content: "";
+      position: absolute;
+      width: 40rem;
+      height: 40rem;
+      right: -12rem;
+      top: -14rem;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.18), transparent 65%);
+      pointer-events: none;
+    }
+
+    .halls .section-title { color: var(--white); }
+    .halls .section-lead { color: rgba(255, 255, 255, 0.82); }
+
+    .hall-list {
+      margin-top: 3rem;
+      display: grid;
+      gap: 0;
+    }
+
+    .hall {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .hall:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.16); }
+
+    .hall-copy h3 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 650;
+      margin-bottom: 0.45rem;
+    }
+
+    .hall-copy p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+    }
+
+    .hall-media {
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+    }
+
+    .hall-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease);
+    }
+
+    .hall:hover .hall-media img { transform: scale(1.04); }
+
+    .hall:nth-child(even) .hall-media { order: -1; }
+
+    /* —— Features —— */
+    .features-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 2.5rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem 2rem;
+      padding-top: 0.5rem;
+    }
+
+    .feature {
+      padding: 1.4rem 0 1.1rem;
+      border-top: 2px solid var(--teal);
+    }
+
+    .feature h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.25rem;
+      font-weight: 650;
+      color: var(--teal);
+      margin-bottom: 0.45rem;
+    }
+
+    .feature p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .feature-note {
+      margin-top: 2rem;
+      padding: 1.25rem 1.4rem;
+      background: var(--mint-soft);
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      max-width: 70ch;
+    }
+
+    /* —— Atmosphere —— */
+    .atmosphere {
+      padding-top: 0;
+    }
+
+    .atmosphere-band {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      min-height: 28rem;
+      overflow: hidden;
+    }
+
+    .atmosphere-band img {
+      width: 100%;
+      height: 100%;
+      min-height: 28rem;
+      object-fit: cover;
+    }
+
+    .atmosphere-panel {
+      background: var(--mint);
+      padding: clamp(2rem, 4vw, 3.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .atmosphere-panel h2 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--teal);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .atmosphere-panel p {
+      color: var(--ink-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    /* —— Enquire —— */
+    .enquire {
+      background:
+        linear-gradient(135deg, rgba(0, 61, 75, 0.94), rgba(0, 42, 52, 0.9)),
+        url("https://www.p2centre.com/wp-content/uploads/2022/10/hall-3.jpg") center / cover;
+      color: var(--white);
+    }
+
+    .enquire-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.5rem;
+      align-items: end;
+    }
+
+    .enquire .section-title { color: var(--white); }
+    .enquire .section-lead { color: rgba(255, 255, 255, 0.84); }
+
+    .enquire-details {
+      display: grid;
+      gap: 1.1rem;
+      font-size: 0.98rem;
+    }
+
+    .enquire-details dt {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 0.25rem;
+    }
+
+    .enquire-details dd { color: rgba(255, 255, 255, 0.9); }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--teal-deep);
+      color: rgba(255, 255, 255, 0.75);
+      padding: 2.5rem 0 2rem;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .footer-brand img {
+      width: 56px;
+      border-radius: 999px;
+    }
+
+    .footer-brand strong {
+      display: block;
+      color: var(--white);
+      font-family: "Fraunces", serif;
+      font-size: 1.15rem;
+    }
+
+    .footer-brand span { font-size: 0.82rem; }
+
+    .footer-meta {
+      font-size: 0.85rem;
+      text-align: right;
+    }
+
+    .source-note {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 900px) {
+      .place,
+      .features-head,
+      .atmosphere-band,
+      .enquire-inner,
+      .hall {
+        grid-template-columns: 1fr;
+      }
+
+      .hall:nth-child(even) .hall-media { order: 0; }
+
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+
+      .place-visual,
+      .place-visual img,
+      .atmosphere-band img {
+        min-height: 20rem;
+      }
+
+      .nav {
+        position: fixed;
+        inset: 0 0 auto auto;
+        top: 4.5rem;
+        right: 1.25rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(0, 42, 52, 0.96);
+        padding: 0.5rem;
+        min-width: 12rem;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+
+      .nav.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .nav a {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-cta { text-align: center; margin: 0.4rem; }
+
+      .menu-toggle { display: inline-block; }
+
+      .brand-text span { display: none; }
+
+      .footer-meta { text-align: left; }
+    }
+
+    @media (max-width: 560px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .hero-content { margin-bottom: 4rem; }
+      .brand img { width: 58px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .hero-media img { transform: none; }
+      .hero-content { opacity: 1; transform: none; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-row">
+      <a class="brand" href="#top" aria-label="P2 Centre home">
+        <img src="https://www.p2centre.com/wp-content/uploads/2025/07/P2centre-logo.jpg" alt="P2 Centre logo" width="130" height="100">
+        <div class="brand-text">
+          <strong>P2 Centre</strong>
+          <span>Erith · London</span>
+        </div>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="mainNav" aria-label="Primary">
+        <a href="#place">About</a>
+        <a href="#halls">Halls</a>
+        <a href="#features">Services</a>
+        <a href="#enquire" class="nav-cta">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-media" aria-hidden="true">
+        <!-- Live site hero uses BG.jpeg (decorated banqueting hall). No labelled exterior photo found on source. -->
+        <img
+          src="https://www.p2centre.com/wp-content/uploads/2022/10/BG.jpeg"
+          alt="Decorated banqueting hall at P2 Centre with round tables, gold chargers and tall centrepieces"
+          width="1600"
+          height="900"
+          fetchpriority="high">
+      </div>
+      <div class="hero-content">
+        <p class="hero-brand">P2 <em>Centre</em></p>
+        <h1>Prestigious and vibrant event venue</h1>
+        <p>A prestigious events, hall &amp; banqueting venue in Erith — for weddings, private parties, conferences and celebrations.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#enquire">Book Now</a>
+          <a class="btn btn-ghost" href="#features">Our Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="place-section" id="place">
+      <div class="wrap place reveal">
+        <div class="place-visual">
+          <img
+            src="https://www.p2centre.com/wp-content/uploads/2022/10/310766239_394231132918568_9125728195493113616_n.jpg"
+            alt="Banqueting tables dressed with white linen, gold chargers and floral centrepieces"
+            width="1152"
+            height="1536"
+            loading="lazy">
+          <p class="place-caption">Table &amp; décor setup · P2 Centre</p>
+        </div>
+        <div class="place-copy">
+          <p class="section-label">Erith Town Centre</p>
+          <h2 class="section-title">The perfect banqueting hall in London</h2>
+          <p class="section-lead">
+            The main hall of the P2 Events Centre Erith was designed in the 1930s and has a unique Art Deco charm.
+            Situated in a prominent town-centre position at the junction of Pier Road and Queens Road (A206),
+            opposite a large car park and close to Erith Riverside Shopping Centre.
+          </p>
+          <div class="meta">
+            <div>
+              <strong>Flexible space</strong>
+              A mezzanine looks out over Erith Town Centre — adaptable for dinner, standing reception, wedding banquet, seminar, conference or exhibition.
+            </div>
+            <div>
+              <strong>Guest range</strong>
+              Accommodating groups ranging from 80 to 600, with chefs offering menus to accompany the event.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="halls" id="halls">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="section-label">Halls &amp; spaces</p>
+          <h2 class="section-title">Three named halls for every scale</h2>
+          <p class="section-lead">
+            Capacity figures below are taken from the live homepage hall labels. The dedicated Halls page lists Royal Hall standing capacity as 600.
+          </p>
+        </div>
+
+        <div class="hall-list">
+          <article class="hall reveal">
+            <div class="hall-copy">
+              <h3>Royal Hall</h3>
+              <p>450–320 seating · 500 standing</p>
+            </div>
+            <div class="hall-media">
+              <img
+                src="https://www.p2centre.com/wp-content/uploads/2022/10/Hall-12.jpg"
+                alt="Empty Royal Hall with white walls, grey columns and crystal-style chandeliers"
+                width="700"
+                height="500"
+                loading="lazy">
+            </div>
+          </article>
+
+          <article class="hall reveal">
+            <div class="hall-copy">
+              <h3>Kings Hall</h3>
+              <p>100 seating · 160 standing</p>
+            </div>
+            <div class="hall-media">
+              <img
+                src="https://www.p2centre.com/wp-content/uploads/2022/10/Hall-1.jpg"
+                alt="Empty Kings Hall with burgundy carpet and grey double doors"
+                width="700"
+                height="500"
+                loading="lazy">
+            </div>
+          </article>
+
+          <article class="hall reveal">
+            <div class="hall-copy">
+              <h3>Princess Hall</h3>
+              <p>30 sitting · 50 standing</p>
+            </div>
+            <div class="hall-media">
+              <img
+                src="https://www.p2centre.com/wp-content/uploads/2022/10/hall-3.jpg"
+                alt="Princess Hall dressed for an event with round tables and tall feather centrepieces"
+                width="700"
+                height="500"
+                loading="lazy">
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <div class="features-head reveal">
+          <div>
+            <p class="section-label">Services &amp; facilities</p>
+            <h2 class="section-title">Everything covered, to your requirements</h2>
+          </div>
+          <p class="section-lead">
+            A dedicated events team delivers high-end, unique events — from hall hire in London to full event planning.
+            Facilities and featured services below are listed on the live P2 Centre site.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature reveal">
+            <h3>Catering &amp; bar</h3>
+            <p>Chefs and menus for any cuisine and style, including African, Afro‑Caribbean, English and Asian foods, small chops and drinks — plus an on-site bar.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Car parking</h3>
+            <p>Opposite the venue: a car park for 200–300 cars. Free for the first three hours, then 50p/hr. Free street parking evenings, weekends and Sundays.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Décor packages</h3>
+            <p>Packages can include tablecloths, crockery and cutlery, table centre pieces, chair covers and sashes, and stage décor.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Event coordination</h3>
+            <p>Full events planning with kitchen staff and security staff options, plus DJ/sound, photography, videography, cakes and more.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Comfort &amp; connectivity</h3>
+            <p>Internet access, Wi‑Fi and air conditioning across the venue.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Open daily</h3>
+            <p>Weekdays, Saturday and Sunday — 9am to 12 midnight.</p>
+          </article>
+        </div>
+
+        <p class="feature-note reveal">
+          <strong>Packages:</strong> Full or part packages are available and tailor-made to each client.
+          The live site does not publish fixed hall-hire prices — enquire for a quote.
+          <em> Dance floor is not mentioned on the source site, so it is not claimed here.</em>
+        </p>
+      </div>
+    </section>
+
+    <section class="atmosphere" aria-label="Kitchen facilities">
+      <div class="atmosphere-band reveal">
+        <img
+          src="https://www.p2centre.com/wp-content/uploads/2022/10/Kitchen-7-copy-scaled-1-768x512.jpg"
+          alt="Modern catering kitchen with white cabinets, cooktop and stainless steel appliances"
+          width="768"
+          height="512"
+          loading="lazy">
+        <div class="atmosphere-panel">
+          <h2>In-house kitchen for sumptuous catering</h2>
+          <p>
+            The Halls gallery includes kitchen and bathroom views. Catering is a core offer —
+            from favourite foods and drinks to occasion cakes and full event menus.
+          </p>
+          <a class="btn btn-dark" href="#enquire">Enquire about catering</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="enquire" id="enquire">
+      <div class="wrap enquire-inner reveal">
+        <div>
+          <p class="section-label">Visit &amp; book</p>
+          <h2 class="section-title">We’re open for hiring</h2>
+          <p class="section-lead">
+            Looking for an events or party venue in London? Situated in Erith Town Centre in Bexley,
+            P2 Centre hosts weddings, birthdays, conferences, church services, namings, seminars and concerts.
+          </p>
+          <div class="cta-row" style="margin-top: 1.5rem;">
+            <a class="btn btn-primary" href="https://www.p2centre.com/book/">Book on p2centre.com</a>
+            <a class="btn btn-ghost" href="tel:07853819751">Call 07853 819751</a>
+          </div>
+        </div>
+        <dl class="enquire-details">
+          <div>
+            <dt>Address</dt>
+            <dd>P2 Centre, 5 Pier Road, Erith Town Centre, Erith DA8 1TA, United Kingdom</dd>
+          </div>
+          <div>
+            <dt>Phone</dt>
+            <dd>07853 819751 · 07397 140405</dd>
+          </div>
+          <div>
+            <dt>Hours</dt>
+            <dd>Daily 9am – 12 midnight</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-row">
+        <div class="footer-brand">
+          <img src="https://www.p2centre.com/wp-content/uploads/2025/07/P2centre-logo.jpg" alt="" width="56" height="43">
+          <div>
+            <strong>P2 Centre</strong>
+            <span>Prestigious and vibrant event venue</span>
+          </div>
+        </div>
+        <p class="footer-meta">Erith · South East London · Bexley<br>All rights reserved</p>
+      </div>
+      <p class="source-note">
+        Prototype homepage inspired by content from
+        <a href="https://www.p2centre.com/" style="color: rgba(255,255,255,0.7); text-decoration: underline;">p2centre.com</a>.
+        Images and claims are limited to material present on the live site. No exterior building photograph was labelled on the source; the hero uses the site’s banqueting-hall hero image.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const toggle = document.getElementById("menuToggle");
+      const nav = document.getElementById("mainNav");
+
+      const onScroll = () => {
+        header.classList.toggle("is-scrolled", window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      toggle.addEventListener("click", () => {
+        const open = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      const reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+        );
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add("is-visible"));
+      }
+    })();
+  </script>
+</body>
+</html>
