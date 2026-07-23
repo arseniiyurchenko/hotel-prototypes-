@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deer Park Hall — Space to Breathe | Eckington, Cotswolds</title>
+  <meta name="description" content="Deer Park Hall is an exclusive use Cotswold countryside venue in Eckington, Worcestershire — conferences, weddings and events within 1400 acres, with room for up to 150 dining guests.">
+  <!--
+    SOURCE EXTRACTION — https://www.deerparkhall.co.uk (fetched live)
+    Venue name: Deer Park Hall
+    Tagline: Space to Breathe (also “A space to breathe is our key message as a venue”)
+    Logo: gold stag-head mark present (Wix media 1c8f23_3c23ff6b…)
+    Dominant brand colours observed: logo gold #CEA32A; site greens #3F7652 / #89A391 / #7FA88B; parchment #F5E9D3; slate blue #2B5672
+    Location on site: Woollas Hill, Eckington, Worcestershire WR10 3DN; Cotswolds / Bredon Hills; Malvern Hills views; M5 J9 ~6 miles; Birmingham International Airport ~45 minutes
+    NOTE: Derbyshire / Sheffield are NOT referenced on the source site — not used here.
+    Spaces labelled on site: Bredon Room; Panelled Hall; Boardroom; 3 lounge areas; Minstrels’ Gallery; Bridal Lounge; kids’ room; 2 rustic Pavilions / heated pavilion; Oak Pavilion; gardens / terraces / viewing platform
+    Amenities stated: exclusive use; licensed bar (Rut Bar); natural light; air conditioning; audio visual equipment; high-speed Wi-Fi; plenty of parking; extensive gardens with outdoor furniture, sofas & fire-pits; friendly team to create events; wine tours & tastings for team building; wedding catering via approved caterers (or own caterer with commission); day-delegate sandwich lunch
+    Pricing shown: Day Delegate Rate £45 + VAT pp; Boardroom £30/hr or £125/day (excl. VAT); wedding drinks packages £20 / £28 / £34 pp. Full wedding venue hire rates not listed on the pages reviewed (linked externally) — not invented here.
+    Positioning: premium exclusive-use Cotswold countryside estate (tone: exclusive, idyllic, restored Cotswold stone, deer park, award-winning wines)
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #cea32a;
+      --gold-soft: #e0bc5a;
+      --forest-deep: #152820;
+      --forest: #2a4a3a;
+      --moss: #7fa88b;
+      --moss-deep: #3f7652;
+      --stone: #e6e2d8;
+      --stone-mid: #cfc8b8;
+      --parchment: #f1eee6;
+      --ink: #152019;
+      --ink-soft: #3d4a42;
+      --slate: #2b5672;
+      --white: #ffffff;
+      --shadow: 0 18px 48px rgba(21, 40, 32, 0.16);
+      --transition: 0.28s ease;
+      --header-h: 4.5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(127, 168, 139, 0.22), transparent 60%),
+        radial-gradient(900px 500px at 100% 20%, rgba(206, 163, 42, 0.08), transparent 55%),
+        linear-gradient(180deg, #ebe7dc 0%, var(--parchment) 40%, #e4ebe4 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 90vw);
+      margin-inline: auto;
+    }
+
+    .container-wide {
+      width: min(1280px, 94vw);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0.85rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(21, 40, 32, 0.94);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 28px rgba(21, 40, 32, 0.28);
+      padding: 0.55rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+    }
+
+    .logo img {
+      height: 46px;
+      width: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .logo-text .brand {
+      font-family: 'Marcellus', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-text .place {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.78;
+      font-weight: 400;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      transition: opacity var(--transition), color var(--transition);
+    }
+
+    .nav-desktop a:hover { opacity: 1; color: var(--gold-soft); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem 1.15rem;
+      border: 1px solid rgba(206, 163, 42, 0.7);
+      color: var(--gold-soft);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .header-cta:hover {
+      background: var(--gold);
+      color: var(--forest-deep);
+      border-color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: rgba(21, 40, 32, 0.98);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: 'Marcellus', serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.75rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* Hero — one composition, full-bleed */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://static.wixstatic.com/media/1c8f23_107ae35078644fb39a0da0fbec89d243~mv2.jpg/v1/fill/w_2400,h_1600,fp_0.47_0.7,q_90,enc_auto/deer-park-hall-exterior.jpg')
+        center / cover no-repeat;
+      transform: scale(1.06);
+      animation: heroZoom 18s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(21, 40, 32, 0.42) 0%, rgba(21, 40, 32, 0.28) 40%, rgba(21, 40, 32, 0.78) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 0 5.5rem;
+      width: min(1120px, 90vw);
+      margin-inline: auto;
+    }
+
+    .hero-brand {
+      font-family: 'Marcellus', serif;
+      font-size: clamp(2.8rem, 7.5vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.85rem;
+      opacity: 0;
+      animation: riseIn 0.9s ease 0.2s forwards;
+    }
+
+    .hero-line {
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: riseIn 0.9s ease 0.4s forwards;
+    }
+
+    .hero-support {
+      max-width: 34rem;
+      font-size: 1.05rem;
+      font-weight: 300;
+      opacity: 0.92;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: riseIn 0.9s ease 0.55s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      opacity: 0;
+      animation: riseIn 0.9s ease 0.7s forwards;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.55rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--forest-deep);
+    }
+
+    .btn-primary:hover { background: var(--gold-soft); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.55);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold-soft);
+      color: var(--gold-soft);
+    }
+
+    .btn-dark {
+      background: var(--forest-deep);
+      color: var(--parchment);
+    }
+
+    .btn-dark:hover { background: var(--forest); }
+
+    /* Shared section */
+    section { padding: 5.5rem 0; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--moss-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Marcellus', serif;
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+      margin-bottom: 1rem;
+      color: var(--forest-deep);
+    }
+
+    .section-lead {
+      max-width: 38rem;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Intro */
+    .intro {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .intro-copy p + p { margin-top: 1rem; color: var(--ink-soft); }
+
+    .intro-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .intro-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      transition: transform 8s ease;
+    }
+
+    .intro-media:hover img { transform: scale(1.04); }
+
+    .intro-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.1rem 1.25rem;
+      background: linear-gradient(transparent, rgba(21,40,32,0.78));
+      color: var(--white);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* Spaces */
+    .spaces-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 2.5rem;
+    }
+
+    .space-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .space-item {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .space-item figure {
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: var(--stone-mid);
+    }
+
+    .space-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .space-item:hover img { transform: scale(1.05); }
+
+    .space-item h3 {
+      font-family: 'Marcellus', serif;
+      font-size: 1.35rem;
+      color: var(--forest-deep);
+      margin-bottom: 0.35rem;
+    }
+
+    .space-item p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+
+    .space-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-top: 0.65rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--moss-deep);
+      font-weight: 500;
+    }
+
+    .more-spaces {
+      margin-top: 2.25rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(63, 118, 82, 0.22);
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+
+    /* Features strip — not cards; open list */
+    .features {
+      background:
+        linear-gradient(135deg, rgba(42, 74, 58, 0.94), rgba(21, 40, 32, 0.96)),
+        url('https://static.wixstatic.com/media/1c8f23_4d5ff3935cf746529d8e14d7ffaa7e8e~mv2.jpg/v1/fill/w_1800,h_900,fp_0.72_0.62,q_80,enc_auto/deer-herd.jpg')
+        center / cover no-repeat;
+      color: var(--white);
+      padding: 5rem 0;
+    }
+
+    .features .section-label { color: var(--gold-soft); }
+    .features .section-title { color: var(--white); }
+    .features .section-lead { color: rgba(255,255,255,0.82); }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem 2.5rem;
+      margin-top: 2.75rem;
+    }
+
+    .feature-grid h3 {
+      font-family: 'Marcellus', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.45rem;
+      color: var(--gold-soft);
+    }
+
+    .feature-grid p {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+    }
+
+    /* Pricing */
+    .pricing-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .rate-block + .rate-block {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(63, 118, 82, 0.2);
+    }
+
+    .rate-amount {
+      font-family: 'Marcellus', serif;
+      font-size: 2.4rem;
+      color: var(--forest-deep);
+      line-height: 1;
+      margin: 0.4rem 0 0.75rem;
+    }
+
+    .rate-amount span {
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      letter-spacing: 0;
+    }
+
+    .rate-list {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+      color: var(--ink-soft);
+    }
+
+    .rate-list li::before {
+      content: "—";
+      color: var(--moss-deep);
+      margin-right: 0.55rem;
+    }
+
+    .note {
+      margin-top: 1.5rem;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      max-width: 36rem;
+    }
+
+    .drinks {
+      background: rgba(255,255,255,0.45);
+      padding: 1.75rem;
+      border-left: 3px solid var(--gold);
+    }
+
+    .drinks h3 {
+      font-family: 'Marcellus', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.85rem;
+      color: var(--forest-deep);
+    }
+
+    .drinks dl {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .drinks dt {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .drinks dd {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    /* Grounds feature */
+    .grounds {
+      padding: 0;
+    }
+
+    .grounds-panel {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: 560px;
+    }
+
+    .grounds-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .grounds-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .grounds-copy {
+      background: var(--forest-deep);
+      color: var(--parchment);
+      padding: clamp(2.5rem, 5vw, 4.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .grounds-copy .section-label { color: var(--gold); }
+    .grounds-copy .section-title { color: var(--white); }
+    .grounds-copy p { color: rgba(241, 238, 230, 0.84); margin-bottom: 1rem; }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .location-facts {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .location-facts li {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(63, 118, 82, 0.18);
+    }
+
+    .location-facts strong {
+      display: block;
+      font-family: 'Marcellus', serif;
+      font-size: 1.1rem;
+      color: var(--forest-deep);
+      margin-bottom: 0.2rem;
+      font-weight: 400;
+    }
+
+    .location-facts span { color: var(--ink-soft); font-size: 0.95rem; }
+
+    .location-visual {
+      overflow: hidden;
+      min-height: 380px;
+      position: relative;
+    }
+
+    .location-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    /* Enquiry */
+    .enquiry {
+      background:
+        linear-gradient(180deg, rgba(241,238,230,0.2), rgba(241,238,230,0.85)),
+        radial-gradient(circle at 80% 20%, rgba(206,163,42,0.12), transparent 45%);
+    }
+
+    .enquiry-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-lines {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 0.65rem;
+      color: var(--ink-soft);
+    }
+
+    .contact-lines a {
+      color: var(--forest);
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition), color var(--transition);
+      width: fit-content;
+    }
+
+    .contact-lines a:hover {
+      color: var(--moss-deep);
+      border-color: var(--moss);
+    }
+
+    .enquiry-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    label {
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    input, select, textarea {
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(63, 118, 82, 0.28);
+      padding: 0.85rem 0.95rem;
+      width: 100%;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--moss-deep);
+      box-shadow: 0 0 0 3px rgba(127, 168, 139, 0.25);
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .form-status {
+      min-height: 1.4rem;
+      font-size: 0.95rem;
+      color: var(--moss-deep);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--forest-deep);
+      color: rgba(241, 238, 230, 0.78);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: flex-start;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .footer-brand {
+      display: flex;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .footer-brand img { height: 42px; width: auto; }
+
+    .footer-brand strong {
+      display: block;
+      font-family: 'Marcellus', serif;
+      color: var(--white);
+      font-size: 1.15rem;
+      font-weight: 400;
+    }
+
+    .footer-brand span {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .footer-nav a {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(241,238,230,0.75);
+      transition: color var(--transition);
+    }
+
+    .footer-nav a:hover { color: var(--gold-soft); }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+
+    .source-note {
+      opacity: 0.65;
+      max-width: 36rem;
+    }
+
+    @media (max-width: 960px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
+
+      .intro,
+      .spaces-head,
+      .space-list,
+      .feature-grid,
+      .pricing-wrap,
+      .grounds-panel,
+      .location-grid,
+      .enquiry-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .spaces-head { gap: 1rem; }
+      .intro-media, .grounds-media, .location-visual { min-height: 300px; }
+      .hero-content { padding-bottom: 4rem; }
+      section { padding: 4rem 0; }
+    }
+
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+      .space-list { gap: 2rem; }
+      .hero-brand { font-size: 2.55rem; }
+      .footer-top { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Deer Park Hall home">
+        <img src="https://static.wixstatic.com/media/1c8f23_3c23ff6b9aea4b31ac7e81740109750e~mv2.png/v1/fill/w_192,h_188,al_c,q_85,enc_auto/Deer%20head%20logo%20gold.png" alt="Deer Park Hall logo — gold stag head" width="96" height="94">
+        <span class="logo-text">
+          <span class="brand">Deer Park Hall</span>
+          <span class="place">Eckington · Cotswolds</span>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#spaces">Spaces</a></li>
+          <li><a href="#conferences">Conferences</a></li>
+          <li><a href="#rates">Rates</a></li>
+          <li><a href="#grounds">Grounds</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </nav>
+      <a class="header-cta" href="#enquire">Enquire</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <button class="nav-close" id="navClose" aria-label="Close menu">×</button>
+    <a href="#spaces">Spaces</a>
+    <a href="#conferences">Conferences</a>
+    <a href="#rates">Rates</a>
+    <a href="#grounds">Grounds</a>
+    <a href="#location">Location</a>
+    <a href="#enquire">Enquire</a>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Deer Park Hall">
+      <div class="hero-bg" role="img" aria-label="Aerial view of Deer Park Hall Cotswold stone buildings in the countryside"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-brand">Deer Park Hall</h1>
+        <p class="hero-line">Space to Breathe</p>
+        <p class="hero-support">An exclusive-use Cotswold countryside venue in Eckington — for conferences, weddings and events with room for up to 150 dining guests.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#enquire">Plan your event</a>
+          <a class="btn btn-ghost" href="#spaces">Explore the spaces</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container intro reveal">
+        <div class="intro-copy">
+          <p class="section-label">Exclusive use · Cotswold countryside</p>
+          <h2 class="section-title">A day of uninterrupted space and freedom to think</h2>
+          <p>Situated within 1400 acres of rolling countryside, Deer Park Hall offers elegantly restored Cotswold stone buildings overlooking the Deer Park — where red and fallow deer roam freely — and Stag Oak Vineyard.</p>
+          <p>Perfect for weddings and impressive for corporate &amp; business events. The grounds and beautifully restored venue are yours for the day.</p>
+        </div>
+        <div class="intro-media">
+          <img src="https://static.wixstatic.com/media/1c8f23_c87804e9989b490ebadd45ede8ce3167~mv2.jpg/v1/fill/w_1600,h_1200,fp_0.44_0.35,q_90,enc_auto/bredon-room-dining.jpg" alt="The Bredon Room set for a formal dining reception with exposed oak beams and countryside views" width="1600" height="1200" loading="lazy">
+          <p class="intro-caption">The Bredon Room — panoramic views to the Deer Park &amp; Malvern Hills</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="spaces">
+      <div class="container">
+        <div class="spaces-head reveal">
+          <div>
+            <p class="section-label">Event &amp; meeting spaces</p>
+            <h2 class="section-title">Rooms designed for today’s conferencing — and evenings that linger</h2>
+          </div>
+          <p class="section-lead">Flexible conference and breakout spaces for seminars, workshops and celebrations, with natural light and beautiful grounds beyond the glass.</p>
+        </div>
+
+        <div class="space-list">
+          <article class="space-item reveal">
+            <figure>
+              <img src="https://static.wixstatic.com/media/1c8f23_cb451e7524bd44f4b682d6e89a1823e7~mv2.jpg/v1/fill/w_1200,h_900,q_90,enc_auto/bredon-room-theatre.jpg" alt="Bredon Room in theatre-style conference layout with projection screen and AV equipment" width="1200" height="900" loading="lazy">
+            </figure>
+            <div>
+              <h3>The Bredon Room</h3>
+              <p>Largest room at Deer Park Hall, with exposed oak beams, a wall of glass, air conditioning and the Rut Bar within the space. Commonly used for wedding breakfasts and conference theatre layouts.</p>
+              <div class="space-meta">
+                <span>Up to 150 dining</span>
+                <span>PA system</span>
+                <span>L 18.7m · W 9.5m · H 7.0m</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="space-item reveal">
+            <figure>
+              <img src="https://static.wixstatic.com/media/1c8f23_02359b08d9194bf89cd8847070840ee2~mv2.jpg/v1/fill/w_1200,h_900,q_90,enc_auto/panelled-hall-meeting.jpg" alt="The Panelled Hall set with U-shaped meeting seating, oak panelling and projection screen" width="1200" height="900" loading="lazy">
+            </figure>
+            <div>
+              <h3>The Panelled Hall</h3>
+              <p>A baronial oak-panelled hall for indoor civil ceremonies, reception drinks, dancing — and U-shaped meeting setups for business gatherings.</p>
+              <div class="space-meta">
+                <span>Oak panelling</span>
+                <span>Open fire</span>
+                <span>L 10.2m · W 5.0m · H 6.3m</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="space-item reveal">
+            <figure>
+              <img src="https://static.wixstatic.com/media/1c8f23_fee200178fbf4087b7f1420843533a55~mv2.jpg/v1/fill/w_1200,h_900,q_90,enc_auto/pavilion-grounds.jpg" alt="Rustic pavilion on the patio at Deer Park Hall with outdoor seating in the gardens" width="1200" height="900" loading="lazy">
+            </figure>
+            <div>
+              <h3>Boardroom &amp; lounges</h3>
+              <p>A professional boardroom for small meetings seating up to six, plus three lounge areas, the Minstrels’ Gallery and outdoor pavilions including a heated pavilion seating up to 12.</p>
+              <div class="space-meta">
+                <span>Boardroom up to 6</span>
+                <span>3 lounge areas</span>
+                <span>2 rustic pavilions</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="more-spaces reveal">Also on site: Bridal Lounge, a separate kids’ room, Italian and Lavender gardens, terraced lawns, viewing platform and Lower Terrace with outdoor sofas and fire pit.</p>
+      </div>
+    </section>
+
+    <section class="features" id="conferences">
+      <div class="container reveal">
+        <p class="section-label">Conferences &amp; events</p>
+        <h2 class="section-title">Cotswold stone buildings, modern conference kit</h2>
+        <p class="section-lead">No stuffy hotel rooms with poor lighting — instead natural light, air conditioning, audio visual equipment, high-speed Wi-Fi and grounds to revitalise your delegates. Flexibility is key; the friendly team works with you to create a memorable event.</p>
+
+        <div class="feature-grid">
+          <div>
+            <h3>Exclusive use</h3>
+            <p>The grounds and restored venue are yours for the day — uninterrupted space for corporate gatherings, team days and celebrations.</p>
+          </div>
+          <div>
+            <h3>AV &amp; connectivity</h3>
+            <p>Audio visual equipment, high-speed Wi-Fi and air conditioning across conference-ready rooms with abundant natural light.</p>
+          </div>
+          <div>
+            <h3>Licensed bar</h3>
+            <p>The Rut Bar is fully stocked, with award-winning Deer Park Vineyard wines and a specialist gin offering for evening events.</p>
+          </div>
+          <div>
+            <h3>Parking &amp; access</h3>
+            <p>Plenty of on-site parking, good motorway access and a central England location for delegates travelling in.</p>
+          </div>
+          <div>
+            <h3>Gardens &amp; fire-pits</h3>
+            <p>Extensive gardens with outdoor furniture including sofas and fire-pits — ideal for breaks, drinks and informal sessions outdoors.</p>
+          </div>
+          <div>
+            <h3>Wine tours for teams</h3>
+            <p>Team-building days can include vineyard tours and tastings at Stag Oak Vineyard, with drinks served in the Bredon Room, gardens or Oak Pavilion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rates">
+      <div class="container pricing-wrap">
+        <div class="reveal">
+          <p class="section-label">Published rates</p>
+          <h2 class="section-title">Clear day rates for meetings and conferences</h2>
+          <p class="section-lead">Figures below are taken from the Conferences &amp; Events and Food &amp; Drink pages. All conference prices are quoted excluding VAT.</p>
+
+          <div class="rate-block">
+            <p class="section-label" style="margin-bottom:0.25rem">Day Delegate Rate</p>
+            <p class="rate-amount">£45 <span>+ VAT per person</span></p>
+            <ul class="rate-list">
+              <li>Arrival tea, coffee &amp; biscuits</li>
+              <li>Mid-morning tea, coffee &amp; biscuits</li>
+              <li>Sandwich lunch</li>
+              <li>Mid-afternoon tea, coffee &amp; biscuits</li>
+            </ul>
+            <p class="note">Minimum numbers apply. Menu upgrades available.</p>
+          </div>
+
+          <div class="rate-block">
+            <p class="section-label" style="margin-bottom:0.25rem">Boardroom hire</p>
+            <p class="rate-amount">£30 <span>/ hour · £125 / day</span></p>
+            <ul class="rate-list">
+              <li>Seats up to six people comfortably</li>
+              <li>Complimentary tea and coffee</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="drinks reveal">
+          <h3>Wedding drinks packages</h3>
+          <p style="color:var(--ink-soft); margin-bottom:1rem;">Published on the Food &amp; Drink page. Wedding catering is arranged with handpicked approved caterers (or your own caterer, subject to terms and a 10% commission). Full wedding venue hire rates are not listed on the pages reviewed for this prototype.</p>
+          <dl>
+            <dt>The Stag Package — £20 per person</dt>
+            <dd>Reception prosecco or soft drink · ½ bottle house wine · prosecco toast</dd>
+            <dt>The Bredon Package — £28 per person</dt>
+            <dd>Prosecco &amp; bottled beers · ½ bottle house wine · award-winning Cuvée toast</dd>
+            <dt>The Vintners Package — £34 per person</dt>
+            <dd>Deer Park Classic Cuvée &amp; bottled beers · ½ bottle house wine · vineyard Cuvée toast</dd>
+          </dl>
+          <p class="note">Minimum adult guests: 30 Mon–Thu; 70 Fri–Sun &amp; bank holidays.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grounds" id="grounds">
+      <div class="grounds-panel reveal">
+        <div class="grounds-media">
+          <img src="https://static.wixstatic.com/media/175ef6_751b0c5369854199a6f06a86fd8915ec~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_auto/deer-park-vineyard.jpg" alt="Fallow deer resting in the meadow beside the vineyard and pond at Deer Park Hall" width="1600" height="900" loading="lazy">
+        </div>
+        <div class="grounds-copy">
+          <p class="section-label">The Deer Park &amp; Stag Oak Vineyard</p>
+          <h2 class="section-title">One of the most distinctive settings in the Cotswolds</h2>
+          <p>The grounds overlook the Deer Park where red and fallow deer roam freely, and Stag Oak Vineyard where award-winning English wines are grown.</p>
+          <p>Enter through a Cotswold stone and redbrick arch, past the Italian garden and Lavender Garden, to terraced lawns framed by countryside — a popular choice for outdoor ceremonies, photographs, canapés and reception drinks.</p>
+          <a class="btn btn-primary" href="#enquire" style="align-self:flex-start; margin-top:0.75rem;">Request a visit</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container location-grid">
+        <div class="reveal">
+          <p class="section-label">Find us</p>
+          <h2 class="section-title">Nestled in the rolling Bredon Hills</h2>
+          <p class="section-lead">Deer Park Hall &amp; Business Centre sits on a private estate on the edge of the Cotswolds, with views toward the Malvern Hills and stress-free surroundings for work and celebration.</p>
+          <ul class="location-facts">
+            <li>
+              <strong>Address</strong>
+              <span>Woollas Hill, Eckington, Worcestershire WR10 3DN</span>
+            </li>
+            <li>
+              <strong>Road</strong>
+              <span>Only 6 miles from Junction 9 on the M5; centrally located in England with good motorway access</span>
+            </li>
+            <li>
+              <strong>Air</strong>
+              <span>Approximately 45 minutes from Birmingham International Airport</span>
+            </li>
+            <li>
+              <strong>On site</strong>
+              <span>Plenty of parking · Cotswold stone offices · holiday accommodation also offered on the estate</span>
+            </li>
+          </ul>
+        </div>
+        <div class="location-visual reveal">
+          <img src="https://static.wixstatic.com/media/1c8f23_df55a2cc5051433fb8fbede59b76302f~mv2.png/v1/fill/w_1400,h_1050,fp_0.61_0.57,q_85,enc_auto/lavender-garden-view.png" alt="Lavender garden and stone fountain overlooking rolling Cotswold countryside from Deer Park Hall" width="1400" height="1050" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="enquiry" id="enquire">
+      <div class="container enquiry-grid">
+        <div class="reveal">
+          <p class="section-label">Bookings &amp; enquiries</p>
+          <h2 class="section-title">Tell us about your day</h2>
+          <p class="section-lead">To book conferences and events, the venue invites you to email the office or call. This prototype form is for demonstration only and does not send to Deer Park Hall.</p>
+          <div class="contact-lines">
+            <a href="mailto:office@deerparkhall.co.uk">office@deerparkhall.co.uk</a>
+            <a href="tel:+441386750267">01386 750267</a>
+            <span>Woollas Hill, Eckington, Worcestershire WR10 3DN</span>
+          </div>
+        </div>
+
+        <form class="enquiry-form reveal" id="enquiryForm" novalidate>
+          <div class="form-row">
+            <label>Name
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </label>
+            <label>Email
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Event type
+              <select id="eventType" name="eventType" required>
+                <option value="">Select…</option>
+                <option value="conference">Conference / meeting</option>
+                <option value="team">Team day / wine tour</option>
+                <option value="wedding">Wedding</option>
+                <option value="other">Other celebration</option>
+              </select>
+            </label>
+            <label>Preferred date
+              <input type="date" id="eventDate" name="eventDate">
+            </label>
+          </div>
+          <label>Guests (approx.)
+            <input type="number" id="guests" name="guests" min="1" max="200" placeholder="e.g. 40">
+          </label>
+          <label>Message
+            <textarea id="message" name="message" placeholder="Room preference, timings, catering notes…"></textarea>
+          </label>
+          <button type="submit" class="btn btn-dark" id="submitEnquiry">Send enquiry</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="https://static.wixstatic.com/media/1c8f23_3c23ff6b9aea4b31ac7e81740109750e~mv2.png/v1/fill/w_128,h_126,al_c,q_85,enc_auto/Deer%20head%20logo%20gold.png" alt="" width="64" height="63">
+          <div>
+            <strong>Deer Park Hall</strong>
+            <span>Space to Breathe</span>
+          </div>
+        </div>
+        <ul class="footer-nav">
+          <li><a href="#spaces">Spaces</a></li>
+          <li><a href="#conferences">Conferences</a></li>
+          <li><a href="#rates">Rates</a></li>
+          <li><a href="#grounds">Grounds</a></li>
+          <li><a href="#enquire">Enquire</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>Prototype inspired by the live site — not an official Deer Park Hall page.</p>
+        <p class="source-note">Source: deerparkhall.co.uk · Positioning assessed as premium exclusive-use Cotswold countryside venue from on-site tone and presentation.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      const menuToggle = document.getElementById('menuToggle');
+      const navMobile = document.getElementById('navMobile');
+      const navClose = document.getElementById('navClose');
+
+      const onScroll = () => {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      const openMenu = () => {
+        navMobile.hidden = false;
+        requestAnimationFrame(() => navMobile.classList.add('open'));
+        menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeMenu = () => {
+        navMobile.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        setTimeout(() => { navMobile.hidden = true; }, 350);
+      };
+
+      menuToggle.addEventListener('click', openMenu);
+      navClose.addEventListener('click', closeMenu);
+      navMobile.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('visible'));
+      }
+
+      const form = document.getElementById('enquiryForm');
+      const status = document.getElementById('formStatus');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const eventType = document.getElementById('eventType').value;
+        if (!name || !email || !eventType) {
+          status.textContent = 'Please complete name, email and event type.';
+          return;
+        }
+        status.textContent = 'Thank you — this demo form does not send. Please email office@deerparkhall.co.uk to book.';
+        form.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
