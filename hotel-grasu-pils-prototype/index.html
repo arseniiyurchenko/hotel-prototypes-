@@ -78,8 +78,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      max-width: 1140px;
+      gap: 1rem;
+      width: 100%;
+      max-width: 1200px;
       margin-inline: auto;
       padding-inline: var(--header-pad-x);
     }
@@ -87,14 +88,18 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       flex-shrink: 0;
       color: var(--white);
+      min-width: 0;
     }
 
     .logo img {
-      height: 48px;
+      height: 40px;
       width: auto;
+      max-width: 170px;
+      object-fit: contain;
+      object-position: left center;
       background: rgba(255, 255, 255, 0.92);
       border-radius: 6px;
       padding: 4px 6px;
@@ -102,18 +107,19 @@
 
     .logo-text {
       font-family: 'Fraunces', serif;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 600;
       letter-spacing: 0.01em;
       line-height: 1.15;
+      white-space: nowrap;
     }
 
     .logo-text span {
       display: block;
       font-family: 'Figtree', sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 400;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       opacity: 0.75;
       margin-top: 0.15rem;
@@ -122,18 +128,23 @@
     .nav-desktop {
       display: flex;
       align-items: center;
-      gap: 1.75rem;
+      justify-content: center;
+      gap: clamp(0.75rem, 1.5vw, 1.35rem);
       list-style: none;
+      flex: 1;
+      min-width: 0;
+      flex-wrap: nowrap;
     }
 
     .nav-desktop a {
       color: var(--white);
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       opacity: 0.88;
       transition: opacity var(--transition);
+      white-space: nowrap;
     }
 
     .nav-desktop a:hover { opacity: 1; }
@@ -141,15 +152,16 @@
     .header-cta {
       display: inline-flex;
       align-items: center;
-      padding: 0.65rem 1.25rem;
+      padding: 0.6rem 1.05rem;
       background: var(--gold);
       color: var(--forest);
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       border-radius: 4px;
       flex-shrink: 0;
+      white-space: nowrap;
       transition: background var(--transition), transform var(--transition);
     }
 
@@ -214,7 +226,7 @@
       position: absolute;
       inset: 0;
       background:
-        url('https://www.hotelgrasupils.lv/images/big_image_1.jpg') center/cover no-repeat;
+        url('http://www.hotelgrasupils.lv/images/big_image_1.jpg') center/cover no-repeat;
       transform: scale(1.04);
       animation: heroZoom 18s ease-in-out infinite alternate;
     }
@@ -824,6 +836,7 @@
     @media (max-width: 980px) {
       .nav-desktop { display: none; }
       .menu-toggle { display: block; }
+      .header-inner .header-cta { display: none; } /* CTA lives in mobile menu */
       .booking-widget {
         grid-template-columns: 1fr 1fr;
       }
@@ -840,9 +853,14 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
 
+    @media (max-width: 1100px) and (min-width: 981px) {
+      .logo-text { display: none; }
+    }
+
     @media (max-width: 640px) {
       :root { --header-pad-x: 2rem; } /* keep ≥32px on mobile */
       .logo-text { display: none; }
+      .logo img { max-width: 140px; height: 36px; }
       .booking-widget { grid-template-columns: 1fr; }
       .booking-widget .btn-primary { grid-column: span 1; }
       .rooms-grid { grid-template-columns: 1fr; }
@@ -864,7 +882,7 @@
   <header class="site-header" id="header">
     <div class="header-inner">
       <a href="#hero" class="logo">
-        <img src="https://www.hotelgrasupils.lv/images/logo.png" alt="Hotel Grašu pils logo">
+        <img src="http://www.hotelgrasupils.lv/images/logo.png" alt="Hotel Grašu pils logo">
         <div class="logo-text">
           Hotel Grašu pils
           <span>Manor hotel · Vidzeme</span>
@@ -975,7 +993,7 @@
       </div>
       <div class="rooms-grid">
         <article class="room-card reveal">
-          <img src="https://www.hotelgrasupils.lv/images/img_1.jpg" alt="Vienvietīgs numurs at Hotel Grašu pils" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/img_1.jpg" alt="Vienvietīgs numurs at Hotel Grašu pils" loading="lazy">
           <div class="room-card-body">
             <h3>Vienvietīgs numurs</h3>
             <p>A small, warm room with antique furniture, a large bed, shower and toilet — park and oak views.</p>
@@ -983,7 +1001,7 @@
           </div>
         </article>
         <article class="room-card reveal">
-          <img src="https://www.hotelgrasupils.lv/images/grasupils-2.jpg" alt="Divvietīgs numurs with one bed" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/grasupils-2.jpg" alt="Divvietīgs numurs with one bed" loading="lazy">
           <div class="room-card-body">
             <h3>Divvietīgs numurs (1 gulta)</h3>
             <p>A spacious, cozy room with antique furniture, large bed, shower and toilet. Extra bed from EUR 12.</p>
@@ -991,7 +1009,7 @@
           </div>
         </article>
         <article class="room-card reveal">
-          <img src="https://www.hotelgrasupils.lv/images/grasupils-3.jpg" alt="Divvietīgs numurs with two beds" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/grasupils-3.jpg" alt="Divvietīgs numurs with two beds" loading="lazy">
           <div class="room-card-body">
             <h3>Divvietīgs numurs (2 gultas)</h3>
             <p>A warm room with antique furniture, two beds, shower and toilet overlooking the manor park.</p>
@@ -999,7 +1017,7 @@
           </div>
         </article>
         <article class="room-card reveal">
-          <img src="https://www.hotelgrasupils.lv/images/grasupils-4.jpg" alt="Luksusa divvietīgs numurs" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/grasupils-4.jpg" alt="Luksusa divvietīgs numurs" loading="lazy">
           <div class="room-card-body">
             <h3>Luksusa divvietīgs numurs</h3>
             <p>A spacious luxury room with antique furniture, large double bed, shower and toilet. Extra bed from EUR 12.</p>
@@ -1007,7 +1025,7 @@
           </div>
         </article>
         <article class="room-card reveal">
-          <img src="https://www.hotelgrasupils.lv/images/grasupils-6.jpg" alt="Brīvdienu māja Dukāti" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/grasupils-6.jpg" alt="Brīvdienu māja Dukāti" loading="lazy">
           <div class="room-card-body">
             <h3>Brīvdienu māja “Dukāti”</h3>
             <p>Whole house for up to 9 guests — kitchen, living room with fireplace, WC and showers. Extra bed from EUR 12.</p>
@@ -1096,22 +1114,22 @@
       </div>
       <div class="gallery-grid">
         <div class="gallery-item reveal">
-          <img src="https://www.hotelgrasupils.lv/images/big_image_1.jpg" alt="Hotel Grašu pils exterior — manor house" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/big_image_1.jpg" alt="Hotel Grašu pils exterior — manor house" loading="lazy">
         </div>
         <div class="gallery-item reveal">
-          <img src="https://www.hotelgrasupils.lv/images/img_1.jpg" alt="Manor guest room interior" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/img_1.jpg" alt="Manor guest room interior" loading="lazy">
         </div>
         <div class="gallery-item reveal">
-          <img src="https://www.hotelgrasupils.lv/images/img_7.jpg" alt="Event and common area at the manor" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/img_7.jpg" alt="Event and common area at the manor" loading="lazy">
         </div>
         <div class="gallery-item reveal">
-          <img src="https://www.hotelgrasupils.lv/images/sauna-grasi.jpg" alt="Sauna at Hotel Grašu pils" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/sauna-grasi.jpg" alt="Sauna at Hotel Grašu pils" loading="lazy">
         </div>
         <div class="gallery-item reveal">
-          <img src="https://www.hotelgrasupils.lv/images/img_2.jpg" alt="Manor park and grounds" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/img_2.jpg" alt="Manor park and grounds" loading="lazy">
         </div>
         <div class="gallery-item reveal">
-          <img src="https://www.hotelgrasupils.lv/images/f_img_1.png" alt="Hotel Grašu pils manor feature" loading="lazy">
+          <img src="http://www.hotelgrasupils.lv/images/img_4.jpg" alt="Hotel Grašu pils manor park feature" loading="lazy">
         </div>
       </div>
     </div>
@@ -1189,7 +1207,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="https://www.hotelgrasupils.lv/images/logo.png" alt="Hotel Grašu pils">
+          <img src="http://www.hotelgrasupils.lv/images/logo.png" alt="Hotel Grašu pils">
           <p class="logo-name">Hotel Grašu pils</p>
           <p>An 18th-century manor hotel in Graši near Cesvaine — overnight stays, leisure, and event space hire.</p>
         </div>
