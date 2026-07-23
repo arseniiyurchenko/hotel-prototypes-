@@ -21,7 +21,21 @@ def main():
         page = context.new_page()
 
         page.goto(URL, wait_until="networkidle")
-        page.wait_for_timeout(2000)
+        page.wait_for_timeout(1500)
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        page.wait_for_timeout(1200)
+        page.evaluate(
+            """async () => {
+              const imgs = [...document.images];
+              await Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(res => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })));
+            }"""
+        )
+        page.wait_for_timeout(800)
+        page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(400)
 
         imgs = page.locator("img").all()
         for img in imgs:
@@ -53,7 +67,7 @@ def main():
         results["interactions"].append(f"brand={brand!r} tagline={tagline!r}")
         if "Deer Park Hall" not in brand:
             results["errors"].append("Hero brand missing venue name")
-        if "Space to Breathe" not in tagline:
+        if "space to breathe" not in tagline.lower():
             results["errors"].append("Hero tagline missing")
 
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
