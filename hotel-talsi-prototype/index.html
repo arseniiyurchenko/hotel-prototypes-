@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hotel Talsi — enjoy the rest in the 9 hill town of Talsi, Latvia. Next to Vilkmuižas ezers. Pet-friendly mid-range hotel with rooms from EUR 40.">
+  <title>Hotel Talsi | Enjoy the rest in 9 Hill Town</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #c19b76;
+      --gold-deep: #a67f5a;
+      --gold-soft: #e8d5c0;
+      --ink: #1c1c1c;
+      --ink-soft: #2e2e2e;
+      --lake: #3a6a78;
+      --lake-deep: #2a4f5a;
+      --mist: #eef4f5;
+      --sage: #5c7358;
+      --paper: #f6f3ee;
+      --sand: #ebe3d8;
+      --muted: #6b6560;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(28, 28, 28, 0.12);
+      --radius: 12px;
+      --transition: 0.28s ease;
+      --header-pad: clamp(1.25rem, 4vw, 3rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1160px, 100%);
+      margin-inline: auto;
+      padding-inline: var(--header-pad);
+    }
+
+    .section-pad { padding: clamp(3.5rem, 8vw, 5.5rem) 0; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--lake);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 4vw, 2.65rem);
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 540px;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn:active { transform: translateY(1px); }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-deep);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(193, 155, 118, 0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.55);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--white);
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      padding: 1rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(28, 28, 28, 0.94);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      padding: 0.7rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      height: 42px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255,255,255,0.88);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--gold-soft); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.7rem 1.2rem;
+      background: var(--gold);
+      color: var(--ink);
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .header-cta:hover {
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .header-cta .cta-short { display: none; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.35rem;
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 28, 28, 0.98);
+      z-index: 250;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition), visibility var(--transition);
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: 'Fraunces', serif;
+      font-size: 1.6rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: var(--header-pad);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* Hero */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(28,28,28,0.35) 0%, rgba(42,79,90,0.25) 40%, rgba(28,28,28,0.78) 100%),
+        url('https://www.hoteltalsi.lv/wp-content/uploads/2025/02/viesnica-headeris-scaled.jpg') center/cover no-repeat;
+      transform: scale(1.04);
+      animation: heroDrift 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.04) translate3d(0, 0, 0); }
+      to { transform: scale(1.08) translate3d(-1.2%, -0.8%, 0); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 0 clamp(5rem, 12vh, 7rem);
+      animation: heroRise 1s ease-out both;
+    }
+
+    @keyframes heroRise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.8rem, 8vw, 5.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 0.85rem;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+
+    .hero-headline {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      max-width: 28ch;
+      margin-bottom: 0.65rem;
+      color: #fff;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.45);
+    }
+
+    .hero-headline::after {
+      content: "";
+      display: block;
+      width: 3.5rem;
+      height: 3px;
+      margin-top: 0.75rem;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .hero-support {
+      font-weight: 300;
+      font-size: 1.05rem;
+      max-width: 38ch;
+      opacity: 0.9;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* Booking */
+    #booking {
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 1rem;
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.2fr 1.2fr 1fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.35rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(193, 155, 118, 0.25);
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .form-group input[type="date"],
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      background: var(--mist);
+      color: var(--ink);
+      appearance: none;
+    }
+
+    .form-group input[type="date"]:focus,
+    .guest-trigger:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 1px;
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 30;
+      display: none;
+      border: 1px solid var(--sand);
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+    }
+
+    .guest-row + .guest-row { border-top: 1px solid var(--sand); }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--sand);
+      background: var(--paper);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      height: 48px;
+      padding-inline: 1.6rem;
+      white-space: nowrap;
+    }
+
+    .booking-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.85rem;
+    }
+
+    /* Rooms */
+    #rooms {
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(193,155,118,0.12), transparent 55%),
+        var(--paper);
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(28,28,28,0.06);
+      box-shadow: 0 4px 20px rgba(28,28,28,0.05);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card-media {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--sand);
+    }
+
+    .room-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .room-card:hover .room-card-media img { transform: scale(1.05); }
+
+    .room-card-body {
+      padding: 1.35rem 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.55rem;
+    }
+
+    .room-card h3 {
+      font-size: 1.35rem;
+    }
+
+    .room-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .room-price {
+      margin-top: auto;
+      padding-top: 0.85rem;
+      font-size: 0.95rem;
+      color: var(--lake-deep);
+      font-weight: 600;
+    }
+
+    .room-price span {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+    }
+
+    .room-card.span-wide { grid-column: span 1; }
+
+    /* Amenities */
+    #amenities {
+      background: linear-gradient(160deg, var(--lake-deep) 0%, #3d5f55 55%, var(--ink-soft) 100%);
+      color: var(--white);
+    }
+
+    #amenities .section-label { color: var(--gold-soft); }
+    #amenities .section-title { color: var(--white); }
+    #amenities .section-lead { color: rgba(255,255,255,0.72); }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1.35rem 1.2rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .amenity-item:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(193, 155, 118, 0.2);
+      color: var(--gold-soft);
+      display: grid;
+      place-items: center;
+    }
+
+    .amenity-icon svg { width: 22px; height: 22px; }
+
+    .amenity-item span {
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    /* Gallery */
+    #gallery { background: var(--mist); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+      margin-top: 2.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--sand);
+      min-height: 220px;
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+      aspect-ratio: auto;
+      min-height: 100%;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(transparent, rgba(28,28,28,0.72));
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+
+    /* Location */
+    #location {
+      background:
+        linear-gradient(180deg, var(--paper), var(--sand));
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 2.5rem;
+      align-items: stretch;
+      margin-top: 2.25rem;
+    }
+
+    .location-copy p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .location-facts {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .location-facts li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .location-facts li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 0.45rem;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(135deg, rgba(58,106,120,0.12), rgba(193,155,118,0.18)),
+        repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(255,255,255,0.35) 12px, rgba(255,255,255,0.35) 13px);
+      border-radius: var(--radius);
+      border: 1px dashed rgba(58,106,120,0.35);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--lake-deep);
+    }
+
+    .map-placeholder strong {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .map-placeholder span {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 28ch;
+    }
+
+    /* Trust */
+    #trust { background: var(--white); }
+
+    .trust-placeholder-note {
+      display: inline-block;
+      margin: 1.25rem 0 1.75rem;
+      font-size: 0.8rem;
+      color: var(--gold-deep);
+      font-style: italic;
+      padding: 0.45rem 0.9rem;
+      background: rgba(193,155,118,0.12);
+      border-radius: 6px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .testimonial-card {
+      background: var(--paper);
+      padding: 1.75rem;
+      border-radius: var(--radius);
+      border-top: 3px solid var(--gold);
+    }
+
+    .testimonial-card blockquote {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+      line-height: 1.45;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .testimonial-badge {
+      display: inline-block;
+      margin-top: 0.55rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--sand);
+      color: var(--gold-deep);
+      padding: 0.22rem 0.5rem;
+      border-radius: 3px;
+    }
+
+    /* Footer */
+    #footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.78);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1.2fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand img {
+      height: 36px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 1rem;
+      opacity: 0.95;
+    }
+
+    .footer-brand p {
+      font-size: 0.92rem;
+      max-width: 34ch;
+      opacity: 0.75;
+      font-weight: 300;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col li { margin-bottom: 0.55rem; }
+
+    .footer-col a {
+      font-size: 0.92rem;
+      opacity: 0.75;
+      transition: opacity var(--transition), color var(--transition);
+    }
+
+    .footer-col a:hover { opacity: 1; color: var(--gold-soft); }
+
+    .footer-col p,
+    .footer-col a.block {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 0.45rem;
+      opacity: 0.75;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.35rem;
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.45;
+    }
+
+    /* Reveal motion */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+      .header-cta { padding: 0.55rem 0.85rem; font-size: 0.68rem; }
+
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        min-height: 260px;
+        aspect-ratio: 16 / 9;
+      }
+      .gallery-item { min-height: 180px; }
+      .location-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary { grid-column: span 2; }
+    }
+
+    @media (max-width: 620px) {
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:first-child {
+        grid-column: span 1;
+        grid-row: span 1;
+        aspect-ratio: 16 / 9;
+      }
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; width: 100%; }
+      .header-cta {
+        display: inline-flex;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.68rem;
+      }
+      .header-cta .cta-full { display: none; }
+      .header-cta .cta-short { display: inline; }
+      .brand img { height: 30px; max-width: min(150px, 42vw); object-fit: contain; }
+      .header-inner { gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand" aria-label="Hotel Talsi home">
+        <img src="https://www.hoteltalsi.lv/wp-content/uploads/2020/08/viesnicas-logo-melns.png" alt="Hotel Talsi">
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#trust">Guests</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="header-cta" href="#booking"><span class="cta-full">Check availability</span><span class="cta-short">Book</span></a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+    <a href="#booking">Check availability</a>
+    <a href="tel:+37126322333">+371 26322333</a>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-bg" role="img" aria-label="Hotel Talsi exterior on a grassy hill in Talsi"></div>
+    <div class="container hero-content">
+      <h1 class="hero-brand">Hotel Talsi</h1>
+      <p class="hero-headline">Enjoy the rest in 9 Hill Town</p>
+      <p class="hero-support">A welcoming stay beside Vilkmuižas ezers in the heart of Talsi — check rooms and reserve online.</p>
+      <div class="hero-ctas">
+        <a href="#booking" class="btn btn-primary">Check availability</a>
+        <a href="#rooms" class="btn btn-ghost">View rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm" novalidate>
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label for="guestTrigger">Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestDropdown">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown" role="dialog" aria-label="Guest selector">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p class="booking-note">Prototype booking widget — UI only. Check-in from 15:00 · Check-out until 12:00 · All prices include PVN.</p>
+    </div>
+  </section>
+
+  <section class="section-pad" id="rooms">
+    <div class="container">
+      <p class="section-label reveal">Accommodation</p>
+      <h2 class="section-title reveal">Best rooms</h2>
+      <p class="section-lead reveal">53 standard Single and Double rooms and comfortable Suites — as listed on Hotel Talsi.</p>
+
+      <div class="rooms-grid">
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hoteltalsi.lv/wp-content/uploads/2025/01/20241119_1147565657-1-1110x611.jpg" alt="Single room at Hotel Talsi" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Single</h3>
+            <p class="room-meta">1 guest · Double bed · Shower · TV · Wi-Fi</p>
+            <p class="room-price">From <span>EUR 40</span> / night</p>
+          </div>
+        </article>
+
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hoteltalsi.lv/wp-content/uploads/2020/10/39A3C625-2D96-4281-8C69-F4D2E510722E-720x720.jpg" alt="Double room with one bed" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Double (One bed)</h3>
+            <p class="room-meta">2 guests · One double bed · Shower · TV · Wi-Fi</p>
+            <p class="room-price">From <span>EUR 50</span> / night</p>
+          </div>
+        </article>
+
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hoteltalsi.lv/wp-content/uploads/2020/09/atsev.g.-720x720.jpg" alt="Double room with twin beds" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Double (1+1)</h3>
+            <p class="room-meta">2 guests · Two separate beds · Shower · TV · Wi-Fi</p>
+            <p class="room-price">From <span>EUR 50</span> / night</p>
+          </div>
+        </article>
+
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hoteltalsi.lv/wp-content/uploads/2020/09/201-E-720x720.jpg" alt="Lux suite bedroom" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Lux</h3>
+            <p class="room-meta">2 guests · Large double bed · Suite comfort</p>
+            <p class="room-price">From <span>EUR 60</span> / night</p>
+          </div>
+        </article>
+
+        <article class="room-card reveal">
+          <div class="room-card-media">
+            <img src="https://www.hoteltalsi.lv/wp-content/uploads/revslider/home-1/DSC09340-21.jpg" alt="Lux 2 suite sitting area" loading="lazy">
+          </div>
+          <div class="room-card-body">
+            <h3>Lux 2</h3>
+            <p class="room-meta">2 guests · Large double bed · Sitting area</p>
+            <p class="room-price">From <span>EUR 70</span> / night</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="amenities">
+    <div class="container">
+      <p class="section-label reveal">Services</p>
+      <h2 class="section-title reveal">Amenities</h2>
+      <p class="section-lead reveal">Features and services actually listed on the Hotel Talsi website.</p>
+
+      <div class="amenities-grid">
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c4-3.5 7-6.4 7-10a7 7 0 10-14 0c0 3.6 3 6.5 7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+          </div>
+          <span>Pet-friendly hotel</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          </div>
+          <span>Conference room</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h16v9H4z"/><path d="M8 10V7a4 4 0 018 0v3"/><path d="M4 14h16"/></svg>
+          </div>
+          <span>Café</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11h12v7a3 3 0 01-3 3H7a3 3 0 01-3-3v-7z"/><path d="M16 13h2a3 3 0 000-6h-2"/><path d="M8 3v4M12 3v4"/></svg>
+          </div>
+          <span>Breakfast (extra)</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.5c2.5-4 5-6 7-6s4.5 2 7 6"/><path d="M12 16.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg>
+          </div>
+          <span>Wi-Fi</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 18v2M16 18v2"/></svg>
+          </div>
+          <span>TV in rooms</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4h8l1 5H7l1-5z"/><path d="M7 9v2a5 5 0 0010 0V9"/><path d="M12 16v4M9 20h6"/></svg>
+          </div>
+          <span>Sauna (by arrangement)</span>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <span>Available 00:00–24:00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="gallery">
+    <div class="container">
+      <p class="section-label reveal">Gallery</p>
+      <h2 class="section-title reveal">A stay among the hills</h2>
+      <p class="section-lead reveal">Real photos from the Hotel Talsi property and surroundings.</p>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item reveal">
+          <img src="https://www.hoteltalsi.lv/wp-content/uploads/2025/02/viesnica-headeris-scaled.jpg" alt="Hotel Talsi exterior on the hill" loading="lazy">
+          <figcaption class="gallery-caption">Exterior · Talsi hills</figcaption>
+        </figure>
+        <figure class="gallery-item reveal">
+          <img src="https://www.hoteltalsi.lv/wp-content/uploads/2020/10/DSC00933.jpg" alt="Grassy hill path near Hotel Talsi" loading="lazy">
+          <figcaption class="gallery-caption">Hills of Talsi</figcaption>
+        </figure>
+        <figure class="gallery-item reveal">
+          <img src="https://www.hoteltalsi.lv/wp-content/uploads/2025/02/Kafejnica1.jpg" alt="Hotel café with lake view" loading="lazy">
+          <figcaption class="gallery-caption">Café · lake view</figcaption>
+        </figure>
+        <figure class="gallery-item reveal">
+          <img src="https://www.hoteltalsi.lv/wp-content/uploads/2025/01/20241119_1147565657-1-1110x611.jpg" alt="Guest room interior" loading="lazy">
+          <figcaption class="gallery-caption">Guest room</figcaption>
+        </figure>
+        <figure class="gallery-item reveal">
+          <img src="https://www.hoteltalsi.lv/wp-content/uploads/2020/10/DSC00692-HDR-e1602246486489.jpg" alt="Conference room" loading="lazy">
+          <figcaption class="gallery-caption">Conference room</figcaption>
+        </figure>
+        <figure class="gallery-item reveal">
+          <img src="https://www.hoteltalsi.lv/wp-content/uploads/revslider/home-1/DSC09340-21.jpg" alt="Suite sitting area" loading="lazy">
+          <figcaption class="gallery-caption">Suite sitting area</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="location">
+    <div class="container">
+      <p class="section-label reveal">Location</p>
+      <h2 class="section-title reveal">In the town of nine hills</h2>
+      <div class="location-grid">
+        <div class="location-copy reveal">
+          <p>Welcome to Hotel Talsi in Talsi — a small town of Northern Kurzeme. The hotel sits in a picturesque place next to <strong>Vilkmuižas ezers</strong>, beside the protected nature area <strong>Talsu Pauguraine</strong> (Natura 2000).</p>
+          <p>Enjoy the rest in the <strong>9 hill town</strong> — a calm base for exploring Talsi’s hills, lake shores, and local sights. Tourism information: talsitourism.lv · What to do: visittalsi.com</p>
+          <ul class="location-facts">
+            <li>Kareivju iela 16, Talsi, Talsu novads LV-3201</li>
+            <li>Next to Vilkmuižas ezers</li>
+            <li>Talsu Pauguraine nature area nearby</li>
+            <li>Check-in 15:00 · Check-out 12:00</li>
+          </ul>
+        </div>
+        <div class="map-placeholder reveal" role="img" aria-label="Static map placeholder for Hotel Talsi location">
+          <strong>Map placeholder</strong>
+          <span>Kareivju iela 16 · Talsi · beside Vilkmuižas ezers and the hills of Talsi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="trust">
+    <div class="container">
+      <p class="section-label reveal">Guests</p>
+      <h2 class="section-title reveal">What visitors say</h2>
+      <p class="reveal"><span class="trust-placeholder-note">No public rating badge was found on hoteltalsi.lv — sample testimonials below are placeholders only.</span></p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <blockquote>“Quiet rooms and a friendly welcome after a day exploring Talsi’s hills. Perfect mid-range stop near the lake.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest A</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card reveal">
+          <blockquote>“Clean Single room with Wi-Fi and an easy walk toward Vilkmuižas ezers. Staff helped with conference needs.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest B</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card reveal">
+          <blockquote>“Pet-friendly policy made travel simple. Comfortable Lux suite for a weekend in the 9 hill town.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest C</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://www.hoteltalsi.lv/wp-content/uploads/2020/08/viesnicas-logo-melns.png" alt="Hotel Talsi">
+          <p>Hotel Talsi — mid-range hospitality in Latvia’s town of nine hills, next to Vilkmuižas ezers. Operating for over 40 years.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Check availability</a></li>
+            <li><a href="#location">Location</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>SIA “Viesnīca “Talsi””<br>Kareivju iela 16, Talsi<br>LV-3201</p>
+          <a class="block" href="tel:+37126322333">+371 26322333</a>
+          <a class="block" href="mailto:hoteltalsi@hoteltalsi.lv">hoteltalsi@hoteltalsi.lv</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© Hotel Talsi — homepage prototype (source: hoteltalsi.lv). Demo only.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+
+    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (checkin.value) {
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = checkout.min;
+        }
+      }
+    });
+
+    let adults = 2;
+    let children = 0;
+
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestDropdown = document.getElementById('guestDropdown');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' adult' : ' adults');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' child' : ' children');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = guestDropdown.classList.toggle('open');
+      guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', () => {
+      guestDropdown.classList.remove('open');
+      guestTrigger.setAttribute('aria-expanded', 'false');
+    });
+    guestDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 8) { adults++; updateGuestSummary(); } });
+    document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+    document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 6) { children++; updateGuestSummary(); } });
+    document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+
+    updateGuestSummary();
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Booking search is a UI prototype only — no reservation system connected.');
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach((el) => io.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
