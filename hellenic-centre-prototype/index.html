@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hellenic Centre — Venue Hire | Marylebone, London W1</title>
+  <meta name="description" content="The Hellenic Centre is an ideal venue for private and corporate events in Marylebone, London. Great Hall, Friends Room, Boardroom and more — with in-house catering, AV and cultural programming.">
+  <!--
+    Prototype source notes (helleniccentre.org — live site + Venue Hire Brochure 2025 PDF hosted on site):
+    Name: The Hellenic Centre
+    Tagline/title used on site: "Hellenic Centre, London W1 – venue hire + Greek cultural events"
+    Purpose copy: lectures, exhibitions, concerts, social events, and Greek language courses…
+    Logo present: logo.001.jpeg (building line mark); header cover Untitled-design-47.png
+    Brand colours from theme CSS: --color-blue #4e87a0, --color-wine #582d40, --color-dark-blue #315c6f, --color-rose #d34368, text #3b332a
+    Location: 16-18 Paddington Street, Marylebone, London W1U 5AS; Marylebone village / High Street; Baker Street tube
+    Spaces: Great Hall (+ Balcony), Friends Room, Boardroom, Library, Print Room, Glass Room, Map Room, Bar
+    Amenities: natural daylight, WiFi (fibre), AV, air-con (Great Hall/Friends/Boardroom), Steinway, hearing loop, lift (not 3rd floor), stair climber, cloakroom, in-house catering + preferred caterers, nearby parking (not on-site)
+    Pricing: brochure rates from £80 (Map Room) / Great Hall from £1,135 (4h); exclusive hire packages from £4,900 + VAT
+    Positioning: mid-to-premium (Marylebone charity cultural venue; polished Edwardian building; package pricing)
+    Missing on source / not claimed here: dedicated “event coordinator” job title; on-site parking; exact live homepage hero video
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #4e87a0;
+      --blue-dark: #315c6f;
+      --wine: #582d40;
+      --rose: #d34368;
+      --ink: #3b332a;
+      --muted: #5b6770;
+      --line: #d2d2d2;
+      --paper: #f7f9fe;
+      --white: #ffffff;
+      --stone: #e8eef2;
+      --max: 1120px;
+      --header-h: 4.5rem;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --font-display: "Cormorant Garamond", "Times New Roman", serif;
+      --font-body: "Outfit", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    .container { width: min(100% - 2.5rem, var(--max)); margin-inline: auto; }
+
+    /* Motion */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(1.25rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes ken-burns {
+      from { transform: scale(1.06); }
+      to { transform: scale(1); }
+    }
+    @keyframes soft-reveal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(1.25rem);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .site-header.is-solid {
+      background: rgba(49, 92, 111, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 28px rgba(59, 51, 42, 0.12);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+    }
+    .brand img {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--blue);
+    }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-desktop a:hover { color: #fff; }
+    .header-cta {
+      display: none;
+      padding: 0.65rem 1.15rem;
+      background: var(--white);
+      color: var(--blue-dark);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 0;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .header-cta:hover { background: var(--stone); transform: translateY(-1px); }
+    .menu-toggle {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 1.1rem;
+      height: 1.5px;
+      background: currentColor;
+      position: relative;
+    }
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+    .menu-toggle span::before { top: -5px; }
+    .menu-toggle span::after { top: 5px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: var(--blue-dark);
+      color: #fff;
+      z-index: 120;
+      padding: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.45s var(--ease);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .nav-mobile.open { transform: none; }
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-mobile nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .nav-mobile a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 500;
+    }
+    .nav-close {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent;
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* Hero — one composition */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      animation: ken-burns 14s var(--ease) both;
+    }
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(49, 92, 111, 0.35) 0%, rgba(49, 92, 111, 0.15) 35%, rgba(59, 51, 42, 0.72) 100%),
+        radial-gradient(ellipse at 20% 80%, rgba(78, 135, 160, 0.35), transparent 55%);
+    }
+    .hero-inner {
+      width: min(100% - 2.5rem, var(--max));
+      margin: 0 auto 4.5rem;
+      padding-top: calc(var(--header-h) + 2rem);
+      animation: fade-up 1s var(--ease) 0.15s both;
+    }
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-brand img {
+      width: 4.25rem;
+      height: 4.25rem;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    }
+    .hero-brand-text {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      max-width: 12ch;
+    }
+    .hero h1 {
+      font-family: var(--font-body);
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+      opacity: 0.92;
+    }
+    .hero-lead {
+      max-width: 34rem;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      font-weight: 300;
+      line-height: 1.55;
+      margin-bottom: 1.75rem;
+      color: rgba(255,255,255,0.92);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.4rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--white);
+      color: var(--blue-dark);
+    }
+    .btn-primary:hover { background: var(--stone); }
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.55);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+    .btn-wine {
+      background: var(--wine);
+      color: #fff;
+    }
+    .btn-wine:hover { background: #6a3850; }
+
+    /* Sections */
+    section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+    .section-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--blue-dark);
+      margin-bottom: 0.85rem;
+      max-width: 16ch;
+    }
+    .section-lead {
+      max-width: 38rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Spaces */
+    .spaces {
+      background:
+        linear-gradient(180deg, var(--paper), #eef3f7 40%, var(--paper));
+    }
+    .space-feature {
+      display: grid;
+      gap: 1.75rem;
+      margin-bottom: 3.5rem;
+    }
+    .space-feature-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 18rem;
+      background: var(--stone);
+    }
+    .space-feature-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 18rem;
+      object-fit: cover;
+      transition: transform 1.2s var(--ease);
+    }
+    .space-feature:hover .space-feature-media img { transform: scale(1.03); }
+    .space-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .space-meta strong { color: var(--ink); font-weight: 500; }
+    .space-list {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .space-row {
+      display: grid;
+      gap: 0.35rem 1.5rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .space-row:last-child { border-bottom: 1px solid var(--line); }
+    .space-row h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--blue-dark);
+    }
+    .space-row p { color: var(--muted); font-size: 0.98rem; }
+    .space-caps {
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
+    /* Amenities — not cards; flowing list with visual anchor */
+    .amenities {
+      background: var(--blue-dark);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .amenities::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -40% 40%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(78,135,160,0.45), transparent 65%);
+      pointer-events: none;
+    }
+    .amenities .section-title { color: #fff; }
+    .amenities .section-lead { color: rgba(255,255,255,0.78); }
+    .amenity-grid {
+      display: grid;
+      gap: 1.75rem 2.5rem;
+      position: relative;
+    }
+    .amenity-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .amenity-item p {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.98rem;
+      max-width: 28rem;
+    }
+    .amenity-note {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 42rem;
+      position: relative;
+    }
+
+    /* Pricing */
+    .rates-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .rates-table th,
+    .rates-table td {
+      text-align: left;
+      padding: 0.9rem 0.75rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .rates-table th {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .rates-table td:first-child { font-weight: 500; color: var(--blue-dark); }
+    .rates-note {
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      max-width: 44rem;
+    }
+    .package {
+      margin-top: 2.5rem;
+      padding: 1.75rem 0 0;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 1rem;
+    }
+    .package h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--wine);
+    }
+
+    /* Culture band */
+    .culture {
+      position: relative;
+      min-height: 28rem;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      overflow: hidden;
+    }
+    .culture-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+    .culture-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .culture-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(88, 45, 64, 0.88) 0%, rgba(88, 45, 64, 0.45) 55%, rgba(49, 92, 111, 0.25) 100%);
+    }
+    .culture-inner { padding: 4rem 0; }
+    .culture .section-kicker { color: rgba(255,255,255,0.75); }
+    .culture .section-title { color: #fff; max-width: 14ch; }
+    .culture .section-lead { color: rgba(255,255,255,0.88); margin-bottom: 1.25rem; }
+
+    /* Gallery strip — full bleed visual, not cards */
+    .gallery {
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .gallery figure {
+      margin: 0;
+      position: relative;
+      min-height: 14rem;
+      overflow: hidden;
+      background: var(--stone);
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      min-height: 14rem;
+      object-fit: cover;
+      transition: transform 1s var(--ease);
+    }
+    .gallery figure:hover img { transform: scale(1.04); }
+    .gallery figcaption {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      color: #fff;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+    }
+
+    /* Location + enquiry */
+    .visit {
+      background:
+        linear-gradient(160deg, #f7f9fe 0%, #e7eef3 50%, #f4ebe8 100%);
+    }
+    .visit-grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+    .visit-facts {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .visit-facts dt {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+    }
+    .visit-facts dd {
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+    .enquiry {
+      background: var(--white);
+      padding: 1.75rem;
+      border: 1px solid var(--line);
+      /* interaction container — allowed */
+    }
+    .enquiry h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--blue-dark);
+      margin-bottom: 0.35rem;
+    }
+    .enquiry p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-grid {
+      display: grid;
+      gap: 0.85rem;
+    }
+    .form-grid label {
+      display: grid;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea {
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-grid input:focus,
+    .form-grid select:focus,
+    .form-grid textarea:focus {
+      border-color: var(--blue);
+    }
+    .form-status {
+      display: none;
+      margin-top: 0.85rem;
+      font-size: 0.92rem;
+      color: var(--blue-dark);
+    }
+    .form-status.show { display: block; animation: soft-reveal 0.4s ease; }
+
+    /* Footer */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.78);
+      padding: 3rem 0 2rem;
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .site-footer strong {
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .site-footer a:hover { color: #fff; }
+    .footer-meta {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.25rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    @media (min-width: 720px) {
+      .menu-toggle { display: none; }
+      .nav-desktop, .header-cta { display: flex; }
+      .space-feature {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: center;
+      }
+      .space-list {
+        grid-template-columns: 1fr 1fr;
+      }
+      .space-row {
+        grid-template-columns: 1fr;
+        padding: 1.35rem 1rem 1.35rem 0;
+      }
+      .amenity-grid { grid-template-columns: 1fr 1fr; }
+      .gallery { grid-template-columns: repeat(3, 1fr); }
+      .gallery figure { min-height: 18rem; }
+      .gallery img { min-height: 18rem; }
+      .visit-grid { grid-template-columns: 1.05fr 0.95fr; align-items: start; }
+      .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+      .form-grid.two { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 980px) {
+      .space-feature-media,
+      .space-feature-media img { min-height: 26rem; }
+      .amenity-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="The Hellenic Centre home">
+        <img src="https://helleniccentre.org/wp-content/uploads/2024/05/logo.001.jpeg" alt="The Hellenic Centre logo">
+        <span class="brand-name">The Hellenic Centre</span>
+      </a>
+      <ul class="nav-desktop">
+        <li><a href="#spaces">Spaces</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#rates">Hire fees</a></li>
+        <li><a href="#culture">Programme</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <a class="header-cta" href="#enquiry">Enquire</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span></button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <span class="brand-name">The Hellenic Centre</span>
+      <button class="nav-close" id="navClose" aria-label="Close menu">×</button>
+    </div>
+    <nav>
+      <a href="#spaces">Spaces</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#rates">Hire fees</a>
+      <a href="#culture">Programme</a>
+      <a href="#visit">Visit us</a>
+      <a href="#enquiry">Enquire</a>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Hero">
+      <div class="hero-media">
+        <img
+          src="https://helleniccentre.org/wp-content/uploads/2020/03/DSCF4197_edit-scaled.jpg"
+          alt="Exterior of The Hellenic Centre on Paddington Street, Marylebone — red brick and Portland stone facade with Greek, UK and Cyprus flags"
+          width="2369"
+          height="2560"
+        >
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-brand">
+          <img src="https://helleniccentre.org/wp-content/uploads/2024/05/logo.001.jpeg" alt="">
+          <p class="hero-brand-text">The Hellenic Centre</p>
+        </div>
+        <h1>Venue hire + Greek cultural events · London W1</h1>
+        <p class="hero-lead">
+          An ideal venue for private and corporate events in the heart of Marylebone village — opposite Paddington Street Gardens, minutes from Baker Street.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#enquiry">Discuss your event</a>
+          <a class="btn btn-ghost" href="#spaces">Explore our spaces</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="spaces" id="spaces">
+      <div class="container">
+        <p class="section-kicker reveal">Our spaces</p>
+        <h2 class="section-title reveal">Versatile rooms with natural daylight</h2>
+        <p class="section-lead reveal">
+          From the extraordinary Great Hall with high ceilings, skylights and modern AV, to smaller elegant rooms — all with natural daylight, equipment and comfortable furniture.
+        </p>
+
+        <article class="space-feature reveal">
+          <div class="space-feature-media">
+            <img
+              src="https://helleniccentre.org/wp-content/uploads/2023/08/DSC3286-HDR.jpg"
+              alt="The Great Hall — bright blank-canvas hall with skylights, mezzanine balcony and Steinway grand piano"
+              width="2400"
+              height="1602"
+              loading="lazy"
+            >
+          </div>
+          <div>
+            <h3 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 0.5rem;">Great Hall</h3>
+            <p style="color: var(--muted);">
+              The gem of the Hellenic Centre — a blank canvas with high ceiling and optional natural daylight. Hire includes the Balcony mezzanine overlooking the space below.
+            </p>
+            <div class="space-meta">
+              <span><strong>Theatre</strong> 190</span>
+              <span><strong>Cocktail</strong> 250</span>
+              <span><strong>Banquet</strong> 180</span>
+              <span><strong>Dinner &amp; dance</strong> 160</span>
+            </div>
+            <p class="space-caps">
+              Air-conditioning · Daylight (blackout optional) · WiFi · Integrated AV · Hearing loop · Steinway Grand Piano D · Lift access
+            </p>
+          </div>
+        </article>
+
+        <div class="space-list reveal">
+          <div class="space-row">
+            <h3>Friends Room</h3>
+            <p>Original parquet, large windows and skylight; bi-fold doors divide into two. Ground floor — alone or with interlinking spaces beside the Great Hall.</p>
+            <p class="space-caps">Theatre 80 · Cocktail 100 · Boardroom 28 · Cabaret 60</p>
+          </div>
+          <div class="space-row">
+            <h3>Boardroom</h3>
+            <p>First-floor meeting room with ample natural daylight from large soundproof windows that can open for fresh air. Lift access.</p>
+            <p class="space-caps">Boardroom 20 · Theatre 50 · Classroom 18 · Horseshoe 22</p>
+          </div>
+          <div class="space-row">
+            <h3>Library</h3>
+            <p>Second-floor space with soundproof windows overlooking Paddington Street Gardens — for meetings, workshops and training.</p>
+            <p class="space-caps">Boardroom 18 · Theatre 25</p>
+          </div>
+          <div class="space-row">
+            <h3>Print · Glass · Map Rooms</h3>
+            <p>Intimate third-floor rooms for small meetings, training or syndicate use. Lift to 2nd floor; 3rd floor via one flight of stairs.</p>
+            <p class="space-caps">Print / Glass 12 boardroom · Map Room 4</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities">
+      <div class="container">
+        <p class="section-kicker reveal" style="color: rgba(255,255,255,0.7);">Amenities &amp; features</p>
+        <h2 class="section-title reveal">What your booking includes and offers</h2>
+        <p class="section-lead reveal">
+          Features listed across the venue hire pages and 2025 brochure — no on-site car park; nearby options are noted below.
+        </p>
+        <div class="amenity-grid">
+          <div class="amenity-item reveal">
+            <h3>In-house catering</h3>
+            <p>Light breakfasts, working lunches and canapé receptions for up to 100 guests. Preferred caterers for larger dinners and receptions; external catering and corkage subject to fees.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>AV &amp; conference kit</h3>
+            <p>Integrated AV in the Great Hall and Friends Room; portable projector, screen and flipchart packs on request for meeting rooms. Modular stage available in the Great Hall.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>WiFi</h3>
+            <p>Complimentary WiFi on a dedicated fibre-optic line with high upload and download speeds. Network details provided on the day.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Access</h3>
+            <p>Main entrance via steps; a stair climber is available with prior notice. Lift to all floors except the third. Disabled-access toilets on the lower ground floor. Hearing induction loop in the Great Hall. Assistance animals welcome.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Bar &amp; cloakroom</h3>
+            <p>Bar area can be hired exclusively with the Great Hall for receptions. Cloakroom on the lower ground floor; attendants can be arranged.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Parking nearby</h3>
+            <p>No off-street parking or loading bays at the building. Metered / pay &amp; display nearby; Euro Car Parks (Marylebone Square, Aybrook Street) and NCP Marylebone Road listed on the site. Blue Badge bays on nearby streets.</p>
+          </div>
+        </div>
+        <p class="amenity-note reveal">
+          Venue hire income supports the Centre’s programme of free public events. Corporate Membership includes venue hire discounts. Bookings team: bookings@helleniccentre.org · 020 7563 9834.
+        </p>
+      </div>
+    </section>
+
+    <section id="rates">
+      <div class="container">
+        <p class="section-kicker reveal">Hire fees</p>
+        <h2 class="section-title reveal">Venue hire rates</h2>
+        <p class="section-lead reveal">
+          From the 2025 Venue Hire Brochure hosted on helleniccentre.org. Rates are for venue hire only; AV, stage and some layouts attract additional fees. All prices subject to VAT at 20%.
+        </p>
+        <div class="reveal" style="overflow-x: auto;">
+          <table class="rates-table">
+            <thead>
+              <tr>
+                <th>Room</th>
+                <th>Up to 4 hours</th>
+                <th>Up to 8 hours</th>
+                <th>Extra hour</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Great Hall — conferences, seminars etc.</td>
+                <td>£1,135</td>
+                <td>£2,010</td>
+                <td>£230</td>
+              </tr>
+              <tr>
+                <td>Great Hall — promotional events, receptions, dinners etc.</td>
+                <td>£1,390</td>
+                <td>£2,385</td>
+                <td>£230</td>
+              </tr>
+              <tr>
+                <td>Friends Room</td>
+                <td>£780</td>
+                <td>£1,070</td>
+                <td>£90</td>
+              </tr>
+              <tr>
+                <td>Boardroom</td>
+                <td>£275</td>
+                <td>£490</td>
+                <td>£45</td>
+              </tr>
+              <tr>
+                <td>Library</td>
+                <td>£265</td>
+                <td>£465</td>
+                <td>£45</td>
+              </tr>
+              <tr>
+                <td>Print Room / Glass Room</td>
+                <td>£180</td>
+                <td>£305</td>
+                <td>£40</td>
+              </tr>
+              <tr>
+                <td>Map Room</td>
+                <td>£80</td>
+                <td>£135</td>
+                <td>£30</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="rates-note reveal">
+          Half-day slots: 08:30–13:00, 13:30–18:00, 18:30–23:00. Weekend hire subject to a minimum venue hire fee of £1,300 (excl. VAT) per the brochure. Contact the team for a bespoke quote.
+        </p>
+        <div class="package reveal">
+          <h3>Exclusive hire packages</h3>
+          <p style="color: var(--muted); max-width: 40rem;">
+            From <strong>£4,900 + VAT</strong>: access 12:00–00:00 including set-up/takedown; Friends Room, Bar and Balcony (until 21:00); Great Hall &amp; Balcony for the main event; 5ft round tables &amp; conference chairs; corkage fee; two licensed door security operatives (approx. six hours each); option to use preferred caterers. External catering package from £5,400 + VAT. Dry hire of Great Hall &amp; Balcony from £3,900 (excl. VAT), 08:00–23:00.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="culture" id="culture">
+      <div class="culture-media">
+        <img
+          src="https://helleniccentre.org/wp-content/uploads/2024/08/IMG_3395-scaled-e1760718864831-800x0-c-default.jpeg"
+          alt="Live music performance on stage at The Hellenic Centre cultural programme"
+          width="800"
+          height="533"
+          loading="lazy"
+        >
+      </div>
+      <div class="culture-scrim" aria-hidden="true"></div>
+      <div class="container culture-inner">
+        <p class="section-kicker reveal">Cultural programme</p>
+        <h2 class="section-title reveal">A hub for Hellenic culture in London</h2>
+        <p class="section-lead reveal">
+          Lectures, exhibitions, concerts, social events and Greek language courses — promoting awareness of Hellenic culture and nurturing UK relations with the Hellenic world. Founded as a charity in 1994.
+        </p>
+        <a class="btn btn-ghost reveal" href="https://helleniccentre.org/events-culture/" rel="noopener">What’s on</a>
+      </div>
+    </section>
+
+    <section class="gallery" aria-label="Venue gallery">
+      <figure>
+        <img
+          src="https://helleniccentre.org/wp-content/uploads/2023/08/Semble_Kiko-Kostadinov-Show_SEPT19-2-scaled.jpg"
+          alt="Fashion show event staged in the Great Hall"
+          width="1600"
+          height="1143"
+          loading="lazy"
+        >
+        <figcaption>Great Hall — cultural &amp; creative events</figcaption>
+      </figure>
+      <figure>
+        <img
+          src="https://helleniccentre.org/wp-content/uploads/2023/08/DSC3442-HDR.jpg"
+          alt="The Library meeting room with conference table and bookshelves"
+          width="2400"
+          height="1600"
+          loading="lazy"
+        >
+        <figcaption>Library — meetings &amp; workshops</figcaption>
+      </figure>
+      <figure>
+        <img
+          src="https://helleniccentre.org/wp-content/uploads/2017/04/Hellenic-centre-interior-shots-29-Copy-Copy.jpg"
+          alt="Great Hall set for an exhibition with balcony and grand piano"
+          width="1575"
+          height="1143"
+          loading="lazy"
+        >
+        <figcaption>Great Hall — exhibitions &amp; receptions</figcaption>
+      </figure>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="container visit-grid">
+        <div class="reveal">
+          <p class="section-kicker">Visit us</p>
+          <h2 class="section-title">Marylebone, London W1</h2>
+          <p class="section-lead">
+            Nestled in Marylebone village in a unique red brick and Portland stone building commissioned in the 1900s as a Swedish Gymnasium — a few minutes from Baker Street, in easy reach of King’s Cross, St Pancras and Euston.
+          </p>
+          <dl class="visit-facts">
+            <div>
+              <dt>Address</dt>
+              <dd>16–18 Paddington Street, Marylebone, London W1U 5AS</dd>
+            </div>
+            <div>
+              <dt>Nearest stations</dt>
+              <dd>Baker Street (5 min) · Marylebone (13 min) · Bond Street (13 min)</dd>
+            </div>
+            <div>
+              <dt>Nearby</dt>
+              <dd>Paddington Street Gardens · Marylebone High Street · Wallace Collection · Madame Tussauds · The Regent’s Park</dd>
+            </div>
+            <div>
+              <dt>General enquiries</dt>
+              <dd><a href="mailto:info@helleniccentre.org">info@helleniccentre.org</a> · +44 (0)20 7487 5060</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="enquiry reveal" id="enquiry">
+          <h3>Venue hire enquiry</h3>
+          <p>Prototype form — on the live site, contact bookings@helleniccentre.org or 020 7563 9834.</p>
+          <form id="enquiryForm" class="form-grid" novalidate>
+            <div class="form-grid two">
+              <label>Name
+                <input type="text" name="name" required autocomplete="name">
+              </label>
+              <label>Email
+                <input type="email" name="email" required autocomplete="email">
+              </label>
+            </div>
+            <label>Space of interest
+              <select name="space">
+                <option value="">Select…</option>
+                <option>Great Hall</option>
+                <option>Friends Room</option>
+                <option>Boardroom</option>
+                <option>Library</option>
+                <option>Print / Glass / Map Room</option>
+                <option>Exclusive hire package</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label>Event date (approx.)
+              <input type="date" name="date">
+            </label>
+            <label>Brief
+              <textarea name="brief" rows="4" placeholder="Event type, expected numbers, catering needs…"></textarea>
+            </label>
+            <button class="btn btn-wine" type="submit">Send enquiry</button>
+            <p class="form-status" id="formStatus" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>The Hellenic Centre</strong>
+          <p>16–18 Paddington Street<br>Marylebone, London W1U 5AS</p>
+        </div>
+        <div>
+          <p><a href="mailto:bookings@helleniccentre.org">bookings@helleniccentre.org</a></p>
+          <p>Venue hire: 020 7563 9834</p>
+          <p>General: +44 (0)20 7487 5060</p>
+        </div>
+        <div>
+          <p><a href="https://helleniccentre.org/" rel="noopener">helleniccentre.org</a></p>
+          <p>Charity Reg. No. 1010360</p>
+          <p>Hellenic Community Trust</p>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <p>Homepage prototype for conference &amp; event venue positioning. Content drawn from helleniccentre.org and the Venue Hire Brochure 2025 PDF on that site. Positioning read: mid-to-premium Marylebone cultural venue.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMobile = document.getElementById("navMobile");
+      const navClose = document.getElementById("navClose");
+
+      const onScroll = () => {
+        header.classList.toggle("is-solid", window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const openNav = () => {
+        navMobile.classList.add("open");
+        navMobile.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+      const closeNav = () => {
+        navMobile.classList.remove("open");
+        navMobile.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      };
+      menuToggle.addEventListener("click", openNav);
+      navClose.addEventListener("click", closeNav);
+      navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
+
+      const reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add("in"));
+      }
+
+      const form = document.getElementById("enquiryForm");
+      const status = document.getElementById("formStatus");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        status.textContent =
+          "Prototype only — please email bookings@helleniccentre.org or call 020 7563 9834 to enquire on the live site.";
+        status.classList.add("show");
+        form.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
