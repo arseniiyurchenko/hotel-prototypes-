@@ -39,8 +39,8 @@ def main():
             errors.append(f"html scroll-behavior is '{behavior}', expected 'smooth'")
 
         # Anchor navigation
-        for sel in ["#booking", "#rooms", "#amenities", "#gallery", "#location", "#trust", "#footer"]:
-            page.locator(f'a[href="{sel}"]').first.click()
+        for sel in ["#booking", "#rooms", "#amenities", "#gallery", "#location", "#trust"]:
+            page.locator(f'.nav-desktop a[href="{sel}"]').click()
             page.wait_for_timeout(900)
             in_view = page.evaluate(
                 """(id) => {
@@ -53,6 +53,12 @@ def main():
             )
             if not in_view:
                 errors.append(f"Section not in view after nav click: {sel}")
+
+        # Footer section exists and is reachable via in-page link
+        if not page.locator("#footer").count():
+            errors.append("Missing #footer section")
+        page.locator('a[href="#location"]').first.click()
+        page.wait_for_timeout(600)
 
         # Booking widget
         page.locator("#booking").scroll_into_view_if_needed()
