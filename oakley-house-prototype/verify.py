@@ -23,6 +23,35 @@ def main():
         page.goto(URL, wait_until="networkidle")
         page.wait_for_timeout(1500)
 
+        brand = page.locator(".hero-brand").inner_text()
+        h1 = page.locator(".hero h1").inner_text()
+        results["interactions"].append(f"hero brand: {brand}")
+        results["interactions"].append(f"hero h1: {h1}")
+
+        for section in ["#spaces", "#amenities", "#grounds", "#gallery", "#packages", "#location", "#contact"]:
+            page.locator(section).scroll_into_view_if_needed()
+            page.wait_for_timeout(500)
+            results["interactions"].append(f"scrolled to {section}")
+
+        # Force-load lazy images by scrolling the document and waiting
+        page.evaluate(
+            """async () => {
+              const imgs = [...document.images];
+              for (const img of imgs) {
+                img.scrollIntoView({ block: 'center' });
+                await new Promise(r => setTimeout(r, 250));
+              }
+              await Promise.all(imgs.map(img => {
+                if (img.complete) return Promise.resolve();
+                return new Promise(resolve => {
+                  img.addEventListener('load', resolve, { once: true });
+                  img.addEventListener('error', resolve, { once: true });
+                });
+              }));
+            }"""
+        )
+        page.wait_for_timeout(800)
+
         imgs = page.locator("img").all()
         for img in imgs:
             src = img.get_attribute("src") or ""
@@ -30,16 +59,6 @@ def main():
             results["images"].append({"src": src, "ok": ok})
             if not ok:
                 results["errors"].append(f"Broken image: {src}")
-
-        brand = page.locator(".hero-brand").inner_text()
-        h1 = page.locator(".hero h1").inner_text()
-        results["interactions"].append(f"hero brand: {brand}")
-        results["interactions"].append(f"hero h1: {h1}")
-
-        for section in ["#spaces", "#amenities", "#grounds", "#packages", "#location", "#contact"]:
-            page.locator(section).scroll_into_view_if_needed()
-            page.wait_for_timeout(400)
-            results["interactions"].append(f"scrolled to {section}")
 
         page.evaluate("window.scrollTo(0, 0)")
         page.wait_for_timeout(500)
