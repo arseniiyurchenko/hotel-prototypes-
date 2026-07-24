@@ -59,7 +59,10 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 0.85rem);
+    }
 
     body {
       font-family: var(--font-body);
@@ -167,8 +170,10 @@
     }
 
     .header-inner {
-      width: min(1200px, 94vw);
+      width: 100%;
+      max-width: 1200px;
       margin-inline: auto;
+      padding-inline: clamp(1.35rem, 4.5vw, 2.25rem);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -212,6 +217,24 @@
     }
 
     .nav-desktop a:hover { color: var(--white); }
+
+    .header-cta {
+      display: none;
+      padding: 0.7rem 1.15rem;
+      background: var(--white);
+      color: var(--navy-deep);
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .header-cta:hover {
+      background: var(--peach);
+      transform: translateY(-1px);
+    }
 
     .menu-toggle {
       width: 2.5rem;
@@ -674,6 +697,105 @@
 
     .contact-actions { margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
+    /* Viewing enquiry widget (fields mirror live contact form) */
+    .viewing-widget {
+      background: var(--white);
+      border: 1px solid rgba(57,62,63,0.12);
+      padding: clamp(1.35rem, 3vw, 1.85rem);
+      display: grid;
+      gap: 0.95rem;
+    }
+
+    .viewing-widget h3 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .viewing-widget .widget-lead {
+      color: var(--slate);
+      font-size: 0.92rem;
+      margin-top: -0.35rem;
+    }
+
+    .field-label {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 0.4rem;
+    }
+
+    .field-row {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .viewing-widget input[type="text"],
+    .viewing-widget input[type="email"],
+    .viewing-widget input[type="date"],
+    .viewing-widget select {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid rgba(57,62,63,0.22);
+      background: var(--cloud);
+      color: var(--charcoal);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+    }
+
+    .viewing-widget input:focus,
+    .viewing-widget select:focus {
+      outline: 2px solid rgba(50,74,109,0.35);
+      outline-offset: 1px;
+      border-color: var(--navy);
+    }
+
+    .guest-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      background: var(--cloud);
+      border: 1px solid rgba(57,62,63,0.22);
+      padding: 0.35rem 0.45rem;
+    }
+
+    .guest-btn {
+      width: 2.2rem;
+      height: 2.2rem;
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      color: var(--navy);
+      font-size: 1.1rem;
+      line-height: 1;
+      border: 1px solid rgba(57,62,63,0.15);
+      transition: background 0.2s ease;
+    }
+
+    .guest-btn:hover { background: var(--mist); }
+
+    .guest-count {
+      min-width: 2.5rem;
+      text-align: center;
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .guest-summary {
+      font-size: 0.85rem;
+      color: var(--slate);
+    }
+
+    .widget-status {
+      min-height: 1.25rem;
+      font-size: 0.88rem;
+      color: var(--navy);
+    }
+
     .gap-note {
       margin-top: 1.5rem;
       padding: 1rem 1.1rem;
@@ -706,9 +828,16 @@
       font-size: 0.75rem;
     }
 
+    @media (min-width: 560px) {
+      .field-row.two {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (min-width: 760px) {
       .menu-toggle { display: none; }
       .nav-desktop { display: flex; }
+      .header-cta { display: inline-flex; }
       .brand-word { display: none; }
 
       .feature-list {
@@ -724,7 +853,7 @@
       }
 
       .contact-grid {
-        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-columns: 1.15fr 0.85fr;
       }
     }
 
@@ -766,6 +895,7 @@
         <a href="#conferences">Conferences</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="header-cta" href="#booking">Book viewing</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
         <span></span>
       </button>
@@ -779,6 +909,7 @@
       <a href="#features">Features</a>
       <a href="#weddings">Weddings</a>
       <a href="#conferences">Conferences</a>
+      <a href="#booking">Book viewing</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -808,7 +939,7 @@
           a private riverside hideaway on the bank of the River Braid.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Book viewing</a>
+          <a class="btn btn-primary" href="#booking">Book viewing</a>
           <a class="btn btn-ghost" href="#spaces">Explore spaces</a>
         </div>
         <p class="hero-locale">Raceview Mill · Broughshane · Ballymena</p>
@@ -1064,6 +1195,71 @@
 
     <section class="contact" id="contact">
       <div class="wrap contact-grid">
+        <div class="contact-panel reveal" id="booking">
+          <p class="eyebrow">Book a viewing</p>
+          <form class="viewing-widget" id="viewingForm" novalidate>
+            <h3>Arrange your visit</h3>
+            <p class="widget-lead">Fields mirror the live contact form (guest numbers, preferred season/year). Viewings are by appointment.</p>
+
+            <div>
+              <label class="field-label" for="coupleNames">Couple’s names</label>
+              <input id="coupleNames" name="coupleNames" type="text" autocomplete="name" placeholder="Your names">
+            </div>
+
+            <div class="field-row two">
+              <div>
+                <label class="field-label" for="viewingDate">Preferred viewing date</label>
+                <input id="viewingDate" name="viewingDate" type="date">
+              </div>
+              <div>
+                <label class="field-label" for="guestTrigger">Approx guest numbers</label>
+                <div class="guest-selector" id="guestSelector">
+                  <button type="button" class="guest-btn" id="guestsMinus" aria-label="Decrease guests">−</button>
+                  <span class="guest-count" id="guestCount" aria-live="polite">80</span>
+                  <button type="button" class="guest-btn" id="guestsPlus" aria-label="Increase guests">+</button>
+                  <button type="button" class="guest-summary" id="guestTrigger">Adjust guests</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-row two">
+              <div>
+                <label class="field-label" for="preferredSeason">Preferred season</label>
+                <select id="preferredSeason" name="preferredSeason">
+                  <option value="">Select season</option>
+                  <option value="spring">Spring</option>
+                  <option value="summer">Summer</option>
+                  <option value="autumn">Autumn</option>
+                  <option value="winter">Winter</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label" for="preferredYear">Preferred year</label>
+                <select id="preferredYear" name="preferredYear">
+                  <option value="">Select year</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-row two">
+              <div>
+                <label class="field-label" for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com">
+              </div>
+              <div>
+                <label class="field-label" for="telephone">Telephone</label>
+                <input id="telephone" name="telephone" type="text" autocomplete="tel" placeholder="028…">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="viewingSubmit">Send enquiry</button>
+            <p class="widget-status" id="widgetStatus" role="status"></p>
+          </form>
+        </div>
+
         <div class="contact-panel reveal">
           <p class="eyebrow">Contact</p>
           <h2>We’d love to hear from you</h2>
@@ -1072,25 +1268,12 @@
           <p><strong>Phone:</strong> <a href="tel:02825861436">028 2586 1436</a></p>
           <p><strong>Email:</strong> <a href="mailto:info@wooltower.com">info@wooltower.com</a></p>
           <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:info@wooltower.com?subject=Book%20a%20viewing">Book viewing</a>
+            <a class="btn btn-primary" href="#booking">Book viewing</a>
             <a class="btn btn-dark-ghost" href="https://wooltower.com/contact/" rel="noopener">Live contact form</a>
           </div>
           <p class="gap-note">
             Note: the live site contact address uses “Raceview Miil” / BT42 4FA as published.
             “Northern Ireland” is not printed on the pages reviewed, so it is omitted here rather than assumed.
-          </p>
-        </div>
-        <div class="contact-panel reveal" style="background: var(--charcoal); color: var(--white);">
-          <p class="eyebrow" style="color: var(--stone);">Positioning</p>
-          <h2 style="color: var(--white);">Premium rustic, exclusive use</h2>
-          <p style="color: rgba(255,255,255,0.78);">
-            Tone and presentation on wooltower.com — restored historic mill, exclusive hire, styled packages,
-            and in-house coordination — place The Wool Tower in a <strong style="color: var(--peach); font-weight: 600;">premium</strong> boutique tier
-            rather than budget or mid-scale hotel ballroom.
-          </p>
-          <p style="color: rgba(255,255,255,0.78); margin-top: 1rem;">
-            Prototype images are hotlinked from the live media library: exterior, ceremony space, Wool Hall reception,
-            grounds path, and evening celebration.
           </p>
         </div>
       </div>
@@ -1134,6 +1317,63 @@
       toggle.addEventListener("click", openMenu);
       closeBtn.addEventListener("click", closeMenu);
       mobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+      // Offset-aware smooth scrolling for in-page anchors (beats fixed header)
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const hash = link.getAttribute("href");
+          if (!hash || hash === "#") return;
+          const target = document.querySelector(hash);
+          if (!target) return;
+          event.preventDefault();
+          const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 72;
+          const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - pad);
+          window.scrollTo({ top, behavior: "smooth" });
+          history.pushState(null, "", hash);
+        });
+      });
+
+      // Viewing enquiry widget
+      let guests = 80;
+      const guestCount = document.getElementById("guestCount");
+      const guestTrigger = document.getElementById("guestTrigger");
+      const status = document.getElementById("widgetStatus");
+      const form = document.getElementById("viewingForm");
+      const viewingDate = document.getElementById("viewingDate");
+
+      const syncGuests = () => {
+        guestCount.textContent = String(guests);
+        guestTrigger.textContent = guests === 1 ? "1 guest" : guests + " guests";
+      };
+      syncGuests();
+
+      // Default viewing date ~1 week out
+      const soon = new Date();
+      soon.setDate(soon.getDate() + 7);
+      viewingDate.value = soon.toISOString().slice(0, 10);
+      viewingDate.min = new Date().toISOString().slice(0, 10);
+
+      document.getElementById("guestsMinus").addEventListener("click", () => {
+        guests = Math.max(1, guests - 5);
+        syncGuests();
+      });
+      document.getElementById("guestsPlus").addEventListener("click", () => {
+        guests = Math.min(200, guests + 5);
+        syncGuests();
+      });
+      guestTrigger.addEventListener("click", () => {
+        guests = Math.min(200, guests + 5);
+        syncGuests();
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const season = document.getElementById("preferredSeason").value;
+        const year = document.getElementById("preferredYear").value;
+        status.textContent = "Thanks — your viewing enquiry is ready to send to info@wooltower.com"
+          + (season || year ? ` (${[season, year].filter(Boolean).join(" ")} · ${guests} guests)` : ` (${guests} guests)`)
+          + ".";
+      });
 
       const reveals = document.querySelectorAll(".reveal");
       if ("IntersectionObserver" in window) {
