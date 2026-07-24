@@ -11,15 +11,18 @@
     Tagline: "a Nostalgic & Quaint venue located in the heart of Port Sunlight, Wirral."
     Also presented as: "Grade II Listed"
     Logo: /images/logos/base_logo_transparent_background.png (and /images/logos/logo.png)
-    Brand colours (site CSS): gold #a66a08 / #b47611, cream #f1e5d2, burgundy #481013 / #863836, text #363636
-    Logo mark: coral–peach gradient on dark ground
-    Location: 23 Bolton Rd, Port Sunlight, Wirral, Merseyside CH62 5DH; Port Sunlight village; A41; motorway network; hotels nearby
-    Rooms (capacity tables): Lounge/Ballroom, Lounge, Ballroom, Ashley Suite, Arts Room
-    Homepage states: four event rooms, all on one level, ~10,000 sq ft
-    Amenities stated: large private car park; WiFi; PA system; screen & projector (corporate); quality food / local produce / owner-chef; licensed wedding venue; personal wedding coordination; exhibition area; five simultaneous-interpretation booths; dividable hall
-    Pricing: "very competitive daily rate to suit all budgets"; wedding menus "individually priced"; Conference Daily Delegate package listed (no headline £ wedding packages shown)
-    Positioning: mid-range / competitive-value banqueting (Grade II heritage tone + budget-flexible rates)
-    Missing on source (neutral placeholders used, not fabricated claims): public wedding package prices; named “bar” / “decor packages” product lines; stated dance-floor amenity copy
+    Brand colours (site CSS gantry-custom.css): gold #a66a08 / #b47611, cream #f1e5d2, burgundy #481013 / #863836, text #363636
+    Logo mark: coral–peach gradient (sampled from logo PNG)
+    Location: 23 Bolton Rd, Port Sunlight, Wirral, Merseyside CH62 5DH; Port Sunlight village; A41; motorway / railway networks; hotels nearby
+    Nearby keywords (meta): Wirral, Heswall, Thornton Hough, Pensby, Port Sunlight
+    Rooms (capacity tables on Events Hiring / Corporate): Lounge/Ballroom, Lounge, Ballroom, Ashley Suite, Arts Room
+    Homepage: four event rooms, all on one level, ten thousand square feet; accommodate 30 to 450 delegates
+    Amenities (HTML pages): large private car park; WiFi; PA system; screen & projector (corporate); quality food / local produce / owner-chef; licensed wedding venue; personal wedding coordination; exhibition area; five simultaneous-interpretation booths; dividable hall
+    Amenities (wedding brochure PDF linked from /weddings): hall hire inclusions (linens, crockery, cake table/knife, decorated arch); chair covers & bows; candy cart; cheese & fruit cart; seating plan mirror; white post box; in-house catering only (exception: ethnic functions); no food/drink brought onto premises
+    Pricing (HTML): "very competitive daily rate to suit all budgets"; wedding menus "individually priced"; Conference Daily Delegate inclusions listed (no headline £ on HTML pages)
+    Pricing (wedding brochure PDF on site): wedding hall hire £400; ceremony Art Room £400 / Ballroom £450; Twilight packages; Bronze/Silver/Gold 2025 packages; buffet menus; hire extras; £500 booking fee
+    Positioning: mid-range / competitive-value banqueting (Grade II heritage tone + rates “to suit all budgets” + package tiers)
+    Missing on HTML copy (not fabricated): named on-site “bar” product line; explicit “dance floor” amenity wording (evening setup photo exists); published daily-delegate headline £ amount
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -509,12 +512,12 @@
       color: var(--ink-soft);
     }
 
-    /* Amenity strip */
+    /* Amenity strip — brand burgundy band (not generic dark UI) */
     .amenities {
       padding: 4.5rem 0;
       background:
-        linear-gradient(180deg, rgba(72, 16, 19, 0.96), rgba(26, 21, 20, 0.98)),
-        var(--burgundy);
+        radial-gradient(ellipse 70% 80% at 0% 0%, rgba(180, 118, 17, 0.22), transparent 55%),
+        linear-gradient(135deg, #5a1a1e 0%, var(--burgundy) 48%, #2e0e12 100%);
       color: var(--cream);
     }
 
@@ -544,7 +547,6 @@
       height: 10px;
       margin-top: 0.45rem;
       background: linear-gradient(135deg, var(--coral), var(--peach));
-      border-radius: 1px;
     }
 
     .amenity-list strong {
@@ -606,8 +608,7 @@
     .weddings-panel {
       display: grid;
       gap: 0;
-      background: var(--white);
-      box-shadow: var(--shadow);
+      background: transparent;
     }
 
     .weddings-panel img {
@@ -618,7 +619,7 @@
     }
 
     .weddings-copy {
-      padding: 2rem 1.5rem;
+      padding: 2rem 0 0;
     }
 
     .weddings-copy p + p { margin-top: 1rem; color: var(--ink-soft); }
@@ -633,36 +634,78 @@
       background:
         linear-gradient(145deg, rgba(241, 229, 210, 0.75), rgba(255, 255, 255, 0.9)),
         var(--cream-soft);
-      border: 1px solid rgba(166, 106, 8, 0.28);
+      border-top: 3px solid var(--gold-deep);
+    }
+
+    .pricing-box > p + p { margin-top: 0.85rem; }
+
+    .package-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .package {
+      padding: 1.15rem 0;
+      border-top: 1px solid rgba(72, 16, 19, 0.16);
+    }
+
+    .package:first-of-type { border-top: none; padding-top: 0; }
+
+    .package h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      color: var(--burgundy);
+      font-weight: 600;
+    }
+
+    .package .price {
+      display: block;
+      margin: 0.25rem 0 0.4rem;
+      font-family: 'Lora', serif;
+      font-size: 1.45rem;
+      color: var(--gold-deep);
+    }
+
+    .package p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
     }
 
     .pricing-box ul {
-      margin: 1.25rem 0 0;
+      margin: 1rem 0 0;
       padding-left: 1.1rem;
       color: var(--ink-soft);
     }
 
     .pricing-box li + li { margin-top: 0.45rem; }
 
-    .pricing-missing {
+    .pricing-note {
       margin-top: 1.25rem;
-      padding: 1rem 1.1rem;
-      background: rgba(255, 255, 255, 0.7);
-      border-left: 3px solid var(--gold);
-      font-size: 0.95rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(166, 106, 8, 0.28);
+      font-size: 0.92rem;
       color: var(--ink-soft);
     }
 
-    /* Location / contact */
-    .contact {
-      padding: 4.5rem 0 5.5rem;
-      background: var(--charcoal);
-      color: var(--cream);
+    .pricing-missing {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
     }
 
-    .contact .section-title { color: var(--cream-soft); }
-    .contact .section-lead { color: rgba(241, 229, 210, 0.75); }
-    .contact .eyebrow { color: var(--gold-soft); }
+    /* Location / contact — cream band matching source footer */
+    .contact {
+      padding: 4.5rem 0 5.5rem;
+      background:
+        radial-gradient(ellipse 60% 50% at 100% 0%, rgba(180, 118, 17, 0.12), transparent 50%),
+        linear-gradient(180deg, #f7f0e6 0%, var(--cream) 100%);
+      color: var(--ink);
+    }
+
+    .contact .section-title { color: var(--burgundy); }
+    .contact .section-lead { color: var(--ink-soft); }
+    .contact .eyebrow { color: var(--gold-deep); }
 
     .contact-grid {
       display: grid;
@@ -676,7 +719,7 @@
     }
 
     .contact-details a {
-      color: var(--peach);
+      color: var(--gold-deep);
       text-decoration: underline;
       text-underline-offset: 3px;
     }
@@ -684,9 +727,9 @@
     .enquiry {
       display: grid;
       gap: 0.85rem;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(241, 229, 210, 0.16);
+      padding: 0;
+      background: transparent;
+      border: none;
     }
 
     .enquiry label {
@@ -695,7 +738,7 @@
       font-size: 0.82rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: rgba(241, 229, 210, 0.7);
+      color: var(--ink-soft);
     }
 
     .enquiry input,
@@ -703,16 +746,16 @@
     .enquiry textarea {
       width: 100%;
       padding: 0.85rem 0.95rem;
-      border: 1px solid rgba(241, 229, 210, 0.22);
-      background: rgba(0, 0, 0, 0.25);
-      color: var(--white);
+      border: 1px solid rgba(72, 16, 19, 0.22);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--ink);
       outline: none;
     }
 
     .enquiry input:focus,
     .enquiry select:focus,
     .enquiry textarea:focus {
-      border-color: var(--gold);
+      border-color: var(--gold-deep);
     }
 
     .enquiry textarea { min-height: 120px; resize: vertical; }
@@ -720,9 +763,9 @@
     .enquiry-feedback {
       display: none;
       padding: 0.85rem 1rem;
-      background: rgba(180, 118, 17, 0.2);
-      border: 1px solid rgba(180, 118, 17, 0.45);
-      color: var(--cream);
+      background: rgba(180, 118, 17, 0.12);
+      border-left: 3px solid var(--gold-deep);
+      color: var(--ink);
       font-size: 0.95rem;
     }
 
@@ -781,7 +824,11 @@
         grid-template-columns: 1.1fr 0.9fr;
       }
 
-      .weddings-copy { padding: 2.75rem; }
+      .weddings-copy { padding: 0 0 0 2.5rem; align-self: center; }
+
+      .package-grid {
+        grid-template-columns: 1fr 1fr;
+      }
 
       .contact-grid {
         grid-template-columns: 0.9fr 1.1fr;
@@ -998,7 +1045,7 @@
           <li>
             <div>
               <strong>In-house catering</strong>
-              <p>Quality food with local produce when possible; owner/chef; management discuss catering requirements.</p>
+              <p>Quality food with local produce when possible; owner/chef. Brochure: in-house catering only, with the exception of ethnic functions; no food or drink may be brought onto the premises.</p>
             </div>
           </li>
           <li>
@@ -1015,11 +1062,24 @@
           </li>
           <li>
             <div>
+              <strong>Hire extras (brochure)</strong>
+              <p>Decorated arch; chair covers &amp; bows; candy cart; cheese &amp; fruit cart; seating plan mirror; white post box; rose gold sequined cloths.</p>
+            </div>
+          </li>
+          <li>
+            <div>
               <strong>Flexible hire formats</strong>
               <p>Weddings, Asian weddings, dinners/galas, celebrations, corporate, funerals, Masonic events, festivals, fashion shows (catwalk/staging).</p>
             </div>
           </li>
+          <li>
+            <div>
+              <strong>Interpretation &amp; exhibition</strong>
+              <p>Dividable conference space; five booths for simultaneous interpretation; exhibition area.</p>
+            </div>
+          </li>
         </ul>
+        <p class="rooms-note" style="margin-top:1.5rem;color:rgba(241,229,210,0.7);">Not stated as named amenities on the HTML pages: a dedicated “bar” product line, or explicit “dance floor” wording (an evening reception photograph on the site shows a lit floor and stage).</p>
       </div>
     </section>
 
@@ -1066,6 +1126,7 @@
             <h2 class="section-title">Your reception in Port Sunlight</h2>
             <p>Hulme Hall is a licensed wedding venue and offers the ideal choice of setting for your wedding reception. Set in the unique and picturesque village of Port Sunlight, the charm of the hall &amp; village is unrivalled.</p>
             <p>The size of the four function rooms means all numbers can be catered for. On your initial visit, the team will take you around the hall explaining the use of each room. Once confirmed, an in-depth appointment discusses individual ideas and requirements.</p>
+            <p style="margin-top:1rem;"><a href="https://www.hulmehall.com/images/WEDDING_HULME_HALL_PORT_SUNLIGHT_WIRRAL.pdf" rel="noopener" target="_blank" style="color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px;">Download the wedding brochure (PDF)</a> — linked from the live Weddings page.</p>
             <p><a class="btn btn-primary" href="#contact" style="margin-top:1rem;">Enquire about a wedding</a></p>
           </div>
         </div>
@@ -1076,9 +1137,43 @@
       <div class="container">
         <div class="pricing-box reveal">
           <p class="eyebrow">Rates &amp; packages</p>
-          <h2 class="section-title">As published online</h2>
-          <p>The venue describes a <strong>very competitive daily rate to suit all budgets</strong>. Wedding menus are <strong>individually priced</strong>.</p>
-          <p style="margin-top:1rem;color:var(--ink-soft);">Conference Daily Delegate package (corporate page) includes:</p>
+          <h2 class="section-title">As published by Hulme Hall</h2>
+          <p>HTML pages describe a <strong>very competitive daily rate to suit all budgets</strong>. Wedding menus are <strong>individually priced</strong>. Figures below are from the wedding brochure PDF linked on the Weddings page.</p>
+
+          <div class="package-grid">
+            <article class="package">
+              <h3>Wedding hall hire</h3>
+              <span class="price">£400.00</span>
+              <p>Includes table napkins and cloths, crockery and cutlery, cake table, knife, and decorated arch.</p>
+            </article>
+            <article class="package">
+              <h3>Ceremony room hire</h3>
+              <span class="price">From £400</span>
+              <p>Art Room £400.00 · Ballroom £450.00. Music choice included. Hold your ceremony in one of the decorated rooms.</p>
+            </article>
+            <article class="package">
+              <h3>Bronze package 2025</h3>
+              <span class="price">£3,950.00</span>
+              <p>For 30 daytime and 100 evening guests. Reception drink &amp; toasting Prosecco; evening buffet for 100 included. Extra day £42.50pp · evening £15.00pp.</p>
+            </article>
+            <article class="package">
+              <h3>Silver package 2025</h3>
+              <span class="price">£4,499.00</span>
+              <p>For 30 daytime and 100 evening guests. Adds a glass of house wine with the meal. Extra day £45.00pp · evening £16.00pp.</p>
+            </article>
+            <article class="package">
+              <h3>Gold package 2025</h3>
+              <span class="price">£4,999.00</span>
+              <p>For 30 daytime and 100 evening guests. Rosé Cava reception, two glasses of wine, toasting house champagne. Extra day £49.99pp · evening £18.00pp.</p>
+            </article>
+            <article class="package">
+              <h3>Twilight weddings</h3>
+              <span class="price">From £3,950</span>
+              <p>Late afternoon for 60 guests from 4pm — meal choice £4,350.00 or buffet £3,950.00. Includes decorated candlelit ceremony room, canapés, mixed reception drinks, toasting Prosecco, cake stand/knife/wedding arch, chair covers and bows, white post box. Extra dinner £45 · buffet £35.</p>
+            </article>
+          </div>
+
+          <p style="margin-top:1.5rem;color:var(--ink-soft);">Conference Daily Delegate package (corporate page) includes:</p>
           <ul>
             <li>Morning tea / coffee and biscuits</li>
             <li>Bacon batch or Danish (£2.00 supplement)</li>
@@ -1088,7 +1183,8 @@
             <li>Afternoon tea / coffee and cake</li>
             <li>Half daily rates on request</li>
           </ul>
-          <p class="pricing-missing">Wedding package headline prices are not shown on the public website. Contact the venue for a tailored quotation rather than assuming a published package rate.</p>
+          <p class="pricing-note">Brochure also lists buffet menus (from about £14.50–£35.50), canapé platters (£30), and hire extras (e.g. candy cart £100 / with sweets £160; chair covers &amp; bows £2.50; seating plan mirror £30; white post box £35). Booking fee £500 to secure. Prices increase each January.</p>
+          <p class="pricing-missing">Headline £ for the Conference Daily Delegate rate is not shown on the public HTML pages — contact the venue for the current daily figure.</p>
         </div>
       </div>
     </section>
@@ -1149,7 +1245,7 @@
     <div class="container footer-inner">
       <span>Prototype homepage — sourced from <a href="https://www.hulmehall.com" rel="noopener" target="_blank">hulmehall.com</a></span>
       <span>© Hulme Hall · Port Sunlight, Wirral</span>
-      <p class="positioning-note">Positioning read from tone &amp; copy: mid-range / competitive-value banqueting (Grade II heritage presentation with rates “to suit all budgets”). Not positioned as ultra-luxury on the source site.</p>
+      <p class="positioning-note">Positioning read from tone &amp; copy: mid-range / competitive-value banqueting (Grade II heritage presentation, rates “to suit all budgets”, and published Bronze–Gold wedding packages). Not positioned as ultra-luxury on the source site.</p>
     </div>
   </footer>
 
