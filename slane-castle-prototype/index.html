@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slane Castle — Exclusive Weddings &amp; Events | Slane, Co. Meath</title>
+  <meta name="description" content="Slane Castle is a private/exclusive venue set in the middle of a 1,500 acre estate in the heart of the Boyne Valley, Co. Meath. Open by appointment only.">
+  <!--
+    SOURCE EXTRACTION NOTES (https://www.slanecastle.ie — fetched for this prototype)
+    Venue name: Slane Castle
+    Taglines present on site:
+      - Schema/site description: "Home to the Conyngham family, exclusive weddings, famous annual concerts and Slane Irish Whiskey"
+      - Weddings page: "Rock. Royalty. Romance."
+      - Discover heading: "Explore one of the most impressive historic buildings on the island of Ireland."
+    Logo: /wp-content/themes/slanecastle/assets/images/logo.png (+ crest /wp-content/uploads/2022/05/new-logo-content.png)
+    Dominant brand colours from theme CSS: gold #a9915d, burgundy #74202f, lightest-gold panel #f4f2ed, dark gold #645435 / #796131
+    Location: Slane, Co. Meath, Ireland; Boyne Valley; 35 minutes from Dublin Airport; River Boyne backdrop
+    Spaces labeled on site: Neo-Gothic / Gothic Ballroom (King George IV); Great Hall; Morning Room, Drawing Room, Dining Room;
+      Castle Courtyard / Courtyard Marquee; Gandon Room; Browne’s Bar; Food Truck; full Castle hire / estate grounds
+    Amenities/features stated: exclusive use; in-house catering; full event coordination; historic architecture (turrets/towers,
+      marble statues, Neo-Gothic Ballroom ceiling); parkland/grounds/estate; Slane Distillery / Slane Irish Whiskey;
+      Castle Collection accommodation (7 bedrooms / up to 17 guests); capacities as published below
+    Pricing: no euro amounts found on reviewed pages — “flexible packages”, wedding brochures / packages 2026, corporate packages — enquire
+    Parking: not listed as a dedicated amenity (only “parkland” of the estate) — not claimed here
+    Positioning: premium (exclusive private estate, bespoke, distinguished/grandeur tone; also notes events “to meet all budgets” on About)
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #a9915d;
+      --gold-deep: #645435;
+      --burgundy: #74202f;
+      --burgundy-deep: #5a1824;
+      --stone: #6e7378;
+      --ink: #141414;
+      --ink-soft: #2a2a2a;
+      --mist: #e8ebe9;
+      --paper: #f7f6f3;
+      --white: #ffffff;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --header-h: 4.5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 0.75rem);
+    }
+
+    body {
+      font-family: "Sora", sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: 0; background: none; }
+    ul { list-style: none; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+
+    .lede {
+      max-width: 38rem;
+      font-size: 1.02rem;
+      color: var(--ink-soft);
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.75rem 1.45rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--burgundy-deep);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      color: var(--white);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-dark {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+    }
+
+    .btn-dark:hover {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.35s var(--ease), backdrop-filter 0.35s var(--ease);
+    }
+
+    .site-header.is-solid {
+      background: rgba(20, 20, 20, 0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: min(1200px, calc(100% - 3rem));
+      margin-inline: auto;
+      padding-block: 0.35rem;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+    }
+
+    .brand-lockup img {
+      height: 2.35rem;
+      width: auto;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .nav-desktop a:hover { color: var(--gold); }
+
+    .menu-toggle {
+      display: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      place-items: center;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 1.35rem;
+      height: 1.5px;
+      background: var(--white);
+      margin: 5px 0;
+      transition: transform 0.3s var(--ease), opacity 0.3s;
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: var(--header-h) 0 0;
+      background: rgba(20, 20, 20, 0.98);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.4s var(--ease);
+      z-index: 49;
+    }
+
+    .nav-mobile.open { transform: translateX(0); }
+
+    .nav-mobile a {
+      display: block;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Hero — one composition, full-bleed */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      animation: heroDrift 28s var(--ease) infinite alternate;
+      transform: scale(1.06);
+    }
+
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(10, 10, 12, 0.35) 0%, rgba(10, 10, 12, 0.15) 35%, rgba(10, 10, 12, 0.72) 78%, rgba(10, 10, 12, 0.9) 100%),
+        radial-gradient(ellipse at 70% 30%, rgba(116, 32, 47, 0.18), transparent 55%);
+    }
+
+    .hero-copy {
+      width: min(1120px, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: calc(var(--header-h) + 3rem) 0 4.5rem;
+      animation: riseIn 1.1s var(--ease) both;
+    }
+
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .hero-brand img {
+      height: clamp(3.2rem, 7vw, 4.6rem);
+      width: auto;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+    }
+
+    .hero .hero-brand-text {
+      margin: 0;
+      max-width: none;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.8rem, 8vw, 5.4rem);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero .hero-line {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.55rem, 3.2vw, 2.35rem);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.2;
+      color: rgba(255, 255, 255, 0.95);
+      max-width: 18ch;
+    }
+
+    .hero .hero-support {
+      margin-top: 1rem;
+      max-width: 34rem;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.06) translate3d(0, 0, 0); }
+      to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Intro strip */
+    .intro {
+      position: relative;
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+      background:
+        linear-gradient(135deg, #1a1514 0%, #2a1c1f 48%, #1e2420 100%);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .intro::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -40% 40%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(169, 145, 93, 0.18), transparent 65%);
+      pointer-events: none;
+    }
+
+    .intro-grid {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: end;
+      position: relative;
+    }
+
+    .intro h2 { color: var(--white); }
+
+    .intro .lede { color: rgba(255, 255, 255, 0.78); }
+
+    .intro-aside {
+      border-left: 1px solid rgba(169, 145, 93, 0.45);
+      padding-left: 1.5rem;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .intro-aside strong {
+      display: block;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* Spaces */
+    .spaces {
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+      background:
+        linear-gradient(180deg, var(--paper), #efece6 100%);
+    }
+
+    .space-list {
+      margin-top: 2.75rem;
+      border-top: 1px solid rgba(20, 20, 20, 0.12);
+    }
+
+    .space-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr) auto;
+      gap: 1.25rem 2rem;
+      align-items: baseline;
+      padding: 1.45rem 0;
+      border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+    }
+
+    .space-item h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+    }
+
+    .space-item p {
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+
+    .space-cap {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* Split feature */
+    .feature-band {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      min-height: 36rem;
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .feature-band figure {
+      min-height: 22rem;
+      overflow: hidden;
+    }
+
+    .feature-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s var(--ease);
+    }
+
+    .feature-band:hover img { transform: scale(1.04); }
+
+    .feature-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 4.5rem);
+      background:
+        linear-gradient(160deg, #1b1214 0%, #24181b 55%, #17201c 100%);
+    }
+
+    .feature-copy .lede { color: rgba(255, 255, 255, 0.78); }
+
+    .feature-points {
+      margin-top: 1.75rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .feature-points li {
+      padding-left: 1.1rem;
+      position: relative;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.98rem;
+    }
+
+    .feature-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 0.4rem;
+      height: 0.4rem;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .note {
+      margin-top: 1.5rem;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.55);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1rem;
+    }
+
+    /* Grounds band */
+    .grounds {
+      position: relative;
+      min-height: 70svh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .grounds-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .grounds-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .grounds-veil {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(10, 12, 10, 0.2), rgba(10, 12, 10, 0.78));
+    }
+
+    .grounds-copy {
+      padding: 4.5rem 0;
+    }
+
+    .grounds-copy .lede { color: rgba(255, 255, 255, 0.82); }
+
+    /* Amenities */
+    .amenities {
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+      background: var(--white);
+    }
+
+    .amenity-rows {
+      margin-top: 2.5rem;
+      display: grid;
+      gap: 0;
+    }
+
+    .amenity-row {
+      display: grid;
+      grid-template-columns: 12rem 1fr;
+      gap: 1.5rem;
+      padding: 1.35rem 0;
+      border-top: 1px solid rgba(20, 20, 20, 0.1);
+    }
+
+    .amenity-row:last-child { border-bottom: 1px solid rgba(20, 20, 20, 0.1); }
+
+    .amenity-row dt {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      font-weight: 500;
+      padding-top: 0.2rem;
+    }
+
+    .amenity-row dd {
+      color: var(--ink-soft);
+      font-size: 1rem;
+    }
+
+    /* Gallery */
+    .gallery {
+      padding: clamp(4rem, 8vw, 6rem) 0 0;
+      background:
+        linear-gradient(180deg, #ece8e1, #e4e0d8);
+    }
+
+    .gallery-head {
+      margin-bottom: 2rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 18rem 18rem;
+      gap: 0.65rem;
+    }
+
+    .gallery-grid figure {
+      overflow: hidden;
+      position: relative;
+      background: #222;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s var(--ease);
+    }
+
+    .gallery-grid figure:hover img { transform: scale(1.05); }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1.1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.9);
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+    }
+
+    .gallery-grid .span-tall {
+      grid-row: span 2;
+    }
+
+    /* Enquire */
+    .enquire {
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+      background:
+        linear-gradient(145deg, #1a1415 0%, #2a1a1e 50%, #172018 100%);
+      color: var(--white);
+    }
+
+    .enquire-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .enquire .lede { color: rgba(255, 255, 255, 0.75); }
+
+    .contact-block {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .contact-block a,
+    .contact-block span {
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    .contact-block a:hover { color: var(--gold); }
+
+    .contact-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .enquire-panel {
+      border: 1px solid rgba(169, 145, 93, 0.35);
+      padding: 1.75rem;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .enquire-panel h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.7rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .enquire-panel p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .enquire-form {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .enquire-form label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .enquire-form input,
+    .enquire-form select,
+    .enquire-form textarea {
+      width: 100%;
+      margin-top: 0.35rem;
+      padding: 0.85rem 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--white);
+      font: inherit;
+      outline: none;
+    }
+
+    .enquire-form input:focus,
+    .enquire-form select:focus,
+    .enquire-form textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .enquire-form textarea { min-height: 6.5rem; resize: vertical; }
+
+    .form-note {
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #0f0f0f;
+      color: rgba(255, 255, 255, 0.65);
+      padding: 2.25rem 0;
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .site-footer a:hover { color: var(--gold); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: grid; }
+      .nav-mobile { display: block; }
+
+      .intro-grid,
+      .feature-band,
+      .enquire-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .space-item {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+      }
+
+      .amenity-row {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-grid .span-tall {
+        grid-row: auto;
+        grid-column: span 2;
+        min-height: 16rem;
+      }
+
+      .gallery-grid figure { min-height: 14rem; }
+
+      .intro-aside {
+        border-left: 0;
+        border-top: 1px solid rgba(169, 145, 93, 0.45);
+        padding-left: 0;
+        padding-top: 1.25rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-brand { flex-direction: column; align-items: flex-start; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid .span-tall { grid-column: auto; }
+      .btn { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media img { animation: none; transform: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-copy { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand-lockup" href="#top" aria-label="Slane Castle home">
+        <img src="https://www.slanecastle.ie/wp-content/themes/slanecastle/assets/images/logo.png" alt="Slane Castle">
+      </a>
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#spaces">Spaces</a>
+        <a href="#weddings">Weddings</a>
+        <a href="#events">Events</a>
+        <a href="#estate">Estate</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#enquire">Enquire</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <a href="#spaces">Spaces</a>
+    <a href="#weddings">Weddings</a>
+    <a href="#events">Events</a>
+    <a href="#estate">Estate</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#enquire">Enquire</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero" aria-label="Slane Castle">
+      <div class="hero-media">
+        <img
+          src="https://www.slanecastle.ie/wp-content/uploads/2022/07/SlaneCastle-Slider-exterior.jpg"
+          alt="Slane Castle exterior overlooking the River Boyne and estate grounds"
+          fetchpriority="high">
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <div class="hero-brand">
+          <img src="https://www.slanecastle.ie/wp-content/uploads/2022/05/new-logo-content.png" alt="">
+          <h1 class="hero-brand-text">Slane Castle</h1>
+        </div>
+        <p class="hero-line">Rock. Royalty. Romance.</p>
+        <p class="hero-support">A private exclusive venue on a 1,500 acre estate in the heart of the Boyne Valley, Co. Meath — open by appointment only.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#enquire">Enquire</a>
+          <a class="btn btn-ghost" href="#spaces">Explore spaces</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro" aria-labelledby="intro-title">
+      <div class="wrap intro-grid reveal">
+        <div>
+          <p class="eyebrow">Discover Slane Castle</p>
+          <h2 id="intro-title">Explore one of the most impressive historic buildings on the island of Ireland.</h2>
+          <p class="lede">Home to the Conyngham family, exclusive weddings, famous annual concerts and Slane Irish Whiskey. A dream venue for family gatherings, weddings, gala dinners, conferences and corporate functions.</p>
+        </div>
+        <aside class="intro-aside">
+          <strong>Location</strong>
+          Slane, Co. Meath, Ireland — Boyne Valley, with the River Boyne and surrounding parkland as backdrop. Thirty-five minutes from Dublin Airport.
+        </aside>
+      </div>
+    </section>
+
+    <section class="spaces" id="spaces" aria-labelledby="spaces-title">
+      <div class="wrap reveal">
+        <p class="eyebrow">Venue spaces</p>
+        <h2 id="spaces-title">Historic rooms, courtyard and estate</h2>
+        <p class="lede">Spaces as labeled on the Slane Castle site — from the Neo-Gothic Ballroom to the Courtyard Marquee and full castle hire.</p>
+
+        <div class="space-list">
+          <article class="space-item">
+            <h3>The Ballroom</h3>
+            <p>Neo-Gothic Ballroom completed in 1821 for the visit of King George IV — marble statues and a stunning ceiling. Ideal for intimate banquets and events.</p>
+            <p class="space-cap">Up to 106 guests</p>
+          </article>
+          <article class="space-item">
+            <h3>The Great Hall</h3>
+            <p>Spacious hall developed in the 18th century, designed by James Wyatt and Francis Johnston — suited to a champagne welcome reception.</p>
+            <p class="space-cap">120 standing · 80 theatre</p>
+          </article>
+          <article class="space-item">
+            <h3>Adjacent ground floor rooms</h3>
+            <p>Morning Room, Drawing Room and Dining Room — adjacent to the Great Hall and Ballroom, with easy one-way flow.</p>
+            <p class="space-cap">50 standing · 25 seated</p>
+          </article>
+          <article class="space-item">
+            <h3>The Dining Room</h3>
+            <p>Hosts a magnificent 15ft mahogany table — suited to boardroom-style meetings, working lunches or breakout sessions.</p>
+            <p class="space-cap">As arranged</p>
+          </article>
+          <article class="space-item">
+            <h3>The Drawing Room</h3>
+            <p>Described on the site as the most comfortable and elegant room of the castle — for meetings, breakouts, or a quiet pause.</p>
+            <p class="space-cap">As arranged</p>
+          </article>
+          <article class="space-item">
+            <h3>Castle Courtyard</h3>
+            <p>Available May–October with a 40×60′ / 12×18m marquee and heated stretch tent, plus heated covered porch. Larger wedding celebrations use the Courtyard Marquee.</p>
+            <p class="space-cap">200+ seated · weddings 107–250</p>
+          </article>
+          <article class="space-item">
+            <h3>The Gandon Room &amp; Browne’s Bar</h3>
+            <p>Lower Ground Floor Conference Centre with its own entrance — available year-round, with or without the Courtyard. Browne’s Bar is described as a Whiskey &amp; Music venue.</p>
+            <p class="space-cap">Capacity 100</p>
+          </article>
+          <article class="space-item">
+            <h3>Full Castle hire</h3>
+            <p>Exclusive use of the Castle and grounds for absolute privacy. Food Truck hire is also listed with seasonal availability.</p>
+            <p class="space-cap">Estate exclusive</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-band" id="weddings" aria-labelledby="weddings-title">
+      <figure>
+        <img
+          src="https://www.slanecastle.ie/wp-content/uploads/2022/07/SlaneCastle-wedding1-700x500.jpg"
+          alt="Wedding couple at Slane Castle doorway">
+      </figure>
+      <div class="feature-copy reveal">
+        <p class="eyebrow">Weddings at the estate</p>
+        <h2 id="weddings-title">Exclusive use for your wedding day</h2>
+        <p class="lede">Together we will create the wedding of your dreams. Slane Castle offers each couple exclusive use of this beautiful venue, with flexible packages for 15 up to 250 guests.</p>
+        <ul class="feature-points">
+          <li>Castle Ballroom weddings — up to 106 guests</li>
+          <li>Courtyard Marquee weddings — 107–250 guests, with full use of the Main Floor for arrival and evening entertainment</li>
+          <li>Intimate weddings from 15 guests, with bespoke packages</li>
+          <li>Optional exclusive weekend hire: Arrival Day, Main Event, and a Perfect Ending gathering on the estate</li>
+          <li>The Castle Collection — seven spacious bedrooms accommodating up to 17 guests; additional stays on the Estate and nearby in Slane village</li>
+        </ul>
+        <p class="note">Published euro pricing was not shown on the pages reviewed. Wedding brochures and packages (including Packages 2026) are referenced on the live site — enquire for current details.</p>
+        <div style="margin-top:1.5rem">
+          <a class="btn btn-primary" href="#enquire">Wedding enquiry</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-band" id="events" aria-labelledby="events-title" style="direction:rtl">
+      <figure style="direction:ltr">
+        <img
+          src="https://www.slanecastle.ie/wp-content/uploads/2022/07/SlaneCastleSlider4.jpg"
+          alt="Historic reception room interior at Slane Castle">
+      </figure>
+      <div class="feature-copy reveal" style="direction:ltr">
+        <p class="eyebrow">Private hire &amp; corporate</p>
+        <h2 id="events-title">Bespoke events in a distinguished setting</h2>
+        <p class="lede">From an intimate event for 20 people up to an exclusive banquet for 100 people indoors — and over 200 guests in the courtyard marquee. Famous summer concerts on the estate are noted with a capacity of 80,000 outdoors.</p>
+        <ul class="feature-points">
+          <li>Full coordination service for conferences, banquets and corporate events</li>
+          <li>Exclusive in-house catering and themed evening events</li>
+          <li>Corporate packages available to suit a range of needs</li>
+          <li>Experienced hospitality and events team to tailor your occasion</li>
+          <li>Peace, privacy and security for residential and day conferences — the About page also notes options “to meet all budgets”</li>
+        </ul>
+        <p class="note">Specific package rates are not listed as euro amounts on the reviewed corporate or private-hire pages — contact the events team for a proposal.</p>
+        <div style="margin-top:1.5rem">
+          <a class="btn btn-primary" href="#enquire">Event enquiry</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grounds" id="estate" aria-labelledby="estate-title">
+      <div class="grounds-media">
+        <img
+          src="https://www.slanecastle.ie/wp-content/uploads/2022/07/SlaneCastle-Slider-explore.jpg"
+          alt="Aerial view of Slane Castle estate grounds and the River Boyne">
+      </div>
+      <div class="grounds-veil" aria-hidden="true"></div>
+      <div class="wrap grounds-copy reveal">
+        <p class="eyebrow">The estate</p>
+        <h2 id="estate-title">1,500 acres in the Boyne Valley</h2>
+        <p class="lede">Parkland, river backdrop and legendary concert heritage — from The Rolling Stones, Queen and U2-era lore to Harry Styles — with Slane Distillery Visitor Centre and Tours on the estate.</p>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities" aria-labelledby="amenities-title">
+      <div class="wrap reveal">
+        <p class="eyebrow">On the estate</p>
+        <h2 id="amenities-title">Features stated on the live site</h2>
+        <p class="lede">Only amenities and services explicitly described on slanecastle.ie are listed here.</p>
+
+        <dl class="amenity-rows">
+          <div class="amenity-row">
+            <dt>Catering</dt>
+            <dd>Exclusive in-house catering for corporate and private occasions; dining in the Gandon Room; Afternoon Tea &amp; Tour; Browne’s Bar.</dd>
+          </div>
+          <div class="amenity-row">
+            <dt>Coordination</dt>
+            <dd>Full coordination / comprehensive advisory service from the experienced hospitality and events team.</dd>
+          </div>
+          <div class="amenity-row">
+            <dt>Architecture</dt>
+            <dd>Historic castle rooms including the Neo-Gothic Ballroom for King George IV; turrets and towers; marble statues and ornate interiors.</dd>
+          </div>
+          <div class="amenity-row">
+            <dt>Grounds</dt>
+            <dd>1,500 acre estate with surrounding parkland and River Boyne setting; Courtyard for seasonal marquees. (Wedding copy on the site also refers to a wonderful 180-acre estate context.)</dd>
+          </div>
+          <div class="amenity-row">
+            <dt>Whiskey</dt>
+            <dd>Slane Distillery Visitor Centre and Tours; Slane Irish Whiskey; Browne’s Bar as a Whiskey &amp; Music venue.</dd>
+          </div>
+          <div class="amenity-row">
+            <dt>Stay</dt>
+            <dd>Historic Castle Collection rooms across two floors; Rock Farm organic farm stays and luxury glamping on the estate.</dd>
+          </div>
+          <div class="amenity-row">
+            <dt>Parking</dt>
+            <dd>Not listed as a dedicated amenity on the pages reviewed — enquire directly if required.</dd>
+          </div>
+          <div class="amenity-row">
+            <dt>Pricing</dt>
+            <dd>Flexible wedding packages and corporate packages are mentioned; brochure packages referenced. No public euro price list found — enquire.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+      <div class="wrap gallery-head reveal">
+        <p class="eyebrow">Gallery</p>
+        <h2 id="gallery-title">Castle, rooms, grounds &amp; heritage</h2>
+        <p class="lede">Images hosted on the live Slane Castle website.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="span-tall">
+          <img src="https://www.slanecastle.ie/wp-content/uploads/2022/07/SlaneCastle-Slider-castleext.jpg" alt="Slane Castle exterior and courtyard">
+          <figcaption>Castle exterior</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.slanecastle.ie/wp-content/uploads/2022/07/SlaneCastleSlider4.jpg" alt="Historic event room with fireplace and portrait">
+          <figcaption>Event room</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.slanecastle.ie/wp-content/uploads/2022/07/SlaneCastle-Slider-explore.jpg" alt="Estate grounds and River Boyne">
+          <figcaption>Estate grounds</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.slanecastle.ie/wp-content/uploads/2022/07/SlaneCastle-Slider-history.jpg" alt="Music memorabilia on display inside Slane Castle">
+          <figcaption>Concert heritage</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.slanecastle.ie/wp-content/uploads/2022/07/KingsRoom3-400x400.jpg" alt="Historic bedroom suite in The Castle Collection">
+          <figcaption>Castle Collection</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="enquire" id="enquire" aria-labelledby="enquire-title">
+      <div class="wrap enquire-grid">
+        <div class="reveal">
+          <p class="eyebrow">Get in touch</p>
+          <h2 id="enquire-title">Plan your occasion at Slane Castle</h2>
+          <p class="lede">Events &amp; tour enquiries are handled by the Slane Castle team. This prototype form is illustrative only — use the official contact details below.</p>
+          <div class="contact-block">
+            <div>
+              <p class="contact-label">Phone</p>
+              <a href="tel:+353419884477">+353 (0) 41 988 4477</a>
+            </div>
+            <div>
+              <p class="contact-label">Email</p>
+              <a href="mailto:info@slanecastle.ie">info@slanecastle.ie</a>
+              <a href="mailto:events@slanecastle.ie">events@slanecastle.ie</a>
+            </div>
+            <div>
+              <p class="contact-label">Address</p>
+              <span>Slane Castle<br>Slane, Co. Meath<br>Ireland</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="enquire-panel reveal" id="enquiry">
+          <h3>Enquiry</h3>
+          <p>Tell us about your wedding or event. Pricing and availability are confirmed by the venue — not invented in this prototype.</p>
+          <form class="enquire-form" action="#" method="get" onsubmit="event.preventDefault(); const n=document.getElementById('formStatus'); n.textContent='This is a static prototype. Please contact info@slanecastle.ie or +353 (0) 41 988 4477.';">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div>
+              <label for="occasion">Occasion</label>
+              <select id="occasion" name="occasion">
+                <option>Wedding</option>
+                <option>Corporate / conference</option>
+                <option>Private hire / banquet</option>
+                <option>Tour / other</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Dates, guest numbers, spaces of interest…"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Send enquiry</button>
+            <p class="form-note" id="formStatus">Prototype only — messages are not transmitted from this page.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© Slane Castle · Slane, Co. Meath, Ireland</p>
+      <p><a href="https://www.slanecastle.ie/" rel="noopener">slanecastle.ie</a> · Homepage prototype</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const toggle = document.getElementById("menuToggle");
+      const mobile = document.getElementById("navMobile");
+
+      const onScroll = () => {
+        header.classList.toggle("is-solid", window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      toggle.addEventListener("click", () => {
+        const open = mobile.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      });
+
+      mobile.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobile.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      const reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add("in"));
+      }
+    })();
+  </script>
+</body>
+</html>
