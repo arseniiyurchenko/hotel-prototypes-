@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lingnerschloss — Lingner Castle Dresden</title>
+  <meta name="description" content="Lingnerschloss Dresden – historic Elbe castle for weddings, conferences and events. Bautzner Str. 132, 01099 Dresden.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #A3813E;
+      --gold-soft: #BAA16E;
+      --taupe: #AF876C;
+      --parchment: #F1EADC;
+      --parchment-deep: #E8E0CF;
+      --stone: #D1C09F;
+      --ink: #141B24;
+      --ink-soft: #2A3340;
+      --elbe: #3A4F5C;
+      --mist: #F7F3EC;
+      --text: #1C222B;
+      --muted: #5A616A;
+      --white: #FFFFFF;
+      --font-display: "Cormorant Garamond", "Times New Roman", serif;
+      --font-body: "Quicksand", sans-serif;
+      --max: 1120px;
+      --header-h: 4.5rem;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--text);
+      background: var(--mist);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    .container { width: min(100% - 2.5rem, var(--max)); margin-inline: auto; }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .site-header.scrolled {
+      background: rgba(20, 27, 36, 0.94);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(20, 27, 36, 0.18);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-desktop a {
+      color: rgba(255,255,255,0.88);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-desktop a:hover { color: var(--gold-soft); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid rgba(163,129,62,0.7);
+      color: var(--gold-soft) !important;
+      letter-spacing: 0.1em;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--ink) !important;
+      border-color: var(--gold);
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+    .menu-toggle svg { width: 26px; height: 26px; display: block; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(20, 27, 36, 0.97);
+      padding: 1.5rem;
+      flex-direction: column;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    .nav-mobile-top span {
+      font-family: var(--font-display);
+      color: var(--white);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav-close {
+      background: none;
+      border: 0;
+      color: var(--white);
+      font-size: 1.75rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .nav-mobile nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .nav-mobile a {
+      color: var(--white);
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Hero — full-bleed, brand first */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.06);
+      animation: heroZoom 18s var(--ease) forwards;
+    }
+    @keyframes heroZoom {
+      to { transform: scale(1); }
+    }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20,27,36,0.35) 0%, rgba(20,27,36,0.15) 35%, rgba(20,27,36,0.72) 100%),
+        radial-gradient(ellipse at 30% 20%, rgba(163,129,62,0.18), transparent 55%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: calc(var(--header-h) + 2rem) 0 4.5rem;
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+    }
+    .hero-brand {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 8vw, 5.6rem);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+      opacity: 0;
+      animation: riseIn 1s var(--ease) 0.2s forwards;
+    }
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.6vw, 1.85rem);
+      font-weight: 400;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: riseIn 1s var(--ease) 0.4s forwards;
+    }
+    .hero-lead {
+      max-width: 34rem;
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: riseIn 1s var(--ease) 0.55s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      opacity: 0;
+      animation: riseIn 1s var(--ease) 0.7s forwards;
+    }
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.45rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+    }
+    .btn-primary:hover { background: var(--gold-soft); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.45);
+    }
+    .btn-ghost:hover {
+      border-color: var(--gold-soft);
+      color: var(--gold-soft);
+    }
+
+    /* Sections */
+    section { padding: 5rem 0; }
+    .section-kicker {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.65rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .section-lead {
+      max-width: 40rem;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Welcome */
+    .welcome {
+      background:
+        linear-gradient(135deg, var(--parchment) 0%, var(--mist) 55%, #e8eef1 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -30% auto;
+      width: 48vw;
+      height: 48vw;
+      background: radial-gradient(circle, rgba(163,129,62,0.12), transparent 65%);
+      pointer-events: none;
+    }
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .welcome-copy p + p { margin-top: 1rem; }
+    .welcome-copy p { color: var(--ink-soft); font-size: 1.05rem; }
+    .welcome-figure {
+      position: relative;
+      min-height: 420px;
+    }
+    .welcome-figure img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+    }
+    .welcome-caption {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* Spaces — not card-heavy; editorial rows */
+    .spaces { background: var(--ink); color: var(--white); }
+    .spaces .section-title { color: var(--white); }
+    .spaces .section-lead { color: rgba(255,255,255,0.7); }
+    .spaces-list { margin-top: 3rem; display: grid; gap: 0; }
+    .space-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      align-items: start;
+    }
+    .space-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .space-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+    .space-meta {
+      font-size: 0.85rem;
+      color: var(--gold-soft);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+    }
+    .space-desc {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.98rem;
+    }
+    .space-side {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      align-items: flex-start;
+    }
+    .space-price {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      color: var(--white);
+    }
+    .space-price span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.15rem;
+    }
+    .space-note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .spaces-foot {
+      margin-top: 2rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .spaces-foot a { color: var(--gold-soft); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Features */
+    .features {
+      background:
+        linear-gradient(180deg, var(--mist), var(--parchment-deep));
+    }
+    .feature-grid {
+      margin-top: 2.75rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem 2.5rem;
+    }
+    .feature-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 500;
+      margin-bottom: 0.45rem;
+      color: var(--ink);
+    }
+    .feature-item p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .feature-rule {
+      width: 2rem;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 0.85rem;
+    }
+
+    /* Weddings */
+    .weddings {
+      background: var(--ink-soft);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .weddings-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .weddings .section-title { color: var(--white); }
+    .weddings .section-lead,
+    .weddings p { color: rgba(255,255,255,0.78); }
+    .weddings-copy p + p { margin-top: 1rem; }
+    .weddings-figure img {
+      width: 100%;
+      height: min(70vh, 560px);
+      object-fit: cover;
+    }
+    .registry {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.92rem;
+    }
+    .registry strong { color: var(--gold-soft); font-weight: 600; }
+
+    /* Gallery */
+    .gallery { background: var(--parchment); }
+    .gallery-grid {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.75rem;
+    }
+    .gallery-grid figure {
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-grid figure:first-child {
+      grid-row: 1 / span 2;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s var(--ease);
+    }
+    .gallery-grid figure:hover img { transform: scale(1.04); }
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: linear-gradient(transparent, rgba(20,27,36,0.7));
+    }
+
+    /* Inquiry */
+    .inquiry {
+      background:
+        linear-gradient(160deg, #e9eef2 0%, var(--mist) 45%, var(--parchment) 100%);
+    }
+    .inquiry-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .inquiry-form {
+      display: grid;
+      gap: 0.9rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid rgba(42, 51, 64, 0.18);
+      background: rgba(255,255,255,0.75);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .field textarea { min-height: 120px; resize: vertical; }
+    .form-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .form-success {
+      display: none;
+      padding: 1rem 1.1rem;
+      background: rgba(163,129,62,0.12);
+      border-left: 3px solid var(--gold);
+      color: var(--ink);
+      font-size: 0.95rem;
+    }
+    .form-success.show { display: block; }
+
+    /* Location */
+    .location { background: var(--white); }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    .location-details h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin: 1.25rem 0 0.35rem;
+    }
+    .location-details p { color: var(--muted); font-size: 0.98rem; }
+    .map-placeholder {
+      min-height: 320px;
+      background:
+        linear-gradient(135deg, rgba(58,79,92,0.12), rgba(163,129,62,0.15)),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 12px,
+          rgba(20,27,36,0.03) 12px,
+          rgba(20,27,36,0.03) 13px
+        ),
+        var(--parchment-deep);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--ink-soft);
+    }
+    .map-placeholder strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+    .map-placeholder span {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.72);
+      padding: 3.5rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .footer-grid h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 0.85rem;
+    }
+    .footer-grid p, .footer-grid a {
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .footer-grid a:hover { color: var(--gold-soft); }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.55); }
+    .footer-bottom a:hover { color: var(--gold-soft); }
+
+    @media (max-width: 900px) {
+      .nav-desktop, .nav-cta { display: none; }
+      .menu-toggle { display: block; }
+      .welcome-grid,
+      .weddings-grid,
+      .inquiry-grid,
+      .location-grid,
+      .footer-grid { grid-template-columns: 1fr; }
+      .space-row { grid-template-columns: 1fr; gap: 1rem; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 180px 180px;
+      }
+      .gallery-grid figure:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 240px;
+      }
+      .form-row { grid-template-columns: 1fr; }
+      .logo-text { display: none; }
+    }
+
+    @media (max-width: 560px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-grid figure,
+      .gallery-grid figure:first-child { min-height: 220px; }
+      .hero-content { padding-bottom: 3rem; }
+      section { padding: 3.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Lingnerschloss home">
+        <img
+          src="https://static.wixstatic.com/media/94eab2_b7638c80fb1747558d59f190099bde2b~mv2.png/v1/crop/x_167,y_0,w_968,h_497/fill/w_296,h_152,al_c,q_85,enc_auto/Unbenannt.png"
+          alt="Lingnerschloss logo"
+          width="148"
+          height="76"
+        >
+        <span class="logo-text">Lingnerschloss</span>
+      </a>
+      <ul class="nav-desktop">
+        <li><a href="#welcome">Welcome</a></li>
+        <li><a href="#spaces">Spaces</a></li>
+        <li><a href="#weddings">Weddings</a></li>
+        <li><a href="#impressions">Impressions</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+      <a class="nav-cta" href="#inquiry">Inquiry</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <div class="nav-mobile-top">
+      <span>Lingnerschloss</span>
+      <button class="nav-close" id="navClose" aria-label="Close menu">×</button>
+    </div>
+    <nav>
+      <a href="#welcome">Welcome</a>
+      <a href="#spaces">Spaces</a>
+      <a href="#features">Features</a>
+      <a href="#weddings">Weddings</a>
+      <a href="#impressions">Impressions</a>
+      <a href="#inquiry">Inquiry</a>
+      <a href="#location">Location</a>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Lingner Castle Dresden">
+      <div class="hero-media">
+        <img
+          src="https://static.wixstatic.com/media/94eab2_339db3347e9943f2a513ff5160edb35df000.jpg/v1/fill/w_1920,h_1280,al_c,q_90,enc_auto/Lingnerschloss.jpg"
+          alt="Aerial view of Lingnerschloss above the Elbe meadows in Dresden"
+          width="1920"
+          height="1280"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-brand">Lingnerschloss</h1>
+        <p class="hero-tagline">Where tradition meets modernity</p>
+        <p class="hero-lead">A historic Elbe castle in Dresden for weddings, conferences, concerts and festive receptions.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#inquiry">Send an inquiry</a>
+          <a class="btn btn-ghost" href="#spaces">Explore the spaces</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="welcome" id="welcome">
+      <div class="container welcome-grid">
+        <div class="welcome-copy reveal">
+          <p class="section-kicker">Welcome to Lingner Castle Dresden</p>
+          <h2 class="section-title">An architectural gem on the banks of the Elbe</h2>
+          <p>The beautiful Lingner Castle is located directly on the banks of the Elbe River in Dresden — an architectural gem with a rich history.</p>
+          <p>Once the residence of visionary entrepreneur Karl August Lingner, who made Odol mouthwash famous worldwide, it now opens its doors for special events.</p>
+          <p>Whether it’s a wedding, family celebration, concert, conference or festive reception — experience special moments in a historic setting.</p>
+        </div>
+        <div class="welcome-figure reveal">
+          <img
+            src="https://static.wixstatic.com/media/4b0096_81aff45cc1fd41cf994d2084b4279845~mv2.jpg/v1/fill/w_900,h_1200,al_c,q_85,enc_auto/Lingner-Castle.jpg"
+            alt="View of Lingner Castle courtyard, towers and colonnade"
+            width="900"
+            height="1200"
+            loading="lazy"
+          >
+          <p class="welcome-caption">Lingner Castle · Bautzner Str. 132 · 01099 Dresden</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spaces" id="spaces">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-kicker">Meetings &amp; celebrations</p>
+          <h2 class="section-title">Festive and conference rooms</h2>
+          <p class="section-lead">Celebrate and meet across three floors. Room names, capacities and rental fees below are taken from the venue’s conference and event folder.</p>
+        </div>
+
+        <div class="spaces-list">
+          <article class="space-row reveal">
+            <div>
+              <h3 class="space-name">Festsaal</h3>
+              <p class="space-meta">Ground floor · 140 m² incl. winter garden · up to 150 guests</p>
+              <p class="space-desc">The heart of the castle for conferences, presentations, corporate events, receptions, family celebrations and concerts. Adjacent side room (26 m²) suited for catering.</p>
+            </div>
+            <div class="space-side">
+              <p class="space-price">€1,000<span>Nutzungsentgelt · excl. extras</span></p>
+              <p class="space-note">Equipment includes concert grand, projector &amp; screen, microphone system, music playback, flipchart.</p>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <div>
+              <h3 class="space-name">Lingnersalon</h3>
+              <p class="space-meta">Ground floor · 63 m² · up to 72 guests</p>
+              <p class="space-desc">Former dining room of Karl August Lingner, with views to the west colonnade and park landscape — for meetings, readings, workshops and intimate concerts.</p>
+            </div>
+            <div class="space-side">
+              <p class="space-price">€350<span>Nutzungsentgelt · excl. extras</span></p>
+              <p class="space-note">Concert grand, sound system, lectern, projector &amp; screen, flipchart, microphone.</p>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <div>
+              <h3 class="space-name">Sternensaal · Beletage</h3>
+              <p class="space-meta">1st floor · 88 m² + south balcony · up to 104 guests</p>
+              <p class="space-desc">Banquet hall with flanking corner lounges (45 m² each, up to 20 guests) and Elbe / Old Town views from the south balcony. Side room available for catering or cloakroom.</p>
+            </div>
+            <div class="space-side">
+              <p class="space-price">€1,300<span>Sternensaal with south balcony</span></p>
+              <p class="space-note">East &amp; West lounges €350 each. Piano, AV, dimmable lighting, floor kitchen.</p>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <div>
+              <h3 class="space-name">Kinosaal</h3>
+              <p class="space-meta">1st floor · 63 m² · up to 72 guests</p>
+              <p class="space-desc">Post-war modern hall, restored in 2013 — regularly used for civil wedding ceremonies, presentations, readings and cabaret.</p>
+            </div>
+            <div class="space-side">
+              <p class="space-price">€400<span>Nutzungsentgelt · excl. extras</span></p>
+              <p class="space-note">Projector, 2.80 m screen, 5-channel sound, induction loop, stage lighting, microphone, lectern.</p>
+            </div>
+          </article>
+
+          <article class="space-row reveal">
+            <div>
+              <h3 class="space-name">Dachplattform</h3>
+              <p class="space-meta">Roof level · 230 m² · up to 100 guests</p>
+              <p class="space-desc">Rooftop platform with sweeping views across the Elbe Valley — champagne receptions, wine tastings and summer evenings. Turmstube East available for dinner or conference use in summer.</p>
+            </div>
+            <div class="space-side">
+              <p class="space-price">€500<span>from · €700 with Turmstube Ost</span></p>
+              <p class="space-note">Standing tables and perimeter lighting. Tower rooms 22–27 m².</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="spaces-foot reveal">
+          Final cleaning €120; heating surcharge €50/day in the heating season. Sun–Thu rates may be negotiated. Companies: plus 19% VAT.
+          <a href="https://www.lingner-schloss.de/en/_files/ugd/94eab2_6dcbadb2f3fb473ba54ca7bfce578037.pdf" target="_blank" rel="noopener">Conference &amp; event folder (PDF)</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-kicker">Setting &amp; services</p>
+          <h2 class="section-title">What the castle offers</h2>
+          <p class="section-lead">Features listed on the Lingnerschloss site and in the official event folder — nothing beyond what the venue publishes.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-item reveal">
+            <div class="feature-rule"></div>
+            <h3>Historic architecture</h3>
+            <p>19th-century Elbschloss and cultural monument — once home to Karl August Lingner, bequeathed to the city of Dresden.</p>
+          </article>
+          <article class="feature-item reveal">
+            <div class="feature-rule"></div>
+            <h3>Park, meadows &amp; terrace</h3>
+            <p>Wide park grounds on the Elbe slopes, meadows, colonnade, Elbe terrace and Dachplattform with views toward the Old Town and Saxon Switzerland.</p>
+          </article>
+          <article class="feature-item reveal">
+            <div class="feature-rule"></div>
+            <h3>Catering</h3>
+            <p>In-house catering partner: Restaurant Lingnerterrassen. Gastronomy inquiries via the restaurant team (contacts published on the German site / PDF).</p>
+          </article>
+          <article class="feature-item reveal">
+            <div class="feature-rule"></div>
+            <h3>AV &amp; conference equipment</h3>
+            <p>Projectors, screens, microphones, flipcharts, concert grands, lecterns and room-specific sound — detailed per space in the event folder.</p>
+          </article>
+          <article class="feature-item reveal">
+            <div class="feature-rule"></div>
+            <h3>Access &amp; parking</h3>
+            <p>Step-free access by lift to the 2nd floor; barrier-free toilets. Three free parking spaces within walking distance; tram/bus “Elbschlösser” (line 11 / EV11).</p>
+          </article>
+          <article class="feature-item reveal">
+            <div class="feature-rule"></div>
+            <h3>Event coordination</h3>
+            <p>Room rental via STESAD GmbH — personal advice, viewing appointments and individual offers on inquiry. Outdoor summer events up to 400 persons noted in the folder.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="weddings" id="weddings">
+      <div class="container weddings-grid">
+        <div class="weddings-copy reveal">
+          <p class="section-kicker">Weddings</p>
+          <h2 class="section-title">Unforgettable moments in Lingner Castle</h2>
+          <p>Nestled between meadows, the castle combines historic elegance with stunning views of the Old Town and the Elbe Valley — a truly magnificent setting.</p>
+          <p>Whether for a wedding, a champagne reception on the Elbe terrace, or a dinner in the ballroom, the Lingner Castle is the perfect venue.</p>
+          <div class="registry">
+            <p><strong>Civil weddings</strong> — For civil ceremonies at Lingnerschloss, the Dresden Registry Office is the official partner. Date allocation is handled exclusively by the registry office.</p>
+            <p style="margin-top:0.65rem">Registry Office Dresden · 0351-4888806 · standesamt-eheschliessungen@dresden.de</p>
+          </div>
+          <div class="hero-actions" style="margin-top:1.5rem">
+            <a class="btn btn-primary" href="#inquiry">Plan your wedding inquiry</a>
+          </div>
+        </div>
+        <figure class="weddings-figure reveal">
+          <img
+            src="https://static.wixstatic.com/media/4c2f5d_83eeffb6d1ae4d9dbe112b3ce8585256~mv2.jpg/v1/fill/w_1000,h_1400,al_c,q_85,enc_auto/Colonnade.jpg"
+            alt="View of Lingnerschloss Colonnade — historic arched loggia"
+            width="1000"
+            height="1400"
+            loading="lazy"
+          >
+        </figure>
+      </div>
+    </section>
+
+    <section class="gallery" id="impressions">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-kicker">Impressions</p>
+          <h2 class="section-title">The castle in photographs</h2>
+          <p class="section-lead">Images from the live Lingnerschloss website — exterior, rooftop terrace, Sternensaal and grounds.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="reveal">
+            <img
+              src="https://static.wixstatic.com/media/4c2f5d_4a112f23c6024d5ab915283457e1e159~mv2.jpg/v1/fill/w_1000,h_1400,al_c,q_85,enc_auto/Dachplattform.jpg"
+              alt="Dachplattform rooftop terrace overlooking Dresden and the Elbe Valley"
+              width="1000"
+              height="1400"
+              loading="lazy"
+            >
+            <figcaption>Dachplattform · Elbe Valley view</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img
+              src="https://static.wixstatic.com/media/4c2f5d_7a7faaa7f2034b7ca2238fac2b9a5d9b~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/Sternensaal.jpg"
+              alt="Interior view of Lingnerschloss Sternensaal"
+              width="900"
+              height="600"
+              loading="lazy"
+            >
+            <figcaption>Sternensaal</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img
+              src="https://static.wixstatic.com/media/4c2f5d_a9b32f23e19e4440aaa868df2eaaae04~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/Wedding.jpg"
+              alt="Wedding moments at Lingnerschloss"
+              width="900"
+              height="600"
+              loading="lazy"
+            >
+            <figcaption>Weddings at the castle</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img
+              src="https://static.wixstatic.com/media/94eab2_339db3347e9943f2a513ff5160edb35df000.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/Exterior.jpg"
+              alt="Lingnerschloss exterior above the Elbe meadows"
+              width="900"
+              height="600"
+              loading="lazy"
+            >
+            <figcaption>Exterior · Elbe meadows</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img
+              src="https://static.wixstatic.com/media/4b0096_81aff45cc1fd41cf994d2084b4279845~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/Towers.jpg"
+              alt="Lingner Castle towers and portico"
+              width="900"
+              height="600"
+              loading="lazy"
+            >
+            <figcaption>Towers &amp; portico</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="inquiry" id="inquiry">
+      <div class="container inquiry-grid">
+        <div class="reveal">
+          <p class="section-kicker">Inquiry</p>
+          <h2 class="section-title">We look forward to your inquiries</h2>
+          <p class="section-lead">Prototype form only — fields mirror the site inquiry. Submissions are not sent to the venue from this page.</p>
+          <p style="margin-top:1.25rem;color:var(--muted)">
+            <strong style="color:var(--ink)">Contact Rental</strong><br>
+            0351 49473-268<br>
+            <a href="mailto:schloesser@stesad.de">schloesser@stesad.de</a>
+          </p>
+        </div>
+        <form class="inquiry-form reveal" id="inquiryForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="phone">Telephone number</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="date">Date</label>
+              <input id="date" name="date" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label for="option">Option</label>
+            <select id="option" name="option">
+              <option value="">Select an option</option>
+              <option>Wedding</option>
+              <option>Meeting / conference</option>
+              <option>Celebration / reception</option>
+              <option>Concert / cultural event</option>
+              <option>Viewing appointment</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="request">Request</label>
+            <textarea id="request" name="request" placeholder="Tell us about your event"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Submit inquiry</button>
+          <p class="form-note">On the live site, messages are sent to the rental team at STESAD GmbH.</p>
+          <div class="form-success" id="formSuccess" role="status">Thank you for your message — we will get back to you shortly! (Prototype confirmation only.)</div>
+        </form>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-kicker">Dresden · Germany</p>
+          <h2 class="section-title">Find Lingner Castle</h2>
+        </div>
+        <div class="location-grid">
+          <div class="location-details reveal">
+            <h3>Address</h3>
+            <p>Lingner Castle<br>Bautzner Str. 132<br>01099 Dresden</p>
+            <h3>Getting here</h3>
+            <p>Reachable via the B6. Tram line 11 / bus EV11 — stop “Elbschlösser”. Three free parking spaces nearby (per event folder).</p>
+            <h3>On the Elbe slopes</h3>
+            <p>Between Schloss Albrechtsberg and Schloss Eckberg, above the Elbe meadows, with views toward Dresden’s Old Town.</p>
+          </div>
+          <div class="map-placeholder reveal" role="img" aria-label="Map placeholder for Lingnerschloss, Bautzner Str. 132, Dresden">
+            <div>
+              <strong>Map placeholder</strong>
+              <span>Bautzner Str. 132 · 01099 Dresden<br>Embed a map here in production</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Lingnerschloss</p>
+          <p>Where tradition meets modernity — historic event venue on the Elbe in Dresden.</p>
+        </div>
+        <div>
+          <h4>Contact Rental</h4>
+          <p>
+            0351 49473-268<br>
+            <a href="mailto:schloesser@stesad.de">schloesser@stesad.de</a><br>
+            STESAD GmbH
+          </p>
+        </div>
+        <div>
+          <h4>Friends Association</h4>
+          <p>
+            0351 64653-82<br>
+            <a href="mailto:info@lingnerschloss.de">info@lingnerschloss.de</a><br>
+            <a href="https://www.instagram.com/lingner.schloss.dresden" target="_blank" rel="noopener">Instagram</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Prototype inspired by lingner-schloss.de · not an official site</span>
+        <span>
+          <a href="https://www.lingner-schloss.de/en/impressum" target="_blank" rel="noopener">Imprint</a>
+          ·
+          <a href="https://www.lingner-schloss.de/en/datenschutz" target="_blank" rel="noopener">Data protection</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById("siteHeader");
+    const menuToggle = document.getElementById("menuToggle");
+    const navMobile = document.getElementById("navMobile");
+    const navClose = document.getElementById("navClose");
+
+    const onScroll = () => {
+      header.classList.toggle("scrolled", window.scrollY > 40);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    const openMenu = () => {
+      navMobile.hidden = false;
+      navMobile.classList.add("open");
+      document.body.style.overflow = "hidden";
+    };
+    const closeMenu = () => {
+      navMobile.classList.remove("open");
+      navMobile.hidden = true;
+      document.body.style.overflow = "";
+    };
+    menuToggle.addEventListener("click", openMenu);
+    navClose.addEventListener("click", closeMenu);
+    navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+    const reveals = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+    reveals.forEach((el) => io.observe(el));
+
+    const form = document.getElementById("inquiryForm");
+    const success = document.getElementById("formSuccess");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      success.classList.add("show");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
