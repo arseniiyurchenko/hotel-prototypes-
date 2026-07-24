@@ -218,25 +218,34 @@
       display: none;
       width: 44px;
       height: 44px;
-      border: 1px solid rgba(255,255,255,0.35);
-      background: transparent;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.06);
       border-radius: var(--radius);
       cursor: pointer;
       position: relative;
+      flex-shrink: 0;
     }
 
-    .menu-toggle span,
+    .menu-toggle span {
+      position: absolute;
+      left: 11px;
+      right: 11px;
+      top: 50%;
+      height: 1.5px;
+      background: var(--white);
+      transform: translateY(-50%);
+      transition: background 0.2s ease;
+    }
     .menu-toggle span::before,
     .menu-toggle span::after {
       content: "";
       position: absolute;
-      left: 11px;
-      right: 11px;
+      left: 0;
+      right: 0;
       height: 1.5px;
       background: var(--white);
-      transition: transform 0.25s var(--ease), opacity 0.2s ease;
+      transition: transform 0.25s var(--ease), top 0.25s var(--ease);
     }
-    .menu-toggle span { top: 50%; transform: translateY(-50%); }
     .menu-toggle span::before { top: -7px; }
     .menu-toggle span::after { top: 7px; }
     .menu-toggle.open span { background: transparent; }
@@ -894,13 +903,17 @@
       color: rgba(255,255,255,0.5);
     }
 
-    /* Reveal on scroll */
+    /* Reveal on scroll — keep content readable even before JS */
     .reveal {
-      opacity: 0;
-      transform: translateY(18px);
+      opacity: 1;
+      transform: translateY(0);
       transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
     }
-    .reveal.visible {
+    html.js .reveal:not(.visible) {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    html.js .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -1353,6 +1366,7 @@
 
   <script>
     (function () {
+      document.documentElement.classList.add("js");
       var header = document.querySelector(".site-header");
       var toggle = document.getElementById("menuToggle");
       var mobileNav = document.getElementById("navMobile");
@@ -1413,6 +1427,13 @@
       document.querySelectorAll(".reveal").forEach(function (el) {
         observer.observe(el);
       });
+
+      // Fallback: ensure nothing stays hidden
+      setTimeout(function () {
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          el.classList.add("visible");
+        });
+      }, 3200);
     })();
   </script>
 </body>
