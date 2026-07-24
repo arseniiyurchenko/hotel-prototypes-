@@ -46,7 +46,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 
     body {
       font-family: "Manrope", sans-serif;
@@ -64,7 +64,7 @@
     a { color: inherit; text-decoration: none; }
 
     .wrap {
-      width: min(var(--max), calc(100% - 2.5rem));
+      width: min(var(--max), calc(100% - 3rem));
       margin-inline: auto;
     }
 
@@ -73,14 +73,14 @@
       position: fixed;
       inset: 0 0 auto;
       z-index: 50;
-      padding: 1rem 0;
+      padding: 1.15rem 0;
       transition: background 0.35s var(--ease), backdrop-filter 0.35s var(--ease), padding 0.35s var(--ease);
     }
 
     .site-header.is-scrolled {
       background: rgba(0, 42, 52, 0.92);
       backdrop-filter: blur(12px);
-      padding: 0.65rem 0;
+      padding: 0.75rem 0;
     }
 
     .header-row {
@@ -240,16 +240,18 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-brand {
+    .hero .hero-brand {
       font-family: "Fraunces", serif;
       font-size: clamp(3.2rem, 9vw, 5.6rem);
       font-weight: 700;
       line-height: 0.95;
       letter-spacing: -0.02em;
       margin-bottom: 0.85rem;
+      max-width: none;
+      color: var(--white);
     }
 
-    .hero-brand em {
+    .hero .hero-brand em {
       font-style: normal;
       color: var(--gold-soft);
     }
@@ -263,7 +265,7 @@
       margin-bottom: 0.9rem;
     }
 
-    .hero p {
+    .hero .hero-lead {
       font-size: 1.05rem;
       max-width: 38ch;
       color: rgba(255, 255, 255, 0.88);
@@ -317,8 +319,140 @@
 
     .btn-dark:hover { background: var(--teal-deep); }
 
+    /* —— Booking widget —— */
+    .booking {
+      margin-top: -3.25rem;
+      position: relative;
+      z-index: 20;
+      padding: 0 0 1rem;
+    }
+
+    .booking-card {
+      background: var(--white);
+      border: 1px solid rgba(0, 61, 75, 0.1);
+      box-shadow: 0 18px 50px rgba(0, 42, 52, 0.14);
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .booking-card h2 {
+      font-family: "Fraunces", serif;
+      font-size: 1.35rem;
+      color: var(--teal);
+      margin-bottom: 1.1rem;
+      font-weight: 650;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+      gap: 0.9rem;
+      align-items: end;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem 0.85rem;
+      border: 1px solid rgba(0, 61, 75, 0.22);
+      background: var(--mint-soft);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.95rem;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 1px;
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.8rem 0.85rem;
+      border: 1px solid rgba(0, 61, 75, 0.22);
+      background: var(--mint-soft);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-panel {
+      position: absolute;
+      top: calc(100% + 0.45rem);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid rgba(0, 61, 75, 0.12);
+      box-shadow: 0 14px 36px rgba(0, 42, 52, 0.16);
+      padding: 0.9rem 1rem;
+      display: none;
+      z-index: 30;
+    }
+
+    .guest-panel.is-open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid rgba(0, 61, 75, 0.25);
+      background: var(--paper);
+      color: var(--teal);
+      font-size: 1.05rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .guest-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .booking-form .btn {
+      min-height: 2.85rem;
+      white-space: nowrap;
+    }
+
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
     /* —— Sections —— */
     section { padding: clamp(4rem, 8vw, 6.5rem) 0; }
+    section.booking { padding-top: 0; }
 
     .section-label {
       display: inline-block;
@@ -662,6 +796,14 @@
 
       .feature-grid { grid-template-columns: 1fr 1fr; }
 
+      .booking-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-form .btn {
+        grid-column: 1 / -1;
+      }
+
       .place-visual,
       .place-visual img,
       .atmosphere-band img {
@@ -671,8 +813,8 @@
       .nav {
         position: fixed;
         inset: 0 0 auto auto;
-        top: 4.5rem;
-        right: 1.25rem;
+        top: 4.75rem;
+        right: 1.5rem;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
@@ -706,9 +848,12 @@
     }
 
     @media (max-width: 560px) {
+      .wrap { width: min(var(--max), calc(100% - 2rem)); }
       .feature-grid { grid-template-columns: 1fr; }
       .hero-content { margin-bottom: 4rem; }
       .brand img { width: 58px; }
+      .booking { margin-top: -2.5rem; }
+      .booking-form { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -739,7 +884,7 @@
         <a href="#place">About</a>
         <a href="#halls">Halls</a>
         <a href="#features">Services</a>
-        <a href="#enquire" class="nav-cta">Book Now</a>
+        <a href="#booking" class="nav-cta">Book Now</a>
       </nav>
     </div>
   </header>
@@ -758,10 +903,64 @@
       <div class="hero-content">
         <p class="hero-brand">P2 <em>Centre</em></p>
         <h1>Prestigious and vibrant event venue</h1>
-        <p>A prestigious events, hall &amp; banqueting venue in Erith — for weddings, private parties, conferences and celebrations.</p>
+        <p class="hero-lead">A prestigious events, hall &amp; banqueting venue in Erith — for weddings, private parties, conferences and celebrations.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#enquire">Book Now</a>
+          <a class="btn btn-primary" href="#booking">Book Now</a>
           <a class="btn btn-ghost" href="#features">Our Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="booking" aria-label="Event enquiry">
+      <div class="wrap">
+        <div class="booking-card">
+          <h2>Enquire about a date</h2>
+          <form class="booking-form" id="bookingForm">
+            <div class="form-group">
+              <label for="eventDate">Event date</label>
+              <input type="date" id="eventDate" name="eventDate" required>
+            </div>
+            <div class="form-group">
+              <label for="endDate">End date</label>
+              <input type="date" id="endDate" name="endDate">
+            </div>
+            <div class="form-group guest-selector">
+              <label for="guestTrigger">Guests</label>
+              <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+                <span id="guestSummary">80 guests</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Guest count">
+                <div class="guest-row">
+                  <span>Guests</span>
+                  <div class="guest-controls">
+                    <button type="button" class="guest-btn" id="guestsMinus" aria-label="Fewer guests">−</button>
+                    <span id="guestsCount">80</span>
+                    <button type="button" class="guest-btn" id="guestsPlus" aria-label="More guests">+</button>
+                  </div>
+                </div>
+                <div class="guest-row">
+                  <span>Extra standing</span>
+                  <div class="guest-controls">
+                    <button type="button" class="guest-btn" id="standingMinus" aria-label="Fewer standing guests">−</button>
+                    <span id="standingCount">0</span>
+                    <button type="button" class="guest-btn" id="standingPlus" aria-label="More standing guests">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="hallType">Hall</label>
+              <select id="hallType" name="hallType">
+                <option value="any">Any hall</option>
+                <option value="royal">Royal Hall</option>
+                <option value="kings">Kings Hall</option>
+                <option value="princess">Princess Hall</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" id="bookingSubmit">Check availability</button>
+          </form>
+          <p class="booking-note">Prototype enquiry only — the live site does not publish fixed hall-hire prices. We’ll treat this as a date check.</p>
         </div>
       </div>
     </section>
@@ -920,7 +1119,7 @@
             The Halls gallery includes kitchen and bathroom views. Catering is a core offer —
             from favourite foods and drinks to occasion cakes and full event menus.
           </p>
-          <a class="btn btn-dark" href="#enquire">Enquire about catering</a>
+          <a class="btn btn-dark" href="#booking">Enquire about catering</a>
         </div>
       </div>
     </section>
@@ -1001,6 +1200,19 @@
         });
       });
 
+      // Smooth in-page navigation (keeps CSS smooth scroll; closes mobile menu first)
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (event) => {
+          const id = anchor.getAttribute("href");
+          if (!id || id === "#") return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.pushState(null, "", id);
+        });
+      });
+
       const reveals = document.querySelectorAll(".reveal");
       if ("IntersectionObserver" in window) {
         const io = new IntersectionObserver(
@@ -1018,6 +1230,91 @@
       } else {
         reveals.forEach((el) => el.classList.add("is-visible"));
       }
+
+      // Booking widget
+      const eventDate = document.getElementById("eventDate");
+      const endDate = document.getElementById("endDate");
+      const guestTrigger = document.getElementById("guestTrigger");
+      const guestPanel = document.getElementById("guestPanel");
+      const guestSummary = document.getElementById("guestSummary");
+      const guestsCountEl = document.getElementById("guestsCount");
+      const standingCountEl = document.getElementById("standingCount");
+      let guests = 80;
+      let standing = 0;
+
+      const formatDate = (d) => d.toISOString().slice(0, 10);
+      const today = new Date();
+      const soon = new Date();
+      soon.setDate(today.getDate() + 14);
+      const later = new Date();
+      later.setDate(today.getDate() + 15);
+      eventDate.min = formatDate(today);
+      endDate.min = formatDate(today);
+      eventDate.value = formatDate(soon);
+      endDate.value = formatDate(later);
+
+      eventDate.addEventListener("change", () => {
+        if (!eventDate.value) return;
+        const next = new Date(eventDate.value);
+        next.setDate(next.getDate() + 1);
+        endDate.min = formatDate(next);
+        if (endDate.value && endDate.value < endDate.min) {
+          endDate.value = endDate.min;
+        }
+      });
+
+      const syncGuests = () => {
+        guestsCountEl.textContent = String(guests);
+        standingCountEl.textContent = String(standing);
+        const total = guests + standing;
+        guestSummary.textContent =
+          standing > 0
+            ? `${guests} seated + ${standing} standing (${total})`
+            : `${guests} guests`;
+        document.getElementById("guestsMinus").disabled = guests <= 10;
+        document.getElementById("standingMinus").disabled = standing <= 0;
+      };
+
+      guestTrigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const open = guestPanel.classList.toggle("is-open");
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove("is-open");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.getElementById("guestsPlus").addEventListener("click", () => {
+        guests = Math.min(600, guests + 10);
+        syncGuests();
+      });
+      document.getElementById("guestsMinus").addEventListener("click", () => {
+        guests = Math.max(10, guests - 10);
+        syncGuests();
+      });
+      document.getElementById("standingPlus").addEventListener("click", () => {
+        standing = Math.min(600, standing + 10);
+        syncGuests();
+      });
+      document.getElementById("standingMinus").addEventListener("click", () => {
+        standing = Math.max(0, standing - 10);
+        syncGuests();
+      });
+      syncGuests();
+
+      document.getElementById("bookingForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const hall = document.getElementById("hallType").selectedOptions[0].textContent;
+        alert(
+          `Enquiry (prototype only)\n\nEvent: ${eventDate.value}` +
+            (endDate.value ? ` → ${endDate.value}` : "") +
+            `\nGuests: ${guestSummary.textContent}\nHall: ${hall}`
+        );
+      });
     })();
   </script>
 </body>
