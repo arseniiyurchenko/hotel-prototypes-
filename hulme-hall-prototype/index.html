@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hulme Hall — Grade II Listed Venue | Port Sunlight, Wirral</title>
+  <meta name="description" content="Hulme Hall: a nostalgic &amp; quaint Grade II listed venue in the heart of Port Sunlight, Wirral. Licensed wedding venue and banqueting hall with four event rooms.">
+  <!--
+    SOURCE NOTES (extracted from https://www.hulmehall.com — do not invent):
+    Name: Hulme Hall
+    Tagline: "a Nostalgic & Quaint venue located in the heart of Port Sunlight, Wirral."
+    Also presented as: "Grade II Listed"
+    Logo: /images/logos/base_logo_transparent_background.png (and /images/logos/logo.png)
+    Brand colours (site CSS gantry-custom.css): gold #a66a08 / #b47611, cream #f1e5d2, burgundy #481013 / #863836, text #363636
+    Logo mark: coral–peach gradient (sampled from logo PNG)
+    Location: 23 Bolton Rd, Port Sunlight, Wirral, Merseyside CH62 5DH; Port Sunlight village; A41; motorway / railway networks; hotels nearby
+    Nearby keywords (meta): Wirral, Heswall, Thornton Hough, Pensby, Port Sunlight
+    Rooms (capacity tables on Events Hiring / Corporate): Lounge/Ballroom, Lounge, Ballroom, Ashley Suite, Arts Room
+    Homepage: four event rooms, all on one level, ten thousand square feet; accommodate 30 to 450 delegates
+    Amenities (HTML pages): large private car park; WiFi; PA system; screen & projector (corporate); quality food / local produce / owner-chef; licensed wedding venue; personal wedding coordination; exhibition area; five simultaneous-interpretation booths; dividable hall
+    Amenities (wedding brochure PDF linked from /weddings): hall hire inclusions (linens, crockery, cake table/knife, decorated arch); chair covers & bows; candy cart; cheese & fruit cart; seating plan mirror; white post box; in-house catering only (exception: ethnic functions); no food/drink brought onto premises
+    Pricing (HTML): "very competitive daily rate to suit all budgets"; wedding menus "individually priced"; Conference Daily Delegate inclusions listed (no headline £ on HTML pages)
+    Pricing (wedding brochure PDF on site): wedding hall hire £400; ceremony Art Room £400 / Ballroom £450; Twilight packages; Bronze/Silver/Gold 2025 packages; buffet menus; hire extras; £500 booking fee
+    Positioning: mid-range / competitive-value banqueting (Grade II heritage tone + rates “to suit all budgets” + package tiers)
+    Missing on HTML copy (not fabricated): named on-site “bar” product line; explicit “dance floor” amenity wording (evening setup photo exists); published daily-delegate headline £ amount
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #b47611;
+      --gold-deep: #a66a08;
+      --gold-soft: #c9a45a;
+      --cream: #f1e5d2;
+      --cream-soft: #f7f0e6;
+      --burgundy: #481013;
+      --burgundy-mid: #863836;
+      --ink: #363636;
+      --ink-soft: #5c5550;
+      --charcoal: #1a1514;
+      --white: #ffffff;
+      --coral: #eb526b;
+      --peach: #fbca90;
+      --shadow: 0 18px 48px rgba(26, 21, 20, 0.18);
+      --transition: 0.35s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(241, 229, 210, 0.55), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 100% 20%, rgba(180, 118, 17, 0.08), transparent 50%),
+        linear-gradient(180deg, #faf6f0 0%, #f3ebe0 40%, #efe6d8 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .container {
+      width: min(1120px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--burgundy);
+      margin: 0.55rem 0 0.75rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 38rem;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 0.85rem 0;
+      transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(26, 21, 20, 0.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 52px;
+      width: auto;
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
+    }
+
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--peach); }
+
+    .header-cta {
+      display: none;
+      padding: 0.65rem 1.15rem;
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+      color: var(--white) !important;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition), filter var(--transition);
+    }
+
+    .header-cta:hover { transform: translateY(-1px); filter: brightness(1.05); }
+
+    .menu-toggle {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      position: relative;
+      transition: transform var(--transition);
+    }
+
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 21, 20, 0.97);
+      z-index: 110;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+    }
+
+    .nav-mobile.open { transform: translateX(0); }
+
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-close {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: transparent;
+      color: var(--white);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .nav-mobile nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .nav-mobile a {
+      color: var(--cream);
+      font-family: 'Lora', serif;
+      font-size: 1.6rem;
+    }
+
+    .nav-mobile .mobile-cta {
+      margin-top: 2rem;
+      display: inline-flex;
+      width: fit-content;
+      padding: 0.9rem 1.4rem;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    /* Hero — one composition, full-bleed */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      transform: scale(1.06);
+      animation: heroKen 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroKen {
+      from { transform: scale(1.06) translate3d(0, 0, 0); }
+      to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(26, 21, 20, 0.35) 0%, rgba(26, 21, 20, 0.15) 35%, rgba(26, 21, 20, 0.78) 100%),
+        linear-gradient(90deg, rgba(72, 16, 19, 0.35), transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 7.5rem 0 4.5rem;
+      max-width: 40rem;
+      opacity: 0;
+      transform: translateY(28px);
+      animation: riseIn 1s 0.25s ease forwards;
+    }
+
+    @keyframes riseIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Lora', serif;
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #ff8a9a, var(--peach));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.35));
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--peach);
+      margin-bottom: 0.9rem;
+      opacity: 0.95;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.35;
+      color: var(--cream-soft);
+      max-width: 22ch;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-support {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 34rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.45rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+      color: var(--white);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--peach);
+      color: var(--peach);
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Intro */
+    .intro {
+      padding: 5rem 0 4rem;
+    }
+
+    .intro-grid {
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .intro-copy p + p { margin-top: 1rem; }
+
+    .intro-aside {
+      position: relative;
+      min-height: 320px;
+    }
+
+    .intro-aside img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      filter: saturate(0.95) contrast(1.02);
+    }
+
+    .intro-aside::before {
+      content: "";
+      position: absolute;
+      inset: auto -12px -12px auto;
+      width: 48%;
+      height: 48%;
+      background: linear-gradient(135deg, var(--burgundy), var(--gold-deep));
+      z-index: -1;
+      opacity: 0.85;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(166, 106, 8, 0.25);
+    }
+
+    .stat strong {
+      display: block;
+      font-family: 'Lora', serif;
+      font-size: 1.55rem;
+      color: var(--burgundy);
+      line-height: 1.1;
+    }
+
+    .stat span {
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-soft);
+    }
+
+    /* Rooms */
+    .rooms {
+      padding: 1rem 0 5rem;
+    }
+
+    .rooms-head {
+      margin-bottom: 2rem;
+    }
+
+    .room-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid rgba(72, 16, 19, 0.18);
+    }
+
+    .room-row {
+      display: grid;
+      gap: 0.75rem 1.5rem;
+      padding: 1.35rem 0;
+      border-bottom: 1px solid rgba(72, 16, 19, 0.18);
+      align-items: baseline;
+    }
+
+    .room-row h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.35rem;
+      color: var(--burgundy);
+      font-weight: 600;
+    }
+
+    .room-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 1.1rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .room-meta span {
+      display: inline-flex;
+      gap: 0.35rem;
+    }
+
+    .room-meta b {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .rooms-note {
+      margin-top: 1.25rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    /* Amenity strip — brand burgundy band (not generic dark UI) */
+    .amenities {
+      padding: 4.5rem 0;
+      background:
+        radial-gradient(ellipse 70% 80% at 0% 0%, rgba(180, 118, 17, 0.22), transparent 55%),
+        linear-gradient(135deg, #5a1a1e 0%, var(--burgundy) 48%, #2e0e12 100%);
+      color: var(--cream);
+    }
+
+    .amenities .section-title { color: var(--cream-soft); }
+    .amenities .section-lead { color: rgba(241, 229, 210, 0.78); }
+    .amenities .eyebrow { color: var(--gold-soft); }
+
+    .amenity-list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 2.25rem;
+    }
+
+    .amenity-list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.9rem;
+      align-items: start;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(241, 229, 210, 0.14);
+    }
+
+    .amenity-list li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      margin-top: 0.45rem;
+      background: linear-gradient(135deg, var(--coral), var(--peach));
+    }
+
+    .amenity-list strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      color: var(--white);
+    }
+
+    .amenity-list p {
+      font-size: 0.95rem;
+      color: rgba(241, 229, 210, 0.78);
+    }
+
+    /* Gallery */
+    .gallery {
+      padding: 5rem 0;
+    }
+
+    .gallery-grid {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      object-fit: cover;
+      transition: transform 1.1s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.1rem 1.15rem;
+      background: linear-gradient(transparent, rgba(26, 21, 20, 0.78));
+      color: var(--cream);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* Weddings */
+    .weddings {
+      padding: 0 0 5rem;
+    }
+
+    .weddings-panel {
+      display: grid;
+      gap: 0;
+      background: transparent;
+    }
+
+    .weddings-panel img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+    }
+
+    .weddings-copy {
+      padding: 2rem 0 0;
+    }
+
+    .weddings-copy p + p { margin-top: 1rem; color: var(--ink-soft); }
+
+    /* Pricing */
+    .pricing {
+      padding: 0 0 5rem;
+    }
+
+    .pricing-box {
+      padding: 2rem 1.5rem;
+      background:
+        linear-gradient(145deg, rgba(241, 229, 210, 0.75), rgba(255, 255, 255, 0.9)),
+        var(--cream-soft);
+      border-top: 3px solid var(--gold-deep);
+    }
+
+    .pricing-box > p + p { margin-top: 0.85rem; }
+
+    .package-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .package {
+      padding: 1.15rem 0;
+      border-top: 1px solid rgba(72, 16, 19, 0.16);
+    }
+
+    .package:first-of-type { border-top: none; padding-top: 0; }
+
+    .package h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      color: var(--burgundy);
+      font-weight: 600;
+    }
+
+    .package .price {
+      display: block;
+      margin: 0.25rem 0 0.4rem;
+      font-family: 'Lora', serif;
+      font-size: 1.45rem;
+      color: var(--gold-deep);
+    }
+
+    .package p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .pricing-box ul {
+      margin: 1rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--ink-soft);
+    }
+
+    .pricing-box li + li { margin-top: 0.45rem; }
+
+    .pricing-note {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(166, 106, 8, 0.28);
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    .pricing-missing {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    /* Location / contact — cream band matching source footer */
+    .contact {
+      padding: 4.5rem 0 5.5rem;
+      background:
+        radial-gradient(ellipse 60% 50% at 100% 0%, rgba(180, 118, 17, 0.12), transparent 50%),
+        linear-gradient(180deg, #f7f0e6 0%, var(--cream) 100%);
+      color: var(--ink);
+    }
+
+    .contact .section-title { color: var(--burgundy); }
+    .contact .section-lead { color: var(--ink-soft); }
+    .contact .eyebrow { color: var(--gold-deep); }
+
+    .contact-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2.25rem;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .contact-details a {
+      color: var(--gold-deep);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .enquiry {
+      display: grid;
+      gap: 0.85rem;
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+
+    .enquiry label {
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .enquiry input,
+    .enquiry select,
+    .enquiry textarea {
+      width: 100%;
+      padding: 0.85rem 0.95rem;
+      border: 1px solid rgba(72, 16, 19, 0.22);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--ink);
+      outline: none;
+    }
+
+    .enquiry input:focus,
+    .enquiry select:focus,
+    .enquiry textarea:focus {
+      border-color: var(--gold-deep);
+    }
+
+    .enquiry textarea { min-height: 120px; resize: vertical; }
+
+    .enquiry-feedback {
+      display: none;
+      padding: 0.85rem 1rem;
+      background: rgba(180, 118, 17, 0.12);
+      border-left: 3px solid var(--gold-deep);
+      color: var(--ink);
+      font-size: 0.95rem;
+    }
+
+    .enquiry-feedback.show { display: block; }
+
+    /* Footer */
+    .site-footer {
+      padding: 1.5rem 0 2rem;
+      background: #100d0c;
+      color: rgba(241, 229, 210, 0.55);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-inner a { color: var(--gold-soft); }
+
+    .positioning-note {
+      width: 100%;
+      margin-top: 0.75rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(241, 229, 210, 0.1);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+    }
+
+    @media (min-width: 720px) {
+      .intro-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 3rem;
+      }
+
+      .amenity-list {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1.2fr 1fr;
+        grid-template-rows: auto auto;
+      }
+
+      .gallery-item:first-child {
+        grid-row: span 2;
+        min-height: 100%;
+      }
+
+      .gallery-item:first-child img { min-height: 100%; height: 100%; }
+
+      .weddings-panel {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .weddings-copy { padding: 0 0 0 2.5rem; align-self: center; }
+
+      .package-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+        align-items: start;
+      }
+
+      .room-row {
+        grid-template-columns: 220px 1fr;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .nav-desktop,
+      .header-cta { display: flex; }
+
+      .menu-toggle { display: none; }
+
+      .logo img { height: 60px; }
+
+      .gallery-grid {
+        grid-template-columns: 1.35fr 1fr 1fr;
+        grid-template-rows: 260px 260px;
+      }
+
+      .gallery-item:first-child { grid-row: 1 / span 2; }
+
+      .gallery-item:nth-child(4) {
+        grid-column: 2 / span 2;
+      }
+
+      .pricing-box { padding: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Hulme Hall home">
+        <img src="https://www.hulmehall.com/images/logos/base_logo_transparent_background.png" alt="Hulme Hall, Port Sunlight" width="180" height="108">
+      </a>
+      <ul class="nav-desktop">
+        <li><a href="#about">About</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#weddings">Weddings</a></li>
+        <li><a href="#pricing">Rates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="header-cta" href="#contact">Enquire</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <img src="https://www.hulmehall.com/images/logos/base_logo_transparent_background.png" alt="" width="140" height="84" style="height:48px;width:auto;">
+      <button class="nav-close" id="navClose" type="button" aria-label="Close menu">×</button>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#weddings">Weddings</a>
+      <a href="#pricing">Rates</a>
+      <a href="#contact">Contact</a>
+      <a class="mobile-cta" href="#contact">Enquire</a>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Hulme Hall exterior">
+      <div class="hero-media">
+        <img
+          src="https://www.hulmehall.com/images/slides/slide1.jpg"
+          alt="Exterior of Hulme Hall, a Grade II listed mock-Tudor venue in Port Sunlight"
+          width="1902"
+          height="700"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-kicker">Grade II Listed</p>
+          <p class="hero-brand">Hulme Hall</p>
+          <h1>A nostalgic &amp; quaint venue in the heart of Port Sunlight, Wirral.</h1>
+          <p class="hero-support">Licensed wedding venue and banqueting hall for celebrations, conferences, and private hire.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Plan your event</a>
+            <a class="btn btn-ghost" href="#rooms">View suites</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro" id="about">
+      <div class="container intro-grid">
+        <div class="intro-copy reveal">
+          <p class="eyebrow">Port Sunlight · Wirral · Merseyside</p>
+          <h2 class="section-title">A versatile Grade II listed hall for hire</h2>
+          <p class="section-lead">Hulme Hall is a versatile building in a prime location, with its own large private car park — suited to weddings, celebrations, corporate meetings, and conferences.</p>
+          <p>Boasting four event rooms of different sizes, all on one level, giving ten thousand square feet in total for your own self use if you require. Port Sunlight village lies within easy reach of the motorway network and the main A41 road, with a number of hotels close by.</p>
+          <div class="stat-row">
+            <div class="stat">
+              <strong>30–450</strong>
+              <span>Guests / delegates</span>
+            </div>
+            <div class="stat">
+              <strong>4</strong>
+              <span>Event rooms</span>
+            </div>
+            <div class="stat">
+              <strong>10,000</strong>
+              <span>Sq ft total</span>
+            </div>
+          </div>
+        </div>
+        <div class="intro-aside reveal">
+          <img
+            src="https://www.hulmehall.com/images/pics/home-wedding.jpg"
+            alt="Main banqueting hall at Hulme Hall with vaulted arches and polished wood floor"
+            width="1139"
+            height="500"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="rooms" id="rooms">
+      <div class="container">
+        <div class="rooms-head reveal">
+          <p class="eyebrow">Banqueting suites</p>
+          <h2 class="section-title">Rooms as listed on Hulme Hall</h2>
+          <p class="section-lead">Capacities below are taken from the venue’s published room tables (metres / banquet style where stated).</p>
+        </div>
+        <div class="room-list reveal">
+          <article class="room-row">
+            <h3>Lounge/Ballroom</h3>
+            <div class="room-meta">
+              <span><b>35×21 m</b></span>
+              <span>Height <b>7 m</b></span>
+              <span>Banquet <b>550</b></span>
+              <span>Theatre <b>550</b></span>
+              <span>Reception <b>550</b></span>
+            </div>
+          </article>
+          <article class="room-row">
+            <h3>Lounge</h3>
+            <div class="room-meta">
+              <span><b>25×13.5 m</b></span>
+              <span>Height <b>7 m</b></span>
+              <span>Banquet <b>250</b></span>
+              <span>Theatre <b>300</b></span>
+              <span>Board room <b>40</b></span>
+            </div>
+          </article>
+          <article class="room-row">
+            <h3>Ballroom</h3>
+            <div class="room-meta">
+              <span><b>21×13.5 m</b></span>
+              <span>Height <b>7 m</b></span>
+              <span>Banquet <b>300</b></span>
+              <span>Theatre <b>400</b></span>
+              <span>Reception <b>350</b></span>
+            </div>
+          </article>
+          <article class="room-row">
+            <h3>Ashley Suite</h3>
+            <div class="room-meta">
+              <span><b>13.5×13.5 m</b></span>
+              <span>Height <b>7 m</b></span>
+              <span>Banquet <b>175</b></span>
+              <span>Theatre <b>200</b></span>
+              <span>Board room <b>40</b></span>
+            </div>
+          </article>
+          <article class="room-row">
+            <h3>Arts Room</h3>
+            <div class="room-meta">
+              <span><b>13.5×7 m</b></span>
+              <span>Height <b>7 m</b></span>
+              <span>Banquet <b>50</b></span>
+              <span>Theatre <b>70</b></span>
+              <span>Reception <b>80</b></span>
+            </div>
+          </article>
+        </div>
+        <p class="rooms-note">The events-hiring pages also describe a contemporary conference / event space for a maximum of 450 people, easily divided into three sections, with five booths for simultaneous interpretation and an exhibition area.</p>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">On-site features</p>
+          <h2 class="section-title">What the venue states</h2>
+          <p class="section-lead">Amenities and services as described across Hulme Hall’s live pages — not inferred.</p>
+        </div>
+        <ul class="amenity-list reveal">
+          <li>
+            <div>
+              <strong>Large private car park</strong>
+              <p>Own large private car park on site.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>WiFi &amp; PA system</strong>
+              <p>All rooms equipped with WiFi, PA system, and (for conferences) screen and projector.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>In-house catering</strong>
+              <p>Quality food with local produce when possible; owner/chef. Brochure: in-house catering only, with the exception of ethnic functions; no food or drink may be brought onto the premises.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Licensed wedding venue</strong>
+              <p>Ideal setting for wedding receptions in Port Sunlight; extensive menus individually priced.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Personal event coordination</strong>
+              <p>Small team; venue tour; in-depth appointment after confirmation; familiar contact throughout.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Hire extras (brochure)</strong>
+              <p>Decorated arch; chair covers &amp; bows; candy cart; cheese &amp; fruit cart; seating plan mirror; white post box; rose gold sequined cloths.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Flexible hire formats</strong>
+              <p>Weddings, Asian weddings, dinners/galas, celebrations, corporate, funerals, Masonic events, festivals, fashion shows (catwalk/staging).</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Interpretation &amp; exhibition</strong>
+              <p>Dividable conference space; five booths for simultaneous interpretation; exhibition area.</p>
+            </div>
+          </li>
+        </ul>
+        <p class="rooms-note" style="margin-top:1.5rem;color:rgba(241,229,210,0.7);">Not stated as named amenities on the HTML pages: a dedicated “bar” product line, or explicit “dance floor” wording (an evening reception photograph on the site shows a lit floor and stage).</p>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery" aria-label="Venue photography">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">From the venue</p>
+          <h2 class="section-title">Spaces &amp; setups</h2>
+          <p class="section-lead">Real photographs hosted on hulmehall.com.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal">
+            <img src="https://www.hulmehall.com/images/pics/events-main.jpg" alt="Large banqueting suite arranged theatre-style under vaulted arches" width="570" height="570" loading="lazy">
+            <figcaption>Main hall / banqueting suite</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="https://www.hulmehall.com/images/2021/adimage4.jpg" alt="Wedding breakfast tables with white linens and burgundy chair sashes" width="1200" height="900" loading="lazy">
+            <figcaption>Table &amp; décor setup</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="https://www.hulmehall.com/images/2021/ceremony_room_2.jpg" alt="Ceremony aisle with white chair covers facing a decorated top table" width="960" height="540" loading="lazy">
+            <figcaption>Ceremony layout</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="https://www.hulmehall.com/images/2021/nightparty3.jpg" alt="Evening reception with lit dance floor, stage and starcloth backdrop" width="2016" height="1512" loading="lazy">
+            <figcaption>Evening reception setup</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="weddings" id="weddings">
+      <div class="container">
+        <div class="weddings-panel reveal">
+          <img
+            src="https://www.hulmehall.com/images/pics/weddings-main2.jpg"
+            alt="Wedding reception collage at Hulme Hall including banquet tables and outdoor grounds"
+            width="1070"
+            height="571"
+            loading="lazy"
+          >
+          <div class="weddings-copy">
+            <p class="eyebrow">Weddings</p>
+            <h2 class="section-title">Your reception in Port Sunlight</h2>
+            <p>Hulme Hall is a licensed wedding venue and offers the ideal choice of setting for your wedding reception. Set in the unique and picturesque village of Port Sunlight, the charm of the hall &amp; village is unrivalled.</p>
+            <p>The size of the four function rooms means all numbers can be catered for. On your initial visit, the team will take you around the hall explaining the use of each room. Once confirmed, an in-depth appointment discusses individual ideas and requirements.</p>
+            <p style="margin-top:1rem;"><a href="https://www.hulmehall.com/images/WEDDING_HULME_HALL_PORT_SUNLIGHT_WIRRAL.pdf" rel="noopener" target="_blank" style="color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px;">Download the wedding brochure (PDF)</a> — linked from the live Weddings page.</p>
+            <p><a class="btn btn-primary" href="#contact" style="margin-top:1rem;">Enquire about a wedding</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="pricing-box reveal">
+          <p class="eyebrow">Rates &amp; packages</p>
+          <h2 class="section-title">As published by Hulme Hall</h2>
+          <p>HTML pages describe a <strong>very competitive daily rate to suit all budgets</strong>. Wedding menus are <strong>individually priced</strong>. Figures below are from the wedding brochure PDF linked on the Weddings page.</p>
+
+          <div class="package-grid">
+            <article class="package">
+              <h3>Wedding hall hire</h3>
+              <span class="price">£400.00</span>
+              <p>Includes table napkins and cloths, crockery and cutlery, cake table, knife, and decorated arch.</p>
+            </article>
+            <article class="package">
+              <h3>Ceremony room hire</h3>
+              <span class="price">From £400</span>
+              <p>Art Room £400.00 · Ballroom £450.00. Music choice included. Hold your ceremony in one of the decorated rooms.</p>
+            </article>
+            <article class="package">
+              <h3>Bronze package 2025</h3>
+              <span class="price">£3,950.00</span>
+              <p>For 30 daytime and 100 evening guests. Reception drink &amp; toasting Prosecco; evening buffet for 100 included. Extra day £42.50pp · evening £15.00pp.</p>
+            </article>
+            <article class="package">
+              <h3>Silver package 2025</h3>
+              <span class="price">£4,499.00</span>
+              <p>For 30 daytime and 100 evening guests. Adds a glass of house wine with the meal. Extra day £45.00pp · evening £16.00pp.</p>
+            </article>
+            <article class="package">
+              <h3>Gold package 2025</h3>
+              <span class="price">£4,999.00</span>
+              <p>For 30 daytime and 100 evening guests. Rosé Cava reception, two glasses of wine, toasting house champagne. Extra day £49.99pp · evening £18.00pp.</p>
+            </article>
+            <article class="package">
+              <h3>Twilight weddings</h3>
+              <span class="price">From £3,950</span>
+              <p>Late afternoon for 60 guests from 4pm — meal choice £4,350.00 or buffet £3,950.00. Includes decorated candlelit ceremony room, canapés, mixed reception drinks, toasting Prosecco, cake stand/knife/wedding arch, chair covers and bows, white post box. Extra dinner £45 · buffet £35.</p>
+            </article>
+          </div>
+
+          <p style="margin-top:1.5rem;color:var(--ink-soft);">Conference Daily Delegate package (corporate page) includes:</p>
+          <ul>
+            <li>Morning tea / coffee and biscuits</li>
+            <li>Bacon batch or Danish (£2.00 supplement)</li>
+            <li>Mid-morning tea / coffee and biscuits</li>
+            <li>Hot and cold lunch</li>
+            <li>Choice of hot or cold dessert (vegetarian and gluten free included)</li>
+            <li>Afternoon tea / coffee and cake</li>
+            <li>Half daily rates on request</li>
+          </ul>
+          <p class="pricing-note">Brochure also lists buffet menus (from about £14.50–£35.50), canapé platters (£30), and hire extras (e.g. candy cart £100 / with sweets £160; chair covers &amp; bows £2.50; seating plan mirror £30; white post box £35). Booking fee £500 to secure. Prices increase each January.</p>
+          <p class="pricing-missing">Headline £ for the Conference Daily Delegate rate is not shown on the public HTML pages — contact the venue for the current daily figure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="section-title">Enquire about Hulme Hall</h2>
+          <p class="section-lead">Available to hire for special occasions and events. Contact the team for further information.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-details reveal">
+            <p>
+              <strong>Hulme Hall</strong><br>
+              23 Bolton Rd<br>
+              Port Sunlight<br>
+              Wirral<br>
+              Merseyside CH62 5DH
+            </p>
+            <p>
+              Telephone: <a href="tel:01516448797">0151 644 8797</a><br>
+              Email: <a href="mailto:enquiries@hulmehall.com">enquiries@hulmehall.com</a>
+            </p>
+            <p>Port Sunlight village is a picturesque village lying within easy reach of the motorway network and the main A41 road, with a number of hotels close by.</p>
+          </div>
+          <form class="enquiry reveal" id="enquiryForm" novalidate>
+            <label>
+              Name
+              <input type="text" name="name" id="enquiryName" required autocomplete="name">
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" id="enquiryEmail" required autocomplete="email">
+            </label>
+            <label>
+              Event type
+              <select name="event" id="enquiryEvent">
+                <option value="Wedding">Wedding</option>
+                <option value="Celebration">Celebration</option>
+                <option value="Corporate">Corporate / conference</option>
+                <option value="Other">Other hire</option>
+              </select>
+            </label>
+            <label>
+              Message
+              <textarea name="message" id="enquiryMessage" placeholder="Preferred dates, guest numbers, rooms of interest…"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Send enquiry</button>
+            <div class="enquiry-feedback" id="enquiryFeedback" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Prototype homepage — sourced from <a href="https://www.hulmehall.com" rel="noopener" target="_blank">hulmehall.com</a></span>
+      <span>© Hulme Hall · Port Sunlight, Wirral</span>
+      <p class="positioning-note">Positioning read from tone &amp; copy: mid-range / competitive-value banqueting (Grade II heritage presentation, rates “to suit all budgets”, and published Bronze–Gold wedding packages). Not positioned as ultra-luxury on the source site.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      const menuToggle = document.getElementById('menuToggle');
+      const navMobile = document.getElementById('navMobile');
+      const navClose = document.getElementById('navClose');
+
+      const setHeader = () => {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      };
+      setHeader();
+      window.addEventListener('scroll', setHeader, { passive: true });
+
+      const openMenu = () => {
+        navMobile.classList.add('open');
+        navMobile.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+      const closeMenu = () => {
+        navMobile.classList.remove('open');
+        navMobile.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      menuToggle.addEventListener('click', openMenu);
+      navClose.addEventListener('click', closeMenu);
+      navMobile.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('visible'));
+      }
+
+      const form = document.getElementById('enquiryForm');
+      const feedback = document.getElementById('enquiryFeedback');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('enquiryName').value.trim();
+        const email = document.getElementById('enquiryEmail').value.trim();
+        const eventType = document.getElementById('enquiryEvent').value;
+        const message = document.getElementById('enquiryMessage').value.trim();
+        if (!name || !email) {
+          feedback.textContent = 'Please add your name and email.';
+          feedback.classList.add('show');
+          return;
+        }
+        const subject = encodeURIComponent('Hulme Hall enquiry — ' + eventType);
+        const body = encodeURIComponent(
+          'Name: ' + name + '\nEmail: ' + email + '\nEvent: ' + eventType + '\n\n' + message
+        );
+        feedback.textContent = 'Opening your email client to enquiries@hulmehall.com…';
+        feedback.classList.add('show');
+        window.location.href = 'mailto:enquiries@hulmehall.com?subject=' + subject + '&body=' + body;
+      });
+    })();
+  </script>
+</body>
+</html>
