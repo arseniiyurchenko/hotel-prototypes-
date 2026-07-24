@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kilkenny Castle — The jewel in the crown of an enchanting medieval city</title>
+  <meta name="description" content="Kilkenny Castle, The Parade, Kilkenny. Historic venue hire for conferences, receptions, gala dinners, and civil & humanist wedding ceremonies in the Parade Tower Wing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #004d44;
+      --teal-deep: #003832;
+      --teal-soft: #1a6b60;
+      --burgundy: #800020;
+      --burgundy-soft: #9a2740;
+      --stone: #c8bfb2;
+      --limestone: #e8e2d8;
+      --mist: #f4f1ec;
+      --ink: #1c2422;
+      --ink-soft: #3d4744;
+      --muted: #5c6663;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(0, 40, 36, 0.14);
+      --transition: 0.28s ease;
+      --header-h: 78px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--mist);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    h1, h2, h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .container {
+      width: min(1140px, 92vw);
+      margin-inline: auto;
+    }
+
+    .section-label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-head {
+      max-width: 36rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.6rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--burgundy-soft);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-teal {
+      background: var(--teal);
+      color: var(--white);
+      width: 100%;
+    }
+
+    .btn-teal:hover { background: var(--teal-soft); }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(0, 56, 50, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: var(--white);
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      max-width: min(220px, 52vw);
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      border-left: 1px solid rgba(255, 255, 255, 0.35);
+      padding-left: 0.85rem;
+    }
+
+    .logo-text span {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      font-weight: 400;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.88rem;
+      font-weight: 400;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--stone); }
+
+    .nav-desktop .nav-cta {
+      background: var(--burgundy);
+      padding: 0.55rem 1.1rem;
+      color: var(--white);
+    }
+
+    .nav-desktop .nav-cta:hover {
+      background: var(--burgundy-soft);
+      color: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--teal-deep);
+      z-index: 150;
+      padding: 1.5rem;
+      flex-direction: column;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.75rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .nav-mobile ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-size: 1.35rem;
+      font-family: 'Libre Baskerville', serif;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: heroZoom 18s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 40, 36, 0.45) 0%, rgba(0, 40, 36, 0.2) 35%, rgba(0, 30, 28, 0.78) 100%),
+        linear-gradient(90deg, rgba(0, 40, 36, 0.35) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: calc(var(--header-h) + 2rem) 0 4.5rem;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 1s ease 0.35s forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      max-width: 12ch;
+      color: #fff;
+      text-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-tagline {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      max-width: 28rem;
+      margin-bottom: 0.85rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .hero-support {
+      font-weight: 300;
+      font-size: 1.02rem;
+      max-width: 32rem;
+      margin-bottom: 1.75rem;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .hero-location {
+      margin-top: 2rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      font-weight: 300;
+    }
+
+    /* Enquiry */
+    .enquiry {
+      position: relative;
+      z-index: 5;
+      margin-top: -3.25rem;
+      padding-bottom: 4rem;
+    }
+
+    .enquiry-panel {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1.75rem;
+      border-top: 3px solid var(--burgundy);
+    }
+
+    .enquiry-panel h2 {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      color: var(--teal);
+    }
+
+    .enquiry-form {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--stone);
+      background: var(--mist);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--teal);
+    }
+
+    .enquiry-note {
+      margin-top: 0.85rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .enquiry-toast {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.75rem 1rem;
+      background: rgba(0, 77, 68, 0.08);
+      color: var(--teal);
+      font-size: 0.9rem;
+    }
+
+    .enquiry-toast.show { display: block; }
+
+    /* Spaces */
+    .spaces {
+      padding: 4.5rem 0 5rem;
+      background:
+        radial-gradient(ellipse at 10% 0%, rgba(0, 77, 68, 0.06), transparent 50%),
+        var(--mist);
+    }
+
+    .space-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .space-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 0;
+      min-height: 320px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .space-row.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .space-row:nth-child(even) .space-visual { order: 2; }
+    .space-row:nth-child(even) .space-copy { order: 1; }
+
+    .space-visual {
+      position: relative;
+      min-height: 280px;
+      overflow: hidden;
+    }
+
+    .space-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .space-row:hover .space-visual img {
+      transform: scale(1.04);
+    }
+
+    .space-copy {
+      background: var(--white);
+      padding: clamp(1.75rem, 3vw, 2.75rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid rgba(0, 77, 68, 0.08);
+    }
+
+    .space-copy h3 {
+      font-size: 1.45rem;
+      margin-bottom: 0.65rem;
+      color: var(--teal-deep);
+    }
+
+    .space-copy p {
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+    }
+
+    .space-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .space-uses {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .space-uses li {
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      color: var(--teal);
+      border-bottom: 1px solid rgba(0, 77, 68, 0.25);
+      padding-bottom: 0.1rem;
+    }
+
+    .spaces-footnote {
+      margin-top: 1.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 42rem;
+    }
+
+    /* Amenities */
+    .amenities {
+      padding: 5rem 0;
+      background: var(--teal-deep);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .amenities::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, transparent 40%, rgba(128, 0, 32, 0.18) 100%),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 48px,
+          rgba(255, 255, 255, 0.015) 48px,
+          rgba(255, 255, 255, 0.015) 49px
+        );
+      pointer-events: none;
+    }
+
+    .amenities .section-label { color: var(--stone); }
+    .amenities h2 { color: var(--white); }
+    .amenities .section-head p { color: rgba(255, 255, 255, 0.7); }
+
+    .amenity-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem 2rem;
+    }
+
+    .amenity-item {
+      padding: 1.25rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .amenity-item h3 {
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    .amenity-item p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    /* Gallery */
+    .gallery {
+      padding: 5rem 0;
+      background: var(--limestone);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 0.75rem;
+    }
+
+    .gallery-grid figure {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .gallery-grid figure:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-grid figure:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(transparent, rgba(0, 30, 28, 0.75));
+      color: var(--white);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Location */
+    .location {
+      padding: 5rem 0;
+      background:
+        linear-gradient(180deg, var(--mist), var(--limestone));
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .location-map {
+      min-height: 340px;
+      background:
+        linear-gradient(160deg, rgba(0, 77, 68, 0.88), rgba(128, 0, 32, 0.55)),
+        url("https://www.kilkennycastle.ie/wp-content/uploads/2023/09/Kilkenny-Castle-Main-Gate-scaled.jpg") center/cover;
+      color: var(--white);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .location-map strong {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.35rem;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .location-map span {
+      font-weight: 300;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    .location-details h2 { margin-bottom: 1rem; }
+
+    .location-details p {
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    .landmark-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .landmark-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: baseline;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+
+    .landmark-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--burgundy);
+      flex-shrink: 0;
+      transform: translateY(-1px);
+    }
+
+    /* Hire rates */
+    .rates {
+      padding: 4.5rem 0;
+      background: var(--white);
+    }
+
+    .rates-panel {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      border-top: 1px solid var(--stone);
+      border-bottom: 1px solid var(--stone);
+      padding: 2.5rem 0;
+    }
+
+    .rates-panel h2 {
+      font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .rates-panel p {
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .visitor-rates {
+      background: var(--mist);
+      padding: 1.5rem;
+    }
+
+    .visitor-rates h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.85rem;
+      color: var(--teal);
+    }
+
+    .visitor-rates table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .visitor-rates th,
+    .visitor-rates td {
+      text-align: left;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .visitor-rates th { color: var(--muted); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .visitor-rates td:last-child { text-align: right; font-weight: 500; color: var(--teal-deep); }
+
+    .visitor-rates .caption {
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Contact strip */
+    .contact-strip {
+      padding: 3.5rem 0;
+      background: var(--teal);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contact-strip h2 {
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+    }
+
+    .contact-strip p {
+      font-weight: 300;
+      opacity: 0.85;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-strip a.mail {
+      color: var(--stone);
+      border-bottom: 1px solid rgba(200, 191, 178, 0.5);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.78);
+      padding: 3.5rem 0 2rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand img {
+      height: 32px;
+      width: auto;
+      margin-bottom: 0.85rem;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+
+    .footer-brand strong {
+      display: block;
+      font-family: 'Libre Baskerville', serif;
+      color: var(--white);
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-brand p {
+      font-weight: 300;
+      max-width: 22rem;
+      line-height: 1.6;
+    }
+
+    .footer-col h3 {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.45rem; }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: flex; }
+
+      .enquiry-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .enquiry-form .btn-teal {
+        grid-column: 1 / -1;
+      }
+
+      .space-row,
+      .space-row:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .space-row:nth-child(even) .space-visual,
+      .space-row:nth-child(even) .space-copy {
+        order: initial;
+      }
+
+      .amenity-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 180px 180px;
+      }
+
+      .gallery-grid figure:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 220px;
+      }
+
+      .location-grid,
+      .rates-panel,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .enquiry-form { grid-template-columns: 1fr; }
+      .amenity-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-grid figure { min-height: 200px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Kilkenny Castle home">
+        <img src="https://kilkennycastle.ie/wp-content/uploads/2019/03/kilkenny-castle-logo-green-transparent.png" alt="Kilkenny Castle">
+        <span class="logo-text">
+          <span>Venue Hire</span>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#spaces">Venues</a></li>
+          <li><a href="#amenities">Features</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Find Us</a></li>
+          <li><a href="#rates">Rates</a></li>
+          <li><a class="nav-cta" href="#enquiry">Enquire</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <div class="nav-mobile-top">
+      <span class="logo-text" style="color:#fff;border-left:none;padding-left:0"><strong style="font-family:'Libre Baskerville',serif;font-size:1.15rem;display:block">Kilkenny Castle</strong><span>Venue Hire</span></span>
+      <button class="nav-close" id="navClose" aria-label="Close menu" type="button">×</button>
+    </div>
+    <ul>
+      <li><a href="#spaces">Venues</a></li>
+      <li><a href="#amenities">Features</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#location">Find Us</a></li>
+      <li><a href="#rates">Rates</a></li>
+      <li><a href="#enquiry">Enquire</a></li>
+    </ul>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Kilkenny Castle">
+      <div class="hero-media">
+        <img
+          src="https://www.kilkennycastle.ie/wp-content/uploads/2019/11/1080x608-aerial-view-1.jpg"
+          alt="Aerial view of Kilkenny Castle and parklands"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="container hero-content">
+        <h1 class="hero-brand">Kilkenny Castle</h1>
+        <p class="hero-tagline">The jewel in the crown of an enchanting medieval city</p>
+        <p class="hero-support">A historic Parade Tower Wing for conferences, receptions, gala dinners, and civil &amp; humanist wedding ceremonies in the heart of Kilkenny.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#enquiry">Enquire about venue hire</a>
+          <a class="btn btn-ghost" href="#spaces">Explore the venues</a>
+        </div>
+        <p class="hero-location">The Parade · Kilkenny · Ireland · R95 YRK1</p>
+      </div>
+    </section>
+
+    <section class="enquiry" id="enquiry">
+      <div class="container">
+        <div class="enquiry-panel">
+          <h2>Request a viewing or provisional booking</h2>
+          <form class="enquiry-form" id="enquiryForm">
+            <div class="field">
+              <label for="eventDate">Preferred date</label>
+              <input type="date" id="eventDate" name="eventDate" required>
+            </div>
+            <div class="field">
+              <label for="eventType">Event type</label>
+              <select id="eventType" name="eventType" required>
+                <option value="">Select…</option>
+                <option value="conference">Conference / meeting</option>
+                <option value="gala">Gala dinner / luncheon</option>
+                <option value="reception">Reception</option>
+                <option value="wedding-civil">Civil wedding ceremony</option>
+                <option value="wedding-humanist">Humanist wedding ceremony</option>
+                <option value="cultural">Cultural / artistic event</option>
+                <option value="outdoor">Outdoor / grounds (case by case)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="venueSpace">Preferred space</label>
+              <select id="venueSpace" name="venueSpace">
+                <option value="">Any / advise me</option>
+                <option value="parade-tower">The Parade Tower</option>
+                <option value="duchess">The Duchess Boardroom</option>
+                <option value="ormonde">The Ormonde Boardroom</option>
+                <option value="medieval">The Medieval Room</option>
+                <option value="picture-gallery">The Picture Gallery</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="guests">Guests</label>
+              <input type="number" id="guests" name="guests" min="1" max="130" placeholder="e.g. 80">
+            </div>
+            <button class="btn btn-teal" type="submit">Send enquiry</button>
+          </form>
+          <p class="enquiry-note">Prototype form only — on the live site, contact <a href="mailto:kilkennycastleevents@opw.ie">kilkennycastleevents@opw.ie</a> or +353 56 770 4108. Venue hire rates are not published online.</p>
+          <div class="enquiry-toast" id="enquiryToast" role="status">Thank you. This demo does not send messages — please email the Events Office on the live site.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="spaces" id="spaces">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Venue Hire</span>
+          <h2>The Perfect Setting for Business or Pleasure</h2>
+          <p>The Parade Tower Wing is the dedicated events area of Kilkenny Castle — the entire west wing and two of its medieval towers — with the Picture Gallery available for evening cultural events and pre-dinner drinks.</p>
+        </div>
+
+        <div class="space-list">
+          <article class="space-row">
+            <div class="space-visual">
+              <img src="https://www.kilkennycastle.ie/wp-content/uploads/2018/12/The-Parade-Tower.jpg" alt="Interior of The Parade Tower event space" loading="lazy">
+            </div>
+            <div class="space-copy">
+              <h3>The Parade Tower</h3>
+              <div class="space-meta">
+                <span>Theatre 120</span>
+                <span>Banquet 120</span>
+                <span>Reception 130</span>
+              </div>
+              <p>Where old and new are integrated: state-of-the-art facilities in a medieval tower, with full blackout, atmospheric lighting, AV readiness, and open Wi-Fi. Open pine trussed ceiling, tiered balconies, antique marble fireplace, Kilkenny limestone and Irish oak flooring.</p>
+              <ul class="space-uses">
+                <li>Gala dinners</li>
+                <li>Conferences</li>
+                <li>Receptions</li>
+                <li>Civil &amp; humanist ceremonies</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="space-row">
+            <div class="space-visual">
+              <img src="https://www.kilkennycastle.ie/wp-content/uploads/2018/11/Duchess-Boardroom-wedding-1.jpg" alt="The Duchess Boardroom set for a ceremony" loading="lazy">
+            </div>
+            <div class="space-copy">
+              <h3>The Duchess Boardroom</h3>
+              <div class="space-meta">
+                <span>Theatre 20</span>
+                <span>Banquet 18</span>
+                <span>Weddings up to 25</span>
+              </div>
+              <p>Victorian boardroom with elegant gilded plasterwork on the second floor of the Parade Tower wing — intimate surroundings with views over Kilkenny City and the formal Rose Garden.</p>
+              <ul class="space-uses">
+                <li>Smaller ceremonies</li>
+                <li>Private dining</li>
+                <li>Boardroom &amp; cabaret meetings</li>
+                <li>Conference breakout</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="space-row">
+            <div class="space-visual">
+              <img src="https://www.kilkennycastle.ie/wp-content/uploads/2018/12/Ormonde-Boardroom.jpg" alt="The Ormonde Boardroom" loading="lazy">
+            </div>
+            <div class="space-copy">
+              <h3>The Ormonde Boardroom</h3>
+              <div class="space-meta">
+                <span>Theatre 15</span>
+                <span>Banquet 12</span>
+                <span>Reception 15</span>
+              </div>
+              <p>A smaller Victorian boardroom on the first floor of the Parade Tower Wing — an exclusive setting for private dining, smaller meetings, and receptions.</p>
+              <ul class="space-uses">
+                <li>Private dining</li>
+                <li>Smaller meetings</li>
+                <li>Breakout space</li>
+                <li>Smaller receptions</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="space-row">
+            <div class="space-visual">
+              <img src="https://www.kilkennycastle.ie/wp-content/uploads/2018/12/Medieval-Room.jpg" alt="The Medieval Room with historic timber ceiling" loading="lazy">
+            </div>
+            <div class="space-copy">
+              <h3>The Medieval Room</h3>
+              <div class="space-meta">
+                <span>Reception 60</span>
+                <span>Opens to courtyard</span>
+              </div>
+              <p>At the base of the Parade Tower: arrow loops and a central oak column supporting a 15th-century post and beam ceiling — an atmospheric space for evening receptions or as a catering area for conferences.</p>
+              <ul class="space-uses">
+                <li>Evening receptions</li>
+                <li>Catering for conferences</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="space-row">
+            <div class="space-visual">
+              <img src="https://www.kilkennycastle.ie/wp-content/uploads/2021/03/Picture-Gallery-scaled.jpg" alt="The Picture Gallery in the east wing" loading="lazy">
+            </div>
+            <div class="space-copy">
+              <h3>The Picture Gallery</h3>
+              <div class="space-meta">
+                <span>Theatre 120</span>
+                <span>Reception 120</span>
+                <span>East wing</span>
+              </div>
+              <p>Nineteenth-century gallery built for the Butler family’s paintings — an elegant setting for pre-dinner drinks before dinner at The Parade Tower, and for evening cultural and artistic events.</p>
+              <ul class="space-uses">
+                <li>Pre-dinner drinks</li>
+                <li>Evening cultural events</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <p class="spaces-footnote reveal">Park &amp; Gardens: the Castle stands in rolling parkland with a formal terraced rose garden, woodlands and lake. Outdoor events on the grounds are considered case-by-case via the Events Office.</p>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Features</span>
+          <h2>What the Castle provides for your event</h2>
+          <p>Drawn from the Venue Hire, Catering, Weddings, and FAQ pages on kilkennycastle.ie.</p>
+        </div>
+        <div class="amenity-grid">
+          <div class="amenity-item reveal">
+            <h3>Events team</h3>
+            <p>Experienced and dedicated events team for viewings, provisional bookings, and liaison on the finer details.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Catering partners</h3>
+            <p>All catering via approved providers listed on the Catering page — from light lunches to gala dinners and drinks receptions.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Complimentary Wi‑Fi</h3>
+            <p>Open Wi‑Fi throughout the complex (KKC_Guest), including The Parade Tower.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Audio visual</h3>
+            <p>Projection booth, sound system, screen, laser projector with wireless Barco ClickShare, cabled HDMI, full blackout and atmospheric lighting.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Ceremony setting</h3>
+            <p>For wedding ceremonies: theatre-style setting, top table, white chair covers, red aisle carpet, lectern, AV technician and full AV services.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Cloakroom</h3>
+            <p>Cloakroom facilities are available for events.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Delegate tours</h3>
+            <p>Once an event is confirmed, visits to the period rooms can be arranged for your delegates.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Parkland setting</h3>
+            <p>About fifty acres of parkland with mature trees, wildlife, formal rose garden, woodlands and lake.</p>
+          </div>
+          <div class="amenity-item reveal">
+            <h3>Accessibility</h3>
+            <p>Kilkenny Castle and Park welcome all visitors and publish accessibility guidance; the historic fabric presents access challenges, with improvements ongoing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Gallery</span>
+          <h2>Castle, halls &amp; grounds</h2>
+          <p>Photography from the official Kilkenny Castle site.</p>
+        </div>
+        <div class="gallery-grid reveal">
+          <figure>
+            <img src="https://www.kilkennycastle.ie/wp-content/uploads/2023/09/Kilkenny-Castle-Main-Gate-scaled.jpg" alt="Kilkenny Castle main gate" loading="lazy">
+            <figcaption>Main gate</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.kilkennycastle.ie/wp-content/uploads/2019/01/Banqueting-P-Tower.jpg" alt="Banqueting setup in the Parade Tower" loading="lazy">
+            <figcaption>Parade Tower banquet</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.kilkennycastle.ie/wp-content/uploads/2018/11/KKC-outdoor-image-2018.jpg" alt="Kilkenny Castle park and gardens" loading="lazy">
+            <figcaption>Park &amp; gardens</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.kilkennycastle.ie/wp-content/uploads/2019/01/picture-gallery.jpg" alt="Picture Gallery interior" loading="lazy">
+            <figcaption>Picture Gallery</figcaption>
+          </figure>
+          <figure>
+            <img src="https://www.kilkennycastle.ie/wp-content/uploads/2019/01/parade-tower-wedding-layour-1.jpg" alt="Parade Tower wedding layout" loading="lazy">
+            <figcaption>Wedding layout</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container location-grid">
+        <div class="location-map reveal" role="img" aria-label="Kilkenny Castle at The Parade">
+          <strong>Kilkenny Castle</strong>
+          <span>The Parade, Kilkenny, R95 YRK1<br>Lat 52.6500 · Long −7.2495</span>
+        </div>
+        <div class="location-details reveal">
+          <span class="section-label">Find Us</span>
+          <h2>In the heart of Kilkenny</h2>
+          <p>Located at the very heart of Kilkenny, within easy walking distance of many other attractions and amenities. McDonagh Railway Station is about a 15-minute walk. Parking is available near the Castle but not on site; limited coach parking is available on Castle Road.</p>
+          <ul class="landmark-list">
+            <li>Ireland’s Medieval Mile</li>
+            <li>Ireland’s Ancient East</li>
+            <li>The Butler Trail</li>
+            <li>City centre amenities within walking distance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="rates" id="rates">
+      <div class="container">
+        <div class="rates-panel reveal">
+          <div>
+            <span class="section-label">Pricing</span>
+            <h2>Venue hire rates on enquiry</h2>
+            <p>The live site does not publish venue hire or wedding package prices. Provisional bookings and availability are handled by email with the Events Office. Visitor admission rates for castle tours are published separately and are shown here for reference only — they are not event hire packages.</p>
+            <p style="margin-top:1rem"><a class="btn btn-primary" href="#enquiry">Ask about availability</a></p>
+          </div>
+          <div class="visitor-rates">
+            <h3>2026 visitor admission (self-guided)</h3>
+            <table>
+              <thead>
+                <tr><th>Category</th><th>Rate</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Adult</td><td>€8</td></tr>
+                <tr><td>Senior (60+)</td><td>€6</td></tr>
+                <tr><td>Child (12–17) / Student</td><td>€4</td></tr>
+                <tr><td>Family (2 adults + 3 children)</td><td>€20</td></tr>
+                <tr><td>Children under 12</td><td>Free</td></tr>
+              </tbody>
+            </table>
+            <p class="caption">Source: Tickets &amp; Times on kilkennycastle.ie. Guided tours are priced separately (Adult €12). Not applicable as venue hire pricing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-strip" id="contact">
+      <div class="container reveal">
+        <h2>Venue Hire and Events</h2>
+        <p><a class="mail" href="mailto:kilkennycastleevents@opw.ie">kilkennycastleevents@opw.ie</a> · +353 56 770 4108</p>
+        <a class="btn btn-primary" href="mailto:kilkennycastleevents@opw.ie">Email the Events Office</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://kilkennycastle.ie/wp-content/uploads/2019/03/kilkenny-castle-logo-green-transparent.png" alt="">
+          <strong>Kilkenny Castle</strong>
+          <p>The jewel in the crown of an enchanting medieval city. Managed by the Office of Public Works (OPW).</p>
+        </div>
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <ul>
+            <li>The Parade, Kilkenny, R95 YRK1</li>
+            <li><a href="mailto:kilkennycastleevents@opw.ie">Events: kilkennycastleevents@opw.ie</a></li>
+            <li>Events: +353 56 770 4108</li>
+            <li><a href="mailto:kilkennycastleinfo@opw.ie">Info: kilkennycastleinfo@opw.ie</a></li>
+            <li>General: +353 56 770 4100</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="#spaces">Venues</a></li>
+            <li><a href="#amenities">Features</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Find Us</a></li>
+            <li><a href="https://www.kilkennycastle.ie/" rel="noopener">Official website</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Prototype inspired by kilkennycastle.ie — not an official OPW site.</span>
+        <span>© Oifig na nOibreacha Poiblí (attribution from source site)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById('siteHeader');
+      var menuToggle = document.getElementById('menuToggle');
+      var navMobile = document.getElementById('navMobile');
+      var navClose = document.getElementById('navClose');
+
+      function onScroll() {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      function openMenu() {
+        navMobile.hidden = false;
+        navMobile.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        navMobile.classList.remove('open');
+        navMobile.hidden = true;
+        document.body.style.overflow = '';
+      }
+
+      menuToggle.addEventListener('click', openMenu);
+      navClose.addEventListener('click', closeMenu);
+      navMobile.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      var form = document.getElementById('enquiryForm');
+      var toast = document.getElementById('enquiryToast');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        toast.classList.add('show');
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal, .space-row').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
