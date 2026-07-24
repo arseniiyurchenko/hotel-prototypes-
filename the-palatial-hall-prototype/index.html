@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Palatial Hall | Conference &amp; Wedding Venue Milton Keynes</title>
+  <meta name="description" content="The Palatial Hall — premier luxury events venue in Bletchley, Milton Keynes. Elegant weddings, cultural receptions and celebrations for 100–400 guests.">
+  <!--
+    SOURCE NOTES (extracted from https://thepalatialhall.co.uk — July 2026)
+    Venue: The Palatial Hall
+    Logo tagline: Weddings and Events
+    Nav/site line: Events Hall & Luxury Accommodations
+    Hero headline: Elegant Celebrations & Grand Weddings To Remember
+    Hero support: Designed for elegant weddings, cultural receptions and unforgettable celebrations for 100-400 guests.
+    Address: 27a Queensway, Bletchley, Milton Keynes, MK2 2DR, United Kingdom
+    Nearby: Bletchley Train station; Bletchley NCP; St. Albert street / St Albert long stay car park; M1 access
+    Buckinghamshire: NOT stated on the official site (omitted)
+    Named suite: The Crystal Ballroom (50–500 seated). Other named suites (e.g. Regal) not found on official site.
+    Pricing from /venue-hire-&-experiences: Essential £3,995 / £4,495; Signature from £7,495; Platinum from £13,995
+    Positioning: Premium / luxury (site language: premier luxury; gold-on-black logo; package ladder to £13,995)
+    Exterior building photograph: NOT found on source pages reviewed — location section uses a neutral placeholder.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --ink-soft: #1a1612;
+      --gold: #d6b085;
+      --gold-bright: #e2c6a7;
+      --gold-deep: #a8845a;
+      --champagne: #f2e6d8;
+      --bronze: #312611;
+      --burgundy: #5e0202;
+      --burgundy-bright: #a10606;
+      --mist: #f7f4f0;
+      --muted: #6e645a;
+      --line: rgba(214, 176, 133, 0.35);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--mist);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    section[id] { scroll-margin-top: 6rem; }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .container {
+      width: min(1120px, 90vw);
+      margin-inline: auto;
+    }
+
+    .container-wide {
+      width: min(1280px, 92vw);
+      margin-inline: auto;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 1.1rem 0;
+      transition: background 0.4s var(--ease), padding 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(14px);
+      padding: 0.75rem 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: #fff;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+    }
+
+    .brand-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 0.2rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .nav-desktop a:hover { color: var(--gold-bright); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.85rem;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn-gold:hover { background: var(--gold-bright); }
+
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--bronze);
+    }
+
+    .btn-outline-dark:hover {
+      background: var(--ink);
+      color: var(--gold-bright);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.35rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.97);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--gold-bright);
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      transform: scale(1.06);
+      animation: heroZoom 18s var(--ease) forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.06); }
+      to { transform: scale(1); }
+    }
+
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.25) 35%, rgba(10, 10, 10, 0.72) 72%, rgba(10, 10, 10, 0.92) 100%),
+        radial-gradient(ellipse at 70% 30%, rgba(94, 2, 2, 0.18), transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 7.5rem 0 7.5rem;
+      width: min(1120px, 90vw);
+      margin-inline: auto;
+    }
+
+    /* —— Booking / viewing widget —— */
+    .booking-section {
+      position: relative;
+      z-index: 10;
+      margin-top: -4.25rem;
+      padding-bottom: 0;
+    }
+
+    .booking-widget {
+      background: #fff;
+      border: 1px solid rgba(49, 38, 17, 0.1);
+      box-shadow: 0 18px 50px rgba(10, 10, 10, 0.14);
+      padding: 1.5rem 1.75rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.15fr 1fr auto;
+      gap: 1rem 1.15rem;
+      align-items: end;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem 0.95rem;
+      border: 1px solid rgba(49, 38, 17, 0.16);
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--mist);
+      transition: border-color 0.25s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--gold-deep);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      padding: 0.8rem 0.95rem;
+      border: 1px solid rgba(49, 38, 17, 0.16);
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--mist);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .guest-trigger svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.55;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      min-width: 240px;
+      background: #fff;
+      border: 1px solid rgba(49, 38, 17, 0.14);
+      padding: 1rem;
+      box-shadow: 0 16px 40px rgba(10, 10, 10, 0.16);
+      z-index: 50;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.55rem 0;
+    }
+
+    .guest-row + .guest-row {
+      border-top: 1px solid rgba(49, 38, 17, 0.1);
+    }
+
+    .guest-row span { font-size: 0.9rem; color: var(--ink); }
+
+    .guest-row small {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(49, 38, 17, 0.18);
+      background: #fff;
+      font-size: 1.05rem;
+      line-height: 1;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      transition: background 0.2s ease;
+    }
+
+    .guest-btn:hover { background: var(--champagne); }
+
+    .guest-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .booking-widget .btn {
+      height: 48px;
+      white-space: nowrap;
+      padding-inline: 1.5rem;
+    }
+
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 8vw, 5.4rem);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: #fff;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: riseIn 1s var(--ease) 0.15s forwards;
+    }
+
+    .hero-brand span {
+      display: block;
+      color: var(--gold-bright);
+    }
+
+    .hero-rule {
+      width: 72px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 0 1.35rem;
+      opacity: 0;
+      animation: riseIn 1s var(--ease) 0.3s forwards;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.35rem, 3.2vw, 2rem);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      max-width: 18ch;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.95);
+      opacity: 0;
+      animation: riseIn 1s var(--ease) 0.4s forwards;
+    }
+
+    .hero-lead {
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      max-width: 38ch;
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: riseIn 1s var(--ease) 0.55s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      opacity: 0;
+      animation: riseIn 1s var(--ease) 0.7s forwards;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* —— Shared sections —— */
+    section { padding: 5.5rem 0; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4.5vw, 3.15rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.1rem;
+      max-width: 16ch;
+    }
+
+    .section-copy {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 54ch;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Welcome —— */
+    .welcome {
+      background:
+        linear-gradient(135deg, #fff 0%, var(--champagne) 55%, #efe4d6 100%);
+    }
+
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .welcome-visual {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    .welcome-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .welcome-visual::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 35%;
+      background: linear-gradient(transparent, rgba(10, 10, 10, 0.45));
+      pointer-events: none;
+    }
+
+    .welcome p + p { margin-top: 1rem; }
+
+    .welcome-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      margin-top: 2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(49, 38, 17, 0.15);
+    }
+
+    .welcome-meta dt {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.25rem;
+    }
+
+    .welcome-meta dd {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+    }
+
+    /* —— Crystal Ballroom —— */
+    .suite {
+      background: var(--ink);
+      color: #fff;
+      padding: 0;
+    }
+
+    .suite-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: 680px;
+    }
+
+    .suite-media {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+    }
+
+    .suite-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .suite-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 5vw, 4.5rem);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(161, 6, 6, 0.22), transparent 45%),
+        linear-gradient(160deg, #14110e, #0a0a0a 60%);
+    }
+
+    .suite .section-label { color: var(--gold); }
+    .suite .section-title { color: #fff; max-width: 12ch; }
+    .suite .section-copy { color: rgba(255, 255, 255, 0.72); }
+
+    .capacity-list {
+      margin: 2rem 0 2.25rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .capacity-list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.85rem;
+      align-items: baseline;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(214, 176, 133, 0.18);
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .capacity-list strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--gold-bright);
+      white-space: nowrap;
+    }
+
+    /* —— Features —— */
+    .features {
+      background: #fff;
+    }
+
+    .features-intro {
+      margin-bottom: 3rem;
+    }
+
+    .feature-rail {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(49, 38, 17, 0.12);
+    }
+
+    .feature-item {
+      padding: 2rem 1.75rem 2rem 0;
+      border-bottom: 1px solid rgba(49, 38, 17, 0.12);
+      border-right: 1px solid rgba(49, 38, 17, 0.12);
+    }
+
+    .feature-item:nth-child(3n) { border-right: none; padding-right: 0; }
+    .feature-item:nth-child(3n+1) { padding-left: 0; }
+
+    .feature-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      margin-bottom: 0.55rem;
+      color: var(--ink);
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 32ch;
+    }
+
+    .feature-showcase {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.25rem;
+      min-height: 420px;
+    }
+
+    .feature-showcase figure {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+    }
+
+    .feature-showcase img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      transition: transform 1.2s var(--ease);
+    }
+
+    .feature-showcase figure:hover img {
+      transform: scale(1.04);
+    }
+
+    .feature-showcase figcaption {
+      position: absolute;
+      left: 1.25rem;
+      bottom: 1.25rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+    }
+
+    /* —— Packages —— */
+    .packages {
+      background:
+        linear-gradient(180deg, var(--ink-soft), var(--ink));
+      color: #fff;
+    }
+
+    .packages .section-label { color: var(--gold); }
+    .packages .section-title { color: #fff; max-width: 14ch; }
+    .packages .section-copy { color: rgba(255, 255, 255, 0.68); margin-bottom: 2.75rem; }
+
+    .package-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .package {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.7fr) 1.1fr 1.2fr;
+      gap: 1.5rem 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(214, 176, 133, 0.22);
+      align-items: start;
+    }
+
+    .package:last-child { border-bottom: 1px solid rgba(214, 176, 133, 0.22); }
+
+    .package-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: var(--gold-bright);
+      line-height: 1.2;
+    }
+
+    .package-price {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 0.45rem;
+    }
+
+    .package-price strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .package-desc {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.98rem;
+    }
+
+    .package-includes {
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .package-includes li::before {
+      content: '—';
+      color: var(--gold);
+      margin-right: 0.55rem;
+    }
+
+    .package-note {
+      margin-top: 1.75rem;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 62ch;
+    }
+
+    /* —— Location —— */
+    .location {
+      background: var(--champagne);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: stretch;
+    }
+
+    .location-map {
+      background:
+        linear-gradient(145deg, #2a241c, #15120f);
+      color: rgba(255, 255, 255, 0.7);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 35%, rgba(214, 176, 133, 0.18), transparent 40%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 27px,
+          rgba(255, 255, 255, 0.03) 28px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 27px,
+          rgba(255, 255, 255, 0.03) 28px
+        );
+    }
+
+    .location-map-inner { position: relative; z-index: 1; }
+
+    .location-map .pin {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--gold-bright);
+      margin-bottom: 0.5rem;
+    }
+
+    .location-map p {
+      font-size: 0.95rem;
+      max-width: 28ch;
+    }
+
+    .location-map .placeholder-note {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(214, 176, 133, 0.7);
+    }
+
+    .location-points {
+      margin-top: 1.75rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .location-points li {
+      padding-left: 1.1rem;
+      border-left: 2px solid var(--gold);
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .location-points strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+
+    /* —— Contact —— */
+    .contact {
+      background: #fff;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .contact-details {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    .contact-details a {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      color: var(--burgundy-bright);
+      transition: color 0.25s ease;
+    }
+
+    .contact-details a:hover { color: var(--burgundy); }
+
+    .contact-details p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .contact-hours {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(49, 38, 17, 0.12);
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .contact-hours strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-cta {
+      background: var(--ink);
+      color: #fff;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      justify-content: center;
+      min-height: 280px;
+    }
+
+    .contact-cta h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--gold-bright);
+    }
+
+    .contact-cta p {
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 28ch;
+    }
+
+    .contact-cta .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: #050505;
+      color: rgba(255, 255, 255, 0.55);
+      padding: 2.5rem 0;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .footer-links a:hover { color: var(--gold-bright); }
+
+    /* —— Responsive —— */
+    @media (max-width: 1100px) {
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-widget .btn {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+      .header-cta { display: none; }
+
+      .container-wide {
+        width: min(1280px, calc(100vw - 2.5rem));
+      }
+
+      .welcome-grid,
+      .suite-layout,
+      .feature-showcase,
+      .location-grid,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .welcome-visual { min-height: 360px; }
+
+      .feature-rail { grid-template-columns: 1fr; }
+      .feature-item,
+      .feature-item:nth-child(3n),
+      .feature-item:nth-child(3n+1) {
+        border-right: none;
+        padding: 1.5rem 0;
+      }
+
+      .package {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .hero-content { padding-bottom: 6.5rem; }
+      .booking-section { margin-top: -3.5rem; }
+    }
+
+    @media (max-width: 560px) {
+      .brand img { width: 42px; height: 42px; }
+      .brand-name { font-size: 0.95rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+      section { padding: 4rem 0; }
+
+      .booking-widget {
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .hero-media img { transform: none; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container-wide header-inner">
+      <a class="brand" href="#top" aria-label="The Palatial Hall home">
+        <img
+          src="https://img1.wsimg.com/isteam/ip/0c7266a9-49ca-48b2-bbb8-c66ee1711385/Elegant%20Gold%20Label%20(2).png"
+          alt="The Palatial Hall logo"
+          width="52"
+          height="52">
+        <span class="brand-text">
+          <span class="brand-name">The Palatial Hall</span>
+          <span class="brand-tag">Weddings and Events</span>
+        </span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#venue">The Venue</a>
+        <a href="#suite">Crystal Ballroom</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#packages">Packages</a>
+        <a href="#location">Find Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn btn-gold header-cta" href="#booking">Book a Viewing</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"/>
+      </svg>
+    </button>
+    <a href="#venue">The Venue</a>
+    <a href="#suite">Crystal Ballroom</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#packages">Packages</a>
+    <a href="#location">Find Us</a>
+    <a href="#booking">Book a Viewing</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-gold" href="#booking">Check availability</a>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Homepage hero">
+      <div class="hero-media">
+        <img
+          src="https://img1.wsimg.com/isteam/ip/0c7266a9-49ca-48b2-bbb8-c66ee1711385/69225.png"
+          alt="Decorated ceremony aisle at The Palatial Hall with white blossom trees and candle lighting"
+          width="941"
+          height="1672">
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-brand">The Palatial <span>Hall</span></p>
+        <div class="hero-rule" aria-hidden="true"></div>
+        <h1>Elegant Celebrations &amp; Grand Weddings To Remember</h1>
+        <p class="hero-lead">Designed for elegant weddings, cultural receptions and unforgettable celebrations for 100–400 guests.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#booking">Book a Private Viewing</a>
+          <a class="btn btn-ghost" href="#packages">View Packages</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking" aria-label="Book a viewing">
+      <div class="container">
+        <form class="booking-widget" id="bookingForm" action="mailto:info@thepalatialhall.co.uk" method="get" enctype="text/plain">
+          <div class="form-group">
+            <label for="viewingDate">Viewing date</label>
+            <input type="date" id="viewingDate" name="viewing_date" required>
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event date</label>
+            <input type="date" id="eventDate" name="event_date" required>
+          </div>
+          <div class="form-group guest-selector">
+            <label for="guestTrigger">Estimated guests</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-haspopup="true" aria-expanded="false">
+              <span id="guestSummary">100 guests</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="guest-dropdown" id="guestPanel" hidden>
+              <div class="guest-row">
+                <div>
+                  <span>Guests</span>
+                  <small>Celebration size</small>
+                </div>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="guestsMinus" aria-label="Decrease guests">−</button>
+                  <span id="guestsCount">100</span>
+                  <button type="button" class="guest-btn" id="guestsPlus" aria-label="Increase guests">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <div>
+                  <span>Children</span>
+                  <small>Optional</small>
+                </div>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                  <span id="childrenCount">0</span>
+                  <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" id="guestsInput" name="guests" value="100">
+            <input type="hidden" id="childrenInput" name="children" value="0">
+          </div>
+          <div class="form-group">
+            <label for="eventType">Occasion</label>
+            <select id="eventType" name="event_type">
+              <option value="wedding">Wedding</option>
+              <option value="cultural">Cultural reception</option>
+              <option value="party">Party / celebration</option>
+              <option value="conference">Conference / corporate</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-gold">Check availability</button>
+        </form>
+        <p class="booking-note">Request a private viewing — the team will confirm dates by phone or email.</p>
+      </div>
+    </section>
+
+    <section class="welcome" id="venue">
+      <div class="container welcome-grid">
+        <div class="reveal">
+          <p class="section-label">Welcome</p>
+          <h2 class="section-title">A premier luxury events venue in Bletchley, Milton Keynes</h2>
+          <p class="section-copy">
+            The Palatial Hall is a premier luxury events venue based in Bletchley, Milton Keynes, designed to host unforgettable weddings, celebrations, corporate events, conferences, large gatherings, and special occasions.
+          </p>
+          <p class="section-copy">
+            Combining elegance, versatility, and exceptional service, the venue offers a stunning contemporary setting with spacious event halls, stylish interiors, professional lighting, stage facilities, and flexible event layouts.
+          </p>
+          <dl class="welcome-meta">
+            <div>
+              <dt>Setting</dt>
+              <dd>Events Hall &amp; Luxury Accommodations</dd>
+            </div>
+            <div>
+              <dt>Guests</dt>
+              <dd>100–400 celebrations</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="welcome-visual reveal">
+          <img
+            src="https://img1.wsimg.com/isteam/ip/0c7266a9-49ca-48b2-bbb8-c66ee1711385/DSC09683.jpg"
+            alt="Grand banqueting hall setup with stage, floral arch and crystal chandeliers"
+            width="2560"
+            height="1707"
+            loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="suite" id="suite">
+      <div class="suite-layout">
+        <div class="suite-media">
+          <img
+            src="https://img1.wsimg.com/isteam/ip/0c7266a9-49ca-48b2-bbb8-c66ee1711385/photo_2025-12-19%2003.08.19-dd3347d.jpeg"
+            alt="The Crystal Ballroom dressed for a wedding breakfast with round tables and tall floral centrepieces"
+            width="1280"
+            height="720"
+            loading="lazy">
+        </div>
+        <div class="suite-copy reveal">
+          <p class="section-label">The Layout</p>
+          <h2 class="section-title">The Crystal Ballroom</h2>
+          <p class="section-copy">
+            Our breath-taking hall, The Crystal Ballroom, makes for a stunning grand affair. Boasting a capacity from 50–500 people seated, the banquet hall is perfect for your Wedding Breakfast — and for dancing the night away under exquisite chandeliers, surrounded by the lighting system.
+          </p>
+          <ul class="capacity-list" aria-label="Published capacities">
+            <li><strong>100–400</strong> Seated lunches and dinners with dance floor</li>
+            <li><strong>100–500</strong> Seated lunches and dinners without dance floor</li>
+            <li><strong>100–500</strong> Parties and receptions</li>
+            <li><strong>100–600</strong> Meetings, conferences, standing barbecues &amp; buffets</li>
+          </ul>
+          <p class="section-copy" style="font-size:0.95rem;margin-bottom:1.5rem;">
+            Bridal suites and dressing rooms are available alongside the main ballroom.
+          </p>
+          <a class="btn btn-gold" href="#contact">Enquire about availability</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="amenities">
+      <div class="container">
+        <div class="features-intro reveal">
+          <p class="section-label">Amenities &amp; Services</p>
+          <h2 class="section-title">Everything listed for a seamless celebration</h2>
+          <p class="section-copy">
+            From luxury decorated ballrooms and AV to catering flexibility, bridal preparation spaces, and accessible facilities.
+          </p>
+        </div>
+
+        <div class="feature-rail reveal">
+          <article class="feature-item">
+            <h3>Decor &amp; ambience</h3>
+            <p>Luxury decorated ballroom, venue styling &amp; decor, in-house decorators, chandeliers, professional lighting and stage facilities.</p>
+          </article>
+          <article class="feature-item">
+            <h3>Catering &amp; bar</h3>
+            <p>Customized catering and bar services, kitchen &amp; buffet access, own catering &amp; drinks allowed, plus an in-house list of certified catering vendors.</p>
+          </article>
+          <article class="feature-item">
+            <h3>Dance floor &amp; AV</h3>
+            <p>Dancefloor, AV system, audio-visual equipment and technical support for music, speeches and presentations.</p>
+          </article>
+          <article class="feature-item">
+            <h3>Bridal preparation</h3>
+            <p>Bridal suites and dressing rooms, including a bridal changing room in package inclusions.</p>
+          </article>
+          <article class="feature-item">
+            <h3>Coordination</h3>
+            <p>Dedicated event staff and security, seasoned event professionals, and full catering coordination on higher packages.</p>
+          </article>
+          <article class="feature-item">
+            <h3>Access &amp; parking</h3>
+            <p>On-site parking listed in packages; wheelchair ramps, accessible washrooms; nearby NCP and St Albert long-stay options.</p>
+          </article>
+        </div>
+
+        <div class="feature-showcase">
+          <figure class="reveal">
+            <img
+              src="https://img1.wsimg.com/isteam/ip/0c7266a9-49ca-48b2-bbb8-c66ee1711385/IMG_9286.jpg"
+              alt="Long banquet table with white floral runner, gold cutlery and Chiavari chairs"
+              width="2560"
+              height="1707"
+              loading="lazy">
+            <figcaption>Table &amp; decor styling</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img
+              src="https://img1.wsimg.com/isteam/ip/0c7266a9-49ca-48b2-bbb8-c66ee1711385/photo_2025-12-19%2003.33.41.jpeg"
+              alt="Crystal chandelier and white ceiling draping with blossom trees"
+              width="1280"
+              height="853"
+              loading="lazy">
+            <figcaption>Chandeliers &amp; draping</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="packages" id="packages">
+      <div class="container reveal">
+        <p class="section-label">Venue Hire &amp; Experiences</p>
+        <h2 class="section-title">Beautifully decorated, fully flexible packages</h2>
+        <p class="section-copy">
+          Beautifully decorated, fully flexible packages — from venue styling with your own suppliers through to catering and platinum all-inclusive celebrations.
+        </p>
+
+        <div class="package-list">
+          <article class="package">
+            <div>
+              <h3 class="package-name">Essential Celebration</h3>
+              <p class="package-price"><strong>From £3,995</strong> weekdays · £4,495 weekends</p>
+            </div>
+            <p class="package-desc">For elegant celebrations with full flexibility — a beautifully styled venue while maintaining freedom over catering, drinks and suppliers.</p>
+            <ul class="package-includes">
+              <li>Luxury decorated ballroom</li>
+              <li>Chiavari chairs &amp; styled tables</li>
+              <li>Dancefloor &amp; AV system</li>
+              <li>Bridal changing room</li>
+              <li>Kitchen &amp; buffet access</li>
+              <li>Own catering &amp; drinks allowed</li>
+              <li>Cleaning before &amp; after · On-site parking</li>
+            </ul>
+          </article>
+
+          <article class="package">
+            <div>
+              <h3 class="package-name">Signature Wedding Experience</h3>
+              <p class="package-price"><strong>From £7,495</strong> for 100–400 guests</p>
+            </div>
+            <p class="package-desc">Everything in Package 1, with catering handled for you — approved catering service, menu choices (buffet or plated), tea, coffee and table water, basic evening food, professional serving staff and full catering coordination.</p>
+            <ul class="package-includes">
+              <li>Everything in Essential Celebration</li>
+              <li>Approved catering service</li>
+              <li>Buffet or plated menu choices</li>
+              <li>Tea, coffee &amp; table water</li>
+              <li>Basic evening food &amp; serving staff</li>
+            </ul>
+          </article>
+
+          <article class="package">
+            <div>
+              <h3 class="package-name">Platinum Luxury Experience</h3>
+              <p class="package-price"><strong>From £13,995</strong> for 100–400 guests</p>
+            </div>
+            <p class="package-desc">A premium celebration with everything taken care of — for couples and hosts who want the ultimate celebration with no compromises.</p>
+            <ul class="package-includes">
+              <li>Everything in Signature</li>
+              <li>Luxury floral centrepieces · ceremony + reception décor</li>
+              <li>Personalised dance floor</li>
+              <li>DJ, sparklers, smoke machine &amp; lighting package</li>
+              <li>Photo booth · welcome drink · cocktail hour</li>
+              <li>Premium tableware &amp; charger plates</li>
+              <li>Extended venue hours · 2 nights accommodation</li>
+              <li>Hotel partner discount for guests</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="package-note">
+          Rental fees can also vary by event type, duration, and other factors — contact the venue for a quote tailored to your needs. Accommodation add-ons are available through partner hotels.
+        </p>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container location-grid">
+        <div class="reveal">
+          <p class="section-label">How to find us</p>
+          <h2 class="section-title">Bletchley, Milton Keynes</h2>
+          <p class="section-copy">
+            27a Queensway, Bletchley, Milton Keynes, MK2 2DR, United Kingdom.
+          </p>
+          <ul class="location-points">
+            <li>
+              <strong>By train</strong>
+              Bletchley train station is about a 5–7 minute walk from the venue.
+            </li>
+            <li>
+              <strong>Parking nearby</strong>
+              About 2 minutes from Bletchley NCP Car Park; about 3 minutes’ walk from the St Albert long-stay car park (St. Albert Street, MK2 2UG). On-site parking is listed in packages.
+            </li>
+            <li>
+              <strong>By road</strong>
+              The venue notes links to the M1 for guest access.
+            </li>
+          </ul>
+        </div>
+
+        <div class="location-map reveal" aria-label="Location placeholder">
+          <div class="location-map-inner">
+            <p class="pin">The Palatial Hall</p>
+            <p>27a Queensway · Bletchley · Milton Keynes · MK2 2DR</p>
+            <p class="placeholder-note">Building exterior photo not published on source pages reviewed — placeholder used</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-panel">
+        <div class="reveal">
+          <p class="section-label">Contact</p>
+          <h2 class="section-title">Book a viewing or send an enquiry</h2>
+          <p class="section-copy">
+            Drop a line, message on WhatsApp, or call the team to check dates and arrange a private viewing.
+          </p>
+          <div class="contact-details">
+            <div>
+              <a href="tel:+441908040341">01908 040341</a>
+            </div>
+            <div>
+              <a href="mailto:info@thepalatialhall.co.uk">info@thepalatialhall.co.uk</a>
+            </div>
+            <p>
+              <a href="https://wa.me/447783344111">Message us on WhatsApp</a>
+            </p>
+          </div>
+          <div class="contact-hours">
+            <strong>Hours</strong>
+            Open today listed on the live site as 09:00–23:00 (homepage) / 09:00–23:45 (weddings page).
+          </div>
+        </div>
+
+        <div class="contact-cta reveal">
+          <h3>Ready to plan?</h3>
+          <p>Weddings, parties, conferences and cultural celebrations in Milton Keynes.</p>
+          <div class="btn-row">
+            <a class="btn btn-gold" href="tel:+441908040341">Call now</a>
+            <a class="btn btn-ghost" href="mailto:info@thepalatialhall.co.uk">Email enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">The Palatial Hall</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://thepalatialhall.co.uk/weddings">Weddings</a>
+        <a href="https://thepalatialhall.co.uk/gallery">Gallery</a>
+        <a href="https://thepalatialhall.co.uk/venue-hire-%26-experiences">Venue Hire</a>
+        <a href="https://thepalatialhall.co.uk/how-to-find-us">How to Find Us</a>
+      </nav>
+      <p>Prototype inspired by thepalatialhall.co.uk · Milton Keynes</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      const toggle = document.getElementById('menuToggle');
+      const mobile = document.getElementById('navMobile');
+      const closeBtn = document.getElementById('navClose');
+
+      const onScroll = () => {
+        header.classList.toggle('is-scrolled', window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      const openNav = () => {
+        mobile.hidden = false;
+        mobile.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      };
+      const closeNav = () => {
+        mobile.classList.remove('open');
+        mobile.hidden = true;
+        document.body.style.overflow = '';
+      };
+
+      toggle.addEventListener('click', openNav);
+      closeBtn.addEventListener('click', closeNav);
+      mobile.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeNav));
+
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('in'));
+      }
+
+      // Viewing booking widget
+      const viewingDate = document.getElementById('viewingDate');
+      const eventDate = document.getElementById('eventDate');
+      const today = new Date();
+      const iso = (d) => d.toISOString().split('T')[0];
+      viewingDate.min = iso(today);
+      eventDate.min = iso(today);
+
+      viewingDate.addEventListener('change', () => {
+        if (!viewingDate.value) return;
+        const next = new Date(viewingDate.value);
+        if (eventDate.value && eventDate.value < viewingDate.value) {
+          eventDate.value = viewingDate.value;
+        }
+      });
+
+      let guests = 100;
+      let children = 0;
+      const guestTrigger = document.getElementById('guestTrigger');
+      const guestPanel = document.getElementById('guestPanel');
+      const guestSummary = document.getElementById('guestSummary');
+      const guestsCount = document.getElementById('guestsCount');
+      const childrenCount = document.getElementById('childrenCount');
+      const guestsInput = document.getElementById('guestsInput');
+      const childrenInput = document.getElementById('childrenInput');
+      const guestsMinus = document.getElementById('guestsMinus');
+      const guestsPlus = document.getElementById('guestsPlus');
+      const childrenMinus = document.getElementById('childrenMinus');
+      const childrenPlus = document.getElementById('childrenPlus');
+
+      const updateGuests = () => {
+        guestsCount.textContent = String(guests);
+        childrenCount.textContent = String(children);
+        guestsInput.value = String(guests);
+        childrenInput.value = String(children);
+        let text = guests + (guests === 1 ? ' guest' : ' guests');
+        if (children > 0) text += ', ' + children + (children === 1 ? ' child' : ' children');
+        guestSummary.textContent = text;
+        guestsMinus.disabled = guests <= 20;
+        guestsPlus.disabled = guests >= 600;
+        childrenMinus.disabled = children <= 0;
+        childrenPlus.disabled = children >= 100;
+      };
+
+      const openGuests = () => {
+        guestPanel.hidden = false;
+        guestPanel.classList.add('open');
+        guestTrigger.setAttribute('aria-expanded', 'true');
+      };
+      const closeGuests = () => {
+        guestPanel.classList.remove('open');
+        guestPanel.hidden = true;
+        guestTrigger.setAttribute('aria-expanded', 'false');
+      };
+
+      guestTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (guestPanel.classList.contains('open')) closeGuests();
+        else openGuests();
+      });
+      guestsMinus.addEventListener('click', () => { if (guests > 20) { guests -= 10; updateGuests(); } });
+      guestsPlus.addEventListener('click', () => { if (guests < 600) { guests += 10; updateGuests(); } });
+      childrenMinus.addEventListener('click', () => { if (children > 0) { children -= 1; updateGuests(); } });
+      childrenPlus.addEventListener('click', () => { if (children < 100) { children += 1; updateGuests(); } });
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.guest-selector')) closeGuests();
+      });
+      updateGuests();
+
+      document.getElementById('bookingForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const subject = encodeURIComponent('Private viewing request — The Palatial Hall');
+        const body = encodeURIComponent(
+          'Viewing date: ' + viewingDate.value +
+          '\nEvent date: ' + eventDate.value +
+          '\nGuests: ' + guests +
+          '\nChildren: ' + children +
+          '\nOccasion: ' + document.getElementById('eventType').value
+        );
+        window.location.href = 'mailto:info@thepalatialhall.co.uk?subject=' + subject + '&body=' + body;
+      });
+    })();
+  </script>
+</body>
+</html>
