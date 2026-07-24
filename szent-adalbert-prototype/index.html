@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szent Adalbert Event Center — Esztergom, Hungary</title>
+  <meta name="description" content="Szent Adalbert Rendezvényközpont Esztergom — conference and wedding venue by the Basilica and the Danube. Capacity up to 800 guests.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d3a051;
+      --gold-bright: #e0b56a;
+      --gold-deep: #ac7a2b;
+      --ink: #141414;
+      --charcoal: #24252a;
+      --slate: #3a3d45;
+      --muted: #6a6e78;
+      --limestone: #e7e5e1;
+      --limestone-deep: #d4d1cb;
+      --paper: #f3f2ef;
+      --white: #ffffff;
+      --shadow: 0 16px 48px rgba(20, 20, 20, 0.12);
+      --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Outfit", sans-serif;
+      font-weight: 300;
+      color: var(--slate);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .container {
+      width: min(1140px, 90vw);
+      margin-inline: auto;
+    }
+
+    h1, h2, h3, .brand-name {
+      font-family: "Domine", serif;
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.5rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-bright);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+
+    .btn-ink {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .btn-ink:hover { background: var(--charcoal); }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      padding: 1.05rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(20, 20, 20, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+      padding: 0.75rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: var(--white);
+    }
+
+    .logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+      padding: 4px;
+    }
+
+    .brand-name {
+      font-size: 1.05rem;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .brand-name small {
+      display: block;
+      font-family: "Outfit", sans-serif;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.15rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--gold); }
+
+    .header-cta {
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.55rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .header-cta:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 20, 20, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: "Domine", serif;
+      font-size: 1.5rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      transform: scale(1.06);
+      animation: heroDrift 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.06) translate3d(0, 0, 0); }
+      to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(20, 20, 20, 0.35) 0%, rgba(20, 20, 20, 0.25) 40%, rgba(20, 20, 20, 0.82) 100%),
+        linear-gradient(90deg, rgba(20, 20, 20, 0.45) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1140px, 90vw);
+      margin: 0 auto;
+      padding: 0 0 clamp(5rem, 12vh, 7.5rem);
+      max-width: 38rem;
+      animation: heroFade 1.1s var(--transition) both;
+    }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content .eyebrow {
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 4.4rem);
+      color: var(--white);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-brand-sub {
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 0.75rem;
+      max-width: 28rem;
+    }
+
+    .hero-support {
+      font-size: 0.98rem;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 1.75rem;
+      max-width: 30rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* Inquiry */
+    .inquiry-section {
+      position: relative;
+      z-index: 5;
+      margin-top: -3.5rem;
+      padding-bottom: 1rem;
+    }
+
+    .inquiry-card {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+      border-top: 3px solid var(--gold);
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--limestone-deep);
+      background: var(--paper);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .field input:focus,
+    .field select:focus { border-color: var(--gold); }
+
+    .inquiry-card .btn {
+      height: 2.85rem;
+      white-space: nowrap;
+      padding-inline: 1.4rem;
+    }
+
+    .inquiry-note {
+      margin-top: 0.85rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Shared section */
+    section { padding: clamp(3.75rem, 8vw, 6.5rem) 0; }
+
+    .section-head {
+      max-width: 38rem;
+      margin-bottom: clamp(2rem, 5vw, 3rem);
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.85rem, 4vw, 2.65rem);
+      margin: 0.55rem 0 0.85rem;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s var(--transition), transform 0.7s var(--transition);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Spaces */
+    .spaces {
+      background: var(--white);
+    }
+
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem 1.75rem;
+    }
+
+    .space-item {
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--limestone-deep);
+    }
+
+    .space-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .space-item p {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .space-meta {
+      display: block;
+      margin-top: 0.65rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    .spaces-feature {
+      margin-top: 2.75rem;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+      min-height: 320px;
+    }
+
+    .spaces-feature img {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+    }
+
+    .spaces-feature-copy {
+      background: var(--charcoal);
+      color: rgba(255, 255, 255, 0.82);
+      padding: clamp(1.75rem, 4vw, 2.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .spaces-feature-copy h3 {
+      color: var(--white);
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      margin: 0.5rem 0 0.85rem;
+    }
+
+    .spaces-feature-copy p { margin-bottom: 1.25rem; }
+
+    /* Amenities */
+    .amenities {
+      background:
+        linear-gradient(135deg, #1a1b20 0%, #2a2c34 55%, #1e2030 100%);
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .amenities .section-head h2,
+    .amenities .eyebrow { color: var(--white); }
+    .amenities .eyebrow { color: var(--gold); }
+    .amenities .section-lead { color: rgba(255, 255, 255, 0.65); }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem 1.5rem;
+    }
+
+    .amenity h3 {
+      color: var(--white);
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .amenity p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    .amenity-mark {
+      width: 2rem;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 0.85rem;
+    }
+
+    /* Weddings */
+    .weddings {
+      background: var(--limestone);
+    }
+
+    .weddings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .weddings-visual {
+      position: relative;
+      min-height: 380px;
+      overflow: hidden;
+    }
+
+    .weddings-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      object-fit: cover;
+    }
+
+    .weddings-copy h2 {
+      font-size: clamp(1.85rem, 4vw, 2.5rem);
+      margin: 0.55rem 0 0.9rem;
+    }
+
+    .weddings-copy p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .weddings-list {
+      list-style: none;
+      margin: 1.25rem 0 1.5rem;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .weddings-list li {
+      padding-left: 1.15rem;
+      position: relative;
+      font-size: 0.95rem;
+      color: var(--slate);
+    }
+
+    .weddings-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 0.45rem;
+      height: 0.45rem;
+      background: var(--gold);
+    }
+
+    .sale-note {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      font-size: 0.88rem;
+      color: var(--slate);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      grid-column: span 4;
+      min-height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 7;
+      min-height: 320px;
+    }
+
+    .gallery-item:nth-child(2) {
+      grid-column: span 5;
+      min-height: 320px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--transition);
+    }
+
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-item span {
+      position: absolute;
+      left: 0.85rem;
+      bottom: 0.85rem;
+      padding: 0.35rem 0.65rem;
+      background: rgba(20, 20, 20, 0.72);
+      color: var(--white);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Location */
+    .location {
+      background: var(--white);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .location-facts {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .location-facts li {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 0.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--limestone-deep);
+      font-size: 0.95rem;
+    }
+
+    .location-facts strong {
+      font-family: "Outfit", sans-serif;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      padding-top: 0.2rem;
+    }
+
+    .map-panel {
+      background:
+        linear-gradient(160deg, rgba(36, 37, 42, 0.88), rgba(36, 37, 42, 0.72)),
+        url("https://www.szentadalbert.hu/hu/images/red/Hotel_040_resize.jpg") center/cover;
+      min-height: 360px;
+      color: var(--white);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .map-panel h3 {
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .map-panel p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+
+    .map-placeholder {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Contact / enquiry */
+    .contact {
+      background: var(--charcoal);
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .contact .section-head h2 { color: var(--white); }
+    .contact .eyebrow { color: var(--gold); }
+    .contact .section-lead { color: rgba(255, 255, 255, 0.6); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 2rem;
+    }
+
+    .contact-details {
+      list-style: none;
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .contact-details li strong {
+      display: block;
+      font-family: "Outfit", sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-details a:hover { color: var(--gold-bright); }
+
+    .enquiry-form {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .enquiry-form .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+
+    .enquiry-form label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.35rem;
+    }
+
+    .enquiry-form input,
+    .enquiry-form select,
+    .enquiry-form textarea {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--white);
+      outline: none;
+    }
+
+    .enquiry-form input:focus,
+    .enquiry-form select:focus,
+    .enquiry-form textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .enquiry-form textarea { min-height: 110px; resize: vertical; }
+
+    .form-status {
+      font-size: 0.88rem;
+      color: var(--gold);
+      min-height: 1.25rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.55);
+      padding: 2.5rem 0 2rem;
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+    }
+
+    .footer-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .footer-brand span {
+      font-family: "Domine", serif;
+      font-size: 1rem;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .footer-nav a:hover { color: var(--gold); }
+
+    .footer-meta {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .source-note {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
+
+      .inquiry-card {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .inquiry-card .btn {
+        grid-column: span 2;
+        width: 100%;
+      }
+
+      .spaces-grid { grid-template-columns: 1fr 1fr; }
+      .spaces-feature { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .weddings-grid,
+      .location-grid,
+      .contact-grid { grid-template-columns: 1fr; }
+
+      .gallery-item,
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(2) {
+        grid-column: span 6;
+        min-height: 200px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .inquiry-card { grid-template-columns: 1fr; }
+      .inquiry-card .btn { grid-column: span 1; }
+
+      .spaces-grid,
+      .amenities-grid { grid-template-columns: 1fr; }
+
+      .gallery-item,
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(2) {
+        grid-column: span 12;
+      }
+
+      .enquiry-form .field-row { grid-template-columns: 1fr; }
+      .location-facts li { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-bg img { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">
+        <img src="https://www.szentadalbert.hu/hu/images/szentadalbertlogo-h-en.png" alt="Szent Adalbert Event Center logo">
+        <span class="brand-name">Szent Adalbert<small>Event Center</small></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#spaces">Spaces</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#weddings">Weddings</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </nav>
+      <a href="#enquiry" class="header-cta">Request a quote</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-hidden="true">
+    <button class="nav-close" id="navClose" aria-label="Close menu">×</button>
+    <a href="#spaces">Spaces</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#weddings">Weddings</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#enquiry">Request a quote</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero" aria-label="Hero">
+      <div class="hero-bg">
+        <img
+          src="https://www.szentadalbert.hu/hu/images/com_osgallery/gal-1/original/szakhomlok00264E6271A-FA9C-2EFE-3F42-CFE10C64849D.jpg"
+          alt="Szent Adalbert Event Center exterior courtyard in Esztergom">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="eyebrow">Esztergom · Hungary</span>
+        <h1>Szent Adalbert</h1>
+        <p class="hero-brand-sub">Event Center</p>
+        <p class="hero-tagline">All in one place</p>
+        <p class="hero-support">Celebrate and convene in the historic quarter of Esztergom, embraced by the Basilica and the Danube.</p>
+        <div class="hero-actions">
+          <a href="#enquiry" class="btn btn-gold">Request a quotation</a>
+          <a href="#spaces">Explore spaces</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="inquiry-section" id="inquiry" aria-label="Event inquiry">
+      <div class="container">
+        <form class="inquiry-card" id="inquiryForm" onsubmit="return false;">
+          <div class="field">
+            <label for="eventDate">Event date</label>
+            <input type="date" id="eventDate" name="eventDate">
+          </div>
+          <div class="field">
+            <label for="eventType">Event type</label>
+            <select id="eventType" name="eventType">
+              <option value="">Select type</option>
+              <option value="conference">Conference / training</option>
+              <option value="wedding">Wedding</option>
+              <option value="corporate">Corporate event</option>
+              <option value="family">Family celebration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="guests">Guests</label>
+            <select id="guests" name="guests">
+              <option value="">Guest band</option>
+              <option value="1-50">Up to 50</option>
+              <option value="51-150">51–150</option>
+              <option value="151-400">151–400</option>
+              <option value="401-800">401–800</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="spacePref">Preferred space</label>
+            <select id="spacePref" name="spacePref">
+              <option value="">Any space</option>
+              <option value="szent-istvan">Szent István conference hall</option>
+              <option value="banquet">Banquet hall</option>
+              <option value="reception">Reception hall</option>
+              <option value="restaurant">Szent Adalbert restaurant</option>
+              <option value="outdoor">Garden / inner court</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-ink" id="inquirySubmit">Get a quote</button>
+        </form>
+        <p class="inquiry-note">Prototype inquiry form — the live site invites personalized offers via Requests for quotations. No fixed package prices are published online.</p>
+      </div>
+    </section>
+
+    <section class="spaces" id="spaces">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Our halls</p>
+          <h2>Spaces for conferences, ceremonies, and celebrations</h2>
+          <p class="section-lead">From family dinners to multi-day training courses, weddings, or conferences — halls as labeled on the Szent Adalbert Event Center site.</p>
+        </div>
+
+        <div class="spaces-grid">
+          <article class="space-item reveal">
+            <h3>Szent István conference hall</h3>
+            <p>The largest hall of the building — multifunctional, ground floor, divisible into three sections with soundproof walls.</p>
+            <span class="space-meta">Conferences · lectures · business</span>
+          </article>
+          <article class="space-item reveal">
+            <h3>Banquet hall</h3>
+            <p>The most elegant hall of the event center — first floor, with beautiful paintings and huge crystal chandeliers.</p>
+            <span class="space-meta">Galas · receptions · weddings</span>
+          </article>
+          <article class="space-item reveal">
+            <h3>Reception hall</h3>
+            <p>Ideal for small presentations, trainings, and civil ceremonies. Features Ernő Jeges’s monumental painting.</p>
+            <span class="space-meta">Civil ceremony · training</span>
+          </article>
+          <article class="space-item reveal">
+            <h3>Szent Adalbert restaurant</h3>
+            <p>Smooth interior with direct terrace access — gatherings of relatives or friends, and weddings.</p>
+            <span class="space-meta">Dining · terrace</span>
+          </article>
+          <article class="space-item reveal">
+            <h3>Auditorium</h3>
+            <p>Fixed rows of chairs — lectures, smaller conferences, and training courses.</p>
+            <span class="space-meta">Fixed seating</span>
+          </article>
+          <article class="space-item reveal">
+            <h3>Classroom</h3>
+            <p>Ideal for training courses and classes for smaller groups. The center has several rooms of this kind.</p>
+            <span class="space-meta">Small groups · 30–50</span>
+          </article>
+          <article class="space-item reveal">
+            <h3>Mindszenty event hall</h3>
+            <p>Spacious hall with enclosed areas for exhibitions, team building, conferences, plays, or art openings.</p>
+            <span class="space-meta">Flexible programme</span>
+          </article>
+          <article class="space-item reveal">
+            <h3>Library &amp; Chapel</h3>
+            <p>The Theological College library and an on-site chapel for church-related ceremonies — contact for details.</p>
+            <span class="space-meta">Special venues</span>
+          </article>
+          <article class="space-item reveal">
+            <h3>Garden &amp; inner court</h3>
+            <p>Ornamental garden and inner court for receptions, shows, wedding ceremonies, or as expansion to indoor events.</p>
+            <span class="space-meta">Outdoor locations</span>
+          </article>
+        </div>
+
+        <div class="spaces-feature reveal">
+          <img
+            src="https://www.szentadalbert.hu/hu/images/slideszak/slideszak02x.jpg"
+            alt="Szent István conference hall set for a large meeting">
+          <div class="spaces-feature-copy">
+            <p class="eyebrow">Capacity</p>
+            <h3>A complex for up to 800 guests</h3>
+            <p>Larger halls for conferences and business events; smaller section halls ideal for 30–50 people. Additional locations at Prímás Pince and Hotel Adalbert.</p>
+            <a href="#enquiry" class="btn btn-gold">Ask for a personalized offer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Benefits</p>
+          <h2>Everything in one hand</h2>
+          <p class="section-lead">Amenities listed on the live site — rooms, catering, parking, technical equipment, and professional event planning.</p>
+        </div>
+        <div class="amenities-grid">
+          <article class="amenity reveal">
+            <div class="amenity-mark" aria-hidden="true"></div>
+            <h3>Own parking</h3>
+            <p>Secure on-site parking for up to 150 vehicles.</p>
+          </article>
+          <article class="amenity reveal">
+            <div class="amenity-mark" aria-hidden="true"></div>
+            <h3>Own catering</h3>
+            <p>In-house kitchen for coffee breaks, buffets, gala dinners, and wedding meals.</p>
+          </article>
+          <article class="amenity reveal">
+            <div class="amenity-mark" aria-hidden="true"></div>
+            <h3>Technical equipment</h3>
+            <p>Projector &amp; screen, sound &amp; microphones, Wi-Fi, teleconferencing, hybrid conference, simultaneous interpretation, flip chart.</p>
+          </article>
+          <article class="amenity reveal">
+            <div class="amenity-mark" aria-hidden="true"></div>
+            <h3>Climate &amp; light</h3>
+            <p>Ventilation, heating and cooling; natural light with darkening options.</p>
+          </article>
+          <article class="amenity reveal">
+            <div class="amenity-mark" aria-hidden="true"></div>
+            <h3>Event planning</h3>
+            <p>Help from planning through organization to implementation.</p>
+          </article>
+          <article class="amenity reveal">
+            <div class="amenity-mark" aria-hidden="true"></div>
+            <h3>Accommodation</h3>
+            <p>Hotel Adalbert nearby — bridal parties up to 150 guests; wedding breakfast buffet.</p>
+          </article>
+          <article class="amenity reveal">
+            <div class="amenity-mark" aria-hidden="true"></div>
+            <h3>Accessible halls</h3>
+            <p>Elevator access for guests with physical disabilities.</p>
+          </article>
+          <article class="amenity reveal">
+            <div class="amenity-mark" aria-hidden="true"></div>
+            <h3>Own furniture</h3>
+            <p>Versatile furnishing options arranged to match your ideas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="weddings" id="weddings">
+      <div class="container weddings-grid">
+        <div class="weddings-visual reveal">
+          <img
+            src="https://www.szentadalbert.hu/hu/images/slideszak/slideszak03.jpg"
+            alt="Wedding banquet setup in a Szent Adalbert hall">
+        </div>
+        <div class="weddings-copy reveal">
+          <p class="eyebrow">Weddings</p>
+          <h2>Make your wedding vows where kings did the same</h2>
+          <p>Church and civil ceremony, wedding, and accommodation — everything together in the romantic quarter of Esztergom.</p>
+          <ul class="weddings-list">
+            <li>Elegant indoor and outdoor venues, including civil ceremony spaces</li>
+            <li>Dishes from traditional cuisine to gourmet</li>
+            <li>Accommodation for wedding guests, up to 150 people</li>
+            <li>Professional event planning</li>
+          </ul>
+          <p class="sale-note"><strong>2026 Wedding Sale:</strong> 2027 weddings at this year’s prices — valid until April 30, 2026. Ask for a quotation; fixed package prices are not listed online.</p>
+          <div style="margin-top: 1.5rem;">
+            <a href="#enquiry" class="btn btn-ink">Plan your wedding</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery" aria-label="Venue gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Gallery</p>
+          <h2>The building, the halls, the grounds</h2>
+          <p class="section-lead">Photographs from the live Szent Adalbert gallery and homepage.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal">
+            <img src="https://www.szentadalbert.hu/hu/images/red/esk-esti01_resize.jpg" alt="Evening wedding portrait in the courtyard">
+            <span>Courtyard at night</span>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="https://www.szentadalbert.hu/hu/images/slideszak/slideszak01.jpg" alt="Historic lobby with statue and staircase">
+            <span>Historic lobby</span>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="https://www.szentadalbert.hu/hu/images/red/konf_catering3_resize.jpg" alt="In-house catering buffet">
+            <span>Own catering</span>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="https://www.szentadalbert.hu/hu/images/red/Hotel_040_resize.jpg" alt="Illuminated garden walkway at night">
+            <span>Gardens &amp; grounds</span>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="https://www.szentadalbert.hu/hu/images/slideszak/slideszak02x.jpg" alt="Conference hall with projection screens">
+            <span>Conference setup</span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container location-grid">
+        <div class="reveal">
+          <p class="eyebrow">Visit</p>
+          <h2>Historic Esztergom, by the Basilica and the Danube</h2>
+          <p class="section-lead">A jewel of the Danube Bend — close to Budapest, with royal and ecclesiastical heritage around the venue.</p>
+          <ul class="location-facts">
+            <li>
+              <strong>Address</strong>
+              <span>2500 Esztergom, Szent István tér 10. <em style="color:var(--muted);font-size:0.85em;">(Footer on the live site also lists tér 11.)</em></span>
+            </li>
+            <li>
+              <strong>Setting</strong>
+              <span>Historic quarter, embraced by the Basilica and the Danube</span>
+            </li>
+            <li>
+              <strong>Budapest</strong>
+              <span>About 40 km from the capital</span>
+            </li>
+            <li>
+              <strong>Nearby</strong>
+              <span>Basilica, medieval royal castle, Danube bridge, Várhegy</span>
+            </li>
+          </ul>
+        </div>
+        <div class="map-panel reveal">
+          <p class="map-placeholder">Map placeholder</p>
+          <h3>Szent István tér, Esztergom</h3>
+          <p>Interactive map not embedded in this prototype. Use the address above or the contact form on the live site.</p>
+          <a href="#enquiry" class="btn btn-ghost">Contact the centre</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="enquiry">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Requests for quotations</h2>
+          <p class="section-lead">Ask the professional team for a personalized offer — the live site does not publish fixed venue package prices.</p>
+        </div>
+        <div class="contact-grid">
+          <ul class="contact-details reveal">
+            <li>
+              <strong>Centre</strong>
+              Szent Adalbert Center<br>
+              2500 Esztergom, Szent István tér 10.
+            </li>
+            <li>
+              <strong>Phone</strong>
+              <a href="tel:+3633541900">+36 33 541 900</a>
+            </li>
+            <li>
+              <strong>Sales</strong>
+              Diána Priegl, sales manager<br>
+              <a href="mailto:priegl.diana@szentadalbert.hu">priegl.diana@szentadalbert.hu</a><br>
+              +36 20 663 3582
+            </li>
+            <li>
+              <strong>Event planning</strong>
+              Laura Gregóczki, assistant<br>
+              <a href="mailto:titkarsag@szentadalbert.hu">titkarsag@szentadalbert.hu</a><br>
+              +36 20 214 1729
+            </li>
+            <li>
+              <strong>Sister venues</strong>
+              Hotel Adalbert · Prímás Pince
+            </li>
+          </ul>
+
+          <form class="enquiry-form reveal" id="enquiryForm" novalidate>
+            <div class="field-row">
+              <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" autocomplete="name">
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email">
+              </div>
+            </div>
+            <div class="field-row">
+              <div>
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel">
+              </div>
+              <div>
+                <label for="enquiryType">Interest</label>
+                <select id="enquiryType" name="enquiryType">
+                  <option value="conference">Conference / event</option>
+                  <option value="wedding">Wedding</option>
+                  <option value="catering">Catering</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about your event…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" id="enquirySubmit">Send inquiry</button>
+            <p class="form-status" id="formStatus" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#top" class="footer-brand">
+          <img src="https://www.szentadalbert.hu/hu/images/szentadalbertlogo-h-en.png" alt="">
+          <span>Szent Adalbert Event Center</span>
+        </a>
+        <ul class="footer-nav">
+          <li><a href="#spaces">Spaces</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#weddings">Weddings</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#enquiry">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-meta">
+        <p>© Szent Máté Ingatlanüzemeltetési Központ</p>
+        <p class="source-note">Prototype based on content from szentadalbert.hu — not an official site.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("header");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMobile = document.getElementById("navMobile");
+      const navClose = document.getElementById("navClose");
+
+      const onScroll = () => {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      const openNav = () => {
+        navMobile.classList.add("open");
+        navMobile.setAttribute("aria-hidden", "false");
+        menuToggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      };
+      const closeNav = () => {
+        navMobile.classList.remove("open");
+        navMobile.setAttribute("aria-hidden", "true");
+        menuToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      };
+
+      menuToggle.addEventListener("click", openNav);
+      navClose.addEventListener("click", closeNav);
+      navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
+
+      const reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add("visible"));
+      }
+
+      const inquirySubmit = document.getElementById("inquirySubmit");
+      inquirySubmit.addEventListener("click", () => {
+        const type = document.getElementById("eventType").value || "your event";
+        const guests = document.getElementById("guests").value || "your guest count";
+        document.getElementById("enquiry").scrollIntoView({ behavior: "smooth" });
+        const status = document.getElementById("formStatus");
+        status.textContent = "Prototype only — please request a quotation on szentadalbert.hu for " + type + " (" + guests + ").";
+      });
+
+      document.getElementById("enquiryForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        document.getElementById("formStatus").textContent =
+          "This is a prototype form. No message was sent — use the contact details or the live Requests for quotations page.";
+      });
+    })();
+  </script>
+</body>
+</html>
