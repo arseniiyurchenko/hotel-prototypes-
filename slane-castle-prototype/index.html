@@ -281,25 +281,31 @@
       filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
     }
 
-    .hero-brand-text {
+    .hero .hero-brand-text {
+      margin: 0;
+      max-width: none;
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(2.8rem, 8vw, 5.4rem);
       font-weight: 600;
       line-height: 0.95;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+      color: var(--white);
       text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
     }
 
-    .hero h2 {
+    .hero .hero-line {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
       font-size: clamp(1.55rem, 3.2vw, 2.35rem);
       font-weight: 500;
       font-style: italic;
+      line-height: 1.2;
       color: rgba(255, 255, 255, 0.95);
       max-width: 18ch;
     }
 
-    .hero p {
+    .hero .hero-support {
       margin-top: 1rem;
       max-width: 34rem;
       font-size: 1.05rem;
@@ -821,10 +827,10 @@
       <div class="hero-copy">
         <div class="hero-brand">
           <img src="https://www.slanecastle.ie/wp-content/uploads/2022/05/new-logo-content.png" alt="">
-          <p class="hero-brand-text">Slane Castle</p>
+          <h1 class="hero-brand-text">Slane Castle</h1>
         </div>
-        <h2>Rock. Royalty. Romance.</h2>
-        <p>A private exclusive venue on a 1,500 acre estate in the heart of the Boyne Valley, Co. Meath — open by appointment only.</p>
+        <p class="hero-line">Rock. Royalty. Romance.</p>
+        <p class="hero-support">A private exclusive venue on a 1,500 acre estate in the heart of the Boyne Valley, Co. Meath — open by appointment only.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#enquire">Enquire</a>
           <a class="btn btn-ghost" href="#spaces">Explore spaces</a>
