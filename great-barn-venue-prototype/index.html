@@ -53,7 +53,10 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5.5rem;
+    }
 
     body {
       font-family: "Outfit", sans-serif;
@@ -86,7 +89,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 0.9rem 0;
+      padding: 0.9rem 1.5rem;
       transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
     }
 
@@ -94,7 +97,7 @@
       background: rgba(26, 36, 51, 0.94);
       backdrop-filter: blur(12px);
       box-shadow: 0 8px 28px rgba(26, 36, 51, 0.28);
-      padding: 0.55rem 0;
+      padding: 0.55rem 1.5rem;
     }
 
     .header-inner {
@@ -102,6 +105,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 1.25rem;
+      width: min(1120px, 100%);
+      margin-inline: auto;
     }
 
     .logo {
@@ -112,31 +117,9 @@
     }
 
     .logo img {
-      height: 48px;
+      height: 52px;
       width: auto;
       filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-    }
-
-    .logo-text .brand {
-      font-family: "Cormorant", serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .logo-text .place {
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0.78;
-      font-weight: 400;
     }
 
     .nav-desktop {
@@ -749,6 +732,103 @@
 
     .field textarea { min-height: 120px; resize: vertical; }
 
+    .field input[type="date"] {
+      color-scheme: dark;
+      min-height: 2.9rem;
+    }
+
+    .guest-field { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--white);
+      padding: 0.85rem 0.95rem;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .guest-trigger:hover,
+    .guest-trigger[aria-expanded="true"] {
+      border-color: var(--glow);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .guest-trigger .chevron {
+      opacity: 0.7;
+      font-size: 0.75rem;
+    }
+
+    .guest-panel {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 0.45rem);
+      z-index: 20;
+      background: #243246;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .guest-panel.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .guest-row + .guest-row { margin-top: 0.9rem; }
+
+    .guest-row span {
+      font-size: 0.95rem;
+    }
+
+    .guest-row small {
+      display: block;
+      font-size: 0.75rem;
+      opacity: 0.65;
+      margin-top: 0.15rem;
+    }
+
+    .counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .counter button {
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: transparent;
+      color: var(--white);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .counter button:hover {
+      border-color: var(--glow);
+      background: rgba(212, 181, 106, 0.12);
+    }
+
+    .counter strong {
+      min-width: 1.5rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
     .form-status {
       min-height: 1.4rem;
       font-size: 0.92rem;
@@ -810,6 +890,8 @@
     }
 
     @media (max-width: 900px) {
+      .site-header { padding: 0.85rem 1.1rem; }
+      .site-header.scrolled { padding: 0.55rem 1.1rem; }
       .nav-desktop, .header-cta { display: none; }
       .menu-toggle { display: block; }
 
@@ -839,7 +921,6 @@
       section { padding: 4rem 0; }
 
       .hero-brand { font-size: 2.7rem; }
-      .logo-text { display: none; }
     }
 
     @media (max-width: 560px) {
@@ -848,6 +929,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
       .hero-bg, .intro-visual img { animation: none; }
       .reveal { opacity: 1; transform: none; transition: none; }
       .hero-content { animation: none; }
@@ -856,18 +938,14 @@
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
+    <div class="header-inner">
       <a class="logo" href="#top" aria-label="The Great Barn home">
         <img
           src="https://web.archive.org/web/20211103201711im_/https://greatbarnvenue.uk/wp-content/uploads/TGB_large_trans_crop.png"
           alt="The Great Barn at Headstone Manor &amp; Museum logo"
-          width="160"
-          height="73"
+          width="200"
+          height="92"
         >
-        <span class="logo-text">
-          <span class="brand">The Great Barn</span>
-          <span class="place">Headstone Manor</span>
-        </span>
       </a>
       <nav aria-label="Primary">
         <ul class="nav-desktop">
@@ -1142,6 +1220,16 @@
             </div>
             <div class="form-row">
               <div class="field">
+                <label for="eventDate">Preferred event date</label>
+                <input id="eventDate" name="eventDate" type="date" required>
+              </div>
+              <div class="field">
+                <label for="viewingDate">Preferred viewing date</label>
+                <input id="viewingDate" name="viewingDate" type="date">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
                 <label for="eventType">Event type</label>
                 <select id="eventType" name="eventType">
                   <option value="wedding">Wedding</option>
@@ -1150,9 +1238,31 @@
                   <option value="other">Other</option>
                 </select>
               </div>
-              <div class="field">
-                <label for="guests">Approx. guests</label>
-                <input id="guests" name="guests" type="number" min="1" max="250" placeholder="e.g. 120">
+              <div class="field guest-field">
+                <label for="guestTrigger">Guests</label>
+                <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-haspopup="true">
+                  <span id="guestSummary">120 guests</span>
+                  <span class="chevron" aria-hidden="true">▾</span>
+                </button>
+                <div class="guest-panel" id="guestPanel" role="group" aria-label="Guest numbers">
+                  <div class="guest-row">
+                    <span>Ceremony guests<small>Up to 250 licensed</small></span>
+                    <div class="counter">
+                      <button type="button" id="ceremonyMinus" aria-label="Fewer ceremony guests">−</button>
+                      <strong id="ceremonyCount">120</strong>
+                      <button type="button" id="ceremonyPlus" aria-label="More ceremony guests">+</button>
+                    </div>
+                  </div>
+                  <div class="guest-row">
+                    <span>Evening guests<small>Up to 200 published</small></span>
+                    <div class="counter">
+                      <button type="button" id="eveningMinus" aria-label="Fewer evening guests">−</button>
+                      <strong id="eveningCount">100</strong>
+                      <button type="button" id="eveningPlus" aria-label="More evening guests">+</button>
+                    </div>
+                  </div>
+                </div>
+                <input type="hidden" id="guests" name="guests" value="120">
               </div>
             </div>
             <div class="field">
@@ -1206,6 +1316,17 @@
       const navClose = document.getElementById("navClose");
       const form = document.getElementById("enquiryForm");
       const status = document.getElementById("formStatus");
+      const guestTrigger = document.getElementById("guestTrigger");
+      const guestPanel = document.getElementById("guestPanel");
+      const guestSummary = document.getElementById("guestSummary");
+      const guestsInput = document.getElementById("guests");
+      const ceremonyCountEl = document.getElementById("ceremonyCount");
+      const eveningCountEl = document.getElementById("eveningCount");
+      const eventDate = document.getElementById("eventDate");
+      const viewingDate = document.getElementById("viewingDate");
+
+      let ceremonyGuests = 120;
+      let eveningGuests = 100;
 
       const onScroll = () => {
         header.classList.toggle("scrolled", window.scrollY > 40);
@@ -1231,6 +1352,52 @@
       navClose.addEventListener("click", closeMenu);
       navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
 
+      const fmt = (d) => d.toISOString().slice(0, 10);
+      const today = new Date();
+      const soon = new Date();
+      soon.setDate(today.getDate() + 14);
+      const later = new Date();
+      later.setDate(today.getDate() + 21);
+      eventDate.min = fmt(today);
+      viewingDate.min = fmt(today);
+      if (!eventDate.value) eventDate.value = fmt(later);
+      if (!viewingDate.value) viewingDate.value = fmt(soon);
+
+      const updateGuestSummary = () => {
+        const text = `${ceremonyGuests} ceremony · ${eveningGuests} evening`;
+        guestSummary.textContent = text;
+        guestsInput.value = String(Math.max(ceremonyGuests, eveningGuests));
+        ceremonyCountEl.textContent = String(ceremonyGuests);
+        eveningCountEl.textContent = String(eveningGuests);
+      };
+      updateGuestSummary();
+
+      guestTrigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const open = guestPanel.classList.toggle("open");
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger && !guestTrigger.contains(e.target)) {
+          guestPanel.classList.remove("open");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.getElementById("ceremonyPlus").addEventListener("click", () => {
+        if (ceremonyGuests < 250) { ceremonyGuests += 10; updateGuestSummary(); }
+      });
+      document.getElementById("ceremonyMinus").addEventListener("click", () => {
+        if (ceremonyGuests > 10) { ceremonyGuests -= 10; updateGuestSummary(); }
+      });
+      document.getElementById("eveningPlus").addEventListener("click", () => {
+        if (eveningGuests < 200) { eveningGuests += 10; updateGuestSummary(); }
+      });
+      document.getElementById("eveningMinus").addEventListener("click", () => {
+        if (eveningGuests > 10) { eveningGuests -= 10; updateGuestSummary(); }
+      });
+
       const reveals = document.querySelectorAll(".reveal");
       if ("IntersectionObserver" in window) {
         const io = new IntersectionObserver((entries) => {
@@ -1254,8 +1421,17 @@
           status.textContent = "Please add your name and email.";
           return;
         }
+        if (!eventDate.value) {
+          status.textContent = "Please choose a preferred event date.";
+          return;
+        }
         status.textContent = "Thank you — this prototype form does not send. Please email greatbarn@headstonemanor.org or call 020 8863 6720.";
         form.reset();
+        ceremonyGuests = 120;
+        eveningGuests = 100;
+        updateGuestSummary();
+        eventDate.value = fmt(later);
+        viewingDate.value = fmt(soon);
       });
     })();
   </script>

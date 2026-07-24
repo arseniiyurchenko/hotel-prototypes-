@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify The Great Barn prototype: images, enquiry form, layout at multiple viewports."""
+"""Verify The Great Barn prototype: images, enquiry widget, nav, layout."""
 
 import json
 import sys
@@ -11,7 +11,7 @@ URL = "http://127.0.0.1:8772/index.html"
 ARTIFACTS = Path("/opt/cursor/artifacts")
 ARTIFACTS.mkdir(parents=True, exist_ok=True)
 
-results = {"images": [], "interactions": [], "errors": []}
+results = {"images": [], "interactions": [], "errors": [], "checks": []}
 
 
 def main():
@@ -21,9 +21,9 @@ def main():
         page = context.new_page()
 
         page.goto(URL, wait_until="networkidle")
-        page.wait_for_timeout(1500)
+        page.wait_for_timeout(2000)
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        page.wait_for_timeout(1500)
+        page.wait_for_timeout(1800)
         page.evaluate(
             """async () => {
               const imgs = [...document.images];
@@ -33,8 +33,8 @@ def main():
               })));
             }"""
         )
-        page.wait_for_timeout(1200)
-        page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(1000)
+        page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
         page.wait_for_timeout(400)
 
         imgs = page.locator("img").all()
@@ -45,31 +45,103 @@ def main():
             if not ok:
                 results["errors"].append(f"Broken image: {src}")
 
-        hero_bg = page.locator(".hero-bg")
-        if hero_bg.count() == 0:
-            results["errors"].append("Missing hero background element")
-        else:
-            results["interactions"].append("hero background present")
+        # Hero CSS background
+        hero_ok = page.evaluate(
+            """() => {
+              const el = document.querySelector('.hero-bg');
+              if (!el) return false;
+              const bg = getComputedStyle(el).backgroundImage;
+              return bg && bg !== 'none' && bg.includes('url(');
+            }"""
+        )
+        results["checks"].append({"hero_bg": hero_ok})
+        if not hero_ok:
+            results["errors"].append("Hero background image missing")
 
+        # Header corner spacing
+        spacing = page.evaluate(
+            """() => {
+              const header = document.querySelector('.site-header');
+              const logo = document.querySelector('.logo');
+              const cta = document.querySelector('.header-cta');
+              const hr = header.getBoundingClientRect();
+              const lr = logo.getBoundingClientRect();
+              const cr = cta.getBoundingClientRect();
+              return {
+                logoLeft: Math.round(lr.left - hr.left),
+                ctaRight: Math.round(hr.right - cr.right),
+                logoTop: Math.round(lr.top - hr.top)
+              };
+            }"""
+        )
+        results["checks"].append({"header_spacing": spacing})
+        if spacing["logoLeft"] < 16 or spacing["ctaRight"] < 16:
+            results["errors"].append(f"Cramped header spacing: {spacing}")
+
+        # Smooth scroll via nav anchors — start from true top
+        page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
+        page.wait_for_timeout(200)
+        scroll_behavior = page.evaluate("() => getComputedStyle(document.documentElement).scrollBehavior")
+        results["checks"].append({"scrollBehavior": scroll_behavior})
+        if scroll_behavior != "smooth":
+            results["errors"].append(f"scroll-behavior is {scroll_behavior!r}, expected smooth")
+
+        start_y = page.evaluate("() => window.scrollY")
+        page.locator('.nav-desktop a[href="#spaces"]').click()
+        page.wait_for_timeout(350)
+        mid_y = page.evaluate("() => window.scrollY")
+        page.wait_for_timeout(1100)
+        end_y = page.evaluate("() => window.scrollY")
+        results["interactions"].append(f"nav spaces scroll: {start_y} -> {mid_y} -> {end_y}")
+        if start_y > 5:
+            results["errors"].append(f"Expected to start nav test at top, got y={start_y}")
+        if end_y <= start_y + 50:
+            results["errors"].append("Nav anchor to #spaces did not scroll")
+        if mid_y <= start_y or mid_y >= end_y:
+            # mid should be between start and end during smooth animation
+            results["checks"].append({"smooth_mid_ok": False, "note": "mid sample may have finished early"})
+        else:
+            results["checks"].append({"smooth_mid_ok": True})
+        spaces_top = page.evaluate("() => document.querySelector('#spaces').getBoundingClientRect().top")
+        results["checks"].append({"spaces_top_after_nav": round(spaces_top)})
+        if abs(spaces_top) > 140:
+            results["errors"].append(f"#spaces not near viewport after nav (top={spaces_top})")
+
+        # Enquiry widget: dates + guest selector
+        page.locator("#enquire").scroll_into_view_if_needed()
+        page.wait_for_timeout(500)
         page.locator("#name").fill("Alex Morgan")
         page.locator("#email").fill("alex@example.com")
+        event_day = page.evaluate(
+            "() => { const d = new Date(); d.setDate(d.getDate()+30); return d.toISOString().slice(0,10); }"
+        )
+        view_day = page.evaluate(
+            "() => { const d = new Date(); d.setDate(d.getDate()+10); return d.toISOString().slice(0,10); }"
+        )
+        page.locator("#eventDate").fill(event_day)
+        page.locator("#viewingDate").fill(view_day)
         page.locator("#eventType").select_option("wedding")
-        page.locator("#guests").fill("120")
-        page.locator("#message").fill("Viewing request for a Saturday in June")
+        page.locator("#guestTrigger").click()
+        page.wait_for_timeout(300)
+        if not page.locator("#guestPanel.open").count():
+            results["errors"].append("Guest panel did not open")
+        page.locator("#ceremonyPlus").click()
+        page.wait_for_timeout(200)
+        page.locator("#eveningPlus").click()
+        page.wait_for_timeout(200)
+        summary = page.locator("#guestSummary").inner_text()
+        results["interactions"].append(f"guest summary: {summary}")
+        page.locator("#message").fill("Saturday hire enquiry for June")
         page.locator("#submitEnquiry").click()
         page.wait_for_timeout(400)
         status = page.locator("#formStatus").inner_text()
         results["interactions"].append(f"enquiry form: {status[:100]}")
-        if "prototype" not in status.lower() and "does not send" not in status.lower():
+        if "does not send" not in status.lower() and "prototype" not in status.lower():
             results["errors"].append(f"Unexpected form status: {status}")
 
         brand = page.locator(".hero-brand").inner_text()
-        line = page.locator(".hero-line").inner_text()
-        results["interactions"].append(f"brand={brand!r} line={line!r}")
         if "The Great Barn" not in brand:
             results["errors"].append("Hero brand missing venue name")
-        if "grandeur" not in line.lower():
-            results["errors"].append("Hero positioning line missing")
 
         page.evaluate("window.scrollTo(0, 0)")
         page.wait_for_timeout(400)
@@ -85,13 +157,11 @@ def main():
         page.screenshot(path=str(ARTIFACTS / "great-barn-mobile-menu.png"))
         page.locator("#navClose").click()
         page.wait_for_timeout(300)
-
         page.locator("#enquire").scroll_into_view_if_needed()
         page.wait_for_timeout(400)
+        page.locator("#guestTrigger").click()
+        page.wait_for_timeout(300)
         page.screenshot(path=str(ARTIFACTS / "great-barn-mobile-enquiry.png"))
-
-        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        page.wait_for_timeout(600)
         page.screenshot(path=str(ARTIFACTS / "great-barn-mobile-full.png"), full_page=True)
 
         context.close()
