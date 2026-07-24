@@ -30,7 +30,17 @@ def main():
         imgs = page.locator("img").all()
         for img in imgs:
             src = img.get_attribute("src") or ""
-            ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
+            try:
+                img.scroll_into_view_if_needed()
+                page.wait_for_timeout(200)
+                page.wait_for_function(
+                    "(el) => el.complete && el.naturalWidth > 0",
+                    arg=img.element_handle(),
+                    timeout=15000,
+                )
+                ok = True
+            except Exception:
+                ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
             results["images"].append({"src": src, "ok": ok})
             if not ok:
                 results["errors"].append(f"Broken image: {src}")
