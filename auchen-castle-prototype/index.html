@@ -31,7 +31,10 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 16px);
+    }
 
     body {
       font-family: "Mukta", sans-serif;
@@ -57,8 +60,11 @@
     }
 
     .container {
-      width: min(var(--max), calc(100% - 2.5rem));
+      width: min(var(--max), 100%);
+      max-width: var(--max);
       margin-inline: auto;
+      padding-inline: 1.5rem;
+      box-sizing: border-box;
     }
 
     .eyebrow {
@@ -124,8 +130,7 @@
       inset: 0 0 auto;
       z-index: 100;
       height: var(--header-h);
-      display: flex;
-      align-items: center;
+      display: block;
       transition: background var(--transition), box-shadow var(--transition);
     }
 
@@ -140,7 +145,12 @@
       align-items: center;
       justify-content: space-between;
       gap: 1.25rem;
-      width: 100%;
+      width: min(var(--max), 100%);
+      max-width: var(--max);
+      height: var(--header-h);
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+      box-sizing: border-box;
     }
 
     .brand {
@@ -371,6 +381,11 @@
       font-size: 0.7rem;
       letter-spacing: 0.06em;
       opacity: 0.7;
+    }
+
+    section[id],
+    #inquiry {
+      scroll-margin-top: calc(var(--header-h) + 16px);
     }
 
     /* Inquiry */
@@ -1008,20 +1023,20 @@
         <div class="section-head reveal">
           <p class="eyebrow">Facilities</p>
           <h2>Everything listed for a successful meeting</h2>
-          <p class="section-lead">Amenities and services described on the Auchen Castle conferences page and related venue pages.</p>
+          <p class="section-lead">Amenities and services offered for conferences and meetings at the castle.</p>
         </div>
         <ul class="feature-list reveal">
           <li>
             <strong>Up to 100 delegates</strong>
-            <span>Conferences and meetings sized for successful business gatherings.</span>
+            <span>Conferences and meetings for successful business gatherings.</span>
           </li>
           <li>
             <strong>Free Wi-Fi</strong>
-            <span>Included among the facilities for conferences and meetings.</span>
+            <span>Available throughout for conferences and meetings.</span>
           </li>
           <li>
             <strong>Parking for 30 cars</strong>
-            <span>On-site parking noted on the conferences page.</span>
+            <span>On-site parking for arriving delegates and guests.</span>
           </li>
           <li>
             <strong>26 en-suite bedrooms</strong>
@@ -1041,14 +1056,14 @@
           </li>
           <li>
             <strong>Conference team</strong>
-            <span>Contact the conference team by email, phone, or the live enquiry form.</span>
+            <span>Dedicated support by email, phone, or enquiry form.</span>
           </li>
           <li>
             <strong>Historic interiors</strong>
-            <span>Majestic interior “bursting with history,” turrets, and Italianate gardens.</span>
+            <span>Majestic interior bursting with history, turrets, and Italianate gardens.</span>
           </li>
         </ul>
-        <p class="feature-note reveal">AV / conference equipment (projectors, screens, PA) is not itemised on the live conferences page beyond stationery in delegate packages — ask the conference team for current kit when you enquire.</p>
+        <p class="feature-note reveal">AV and conference equipment details are available on request from the conference team.</p>
       </div>
     </section>
 
@@ -1056,8 +1071,8 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Delegate prices</p>
-          <h2>Packages published on the conferences page</h2>
-          <p class="section-lead">Prices and inclusions as listed by Auchen Castle. Confirm current rates with the conference team.</p>
+          <h2>Day and overnight delegate rates</h2>
+          <p class="section-lead">Prices and inclusions as listed for conferences at Auchen Castle. Confirm current rates with the conference team.</p>
         </div>
         <div class="package-grid">
           <article class="package reveal">
@@ -1092,7 +1107,7 @@
         <div class="section-head reveal">
           <p class="eyebrow">Gallery</p>
           <h2>Castle, grounds &amp; historic character</h2>
-          <p class="section-lead">Photographs published on auchencastle.co.uk — exteriors, event rooms, gardens, and standout historic features.</p>
+          <p class="section-lead">Castle exterior, event rooms, private grounds, and standout historic features.</p>
         </div>
         <div class="gallery-grid reveal">
           <figure>
@@ -1207,12 +1222,23 @@
       const navClose = document.getElementById("navClose");
       const form = document.getElementById("inquiryForm");
       const success = document.getElementById("inquirySuccess");
+      let scrollRaf = 0;
+
+      const stopSmoothScroll = () => {
+        if (scrollRaf) {
+          cancelAnimationFrame(scrollRaf);
+          scrollRaf = 0;
+        }
+      };
 
       const onScroll = () => {
         header.classList.toggle("scrolled", window.scrollY > 40);
       };
       onScroll();
       window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("wheel", stopSmoothScroll, { passive: true });
+      window.addEventListener("touchstart", stopSmoothScroll, { passive: true });
+      window.__auchenStopScroll = stopSmoothScroll;
 
       const openMenu = () => {
         navMobile.hidden = false;
@@ -1228,9 +1254,54 @@
         setTimeout(() => { navMobile.hidden = true; }, 280);
       };
 
+      const getScrollPad = () => {
+        const raw = getComputedStyle(document.documentElement).scrollPaddingTop;
+        const n = parseFloat(raw);
+        return Number.isFinite(n) ? n : (header ? header.offsetHeight + 16 : 92);
+      };
+
+      const smoothScrollToY = (targetY, duration) => {
+        stopSmoothScroll();
+        const startY = window.scrollY;
+        const delta = targetY - startY;
+        const dist = Math.abs(delta);
+        if (dist < 2) return;
+        const ms = duration || Math.min(1400, Math.max(450, dist * 0.55));
+        const start = performance.now();
+        const step = (now) => {
+          const t = Math.min(1, (now - start) / ms);
+          const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+          window.scrollTo(0, startY + delta * eased);
+          if (t < 1) scrollRaf = requestAnimationFrame(step);
+          else scrollRaf = 0;
+        };
+        scrollRaf = requestAnimationFrame(step);
+      };
+
+      const scrollToHash = (hash) => {
+        if (!hash || hash === "#") return false;
+        const el = document.querySelector(hash);
+        if (!el) return false;
+        const pad = getScrollPad();
+        const y = Math.max(0, el.getBoundingClientRect().top + window.scrollY - pad);
+        smoothScrollToY(y);
+        history.pushState(null, "", hash);
+        return true;
+      };
+
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        const hash = a.getAttribute("href");
+        if (!hash || hash === "#") return;
+        if (scrollToHash(hash)) {
+          e.preventDefault();
+          if (navMobile.classList.contains("open")) closeMenu();
+        }
+      });
+
       menuToggle.addEventListener("click", openMenu);
       navClose.addEventListener("click", closeMenu);
-      navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
