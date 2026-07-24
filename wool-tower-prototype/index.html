@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Wool Tower — Wedding Venue &amp; Conference Centre | Broughshane, Ballymena</title>
+  <!--
+    SOURCE EXTRACTION NOTES (wooltower.com, fetched Jul 2026)
+    ========================================================
+    Venue name: The Wool Tower / Wool Tower
+    Site title / footer line: “Wooltower Wedding Venue & Conference Centre”
+    Homepage hero line (tagline): “Its time to imagine your day with us”
+    Logo: https://wooltower.com/wp-content/uploads/2022/07/Black-logo-no-back-ground.png
+    Brand fonts (live site): Italiana, PT Sans, Poppins
+    Dominant brand colours (Elementor kit / page CSS):
+      #393E3F primary charcoal, #747C7D secondary/text,
+      #E8EBEA / #F4F4F4 lights, #CBD4D4 / #A6B4B6 stone greys,
+      #324A6D navy (homepage accents), soft accents #FFBC7D / #CBA4A4 / #CE9D94
+    Location (Contact page): 9 Mill Road, Raceview Mill, Broughshane, Ballymena BT42 4FA
+      Also referenced: River Braid; Raceview Mill; private countryside / riverside gardens
+      “Northern Ireland” / “UK” are NOT stated on the pages reviewed — not invented here.
+    Spaces labeled on site: ceremony space (vaulted / Georgian windows), Wool Hall (dining),
+      dancefloor / party room, courtyard, riverside grounds; conferences: “several unique meeting rooms”,
+      outdoor meeting room, riverside gardens.
+    Amenities (site + conference PDF hosted on site): exclusive use; licensed religious & civil
+      ceremonies up to 200; capacity 25–200 weddings / up to 200 conference; catering (hand-chosen meal;
+      Caulfield & Dorrity in-house caterer; own caterers allowed with certification); bar/drinks;
+      dancefloor; firepits & blanket boxes; two large car parks; wedding / conference coordinators;
+      styling evenings; on-site accommodation via sister company Raceview Mill (up to 30 adults);
+      disabled access; pet friendly; Wi-Fi; flip chart; AV at additional cost (conference PDF).
+    Pricing shown: wedding packages brochure (media library) — Tweed / Linen / Silk / Winter Wool;
+      £750 deposit (FAQs); conference PDF — half/full day hire & delegate rates.
+    Positioning: premium rustic / boutique exclusive-use (tone, restoration story, package pricing).
+    Gaps / placeholders: named individual conference room titles beyond “several unique meeting rooms”;
+      Northern Ireland label; exact AV kit list.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --charcoal: #393E3F;
+      --slate: #747C7D;
+      --stone: #A6B4B6;
+      --mist: #E8EBEA;
+      --cloud: #F4F4F4;
+      --navy: #324A6D;
+      --navy-deep: #243652;
+      --rose: #CE9D94;
+      --peach: #FFBC7D;
+      --white: #ffffff;
+      --ink: #1c2021;
+      --font-display: "Italiana", Georgia, serif;
+      --font-body: "PT Sans", "Segoe UI", sans-serif;
+      --font-ui: "Poppins", "PT Sans", sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --header-h: 4.5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 0.85rem);
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--charcoal);
+      background: var(--cloud);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font: inherit; border: 0; background: none; cursor: pointer; }
+
+    .wrap {
+      width: min(1120px, 92vw);
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+
+    .display {
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.6rem;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 0.35s var(--ease), background 0.35s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover { background: var(--navy-deep); transform: translateY(-2px); }
+
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.55);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark-ghost {
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+    }
+
+    .btn-dark-ghost:hover {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    /* Reveal motion */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    }
+
+    .site-header.is-solid {
+      background: rgba(28, 32, 33, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: clamp(1.35rem, 4.5vw, 2.25rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+    }
+
+    .brand img {
+      height: 34px;
+      width: auto;
+      filter: invert(1);
+    }
+
+    .brand-word {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-desktop a {
+      color: rgba(255,255,255,0.88);
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .nav-desktop a:hover { color: var(--white); }
+
+    .header-cta {
+      display: none;
+      padding: 0.7rem 1.15rem;
+      background: var(--white);
+      color: var(--navy-deep);
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .header-cta:hover {
+      background: var(--peach);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 1.35rem;
+      height: 1.5px;
+      background: currentColor;
+      position: relative;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 32, 33, 0.97);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--ease);
+      z-index: 60;
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-mobile nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.4rem;
+      text-align: center;
+    }
+
+    .nav-mobile a {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      color: var(--white);
+      font-family: var(--font-ui);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      transform: scale(1.06);
+      animation: heroDrift 18s var(--ease) infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.06) translate3d(0, 0, 0); }
+      to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(28,32,33,0.35) 0%, rgba(28,32,33,0.15) 35%, rgba(28,32,33,0.72) 100%),
+        linear-gradient(90deg, rgba(36,54,82,0.35), transparent 55%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      padding: calc(var(--header-h) + 3rem) 0 4.5rem;
+    }
+
+    .hero-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 18rem;
+      margin-bottom: 2.25rem;
+      animation: fadeUp 1.1s var(--ease) both;
+    }
+
+    .hero-brand img {
+      width: min(280px, 72vw);
+      height: auto;
+      filter: invert(1);
+    }
+
+    .hero-brand .site-line {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 7vw, 4.6rem);
+      max-width: 14ch;
+      margin-bottom: 1rem;
+      animation: fadeUp 1.1s 0.12s var(--ease) both;
+    }
+
+    .hero-lead {
+      max-width: 38rem;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+      animation: fadeUp 1.1s 0.22s var(--ease) both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      animation: fadeUp 1.1s 0.32s var(--ease) both;
+    }
+
+    .hero-locale {
+      margin-top: 2.4rem;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      animation: fadeUp 1.1s 0.4s var(--ease) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Sections */
+    section { padding: clamp(4rem, 9vw, 7rem) 0; }
+
+    .section-head {
+      max-width: 38rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      margin: 0.55rem 0 0.85rem;
+      color: var(--ink);
+    }
+
+    .section-head p { color: var(--slate); font-size: 1.05rem; }
+
+    /* Spaces — split rows, not card grid */
+    .spaces {
+      background: var(--white);
+    }
+
+    .space-row {
+      display: grid;
+      gap: 0;
+      align-items: stretch;
+      margin-bottom: 0;
+      border-top: 1px solid rgba(57,62,63,0.12);
+    }
+
+    .space-row:last-child { border-bottom: 1px solid rgba(57,62,63,0.12); }
+
+    .space-copy,
+    .space-visual {
+      min-height: 280px;
+    }
+
+    .space-copy {
+      padding: clamp(2rem, 5vw, 3.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--white);
+    }
+
+    .space-copy h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      margin: 0.4rem 0 0.9rem;
+    }
+
+    .space-copy p { color: var(--slate); max-width: 34rem; }
+
+    .space-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+    }
+
+    .space-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s var(--ease);
+    }
+
+    .space-row:hover .space-visual img { transform: scale(1.04); }
+
+    /* Features strip */
+    .features {
+      background:
+        linear-gradient(160deg, #2a3140 0%, var(--navy-deep) 45%, #1c2021 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -30% 40%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(206,157,148,0.18), transparent 60%);
+      pointer-events: none;
+    }
+
+    .features .section-head h2,
+    .features .section-head .eyebrow { color: var(--white); }
+    .features .section-head p { color: rgba(255,255,255,0.72); }
+
+    .feature-list {
+      display: grid;
+      gap: 1.25rem 2.5rem;
+      position: relative;
+    }
+
+    .feature-list li {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .feature-list strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+      color: var(--peach);
+      font-weight: 500;
+    }
+
+    .feature-list span {
+      color: rgba(255,255,255,0.82);
+      font-size: 0.98rem;
+    }
+
+    /* Packages */
+    .packages { background: var(--mist); }
+
+    .package-note {
+      font-size: 0.92rem;
+      color: var(--slate);
+      margin: -1.2rem 0 2rem;
+      max-width: 42rem;
+    }
+
+    .package-stack {
+      display: grid;
+      gap: 1px;
+      background: rgba(57,62,63,0.12);
+      border: 1px solid rgba(57,62,63,0.12);
+    }
+
+    .package {
+      background: var(--white);
+      padding: clamp(1.4rem, 3vw, 2rem);
+      display: grid;
+      gap: 0.65rem 1.5rem;
+      align-items: start;
+    }
+
+    .package h3 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+    }
+
+    .package .price {
+      font-family: var(--font-ui);
+      font-size: 0.92rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .package p { color: var(--slate); font-size: 0.95rem; }
+
+    .package .meta {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+
+    /* Conferences */
+    .conferences {
+      background: var(--white);
+    }
+
+    .conf-layout {
+      display: grid;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .conf-aside {
+      background: linear-gradient(145deg, var(--mist), var(--cloud));
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+      border-left: 3px solid var(--navy);
+    }
+
+    .conf-aside h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .conf-aside ul {
+      display: grid;
+      gap: 0.55rem;
+      color: var(--slate);
+      font-size: 0.95rem;
+    }
+
+    .conf-aside li::before {
+      content: "— ";
+      color: var(--navy);
+    }
+
+    .conf-rates {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(57,62,63,0.12);
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+    }
+
+    /* Story band */
+    .story {
+      position: relative;
+      min-height: 70svh;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .story-media {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .story-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(28,32,33,0.2), rgba(28,32,33,0.78));
+    }
+
+    .story-content {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      padding: 5rem 0;
+      max-width: 36rem;
+    }
+
+    .story-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      margin: 0.5rem 0 1rem;
+    }
+
+    .story-content p { color: rgba(255,255,255,0.88); }
+
+    /* Contact */
+    .contact { background: var(--cloud); }
+
+    .contact-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .contact-panel {
+      background: var(--white);
+      padding: clamp(1.6rem, 4vw, 2.4rem);
+    }
+
+    .contact-panel h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin: 0.4rem 0 1rem;
+    }
+
+    .contact-panel p { color: var(--slate); margin-bottom: 0.5rem; }
+
+    .contact-panel a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .contact-actions { margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    /* Viewing enquiry widget (fields mirror live contact form) */
+    .viewing-widget {
+      background: var(--white);
+      border: 1px solid rgba(57,62,63,0.12);
+      padding: clamp(1.35rem, 3vw, 1.85rem);
+      display: grid;
+      gap: 0.95rem;
+    }
+
+    .viewing-widget h3 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .viewing-widget .widget-lead {
+      color: var(--slate);
+      font-size: 0.92rem;
+      margin-top: -0.35rem;
+    }
+
+    .field-label {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 0.4rem;
+    }
+
+    .field-row {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .viewing-widget input[type="text"],
+    .viewing-widget input[type="email"],
+    .viewing-widget input[type="date"],
+    .viewing-widget select {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid rgba(57,62,63,0.22);
+      background: var(--cloud);
+      color: var(--charcoal);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+    }
+
+    .viewing-widget input:focus,
+    .viewing-widget select:focus {
+      outline: 2px solid rgba(50,74,109,0.35);
+      outline-offset: 1px;
+      border-color: var(--navy);
+    }
+
+    .guest-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      background: var(--cloud);
+      border: 1px solid rgba(57,62,63,0.22);
+      padding: 0.35rem 0.45rem;
+    }
+
+    .guest-btn {
+      width: 2.2rem;
+      height: 2.2rem;
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      color: var(--navy);
+      font-size: 1.1rem;
+      line-height: 1;
+      border: 1px solid rgba(57,62,63,0.15);
+      transition: background 0.2s ease;
+    }
+
+    .guest-btn:hover { background: var(--mist); }
+
+    .guest-count {
+      min-width: 2.5rem;
+      text-align: center;
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .guest-summary {
+      font-size: 0.85rem;
+      color: var(--slate);
+    }
+
+    .widget-status {
+      min-height: 1.25rem;
+      font-size: 0.88rem;
+      color: var(--navy);
+    }
+
+    .gap-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.1rem;
+      background: var(--mist);
+      color: var(--slate);
+      font-size: 0.88rem;
+    }
+
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.7);
+      padding: 2rem 0;
+      font-size: 0.88rem;
+    }
+
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer strong {
+      color: var(--white);
+      font-family: var(--font-ui);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    @media (min-width: 560px) {
+      .field-row.two {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 760px) {
+      .menu-toggle { display: none; }
+      .nav-desktop { display: flex; }
+      .header-cta { display: inline-flex; }
+      .brand-word { display: none; }
+
+      .feature-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .package {
+        grid-template-columns: 1.1fr 1.4fr;
+      }
+
+      .conf-layout {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .space-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .space-row:nth-child(even) .space-visual { order: -1; }
+
+      .feature-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .package {
+        grid-template-columns: 0.9fr 1.1fr 1.2fr;
+        align-items: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media img { animation: none; transform: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-brand, .hero h1, .hero-lead, .hero-actions, .hero-locale { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="The Wool Tower home">
+        <img src="https://wooltower.com/wp-content/uploads/2022/07/Black-logo-no-back-ground.png" alt="The Wool Tower">
+        <span class="brand-word">The Wool Tower</span>
+      </a>
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#spaces">Spaces</a>
+        <a href="#features">Features</a>
+        <a href="#weddings">Weddings</a>
+        <a href="#conferences">Conferences</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="header-cta" href="#booking">Book viewing</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <button class="nav-close" id="navClose" type="button">Close</button>
+    <nav aria-label="Mobile">
+      <a href="#spaces">Spaces</a>
+      <a href="#features">Features</a>
+      <a href="#weddings">Weddings</a>
+      <a href="#conferences">Conferences</a>
+      <a href="#booking">Book viewing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Homepage hero">
+      <div class="hero-media">
+        <img
+          src="https://wooltower.com/wp-content/uploads/2022/08/Wool-Tower-Conference-3-e1620909264615-1.jpg"
+          alt="Exterior of The Wool Tower stone and brick building with Wool Tower signage"
+          width="1200"
+          height="800"
+          fetchpriority="high">
+      </div>
+      <div class="hero-content">
+        <div class="hero-brand">
+          <img
+            src="https://wooltower.com/wp-content/uploads/2022/07/Black-logo-no-back-ground.png"
+            alt="The Wool Tower logo"
+            width="280"
+            height="123">
+          <p class="site-line">Wooltower Wedding Venue &amp; Conference Centre</p>
+        </div>
+        <h1>Its time to imagine your day with us</h1>
+        <p class="hero-lead">
+          The Wool Tower is a beautifully unique setting where you can really tell your story as a couple —
+          a private riverside hideaway on the bank of the River Braid.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#booking">Book viewing</a>
+          <a class="btn btn-ghost" href="#spaces">Explore spaces</a>
+        </div>
+        <p class="hero-locale">Raceview Mill · Broughshane · Ballymena</p>
+      </div>
+    </section>
+
+    <section class="spaces" id="spaces">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Event spaces</p>
+          <h2>Ceremony, dining, dancing, and grounds</h2>
+          <p>Spaces as labeled on the Wool Tower site — from the vaulted ceremony room to Wool Hall and the riverside grounds.</p>
+        </div>
+      </div>
+
+      <article class="space-row reveal">
+        <div class="space-copy">
+          <p class="eyebrow">Your ceremony</p>
+          <h3>Vaulted ceremony space</h3>
+          <p>
+            South-facing sunlight through Georgian windows, vaulted ceilings, exposed brick and stone.
+            Fully licensed for religious and civil ceremonies and partnerships of up to 200 guests.
+          </p>
+        </div>
+        <div class="space-visual">
+          <img
+            src="https://wooltower.com/wp-content/uploads/2022/08/Wool-Tower-1-2.jpg"
+            alt="Ceremony setup against exposed stone walls with floral arch and candlelight"
+            width="900"
+            height="1200"
+            loading="lazy">
+        </div>
+      </article>
+
+      <article class="space-row reveal">
+        <div class="space-copy">
+          <p class="eyebrow">Dining</p>
+          <h3>Wool Hall</h3>
+          <p>
+            An open-plan room bathed in natural light, with pitch pine beams, exposed brick walls,
+            quarry stone floors, Georgian windows, and a Juliet balcony overlooking the courtyard.
+            Banquet or circular tables for 25 to 200 guests.
+          </p>
+        </div>
+        <div class="space-visual">
+          <img
+            src="https://wooltower.com/wp-content/uploads/2022/08/3L8A3522.jpg"
+            alt="Round reception tables set with white linens in Wool Hall"
+            width="1575"
+            height="1050"
+            loading="lazy">
+        </div>
+      </article>
+
+      <article class="space-row reveal">
+        <div class="space-copy">
+          <p class="eyebrow">Its party time</p>
+          <h3>Dancefloor</h3>
+          <p>
+            Cast iron columns, vaulted brick ceilings, exposed stone walls and polished floors.
+            Space for your DJ or band against a backlit stone wall, with evening food and drinks —
+            celebrating your day your way.
+          </p>
+        </div>
+        <div class="space-visual">
+          <img
+            src="https://wooltower.com/wp-content/uploads/2022/08/Tiffany-Gage-photography-NI-Wedding-Photographer-1635.jpg"
+            alt="Guests celebrating at a long banquet table under fairy lights"
+            width="600"
+            height="400"
+            loading="lazy">
+        </div>
+      </article>
+
+      <article class="space-row reveal">
+        <div class="space-copy">
+          <p class="eyebrow">Roam freely</p>
+          <h3>Riverside grounds &amp; courtyard</h3>
+          <p>
+            With no public or membership access, the river and ground are completely yours.
+            Acres of private natural countryside, a sheltered courtyard for evening sun,
+            plus firepits and blanket boxes for a cosy end to the day.
+          </p>
+        </div>
+        <div class="space-visual">
+          <img
+            src="https://wooltower.com/wp-content/uploads/2022/08/3L8A3102.jpg"
+            alt="Garden path with stepping stones through the grounds at The Wool Tower"
+            width="1575"
+            height="1050"
+            loading="lazy">
+        </div>
+      </article>
+    </section>
+
+    <section class="features" id="features">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Amenities &amp; features</p>
+          <h2>Exclusive use, curated service</h2>
+          <p>Drawn from the Wool Tower website FAQs, homepage, and conference brochure hosted on wooltower.com.</p>
+        </div>
+        <ul class="feature-list reveal">
+          <li>
+            <strong>Exclusive use</strong>
+            <span>One wedding per day — river and grounds reserved for your party.</span>
+          </li>
+          <li>
+            <strong>Capacity</strong>
+            <span>Weddings from 25 to 200 guests; no minimum numbers. Conferencing up to 200 delegates.</span>
+          </li>
+          <li>
+            <strong>Licensed ceremonies</strong>
+            <span>Religious and civil ceremonies and partnerships; ceremony included in venue hire.</span>
+          </li>
+          <li>
+            <strong>Catering</strong>
+            <span>Hand-chosen meals; in-house caterer Caulfield &amp; Dorrity. Own caterers permitted with certification.</span>
+          </li>
+          <li>
+            <strong>Coordination</strong>
+            <span>Wedding coordinators, styling evenings, and a dedicated Conferencing &amp; Events Manager.</span>
+          </li>
+          <li>
+            <strong>Parking</strong>
+            <span>Two large car parks outside the venue, suitable for coach drop-offs. Complimentary on-site parking for conferences.</span>
+          </li>
+          <li>
+            <strong>Bar &amp; music</strong>
+            <span>Venue hire typically 10am–1.30am; bar &amp; music stop at 1am (midnight Sundays). House wines available; own alcohol not permitted.</span>
+          </li>
+          <li>
+            <strong>Conference kit</strong>
+            <span>Unlimited Wi-Fi, flip chart &amp; markers, pads &amp; pens. Audio visual equipment available at additional cost.</span>
+          </li>
+          <li>
+            <strong>Stay nearby</strong>
+            <span>Accommodation via sister company Raceview Mill — Riverside Wedding Suite, riverside suites, Black Sheep Cottage &amp; The Hen House (up to 30 adults).</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="packages" id="weddings">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Weddings</p>
+          <h2>Four packages you can tailor</h2>
+          <p>From the Wedding Packages 2024/25 brochure on wooltower.com. A £750 deposit secures the date (FAQs).</p>
+        </div>
+        <p class="package-note reveal">
+          Brochure positioning: rustic charm · laid-back feel · totally unique · exclusively yours.
+          Packages below are based on a minimum of 80 guests unless noted. T&amp;Cs apply; additional charges for New Year’s Eve.
+        </p>
+        <div class="package-stack">
+          <article class="package reveal">
+            <div>
+              <h3>The Tweed Package</h3>
+              <p class="meta">Sunday–Thursday / Friday–Saturday</p>
+            </div>
+            <p class="price">£8,500 Sun–Thu · £10,500 Fri–Sat<br>Additional guests £72.95 pp</p>
+            <p>Exclusive hire, vaulted ceremony room, coordinator, drinks reception bubbles, 4-course meal by Caulfield &amp; Dorrity, evening supper, complimentary wedding suite for the couple.</p>
+          </article>
+          <article class="package reveal">
+            <div>
+              <h3>The Linen Package</h3>
+              <p class="meta">Sunday–Thursday / Friday–Saturday</p>
+            </div>
+            <p class="price">£10,500 Sun–Thu · £12,500 Fri–Sat<br>Additional guests £79.95 pp</p>
+            <p>Adds ceremony styling, cocktail kilner jars, mini cream tea, evening sweetie cart, and banquet or round tables.</p>
+          </article>
+          <article class="package reveal">
+            <div>
+              <h3>The Silk Package</h3>
+              <p class="meta">Sunday–Thursday / Friday–Saturday</p>
+            </div>
+            <p class="price">£14,500 Sun–Thu · £16,500 Fri–Sat<br>Additional guests £99.95 pp</p>
+            <p>Full venue styling, canapés, premium drinks, whiskey or gin station, charcuterie &amp; cheese board, and evening sweetie cart or crisp wall.</p>
+          </article>
+          <article class="package reveal">
+            <div>
+              <h3>The Winter Wool Package</h3>
+              <p class="meta">November–February (excludes December)</p>
+            </div>
+            <p class="price">£60 pp Nov 2024–Feb 2025 · £70 pp Nov 2025–Feb 2026<br>Minimum 80 guests</p>
+            <p>Seasonal package with exclusive hire, full venue styling, ceremony hall, 4-course meal, and complimentary wedding suite.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="conferences" id="conferences">
+      <div class="wrap conf-layout">
+        <div class="reveal">
+          <div class="section-head">
+            <p class="eyebrow">Conferences</p>
+            <h2>Exclusive-use conferencing in a restored woollen mill</h2>
+            <p>
+              The Conferences page on the live site primarily embeds the venue’s conference PDF.
+              Details below are taken from that brochure on wooltower.com.
+            </p>
+          </div>
+          <p style="color: var(--slate); max-width: 40rem;">
+            Several unique meeting rooms for one-to-one sessions, interviews, team building, and full-scale conferencing,
+            plus an outdoor meeting room and exclusive riverside gardens. A dedicated Conference and Events Manager
+            supports planning from enquiry through the day.
+          </p>
+          <p class="gap-note">
+            Placeholder: individual conference room names and capacities are not itemised on the public pages reviewed —
+            only “several unique meeting rooms” and overall delegate capacity are stated.
+          </p>
+        </div>
+        <aside class="conf-aside reveal">
+          <h3>All-inclusive package includes</h3>
+          <ul>
+            <li>Choice of meeting space</li>
+            <li>Outdoor meeting room &amp; riverside gardens</li>
+            <li>Unlimited tea/coffee, snacks &amp; sweet treats</li>
+            <li>Complimentary on-site car parking</li>
+            <li>Unlimited Wi-Fi</li>
+            <li>Dedicated Conferencing &amp; Events Coordinator</li>
+            <li>Iced water &amp; cordials, pads &amp; pens, flip chart &amp; markers</li>
+          </ul>
+          <div class="conf-rates">
+            <strong>Bespoke venue hire</strong><br>
+            Half day £500 · Full day £1,000<br><br>
+            <strong>All-inclusive delegate rates</strong><br>
+            Half day £12.50 pp · Full day £17.50 pp<br>
+            AV equipment available at additional cost
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="story" id="story" aria-label="Grounds feature">
+      <div class="story-media">
+        <img
+          src="https://wooltower.com/wp-content/uploads/2022/08/the-wool-tower-raceview-mill-wedding-photography-158-1.jpg"
+          alt="Couple celebrating outdoors with sparklers at The Wool Tower"
+          width="600"
+          height="420"
+          loading="lazy">
+      </div>
+      <div class="story-content reveal">
+        <p class="eyebrow" style="color: rgba(255,255,255,0.7);">Our story</p>
+        <h2>Family and love at the heart of the mill</h2>
+        <p>
+          Raceview Mill dates back to 1806. After closure and a near-demolition, a local family restored The Wool Tower —
+          a father and daughter team bringing the building back to life. Family and love sit at the heart of the venue.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div class="contact-panel reveal" id="booking">
+          <p class="eyebrow">Book a viewing</p>
+          <form class="viewing-widget" id="viewingForm" novalidate>
+            <h3>Arrange your visit</h3>
+            <p class="widget-lead">Fields mirror the live contact form (guest numbers, preferred season/year). Viewings are by appointment.</p>
+
+            <div>
+              <label class="field-label" for="coupleNames">Couple’s names</label>
+              <input id="coupleNames" name="coupleNames" type="text" autocomplete="name" placeholder="Your names">
+            </div>
+
+            <div class="field-row two">
+              <div>
+                <label class="field-label" for="viewingDate">Preferred viewing date</label>
+                <input id="viewingDate" name="viewingDate" type="date">
+              </div>
+              <div>
+                <label class="field-label" for="guestTrigger">Approx guest numbers</label>
+                <div class="guest-selector" id="guestSelector">
+                  <button type="button" class="guest-btn" id="guestsMinus" aria-label="Decrease guests">−</button>
+                  <span class="guest-count" id="guestCount" aria-live="polite">80</span>
+                  <button type="button" class="guest-btn" id="guestsPlus" aria-label="Increase guests">+</button>
+                  <button type="button" class="guest-summary" id="guestTrigger">Adjust guests</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-row two">
+              <div>
+                <label class="field-label" for="preferredSeason">Preferred season</label>
+                <select id="preferredSeason" name="preferredSeason">
+                  <option value="">Select season</option>
+                  <option value="spring">Spring</option>
+                  <option value="summer">Summer</option>
+                  <option value="autumn">Autumn</option>
+                  <option value="winter">Winter</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label" for="preferredYear">Preferred year</label>
+                <select id="preferredYear" name="preferredYear">
+                  <option value="">Select year</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-row two">
+              <div>
+                <label class="field-label" for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com">
+              </div>
+              <div>
+                <label class="field-label" for="telephone">Telephone</label>
+                <input id="telephone" name="telephone" type="text" autocomplete="tel" placeholder="028…">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="viewingSubmit">Send enquiry</button>
+            <p class="widget-status" id="widgetStatus" role="status"></p>
+          </form>
+        </div>
+
+        <div class="contact-panel reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>We’d love to hear from you</h2>
+          <p>Viewings by appointment: Tuesday &amp; Wednesday 10am–7pm; Thursday–Sunday 10am–5pm (wedding dependent).</p>
+          <p><strong>Address:</strong> 9 Mill Road, Raceview Mill, Broughshane, Ballymena BT42 4FA</p>
+          <p><strong>Phone:</strong> <a href="tel:02825861436">028 2586 1436</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info@wooltower.com">info@wooltower.com</a></p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="#booking">Book viewing</a>
+            <a class="btn btn-dark-ghost" href="https://wooltower.com/contact/" rel="noopener">Live contact form</a>
+          </div>
+          <p class="gap-note">
+            Note: the live site contact address uses “Raceview Miil” / BT42 4FA as published.
+            “Northern Ireland” is not printed on the pages reviewed, so it is omitted here rather than assumed.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>Wooltower Wedding Venue &amp; Conference Centre</strong>
+      <span>Prototype homepage · sourced from wooltower.com · © attribution on live site: Roy McKeown</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const toggle = document.getElementById("menuToggle");
+      const mobile = document.getElementById("navMobile");
+      const closeBtn = document.getElementById("navClose");
+
+      const onScroll = () => {
+        header.classList.toggle("is-solid", window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const openMenu = () => {
+        mobile.hidden = false;
+        requestAnimationFrame(() => mobile.classList.add("open"));
+        toggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeMenu = () => {
+        mobile.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        setTimeout(() => { mobile.hidden = true; }, 350);
+      };
+
+      toggle.addEventListener("click", openMenu);
+      closeBtn.addEventListener("click", closeMenu);
+      mobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+      // Offset-aware smooth scrolling for in-page anchors (beats fixed header)
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const hash = link.getAttribute("href");
+          if (!hash || hash === "#") return;
+          const target = document.querySelector(hash);
+          if (!target) return;
+          event.preventDefault();
+          const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 72;
+          const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - pad);
+          window.scrollTo({ top, behavior: "smooth" });
+          history.pushState(null, "", hash);
+        });
+      });
+
+      // Viewing enquiry widget
+      let guests = 80;
+      const guestCount = document.getElementById("guestCount");
+      const guestTrigger = document.getElementById("guestTrigger");
+      const status = document.getElementById("widgetStatus");
+      const form = document.getElementById("viewingForm");
+      const viewingDate = document.getElementById("viewingDate");
+
+      const syncGuests = () => {
+        guestCount.textContent = String(guests);
+        guestTrigger.textContent = guests === 1 ? "1 guest" : guests + " guests";
+      };
+      syncGuests();
+
+      // Default viewing date ~1 week out
+      const soon = new Date();
+      soon.setDate(soon.getDate() + 7);
+      viewingDate.value = soon.toISOString().slice(0, 10);
+      viewingDate.min = new Date().toISOString().slice(0, 10);
+
+      document.getElementById("guestsMinus").addEventListener("click", () => {
+        guests = Math.max(1, guests - 5);
+        syncGuests();
+      });
+      document.getElementById("guestsPlus").addEventListener("click", () => {
+        guests = Math.min(200, guests + 5);
+        syncGuests();
+      });
+      guestTrigger.addEventListener("click", () => {
+        guests = Math.min(200, guests + 5);
+        syncGuests();
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const season = document.getElementById("preferredSeason").value;
+        const year = document.getElementById("preferredYear").value;
+        status.textContent = "Thanks — your viewing enquiry is ready to send to info@wooltower.com"
+          + (season || year ? ` (${[season, year].filter(Boolean).join(" ")} · ${guests} guests)` : ` (${guests} guests)`)
+          + ".";
+      });
+
+      const reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add("in"));
+      }
+    })();
+  </script>
+</body>
+</html>
