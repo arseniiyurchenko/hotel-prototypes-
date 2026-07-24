@@ -79,6 +79,19 @@ def main() -> int:
             if "Soignes" not in support and "Bruxelles" not in support:
                 results["errors"].append("Hero support missing location cue from source")
 
+            page.evaluate("window.scrollTo(0, 0)")
+            page.wait_for_timeout(500)
+            page.screenshot(
+                path=str(ARTIFACTS / "chateau-sainte-anne-desktop-hero.png")
+            )
+            page.screenshot(
+                path=str(ARTIFACTS / "chateau-sainte-anne-desktop-full.png"),
+                full_page=True,
+            )
+            results["viewports"].append("desktop-1280")
+
+            page.locator("#contact").scroll_into_view_if_needed()
+            page.wait_for_timeout(300)
             page.locator("#name").fill("Camille Dupont")
             page.locator("#email").fill("camille@example.com")
             page.locator("#eventType").select_option("mariage")
@@ -90,15 +103,9 @@ def main() -> int:
             results["interactions"].append(f"enquiry form: {status[:100]}")
             if "prototype" not in status.lower() and "Nathalie" not in status:
                 results["errors"].append(f"Unexpected form status: {status}")
-
             page.screenshot(
-                path=str(ARTIFACTS / "chateau-sainte-anne-desktop-hero.png")
+                path=str(ARTIFACTS / "chateau-sainte-anne-desktop-contact.png")
             )
-            page.screenshot(
-                path=str(ARTIFACTS / "chateau-sainte-anne-desktop-full.png"),
-                full_page=True,
-            )
-            results["viewports"].append("desktop-1280")
 
             # Mobile
             page.set_viewport_size({"width": 390, "height": 844})
