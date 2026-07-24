@@ -28,7 +28,10 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5.75rem;
+    }
 
     body {
       font-family: 'Manrope', sans-serif;
@@ -44,7 +47,7 @@
     ul { list-style: none; }
 
     .container {
-      width: min(1120px, 90vw);
+      width: min(1120px, calc(100% - 3rem));
       margin-inline: auto;
     }
 
@@ -53,14 +56,14 @@
       position: fixed;
       inset: 0 0 auto;
       z-index: 100;
-      padding: 1.1rem 0;
+      padding: 1.25rem 0;
       transition: background 0.35s var(--ease), padding 0.35s var(--ease);
     }
 
     .site-header.is-scrolled {
       background: rgba(12, 36, 33, 0.94);
       backdrop-filter: blur(10px);
-      padding: 0.7rem 0;
+      padding: 0.85rem 0;
     }
 
     .header-inner {
@@ -68,6 +71,10 @@
       align-items: center;
       justify-content: space-between;
       gap: 1.5rem;
+    }
+
+    section[id] {
+      scroll-margin-top: 5.75rem;
     }
 
     .brand-lockup {
@@ -697,6 +704,14 @@
     }
 
     @media (max-width: 600px) {
+      .container {
+        width: min(1120px, calc(100% - 2.5rem));
+      }
+
+      .site-header {
+        padding: 1rem 0;
+      }
+
       .brand-lockup img { height: 34px; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .btn { width: 100%; }
