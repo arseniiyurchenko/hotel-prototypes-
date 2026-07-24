@@ -78,7 +78,10 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 0.75rem);
+    }
     body {
       font-family: var(--font-body);
       font-weight: 300;
@@ -93,7 +96,14 @@
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
     button, input, select, textarea { font: inherit; color: inherit; }
-    .container { width: min(100% - 2.5rem, var(--max)); margin-inline: auto; }
+    .container {
+      width: min(100% - 3rem, var(--max));
+      margin-inline: auto;
+    }
+    .site-header .container {
+      width: min(100%, var(--max));
+    }
+    section[id] { scroll-margin-top: calc(var(--header-h) + 0.75rem); }
 
     @keyframes ken-burns {
       from { transform: scale(1.08); }
@@ -122,6 +132,7 @@
       height: var(--header-h);
       display: flex;
       align-items: center;
+      padding-inline: clamp(1.25rem, 4vw, 2.25rem);
       transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
     }
     .site-header.is-solid {
@@ -135,6 +146,7 @@
       justify-content: space-between;
       gap: 1rem;
       width: 100%;
+      padding-block: 0.35rem;
     }
     .brand {
       display: flex;
@@ -662,6 +674,41 @@
       color: var(--blue);
       min-height: 1.25rem;
     }
+    .guest-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      background: var(--mist);
+      border: 1px solid var(--line);
+      padding: 0.35rem 0.45rem;
+      min-height: 2.85rem;
+    }
+    .guest-stepper button {
+      width: 2.1rem;
+      height: 2.1rem;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--navy);
+      cursor: pointer;
+      font-size: 1.15rem;
+      line-height: 1;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .guest-stepper button:hover {
+      background: var(--gold-soft);
+      border-color: var(--gold);
+    }
+    .guest-stepper #guestsDisplay {
+      flex: 1;
+      text-align: center;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      min-width: 0;
+    }
+    .guest-stepper input[type="hidden"] { display: none; }
     .missing-note {
       margin-top: 1.5rem;
       padding-top: 1.25rem;
@@ -1074,6 +1121,16 @@
             </div>
             <div class="form-grid two" style="margin-top:0.9rem;">
               <div class="field">
+                <label for="eventDate">Date souhaitée</label>
+                <input id="eventDate" name="eventDate" type="date" required>
+              </div>
+              <div class="field">
+                <label for="altDate">Date alternative</label>
+                <input id="altDate" name="altDate" type="date">
+              </div>
+            </div>
+            <div class="form-grid two" style="margin-top:0.9rem;">
+              <div class="field">
                 <label for="eventType">Type d’événement</label>
                 <select id="eventType" name="eventType" required>
                   <option value="">Choisir…</option>
@@ -1085,13 +1142,18 @@
                 </select>
               </div>
               <div class="field">
-                <label for="guests">Nombre d’invités</label>
-                <input id="guests" name="guests" type="number" min="1" max="400" placeholder="ex. 120">
+                <label for="guestsDisplay">Nombre d’invités</label>
+                <div class="guest-stepper" id="guestSelector">
+                  <button type="button" id="guestsDecrease" data-action="decrease" aria-label="Diminuer le nombre d’invités">−</button>
+                  <input type="text" id="guestsDisplay" value="80 invités" readonly aria-live="polite">
+                  <input type="hidden" id="guests" name="guests" value="80">
+                  <button type="button" id="guestsIncrease" data-action="increase" aria-label="Augmenter le nombre d’invités">+</button>
+                </div>
               </div>
             </div>
             <div class="field" style="margin-top:0.9rem;">
               <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Espace souhaité, date, formule…"></textarea>
+              <textarea id="message" name="message" placeholder="Espace souhaité (Grand Hall, Pool house…), formule…"></textarea>
             </div>
             <div style="margin-top:1.15rem;">
               <button class="btn btn-navy" id="submitEnquiry" type="submit">Envoyer la demande</button>
@@ -1133,6 +1195,12 @@
       const navClose = document.getElementById("navClose");
       const form = document.getElementById("enquiryForm");
       const status = document.getElementById("formStatus");
+      const eventDate = document.getElementById("eventDate");
+      const altDate = document.getElementById("altDate");
+      const guestsInput = document.getElementById("guests");
+      const guestsDisplay = document.getElementById("guestsDisplay");
+      const guestsDecrease = document.getElementById("guestsDecrease");
+      const guestsIncrease = document.getElementById("guestsIncrease");
 
       const onScroll = () => {
         header.classList.toggle("is-solid", window.scrollY > 40);
@@ -1172,17 +1240,53 @@
       );
       document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
+      const pad = (n) => String(n).padStart(2, "0");
+      const formatISO = (d) =>
+        `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const minDate = formatISO(today);
+      eventDate.min = minDate;
+      altDate.min = minDate;
+      const preferred = new Date(today);
+      preferred.setDate(preferred.getDate() + 45);
+      eventDate.value = formatISO(preferred);
+
+      let guestCount = 80;
+      const syncGuests = () => {
+        guestsInput.value = String(guestCount);
+        guestsDisplay.value = `${guestCount} invité${guestCount > 1 ? "s" : ""}`;
+      };
+      syncGuests();
+      guestsDecrease.addEventListener("click", () => {
+        guestCount = Math.max(10, guestCount - 10);
+        syncGuests();
+      });
+      guestsIncrease.addEventListener("click", () => {
+        guestCount = Math.min(400, guestCount + 10);
+        syncGuests();
+      });
+      eventDate.addEventListener("change", () => {
+        if (eventDate.value) altDate.min = eventDate.value;
+      });
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const eventType = document.getElementById("eventType").value;
-        if (!name || !email || !eventType) {
-          status.textContent = "Merci de renseigner nom, e-mail et type d’événement.";
+        if (!name || !email || !eventType || !eventDate.value) {
+          status.textContent = "Merci de renseigner nom, e-mail, date et type d’événement.";
           return;
         }
-        status.textContent = "Demande enregistrée (prototype). Contactez Nathalie Beirnaerdt pour une réservation réelle.";
+        status.textContent =
+          `Demande enregistrée (prototype) — ${eventDate.value}, ${guestCount} invités. Contactez Nathalie Beirnaerdt pour une réservation réelle.`;
         form.reset();
+        guestCount = 80;
+        syncGuests();
+        eventDate.min = minDate;
+        altDate.min = minDate;
+        eventDate.value = formatISO(preferred);
       });
     })();
   </script>
