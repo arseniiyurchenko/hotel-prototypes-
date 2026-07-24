@@ -76,7 +76,7 @@ From weddings / related pages (same venue):
 | Logo | `…/websites/638028283061947044_auchencastle17708.png` | Auchen Castle |
 | Hero / exterior + gardens | `…/photosv2/AuchenconferenceWW1500x90039787.jpg` | Front elevation of Auchen Castle and Italianate gardens |
 | Grounds / aerial | `…/photosv2/home-main-1500x90057225.jpg` | Aerial shot of Auchen |
-| Ceremony Room (event space) | `…/photosv2/gallery94937.jpg` | Ceremony Room at Auchen Castle |
+| Ceremony Room (event space) | `…/photosv2/Auchen_BethFaulder_553744989.jpg` | Room ready for guests (Ceremony Room setup; gallery94937.jpg on source has a baked-in “GALLERY” overlay, so unused) |
 | Wedding reception room | `…/photosv2/wedding-strip-1500x50026888.jpg` | Auchen Castle wedding reception room |
 | Historic staircase | `…/photosv2/Auchen_Mark_Keogh_10649279.jpg` | Bride descending stairs |
 | Entrance / turret character | `…/photosv2/AUCHENTURRETSHOOT33875-1200x80088744.jpg` | Bride at the entrance to Auchen Castle |

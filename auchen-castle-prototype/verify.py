@@ -21,15 +21,10 @@ def main():
         page = context.new_page()
 
         page.goto(URL, wait_until="networkidle")
-        page.wait_for_timeout(2000)
-
-        imgs = page.locator("img").all()
-        for img in imgs:
-            src = img.get_attribute("src") or ""
-            ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
-            results["images"].append({"src": src, "ok": ok})
-            if not ok:
-                results["errors"].append(f"Broken image: {src}")
+        page.wait_for_timeout(1500)
+        page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
+        page.wait_for_timeout(500)
+        page.screenshot(path=str(ARTIFACTS / "auchen-desktop-hero.png"))
 
         page.locator("#inquiry").scroll_into_view_if_needed()
         page.wait_for_timeout(400)
@@ -48,11 +43,24 @@ def main():
 
         for sel in ["#spaces", "#features", "#packages", "#gallery", "#location", "#contact"]:
             page.locator(sel).scroll_into_view_if_needed()
-            page.wait_for_timeout(350)
+            page.wait_for_timeout(500)
 
-        page.evaluate("window.scrollTo(0, 0)")
+        # Re-check images after scrolling so lazy-loaded assets are requested
+        for sel in ["#spaces", "#gallery", "#location", "#contact"]:
+            page.locator(sel).scroll_into_view_if_needed()
+            page.wait_for_timeout(600)
+        page.wait_for_timeout(1000)
+
+        imgs = page.locator("img").all()
+        for img in imgs:
+            src = img.get_attribute("src") or ""
+            ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
+            results["images"].append({"src": src, "ok": ok})
+            if not ok:
+                results["errors"].append(f"Broken image: {src}")
+
+        page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
         page.wait_for_timeout(400)
-        page.screenshot(path=str(ARTIFACTS / "auchen-desktop-hero.png"))
         page.screenshot(
             path=str(ARTIFACTS / "auchen-desktop-full.png"), full_page=True
         )
