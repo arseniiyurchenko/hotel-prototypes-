@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centrum Konferencyjno-Bankietowe Weis — Kwidzyn</title>
+  <meta name="description" content="Centrum Konferencyjno-Bankietowe Weis w Kwidzynie. Wspaniałe przyjęcia dla wspaniałych ludzi. Sale konferencyjne i bankietowe, catering, parking monitorowany.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wine: #814256;
+      --wine-deep: #5c2e3c;
+      --wine-dark: #301818;
+      --blush: #eedde2;
+      --blush-soft: #f7eef1;
+      --ink: #1a1214;
+      --muted: #5a4a4e;
+      --surface: #faf7f8;
+      --white: #ffffff;
+      --line: rgba(129, 66, 86, 0.18);
+      --shadow: 0 12px 40px rgba(48, 24, 24, 0.14);
+      --radius: 4px;
+      --header-h: 78px;
+      --max: 1120px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Outfit", sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--surface);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    .container { width: min(100% - 2.5rem, var(--max)); margin-inline: auto; }
+
+    /* Motion */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes kenBurns {
+      from { transform: scale(1.06); }
+      to { transform: scale(1); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .site-header.scrolled {
+      background: rgba(48, 24, 24, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .logo img {
+      height: 46px;
+      width: auto;
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
+    }
+    .logo-word {
+      font-family: "Cinzel", serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.35;
+      max-width: 11rem;
+      display: none;
+    }
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+    .nav-desktop a:hover { color: var(--blush); }
+    .header-phone {
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 0.55rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: var(--radius);
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .header-phone:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(48, 24, 24, 0.98);
+      z-index: 200;
+      padding: 2rem;
+      flex-direction: column;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+    .nav-mobile-top img { height: 42px; }
+    .nav-close {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+    .nav-mobile nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .nav-mobile a {
+      color: #fff;
+      font-family: "Cinzel", serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* Hero — one composition, full-bleed */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #fff;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url("https://images.cdn-files-a.com/uploads/7901888/2000_646d0e5a3965c_filter_646fc9ae714ef.jpg")
+        center / cover no-repeat;
+      animation: kenBurns 18s var(--ease) forwards;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(48, 24, 24, 0.35) 0%, rgba(48, 24, 24, 0.25) 40%, rgba(26, 12, 14, 0.82) 100%),
+        radial-gradient(ellipse at 20% 30%, rgba(129, 66, 86, 0.28), transparent 55%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: calc(var(--header-h) + 3rem) 0 4.5rem;
+      max-width: 40rem;
+      animation: rise 1s var(--ease) 0.15s both;
+    }
+    .hero-brand {
+      font-family: "Cinzel", serif;
+      font-size: clamp(3.4rem, 10vw, 6.2rem);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+      margin-bottom: 0.65rem;
+      text-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+    }
+    .hero-brand span {
+      display: block;
+      font-size: clamp(0.72rem, 1.6vw, 0.9rem);
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-top: 0.85rem;
+      opacity: 0.92;
+    }
+    .hero-tagline {
+      font-family: "Cinzel", serif;
+      font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      max-width: 28rem;
+      margin: 1.35rem 0 0.85rem;
+      color: var(--blush);
+    }
+    .hero-support {
+      font-size: 1.02rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.86);
+      max-width: 28rem;
+      margin-bottom: 2rem;
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      animation: fadeIn 1s var(--ease) 0.55s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.55rem;
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--wine);
+      color: var(--blush);
+    }
+    .btn-primary:hover { background: var(--wine-deep); }
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #fff;
+    }
+
+    /* Inquiry */
+    .inquiry {
+      position: relative;
+      z-index: 3;
+      margin-top: -2.5rem;
+      padding-bottom: 1rem;
+    }
+    .inquiry-panel {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      padding: 1.35rem 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+    }
+    .field label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .field input,
+    .field select {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      padding: 0.55rem 0;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .field input:focus,
+    .field select:focus { border-bottom-color: var(--wine); }
+    .inquiry-panel .btn-primary {
+      white-space: nowrap;
+      align-self: stretch;
+      padding-inline: 1.4rem;
+    }
+    .inquiry-note {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .inquiry-toast {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: var(--blush-soft);
+      color: var(--wine-dark);
+      border-left: 3px solid var(--wine);
+      font-size: 0.9rem;
+    }
+    .inquiry-toast.show { display: block; animation: rise 0.45s var(--ease); }
+
+    /* Sections */
+    section { padding: 5.5rem 0; }
+    .section-kicker {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--wine);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: "Cinzel", serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.55rem);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+      color: var(--wine-dark);
+      margin-bottom: 0.85rem;
+    }
+    .section-lead {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+    .section-head { margin-bottom: 2.75rem; }
+
+    /* About strip */
+    .about {
+      background:
+        linear-gradient(135deg, var(--blush-soft), var(--surface) 55%, #fff),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 18px,
+          rgba(129, 66, 86, 0.03) 18px,
+          rgba(129, 66, 86, 0.03) 19px
+        );
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .about-copy p + p { margin-top: 1rem; }
+    .about-copy p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+    }
+    .about-visual {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .about-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+    .about-visual::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 40%;
+      background: linear-gradient(transparent, rgba(48, 24, 24, 0.55));
+    }
+
+    /* Rooms — list, not card chrome */
+    .rooms { background: var(--white); }
+    .room-list { display: grid; gap: 0; }
+    .room {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .room:last-child { border-bottom: 1px solid var(--line); }
+    .room:nth-child(even) .room-media { order: 2; }
+    .room-media {
+      overflow: hidden;
+      min-height: 280px;
+      background: var(--blush-soft);
+    }
+    .room-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+      transition: transform 1.1s var(--ease);
+    }
+    .room:hover .room-media img { transform: scale(1.04); }
+    .room-name {
+      font-family: "Cinzel", serif;
+      font-size: 1.65rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--wine-dark);
+    }
+    .room-capacity {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--wine);
+      font-weight: 500;
+      margin-bottom: 0.9rem;
+    }
+    .room-desc {
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Amenities */
+    .amenities {
+      background: var(--wine-dark);
+      color: #fff;
+    }
+    .amenities .section-kicker { color: var(--blush); }
+    .amenities .section-title { color: #fff; }
+    .amenities .section-lead { color: rgba(255, 255, 255, 0.72); }
+    .amenity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem 2rem;
+    }
+    .amenity {
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(238, 221, 226, 0.22);
+    }
+    .amenity h3 {
+      font-family: "Cinzel", serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 0.45rem;
+      color: var(--blush);
+    }
+    .amenity p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    /* Pricing */
+    .pricing {
+      background:
+        linear-gradient(180deg, var(--blush-soft), var(--surface));
+    }
+    .price-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+    .price-main {
+      padding: 2.5rem 0;
+      border-top: 2px solid var(--wine);
+    }
+    .price-main .amount {
+      font-family: "Cinzel", serif;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      color: var(--wine);
+      font-weight: 600;
+      line-height: 1.1;
+      margin: 0.5rem 0 0.75rem;
+    }
+    .price-main .amount small {
+      font-size: 0.4em;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+    .price-side {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-weight: 300;
+    }
+    .price-side strong {
+      display: block;
+      font-family: "Cinzel", serif;
+      font-weight: 500;
+      color: var(--wine-dark);
+      margin-bottom: 0.5rem;
+      font-size: 1.15rem;
+    }
+    .price-disclaimer {
+      margin-top: 1.75rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    /* Gallery */
+    .gallery { background: var(--white); }
+    .gallery-mosaic {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.75rem;
+    }
+    .gallery-mosaic a {
+      overflow: hidden;
+      position: relative;
+      background: var(--blush-soft);
+    }
+    .gallery-mosaic a:first-child {
+      grid-row: 1 / span 2;
+    }
+    .gallery-mosaic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s var(--ease);
+    }
+    .gallery-mosaic a:hover img { transform: scale(1.05); }
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1.1rem;
+      background: linear-gradient(transparent, rgba(26, 12, 14, 0.7));
+      color: #fff;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-mosaic a:hover .gallery-caption { opacity: 1; }
+
+    /* Location */
+    .location {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(129, 66, 86, 0.1), transparent 40%),
+        var(--surface);
+    }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .location-map {
+      min-height: 340px;
+      background:
+        linear-gradient(145deg, #d8c4c9, #b89aa2 40%, #8a6170),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 40px,
+          rgba(255, 255, 255, 0.06) 40px,
+          rgba(255, 255, 255, 0.06) 41px
+        );
+      position: relative;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+    .location-map strong {
+      font-family: "Cinzel", serif;
+      font-size: 1.35rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .location-map span {
+      font-size: 0.92rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    .pin {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--wine-dark);
+      box-shadow: 0 0 0 8px rgba(48, 24, 24, 0.25);
+      margin: 0 auto 1rem;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 8px rgba(48, 24, 24, 0.22); }
+      50% { box-shadow: 0 0 0 16px rgba(48, 24, 24, 0.05); }
+    }
+    .nearby {
+      margin-top: 1.5rem;
+    }
+    .nearby h3 {
+      font-family: "Cinzel", serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.65rem;
+      color: var(--wine-dark);
+    }
+    .nearby p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+    }
+    .nearby ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.85rem;
+    }
+    .nearby li {
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      color: var(--wine);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.1rem;
+    }
+
+    /* Contact / footer */
+    .contact {
+      background: var(--wine-dark);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 4.5rem 0 2.5rem;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(238, 221, 226, 0.15);
+    }
+    .contact .brand-line {
+      font-family: "Cinzel", serif;
+      font-size: 1.6rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .contact .tag {
+      font-family: "Cinzel", serif;
+      font-style: italic;
+      color: var(--blush);
+      margin-bottom: 1.25rem;
+    }
+    .contact h4 {
+      font-family: "Cinzel", serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 0.85rem;
+    }
+    .contact a:hover { color: var(--blush); }
+    .contact p, .contact li {
+      font-weight: 300;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+    .contact ul { list-style: none; }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .source-note {
+      max-width: 36rem;
+    }
+
+    @media (max-width: 960px) {
+      .nav-desktop, .header-phone { display: none; }
+      .menu-toggle { display: block; }
+      .logo-word { display: none; }
+      .inquiry-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+      .inquiry-panel .btn-primary {
+        grid-column: 1 / -1;
+      }
+      .about-grid,
+      .room,
+      .price-block,
+      .location-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .room:nth-child(even) .room-media { order: 0; }
+      .amenity-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 180px 180px;
+      }
+      .gallery-mosaic a:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 240px;
+      }
+      .about-visual { min-height: 300px; }
+    }
+
+    @media (max-width: 600px) {
+      .inquiry-panel { grid-template-columns: 1fr; }
+      .amenity-grid { grid-template-columns: 1fr; }
+      .gallery-mosaic {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-mosaic a { min-height: 200px; }
+      .hero-content { padding-bottom: 5.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Weis — strona główna">
+        <img src="https://images.cdn-files-a.com/uploads/7901888/400_filter_nobg_6493676cdf177.png" alt="Centrum Konferencyjno-Bankietowe Weis">
+        <span class="logo-word">Centrum Konferencyjno-Bankietowe</span>
+      </a>
+      <ul class="nav-desktop">
+        <li><a href="#o-nas">O nas</a></li>
+        <li><a href="#sale">Sale</a></li>
+        <li><a href="#udogodnienia">Udogodnienia</a></li>
+        <li><a href="#oferta">Oferta</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a class="header-phone" href="tel:+48604402804">+48 604 402 804</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Otwórz menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <div class="nav-mobile-top">
+      <img src="https://images.cdn-files-a.com/uploads/7901888/400_filter_nobg_6493676cdf177.png" alt="Weis">
+      <button class="nav-close" id="navClose" aria-label="Zamknij menu">&times;</button>
+    </div>
+    <nav>
+      <a href="#o-nas">O nas</a>
+      <a href="#sale">Sale</a>
+      <a href="#udogodnienia">Udogodnienia</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#lokalizacja">Lokalizacja</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="tel:+48604402804">+48 604 402 804</a>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Weis — strona główna">
+      <div class="hero-bg" role="img" aria-label="Budynek Centrum Konferencyjno-Bankietowego Weis w Kwidzynie"></div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1 class="hero-brand">
+          Weis
+          <span>Centrum Konferencyjno-Bankietowe</span>
+        </h1>
+        <p class="hero-tagline">Wspaniałe przyjęcia dla wspaniałych ludzi...</p>
+        <p class="hero-support">Sale na konferencje, bankiety i uroczystości w Kwidzynie — z cateringiem i monitorowanym parkingiem.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#zapytanie">Zapytaj o termin</a>
+          <a class="btn btn-ghost" href="#sale">Zobacz sale</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="inquiry" id="zapytanie">
+      <div class="container">
+        <form class="inquiry-panel" id="inquiryForm">
+          <div class="field">
+            <label for="eventDate">Data wydarzenia</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+          </div>
+          <div class="field">
+            <label for="eventType">Rodzaj</label>
+            <select id="eventType" name="eventType">
+              <option value="konferencja">Konferencja</option>
+              <option value="bankiet">Bankiet</option>
+              <option value="wesele">Wesele</option>
+              <option value="firma">Impreza firmowa</option>
+              <option value="rodzinna">Uroczystość rodzinna</option>
+              <option value="inne">Inne</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="guests">Liczba gości</label>
+            <input type="number" id="guests" name="guests" min="1" max="400" placeholder="np. 80" required>
+          </div>
+          <div class="field">
+            <label for="roomPref">Sala</label>
+            <select id="roomPref" name="roomPref">
+              <option value="">Do uzgodnienia</option>
+              <option value="konferencyjna">Sala konferencyjna (do 50)</option>
+              <option value="bankietowa">Sala bankietowa (do 60)</option>
+              <option value="krysztalowa">Sala kryształowa (do 200 / 400)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Wyślij zapytanie</button>
+        </form>
+        <p class="inquiry-note">Formularz prototypowy — na żywej stronie rezerwacja terminów odbywa się telefonicznie: <a href="tel:+48604402804">+48 604 402 804</a>.</p>
+        <div class="inquiry-toast" id="inquiryToast" role="status"></div>
+      </div>
+    </div>
+
+    <section class="about" id="o-nas">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <p class="section-kicker">O nas</p>
+          <h2 class="section-title">Idealne miejsce na spotkania i przyjęcia</h2>
+          <p>Centrum Konferencyjno-Bankietowe Weis to idealne miejsce na organizację spotkań, przyjęć okolicznościowych i biznesowych. Wykwalifikowana kadra personelu oferuje profesjonalne i pełne komfortu usługi gastronomiczne, dostosowane do potrzeb gości.</p>
+          <p>Obiekt posiada wszystkie niezbędne udogodnienia, w tym ekskluzywne wnętrza i monitorowany parking. Dodatkowo centrum oferuje specjalne pakiety ślubne — organizatorzy mają do dyspozycji fotografa, zespół muzyczny i dekoracje weselne.</p>
+        </div>
+        <div class="about-visual reveal">
+          <img src="https://images.cdn-files-a.com/uploads/7901888/800_646fca7c1aa36.jpg" alt="Sala Kryształowa — Centrum Konferencyjno-Bankietowe Weis" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="rooms" id="sale">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Wynajem sal</p>
+          <h2 class="section-title">Nasze sale</h2>
+          <p class="section-lead">Wynajmujemy sale na konferencje, bankiety, imprezy firmowe, uroczystości rodzinne, studniówki, stypy, chrzciny, komunie i wiele innych.</p>
+        </div>
+        <div class="room-list">
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="https://images.cdn-files-a.com/uploads/7901888/800_646d1779d79c2.jpg" alt="Sala Konferencyjna Weis" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Sala konferencyjna</h3>
+              <p class="room-capacity">Do 50 osób</p>
+              <p class="room-desc">Przestrzeń na spotkania biznesowe i konferencje. Na życzenie: projektor z wysuwanym z sufitu ekranem oraz nagłośnienie.</p>
+              <a class="btn btn-primary" href="#zapytanie">Zapytaj o dostępność</a>
+            </div>
+          </article>
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="https://images.cdn-files-a.com/uploads/7901888/800_646fcf05ec7b7.jpg" alt="Sala Bankietowa Weis" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Sala bankietowa</h3>
+              <p class="room-capacity">Do 60 osób</p>
+              <p class="room-desc">Sala na bankiety i przyjęcia okolicznościowe — z usługami gastronomicznymi dostosowanymi do potrzeb gości.</p>
+              <a class="btn btn-primary" href="#zapytanie">Zapytaj o dostępność</a>
+            </div>
+          </article>
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="https://images.cdn-files-a.com/uploads/7901888/800_646fca7c1aa36.jpg" alt="Sala Kryształowa Weis" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Sala kryształowa</h3>
+              <p class="room-capacity">Do 200 osób · forma teatralna do 400 osób</p>
+              <p class="room-desc">Największa sala obiektu — na wesela, bale, duże konferencje i uroczystości firmowe.</p>
+              <a class="btn btn-primary" href="#zapytanie">Zapytaj o dostępność</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenities" id="udogodnienia">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Na miejscu</p>
+          <h2 class="section-title">Udogodnienia i atrakcje</h2>
+          <p class="section-lead">Funkcje i usługi wymienione na stronie weis.com.pl — bez domysłów.</p>
+        </div>
+        <div class="amenity-grid">
+          <div class="amenity reveal">
+            <h3>Usługi gastronomiczne</h3>
+            <p>Profesjonalny catering dostosowany do potrzeb gości.</p>
+          </div>
+          <div class="amenity reveal">
+            <h3>Parking monitorowany</h3>
+            <p>Parking przy obiekcie. Liczba miejsc nie jest podana na stronie źródłowej.</p>
+          </div>
+          <div class="amenity reveal">
+            <h3>Nagłośnienie</h3>
+            <p>Nagłośnienie na uroczystość poprawin oraz konferencje.</p>
+          </div>
+          <div class="amenity reveal">
+            <h3>Projektor z ekranem</h3>
+            <p>Wysuwany z sufitu ekran — na życzenie gości.</p>
+          </div>
+          <div class="amenity reveal">
+            <h3>Pakiety ślubne</h3>
+            <p>Fotograf, zespół muzyczny i dekoracje weselne do dyspozycji organizatorów.</p>
+          </div>
+          <div class="amenity reveal">
+            <h3>Ogród rajski</h3>
+            <p>Huśtawki, grill, ławy i stoły dla gości.</p>
+          </div>
+          <div class="amenity reveal">
+            <h3>Pokój z sejfem</h3>
+            <p>Uroczy pokój z sejfem do dyspozycji.</p>
+          </div>
+          <div class="amenity reveal">
+            <h3>Wystrój sali</h3>
+            <p>Pokrowce na krzesła, obrusy, napis L O V E, rollbar z piwem.</p>
+          </div>
+          <div class="amenity reveal">
+            <h3>Ekspres do kawy · stół wiejski</h3>
+            <p>Dodatkowe elementy oferty na przyjęcia — w tym możliwość wniesienia własnych wyrobów na stół wiejski.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="oferta">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Oferta</p>
+          <h2 class="section-title">Ceny z FAQ i aktualności</h2>
+          <p class="section-lead">Tylko kwoty faktycznie pokazane na stronie źródłowej.</p>
+        </div>
+        <div class="price-block reveal">
+          <div class="price-main">
+            <p class="section-kicker">Pakiet weselny / imprezy</p>
+            <p class="amount">od 260 zł <small>/ osobę</small></p>
+            <p>Odpowiedź z FAQ: „Ile kosztuje pakiet weselny w Centrum WEIS?” — „Nasze imprezy zaczynają się od 260 zł za osobę.”</p>
+          </div>
+          <div class="price-side">
+            <strong>Bal sylwestrowy</strong>
+            <p>Aktualność na stronie: menu sylwestrowe oraz promocja / bilet od osoby — <strong style="color:var(--wine)">290 zł/os.</strong></p>
+          </div>
+        </div>
+        <p class="price-disclaimer reveal">Szczegółowy skład pakietów (pozycje menu, godziny, wliczone usługi) nie jest w pełni rozpisany na stronie głównej — szczegóły i rezerwacja: telefon.</p>
+      </div>
+    </section>
+
+    <section class="gallery" id="galeria">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Galeria</p>
+          <h2 class="section-title">Atmosfera obiektu</h2>
+          <p class="section-lead">Zdjęcia z galerii i oferty sal na weis.com.pl.</p>
+        </div>
+        <div class="gallery-mosaic reveal">
+          <a href="https://images.cdn-files-a.com/uploads/7901888/2000_646d0e5a3965c_filter_646fc9ae714ef.jpg" target="_blank" rel="noopener">
+            <img src="https://images.cdn-files-a.com/uploads/7901888/2000_646d0e5a3965c_filter_646fc9ae714ef.jpg" alt="Elewacja budynku Weis w Kwidzynie" loading="lazy">
+            <span class="gallery-caption">Elewacja · Kwidzyn</span>
+          </a>
+          <a href="https://images.cdn-files-a.com/uploads/7901888/800_64779d9fdbc06.jpg" target="_blank" rel="noopener">
+            <img src="https://images.cdn-files-a.com/uploads/7901888/800_64779d9fdbc06.jpg" alt="Ustawienie konferencyjne" loading="lazy">
+            <span class="gallery-caption">Konferencja</span>
+          </a>
+          <a href="https://images.cdn-files-a.com/uploads/7901888/800_646fcf05ec7b7.jpg" target="_blank" rel="noopener">
+            <img src="https://images.cdn-files-a.com/uploads/7901888/800_646fcf05ec7b7.jpg" alt="Sala bankietowa" loading="lazy">
+            <span class="gallery-caption">Sala bankietowa</span>
+          </a>
+          <a href="https://images.cdn-files-a.com/uploads/7901888/800_646fca7c1aa36.jpg" target="_blank" rel="noopener">
+            <img src="https://images.cdn-files-a.com/uploads/7901888/800_646fca7c1aa36.jpg" alt="Sala kryształowa" loading="lazy">
+            <span class="gallery-caption">Sala kryształowa</span>
+          </a>
+          <a href="https://images.cdn-files-a.com/uploads/7901888/2000_646fc7ceeeb35.jpg" target="_blank" rel="noopener">
+            <img src="https://images.cdn-files-a.com/uploads/7901888/2000_646fc7ceeeb35.jpg" alt="Ogród rajski — huśtawka" loading="lazy">
+            <span class="gallery-caption">Ogród rajski</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="lokalizacja">
+      <div class="container location-grid">
+        <div class="reveal">
+          <p class="section-kicker">Lokalizacja</p>
+          <h2 class="section-title">Kwidzyn, Polska</h2>
+          <p class="section-lead" style="margin-bottom:1.25rem">ul. 11 Listopada 18, 82-500 Kwidzyn</p>
+          <p style="color:var(--muted);font-weight:300;margin-bottom:0.75rem">Historia obiektu na stronie: w 1999 otwarto klub dyskotekowy Rink-Weis; budynek przekształcono w obiekt weselny w Kwidzynie.</p>
+          <div class="nearby">
+            <h3>Hotele &amp; apartamenty w pobliżu</h3>
+            <p>Obiekt nie oferuje własnej bazy hotelowej na stronie — przedstawia hotele i apartamenty znajdujące się najbliżej sali:</p>
+            <ul>
+              <li>Apartamenty Pomerius</li>
+              <li>Apartamenty Liwa</li>
+              <li>Hotel Winiarnia</li>
+              <li>Hotel Kamil</li>
+              <li>Hotel Balke</li>
+              <li>Hotel Centrum</li>
+              <li>Hotel Maxim</li>
+            </ul>
+          </div>
+        </div>
+        <div class="location-map reveal" aria-label="Mapa poglądowa — znacznik Kwidzyn">
+          <div>
+            <div class="pin" aria-hidden="true"></div>
+            <strong>Weis · Kwidzyn</strong>
+            <span>ul. 11 Listopada 18<br>82-500 Kwidzyn, Polska<br><br>Mapa interaktywna — placeholder (brak osadzonej mapy na stronie źródłowej)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="contact" id="kontakt">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <p class="brand-line">Weis</p>
+          <p class="tag">Wspaniałe przyjęcia dla wspaniałych ludzi...</p>
+          <p>Centrum Konferencyjno-Bankietowe Weis<br>ul. 11 Listopada 18, 82-500 Kwidzyn, Polska</p>
+        </div>
+        <div>
+          <h4>Kontakt</h4>
+          <ul>
+            <li><a href="tel:+48604402804">+48 604 402 804</a></li>
+            <li><a href="mailto:ckbweis@tlen.pl">ckbweis@tlen.pl</a></li>
+            <li>Pon–sob: 09:00–18:00</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Dane firmy</h4>
+          <p>RINK WEIS Jerzy Weisner, Halina Redmerska<br>
+          NIP 8781509799<br>
+          Nr konta: 15 1020 1778 0000 2102 0087 3737</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="source-note">Prototyp strony głównej na podstawie treści z <a href="https://www.weis.com.pl" target="_blank" rel="noopener">weis.com.pl</a>. Pozycjonowanie: mid-range (lokalne centrum eventowe z akcentem na „ekskluzywne wnętrza”).</p>
+        <p>© Weis · Kwidzyn</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMobile = document.getElementById("navMobile");
+      const navClose = document.getElementById("navClose");
+      const form = document.getElementById("inquiryForm");
+      const toast = document.getElementById("inquiryToast");
+
+      const onScroll = () => {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      const openMenu = () => {
+        navMobile.hidden = false;
+        navMobile.classList.add("open");
+        document.body.style.overflow = "hidden";
+      };
+      const closeMenu = () => {
+        navMobile.classList.remove("open");
+        navMobile.hidden = true;
+        document.body.style.overflow = "";
+      };
+      menuToggle.addEventListener("click", openMenu);
+      navClose.addEventListener("click", closeMenu);
+      navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      document.getElementById("eventDate").min = tomorrow.toISOString().split("T")[0];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const guests = document.getElementById("guests").value;
+        const type = document.getElementById("eventType").selectedOptions[0].text;
+        const date = document.getElementById("eventDate").value;
+        toast.textContent =
+          "Zapytanie zapisane lokalnie (prototyp): " +
+          type +
+          ", " +
+          guests +
+          " os., " +
+          date +
+          ". Na żywej stronie prosimy dzwonić: +48 604 402 804.";
+        toast.classList.add("show");
+      });
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    })();
+  </script>
+</body>
+</html>
