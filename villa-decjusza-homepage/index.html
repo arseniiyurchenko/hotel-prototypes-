@@ -45,6 +45,7 @@
         linear-gradient(180deg, #faf8f4 0%, var(--parchment) 40%, #f3efe7 100%);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     img { max-width: 100%; display: block; }
@@ -187,6 +188,13 @@
 
     .header-cta { flex-shrink: 0; }
     .header-cta .btn { min-height: 44px; padding: 0.65rem 1.2rem; font-size: 0.9rem; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
 
     .menu-toggle {
       display: none;
@@ -804,6 +812,8 @@
       .trust-grid { grid-template-columns: 1fr; }
     }
 
+    .cta-short { display: none; }
+
     @media (max-width: 780px) {
       :root { --header-h: 72px; --pad-x: 32px; }
 
@@ -831,7 +841,16 @@
 
       .menu-toggle { display: inline-flex; }
 
-      .header-cta .btn span { display: none; }
+      .logo img { height: 36px; }
+
+      .header-cta.btn {
+        min-height: 40px;
+        padding: 0.55rem 0.9rem;
+        font-size: 0.85rem;
+      }
+
+      .cta-full { display: none; }
+      .cta-short { display: inline; }
 
       .hero { min-height: 78vh; align-items: flex-end; }
       .enquiry { margin-top: -1.5rem; }
@@ -848,7 +867,7 @@
     @media (max-width: 480px) {
       :root { --pad-x: 28px; }
       .amenities-grid { grid-template-columns: 1fr; }
-      .logo img { height: 38px; }
+      .logo img { height: 34px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -874,8 +893,8 @@
         <a href="#trust">Opinie</a>
       </nav>
 
-      <div style="display:flex;align-items:center;gap:0.75rem;">
-        <a class="header-cta btn btn-primary" href="#enquiry">Sprawdź dostępność <span>→</span></a>
+      <div class="header-actions">
+        <a class="header-cta btn btn-primary" href="#enquiry"><span class="cta-full">Sprawdź dostępność →</span><span class="cta-short">Zapytaj</span></a>
         <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Otwórz menu">
           <span></span><span></span><span></span>
         </button>
@@ -960,7 +979,7 @@
         <div class="spaces-grid">
           <article class="space-card reveal">
             <figure>
-              <img src="https://willadecjusza.pl/images/upload/GALERIE/wnetrza/190930_m19_9461_original.jpg" alt="Hol Główny Willi Decjusza" loading="lazy" width="800" height="600" />
+              <img src="https://willadecjusza.pl/images/upload/GALERIE/wnetrza/190930_m19_9461_original.jpg" alt="Hol Główny Willi Decjusza" width="800" height="600" />
             </figure>
             <div class="space-body">
               <h3>Hol Główny</h3>
