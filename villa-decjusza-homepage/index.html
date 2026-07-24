@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centrum Konferencyjne Willa Decjusza | Kraków</title>
+  <meta name="description" content="Renesansowa Willa Decjusza w Krakowie — konferencje, szkolenia, bankiety i uroczyste przyjęcia w zabytkowych salach i otoczeniu Parku Decjusza." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #403730;
+      --ink-soft: #5a4e45;
+      --stone: #8b8984;
+      --stone-light: #c4c1ba;
+      --parchment: #f7f4ef;
+      --parchment-deep: #ebe6dc;
+      --forest: #47745f;
+      --forest-deep: #355a48;
+      --copper: #ad5324;
+      --sky: #1d7080;
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(64, 55, 48, 0.12);
+      --header-h: 84px;
+      --pad-x: clamp(32px, 5vw, 48px);
+      --max: 1180px;
+      --radius: 2px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 12px);
+    }
+
+    body {
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, rgba(71, 116, 95, 0.08), transparent 50%),
+        radial-gradient(ellipse 60% 40% at 100% 0%, rgba(173, 83, 36, 0.06), transparent 45%),
+        linear-gradient(180deg, #faf8f4 0%, var(--parchment) 40%, #f3efe7 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(100% - (var(--pad-x) * 2), var(--max));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.1rem, 4vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .section-lead {
+      margin-top: 0.85rem;
+      max-width: 38rem;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 48px;
+      padding: 0.8rem 1.45rem;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: transform 0.25s var(--ease), background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--forest);
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(71, 116, 95, 0.28);
+    }
+    .btn-primary:hover { background: var(--forest-deep); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.55);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--white);
+    }
+
+    .btn-dark {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .btn-dark:hover { background: #2d2621; }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-h);
+      background: rgba(250, 248, 244, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(64, 55, 48, 0.08);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      height: 46px;
+      width: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.85rem, 2vw, 1.6rem);
+    }
+
+    .nav a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      position: relative;
+      padding: 0.25rem 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--forest);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .nav a:hover { color: var(--ink); }
+    .nav a:hover::after { transform: scaleX(1); }
+
+    .header-cta { flex-shrink: 0; }
+    .header-cta .btn { min-height: 44px; padding: 0.65rem 1.2rem; font-size: 0.9rem; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(64,55,48,0.18);
+      background: var(--white);
+      border-radius: var(--radius);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--ink);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      transform: scale(1.04);
+      animation: heroDrift 18s var(--ease) infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.04) translate3d(0, 0, 0); }
+      to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(32, 26, 22, 0.35) 0%, rgba(32, 26, 22, 0.2) 35%, rgba(32, 26, 22, 0.78) 100%),
+        linear-gradient(90deg, rgba(32, 26, 22, 0.45) 0%, transparent 55%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(3rem, 8vh, 5.5rem) 0 clamp(3.5rem, 8vh, 5rem);
+      max-width: 42rem;
+      animation: riseIn 1s var(--ease) both;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.8rem, 6.5vw, 4.75rem);
+      font-weight: 700;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.25);
+    }
+
+    .hero-brand span {
+      display: block;
+      font-size: 0.38em;
+      font-family: "Source Sans 3", sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-value {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      max-width: 34rem;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 1.75rem;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* Enquiry */
+    .enquiry {
+      margin-top: -2.75rem;
+      position: relative;
+      z-index: 5;
+      padding-bottom: 1rem;
+    }
+
+    .enquiry-card {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(64, 55, 48, 0.08);
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 0.9fr auto;
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--stone);
+      margin-bottom: 0.45rem;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid rgba(64, 55, 48, 0.16);
+      background: var(--parchment);
+      padding: 0.65rem 0.85rem;
+      color: var(--ink);
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--forest);
+      box-shadow: 0 0 0 3px rgba(71, 116, 95, 0.15);
+      background: var(--white);
+    }
+
+    .enquiry-note {
+      grid-column: 1 / -1;
+      font-size: 0.85rem;
+      color: var(--stone);
+    }
+
+    .enquiry-feedback {
+      grid-column: 1 / -1;
+      display: none;
+      padding: 0.85rem 1rem;
+      background: rgba(71, 116, 95, 0.1);
+      border-left: 3px solid var(--forest);
+      color: var(--forest-deep);
+      font-size: 0.95rem;
+    }
+
+    .enquiry-feedback.is-visible { display: block; animation: riseIn 0.4s var(--ease); }
+
+    /* Sections shared */
+    section {
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+    }
+
+    .section-head {
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    /* Spaces */
+    #spaces {
+      background:
+        linear-gradient(180deg, transparent, rgba(235, 230, 220, 0.55) 10%, rgba(235, 230, 220, 0.55) 90%, transparent);
+    }
+
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .space-card {
+      background: var(--white);
+      border: 1px solid rgba(64, 55, 48, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s ease;
+    }
+
+    .space-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .space-card figure {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--parchment-deep);
+    }
+
+    .space-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+
+    .space-card:hover img { transform: scale(1.06); }
+
+    .space-body {
+      padding: 1.25rem 1.3rem 1.45rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      flex: 1;
+    }
+
+    .space-body h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .space-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 1rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .space-meta strong { color: var(--ink); font-weight: 600; }
+
+    .space-price {
+      margin-top: auto;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(64, 55, 48, 0.08);
+      font-size: 0.95rem;
+    }
+
+    .space-price em {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--forest-deep);
+      font-size: 1.1rem;
+    }
+
+    .price-note {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--stone);
+      margin-top: 0.2rem;
+    }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(64, 55, 48, 0.08);
+      padding: 1.35rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-height: 140px;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .amenity:hover {
+      border-color: rgba(71, 116, 95, 0.35);
+      background: var(--white);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      color: var(--forest);
+    }
+
+    .amenity-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity strong {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .amenity p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    /* Gallery */
+    #gallery {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    #gallery .eyebrow { color: #b7d0c4; }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-lead { color: rgba(255,255,255,0.75); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.85rem;
+    }
+
+    .gallery-grid figure {
+      overflow: hidden;
+      position: relative;
+      background: #2a231f;
+    }
+
+    .gallery-grid figure:first-child {
+      grid-row: 1 / span 2;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease), opacity 0.3s ease;
+      opacity: 0.95;
+    }
+
+    .gallery-grid figure:hover img {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.65));
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-grid figure:hover figcaption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: stretch;
+    }
+
+    .location-copy p + p { margin-top: 1rem; }
+    .location-copy p { color: var(--ink-soft); max-width: 34rem; }
+
+    .location-facts {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .location-facts li {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: 0.75rem;
+      align-items: baseline;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(64, 55, 48, 0.1);
+      font-size: 0.98rem;
+    }
+
+    .location-facts strong {
+      color: var(--forest-deep);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .map-placeholder {
+      min-height: 340px;
+      background:
+        linear-gradient(135deg, rgba(71, 116, 95, 0.18), rgba(64, 55, 48, 0.12)),
+        repeating-linear-gradient(
+          -18deg,
+          transparent,
+          transparent 12px,
+          rgba(64, 55, 48, 0.03) 12px,
+          rgba(64, 55, 48, 0.03) 24px
+        ),
+        var(--parchment-deep);
+      border: 1px solid rgba(64, 55, 48, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: "";
+      position: absolute;
+      inset: 18% 22% 28% 18%;
+      border: 1.5px dashed rgba(64, 55, 48, 0.25);
+      border-radius: 40% 60% 45% 55%;
+      background: rgba(71, 116, 95, 0.08);
+    }
+
+    .map-pin {
+      position: absolute;
+      top: 42%;
+      left: 48%;
+      width: 16px;
+      height: 16px;
+      background: var(--copper);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg) translate(-50%, -50%);
+      box-shadow: 0 0 0 8px rgba(173, 83, 36, 0.18);
+    }
+
+    .map-label {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.92);
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(64, 55, 48, 0.1);
+      max-width: 22rem;
+    }
+
+    .map-label strong {
+      display: block;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .map-label span {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .map-note {
+      margin-top: 0.65rem;
+      font-size: 0.78rem;
+      color: var(--stone);
+      font-style: italic;
+    }
+
+    /* Trust */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.15rem;
+    }
+
+    .trust-card {
+      background: var(--white);
+      border: 1px dashed rgba(64, 55, 48, 0.22);
+      padding: 1.5rem 1.4rem;
+      position: relative;
+    }
+
+    .trust-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--copper);
+      margin-bottom: 0.85rem;
+    }
+
+    .trust-card blockquote {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.35;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 1.1rem;
+    }
+
+    .trust-card cite {
+      font-style: normal;
+      font-size: 0.88rem;
+      color: var(--stone);
+      font-weight: 500;
+    }
+
+    .trust-disclaimer {
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--stone);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #2a231f;
+      color: rgba(255,255,255,0.82);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand img {
+      height: 42px;
+      width: auto;
+      margin-bottom: 1rem;
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+
+    .footer-brand p {
+      max-width: 26rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .footer-col h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-col a,
+    .footer-col p {
+      display: block;
+      margin-bottom: 0.55rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.78);
+      transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* Reveal motion */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .reveal.is-in { opacity: 1; transform: none; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .spaces-grid { grid-template-columns: repeat(2, 1fr); }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .enquiry-card { grid-template-columns: 1fr 1fr; }
+      .enquiry-card .btn { width: 100%; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 200px 200px;
+      }
+      .gallery-grid figure:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 260px;
+      }
+      .location-grid,
+      .footer-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+
+    .cta-short { display: none; }
+
+    @media (max-width: 780px) {
+      :root { --header-h: 72px; --pad-x: 32px; }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        background: rgba(250, 248, 244, 0.98);
+        border-bottom: 1px solid rgba(64, 55, 48, 0.1);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem var(--pad-x) 1.25rem;
+        gap: 0;
+        box-shadow: var(--shadow);
+      }
+
+      .nav.is-open { display: flex; }
+
+      .nav a {
+        padding: 0.85rem 0;
+        border-bottom: 1px solid rgba(64, 55, 48, 0.08);
+      }
+
+      .menu-toggle { display: inline-flex; }
+
+      .logo img { height: 36px; }
+
+      .header-cta.btn {
+        min-height: 40px;
+        padding: 0.55rem 0.9rem;
+        font-size: 0.85rem;
+      }
+
+      .cta-full { display: none; }
+      .cta-short { display: inline; }
+
+      .hero { min-height: 78vh; align-items: flex-end; }
+      .enquiry { margin-top: -1.5rem; }
+      .enquiry-card { grid-template-columns: 1fr; }
+      .spaces-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-grid figure { min-height: 220px; }
+      .gallery-grid figure:first-child { min-height: 280px; }
+    }
+
+    @media (max-width: 480px) {
+      :root { --pad-x: 28px; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .logo img { height: 34px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-media img { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#hero" aria-label="Centrum Konferencyjne Willa Decjusza — strona główna">
+        <img src="https://willadecjusza.pl/assets/images/logo.png" alt="Willa Decjusza" width="180" height="43" />
+      </a>
+
+      <nav class="nav" id="primary-nav" aria-label="Główne">
+        <a href="#enquiry">Zapytanie</a>
+        <a href="#spaces">Sale</a>
+        <a href="#amenities">Udogodnienia</a>
+        <a href="#gallery">Galeria</a>
+        <a href="#location">Lokalizacja</a>
+        <a href="#trust">Opinie</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-cta btn btn-primary" href="#enquiry"><span class="cta-full">Sprawdź dostępność →</span><span class="cta-short">Zapytaj</span></a>
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="hero" id="hero" aria-label="Wprowadzenie">
+      <div class="hero-media">
+        <img
+          src="https://villa.org.pl/wp-content/uploads/2023/04/DJI_0040willa_decjusza_topBlock.jpg"
+          alt="Widok z lotu ptaka na renesansową Willę Decjusza w Krakowie"
+          width="1600"
+          height="900"
+        />
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-brand">
+            <span>Centrum Konferencyjne</span>
+            Willa Decjusza
+          </h1>
+          <p class="hero-value">
+            Renesansowa willa w Krakowie — konferencje, bankiety i uroczyste przyjęcia w zabytkowych salach oraz otoczeniu Parku Decjusza.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#enquiry">Sprawdź dostępność / Zapytaj teraz</a>
+            <a class="btn btn-ghost" href="#spaces">Poznaj sale</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Enquiry widget -->
+    <section class="enquiry" id="enquiry" aria-label="Formularz zapytania">
+      <div class="container">
+        <form class="enquiry-card" id="enquiry-form" novalidate>
+          <div class="field">
+            <label for="event-date">Data wydarzenia</label>
+            <input type="date" id="event-date" name="event-date" required />
+          </div>
+          <div class="field">
+            <label for="event-type">Rodzaj wydarzenia</label>
+            <select id="event-type" name="event-type" required>
+              <option value="" disabled selected>Wybierz typ</option>
+              <option value="conference">Konferencja</option>
+              <option value="banquet">Bankiet</option>
+              <option value="private">Przyjęcie prywatne</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="guest-count">Liczba gości</label>
+            <select id="guest-count" name="guest-count" required>
+              <option value="" disabled selected>Wybierz</option>
+              <option value="1-20">1–20</option>
+              <option value="21-50">21–50</option>
+              <option value="51-100">51–100</option>
+              <option value="100+">ponad 100</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-dark">Zapytaj / Szukaj</button>
+          <p class="enquiry-note">Widget demonstracyjny — nie wysyła zapytania. Kontakt: centrum@willadecjusza.pl · +48 508 688 516</p>
+          <div class="enquiry-feedback" id="enquiry-feedback" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 3. Spaces -->
+    <section id="spaces">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Osiem zabytkowych sal</p>
+          <h2 class="section-title">Przestrzenie na konferencje i bankiety</h2>
+          <p class="section-lead">
+            Sale na parterze i I piętrze renesansowego pałacu oraz Sala Błękitna w Domu Łaskiego — z tarasem, loggią i wyjściem do Ogrodu Gotyckiego.
+          </p>
+        </div>
+
+        <div class="spaces-grid">
+          <article class="space-card reveal">
+            <figure>
+              <img src="https://willadecjusza.pl/images/upload/GALERIE/wnetrza/190930_m19_9461_original.jpg" alt="Hol Główny Willi Decjusza" width="800" height="600" />
+            </figure>
+            <div class="space-body">
+              <h3>Hol Główny</h3>
+              <div class="space-meta">
+                <span>86 m²</span>
+                <span>do <strong>80</strong> osób (teatralnie)</span>
+              </div>
+              <p class="space-price"><em>Od 900 PLN</em> <span class="price-note">wynajem do 4 h, sezon niski</span></p>
+            </div>
+          </article>
+
+          <article class="space-card reveal">
+            <figure>
+              <img src="https://willadecjusza.pl/images/upload/GALERIE/wnetrza/P18_3114_0513_sala_kominkowa-x2_topBlock.jpg" alt="Sala Kominkowa z marmurowym kominkiem" loading="lazy" width="800" height="600" />
+            </figure>
+            <div class="space-body">
+              <h3>Sala Kominkowa + taras</h3>
+              <div class="space-meta">
+                <span>58 m² + taras 140 m²</span>
+                <span>do <strong>55</strong> / taras <strong>100</strong> osób</span>
+              </div>
+              <p class="space-price"><em>Od 1 000 PLN</em> <span class="price-note">wynajem do 4 h, sezon niski</span></p>
+            </div>
+          </article>
+
+          <article class="space-card reveal">
+            <figure>
+              <img src="https://willadecjusza.pl/images/upload/GALERIE/wesela/Sala_Balowa_1_original.jpg" alt="Sala Balowa Willi Decjusza" loading="lazy" width="800" height="600" />
+            </figure>
+            <div class="space-body">
+              <h3>Sala Balowa</h3>
+              <div class="space-meta">
+                <span>58 m² · I piętro</span>
+                <span>do <strong>55</strong> osób (teatralnie)</span>
+              </div>
+              <p class="space-price"><em>Od 850 PLN</em> <span class="price-note">wynajem do 4 h, sezon niski</span></p>
+            </div>
+          </article>
+
+          <article class="space-card reveal">
+            <figure>
+              <img src="https://willadecjusza.pl/images/upload/GALERIE/wesela/Sala_Marceliny_Czartoryskiej_1_original.jpg" alt="Sala Marceliny Czartoryskiej" loading="lazy" width="800" height="600" />
+            </figure>
+            <div class="space-body">
+              <h3>Sala Marceliny Czartoryskiej</h3>
+              <div class="space-meta">
+                <span>58 m² · I piętro</span>
+                <span>do <strong>55</strong> osób (teatralnie)</span>
+              </div>
+              <p class="space-price"><em>Od 850 PLN</em> <span class="price-note">wynajem do 4 h, sezon niski</span></p>
+            </div>
+          </article>
+
+          <article class="space-card reveal">
+            <figure>
+              <img src="https://willadecjusza.pl/images/upload/GALERIE/wesela/P18_3003_0513_sala_blekitna-x3_topBlock_1_original.jpg" alt="Sala Błękitna w Domu Łaskiego" loading="lazy" width="800" height="600" />
+            </figure>
+            <div class="space-body">
+              <h3>Sala Błękitna · Dom Łaskiego</h3>
+              <div class="space-meta">
+                <span>z wyjściem do Ogrodu Gotyckiego</span>
+                <span>do <strong>24</strong> osób</span>
+              </div>
+              <p class="space-price"><em>Od 850 PLN</em> <span class="price-note">wynajem do 4 h, sezon niski</span></p>
+            </div>
+          </article>
+
+          <article class="space-card reveal">
+            <figure>
+              <img src="https://willadecjusza.pl/images/upload/GALERIE/ogrody/STO_5492_original.JPG" alt="Ogrody i Park Decjusza wokół willi" loading="lazy" width="800" height="600" />
+            </figure>
+            <div class="space-body">
+              <h3>Ogrody i Park Decjusza</h3>
+              <div class="space-meta">
+                <span>Ogród Gotycki · teren parkowy</span>
+                <span>otoczenie kompleksu pałacowego</span>
+              </div>
+              <p class="space-price"><em>Na zapytanie</em> <span class="price-note">cena najmu ogrodów nie jest podana osobno na stronie</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Amenities -->
+    <section id="amenities">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Co zapewniamy</p>
+          <h2 class="section-title">Udogodnienia obiektu</h2>
+          <p class="section-lead">
+            Elementy oferty wymienione na stronach Centrum Konferencyjnego Willi Decjusza.
+          </p>
+        </div>
+
+        <div class="amenities-grid">
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M8 38V12h32v26"/><path d="M8 20h32M16 12v-4h16v4M18 28h12"/></svg>
+            </div>
+            <strong>8 zabytkowych sal</strong>
+            <p>Pałac i Dom Łaskiego — unikalny klimat każdej przestrzeni.</p>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M8 30c4-8 10-12 16-12s12 4 16 12"/><path d="M14 30h20v6H14z"/><path d="M24 18v-4"/></svg>
+            </div>
+            <strong>Taras z widokiem na park</strong>
+            <p>Przy Sali Kominkowej — ceremonia i plener przy Parku Decjusza.</p>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M6 34V14l18-8 18 8v20"/><path d="M16 34V22h16v12"/><path d="M6 18h36"/></svg>
+            </div>
+            <strong>Loggia z kaflami orientalnymi</strong>
+            <p>XIX-wieczne mozaiki sprowadzone przez Marcelinę Czartoryską.</p>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="14" cy="34" r="5"/><circle cx="36" cy="34" r="5"/><path d="M19 34h12M9 34H6l4-14h20l3 8h5"/><path d="M14 20h10"/></svg>
+            </div>
+            <strong>2 parkingi · 30 miejsc</strong>
+            <p>Łącznie 30 samochodów przy zespole pałacowo-parkowym.</p>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="8" y="12" width="32" height="22" rx="1"/><path d="M16 40h16M24 34v6"/><path d="M18 20h12M18 26h8"/></svg>
+            </div>
+            <strong>Sprzęt konferencyjny</strong>
+            <p>Wyposażenie AV i konferencyjne dostępne na miejscu.</p>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M8 36V18l16-8 16 8v18"/><path d="M18 36v-10h12v10"/><path d="M8 22h32"/></svg>
+            </div>
+            <strong>6 pokoi w Domu Łaskiego</strong>
+            <p>Noclegi w oficynie Willi Decjusza dla gości wydarzeń.</p>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M10 34c0-8 6-14 14-14s14 6 14 14"/><path d="M16 22c2-6 6-10 8-10s6 4 8 10"/><path d="M12 34h24v4H12z"/></svg>
+            </div>
+            <strong>Restauracja w piwnicach</strong>
+            <p>Wykwintna kuchnia i stylowe sale na kolacje oraz przyjęcia.</p>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M24 8v4M24 36v4M8 24h4M36 24h4"/><circle cx="24" cy="24" r="10"/><path d="M18 24h12"/></svg>
+            </div>
+            <strong>Mecenas kultury</strong>
+            <p>Wydarzenia wspierają projekty edukacyjne i kulturalne Willi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Gallery -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Galeria</p>
+          <h2 class="section-title">Willa, sale i ogrody</h2>
+          <p class="section-lead">Zdjęcia z oficjalnych stron Willi Decjusza i Centrum Konferencyjnego.</p>
+        </div>
+
+        <div class="gallery-grid reveal">
+          <figure>
+            <img src="https://willadecjusza.pl/images/upload/GALERIE/wnetrza/DJI_0300willa_decjusza_1_original.jpg" alt="Elewacja Willi Decjusza" loading="lazy" width="1000" height="750" />
+            <figcaption>Elewacja willi</figcaption>
+          </figure>
+          <figure>
+            <img src="https://willadecjusza.pl/images/upload/GALERIE/wnetrza/P18_0691-HDR_220522_original.jpg" alt="Wnętrze sali konferencyjnej" loading="lazy" width="800" height="600" />
+            <figcaption>Wnętrze sali</figcaption>
+          </figure>
+          <figure>
+            <img src="https://willadecjusza.pl/images/upload/GALERIE/ogrody/DSCF8958_original.JPG" alt="Ogrody Willi Decjusza" loading="lazy" width="800" height="600" />
+            <figcaption>Ogrody</figcaption>
+          </figure>
+          <figure>
+            <img src="https://willadecjusza.pl/images/upload/GALERIE/architektura/STO_5845_original.JPG" alt="Detal architektury renesansowej" loading="lazy" width="800" height="600" />
+            <figcaption>Detal zabytkowej architektury</figcaption>
+          </figure>
+          <figure>
+            <img src="https://willadecjusza.pl/images/upload/GALERIE/wnetrza/P18_0997-0644-HDR_220518-2_original.jpg" alt="Reprezentacyjna sala z loggią" loading="lazy" width="800" height="600" />
+            <figcaption>Sala z dostępem do loggii</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Location -->
+    <section id="location">
+      <div class="container location-grid">
+        <div class="location-copy reveal">
+          <p class="eyebrow">Lokalizacja</p>
+          <h2 class="section-title">Wola Justowska, Kraków</h2>
+          <p>
+            Zespół pałacowo-parkowy Willa Decjusza leży na zachód od historycznego centrum Krakowa, w dzielnicy Wola Justowska, w otoczeniu Parku Decjusza — jednego z najstarszych parków w mieście.
+          </p>
+          <p>
+            Spokojna okolica łączy ciszę z dogodnym dojazdem do kluczowych punktów miasta.
+          </p>
+          <ul class="location-facts">
+            <li><strong>~7 min</strong> <span>do autostrady A4</span></li>
+            <li><strong>~10 min</strong> <span>do Kraków Airport</span></li>
+            <li><strong>~15 min</strong> <span>do Rynku Głównego</span></li>
+          </ul>
+          <p style="margin-top:1.25rem;">
+            <strong style="color:var(--ink);">Adres:</strong><br />
+            ul. 28 Lipca 1943 17a, 30-233 Kraków
+          </p>
+        </div>
+
+        <div class="map-placeholder reveal" role="img" aria-label="Statyczna mapa zastępcza — Wola Justowska, Kraków">
+          <div class="map-pin" aria-hidden="true"></div>
+          <div class="map-label">
+            <strong>Willa Decjusza</strong>
+            <span>ul. 28 Lipca 1943 17a<br />30-233 Kraków · Wola Justowska</span>
+            <p class="map-note">Placeholder mapy statycznej — bez osadzonego API map.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Trust -->
+    <section id="trust">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Zaufanie</p>
+          <h2 class="section-title">Głosy gości</h2>
+          <p class="section-lead">
+            Na źródłowych stronach Willi Decjusza nie znaleziono publicznego badge’a ocen (np. Google). Poniżej przykładowe karty oznaczone jako placeholdery.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <article class="trust-card reveal">
+            <span class="trust-badge">Placeholder</span>
+            <blockquote>„Przykładowa opinia — zastępczy tekst do demonstracji układu sekcji zaufania.”</blockquote>
+            <cite>— Imię Nazwisko · placeholder</cite>
+          </article>
+          <article class="trust-card reveal">
+            <span class="trust-badge">Placeholder</span>
+            <blockquote>„Przykładowa opinia — nie pochodzi z witryny Willi Decjusza.”</blockquote>
+            <cite>— Imię Nazwisko · placeholder</cite>
+          </article>
+          <article class="trust-card reveal">
+            <span class="trust-badge">Placeholder</span>
+            <blockquote>„Przykładowa opinia — do wymiany na prawdziwe rekomendacje klienta.”</blockquote>
+            <cite>— Imię Nazwisko · placeholder</cite>
+          </article>
+        </div>
+        <p class="trust-disclaimer reveal">Sekcja rekomendacji na willadecjusza.pl istnieje („Rekomendują nas”), jednak konkretne treści opinii nie zostały tu skopiowane — użyto jawnych placeholderów.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Footer -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://willadecjusza.pl/assets/images/logo.png" alt="Willa Decjusza" width="160" height="39" />
+          <p>
+            Centrum Konferencyjne Willa Decjusza — renesansowy zespół pałacowo-parkowy w Krakowie. Organizując wydarzenie, wspierasz projekty edukacyjne i kulturalne Willi.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Nawigacja</h4>
+          <a href="#hero">Start</a>
+          <a href="#enquiry">Zapytanie</a>
+          <a href="#spaces">Sale</a>
+          <a href="#amenities">Udogodnienia</a>
+          <a href="#gallery">Galeria</a>
+          <a href="#location">Lokalizacja</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <p>ul. 28 Lipca 1943 17a<br />30-233 Kraków</p>
+          <a href="mailto:centrum@willadecjusza.pl">centrum@willadecjusza.pl</a>
+          <a href="tel:+48508688516">+48 508 688 516</a>
+          <p>Pn–Pt 9:00–16:00</p>
+          <a href="mailto:villa@villa.org.pl">villa@villa.org.pl</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Prototyp demonstracyjny na podstawie villa.org.pl / willadecjusza.pl</span>
+        <span>Źródło: Stowarzyszenie Willa Decjusza · Kraków</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById("menu-toggle");
+      var nav = document.getElementById("primary-nav");
+
+      if (toggle && nav) {
+        toggle.addEventListener("click", function () {
+          var open = nav.classList.toggle("is-open");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            nav.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+
+      var form = document.getElementById("enquiry-form");
+      var feedback = document.getElementById("enquiry-feedback");
+
+      if (form && feedback) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var date = document.getElementById("event-date").value;
+          var type = document.getElementById("event-type");
+          var guests = document.getElementById("guest-count");
+
+          if (!date || !type.value || !guests.value) {
+            feedback.textContent = "Uzupełnij datę, rodzaj wydarzenia i liczbę gości, aby kontynuować.";
+            feedback.classList.add("is-visible");
+            return;
+          }
+
+          var typeLabel = type.options[type.selectedIndex].text;
+          feedback.textContent =
+            "Podgląd zapytania: " +
+            typeLabel +
+            " · " +
+            date +
+            " · " +
+            guests.value +
+            " gości. To demonstracja UI — napisz na centrum@willadecjusza.pl lub zadzwoń +48 508 688 516.";
+          feedback.classList.add("is-visible");
+        });
+      }
+
+      var reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-in");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add("is-in"); });
+      }
+    })();
+  </script>
+</body>
+</html>
