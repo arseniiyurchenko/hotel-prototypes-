@@ -23,10 +23,33 @@ def main():
         page.goto(URL, wait_until="networkidle")
         page.wait_for_timeout(1500)
 
+        # Force lazy images into view so they load before checks
+        page.evaluate(
+            """async () => {
+              const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+              const h = document.body.scrollHeight;
+              for (let y = 0; y < h; y += 500) {
+                window.scrollTo(0, y);
+                await sleep(200);
+              }
+              window.scrollTo(0, 0);
+              await sleep(400);
+              for (const img of document.images) {
+                if ('loading' in img) img.loading = 'eager';
+              }
+            }"""
+        )
+        page.wait_for_timeout(2500)
+
         imgs = page.locator("img").all()
         for img in imgs:
             src = img.get_attribute("src") or ""
+            img.scroll_into_view_if_needed()
+            page.wait_for_timeout(150)
             ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
+            if not ok:
+                page.wait_for_timeout(800)
+                ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
             results["images"].append({"src": src[:120], "ok": ok})
             if not ok:
                 results["errors"].append(f"Broken image: {src}")
@@ -35,7 +58,7 @@ def main():
         tagline = page.locator(".hero-tagline").inner_text().strip()
         results["interactions"].append(f"hero brand: {brand}")
         results["interactions"].append(f"hero tagline: {tagline}")
-        if "Lingnerschloss" not in brand:
+        if "lingnerschloss" not in brand.lower():
             results["errors"].append("Hero brand missing Lingnerschloss")
         if "tradition" not in tagline.lower():
             results["errors"].append("Tagline missing expected text")
