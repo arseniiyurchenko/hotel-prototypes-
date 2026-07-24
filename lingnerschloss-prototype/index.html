@@ -31,7 +31,10 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 0.75rem);
+    }
     body {
       font-family: var(--font-body);
       font-weight: 400;
@@ -53,6 +56,7 @@
       height: var(--header-h);
       display: flex;
       align-items: center;
+      padding: 0.35rem clamp(1.25rem, 3.5vw, 2rem);
       transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
     }
     .site-header.scrolled {
@@ -60,12 +64,15 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 8px 32px rgba(20, 27, 36, 0.18);
     }
+    .site-header .container {
+      width: min(100%, var(--max));
+      margin-inline: auto;
+    }
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1.5rem;
-      width: 100%;
     }
     .logo {
       display: flex;
@@ -276,7 +283,10 @@
     }
 
     /* Sections */
-    section { padding: 5rem 0; }
+    section {
+      padding: 5rem 0;
+      scroll-margin-top: calc(var(--header-h) + 0.75rem);
+    }
     .section-kicker {
       font-size: 0.72rem;
       font-weight: 600;
@@ -685,7 +695,10 @@
       .gallery-grid figure,
       .gallery-grid figure:first-child { min-height: 220px; }
       .hero-content { padding-bottom: 3rem; }
-      section { padding: 3.5rem 0; }
+      section {
+        padding: 3.5rem 0;
+        scroll-margin-top: calc(var(--header-h) + 0.75rem);
+      }
     }
   </style>
 </head>
@@ -1124,7 +1137,27 @@
     };
     menuToggle.addEventListener("click", openMenu);
     navClose.addEventListener("click", closeMenu);
-    navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+    const smoothScrollTo = (hash) => {
+      const id = (hash || "").replace(/^#/, "");
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (!href || href === "#") return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        closeMenu();
+        smoothScrollTo(href);
+        history.pushState(null, "", href);
+      });
+    });
 
     const reveals = document.querySelectorAll(".reveal");
     const io = new IntersectionObserver(
