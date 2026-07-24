@@ -7,21 +7,22 @@
   <meta name="description" content="Available for weddings, corporate events and private parties, Hever Castle offers a selection of venues for hire in one of the most historic and beautiful settings in Kent.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Brand colours drawn from hevercastle.co.uk theme + cream logo artwork */
+      /* Dominant colours from hevercastle.co.uk theme CSS */
       --forest: #1a534f;
-      --forest-deep: #00392c;
-      --forest-mid: #143e3b;
+      --forest-deep: #143e3b;
+      --forest-ink: #0c2421;
       --burgundy: #9b1416;
-      --burgundy-deep: #7c1012;
+      --burgundy-deep: #800707;
       --bronze: #806841;
-      --cream: #fffbf1;
-      --parchment: #eae8d3;
-      --ink: #1c1a16;
-      --ink-soft: #4a453c;
-      --mist: #f4f2ea;
+      --stone: #e6e9e4;
+      --stone-deep: #d5dbd4;
+      --paper: #f7f8f5;
+      --ink: #2a2e2b;
+      --ink-soft: #505046;
+      --cream: #fffdf7;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
@@ -30,10 +31,10 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Manrope', sans-serif;
       font-weight: 300;
       color: var(--ink);
-      background: var(--mist);
+      background: var(--stone);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
@@ -57,7 +58,7 @@
     }
 
     .site-header.is-scrolled {
-      background: rgba(0, 57, 44, 0.94);
+      background: rgba(12, 36, 33, 0.94);
       backdrop-filter: blur(10px);
       padding: 0.7rem 0;
     }
@@ -112,12 +113,12 @@
       text-transform: uppercase;
       border: none;
       cursor: pointer;
-      transition: background 0.3s var(--ease), color 0.3s, transform 0.3s var(--ease);
+      transition: background 0.3s var(--ease), color 0.3s, transform 0.3s var(--ease), border-color 0.3s;
     }
 
     .btn-primary {
       background: var(--cream);
-      color: var(--forest-deep);
+      color: var(--forest-ink);
     }
 
     .btn-primary:hover {
@@ -125,15 +126,25 @@
       transform: translateY(-2px);
     }
 
+    .btn-accent {
+      background: var(--burgundy);
+      color: var(--cream);
+    }
+
+    .btn-accent:hover {
+      background: var(--burgundy-deep);
+      transform: translateY(-2px);
+    }
+
     .btn-ghost {
       background: transparent;
       color: var(--cream);
-      border: 1px solid rgba(255, 251, 241, 0.45);
+      border: 1px solid rgba(255, 253, 247, 0.45);
     }
 
     .btn-ghost:hover {
       border-color: var(--cream);
-      background: rgba(255, 251, 241, 0.08);
+      background: rgba(255, 253, 247, 0.08);
     }
 
     .btn-solid {
@@ -150,7 +161,7 @@
       display: none;
       width: 44px;
       height: 44px;
-      border: 1px solid rgba(255, 251, 241, 0.35);
+      border: 1px solid rgba(255, 253, 247, 0.35);
       background: transparent;
       cursor: pointer;
       position: relative;
@@ -183,7 +194,7 @@
       align-items: end;
       color: var(--cream);
       overflow: hidden;
-      background: var(--forest-deep);
+      background: var(--forest-ink);
     }
 
     .hero-media {
@@ -204,8 +215,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(0, 40, 30, 0.45) 0%, rgba(0, 57, 44, 0.25) 38%, rgba(0, 28, 22, 0.78) 100%),
-        radial-gradient(ellipse at 20% 80%, rgba(128, 104, 65, 0.18), transparent 50%);
+        linear-gradient(180deg, rgba(12, 36, 33, 0.42) 0%, rgba(20, 62, 59, 0.2) 40%, rgba(12, 36, 33, 0.82) 100%),
+        radial-gradient(ellipse at 75% 20%, rgba(155, 20, 22, 0.12), transparent 45%);
     }
 
     @keyframes hero-zoom {
@@ -217,7 +228,7 @@
       position: relative;
       z-index: 1;
       padding: 0 0 5.5rem;
-      max-width: 38rem;
+      max-width: 40rem;
       opacity: 0;
       transform: translateY(28px);
       animation: rise-in 1s 0.35s var(--ease) forwards;
@@ -249,7 +260,7 @@
     .hero-lead {
       font-size: clamp(1.05rem, 2.2vw, 1.25rem);
       font-weight: 300;
-      max-width: 28rem;
+      max-width: 30rem;
       opacity: 0.92;
       margin-bottom: 1.85rem;
     }
@@ -268,7 +279,7 @@
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--bronze);
+      color: var(--burgundy);
       margin-bottom: 0.85rem;
     }
 
@@ -277,7 +288,7 @@
       font-size: clamp(2.1rem, 4.5vw, 3.2rem);
       font-weight: 600;
       line-height: 1.15;
-      color: var(--forest-deep);
+      color: var(--forest-ink);
       margin-bottom: 1rem;
     }
 
@@ -301,7 +312,7 @@
     /* —— Character / intro —— */
     .character {
       background:
-        linear-gradient(135deg, #f7f5ec 0%, #ebe7d6 48%, #e4ebe7 100%);
+        linear-gradient(145deg, var(--paper) 0%, var(--stone) 55%, #dfe7e2 100%);
       position: relative;
       overflow: hidden;
     }
@@ -309,12 +320,12 @@
     .character::before {
       content: '';
       position: absolute;
-      width: 42vw;
-      height: 42vw;
-      right: -12vw;
-      top: -18vw;
+      width: 48vw;
+      height: 48vw;
+      right: -14vw;
+      top: -20vw;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(26, 83, 79, 0.08), transparent 68%);
+      background: radial-gradient(circle, rgba(26, 83, 79, 0.1), transparent 68%);
       pointer-events: none;
     }
 
@@ -343,14 +354,14 @@
       gap: 1.4rem;
       margin-top: 2.2rem;
       padding-top: 1.8rem;
-      border-top: 1px solid rgba(26, 83, 79, 0.18);
+      border-top: 1px solid rgba(26, 83, 79, 0.2);
     }
 
     .character-facts dt {
       font-size: 0.7rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--bronze);
+      color: var(--burgundy);
       margin-bottom: 0.25rem;
     }
 
@@ -358,24 +369,24 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.35rem;
       font-weight: 600;
-      color: var(--forest-deep);
+      color: var(--forest-ink);
     }
 
     /* —— Spaces —— */
     .spaces {
-      background: var(--forest-deep);
+      background: var(--forest-ink);
       color: var(--cream);
     }
 
     .spaces .section-title { color: var(--cream); }
-    .spaces .section-copy { color: rgba(255, 251, 241, 0.78); }
-    .spaces .section-label { color: #c4a574; }
+    .spaces .section-copy { color: rgba(255, 253, 247, 0.78); }
+    .spaces .section-label { color: #c9a978; }
 
     .space-list {
       display: grid;
       gap: 0;
       margin-top: 3rem;
-      border-top: 1px solid rgba(255, 251, 241, 0.18);
+      border-top: 1px solid rgba(255, 253, 247, 0.18);
     }
 
     .space-item {
@@ -384,7 +395,7 @@
       gap: 2.5rem;
       align-items: center;
       padding: 2.4rem 0;
-      border-bottom: 1px solid rgba(255, 251, 241, 0.18);
+      border-bottom: 1px solid rgba(255, 253, 247, 0.18);
     }
 
     .space-item:nth-child(even) .space-visual { order: 2; }
@@ -416,17 +427,21 @@
       font-size: 0.78rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #c4a574;
+      color: #c9a978;
       margin-bottom: 0.9rem;
     }
 
     .space-copy {
-      color: rgba(255, 251, 241, 0.78);
+      color: rgba(255, 253, 247, 0.78);
       font-size: 0.98rem;
       max-width: 34rem;
     }
 
     /* —— Amenities —— */
+    .amenities {
+      background: var(--paper);
+    }
+
     .amenities-head {
       margin-bottom: 2.75rem;
     }
@@ -449,7 +464,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.35rem;
       font-weight: 600;
-      color: var(--forest-deep);
+      color: var(--forest-ink);
     }
 
     .amenity-row p {
@@ -465,8 +480,8 @@
     }
 
     .hire .section-title { color: var(--cream); }
-    .hire .section-copy { color: rgba(255, 251, 241, 0.78); }
-    .hire .section-label { color: #c4a574; }
+    .hire .section-copy { color: rgba(255, 253, 247, 0.78); }
+    .hire .section-label { color: #c9a978; }
 
     .hire-grid {
       display: grid;
@@ -477,16 +492,14 @@
 
     .hire-link {
       display: block;
-      padding: 1.6rem 1.3rem;
-      border: 1px solid rgba(255, 251, 241, 0.22);
-      background: rgba(255, 251, 241, 0.03);
-      transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+      padding: 1.6rem 0;
+      border-top: 1px solid rgba(255, 253, 247, 0.28);
+      transition: border-color 0.3s, transform 0.3s var(--ease);
     }
 
     .hire-link:hover {
-      background: rgba(255, 251, 241, 0.08);
-      border-color: rgba(255, 251, 241, 0.5);
-      transform: translateY(-3px);
+      border-top-color: rgba(255, 253, 247, 0.7);
+      transform: translateY(-2px);
     }
 
     .hire-link h3 {
@@ -498,12 +511,12 @@
 
     .hire-link p {
       font-size: 0.9rem;
-      color: rgba(255, 251, 241, 0.72);
+      color: rgba(255, 253, 247, 0.72);
     }
 
     /* —— Packages note —— */
     .packages {
-      background: var(--parchment);
+      background: var(--stone-deep);
     }
 
     .packages-panel {
@@ -516,13 +529,13 @@
     .packages-note {
       margin-top: 1.25rem;
       padding: 1.25rem 0 0;
-      border-top: 1px solid rgba(26, 83, 79, 0.2);
+      border-top: 1px solid rgba(26, 83, 79, 0.22);
       font-size: 0.95rem;
       color: var(--ink-soft);
     }
 
     .packages-note strong {
-      color: var(--forest-deep);
+      color: var(--forest-ink);
       font-weight: 500;
     }
 
@@ -565,13 +578,13 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--cream);
-      background: linear-gradient(transparent, rgba(0, 28, 22, 0.75));
+      background: linear-gradient(transparent, rgba(12, 36, 33, 0.78));
     }
 
     /* —— Enquiry —— */
     .enquiry {
       background:
-        linear-gradient(120deg, rgba(0, 57, 44, 0.88), rgba(26, 83, 79, 0.82)),
+        linear-gradient(120deg, rgba(12, 36, 33, 0.9), rgba(26, 83, 79, 0.84)),
         url('https://www.hevercastle.co.uk/wp-content/uploads/2016/03/Hever-roses2864-resize.jpg') center / cover;
       color: var(--cream);
       text-align: center;
@@ -582,8 +595,12 @@
       margin-inline: auto;
     }
 
+    .enquiry .section-label {
+      color: #e0c08a;
+    }
+
     .enquiry .section-copy {
-      color: rgba(255, 251, 241, 0.85);
+      color: rgba(255, 253, 247, 0.85);
       margin-inline: auto;
       margin-bottom: 2rem;
     }
@@ -598,7 +615,7 @@
     }
 
     .enquiry-contacts a {
-      border-bottom: 1px solid rgba(255, 251, 241, 0.4);
+      border-bottom: 1px solid rgba(255, 253, 247, 0.4);
       padding-bottom: 2px;
     }
 
@@ -609,7 +626,7 @@
     /* —— Footer —— */
     .site-footer {
       background: #071814;
-      color: rgba(255, 251, 241, 0.7);
+      color: rgba(255, 253, 247, 0.7);
       padding: 3rem 0 2rem;
       font-size: 0.9rem;
     }
@@ -633,7 +650,7 @@
     .footer-note {
       margin-top: 2rem;
       padding-top: 1.25rem;
-      border-top: 1px solid rgba(255, 251, 241, 0.12);
+      border-top: 1px solid rgba(255, 253, 247, 0.12);
       font-size: 0.78rem;
       opacity: 0.65;
       max-width: 52rem;
@@ -645,7 +662,7 @@
       position: fixed;
       inset: 0;
       z-index: 90;
-      background: rgba(0, 40, 32, 0.97);
+      background: rgba(12, 36, 33, 0.97);
       padding: 6rem 8vw 2rem;
       flex-direction: column;
       gap: 1.4rem;
@@ -797,21 +814,21 @@
           <p class="section-label">Event spaces</p>
           <h2 class="section-title">Venues with unique character</h2>
           <p class="section-copy">
-            Choose from the Castle, the Astor Wing, or the lakeside Italian Garden — spaces labelled
-            on the Hever Castle venue hire pages for weddings, corporate hospitality and private parties.
+            Spaces labelled across Hever Castle’s venue hire and wedding pages: the Castle,
+            the Astor Wing, the Italian Garden with Guthrie Pavilion, and Lord Astor’s Study.
           </p>
         </div>
 
         <div class="space-list">
           <article class="space-item reveal">
             <div class="space-copy-block">
-              <p class="space-meta">Castle rooms · up to 60 ceremony · Great Hall breakfast for 40</p>
+              <p class="space-meta">Castle rooms · Inner Hall ceremony for 60 · Great Hall breakfast for 40</p>
               <h3 class="space-name">The Castle</h3>
               <p class="space-copy">
                 The romantic double-moated castle was once the childhood home of Anne Boleyn.
                 Two rooms can be hired for a castle wedding: the Inner Hall for ceremonies and
-                the Great Hall for a wedding breakfast, with evening options including the Moat Restaurant,
-                tipi on the Tudor Lawn, or the Guthrie Pavilion on selected dates.
+                the Great Hall for a wedding breakfast. Evening options include the Moat Restaurant,
+                a tipi on the Tudor Lawn, or the Guthrie Pavilion on selected dates.
               </p>
             </div>
             <figure class="space-visual">
@@ -827,14 +844,16 @@
 
           <article class="space-item reveal">
             <div class="space-copy-block">
-              <p class="space-meta">Astor Wing · exclusive use · Tudor Suite · up to 60 guests</p>
+              <p class="space-meta">Astor Wing · Tudor Suite · up to 60 guests · exclusive use options</p>
               <h3 class="space-name">The Astor Wing</h3>
               <p class="space-copy">
-                A charming Edwardian wing designed in Tudor style for William Waldorf Astor in 1903,
-                with oak panelling, ornate fireplaces and antique furnishings. The Tudor Suite Sitting Room
-                and Dining Room each accommodate up to 60 guests; drinks may be taken in the Music Room
-                or on the Tudor Suite Terrace and lawns. Stretch tent, tipi or Guthrie Pavilion options
-                extend evening capacity.
+                Added by William Waldorf Astor when restoring the castle, the Astor Wing offers
+                Tudor-style spaces with oak panelling and antique furnishings. The Tudor Suite
+                Sitting Room and Dining Room each accommodate up to 60 guests; drinks may be taken
+                in the Music Room or on the Tudor Suite Terrace and lawns. Evening options include
+                a tipi or stretch tent, a sailcloth marquee on the Winter Garden Lawn, or the
+                Guthrie Pavilion on certain dates. For corporate hire, the Astor Wing meeting space
+                suits up to 60 delegates.
               </p>
             </div>
             <figure class="space-visual">
@@ -854,15 +873,37 @@
               <h3 class="space-name">Italian Garden &amp; Guthrie Pavilion</h3>
               <p class="space-copy">
                 Ceremonies under the arched columns of the lakeside Loggia, drinks on the Loggia Terrace,
-                then a wedding breakfast in the Palladian-style Guthrie Pavilion — accommodating up to
-                180 for dinner and up to 220 for the evening reception. The pavilion also serves as a
-                conference and event venue for groups of up to 200 delegates.
+                then a wedding breakfast in the Palladian-style Guthrie Pavilion — up to 180 for dinner
+                and up to 220 for the evening reception. For corporate events, the pavilion accommodates
+                up to 200 delegates as a conference or dinner venue in the award-winning Italian Garden.
               </p>
             </div>
             <figure class="space-visual">
               <img
                 src="https://www.hevercastle.co.uk/wp-content/uploads/2023/12/Guthrie-Pavilion-Set-Up-1.jpg"
                 alt="Guthrie Pavilion dressed for an event"
+                width="1200"
+                height="800"
+                loading="lazy"
+              >
+            </figure>
+          </article>
+
+          <article class="space-item reveal">
+            <div class="space-copy-block">
+              <p class="space-meta">Corporate &amp; intimate gatherings · up to 12 guests</p>
+              <h3 class="space-name">Lord Astor’s Study</h3>
+              <p class="space-copy">
+                Listed among Hever Castle’s corporate hospitality venues: a characterful room behind
+                a discreet doorway from the Library, with bookcases, hidden cupboards and Astor’s
+                collection of crystal balls. Accommodates up to 12 guests on one table for intimate
+                gatherings and celebrations.
+              </p>
+            </div>
+            <figure class="space-visual">
+              <img
+                src="https://www.hevercastle.co.uk/wp-content/uploads/2026/05/Lord-Astors-Study.jpg"
+                alt="Lord Astor’s Study at Hever Castle"
                 width="1200"
                 height="800"
                 loading="lazy"
@@ -886,7 +927,7 @@
         <div class="amenity-rows">
           <div class="amenity-row reveal">
             <h3>Event coordination</h3>
-            <p>Event co-ordinators for hire enquiries via events@hevercastle.co.uk or 01732 861800. Wedding planners support wedding bookings.</p>
+            <p>Event co-ordinators for hire enquiries via events@hevercastle.co.uk or 01732 861800. Wedding enquiries via the weddings team at weddings@hevercastle.co.uk.</p>
           </div>
           <div class="amenity-row reveal">
             <h3>Catering</h3>
@@ -894,7 +935,7 @@
           </div>
           <div class="amenity-row reveal">
             <h3>Accommodation</h3>
-            <p>26 bedrooms graded five stars by Quality in Tourism in the Astor Wing and Anne Boleyn Wing — period features with modern comfort. Minimum of ten bedrooms when bedrooms form part of an event. Medley Court holiday cottage also available on the estate.</p>
+            <p>26 bedrooms graded five stars by Quality in Tourism — period colours, panelled walls, vaulted ceilings and en-suite facilities with modern comfort. Minimum of ten bedrooms when bedrooms form part of an event. Medley Court holiday cottage is also available on the estate.</p>
           </div>
           <div class="amenity-row reveal">
             <h3>Gardens &amp; grounds</h3>
@@ -910,7 +951,7 @@
           </div>
           <div class="amenity-row reveal">
             <h3>Corporate facilities</h3>
-            <p>Championship golf course, wellbeing centre, activities field, outdoor heated swimming pool and tennis court available to combine with corporate hospitality.</p>
+            <p>Championship golf course, wellbeing centre, activities field for outdoor pursuits, outdoor heated swimming pool and tennis court — available to combine with corporate hospitality.</p>
           </div>
           <div class="amenity-row reveal">
             <h3>Sustainability</h3>
@@ -927,7 +968,8 @@
           <h2 class="section-title">Weddings, corporate hospitality &amp; more</h2>
           <p class="section-copy">
             As labelled on the venue hire site: Corporate Hospitality, Weddings, Private Parties,
-            and Film &amp; Photography.
+            and Film &amp; Photography. Corporate pages also list summer parties, Christmas celebrations,
+            meetings, team building and golf days.
           </p>
         </div>
         <div class="hire-grid">
@@ -958,17 +1000,19 @@
           <h2 class="section-title">Wedding packages &amp; bespoke corporate pricing</h2>
           <p class="section-copy">
             The live site references wedding venues and packages, and corporate packages with a
-            bespoke pricing structure dependent on requirements. Public pound-sterling rate cards
-            were not shown on the pages reviewed.
+            bespoke pricing structure dependent on requirements. Yeared rate links (for example
+            “2026 rates”) appear on venue pages; public pound-sterling figures were not shown in
+            the page text reviewed.
           </p>
           <p class="packages-note">
             <strong>Seasonal offer stated on the weddings page:</strong>
             book a wedding on selected dates in 2026 to receive 25% off venue hire and a
-            complimentary bedroom for the happy couple (terms as published on hevercastle.co.uk).
+            complimentary bedroom for the happy couple (subject to terms and conditions as published
+            on hevercastle.co.uk).
           </p>
         </div>
         <div class="reveal">
-          <a class="btn btn-solid" href="#enquire">Request a quotation</a>
+          <a class="btn btn-accent" href="#enquire">Request a quotation</a>
         </div>
       </div>
     </section>
@@ -1039,10 +1083,10 @@
     </div>
     <div class="container footer-note">
       Prototype homepage for review. Content and imagery sourced from
-      <a href="https://www.hevercastle.co.uk/venue-hire/" style="color:var(--cream);border-bottom:1px solid rgba(255,251,241,0.35);">hevercastle.co.uk/venue-hire</a>
+      <a href="https://www.hevercastle.co.uk/venue-hire/" style="color:var(--cream);border-bottom:1px solid rgba(255,253,247,0.35);">hevercastle.co.uk/venue-hire</a>
       and linked venue pages. Positioning assessed as a premium historic castle venue from tone,
       five-star graded accommodation, award-winning gardens and exclusive-use offering. Public
-      package price lists (£) were not found on the source pages reviewed.
+      package price lists (£) were not found in the source page text reviewed.
     </div>
   </footer>
 
