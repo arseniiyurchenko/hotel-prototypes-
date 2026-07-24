@@ -39,12 +39,12 @@ Catering / usługi gastronomiczne; monitorowany parking; ekskluzywne wnętrza; p
 ### Image URLs (HTTP 200)
 
 - Hero/exterior: `…/2000_646d0e5a3965c_filter_646fc9ae714ef.jpg`
-- Conference setup: `…/800_64779d9fdbc06.jpg`
+- Conference setup (news, large theater): `…/800_64779d9fdbc06.jpg`
 - Sala bankietowa: `…/800_646fcf05ec7b7.jpg`
 - Sala kryształowa: `…/800_646fca7c1aa36.jpg`
 - Ogród rajski: `…/2000_646fc7ceeeb35.jpg`
 - Logo: `…/400_filter_nobg_6493676cdf177.png`
-- Sala konferencyjna (labeled): `…/800_646d1779d79c2.jpg`
+- Sala konferencyjna (labeled on /sale): `…/800_646d1779d79c2.jpg`
 
 ## Prototype sections
 

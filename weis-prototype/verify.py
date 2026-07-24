@@ -21,7 +21,23 @@ def main():
         page = context.new_page()
 
         page.goto(URL, wait_until="networkidle")
-        page.wait_for_timeout(1500)
+        page.wait_for_timeout(1000)
+
+        # Force lazy-loaded images into view before checking
+        page.evaluate(
+            """async () => {
+              const imgs = [...document.querySelectorAll('img')];
+              for (const img of imgs) {
+                img.scrollIntoView({ block: 'center' });
+                await new Promise(r => setTimeout(r, 200));
+                if (!img.complete) {
+                  await new Promise(r => { img.onload = img.onerror = r; });
+                }
+              }
+              window.scrollTo(0, 0);
+            }"""
+        )
+        page.wait_for_timeout(800)
 
         imgs = page.locator("img").all()
         for img in imgs:
