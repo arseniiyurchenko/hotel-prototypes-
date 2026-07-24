@@ -156,8 +156,10 @@
     }
 
     .logo img {
-      height: 36px;
+      height: 40px;
       width: auto;
+      max-width: min(220px, 52vw);
+      object-fit: contain;
       filter: brightness(0) invert(1);
     }
 
@@ -165,20 +167,16 @@
       display: flex;
       flex-direction: column;
       line-height: 1.15;
-    }
-
-    .logo-text strong {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
+      border-left: 1px solid rgba(255, 255, 255, 0.35);
+      padding-left: 0.85rem;
     }
 
     .logo-text span {
       font-size: 0.65rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      opacity: 0.8;
-      font-weight: 300;
+      opacity: 0.85;
+      font-weight: 400;
     }
 
     .nav-desktop {
@@ -329,7 +327,8 @@
       line-height: 1.05;
       margin-bottom: 1rem;
       max-width: 12ch;
-      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+      color: #fff;
+      text-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
     }
 
     .hero-tagline {
@@ -926,9 +925,8 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a class="logo" href="#top" aria-label="Kilkenny Castle home">
-        <img src="https://kilkennycastle.ie/wp-content/uploads/2019/03/kilkenny-castle-logo-green-transparent.png" alt="Kilkenny Castle logo">
+        <img src="https://kilkennycastle.ie/wp-content/uploads/2019/03/kilkenny-castle-logo-green-transparent.png" alt="Kilkenny Castle">
         <span class="logo-text">
-          <strong>Kilkenny Castle</strong>
           <span>Venue Hire</span>
         </span>
       </a>
@@ -950,7 +948,7 @@
 
   <div class="nav-mobile" id="navMobile" hidden>
     <div class="nav-mobile-top">
-      <span class="logo-text" style="color:#fff"><strong>Kilkenny Castle</strong><span>Venue Hire</span></span>
+      <span class="logo-text" style="color:#fff;border-left:none;padding-left:0"><strong style="font-family:'Libre Baskerville',serif;font-size:1.15rem;display:block">Kilkenny Castle</strong><span>Venue Hire</span></span>
       <button class="nav-close" id="navClose" aria-label="Close menu" type="button">×</button>
     </div>
     <ul>
@@ -1208,7 +1206,7 @@
             <figcaption>Parade Tower banquet</figcaption>
           </figure>
           <figure>
-            <img src="https://www.kilkennycastle.ie/wp-content/uploads/2021/04/Park-scaled.jpg" alt="Kilkenny Castle park and gardens" loading="lazy">
+            <img src="https://www.kilkennycastle.ie/wp-content/uploads/2018/11/KKC-outdoor-image-2018.jpg" alt="Kilkenny Castle park and gardens" loading="lazy">
             <figcaption>Park &amp; gardens</figcaption>
           </figure>
           <figure>

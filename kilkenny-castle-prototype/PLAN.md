@@ -45,7 +45,7 @@ Approved catering partners (listed on Catering page); complimentary Wi-Fi; cloak
 - Parade Tower event hall: `…/2018/12/The-Parade-Tower.jpg`
 - Banqueting setup: `…/2019/01/Banqueting-P-Tower.jpg`
 - Duchess Boardroom: `…/2018/11/Duchess-Boardroom-wedding-1.jpg`
-- Park & gardens: `…/2021/04/Park-scaled.jpg`
+- Park & gardens: `…/2018/11/KKC-outdoor-image-2018.jpg`
 - Picture Gallery (historic feature): `…/2021/03/Picture-Gallery-scaled.jpg`
 - Medieval Room: `…/2018/12/Medieval-Room.jpg`
 - Logo: `…/2019/03/kilkenny-castle-logo-green-transparent.png`

@@ -23,14 +23,6 @@ def main():
         page.goto(URL, wait_until="networkidle")
         page.wait_for_timeout(1500)
 
-        imgs = page.locator("img").all()
-        for img in imgs:
-            src = img.get_attribute("src") or ""
-            ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
-            results["images"].append({"src": src, "ok": ok})
-            if not ok:
-                results["errors"].append(f"Broken image: {src}")
-
         event_date = page.evaluate(
             "() => { const d = new Date(); d.setDate(d.getDate()+21); return d.toISOString().split('T')[0]; }"
         )
@@ -49,12 +41,34 @@ def main():
         if not toast_visible:
             results["errors"].append("Enquiry toast did not show")
 
-        for section in ["#spaces", "#amenities", "#gallery", "#location", "#rates"]:
+        for section in ["#spaces", "#amenities", "#gallery", "#location", "#rates", "#contact"]:
             page.locator(section).scroll_into_view_if_needed()
-            page.wait_for_timeout(400)
+            page.wait_for_timeout(500)
 
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        page.wait_for_timeout(600)
+        page.wait_for_timeout(800)
+
+        # Force-load lazy images, then re-check dimensions
+        page.evaluate(
+            """() => {
+              document.querySelectorAll('img[loading=lazy]').forEach(img => {
+                img.loading = 'eager';
+                if (!img.complete) {
+                  const s = img.src; img.src = ''; img.src = s;
+                }
+              });
+            }"""
+        )
+        page.wait_for_timeout(2500)
+
+        imgs = page.locator("img").all()
+        for img in imgs:
+            src = img.get_attribute("src") or ""
+            ok = img.evaluate("el => el.complete && el.naturalWidth > 0")
+            results["images"].append({"src": src, "ok": ok})
+            if not ok:
+                results["errors"].append(f"Broken image: {src}")
+
         page.evaluate("window.scrollTo(0, 0)")
         page.wait_for_timeout(400)
 
