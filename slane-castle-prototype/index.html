@@ -45,7 +45,10 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 0.75rem);
+    }
 
     body {
       font-family: "Sora", sans-serif;
@@ -154,8 +157,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 1.5rem;
-      width: min(1200px, calc(100% - 2rem));
+      width: min(1200px, calc(100% - 3rem));
       margin-inline: auto;
+      padding-block: 0.35rem;
     }
 
     .brand-lockup {
