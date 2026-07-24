@@ -39,7 +39,7 @@
       Park/grounds: .../2026/01/schloss-gusow-heiraten-park.jpg
       Historic exterior/towers: .../2025/12/Gross-251122_SchlossGusow_1116.jpeg
       Derfflinger-Saal: .../2026/01/251122_SchlossGusow_0518.jpg
-      Historic facade detail: .../2025/10/IMG_0482-2048x1240.jpeg
+      Rooms (Beherbergung section on source): .../Gross-251122_SchlossGusow_1038|1068|1005.jpeg
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,11 +57,14 @@
       --white: #ffffff;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
       --header-h: 4.5rem;
+      --page-gutter: clamp(1.25rem, 4.5vw, 2.5rem);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-padding-top: calc(var(--header-h) + 0.75rem);
+    }
 
     body {
       font-family: "Manrope", sans-serif;
@@ -78,7 +81,7 @@
     ul { list-style: none; }
 
     .wrap {
-      width: min(1120px, 90vw);
+      width: min(1120px, calc(100% - 2 * var(--page-gutter)));
       margin-inline: auto;
     }
 
@@ -90,6 +93,7 @@
       height: var(--header-h);
       display: flex;
       align-items: center;
+      padding-inline: var(--page-gutter);
       transition: background 0.4s var(--ease), backdrop-filter 0.4s var(--ease);
     }
 
@@ -99,7 +103,7 @@
     }
 
     .header-inner {
-      width: min(1120px, 90vw);
+      width: min(1120px, 100%);
       margin-inline: auto;
       display: flex;
       align-items: center;
@@ -209,7 +213,7 @@
     }
 
     .hero-copy {
-      width: min(1120px, 90vw);
+      width: min(1120px, calc(100% - 2 * var(--page-gutter)));
       margin: 0 auto;
       padding: calc(var(--header-h) + 4rem) 0 4.5rem;
       max-width: 38rem;
@@ -640,7 +644,6 @@
 
     /* —— Motion reduce —— */
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
       .hero-media img { animation: none; }
       .reveal { opacity: 1; transform: none; transition: none; }
       .space-media img, .btn { transition: none; }
@@ -742,10 +745,12 @@
         </div>
         <figure class="intro-figure reveal">
           <img
-            src="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_1116.jpeg"
+            src="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_1116-768x1151.jpeg"
+            srcset="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_1116-768x1151.jpeg 768w, https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_1116.jpeg 854w"
+            sizes="(max-width: 900px) 90vw, 420px"
             alt="Schloss Gusow mit markanten Türmen und historischer Fassade"
-            width="854"
-            height="1280"
+            width="768"
+            height="1151"
             loading="lazy">
           <figcaption class="intro-caption">Neugotik · Ecktürme · Uhrenturm</figcaption>
         </figure>
@@ -764,10 +769,12 @@
           <article class="space-row reveal">
             <figure class="space-media">
               <img
-                src="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_0124.jpeg"
+                src="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_0124-768x1151.jpeg"
+                srcset="https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_0124-768x1151.jpeg 768w, https://schlossgusow.de/wp-content/uploads/2025/12/Gross-251122_SchlossGusow_0124.jpeg 854w"
+                sizes="(max-width: 900px) 90vw, 520px"
                 alt="Marwitz-Saal im Schloss Gusow"
-                width="854"
-                height="1280"
+                width="768"
+                height="1151"
                 loading="lazy">
             </figure>
             <div>
@@ -780,10 +787,12 @@
           <article class="space-row reveal">
             <figure class="space-media">
               <img
-                src="https://schlossgusow.de/wp-content/uploads/2026/01/251122_SchlossGusow_0518.jpg"
+                src="https://schlossgusow.de/wp-content/uploads/2026/01/251122_SchlossGusow_0518-1024x1536.jpg"
+                srcset="https://schlossgusow.de/wp-content/uploads/2026/01/251122_SchlossGusow_0518-683x1024.jpg 683w, https://schlossgusow.de/wp-content/uploads/2026/01/251122_SchlossGusow_0518-1024x1536.jpg 1024w"
+                sizes="(max-width: 900px) 90vw, 520px"
                 alt="Derfflinger-Saal im Schloss Gusow"
-                width="1667"
-                height="2500"
+                width="1024"
+                height="1536"
                 loading="lazy">
             </figure>
             <div>
@@ -796,10 +805,12 @@
           <article class="space-row reveal">
             <figure class="space-media">
               <img
-                src="https://schlossgusow.de/wp-content/uploads/2026/01/schloss-gusow-heiraten-park.jpg"
+                src="https://schlossgusow.de/wp-content/uploads/2026/01/schloss-gusow-heiraten-park-1024x1536.jpg"
+                srcset="https://schlossgusow.de/wp-content/uploads/2026/01/schloss-gusow-heiraten-park-683x1024.jpg 683w, https://schlossgusow.de/wp-content/uploads/2026/01/schloss-gusow-heiraten-park-1024x1536.jpg 1024w"
+                sizes="(max-width: 900px) 90vw, 520px"
                 alt="Park und Schlossgarten von Schloss Gusow"
-                width="1667"
-                height="2500"
+                width="1024"
+                height="1536"
                 loading="lazy">
             </figure>
             <div>
@@ -981,6 +992,8 @@
       var header = document.getElementById("site-header");
       var toggle = document.getElementById("menu-toggle");
       var nav = document.getElementById("site-nav");
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var scrollToken = 0;
 
       function onScroll() {
         header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -993,10 +1006,57 @@
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
       });
 
-      nav.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", function () {
+      function headerOffset() {
+        return header.getBoundingClientRect().height + 12;
+      }
+
+      function smoothScrollToY(targetY, duration) {
+        var startY = window.pageYOffset || document.documentElement.scrollTop || 0;
+        var diff = targetY - startY;
+        if (Math.abs(diff) < 1) return Promise.resolve();
+        if (reduceMotion) {
+          window.scrollTo(0, targetY);
+          return Promise.resolve();
+        }
+        var token = ++scrollToken;
+        var ms = duration || Math.min(1600, Math.max(800, Math.abs(diff) * 0.5));
+        return new Promise(function (resolve) {
+          var t0 = performance.now();
+          function frame(now) {
+            if (token !== scrollToken) {
+              resolve();
+              return;
+            }
+            var t = Math.min(1, (now - t0) / ms);
+            var eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+            window.scrollTo(0, startY + diff * eased);
+            if (t < 1) requestAnimationFrame(frame);
+            else resolve();
+          }
+          requestAnimationFrame(frame);
+        });
+      }
+
+      function scrollToHash(hash) {
+        var id = (hash || "").replace(/^#/, "");
+        if (!id) return;
+        var el = document.getElementById(id);
+        if (!el) return;
+        var y = Math.max(0, Math.round(el.getBoundingClientRect().top + window.pageYOffset - headerOffset()));
+        smoothScrollToY(y);
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          var hash = link.getAttribute("href");
+          if (!hash || hash === "#") return;
+          var target = document.getElementById(hash.slice(1));
+          if (!target) return;
+          event.preventDefault();
           nav.classList.remove("is-open");
           toggle.setAttribute("aria-expanded", "false");
+          if (history.pushState) history.pushState(null, "", hash);
+          scrollToHash(hash);
         });
       });
 
