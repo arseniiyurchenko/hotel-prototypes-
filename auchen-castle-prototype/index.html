@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auchen Castle — Business Events Venue | Dumfriesshire, Scotland</title>
+  <meta name="description" content="Auchen Castle — conferences at the castle on the Scotland–England border. Meeting rooms, breakout spaces, 34 acres of grounds, and delegate packages from £45. Beattock, near Moffat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --taupe: #BAAEA7;
+      --taupe-deep: #A39892;
+      --taupe-mid: #938A85;
+      --stone-cta: #726B67;
+      --stone-cta-hover: #544F4C;
+      --stone-soft: #D8CBC3;
+      --slate: #2c2927;
+      --slate-soft: #3f3a37;
+      --ink: #424242;
+      --muted: #6a6460;
+      --paper: #f3f0ed;
+      --paper-cool: #e8e4df;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(44, 41, 39, 0.14);
+      --transition: 0.28s ease;
+      --header-h: 76px;
+      --max: 1160px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Mukta", sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(186, 174, 167, 0.45), transparent 60%),
+        radial-gradient(900px 500px at 100% 20%, rgba(216, 203, 195, 0.5), transparent 55%),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-cool) 45%, #ddd7d1 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--slate);
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--stone-cta);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 34rem;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.45rem;
+      border-radius: 2px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-solid {
+      background: var(--stone-cta);
+      color: var(--white);
+    }
+    .btn-solid:hover { background: var(--stone-cta-hover); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.65);
+    }
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--white);
+    }
+
+    .btn-ink {
+      background: var(--slate);
+      color: var(--white);
+      width: 100%;
+    }
+    .btn-ink:hover { background: var(--slate-soft); }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(186, 174, 167, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 24px rgba(44, 41, 39, 0.12);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand img {
+      height: 42px;
+      width: auto;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      transition: opacity var(--transition), color var(--transition);
+    }
+
+    .site-header.scrolled .nav-desktop a,
+    .site-header.scrolled .header-phone {
+      color: var(--slate);
+    }
+
+    .nav-desktop a:hover { opacity: 1; color: var(--white); }
+    .site-header.scrolled .nav-desktop a:hover { color: var(--stone-cta-hover); }
+
+    .header-phone {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      background: transparent;
+      color: var(--white);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .site-header.scrolled .menu-toggle {
+      border-color: rgba(44, 41, 39, 0.35);
+      color: var(--slate);
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: currentColor;
+      position: relative;
+    }
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 41, 39, 0.98);
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      transform: translateX(100%);
+      transition: transform var(--transition);
+    }
+    .nav-mobile.open { transform: translateX(0); }
+
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-close {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: transparent;
+      color: var(--white);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .nav-mobile nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .nav-mobile nav a {
+      color: var(--white);
+      font-size: 1.15rem;
+      font-family: "Cormorant Garamond", serif;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      letter-spacing: 0.04em;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: heroDrift 22s ease-in-out infinite alternate;
+      transform-origin: center center;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.04) translate3d(0, 0, 0); }
+      to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(44, 41, 39, 0.45) 0%, rgba(44, 41, 39, 0.2) 35%, rgba(44, 41, 39, 0.72) 100%),
+        linear-gradient(90deg, rgba(44, 41, 39, 0.35) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: calc(var(--header-h) + 3rem) 0 4.5rem;
+      max-width: 40rem;
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.6rem, 7vw, 4.4rem);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-brand em {
+      font-style: italic;
+      font-weight: 500;
+      display: block;
+      font-size: 0.72em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 0.35rem;
+      opacity: 0.92;
+    }
+
+    .hero h1 {
+      color: var(--white);
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.85rem;
+      max-width: 22ch;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      font-weight: 300;
+      opacity: 0.92;
+      max-width: 34ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .hero-credit {
+      position: absolute;
+      right: 1.25rem;
+      bottom: 1rem;
+      z-index: 2;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      opacity: 0.7;
+    }
+
+    /* Inquiry */
+    .inquiry {
+      position: relative;
+      z-index: 5;
+      margin-top: -2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .inquiry-panel {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(186, 174, 167, 0.55);
+      box-shadow: var(--shadow);
+      padding: 1.35rem 1.4rem;
+    }
+
+    .field { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+
+    .field label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 0.7rem 0.75rem;
+      border: 1px solid var(--stone-soft);
+      background: var(--white);
+      color: var(--slate);
+      border-radius: 2px;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      outline: 2px solid var(--taupe-deep);
+      outline-offset: 1px;
+    }
+
+    .inquiry-note {
+      grid-column: 1 / -1;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .inquiry-note a { text-decoration: underline; text-underline-offset: 2px; }
+
+    .inquiry-success {
+      display: none;
+      grid-column: 1 / -1;
+      padding: 0.75rem 0.9rem;
+      background: rgba(163, 152, 146, 0.18);
+      border-left: 3px solid var(--stone-cta);
+      color: var(--slate);
+      font-size: 0.92rem;
+    }
+    .inquiry-success.show { display: block; }
+
+    /* Spaces */
+    .spaces {
+      padding: 3.5rem 0 4.5rem;
+    }
+
+    .section-head {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      margin-bottom: 0.65rem;
+    }
+
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.25rem;
+    }
+
+    .space-feature {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .space-feature img,
+    .space-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .space-feature:hover img,
+    .space-tile:hover img {
+      transform: scale(1.04);
+    }
+
+    .space-feature::after,
+    .space-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(44, 41, 39, 0.78) 100%);
+    }
+
+    .space-copy {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      padding: 1.5rem 1.4rem;
+    }
+
+    .space-copy h3 {
+      color: var(--white);
+      font-size: 1.65rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .space-copy p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      opacity: 0.9;
+      max-width: 36ch;
+    }
+
+    .space-stack {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .space-tile {
+      position: relative;
+      min-height: 200px;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    /* Features */
+    .features {
+      padding: 4.5rem 0;
+      background:
+        linear-gradient(135deg, rgba(186, 174, 167, 0.35), rgba(216, 203, 195, 0.2)),
+        var(--taupe);
+      color: var(--slate);
+    }
+
+    .features .section-head h2,
+    .features .eyebrow { color: var(--slate); }
+    .features .section-lead { color: rgba(44, 41, 39, 0.72); }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem 2rem;
+      list-style: none;
+      margin-top: 2rem;
+    }
+
+    .feature-list li {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(84, 79, 76, 0.28);
+    }
+
+    .feature-list strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--slate);
+    }
+
+    .feature-list span {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(44, 41, 39, 0.78);
+    }
+
+    .feature-note {
+      margin-top: 1.75rem;
+      font-size: 0.88rem;
+      color: rgba(44, 41, 39, 0.7);
+      font-weight: 300;
+      max-width: 48rem;
+    }
+
+    /* Packages */
+    .packages {
+      padding: 4.5rem 0;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .package {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(186, 174, 167, 0.55);
+      padding: 1.75rem 1.6rem;
+    }
+
+    .package h3 {
+      font-size: 1.75rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .package-price {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.35rem;
+      color: var(--stone-cta);
+      margin-bottom: 1rem;
+    }
+
+    .package-price span {
+      font-size: 1rem;
+      color: var(--muted);
+      font-family: "Mukta", sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    .package ul {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .package li {
+      position: relative;
+      padding-left: 1.15rem;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    .package li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 0.4rem;
+      height: 0.4rem;
+      background: var(--taupe-deep);
+      border-radius: 50%;
+    }
+
+    /* Gallery */
+    .gallery {
+      padding: 2rem 0 4.5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-grid figure {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      background: var(--taupe);
+    }
+
+    .gallery-grid figure:first-child {
+      grid-row: 1 / span 2;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-grid figure:hover img { transform: scale(1.05); }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.85rem 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      background: linear-gradient(transparent, rgba(44, 41, 39, 0.75));
+    }
+
+    /* Location */
+    .location {
+      padding: 4.5rem 0;
+      background: var(--slate);
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .location .eyebrow { color: var(--stone-soft); }
+    .location h2 { color: var(--white); margin-bottom: 0.85rem; font-size: clamp(2rem, 4vw, 2.6rem); }
+    .location p { font-weight: 300; margin-bottom: 1rem; max-width: 36rem; }
+
+    .location-facts {
+      display: grid;
+      gap: 0.85rem;
+      margin: 1.5rem 0 1.75rem;
+      list-style: none;
+    }
+
+    .location-facts li {
+      padding-left: 1rem;
+      border-left: 2px solid var(--taupe);
+      font-size: 0.98rem;
+      font-weight: 300;
+    }
+
+    .location-visual {
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+    }
+
+    .location-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 360px;
+    }
+
+    /* Contact / footer */
+    .contact {
+      padding: 4rem 0 2.5rem;
+      background:
+        linear-gradient(180deg, #a39892 0%, #8f8580 100%);
+      color: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact h2 {
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact p { font-weight: 300; opacity: 0.92; max-width: 34rem; }
+
+    .contact-details {
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+      font-weight: 400;
+    }
+
+    .contact-details a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .contact-aside {
+      background: rgba(44, 41, 39, 0.22);
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .contact-aside h3 {
+      color: var(--white);
+      font-size: 1.45rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .contact-aside p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .site-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      opacity: 0.85;
+    }
+
+    .site-footer a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 960px) {
+      .nav-desktop, .header-phone { display: none; }
+      .menu-toggle { display: inline-flex; }
+
+      .inquiry-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+      .inquiry-panel .btn-ink {
+        grid-column: 1 / -1;
+      }
+
+      .spaces-grid,
+      .package-grid,
+      .location-grid,
+      .contact-grid,
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 180px 180px;
+      }
+      .gallery-grid figure:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 240px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .inquiry-panel { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-grid figure { min-height: 220px; }
+      .hero-content { padding-bottom: 5.5rem; }
+      .space-feature { min-height: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Auchen Castle home">
+        <img
+          src="https://www.ocadmin.co.uk/images/websites/638028283061947044_auchencastle17708.png"
+          alt="Auchen Castle"
+          width="437"
+          height="110">
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#spaces">Spaces</a></li>
+          <li><a href="#features">Facilities</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#inquiry">Enquire</a></li>
+        </ul>
+      </nav>
+      <a class="header-phone" href="tel:01683300407">01683 300407</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" hidden>
+    <div class="nav-mobile-top">
+      <a class="brand" href="#top">
+        <img
+          src="https://www.ocadmin.co.uk/images/websites/638028283061947044_auchencastle17708.png"
+          alt="Auchen Castle"
+          width="437"
+          height="110">
+      </a>
+      <button class="nav-close" id="navClose" type="button" aria-label="Close menu">&times;</button>
+    </div>
+    <nav aria-label="Mobile">
+      <a href="#spaces">Spaces</a>
+      <a href="#features">Facilities</a>
+      <a href="#packages">Packages</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Location</a>
+      <a href="#inquiry">Enquire</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Auchen Castle conferences hero">
+      <div class="hero-media">
+        <img
+          src="https://www.ocadmin.co.uk/images/photosv2/AuchenconferenceWW1500x90039787.jpg"
+          alt="Front elevation of Auchen Castle and Italianate gardens"
+          width="1500"
+          height="900"
+          fetchpriority="high">
+      </div>
+      <div class="container hero-content">
+        <p class="hero-brand">Auchen <em>Castle</em></p>
+        <h1>Business events venue on the Scotland–England border</h1>
+        <p class="hero-lead">The perfect conference venue in the rolling hills of Dumfriesshire.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-solid" href="#inquiry">Plan your conference</a>
+          <a class="btn btn-ghost" href="#packages">Delegate packages</a>
+        </div>
+      </div>
+      <p class="hero-credit">Image © Willow &amp; Wilde</p>
+    </section>
+
+    <div class="inquiry" id="inquiry">
+      <div class="container">
+        <form class="inquiry-panel" id="inquiryForm" action="#" method="get">
+          <div class="field">
+            <label for="eventDate">Event date</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+          </div>
+          <div class="field">
+            <label for="delegateBand">Delegates</label>
+            <select id="delegateBand" name="delegateBand" required>
+              <option value="">Please select</option>
+              <option>Up to 25</option>
+              <option>26 to 50</option>
+              <option>51 to 75</option>
+              <option>76 to 100</option>
+              <option>Larger event — contact us</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="eventType">Event type</label>
+            <select id="eventType" name="eventType" required>
+              <option value="">Please select</option>
+              <option>Conference / meeting</option>
+              <option>Corporate event</option>
+              <option>Product launch</option>
+              <option>Dinner / ceremony</option>
+              <option>Team-building</option>
+              <option>Private event</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="packageInterest">Package interest</label>
+            <select id="packageInterest" name="packageInterest">
+              <option value="">Please select</option>
+              <option>Day Delegate (£45 pp)</option>
+              <option>24 Hr Day Delegate (£220 pp)</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <button class="btn btn-ink" type="submit">Talk to the team</button>
+          <p class="inquiry-note">Prototype enquiry form (UI only). On the live site, contact the conference team at <a href="mailto:info@auchencastle.uk">info@auchencastle.uk</a> or call <a href="tel:01683300407">01683 300407</a>.</p>
+          <div class="inquiry-success" id="inquirySuccess" role="status">Thank you — this prototype form does not send messages. Please use the live contact details above.</div>
+        </form>
+      </div>
+    </div>
+
+    <section class="spaces" id="spaces">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Conferences at the Castle</p>
+          <h2>Meeting rooms, breakouts &amp; private grounds</h2>
+          <p class="section-lead">Facilities for conferences and meetings for up to 100 delegates, set within the castle and its 34 acres of private grounds.</p>
+        </div>
+        <div class="spaces-grid">
+          <article class="space-feature reveal">
+            <img
+              src="https://www.ocadmin.co.uk/images/photosv2/gallery94937.jpg"
+              alt="Ceremony Room at Auchen Castle"
+              width="660"
+              height="990"
+              loading="lazy">
+            <div class="space-copy">
+              <h3>Meeting &amp; ceremony rooms</h3>
+              <p>Two main meeting rooms plus additional breakout rooms. The Ceremony Room — with fireplace and garden views — is a labeled event space on the live site. (No photo labeled specifically as a conference room was published on the conferences page.)</p>
+            </div>
+          </article>
+          <div class="space-stack">
+            <article class="space-tile reveal">
+              <img
+                src="https://www.ocadmin.co.uk/images/photosv2/home-main-1500x90057225.jpg"
+                alt="Aerial shot of Auchen Castle and its grounds"
+                width="1500"
+                height="900"
+                loading="lazy">
+              <div class="space-copy">
+                <h3>34 acres of grounds</h3>
+                <p>Italianate gardens and private estate for outdoor pursuits, dinners, and larger events.</p>
+              </div>
+            </article>
+            <article class="space-tile reveal">
+              <img
+                src="https://www.ocadmin.co.uk/images/photosv2/wedding-strip-1500x50026888.jpg"
+                alt="Auchen Castle wedding reception room"
+                width="1500"
+                height="500"
+                loading="lazy">
+              <div class="space-copy">
+                <h3>Reception rooms &amp; bedrooms</h3>
+                <p>Grand ballroom and reception spaces for dinners and celebrations, plus 26 en-suite bedrooms.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Facilities</p>
+          <h2>Everything listed for a successful meeting</h2>
+          <p class="section-lead">Amenities and services described on the Auchen Castle conferences page and related venue pages.</p>
+        </div>
+        <ul class="feature-list reveal">
+          <li>
+            <strong>Up to 100 delegates</strong>
+            <span>Conferences and meetings sized for successful business gatherings.</span>
+          </li>
+          <li>
+            <strong>Free Wi-Fi</strong>
+            <span>Included among the facilities for conferences and meetings.</span>
+          </li>
+          <li>
+            <strong>Parking for 30 cars</strong>
+            <span>On-site parking noted on the conferences page.</span>
+          </li>
+          <li>
+            <strong>26 en-suite bedrooms</strong>
+            <span>Stay on site; 24 Hr Day Delegate includes single-occupancy B&amp;B.</span>
+          </li>
+          <li>
+            <strong>In-house catering</strong>
+            <span>Tea, coffee, chef’s snacks, buffet lunch, and dinner options in packages.</span>
+          </li>
+          <li>
+            <strong>Team-building outdoors</strong>
+            <span>Highland games, archery, and other pursuits on the estate.</span>
+          </li>
+          <li>
+            <strong>Whisky tastings</strong>
+            <span>Whisky tastings and other activities arranged on request.</span>
+          </li>
+          <li>
+            <strong>Conference team</strong>
+            <span>Contact the conference team by email, phone, or the live enquiry form.</span>
+          </li>
+          <li>
+            <strong>Historic interiors</strong>
+            <span>Majestic interior “bursting with history,” turrets, and Italianate gardens.</span>
+          </li>
+        </ul>
+        <p class="feature-note reveal">AV / conference equipment (projectors, screens, PA) is not itemised on the live conferences page beyond stationery in delegate packages — ask the conference team for current kit when you enquire.</p>
+      </div>
+    </section>
+
+    <section class="packages" id="packages">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Delegate prices</p>
+          <h2>Packages published on the conferences page</h2>
+          <p class="section-lead">Prices and inclusions as listed by Auchen Castle. Confirm current rates with the conference team.</p>
+        </div>
+        <div class="package-grid">
+          <article class="package reveal">
+            <h3>Day Delegate</h3>
+            <p class="package-price">£45 <span>per person</span></p>
+            <ul>
+              <li>Three servings of tea and coffee with chef’s snack</li>
+              <li>Buffet lunch</li>
+              <li>Water with cordial</li>
+              <li>Stationery</li>
+              <li>Sweets</li>
+            </ul>
+          </article>
+          <article class="package reveal">
+            <h3>24 Hr Day Delegate</h3>
+            <p class="package-price">£220 <span>per person</span></p>
+            <ul>
+              <li>Three servings of tea and coffee with chef’s snack</li>
+              <li>Buffet lunch</li>
+              <li>Water with cordial</li>
+              <li>Stationery &amp; sweets</li>
+              <li>Single occupancy bed and breakfast rate</li>
+              <li>Three-course dinner</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Gallery</p>
+          <h2>Castle, grounds &amp; historic character</h2>
+          <p class="section-lead">Photographs published on auchencastle.co.uk — exteriors, event rooms, gardens, and standout historic features.</p>
+        </div>
+        <div class="gallery-grid reveal">
+          <figure>
+            <img
+              src="https://www.ocadmin.co.uk/images/photosv2/AuchenconferenceWW1500x90039787.jpg"
+              alt="Front elevation of Auchen Castle and Italianate gardens"
+              width="1500"
+              height="900"
+              loading="lazy">
+            <figcaption>Exterior &amp; Italianate gardens</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://www.ocadmin.co.uk/images/photosv2/gallery94937.jpg"
+              alt="Ceremony Room at Auchen Castle"
+              width="660"
+              height="990"
+              loading="lazy">
+            <figcaption>Ceremony Room</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://www.ocadmin.co.uk/images/photosv2/home-main-1500x90057225.jpg"
+              alt="Aerial shot of Auchen Castle and its grounds"
+              width="1500"
+              height="900"
+              loading="lazy">
+            <figcaption>Aerial grounds</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://www.ocadmin.co.uk/images/photosv2/Auchen_Mark_Keogh_10649279.jpg"
+              alt="Bride descending stairs at Auchen Castle"
+              width="800"
+              height="1200"
+              loading="lazy">
+            <figcaption>Historic staircase</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://www.ocadmin.co.uk/images/photosv2/AUCHENTURRETSHOOT33875-1200x80088744.jpg"
+              alt="Bride at the entrance to Auchen Castle"
+              width="1200"
+              height="800"
+              loading="lazy">
+            <figcaption>Entrance &amp; turret character</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container location-grid">
+        <div class="reveal">
+          <p class="eyebrow">Dumfriesshire, Scotland</p>
+          <h2>Near Moffat, on the Scotland–England border</h2>
+          <p>Only an hour from Glasgow and Edinburgh, Auchen Castle sits on a peaceful country estate close to the border — a tranquil setting away from city distractions.</p>
+          <ul class="location-facts">
+            <li>Beattock, Near Moffat, Dumfriesshire DG10 9SH</li>
+            <li>Just off the M74 (Junction 15 from the south; Junction 16 from the north)</li>
+            <li>Nearest station: Lockerbie (about a 20-minute taxi)</li>
+            <li>Edinburgh and Glasgow airports around an hour’s drive</li>
+            <li>Moffat town centre about 10 minutes by car</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://www.auchencastle.co.uk/contact" target="_blank" rel="noopener">Contact &amp; directions</a>
+        </div>
+        <div class="location-visual reveal">
+          <img
+            src="https://www.ocadmin.co.uk/images/photosv2/home-main-1500x90057225.jpg"
+            alt="Aerial view of Auchen Castle set in woodland and gardens"
+            width="1500"
+            height="900"
+            loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="reveal">
+            <p class="eyebrow">The Original Collection</p>
+            <h2>Let’s talk business</h2>
+            <p>Want to know more about how Auchen Castle can meet your business needs? Reach the conference team directly.</p>
+            <ul class="contact-details">
+              <li><strong>Auchen Castle</strong></li>
+              <li>Beattock, Near Moffat</li>
+              <li>Dumfriesshire DG10 9SH, Scotland</li>
+              <li><a href="tel:01683300407">01683 300407</a></li>
+              <li><a href="mailto:info@auchencastle.uk">info@auchencastle.uk</a></li>
+            </ul>
+          </div>
+          <aside class="contact-aside reveal">
+            <h3>Premium castle venue</h3>
+            <p>Positioned on the live site as a five-star castle venue and business events destination — part of The Original Collection — with delegate packages from £45 per person.</p>
+            <a class="btn btn-solid" href="#inquiry">Send an enquiry</a>
+          </aside>
+        </div>
+        <footer class="site-footer">
+          <p>Prototype inspired by <a href="https://www.auchencastle.co.uk/conferences" target="_blank" rel="noopener">auchencastle.co.uk/conferences</a></p>
+          <p>© 2026 Original Collection · Content sourced from the live venue website</p>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMobile = document.getElementById("navMobile");
+      const navClose = document.getElementById("navClose");
+      const form = document.getElementById("inquiryForm");
+      const success = document.getElementById("inquirySuccess");
+
+      const onScroll = () => {
+        header.classList.toggle("scrolled", window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const openMenu = () => {
+        navMobile.hidden = false;
+        requestAnimationFrame(() => navMobile.classList.add("open"));
+        menuToggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeMenu = () => {
+        navMobile.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        setTimeout(() => { navMobile.hidden = true; }, 280);
+      };
+
+      menuToggle.addEventListener("click", openMenu);
+      navClose.addEventListener("click", closeMenu);
+      navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        success.classList.add("show");
+      });
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    })();
+  </script>
+</body>
+</html>
