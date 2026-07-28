@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poroholma — Viiden tähden lomakeskus Raumalla</title>
+  <meta name="description" content="Poroholma on tasokas, puistomainen, viiden tähden lomakeskus meren äärellä, lähellä Rauman keskustaa. Caravan, mökit, teltta ja vierasvenesatama.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,600;7..72,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #007a9d;
+      --teal-deep: #026c8b;
+      --teal-dark: #034a5e;
+      --sky: #f0f8fb;
+      --sky-mid: #ddf1f8;
+      --sea: #e8f4f8;
+      --foam: #f7fbfd;
+      --sand: #eef6f4;
+      --white: #ffffff;
+      --ink: #163038;
+      --ink-soft: #3d5560;
+      --muted: #5f7580;
+      --accent: #c4782a;
+      --accent-soft: #f3e6d4;
+      --line: rgba(2, 108, 139, 0.14);
+      --shadow: 0 12px 40px rgba(2, 74, 94, 0.12);
+      --radius: 12px;
+      --ease: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(221, 241, 248, 0.9), transparent 55%),
+        linear-gradient(180deg, var(--foam) 0%, var(--sand) 45%, var(--sky) 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .container { width: min(1140px, 92vw); margin-inline: auto; }
+    h1, h2, h3, .brand-name {
+      font-family: 'Literata', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      padding: 0.9rem 0;
+      transition: background var(--ease), box-shadow var(--ease), padding var(--ease);
+    }
+    .site-header.scrolled {
+      background: rgba(3, 74, 94, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 28px rgba(3, 74, 94, 0.2);
+      padding: 0.65rem 0;
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 0.7rem; color: var(--white);
+    }
+    .logo img {
+      height: 48px; width: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
+      background: rgba(255,255,255,0.92);
+      border-radius: 8px;
+      padding: 0.25rem 0.4rem;
+    }
+    .brand-name { font-size: 1.2rem; }
+    .brand-name span { display: block; font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; margin-top: 0.1rem; }
+    .nav-desktop { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-desktop a {
+      color: rgba(255,255,255,0.92); font-size: 0.95rem; font-weight: 500;
+      transition: color var(--ease);
+    }
+    .nav-desktop a:hover { color: #b8e8f5; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      padding: 0.85rem 1.45rem; border-radius: 10px; font-weight: 600; font-size: 0.95rem;
+      border: none; cursor: pointer; transition: transform var(--ease), background var(--ease), box-shadow var(--ease);
+    }
+    .btn-primary {
+      background: var(--accent); color: var(--white);
+      box-shadow: 0 8px 22px rgba(196, 120, 42, 0.28);
+    }
+    .btn-primary:hover { background: #a8641f; transform: translateY(-1px); }
+    .btn-teal { background: var(--teal); color: var(--white); }
+    .btn-teal:hover { background: var(--teal-deep); transform: translateY(-1px); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.12); color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.45);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+    .header-cta { display: none; }
+    .menu-toggle {
+      display: none; background: none; border: none; color: white; cursor: pointer; padding: 0.35rem;
+    }
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      position: fixed; inset: 0; background: rgba(3, 74, 94, 0.98);
+      z-index: 200; display: flex; flex-direction: column; padding: 1.5rem;
+      transform: translateX(100%); transition: transform 0.35s ease; visibility: hidden;
+    }
+    .nav-mobile.open { transform: translateX(0); visibility: visible; }
+    .nav-mobile-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
+    .nav-mobile nav { display: flex; flex-direction: column; gap: 1.25rem; }
+    .nav-mobile a { color: white; font-size: 1.35rem; font-weight: 500; }
+    .nav-close { background: none; border: none; color: white; cursor: pointer; }
+    .nav-close svg { width: 28px; height: 28px; }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: 100vh; min-height: 100dvh;
+      display: flex; align-items: flex-end; color: white;
+      overflow: hidden;
+    }
+    .hero-media {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-media img {
+      width: 100%; height: 100%; object-fit: cover;
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(3,74,94,0.35) 0%, rgba(3,74,94,0.15) 35%, rgba(3,74,94,0.78) 100%),
+        linear-gradient(90deg, rgba(3,74,94,0.45) 0%, transparent 55%);
+    }
+    .hero-content {
+      position: relative; z-index: 1; width: 100%;
+      padding: 0 0 7.5rem;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-kicker {
+      display: inline-block; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: #b8e8f5; margin-bottom: 0.85rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      max-width: 12ch; margin-bottom: 0.85rem;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.25);
+    }
+    .hero-lead {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      max-width: 36ch; opacity: 0.95; font-weight: 400;
+      margin-bottom: 1.6rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    /* Booking */
+    .booking-wrap {
+      position: relative; z-index: 5; margin-top: -4.5rem; margin-bottom: 4rem;
+    }
+    .booking-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      padding: 1.35rem 1.4rem;
+      animation: fadeUp 1s 0.15s ease both;
+    }
+    .booking-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal-deep); margin-bottom: 0.85rem;
+    }
+    .booking-form {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr 1.2fr auto;
+      gap: 0.75rem; align-items: end;
+    }
+    .field label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      color: var(--muted); margin-bottom: 0.35rem;
+    }
+    .field input, .field select, .guest-trigger {
+      width: 100%; padding: 0.78rem 0.9rem;
+      border: 1.5px solid var(--line); border-radius: 8px;
+      background: var(--foam); color: var(--ink);
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+    .field input:focus, .field select:focus, .guest-trigger:focus {
+      outline: none; border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0, 122, 157, 0.15);
+    }
+    .guest-wrap { position: relative; }
+    .guest-trigger {
+      text-align: left; cursor: pointer; display: flex;
+      justify-content: space-between; align-items: center;
+    }
+    .guest-panel {
+      position: absolute; top: calc(100% + 8px); left: 0; right: 0; min-width: 240px;
+      background: white; border: 1px solid var(--line); border-radius: 10px;
+      box-shadow: var(--shadow); padding: 1rem; z-index: 20;
+      display: none;
+    }
+    .guest-panel.open { display: block; }
+    .guest-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.45rem 0;
+    }
+    .guest-row + .guest-row { border-top: 1px solid var(--line); }
+    .guest-row span { font-size: 0.92rem; }
+    .guest-row small { display: block; color: var(--muted); font-size: 0.75rem; }
+    .stepper { display: flex; align-items: center; gap: 0.55rem; }
+    .stepper button {
+      width: 32px; height: 32px; border-radius: 8px; border: 1.5px solid var(--line);
+      background: var(--sky); cursor: pointer; font-weight: 600; color: var(--teal-deep);
+    }
+    .stepper button:hover { background: var(--sky-mid); }
+    .booking-note {
+      margin-top: 0.75rem; font-size: 0.82rem; color: var(--muted);
+    }
+    .booking-toast {
+      display: none; margin-top: 0.75rem; padding: 0.75rem 1rem;
+      background: var(--sky-mid); color: var(--teal-dark); border-radius: 8px;
+      font-size: 0.9rem; font-weight: 500;
+    }
+    .booking-toast.show { display: block; }
+
+    /* Sections */
+    section { padding: 4.5rem 0; }
+    .section-head { max-width: 38rem; margin-bottom: 2.25rem; }
+    .section-head h2 { font-size: clamp(1.85rem, 3.5vw, 2.55rem); margin-bottom: 0.6rem; color: var(--teal-dark); }
+    .section-head p { color: var(--ink-soft); font-size: 1.05rem; }
+
+    /* Accommodation */
+    #accommodation { padding-top: 1rem; }
+    .unit-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+    }
+    .unit-card {
+      background: var(--white); border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--line); box-shadow: 0 6px 24px rgba(2, 74, 94, 0.06);
+      display: flex; flex-direction: column;
+      transition: transform var(--ease), box-shadow var(--ease);
+    }
+    .unit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .unit-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+    .unit-body { padding: 1.25rem 1.3rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .unit-body h3 { font-size: 1.35rem; margin-bottom: 0.45rem; color: var(--teal-dark); }
+    .unit-body p { color: var(--ink-soft); font-size: 0.95rem; flex: 1; margin-bottom: 1rem; }
+    .unit-meta {
+      display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .price {
+      font-family: 'Literata', serif; font-weight: 700; font-size: 1.25rem; color: var(--teal);
+    }
+    .price small { font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 500; color: var(--muted); }
+    .badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 600;
+      padding: 0.28rem 0.55rem; border-radius: 6px;
+      background: var(--sky-mid); color: var(--teal-deep);
+    }
+    .badge.placeholder { background: var(--accent-soft); color: #8a5520; }
+
+    /* Tracking strip */
+    .track-strip {
+      margin-top: 2rem; padding: 1.35rem 1.5rem;
+      background: linear-gradient(120deg, var(--teal-dark), var(--teal));
+      color: white; border-radius: var(--radius);
+      display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 1rem; align-items: center;
+    }
+    .track-strip h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .track-strip p { font-size: 0.9rem; opacity: 0.88; }
+    .track-stat {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 10px; padding: 0.85rem 1rem; text-align: center;
+    }
+    .track-stat strong {
+      display: block; font-family: 'Literata', serif; font-size: 1.55rem; margin-bottom: 0.15rem;
+    }
+    .track-stat span { font-size: 0.78rem; opacity: 0.85; }
+    .proto-note { font-size: 0.72rem; opacity: 0.7; margin-top: 0.35rem; }
+
+    /* Amenities */
+    #amenities { background: linear-gradient(180deg, transparent, rgba(240,248,251,0.8)); }
+    .amenity-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    }
+    .amenity {
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.2rem 1rem; text-align: center;
+      transition: border-color var(--ease), transform var(--ease);
+    }
+    .amenity:hover { border-color: var(--teal); transform: translateY(-2px); }
+    .amenity-icon {
+      width: 48px; height: 48px; margin: 0 auto 0.75rem;
+      border-radius: 12px; background: var(--sky);
+      display: grid; place-items: center; color: var(--teal-deep);
+    }
+    .amenity-icon svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .amenity span { font-size: 0.92rem; font-weight: 550; color: var(--ink); }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem;
+    }
+    .gallery-grid figure {
+      margin: 0; overflow: hidden; border-radius: var(--radius);
+      position: relative; aspect-ratio: 4/3;
+    }
+    .gallery-grid figure:first-child { grid-row: span 2; aspect-ratio: auto; min-height: 100%; }
+    .gallery-grid img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .gallery-grid figure:hover img { transform: scale(1.05); }
+    .gallery-grid figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 0.7rem 0.9rem; font-size: 0.82rem; font-weight: 500;
+      background: linear-gradient(transparent, rgba(3,74,94,0.75));
+      color: white;
+    }
+
+    /* Location */
+    .location-grid {
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem; align-items: stretch;
+    }
+    .location-copy h2 { margin-bottom: 0.75rem; color: var(--teal-dark); font-size: clamp(1.85rem, 3.5vw, 2.4rem); }
+    .location-copy p { color: var(--ink-soft); margin-bottom: 1rem; }
+    .landmark-list { list-style: none; display: grid; gap: 0.65rem; margin: 1.25rem 0 1.5rem; }
+    .landmark-list li {
+      display: flex; gap: 0.7rem; align-items: flex-start;
+      padding: 0.75rem 0.9rem; background: var(--white);
+      border: 1px solid var(--line); border-radius: 10px;
+    }
+    .pin {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px;
+      background: var(--sky-mid); color: var(--teal-deep);
+      display: grid; place-items: center;
+    }
+    .pin svg { width: 15px; height: 15px; }
+    .map-placeholder {
+      background:
+        linear-gradient(135deg, rgba(0,122,157,0.08), rgba(196,120,42,0.08)),
+        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(2,108,139,0.05) 24px, rgba(2,108,139,0.05) 25px),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(2,108,139,0.05) 24px, rgba(2,108,139,0.05) 25px),
+        var(--sky);
+      border: 1px dashed rgba(2,108,139,0.35);
+      border-radius: var(--radius);
+      min-height: 360px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem; color: var(--teal-dark);
+      position: relative; overflow: hidden;
+    }
+    .map-placeholder::before {
+      content: ''; position: absolute; width: 140px; height: 140px;
+      border-radius: 50%; background: rgba(0,122,157,0.12);
+      top: 28%; left: 42%;
+    }
+    .map-placeholder::after {
+      content: ''; position: absolute; width: 18px; height: 18px;
+      border-radius: 50% 50% 50% 0; background: var(--accent);
+      transform: rotate(-45deg); top: calc(28% + 55px); left: calc(42% + 61px);
+      box-shadow: 0 4px 12px rgba(196,120,42,0.4);
+    }
+    .map-placeholder strong { position: relative; z-index: 1; font-size: 1.1rem; display: block; margin-bottom: 0.35rem; }
+    .map-placeholder span { position: relative; z-index: 1; color: var(--muted); font-size: 0.92rem; }
+
+    /* Trust */
+    #trust { background: var(--teal-dark); color: white; }
+    #trust .section-head h2 { color: white; }
+    #trust .section-head p { color: rgba(255,255,255,0.78); }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .testimonial {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+      border-radius: var(--radius); padding: 1.4rem;
+    }
+    .testimonial .ph {
+      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: rgba(243,230,212,0.2); color: #f3e6d4;
+      padding: 0.25rem 0.5rem; border-radius: 5px; margin-bottom: 0.85rem;
+    }
+    .testimonial p { font-size: 1rem; margin-bottom: 1rem; opacity: 0.95; }
+    .testimonial cite { font-style: normal; font-size: 0.88rem; opacity: 0.7; }
+
+    /* Footer */
+    .site-footer {
+      background: #022f3c; color: rgba(255,255,255,0.85); padding: 3.5rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand img {
+      height: 52px; width: auto; background: white; border-radius: 8px;
+      padding: 0.3rem 0.5rem; margin-bottom: 0.9rem;
+    }
+    .footer-brand p { font-size: 0.95rem; max-width: 32ch; color: rgba(255,255,255,0.7); }
+    .footer-col h4 {
+      font-family: 'Outfit', sans-serif; font-size: 0.78rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #9fd6e8; margin-bottom: 0.9rem;
+    }
+    .footer-col a, .footer-col p {
+      display: block; font-size: 0.95rem; margin-bottom: 0.45rem;
+      color: rgba(255,255,255,0.78);
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.25rem;
+      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      font-size: 0.82rem; color: rgba(255,255,255,0.5);
+    }
+
+    /* Motion helpers */
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .booking-form { grid-template-columns: 1fr 1fr; }
+      .booking-form .btn { grid-column: 1 / -1; }
+      .unit-grid { grid-template-columns: 1fr 1fr; }
+      .amenity-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid figure:first-child { grid-row: auto; aspect-ratio: 4/3; }
+      .location-grid { grid-template-columns: 1fr; }
+      .track-strip { grid-template-columns: 1fr 1fr; }
+      .track-strip > div:first-child { grid-column: 1 / -1; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+      .header-cta { display: none; }
+      .logo .brand-name { display: none; }
+      .hero-content { padding-bottom: 6.5rem; }
+      .booking-wrap { margin-top: -3.5rem; }
+      .booking-form { grid-template-columns: 1fr; }
+      .unit-grid { grid-template-columns: 1fr; }
+      .amenity-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .track-strip { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .map-placeholder { min-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Poroholma etusivu">
+        <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/712c7d75-1585-4361-8bc8-6103eebb6d02/poroholman-lomakeskus-rauma.png" alt="Poroholman lomakeskus logo">
+        <div class="brand-name">Poroholma<span>Lomakeskus · Rauma</span></div>
+      </a>
+      <nav class="nav-desktop" aria-label="Päänavigaatio">
+        <a href="#booking">Varaa</a>
+        <a href="#accommodation">Majoitus</a>
+        <a href="#amenities">Palvelut</a>
+        <a href="#gallery">Galleria</a>
+        <a href="#location">Sijainti</a>
+        <a class="btn btn-primary" href="#booking">Tarkista saatavuus</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Avaa valikko" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <div class="brand-name" style="color:white">Poroholma</div>
+      <button class="nav-close" id="navClose" aria-label="Sulje valikko">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav>
+      <a href="#booking">Varaa</a>
+      <a href="#accommodation">Majoitus</a>
+      <a href="#amenities">Palvelut</a>
+      <a href="#gallery">Galleria</a>
+      <a href="#location">Sijainti</a>
+      <a href="#trust">Kokemukset</a>
+      <a class="btn btn-primary" href="#booking" style="margin-top:1rem;width:fit-content">Tarkista saatavuus</a>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Etusivun hero">
+      <div class="hero-media">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651335917-VS51J4I4Q8BVCW8E1E7M/poroholma-ilmakuva.png"
+          alt="Ilmakuva Poroholman lomakeskuksesta meren äärellä Raumalla"
+          fetchpriority="high">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container hero-content">
+        <p class="hero-kicker">Viiden tähden lomakeskus · Rauma</p>
+        <h1>Poroholma</h1>
+        <p class="hero-lead">Tasokas, puistomainen lomakeskus meren äärellä — caravan, mökit, teltta ja satama lähellä Vanhaa Raumaa.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#booking">Aloita varaus</a>
+          <a class="btn btn-ghost" href="#accommodation">Tutustu majoitukseen</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container booking-wrap" id="booking">
+      <div class="booking-card">
+        <div class="booking-label">Varaushaku · prototyyppi</div>
+        <form class="booking-form" id="bookingForm" action="#" method="get">
+          <div class="field">
+            <label for="checkin">Saapuminen</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Lähtö</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field guest-wrap">
+            <label for="guestTrigger">Vieraat</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+              <span id="guestSummary">2 aikuista</span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Vierasmäärä">
+              <div class="guest-row">
+                <div><span>Aikuiset</span></div>
+                <div class="stepper">
+                  <button type="button" id="adultsMinus" aria-label="Vähennä aikuisia">−</button>
+                  <span id="adultsCount">2</span>
+                  <button type="button" id="adultsPlus" aria-label="Lisää aikuisia">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <div><span>Lapset</span><small>Alle 10 v.</small></div>
+                <div class="stepper">
+                  <button type="button" id="childrenMinus" aria-label="Vähennä lapsia">−</button>
+                  <span id="childrenCount">0</span>
+                  <button type="button" id="childrenPlus" aria-label="Lisää lapsia">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="unitType">Majoitustyyppi</label>
+            <select id="unitType" name="unitType">
+              <option value="caravan">Caravan-paikka</option>
+              <option value="cabin">Leirintämökki</option>
+              <option value="tent">Telttapaikka</option>
+              <option value="harbour">Vierasvenepaikka</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-teal" id="searchBtn">Hae saatavuutta</button>
+        </form>
+        <p class="booking-note">Huom: nykyisellä sivustolla caravan- ja telttapaikkoja ei voi varata ennakkoon — tämä widget havainnollistaa selkeämpää varauskulkua.</p>
+        <div class="booking-toast" id="bookingToast" role="status"></div>
+      </div>
+    </div>
+
+    <section id="accommodation">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Majoitusvaihtoehdot</h2>
+          <p>Valitse caravan-alue, perinteinen leirintämökki, teltta puiden siimeksessä tai venepaikka vierasvenesatamassa.</p>
+        </div>
+        <div class="unit-grid">
+          <article class="unit-card reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651334828-ALJ4Q5WEZK9X5K8DWH4S/poroholma-caravan-alue.png" alt="Poroholman caravan-alue meren äärellä" loading="lazy">
+            <div class="unit-body">
+              <h3>Caravan-alue</h3>
+              <p>Viiden tähden caravan-alue rannan tuntumassa tai puiston suojassa. Sähköllä varustetut auto- ja vaunupaikat, huoltorakennukset ja merinäköalat.</p>
+              <div class="unit-meta">
+                <div class="price">22 € <small>/ vrk + henkilömaksu &amp; sähkö</small></div>
+                <span class="badge">Caravan</span>
+              </div>
+            </div>
+          </article>
+          <article class="unit-card reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651341830-C5K36GKJ3VVQJ4V8YPIF/poroholma-mokit.png" alt="Poroholman leirintämökit metsän siimeksessä" loading="lazy">
+            <div class="unit-body">
+              <h3>Leirintämökit</h3>
+              <p>Perinteisiä yksikerroksisia hirsimökkejä omilla terasseilla. Neljä sänkyä, WC, jääkaappi ja mikro — suihkut huoltorakennuksessa.</p>
+              <div class="unit-meta">
+                <div class="price">Hinta <small>Booking.comissa · ei listattu sivustolla</small></div>
+                <span class="badge placeholder">Placeholder-hinta</span>
+              </div>
+            </div>
+          </article>
+          <article class="unit-card reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651346794-W6KYWFBTMHJQ5I2GJKKQ/poroholma-uimaranta.png" alt="Poroholman puisto- ja telttailualueen tunnelmaa uimarannan lähellä" loading="lazy">
+            <div class="unit-body">
+              <h3>Telttailualue</h3>
+              <p>Telttapaikat Ruormiehen takana, puiden siimeksessä. Näkymät puistomaiseen alueeseen ja merelle. Yleiset wc-, suihku- ja keittiötilat käytössä.</p>
+              <div class="unit-meta">
+                <div class="price">20 € <small>/ vrk + henkilömaksu &amp; sähkö</small></div>
+                <span class="badge">Teltta</span>
+              </div>
+            </div>
+          </article>
+          <article class="unit-card reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651345333-NHSY386OJW6K7521E5BS/poroholma-ravintolalaiva-marita.png" alt="Poroholman vierasvenesatama ja ravintolalaiva Marita" loading="lazy">
+            <div class="unit-body">
+              <h3>Vierasvenesatama</h3>
+              <p>Saavu vesitse — yksi Rauman vierasvenesatamista, syväys jopa 2,5 m. Venepaikkaan sisältyvät sähkö ja henkilömaksut.</p>
+              <div class="unit-meta">
+                <div class="price">30 € <small>/ yö sis. sähkö &amp; henkilömaksut</small></div>
+                <span class="badge">Satama</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="track-strip reveal" aria-label="Yksikkö- ja vierasseuranta — prototyyppi">
+          <div>
+            <h3>Yksikkö- &amp; vierasseuranta</h3>
+            <p>Selkeä näkymä majoitustyypeittäin — prototyyppi havainnollistaa, miten vastaanotto voisi seurata kapasiteettia ja vieraita.</p>
+            <p class="proto-note">Demo UI only · ei live-dataa</p>
+          </div>
+          <div class="track-stat"><strong>Caravan</strong><span>Paikat saapumisjärjestyksessä</span></div>
+          <div class="track-stat"><strong>Mökit</strong><span>Varaus Booking.comin kautta</span></div>
+          <div class="track-stat"><strong>Satama</strong><span>Venepaikat 30 €/yö</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="amenities">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Alueen palvelut</h2>
+          <p>Palvelut, jotka löytyvät Poroholman sivustolta — saunasta rantaan ja ravintolalaivaan.</p>
+        </div>
+        <div class="amenity-grid">
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18c2-4 4-6 8-6s6 2 8 6"/><path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg></div>
+            <span>Yhteissauna</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12c2-3 5-5 9-5s7 2 9 5"/><path d="M3 16c2-2 5-3 9-3s7 1 9 3"/><path d="M12 7V4"/></svg></div>
+            <span>Hiekkaranta &amp; uinti</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16v10H4z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+            <span>WC &amp; suihkut</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 15h16"/><path d="M6 15v4h4M14 15v4h4"/><path d="M8 11h8l1 4H7z"/></svg></div>
+            <span>Yhteiskeittiö</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 7h10l4 5v7H5V7z"/><path d="M9 19v-4h6v4"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg></div>
+            <span>Pyykinpesu</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19c-4-3-7-6-7-9a7 7 0 0 1 14 0c0 3-3 6-7 9z"/><path d="M9 10h6"/></svg></div>
+            <span>Grillausalue</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M6 18V9l6-4 6 4v9"/><path d="M10 18v-5h4v5"/></svg></div>
+            <span>Ravintolat (Marita)</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 18c2-5 4-8 7-8s5 3 7 8"/><circle cx="9" cy="8" r="2"/><circle cx="15" cy="8" r="2"/></svg></div>
+            <span>Leikkipaikka</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 16l7-3 4 2 7-4"/><path d="M14 8l3-2 4 1"/></svg></div>
+            <span>Vierasvenesatama</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 14h14"/><path d="M7 14V8l5-3 5 3v6"/><path d="M9 18h6"/></svg></div>
+            <span>Sähköliitäntä</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+            <span>Pyörävuokraus</span>
+          </div>
+          <div class="amenity reveal">
+            <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5c3 0 5 2 5 5 0 4-5 9-5 9S7 14 7 10c0-3 2-5 5-5z"/><circle cx="12" cy="10" r="1.5"/></svg></div>
+            <span>Lemmikit sallittu</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Tunnelmia Poroholmasta</h2>
+          <p>Oikeita kuvia alueelta — ranta, majoitus ja merellinen ympäristö.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651334865-GXCCQET2JPKCK050PTFA/poroholma-ilmakuva-2.png" alt="Ilmakuva Poroholman alueesta" loading="lazy">
+            <figcaption>Ilmakuva alueesta</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651341830-C5K36GKJ3VVQJ4V8YPIF/poroholma-mokit.png" alt="Leirintämökit" loading="lazy">
+            <figcaption>Leirintämökit</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651343364-PGY98IB5PIWCLFQBZ5XE/poroholma-rantatalo-uimaranta.png" alt="Rantatalo ja uimaranta" loading="lazy">
+            <figcaption>Rantatalo &amp; uimaranta</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651340974-W66B5SP3KMEZE0T1HAZE/poroholma-marita-ravintolalaiva.png" alt="Purjelaivaravintola Marita" loading="lazy">
+            <figcaption>Purjelaiva Marita</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651336231-RNT5RDGIR54M1X1635CX/poroholma-ilta.png" alt="Iltanäkymä Poroholmassa" loading="lazy">
+            <figcaption>Ilta merellä</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/1712651345110-KSXHF0HE3DCUEK05JHOQ/poroholma-ruormiehen-terassi.png" alt="Ruormiehen rantaterassi" loading="lazy">
+            <figcaption>Ruormiehen terassi</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container location-grid">
+        <div class="location-copy reveal">
+          <h2>Sijainti Raumalla</h2>
+          <p>Poroholmantie 8, 26100 Rauma. Lomakeskus on osa Otanlahden Rantapuistoa meren äärellä, lyhyen matkan päässä keskustasta.</p>
+          <ul class="landmark-list">
+            <li>
+              <span class="pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <div><strong>Vanha Rauma</strong><br><span style="color:var(--muted);font-size:0.92rem">UNESCO-maailmanperintökohde — pikkukauppoja, ravintoloita ja museoita</span></div>
+            </li>
+            <li>
+              <span class="pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <div><strong>Otanlahden Rantapuisto</strong><br><span style="color:var(--muted);font-size:0.92rem">Maauimala, urheilukenttiä, kesäteatteri ja vesibussisatama</span></div>
+            </li>
+            <li>
+              <span class="pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <div><strong>Meri &amp; satama</strong><br><span style="color:var(--muted);font-size:0.92rem">Hiekkaranta paikan päällä; vierasvenesatama syväyksellä 2,5 m</span></div>
+            </li>
+          </ul>
+          <p style="font-size:0.95rem;color:var(--muted)">Vastaanotto auki päivittäin (ajat vaihtelevat). info@poroholma.fi</p>
+        </div>
+        <div class="map-placeholder reveal" role="img" aria-label="Karttapaikkamerkki — staattinen placeholder">
+          <strong>Kartta (placeholder)</strong>
+          <span>Poroholmantie 8, 26100 Rauma<br>Otanlahti · Rauma, Suomi</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="trust">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Mitä vieraat sanovat</h2>
+          <p>Julkista arvosanamerkkiä ei löytynyt lähdesivustolta — alla kolme esimerkkikommenttia selkeästi merkittynä placeholdereiksi.</p>
+        </div>
+        <div class="trust-grid">
+          <blockquote class="testimonial reveal">
+            <span class="ph">Placeholder-arvostelu</span>
+            <p>”Rauhallinen merenrantapaikka perheelle — caravan-alue oli siisti ja uimaranta aivan vieressä.”</p>
+            <cite>— Esimerkkivieras, placeholder</cite>
+          </blockquote>
+          <blockquote class="testimonial reveal">
+            <span class="ph">Placeholder-arvostelu</span>
+            <p>”Mökit metsän reunassa ja illallinen Maritalla tekivät lomasta erikoisen. Lyhyt matka Vanhaan Raumaan.”</p>
+            <cite>— Esimerkkivieras, placeholder</cite>
+          </blockquote>
+          <blockquote class="testimonial reveal">
+            <span class="ph">Placeholder-arvostelu</span>
+            <p>”Sauna, hiekkaranta ja puistomainen alue — juuri sitä mitä etsimme Raumalta.”</p>
+            <cite>— Esimerkkivieras, placeholder</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://images.squarespace-cdn.com/content/v1/65a0f7e2b25f327d253e336b/712c7d75-1585-4361-8bc8-6103eebb6d02/poroholman-lomakeskus-rauma.png" alt="Poroholman lomakeskus">
+          <p>Poroholman lomakeskus — tasokas, puistomainen, viiden tähden lomakeskus meren äärellä Raumalla.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigaatio</h4>
+          <a href="#booking">Varaus</a>
+          <a href="#accommodation">Majoitus</a>
+          <a href="#amenities">Palvelut</a>
+          <a href="#gallery">Galleria</a>
+          <a href="#location">Sijainti</a>
+        </div>
+        <div class="footer-col">
+          <h4>Yhteystiedot</h4>
+          <p>Poroholman Lomakeskus Oy</p>
+          <p>Poroholmantie 8<br>26100 Rauma</p>
+          <a href="mailto:info@poroholma.fi">info@poroholma.fi</a>
+          <a href="https://www.poroholma.fi" target="_blank" rel="noopener">www.poroholma.fi</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Poroholman Lomakeskus Oy · Prototyyppi</span>
+        <span>Tervtulo ja ol niingon gotonas!</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      const menuToggle = document.getElementById('menuToggle');
+      const navMobile = document.getElementById('navMobile');
+      const navClose = document.getElementById('navClose');
+
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      function openNav() {
+        navMobile.classList.add('open');
+        navMobile.setAttribute('aria-hidden', 'false');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeNav() {
+        navMobile.classList.remove('open');
+        navMobile.setAttribute('aria-hidden', 'true');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      menuToggle.addEventListener('click', openNav);
+      navClose.addEventListener('click', closeNav);
+      navMobile.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+      });
+
+      // Guests
+      let adults = 2;
+      let children = 0;
+      const guestTrigger = document.getElementById('guestTrigger');
+      const guestPanel = document.getElementById('guestPanel');
+      const guestSummary = document.getElementById('guestSummary');
+      const adultsCount = document.getElementById('adultsCount');
+      const childrenCount = document.getElementById('childrenCount');
+
+      function updateGuests() {
+        adultsCount.textContent = adults;
+        childrenCount.textContent = children;
+        var parts = [adults + (adults === 1 ? ' aikuinen' : ' aikuista')];
+        if (children > 0) parts.push(children + (children === 1 ? ' lapsi' : ' lasta'));
+        guestSummary.textContent = parts.join(', ');
+      }
+      guestTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = guestPanel.classList.toggle('open');
+        guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', function (e) {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove('open');
+          guestTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.getElementById('adultsPlus').addEventListener('click', function () { adults = Math.min(12, adults + 1); updateGuests(); });
+      document.getElementById('adultsMinus').addEventListener('click', function () { adults = Math.max(1, adults - 1); updateGuests(); });
+      document.getElementById('childrenPlus').addEventListener('click', function () { children = Math.min(10, children + 1); updateGuests(); });
+      document.getElementById('childrenMinus').addEventListener('click', function () { children = Math.max(0, children - 1); updateGuests(); });
+
+      // Dates
+      var checkin = document.getElementById('checkin');
+      var checkout = document.getElementById('checkout');
+      function iso(d) { return d.toISOString().split('T')[0]; }
+      var today = new Date();
+      var inDate = new Date(today); inDate.setDate(today.getDate() + 1);
+      var outDate = new Date(today); outDate.setDate(today.getDate() + 3);
+      checkin.min = iso(today);
+      checkout.min = iso(inDate);
+      checkin.value = iso(inDate);
+      checkout.value = iso(outDate);
+      checkin.addEventListener('change', function () {
+        var n = new Date(checkin.value);
+        n.setDate(n.getDate() + 1);
+        checkout.min = iso(n);
+        if (checkout.value <= checkin.value) checkout.value = iso(n);
+      });
+
+      document.getElementById('bookingForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var toast = document.getElementById('bookingToast');
+        var unit = document.getElementById('unitType');
+        var label = unit.options[unit.selectedIndex].text;
+        toast.textContent = 'Haku: ' + checkin.value + ' → ' + checkout.value + ' · ' + guestSummary.textContent + ' · ' + label + ' (prototyyppi — ei oikeaa varausta).';
+        toast.classList.add('show');
+      });
+
+      // Reveal on scroll
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
