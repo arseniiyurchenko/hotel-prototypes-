@@ -15,7 +15,22 @@ def main():
         browser = p.chromium.launch(headless=True)
         page = browser.new_page(viewport={"width": 1280, "height": 800})
         page.goto(URL, wait_until="networkidle")
-        page.wait_for_timeout(2000)
+        page.wait_for_timeout(1500)
+
+        # Scroll full page so lazy images load
+        page.evaluate(
+            """async () => {
+              const step = window.innerHeight;
+              for (let y = 0; y < document.body.scrollHeight; y += step) {
+                window.scrollTo(0, y);
+                await new Promise(r => setTimeout(r, 200));
+              }
+              window.scrollTo(0, document.body.scrollHeight);
+            }"""
+        )
+        page.wait_for_timeout(1500)
+        page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(400)
 
         imgs = page.locator("img").all()
         for i, img in enumerate(imgs):
@@ -24,25 +39,21 @@ def main():
             if not ok:
                 errors.append(f"Broken image [{i}]: {src}")
 
-        # Hero background is CSS — also check computed load via fetch
         hero_ok = page.evaluate(
-            """async () => {
+            """() => new Promise((resolve) => {
               const url = getComputedStyle(document.querySelector('.hero-bg')).backgroundImage;
-              const m = url.match(/url\\(["']?(.*?)["']?\\)/);
-              if (!m) return false;
-              try {
-                const r = await fetch(m[1], { method: 'HEAD', mode: 'no-cors' });
-                return true;
-              } catch (e) {
-                const img = new Image();
-                await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = m[1]; });
-                return img.naturalWidth > 0;
-              }
-            }"""
+              const m = url && url.match(/url\\(["']?(.*?)["']?\\)/);
+              if (!m) return resolve(false);
+              const img = new Image();
+              img.onload = () => resolve(img.naturalWidth > 0);
+              img.onerror = () => resolve(false);
+              img.src = m[1];
+            })"""
         )
         if not hero_ok:
             errors.append("Hero background image failed to load")
 
+        page.locator("#booking").scroll_into_view_if_needed()
         page.locator("#checkin").fill("2026-08-05")
         page.locator("#checkout").fill("2026-08-08")
         page.locator("#guestTrigger").click()
@@ -53,6 +64,8 @@ def main():
         page.locator("#childrenPlus").click()
         page.locator("#roomType").select_option("studio")
         page.wait_for_timeout(300)
+        page.mouse.click(20, 20)
+        page.wait_for_timeout(200)
 
         for sel in ["#rooms", "#amenities", "#gallery", "#location", "#trust"]:
             page.locator(sel).scroll_into_view_if_needed()
