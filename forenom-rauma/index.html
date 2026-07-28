@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forenom Rauma | Serviced Apartments Kaivopuisto</title>
+  <meta name="description" content="Forenom Serviced Apartments Rauma Kaivopuisto — make your stay easy, so you can feel at home. Fully furnished apartments from studio to three-room near Rauma city center.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #ff5a13;
+      --orange-dark: #cc3d00;
+      --orange-soft: #ff8652;
+      --orange-pale: #fff7f4;
+      --orange-wash: #ffdbcc;
+      --blue: #2772ec;
+      --blue-soft: #5f96f1;
+      --charcoal: #1d1d1d;
+      --gray: #525451;
+      --gray-light: #e8eae7;
+      --divider: #caccc9;
+      --bg: #faf9f7;
+      --bg-warm: #fff4f0;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(29, 29, 29, 0.1);
+      --radius: 14px;
+      --transition: 0.28s ease;
+      --header-h: 72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--charcoal);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; transition: color var(--transition); }
+
+    button, input, select {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.6rem;
+      border: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(255, 90, 19, 0.28);
+    }
+
+    .btn-primary:hover { background: var(--orange-dark); }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.14);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.24); }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--header-h);
+      transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(250, 249, 247, 0.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--divider);
+    }
+
+    .header-inner {
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: var(--white);
+      transition: color var(--transition);
+    }
+
+    .site-header.scrolled .logo { color: var(--charcoal); }
+
+    .logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      transition: filter var(--transition);
+    }
+
+    .site-header.scrolled .logo img {
+      filter: none;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .logo-text .brand {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .logo-text .place {
+      font-size: 0.72rem;
+      font-weight: 500;
+      opacity: 0.85;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .site-header.scrolled .nav-desktop a { color: var(--gray); }
+    .nav-desktop a:hover { color: var(--orange); }
+    .site-header.scrolled .nav-desktop a:hover { color: var(--orange); }
+
+    .header-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 600 !important;
+    }
+
+    .header-cta:hover { background: var(--orange-dark) !important; color: var(--white) !important; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 0.35rem;
+    }
+
+    .site-header.scrolled .menu-toggle { color: var(--charcoal); }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: var(--charcoal);
+      color: var(--white);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition), visibility var(--transition);
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-mobile a {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .nav-mobile a:hover { color: var(--orange-soft); }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      /* Primary: https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png
+         Fallback local mirror when CDN blocks off-site referrers. */
+      background:
+        url("https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png")
+        center / cover no-repeat,
+        url("images/rauma-living.png")
+        center / cover no-repeat;
+      transform: scale(1.04);
+      animation: heroZoom 18s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(29, 29, 29, 0.45) 0%, rgba(29, 29, 29, 0.18) 38%, rgba(29, 29, 29, 0.72) 100%),
+        linear-gradient(90deg, rgba(29, 29, 29, 0.55) 0%, rgba(29, 29, 29, 0.15) 55%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1120px, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: calc(var(--header-h) + 2rem) 0 5.5rem;
+      animation: fadeUp 0.9s ease 0.15s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-size: clamp(2.8rem, 8vw, 5.2rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-brand span {
+      display: block;
+      font-size: 0.38em;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      opacity: 0.9;
+      margin-top: 0.55rem;
+      color: var(--orange-wash);
+    }
+
+    .hero-tagline {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+      font-weight: 400;
+      max-width: 28ch;
+      line-height: 1.45;
+      margin-bottom: 1.75rem;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    /* Booking */
+    .booking-section {
+      position: relative;
+      z-index: 5;
+      margin-top: -2.75rem;
+      padding-bottom: 1rem;
+    }
+
+    .booking-widget {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.1rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.2fr auto;
+      gap: 0.85rem;
+      align-items: end;
+      border: 1px solid rgba(202, 204, 201, 0.6);
+      animation: fadeUp 0.8s ease 0.35s both;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      position: relative;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid var(--divider);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(255, 90, 19, 0.15);
+    }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-panel {
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 0.9rem;
+      z-index: 20;
+      display: none;
+    }
+
+    .guest-panel.open { display: block; animation: fadeUp 0.2s ease; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--divider);
+      background: var(--bg);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--charcoal);
+    }
+
+    .guest-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+    .booking-widget .btn-primary {
+      height: 48px;
+      padding-inline: 1.6rem;
+      white-space: nowrap;
+    }
+
+    .booking-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 0.75rem;
+    }
+
+    /* Sections shared */
+    section { padding: 5rem 0; }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      color: var(--gray);
+      max-width: 52ch;
+      font-size: 1.05rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Apartments */
+    .rooms {
+      background:
+        radial-gradient(ellipse at top right, rgba(255, 90, 19, 0.08), transparent 45%),
+        linear-gradient(180deg, var(--bg-warm), var(--bg));
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(202, 204, 201, 0.7);
+      box-shadow: 0 8px 28px rgba(29, 29, 29, 0.05);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-card-body {
+      padding: 1.25rem 1.3rem 1.45rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex: 1;
+    }
+
+    .room-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .room-meta {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .room-price {
+      margin-top: auto;
+      padding-top: 0.9rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    .room-price span {
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .price-placeholder {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--orange-dark);
+      background: var(--orange-pale);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .rooms-note {
+      margin-top: 1.25rem;
+      font-size: 0.88rem;
+      color: var(--gray);
+    }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1.1rem 1rem;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 12px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .amenity-item:hover {
+      border-color: var(--orange-wash);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--orange-pale);
+      color: var(--orange-dark);
+      display: grid;
+      place-items: center;
+    }
+
+    .amenity-item span {
+      font-weight: 500;
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+
+    /* Gallery */
+    .gallery {
+      background:
+        linear-gradient(160deg, #1d1d1d 0%, #2a2420 55%, #3a2318 100%);
+      color: var(--white);
+    }
+
+    .gallery .section-eyebrow { color: var(--orange-soft); }
+    .gallery .section-desc { color: rgba(255, 255, 255, 0.7); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.85rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .location-text h3 {
+      font-size: 1.35rem;
+      margin: 0.5rem 0 0.85rem;
+    }
+
+    .location-text p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+    .location-details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-top: 1.25rem;
+    }
+
+    .location-details li {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 0.75rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--gray-light);
+      font-size: 0.95rem;
+    }
+
+    .location-details strong {
+      color: var(--orange-dark);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding-top: 0.15rem;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(145deg, var(--orange-pale), var(--gray-light)),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 12px,
+          rgba(255, 90, 19, 0.04) 12px,
+          rgba(255, 90, 19, 0.04) 13px
+        );
+      border-radius: var(--radius);
+      border: 1px dashed var(--orange-wash);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+      gap: 0.5rem;
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Trust */
+    .trust {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(39, 114, 236, 0.08), transparent 40%),
+        var(--bg-warm);
+    }
+
+    .trust-badge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .badge-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      min-width: 180px;
+      box-shadow: 0 6px 20px rgba(29, 29, 29, 0.04);
+    }
+
+    .badge-card .value {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .badge-card .label {
+      margin-top: 0.4rem;
+      font-size: 0.88rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
+
+    .badge-source {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-top: 0.75rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--charcoal);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 3.5rem 0 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .brand {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    .footer-brand .place {
+      color: var(--orange-soft);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 0.25rem 0 0.85rem;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 36ch;
+      font-size: 0.95rem;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: var(--white);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-nav a:hover,
+    .footer-contact a:hover { color: var(--orange-soft); }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1.25rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: block; }
+
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-widget .btn-primary {
+        grid-column: span 2;
+      }
+
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 220px 220px;
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .location-grid,
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 1.5rem, 1120px); }
+
+      .hero-content { padding-bottom: 4.5rem; }
+
+      .booking-widget {
+        grid-template-columns: 1fr;
+        margin-top: 0;
+      }
+
+      .booking-widget .btn-primary { grid-column: span 1; }
+
+      .rooms-grid,
+      .amenities-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid { grid-template-rows: none; }
+      .gallery-item,
+      .gallery-item:first-child {
+        grid-column: auto;
+        height: 220px;
+      }
+
+      .location-details li {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+      }
+
+      section { padding: 3.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Forenom Rauma home">
+        <img src="https://www.forenom.com/wp-content/uploads/2023/03/Forenom-logo-40px.png" data-fallback="images/logo.png" alt="Forenom logo">
+        <span class="logo-text">
+          <span class="brand">Forenom</span>
+          <span class="place">Rauma</span>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Apartments</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a class="header-cta" href="#booking">Book</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Apartments</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#booking">Book stay</a>
+    <a href="tel:+358201983420">+358 20 198 3420</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg" role="img" aria-label="Forenom Rauma serviced apartment living room"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-brand">Forenom<span>Rauma · Kaivopuisto</span></h1>
+        <p class="hero-tagline">Make your stay easy, so you can feel at home.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">Check availability</a>
+          <a href="#rooms" class="btn btn-ghost">View apartments</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+      <div class="container">
+        <form class="booking-widget" id="bookingForm" action="#" method="get">
+          <div class="form-group">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="form-group">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="form-group guest-selector">
+            <label>Guests</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+              <span id="guestSummary">2 adults</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="guest-panel" id="guestPanel">
+              <div class="guest-row">
+                <span>Adults</span>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                  <span id="adultsCount">2</span>
+                  <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <span>Children</span>
+                <div class="guest-controls">
+                  <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                  <span id="childrenCount">0</span>
+                  <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <p class="booking-note">Prototype booking widget — UI only. Confirms interest for a Rauma-focused direct booking flow.</p>
+      </div>
+    </section>
+
+    <section class="rooms" id="rooms">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">31 apartments</p>
+          <h2 class="section-title">Apartment types</h2>
+          <p class="section-desc">Forenom Serviced Apartments Rauma Kaivopuisto offers fully furnished homes from studio to three-room — labeled on Forenom as yksiö to kolmio.</p>
+        </div>
+        <div class="rooms-grid">
+          <article class="room-card reveal">
+            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17093613/Forenom_Rauma_Serviced_Apartments.jpg" data-fallback="images/rauma-bedroom.jpg" alt="Studio bedroom at Forenom Rauma Kaivopuisto" loading="lazy">
+            <div class="room-card-body">
+              <h3>Studio · Yksiö</h3>
+              <p class="room-meta">Fully furnished · private kitchen · washer</p>
+              <p class="room-price">Price on request <span>/ stay</span></p>
+              <span class="price-placeholder">Placeholder — rate not shown on source</span>
+            </div>
+          </article>
+          <article class="room-card reveal">
+            <img src="https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png" data-fallback="images/rauma-living.png" alt="Living area in a Forenom Rauma apartment" loading="lazy">
+            <div class="room-card-body">
+              <h3>Two-room · Kaksio</h3>
+              <p class="room-meta">Living space + bedroom · code-lock access</p>
+              <p class="room-price">Price on request <span>/ stay</span></p>
+              <span class="price-placeholder">Placeholder — rate not shown on source</span>
+            </div>
+          </article>
+          <article class="room-card reveal">
+            <img src="https://www.forenom.com/wp-content/uploads/2026/04/Serviced-apartment.png" data-fallback="images/kitchen.png" alt="Forenom serviced apartment kitchen and dining area" loading="lazy">
+            <div class="room-card-body">
+              <h3>Three-room · Kolmio</h3>
+              <p class="room-meta">Larger layout for longer work stays</p>
+              <p class="room-price">Price on request <span>/ stay</span></p>
+              <span class="price-placeholder">Placeholder — rate not shown on source</span>
+            </div>
+          </article>
+        </div>
+        <p class="rooms-note reveal">Photos: Rauma Kaivopuisto interiors from Forenom, plus a Forenom serviced-apartment kitchen image for the three-room card (Rauma-specific kolmio photo not published on the source pages reviewed).</p>
+      </div>
+    </section>
+
+    <section id="amenities">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Included with your stay</p>
+          <h2 class="section-title">Amenities</h2>
+          <p class="section-desc">Features listed for Forenom Serviced Apartments Rauma Kaivopuisto on forenom.com — nothing added beyond the source.</p>
+        </div>
+        <div class="amenities-grid reveal">
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h16v10H4zM4 10l2-5h12l2 5M8 14h.01M12 14h.01M16 14h.01"/></svg>
+            </div>
+            <span>Fully equipped kitchen</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+            </div>
+            <span>Washing machine</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5a7 7 0 0 1 0 14"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <span>Wi-Fi</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 18h16M6 18V9l6-4 6 4v9"/><path d="M10 18v-4h4v4"/></svg>
+            </div>
+            <span>Fully furnished</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18v4H3zM5 11v7M19 11v7M8 15h8"/></svg>
+            </div>
+            <span>Linens included</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 14c2-4 4-6 8-6s6 2 8 6"/><path d="M8 14h8v5H8z"/></svg>
+            </div>
+            <span>Final cleaning</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <span>24h customer service</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="16" r="1.5"/></svg>
+            </div>
+            <span>Code-lock 24h check-in</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 3v8h7l-9 10v-8H4l9-10z"/></svg>
+            </div>
+            <span>Electricity &amp; water included</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">See the space</p>
+          <h2 class="section-title">Photo gallery</h2>
+          <p class="section-desc">Real images from forenom.com — Rauma Kaivopuisto and Forenom serviced-apartment photography.</p>
+        </div>
+        <div class="gallery-grid reveal">
+          <div class="gallery-item">
+            <img src="https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png" data-fallback="images/rauma-living.png" alt="Rauma apartment living room with sofa and dining table">
+            <span class="gallery-caption">Rauma · living area</span>
+          </div>
+          <div class="gallery-item">
+            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17093613/Forenom_Rauma_Serviced_Apartments.jpg" data-fallback="images/rauma-bedroom.jpg" alt="Rauma apartment bedroom" loading="lazy">
+            <span class="gallery-caption">Rauma · bedroom</span>
+          </div>
+          <div class="gallery-item">
+            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17093553/Forenom_Rauma_Serviced_Apartments_2.jpg" data-fallback="images/rauma-desk.jpg" alt="Rauma apartment work desk and seating" loading="lazy">
+            <span class="gallery-caption">Rauma · work corner</span>
+          </div>
+          <div class="gallery-item">
+            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17101226/Banner_Rauma_Forenom_isompi.png" data-fallback="images/rauma-banner.png" alt="Rauma apartment living space banner photo" loading="lazy">
+            <span class="gallery-caption">Rauma · living detail</span>
+          </div>
+          <div class="gallery-item">
+            <img src="https://www.forenom.com/wp-content/uploads/2026/04/Serviced-apartment.png" data-fallback="images/kitchen.png" alt="Forenom serviced apartment kitchen" loading="lazy">
+            <span class="gallery-caption">Forenom · kitchen</span>
+          </div>
+          <div class="gallery-item">
+            <img src="https://www.forenom.com/wp-content/uploads/2026/06/Forenom_man-in-kitchen-1920x1080-1.png" data-fallback="images/man-kitchen.png" alt="Guest cooking in a Forenom kitchen" loading="lazy">
+            <span class="gallery-caption">Forenom · feel at home</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Rauma</p>
+          <h2 class="section-title">Location</h2>
+        </div>
+        <div class="location-grid reveal">
+          <div class="location-text">
+            <h3>Forenom Serviced Apartments Rauma Kaivopuisto</h3>
+            <p>At Kaivopuistontie 1 in Rauma’s Kaivopuisto area — a short walk from the city center, with everyday services nearby and a quick drive to the shipyard.</p>
+            <p>Designed for flexible short- and longer-term stays, including industrial and business travel needs in Rauma.</p>
+            <ul class="location-details">
+              <li><strong>Address</strong> <span>Kaivopuistontie 1, Rauma (Kaivopuisto)</span></li>
+              <li><strong>Center</strong> <span>~1 minute walk to Rauma city center</span></li>
+              <li><strong>Grocery</strong> <span>~300 metres to the nearest shop</span></li>
+              <li><strong>Shipyard</strong> <span>Rauman Telakka ~3 km / ~5 min by car</span></li>
+              <li><strong>Phone</strong> <span><a href="tel:+358201983420">+358 20 198 3420</a></span></li>
+              <li><strong>Email</strong> <span><a href="mailto:sales@forenom.com">sales@forenom.com</a></span></li>
+            </ul>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Static map placeholder for Kaivopuistontie 1, Rauma">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <p><strong>Map placeholder</strong></p>
+            <p>Kaivopuistontie 1<br>Rauma, Finland</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" id="trust">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Why guests choose Forenom</p>
+          <h2 class="section-title">Trust signals</h2>
+          <p class="section-desc">Figures published on Forenom’s About and Rauma partner pages — not fabricated reviews.</p>
+        </div>
+        <div class="trust-badge reveal">
+          <div class="badge-card">
+            <div class="value">93%</div>
+            <div class="label">Guest satisfaction</div>
+          </div>
+          <div class="badge-card">
+            <div class="value">94%</div>
+            <div class="label">Customer satisfaction</div>
+          </div>
+          <div class="badge-card">
+            <div class="value">52</div>
+            <div class="label">Corporate customer NPS</div>
+          </div>
+        </div>
+        <p class="badge-source reveal">Sources: forenom.com/about (93% guest satisfaction, NPS 52) and the Rauma corporate partner page (94% customer satisfaction). Local Rauma guest reviews were not listed on the pages reviewed.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">Forenom</div>
+          <div class="place">Serviced Apartments · Rauma Kaivopuisto</div>
+          <p>Homelike furnished apartments for short and long stays — a mid-range corporate housing alternative to traditional hotels.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Apartments</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Book</a></li>
+            <li><a href="#location">Location</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Kaivopuistontie 1<br>Rauma, Finland</p>
+          <a href="tel:+358201983420">+358 20 198 3420</a>
+          <a href="mailto:sales@forenom.com">sales@forenom.com</a>
+          <a href="https://www.forenom.com/" target="_blank" rel="noopener">forenom.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© Forenom Oy — Rauma landing prototype (source: forenom.com)</p>
+        <p>Lower-priority test concept · direct booking UI only</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 48);
+    }, { passive: true });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navMobile = document.getElementById('navMobile');
+    const navClose = document.getElementById('navClose');
+    menuToggle.addEventListener('click', () => navMobile.classList.add('open'));
+    navClose.addEventListener('click', () => navMobile.classList.remove('open'));
+    navMobile.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navMobile.classList.remove('open'));
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (!checkin.value) return;
+      const nextDay = new Date(checkin.value);
+      nextDay.setDate(nextDay.getDate() + 1);
+      const minOut = nextDay.toISOString().split('T')[0];
+      checkout.min = minOut;
+      if (checkout.value && checkout.value <= checkin.value) checkout.value = minOut;
+    });
+
+    let adults = 2;
+    let children = 0;
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestPanel = document.getElementById('guestPanel');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' adult' : ' adults');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' child' : ' children');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = guestPanel.classList.toggle('open');
+      guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+        guestPanel.classList.remove('open');
+        guestTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.getElementById('adultsPlus').addEventListener('click', () => {
+      adults = Math.min(10, adults + 1);
+      updateGuestSummary();
+    });
+    document.getElementById('adultsMinus').addEventListener('click', () => {
+      adults = Math.max(1, adults - 1);
+      updateGuestSummary();
+    });
+    document.getElementById('childrenPlus').addEventListener('click', () => {
+      children = Math.min(8, children + 1);
+      updateGuestSummary();
+    });
+    document.getElementById('childrenMinus').addEventListener('click', () => {
+      children = Math.max(0, children - 1);
+      updateGuestSummary();
+    });
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const original = btn.textContent;
+      btn.textContent = 'Checking…';
+      setTimeout(() => {
+        btn.textContent = 'Search (demo)';
+        setTimeout(() => { btn.textContent = original; }, 1400);
+      }, 500);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Local fallbacks when Forenom CDN rejects off-site hotlinking
+    document.querySelectorAll('img[data-fallback]').forEach((img) => {
+      const swap = () => {
+        const fb = img.getAttribute('data-fallback');
+        if (fb && !img.dataset.fellBack) {
+          img.dataset.fellBack = '1';
+          img.src = fb;
+        }
+      };
+      img.addEventListener('error', swap);
+      if (img.complete && img.naturalWidth === 0) swap();
+    });
+  </script>
+</body>
+</html>
