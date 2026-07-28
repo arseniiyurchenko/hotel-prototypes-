@@ -369,10 +369,15 @@
       border-radius: 14px;
       box-shadow: var(--shadow);
       padding: 0.9rem;
-      z-index: 20;
+      z-index: 30;
     }
 
     .guest-dropdown.open { display: block; }
+
+    .guest-dropdown.open-up {
+      top: auto;
+      bottom: calc(100% + 0.4rem);
+    }
 
     .guest-row {
       display: flex;
@@ -1331,13 +1336,23 @@
 
       guestTrigger.addEventListener("click", function (e) {
         e.stopPropagation();
-        var open = guestDropdown.classList.toggle("open");
+        var open = !guestDropdown.classList.contains("open");
+        guestDropdown.classList.toggle("open", open);
+        if (open) {
+          var rect = guestTrigger.getBoundingClientRect();
+          var spaceBelow = window.innerHeight - rect.bottom;
+          var preferUp = window.innerWidth <= 640 || spaceBelow < 200;
+          guestDropdown.classList.toggle("open-up", preferUp);
+        } else {
+          guestDropdown.classList.remove("open-up");
+        }
         guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
       });
 
       document.addEventListener("click", function (e) {
         if (!guestDropdown.contains(e.target) && e.target !== guestTrigger && !guestTrigger.contains(e.target)) {
           guestDropdown.classList.remove("open");
+          guestDropdown.classList.remove("open-up");
           guestTrigger.setAttribute("aria-expanded", "false");
         }
       });
