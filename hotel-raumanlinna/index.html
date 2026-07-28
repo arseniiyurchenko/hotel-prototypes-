@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Kalliohovi | Cozy small hotel by Old Rauma</title>
+  <meta name="description" content="A short walk from Old Rauma’s wooden blocks, Hotel Kalliohovi welcomes guests to the cozy atmosphere of a small inn.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #284d5d;
+      --navy-deep: #1a3340;
+      --navy-soft: #3a6476;
+      --gold: #ba9957;
+      --gold-soft: #ceb375;
+      --burgundy: #5d0011;
+      --ink: #222222;
+      --ink-soft: #4a5559;
+      --linen: #f3f0ea;
+      --sand: #e8e2d6;
+      --mist: #f7f5f1;
+      --white: #ffffff;
+      --line: rgba(40, 77, 93, 0.14);
+      --shadow: 0 18px 50px rgba(26, 51, 64, 0.14);
+      --radius: 4px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --header-h: 76px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(186, 153, 87, 0.12), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(40, 77, 93, 0.08), transparent 50%),
+        linear-gradient(180deg, var(--mist) 0%, var(--linen) 48%, var(--mist) 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: min(1140px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.2rem, 4vw, 3.35rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--navy-deep);
+      letter-spacing: -0.01em;
+    }
+
+    .section-lead {
+      max-width: 38rem;
+      color: var(--ink-soft);
+      margin-top: 0.9rem;
+      font-size: 1.02rem;
+    }
+
+    .section-head {
+      margin-bottom: 2.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.8rem 1.45rem;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    }
+
+    .btn:hover {
+      background: var(--burgundy);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(93, 0, 17, 0.22);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy-deep);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-soft);
+      color: var(--navy-deep);
+      box-shadow: 0 10px 24px rgba(186, 153, 87, 0.28);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.55);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      box-shadow: none;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease), backdrop-filter 0.3s var(--ease);
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(26, 51, 64, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(26, 51, 64, 0.18);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: min(1140px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+    }
+
+    .logo img {
+      height: 46px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .logo-text {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .logo-text span {
+      display: block;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.72;
+      margin-top: 0.25rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .nav-desktop a {
+      color: rgba(255,255,255,0.88);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .nav-desktop a:hover { color: var(--gold-soft); }
+
+    .nav-desktop .btn {
+      min-height: 2.55rem;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.75rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent;
+      color: var(--white);
+      border-radius: var(--radius);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: currentColor;
+      position: relative;
+      transition: transform 0.25s ease;
+    }
+
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 51, 64, 0.98);
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.35s var(--ease);
+    }
+
+    .nav-mobile.open { transform: translateX(0); }
+
+    .nav-mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-close {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent;
+      color: var(--white);
+      border-radius: var(--radius);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .nav-mobile a {
+      color: var(--white);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      animation: heroZoom 18s var(--ease) forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(26, 51, 64, 0.55) 0%, rgba(26, 51, 64, 0.28) 38%, rgba(26, 51, 64, 0.78) 100%),
+        linear-gradient(90deg, rgba(26, 51, 64, 0.45) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(1140px, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: calc(var(--header-h) + 4rem) 0 8.5rem;
+    }
+
+    .brand-mark {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3.4rem, 8vw, 6.2rem);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      max-width: 12ch;
+      text-shadow: 0 10px 40px rgba(0,0,0,0.25);
+      animation: riseIn 0.9s var(--ease) both;
+    }
+
+    .hero-value {
+      margin-top: 1.2rem;
+      max-width: 34rem;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: rgba(255,255,255,0.92);
+      animation: riseIn 0.9s 0.12s var(--ease) both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.8rem;
+      animation: riseIn 0.9s 0.22s var(--ease) both;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Booking */
+    .booking {
+      position: relative;
+      z-index: 5;
+      margin-top: -4.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .booking-panel {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      padding: 1.15rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr auto;
+      gap: 0.85rem;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .field select,
+    .guest-trigger {
+      width: 100%;
+      min-height: 3rem;
+      border: 1px solid var(--line);
+      background: var(--mist);
+      border-radius: var(--radius);
+      padding: 0.7rem 0.9rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .guest-trigger:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(186, 153, 87, 0.18);
+    }
+
+    .guest-wrap { position: relative; }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-panel {
+      position: absolute;
+      top: calc(100% + 0.45rem);
+      left: 0;
+      right: 0;
+      min-width: 240px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      display: none;
+      z-index: 20;
+    }
+
+    .guest-panel.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+    }
+
+    .guest-row strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--navy-deep);
+    }
+
+    .guest-row span {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    .stepper {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .stepper button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--mist);
+      color: var(--navy);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .stepper button:hover { border-color: var(--gold); background: #fff; }
+
+    .booking-panel .btn {
+      min-width: 9.5rem;
+      min-height: 3rem;
+    }
+
+    .booking-note {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    /* Rooms */
+    .section {
+      padding: 5.5rem 0;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+    }
+
+    .room-card {
+      grid-column: span 4;
+      background: var(--white);
+      border: 1px solid rgba(40, 77, 93, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(26, 51, 64, 0.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+
+    .room-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card:nth-child(4),
+    .room-card:nth-child(5) {
+      grid-column: span 6;
+    }
+
+    .room-media {
+      aspect-ratio: 16 / 11;
+      overflow: hidden;
+      background: var(--sand);
+    }
+
+    .room-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+
+    .room-card:hover .room-media img { transform: scale(1.05); }
+
+    .room-body {
+      padding: 1.35rem 1.35rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      flex: 1;
+    }
+
+    .room-body h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--navy-deep);
+      line-height: 1.15;
+    }
+
+    .room-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.28rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(40, 77, 93, 0.07);
+      color: var(--navy);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .room-body p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .room-foot {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 0.4rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .price-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 700;
+    }
+
+    .price-value {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.55rem;
+      color: var(--navy-deep);
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .price-value small {
+      font-family: "Manrope", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+
+    /* Amenities */
+    .amenities {
+      background:
+        linear-gradient(180deg, rgba(40, 77, 93, 0.94), rgba(26, 51, 64, 0.98)),
+        url("https://kalliohovi.fi/wp-content/uploads/2019/07/P1070141-2.jpg") center/cover;
+      color: var(--white);
+      position: relative;
+    }
+
+    .amenities .section-title { color: var(--white); }
+    .amenities .section-lead { color: rgba(255,255,255,0.82); }
+    .amenities .eyebrow { color: var(--gold-soft); }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 1.35rem 1.15rem;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .amenity:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(206, 179, 117, 0.16);
+      color: var(--gold-soft);
+      margin-bottom: 0.9rem;
+    }
+
+    .amenity-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .amenity p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.72);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 180px;
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      background: var(--sand);
+    }
+
+    .gallery-item:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+    .gallery-item:nth-child(2) { grid-column: span 5; grid-row: span 1; }
+    .gallery-item:nth-child(3) { grid-column: span 5; grid-row: span 1; }
+    .gallery-item:nth-child(4) { grid-column: span 4; grid-row: span 1; }
+    .gallery-item:nth-child(5) { grid-column: span 4; grid-row: span 1; }
+    .gallery-item:nth-child(6) { grid-column: span 4; grid-row: span 1; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1.1rem;
+      background: linear-gradient(transparent, rgba(26, 51, 64, 0.75));
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .location-card,
+    .map-placeholder {
+      background: var(--white);
+      border: 1px solid rgba(40, 77, 93, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(26, 51, 64, 0.06);
+    }
+
+    .location-card { padding: 2rem; }
+
+    .location-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.8rem;
+      color: var(--navy-deep);
+      margin-bottom: 0.8rem;
+    }
+
+    .location-card p {
+      color: var(--ink-soft);
+      margin-bottom: 1.2rem;
+    }
+
+    .landmark-list {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .landmark-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 0.7rem;
+      align-items: start;
+      color: var(--navy-deep);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .landmark-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 0.45rem;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(186, 153, 87, 0.18);
+    }
+
+    .landmark-list span {
+      display: block;
+      font-weight: 500;
+      color: var(--ink-soft);
+      font-size: 0.86rem;
+      margin-top: 0.15rem;
+    }
+
+    .map-placeholder {
+      min-height: 360px;
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(40, 77, 93, 0.08), rgba(186, 153, 87, 0.12)),
+        repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(40, 77, 93, 0.05) 28px, rgba(40, 77, 93, 0.05) 29px),
+        repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(40, 77, 93, 0.05) 28px, rgba(40, 77, 93, 0.05) 29px),
+        var(--sand);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .map-pin {
+      width: 64px;
+      height: 64px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      background: var(--navy);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 1rem;
+      box-shadow: 0 12px 30px rgba(26, 51, 64, 0.25);
+    }
+
+    .map-pin span {
+      transform: rotate(45deg);
+      color: var(--gold-soft);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .map-placeholder strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      color: var(--navy-deep);
+    }
+
+    .map-placeholder p {
+      color: var(--ink-soft);
+      margin-top: 0.35rem;
+    }
+
+    /* Trust */
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .trust-badges img {
+      height: 64px;
+      width: auto;
+      background: var(--white);
+      border-radius: 8px;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid var(--line);
+    }
+
+    .trust-badges .badge-note {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      max-width: 22rem;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border: 1px dashed rgba(40, 77, 93, 0.28);
+      border-radius: 10px;
+      padding: 1.4rem;
+      position: relative;
+    }
+
+    .placeholder-tag {
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      background: rgba(93, 0, 17, 0.08);
+      padding: 0.28rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .stars {
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .testimonial p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial strong {
+      color: var(--navy-deep);
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.86);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .footer-brand img {
+      height: 48px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      max-width: 28rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+    }
+
+    .footer-grid h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+    }
+
+    .footer-grid a,
+    .footer-grid li {
+      display: block;
+      padding: 0.28rem 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+    }
+
+    .footer-grid a:hover { color: var(--gold-soft); }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding-top: 1.3rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 1.5rem;
+      transform: translateX(-50%) translateY(120%);
+      background: var(--navy-deep);
+      color: var(--white);
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      z-index: 200;
+      font-size: 0.88rem;
+      transition: transform 0.35s var(--ease);
+      max-width: min(92vw, 420px);
+      text-align: center;
+    }
+
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 980px) {
+      .nav-desktop { display: none; }
+      .menu-toggle { display: inline-flex; }
+
+      .booking-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-panel .btn {
+        grid-column: 1 / -1;
+      }
+
+      .room-card,
+      .room-card:nth-child(4),
+      .room-card:nth-child(5) {
+        grid-column: span 6;
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid { grid-auto-rows: 150px; }
+      .gallery-item:nth-child(1) { grid-column: span 12; }
+      .gallery-item:nth-child(2),
+      .gallery-item:nth-child(3) { grid-column: span 6; }
+      .gallery-item:nth-child(4),
+      .gallery-item:nth-child(5),
+      .gallery-item:nth-child(6) { grid-column: span 4; }
+
+      .location-grid,
+      .testimonials,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container,
+      .header-inner,
+      .hero-content {
+        width: calc(100% - 1.5rem);
+      }
+
+      .hero-content { padding-bottom: 7.5rem; }
+
+      .booking-panel {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      .room-card,
+      .room-card:nth-child(4),
+      .room-card:nth-child(5) {
+        grid-column: span 12;
+      }
+
+      .amenities-grid { grid-template-columns: 1fr; }
+
+      .gallery-item:nth-child(n) {
+        grid-column: span 12;
+        grid-row: span 1;
+      }
+
+      .gallery-grid { grid-auto-rows: 220px; }
+
+      .section { padding: 4rem 0; }
+
+      .logo-text { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="logo" href="#top" aria-label="Hotel Kalliohovi home">
+        <img src="https://kalliohovi.fi/wp-content/uploads/2019/05/Kalliohovi-01.png" alt="Hotel Kalliohovi logo">
+        <div class="logo-text">
+          Kalliohovi
+          <span>Hotel · Rauma</span>
+        </div>
+      </a>
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a class="btn btn-gold" href="#booking">Book stay</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <a class="logo" href="#top">
+        <img src="https://kalliohovi.fi/wp-content/uploads/2019/05/Kalliohovi-01.png" alt="Hotel Kalliohovi logo">
+      </a>
+      <button class="nav-close" id="navClose" aria-label="Close menu" type="button">×</button>
+    </div>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#booking">Book stay</a>
+    <a href="#trust">Certificates</a>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Welcome">
+      <div class="hero-media">
+        <img
+          src="https://kalliohovi.fi/wp-content/uploads/2019/07/P1040500-2.jpg"
+          alt="Hotel Kalliohovi exterior on Kalliokatu in Rauma"
+          fetchpriority="high"
+        >
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow" style="color: var(--gold-soft);">Rauma · Finland</p>
+        <h1 class="brand-mark">Hotel Kalliohovi</h1>
+        <p class="hero-value">A short walk from Old Rauma’s wooden quarters — welcome to the cozy calm of a small inn.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#booking">Check availability</a>
+          <a class="btn btn-ghost" href="#rooms">Explore rooms</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="booking" aria-label="Booking">
+      <div class="container">
+        <form class="booking-panel" id="bookingForm" action="#" method="get">
+          <div class="field">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field guest-wrap">
+            <label for="guestTrigger">Guests</label>
+            <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+              <span id="guestSummary">2 adults · 0 children</span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="guest-panel" id="guestPanel" role="dialog" aria-label="Guest selector">
+              <div class="guest-row">
+                <div>
+                  <strong>Adults</strong>
+                  <span>Ages 13+</span>
+                </div>
+                <div class="stepper">
+                  <button type="button" id="adultsMinus" aria-label="Fewer adults">−</button>
+                  <span id="adultsCount">2</span>
+                  <button type="button" id="adultsPlus" aria-label="More adults">+</button>
+                </div>
+              </div>
+              <div class="guest-row">
+                <div>
+                  <strong>Children</strong>
+                  <span>Ages 0–12</span>
+                </div>
+                <div class="stepper">
+                  <button type="button" id="childrenMinus" aria-label="Fewer children">−</button>
+                  <span id="childrenCount">0</span>
+                  <button type="button" id="childrenPlus" aria-label="More children">+</button>
+                </div>
+              </div>
+              <div class="field" style="margin-top: 0.7rem;">
+                <label for="roomType">Room preference</label>
+                <select id="roomType" name="roomType">
+                  <option value="any">Any room</option>
+                  <option value="comfort-queen">Comfort Queen</option>
+                  <option value="comfort-twin">Comfort Twin</option>
+                  <option value="superior-queen">Superior Queen</option>
+                  <option value="balcony-king">Balcony King</option>
+                  <option value="suite">Captain’s Suite</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button class="btn" type="submit">Search rooms</button>
+        </form>
+        <p class="booking-note">Prototype booking widget — UI only. Check-in from 16:00 · Check-out by 12:00</p>
+      </div>
+    </section>
+
+    <section class="section" id="rooms">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">46 rooms · three floors</p>
+          <h2 class="section-title">Choose your berth</h2>
+          <p class="section-lead">Warm tones and ship-deck parquet. Views to the courtyard or the quiet street toward the Maritime Museum. Breakfast included with every stay.</p>
+        </div>
+        <div class="rooms-grid">
+          <article class="room-card">
+            <div class="room-media">
+              <img src="https://kalliohovi.fi/wp-content/uploads/2019/07/P1050125-2-1280x853.jpg" alt="Comfort Queen room with warm wood paneling" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Comfort Queen</h3>
+              <div class="room-meta">
+                <span class="chip">140 cm bed</span>
+                <span class="chip">Courtyard side</span>
+              </div>
+              <p>A compact, quiet room best suited for one guest — with the lobby bar and shared spaces nearby when you want more room to linger.</p>
+              <div class="room-foot">
+                <div>
+                  <div class="price-label">Nightly rate</div>
+                  <div class="price-value">On request <small>· placeholder</small></div>
+                </div>
+                <a class="btn" href="#booking">Select</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="room-media">
+              <img src="https://kalliohovi.fi/wp-content/uploads/2019/07/P1050157-2-1280x853.jpg" alt="Comfort Twin room with two separate beds" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Comfort Twin</h3>
+              <div class="room-meta">
+                <span class="chip">2 × 100 cm</span>
+                <span class="chip">Street side</span>
+              </div>
+              <p>Two separate beds that can be moved together, Chromecast streaming, and a calm street-side outlook.</p>
+              <div class="room-foot">
+                <div>
+                  <div class="price-label">Nightly rate</div>
+                  <div class="price-value">On request <small>· placeholder</small></div>
+                </div>
+                <a class="btn" href="#booking">Select</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="room-media">
+              <img src="https://kalliohovi.fi/wp-content/uploads/2019/06/P1050139-3-1280x853.jpg" alt="Superior Queen room with armchair and TV" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Superior Queen</h3>
+              <div class="room-meta">
+                <span class="chip">Bathrobe</span>
+                <span class="chip">Minibar</span>
+                <span class="chip">Upper floors</span>
+              </div>
+              <p>Better-equipped compact rooms on the second and third floors — bathrobe, slippers, and a 140 cm bed best suited for one.</p>
+              <div class="room-foot">
+                <div>
+                  <div class="price-label">Nightly rate</div>
+                  <div class="price-value">On request <small>· placeholder</small></div>
+                </div>
+                <a class="btn" href="#booking">Select</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="room-media">
+              <img src="https://kalliohovi.fi/wp-content/uploads/2019/06/P1050186-3-1280x853.jpg" alt="Balcony King room with king bed and bathrobes" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Balcony King</h3>
+              <div class="room-meta">
+                <span class="chip">King bed</span>
+                <span class="chip">Balcony</span>
+                <span class="chip">Museum view</span>
+              </div>
+              <p>More spacious rooms with balconies and king-size beds. Top-floor rooms look out over the century-old Maritime Museum.</p>
+              <div class="room-foot">
+                <div>
+                  <div class="price-label">Package example</div>
+                  <div class="price-value">219€ <small>· Love package / night for two</small></div>
+                </div>
+                <a class="btn" href="#booking">Select</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <div class="room-media">
+              <img src="https://kalliohovi.fi/wp-content/uploads/2019/06/P1050259-3-1280x853.jpg" alt="Captain’s Suite living area with separate bedroom beyond" loading="lazy">
+            </div>
+            <div class="room-body">
+              <h3>Captain’s Suite</h3>
+              <div class="room-meta">
+                <span class="chip">Private sauna</span>
+                <span class="chip">Lounge</span>
+                <span class="chip">King bed</span>
+              </div>
+              <p>The only hotel suite in town — separate living area, wide king bed, private sauna, and a courtyard-side balcony.</p>
+              <div class="room-foot">
+                <div>
+                  <div class="price-label">Package example</div>
+                  <div class="price-value">249€ <small>· Love package / night for two</small></div>
+                </div>
+                <a class="btn" href="#booking">Select</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section amenities" id="amenities">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">On board</p>
+          <h2 class="section-title">Amenities from the source</h2>
+          <p class="section-lead">Everything listed here appears on the hotel’s own website — from the courtyard terrace to Green Key certification.</p>
+        </div>
+        <div class="amenities-grid">
+          <article class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19h16M6 19V9l6-4 6 4v10M9 19v-5h6v5"/></svg>
+            </div>
+            <h3>Summer terrace</h3>
+            <p>Sheltered courtyard terrace — breakfast outdoors or a late drink on the sofa set.</p>
+          </article>
+          <article class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 10h16v8H4zM7 10V7a5 5 0 0 1 10 0v3M8 14h.01M12 14h.01M16 14h.01"/></svg>
+            </div>
+            <h3>Captain’s breakfast</h3>
+            <p>Buffet of warm and cold dishes in restaurant Kapteeninhuone’s marine setting.</p>
+          </article>
+          <article class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3c4 3 6 6.2 6 9a6 6 0 1 1-12 0c0-2.8 2-6 6-9z"/></svg>
+            </div>
+            <h3>Sauna</h3>
+            <p>Hotel sauna heated for guests; suite guests also enjoy a private sauna.</p>
+          </article>
+          <article class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M7 16h10M9 8h6M4 20h16"/></svg>
+            </div>
+            <h3>Lobby bar</h3>
+            <p>Continue a relaxed evening in the lobby bar after sauna or city wandering.</p>
+          </article>
+          <article class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0M8 12h8M12 9v6"/></svg>
+            </div>
+            <h3>Free Wi‑Fi</h3>
+            <p>Fast, complimentary Wi‑Fi in all rooms.</p>
+          </article>
+          <article class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 8h16v10H4zM8 8V6a4 4 0 0 1 8 0v2M9 13h6"/></svg>
+            </div>
+            <h3>Air conditioning</h3>
+            <p>Personal air conditioning in every room.</p>
+          </article>
+          <article class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 18v2M16 18v2"/></svg>
+            </div>
+            <h3>TV + Chromecast</h3>
+            <p>Stream from your own device via Chromecast.</p>
+          </article>
+          <article class="amenity">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"/></svg>
+            </div>
+            <h3>Green Key &amp; STF</h3>
+            <p>Green Key eco-label and Visit Finland Sustainable Travel Finland mark.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">See the stay</p>
+          <h2 class="section-title">Photo gallery</h2>
+          <p class="section-lead">Real images from the hotel — exterior, rooms, terrace, sauna, and breakfast.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="https://kalliohovi.fi/wp-content/uploads/2019/07/P1040500-2.jpg" alt="Hotel Kalliohovi exterior" loading="lazy">
+            <figcaption>Exterior · Kalliokatu</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://kalliohovi.fi/wp-content/uploads/2019/07/P1050125-2-1280x853.jpg" alt="Guest room interior" loading="lazy">
+            <figcaption>Guest room</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://kalliohovi.fi/wp-content/uploads/2019/07/P1070141-2.jpg" alt="Summer terrace seating" loading="lazy">
+            <figcaption>Summer terrace</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://kalliohovi.fi/wp-content/uploads/2022/06/sauna.jpg" alt="Hotel sauna with wooden benches" loading="lazy">
+            <figcaption>Sauna</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://kalliohovi.fi/wp-content/uploads/2019/06/Kalliohovi-www-3.jpg" alt="Captain’s breakfast plate" loading="lazy">
+            <figcaption>Captain’s breakfast</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://kalliohovi.fi/wp-content/uploads/2019/06/P1050259-3-1280x853.jpg" alt="Captain’s Suite lounge" loading="lazy">
+            <figcaption>Captain’s Suite</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Rauma</p>
+          <h2 class="section-title">In the heart of the canal city</h2>
+          <p class="section-lead">A quiet street near the centre — Old Rauma’s UNESCO wooden town is a short walk away.</p>
+        </div>
+        <div class="location-grid">
+          <div class="location-card">
+            <h3>Kalliokatu 25, 26100 Rauma</h3>
+            <p>Hotel Kalliohovi sits on a peaceful street close to the city centre. From street-side rooms and balconies, views open toward the Maritime Museum — over a hundred years old.</p>
+            <ul class="landmark-list">
+              <li>
+                Old Rauma (Vanha Rauma)
+                <span>Idyllic wooden blocks with cafés, museums, and boutiques — a short walk.</span>
+              </li>
+              <li>
+                Maritime Museum
+                <span>Visible from street-side rooms and Balcony King balconies.</span>
+              </li>
+              <li>
+                Restaurant Kapteeninhuone
+                <span>Marine-atmosphere dining and breakfast on site.</span>
+              </li>
+            </ul>
+            <p style="margin-top: 1.4rem;">
+              <a class="btn" href="mailto:kalliohovi@kalliohovi.fi">Email reception</a>
+            </p>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Static map placeholder for Kalliokatu 25, Rauma">
+            <div>
+              <div class="map-pin"><span>K</span></div>
+              <strong>Map placeholder</strong>
+              <p>Kalliokatu 25 · 26100 Rauma, Finland</p>
+              <p style="margin-top: 0.6rem; font-size: 0.85rem;">Static prototype map — connect Google Maps or OpenStreetMap embed in production.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="trust">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Trust</p>
+          <h2 class="section-title">Certified hospitality</h2>
+          <p class="section-lead">Real sustainability badges from the hotel site. Guest quotes below are sample placeholders — no public star rating was found on the source homepage.</p>
+        </div>
+        <div class="trust-badges">
+          <img src="https://kalliohovi.fi/wp-content/uploads/2023/07/greenkey_logo_color.png" alt="Green Key certification logo">
+          <img src="https://kalliohovi.fi/wp-content/uploads/2023/07/Sustainable_Finland_Label_RGB_TXT-Nega_tm-768x387-png.avif" alt="Sustainable Travel Finland label" onerror="this.onerror=null;this.src='https://kalliohovi.fi/wp-content/uploads/2023/07/Sustainable_Finland_Label_RGB_TXT-Nega_tm-scaled.png';">
+          <p class="badge-note">Green Key environmental certificate and Visit Finland’s Sustainable Travel Finland mark — as published by Hotel Kalliohovi.</p>
+        </div>
+        <div class="testimonials">
+          <article class="testimonial">
+            <span class="placeholder-tag">Placeholder</span>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <p>“Sample review for layout only. Replace with real guest feedback once collected from Booking.com or Google.”</p>
+            <strong>— Sample guest A</strong>
+          </article>
+          <article class="testimonial">
+            <span class="placeholder-tag">Placeholder</span>
+            <div class="stars" aria-hidden="true">★★★★☆</div>
+            <p>“Placeholder testimonial card. Not from the live website — used only to show a trust strip pattern.”</p>
+            <strong>— Sample guest B</strong>
+          </article>
+          <article class="testimonial">
+            <span class="placeholder-tag">Placeholder</span>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <p>“Another sample quote. Swap for verified reviews when the production site is connected to a review feed.”</p>
+            <strong>— Sample guest C</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://kalliohovi.fi/wp-content/uploads/2019/05/Kalliohovi-01.png" alt="Hotel Kalliohovi">
+          <p>Warm, homely small hotel in Rauma — a short walk from Old Rauma’s wooden town, with restaurant Kapteeninhuone and a sheltered summer terrace.</p>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <ul>
+            <li>Kalliokatu 25</li>
+            <li>26100 Rauma, Finland</li>
+            <li><a href="tel:+358283881">+358 (0)2 838 81</a></li>
+            <li><a href="mailto:kalliohovi@kalliohovi.fi">kalliohovi@kalliohovi.fi</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Book</a></li>
+            <li><a href="https://kalliohovi.fi/" rel="noopener" target="_blank">Current website</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Hotel Kalliohovi · Prototype landing refresh</span>
+        <span>Source content adapted from kalliohovi.fi</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Availability search is UI-only in this prototype.</div>
+
+  <script>
+    (function () {
+      const header = document.getElementById("siteHeader");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMobile = document.getElementById("navMobile");
+      const navClose = document.getElementById("navClose");
+      const guestTrigger = document.getElementById("guestTrigger");
+      const guestPanel = document.getElementById("guestPanel");
+      const guestSummary = document.getElementById("guestSummary");
+      const adultsCountEl = document.getElementById("adultsCount");
+      const childrenCountEl = document.getElementById("childrenCount");
+      const toast = document.getElementById("toast");
+      const form = document.getElementById("bookingForm");
+      const checkin = document.getElementById("checkin");
+      const checkout = document.getElementById("checkout");
+
+      let adults = 2;
+      let children = 0;
+
+      function pad(n) { return String(n).padStart(2, "0"); }
+
+      function isoDate(d) {
+        return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+      }
+
+      const today = new Date();
+      const inDate = new Date(today);
+      inDate.setDate(today.getDate() + 1);
+      const outDate = new Date(today);
+      outDate.setDate(today.getDate() + 2);
+      checkin.value = isoDate(inDate);
+      checkout.value = isoDate(outDate);
+      checkin.min = isoDate(today);
+      checkout.min = isoDate(inDate);
+
+      checkin.addEventListener("change", function () {
+        const next = new Date(checkin.value);
+        next.setDate(next.getDate() + 1);
+        checkout.min = isoDate(next);
+        if (checkout.value <= checkin.value) checkout.value = isoDate(next);
+      });
+
+      function updateGuests() {
+        adultsCountEl.textContent = adults;
+        childrenCountEl.textContent = children;
+        guestSummary.textContent = adults + " adult" + (adults === 1 ? "" : "s") + " · " + children + " child" + (children === 1 ? "" : "ren");
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(function () { toast.classList.remove("show"); }, 3200);
+      }
+
+      window.addEventListener("scroll", function () {
+        header.classList.toggle("is-scrolled", window.scrollY > 40);
+      }, { passive: true });
+
+      function openNav() {
+        navMobile.classList.add("open");
+        navMobile.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeNav() {
+        navMobile.classList.remove("open");
+        navMobile.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      menuToggle.addEventListener("click", openNav);
+      navClose.addEventListener("click", closeNav);
+      navMobile.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+
+      guestTrigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const open = guestPanel.classList.toggle("open");
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!guestPanel.contains(e.target) && e.target !== guestTrigger) {
+          guestPanel.classList.remove("open");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.getElementById("adultsPlus").addEventListener("click", function () {
+        if (adults < 8) { adults += 1; updateGuests(); }
+      });
+      document.getElementById("adultsMinus").addEventListener("click", function () {
+        if (adults > 1) { adults -= 1; updateGuests(); }
+      });
+      document.getElementById("childrenPlus").addEventListener("click", function () {
+        if (children < 6) { children += 1; updateGuests(); }
+      });
+      document.getElementById("childrenMinus").addEventListener("click", function () {
+        if (children > 0) { children -= 1; updateGuests(); }
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        showToast("Availability search is UI-only in this prototype.");
+      });
+
+      updateGuests();
+    })();
+  </script>
+</body>
+</html>
