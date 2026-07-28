@@ -209,7 +209,7 @@
       z-index: 2;
       width: min(1180px, 92vw);
       margin: 0 auto;
-      padding: 0 0 7.5rem;
+      padding: 0 0 9.5rem;
       animation: heroRise 1s ease-out 0.2s both;
     }
 
@@ -293,6 +293,7 @@
       z-index: 10;
       margin-top: -3.5rem;
       padding-bottom: 3.5rem;
+      scroll-margin-top: 5.5rem;
     }
 
     .booking-widget {
@@ -1377,16 +1378,32 @@
     });
 
     const revealEls = document.querySelectorAll('.reveal');
+    function revealAllIn(el) {
+      el.classList.add('visible');
+      const section = el.closest('section');
+      if (section) {
+        section.querySelectorAll('.reveal').forEach((child) => child.classList.add('visible'));
+      }
+    }
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            revealAllIn(entry.target);
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
       revealEls.forEach((el) => io.observe(el));
+      // Safety: anything already in or near the viewport on load
+      requestAnimationFrame(() => {
+        revealEls.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.95 && r.bottom > 0) {
+            revealAllIn(el);
+          }
+        });
+      });
     } else {
       revealEls.forEach((el) => el.classList.add('visible'));
     }
