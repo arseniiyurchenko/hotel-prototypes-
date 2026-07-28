@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haus Anna – Sleep Well | Homelike lodging in Rauma</title>
+  <meta name="description" content="Haus Anna – Sleep Well. Homelike accommodation at Satamakatu 7, Rauma, Finland — near Old Rauma. Single and twin rooms from 70 €.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #be9f56;
+      --gold-deep: #9a7f3f;
+      --charcoal: #2f2f2d;
+      --ink: #575756;
+      --blush: #f8f1f2;
+      --blush-deep: #f0e2e5;
+      --rose: #d64555;
+      --rose-deep: #b83644;
+      --paper: #fbf8f6;
+      --white: #ffffff;
+      --line: rgba(47, 47, 45, 0.12);
+      --shadow: 0 18px 50px rgba(47, 47, 45, 0.12);
+      --radius: 14px;
+      --ease: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--charcoal);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(190, 159, 86, 0.14), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(214, 69, 85, 0.08), transparent 50%),
+        linear-gradient(180deg, var(--blush) 0%, var(--paper) 28%, var(--paper) 100%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: background var(--ease), box-shadow var(--ease), padding var(--ease);
+    }
+
+    .site-header.scrolled {
+      background: rgba(47, 47, 45, 0.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+      padding: 0.7rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 42px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .logo-fallback {
+      font-family: "Fraunces", serif;
+      color: #fff;
+      font-size: 1.35rem;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color var(--ease);
+    }
+
+    .nav-desktop a:hover { color: var(--gold); }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.15rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--charcoal);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background var(--ease), transform var(--ease);
+    }
+
+    .header-cta:hover { background: #d4b56a; transform: translateY(-1px); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.35rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: rgba(47, 47, 45, 0.97);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1.4rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--ease);
+      z-index: 120;
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-mobile a {
+      color: #fff;
+      font-family: "Fraunces", serif;
+      font-size: 1.8rem;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: none;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 18, 16, 0.35) 0%, rgba(20, 18, 16, 0.72) 100%),
+        url("https://www.hausanna.fi/wp-content/uploads/2022/02/hausannakyltti.jpg") center / cover no-repeat;
+      transform: scale(1.04);
+      animation: heroDrift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.04) translate3d(0, 0, 0); }
+      to { transform: scale(1.08) translate3d(-1.2%, -1%, 0); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, 92vw);
+      margin: 0 auto 7.5rem;
+      padding-top: 7rem;
+      animation: riseIn 0.9s ease both;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .brand-mark img {
+      height: 52px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .brand-mark span {
+      font-family: "Fraunces", serif;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .hero h1 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+      font-weight: 500;
+      font-style: italic;
+      max-width: 18ch;
+      margin-bottom: 0.85rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .hero-tagline {
+      max-width: 34rem;
+      font-size: 1.02rem;
+      color: rgba(255, 255, 255, 0.86);
+      margin-bottom: 1.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.95rem 1.45rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      transition: transform var(--ease), background var(--ease), box-shadow var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--rose);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(214, 69, 85, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--rose-deep);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.2); }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    /* Booking */
+    .booking-section {
+      position: relative;
+      z-index: 2;
+      margin-top: -4.5rem;
+      padding-bottom: 1rem;
+    }
+
+    .booking-shell {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow);
+      border-radius: 22px;
+      padding: 1.15rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.2fr 1.1fr auto;
+      gap: 0.75rem;
+      align-items: end;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 12px;
+      padding: 0.85rem 0.95rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(190, 159, 86, 0.18);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 0.4rem);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 0.9rem;
+      z-index: 30;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-dropdown.open-up {
+      top: auto;
+      bottom: calc(100% + 0.4rem);
+    }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--blush);
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .guest-btn:hover { background: var(--blush-deep); }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .stay-tracker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.9rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .stay-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: var(--blush);
+      color: var(--charcoal);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .stay-chip strong { color: var(--rose); font-weight: 700; }
+
+    .booking-note {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    .booking-result {
+      display: none;
+      margin-top: 0.9rem;
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(190, 159, 86, 0.16), rgba(214, 69, 85, 0.08));
+      border: 1px solid rgba(190, 159, 86, 0.28);
+      font-size: 0.92rem;
+    }
+
+    .booking-result.show { display: block; animation: riseIn 0.35s ease both; }
+
+    /* Sections */
+    section { padding: 5.5rem 0; }
+
+    .section-header {
+      max-width: 40rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.55rem;
+    }
+
+    .section-title {
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 650;
+      line-height: 1.15;
+      margin-bottom: 0.7rem;
+    }
+
+    .section-desc {
+      color: var(--ink);
+      font-size: 1.02rem;
+    }
+
+    /* Rooms */
+    .rooms { background: transparent; }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .room-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(47, 47, 45, 0.06);
+      box-shadow: 0 10px 30px rgba(47, 47, 45, 0.06);
+      transition: transform var(--ease), box-shadow var(--ease);
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .room-card:hover img { transform: scale(1.04); }
+
+    .room-card-body { padding: 1.35rem 1.4rem 1.5rem; }
+
+    .room-card h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.45rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .room-card p {
+      color: var(--ink);
+      font-size: 0.95rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .room-price {
+      font-family: "Fraunces", serif;
+      font-size: 1.35rem;
+      font-weight: 650;
+      color: var(--charcoal);
+    }
+
+    .room-price span {
+      font-family: "Manrope", sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .room-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+    }
+
+    .room-meta span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: var(--blush);
+      color: var(--ink);
+    }
+
+    /* Amenities */
+    .amenities {
+      background:
+        linear-gradient(180deg, rgba(248, 241, 242, 0.7), rgba(255, 255, 255, 0.35));
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.9rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1rem 1.05rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(47, 47, 45, 0.06);
+      min-height: 92px;
+      transition: transform var(--ease), border-color var(--ease);
+    }
+
+    .amenity-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(190, 159, 86, 0.45);
+    }
+
+    .amenity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, rgba(190, 159, 86, 0.2), rgba(214, 69, 85, 0.1));
+      color: var(--gold-deep);
+      flex-shrink: 0;
+    }
+
+    .amenity-icon svg { width: 20px; height: 20px; }
+
+    .amenity-item strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .amenity-item span {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    .amenity-note {
+      margin-top: 1.1rem;
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
+    /* Gallery */
+    .gallery {
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    .gallery .section-eyebrow { color: var(--gold); }
+    .gallery .section-title { color: #fff; }
+    .gallery .section-desc { color: rgba(255, 255, 255, 0.72); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 0.8rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .gallery-item:first-child { grid-row: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0.8rem;
+      bottom: 0.8rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(20, 18, 16, 0.55);
+      backdrop-filter: blur(6px);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .location-text h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .location-text p {
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .location-details {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .location-details li {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 0.6rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    .location-details strong {
+      color: var(--gold-deep);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding-top: 0.15rem;
+    }
+
+    .map-placeholder {
+      border-radius: 20px;
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--charcoal);
+      background:
+        linear-gradient(160deg, rgba(248, 241, 242, 0.92), rgba(190, 159, 86, 0.18)),
+        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(47, 47, 45, 0.04) 24px, rgba(47, 47, 45, 0.04) 25px),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(47, 47, 45, 0.04) 24px, rgba(47, 47, 45, 0.04) 25px);
+      border: 1px solid var(--line);
+    }
+
+    .map-placeholder svg {
+      width: 42px;
+      height: 42px;
+      color: var(--rose);
+      margin-bottom: 0.7rem;
+    }
+
+    /* Trust */
+    .trust {
+      background:
+        radial-gradient(700px 320px at 80% 0%, rgba(190, 159, 86, 0.16), transparent 60%),
+        var(--paper);
+    }
+
+    .placeholder-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 1.2rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(214, 69, 85, 0.1);
+      color: var(--rose-deep);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .testimonial {
+      background: #fff;
+      border: 1px dashed rgba(214, 69, 85, 0.35);
+      border-radius: 18px;
+      padding: 1.3rem;
+    }
+
+    .testimonial .quote {
+      font-family: "Fraunces", serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial .who {
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #221f1d;
+      color: rgba(255, 255, 255, 0.82);
+      padding: 3.5rem 0 1.6rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand img {
+      height: 40px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-brand p,
+    .footer-contact p {
+      font-size: 0.92rem;
+      max-width: 28rem;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-nav a,
+    .footer-contact a {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: rgba(255, 255, 255, 0.78);
+      transition: color var(--ease);
+    }
+
+    .footer-nav a:hover,
+    .footer-contact a:hover { color: #fff; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.1rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 960px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
+      .booking-widget { grid-template-columns: 1fr 1fr; }
+      .booking-widget .btn-primary { grid-column: span 2; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 180px 180px;
+      }
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        min-height: 220px;
+      }
+      .location-grid,
+      .testimonials,
+      .footer-grid,
+      .rooms-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-content { margin-bottom: 6.5rem; }
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+      .gallery-item,
+      .gallery-item:first-child {
+        grid-column: auto;
+        min-height: 220px;
+        height: 220px;
+      }
+      .location-details li { grid-template-columns: 1fr; gap: 0.2rem; }
+      .brand-mark span { font-size: 2.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Haus Anna home">
+        <img src="https://www.hausanna.fi/wp-content/uploads/2022/02/hausannasvglogo.svg" alt="Haus Anna">
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </nav>
+      <a href="#booking" class="header-cta">Check availability</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#booking">Check availability</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero" aria-label="Haus Anna hero">
+      <div class="hero-bg" role="img" aria-label="Haus Anna exterior sign at Satamakatu 7, Rauma"></div>
+      <div class="hero-content">
+        <div class="brand-mark">
+          <img src="https://www.hausanna.fi/wp-content/uploads/2022/02/hausannasvglogo.svg" alt="">
+          <span>Haus Anna</span>
+        </div>
+        <h1>Sleep Well — homelike lodging by Old Rauma</h1>
+        <p class="hero-tagline">A traditional majatalo at Satamakatu 7 in Rauma, Finland. Rest individually, explore Old Rauma, and book a private sauna for your evening.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">Check availability</a>
+          <a href="#rooms" class="btn btn-ghost">View rooms</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+      <div class="container">
+        <div class="booking-shell">
+          <form class="booking-widget" id="bookingForm">
+            <div class="form-group">
+              <label for="checkin">Check-in</label>
+              <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="form-group">
+              <label for="checkout">Check-out</label>
+              <input type="date" id="checkout" name="checkout" required>
+            </div>
+            <div class="form-group guest-selector">
+              <label id="guestsLabel">Guests</label>
+              <button type="button" class="guest-trigger" id="guestTrigger" aria-labelledby="guestsLabel" aria-haspopup="true" aria-expanded="false">
+                <span id="guestSummary">2 adults</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="guest-dropdown" id="guestDropdown" role="dialog" aria-label="Guest selector">
+                <div class="guest-row">
+                  <span>Adults</span>
+                  <div class="guest-controls">
+                    <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                    <span id="adultsCount">2</span>
+                    <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+                  </div>
+                </div>
+                <div class="guest-row">
+                  <span>Children</span>
+                  <div class="guest-controls">
+                    <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                    <span id="childrenCount">0</span>
+                    <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="roomType">Room</label>
+              <select id="roomType" name="roomType">
+                <option value="any">Any room</option>
+                <option value="single">Single room</option>
+                <option value="twin">Twin room</option>
+                <option value="single-bf">Single with breakfast</option>
+                <option value="twin-bf">Twin with breakfast</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+
+          <div class="stay-tracker" aria-live="polite">
+            <div class="stay-chip">Stay · <strong id="nightsCount">2 nights</strong></div>
+            <div class="stay-chip">Guests · <strong id="guestChip">2 adults</strong></div>
+            <div class="stay-chip">Check-in from <strong>15:00</strong></div>
+            <div class="stay-chip">Check-out by <strong>12:00</strong></div>
+          </div>
+
+          <p class="booking-note">Prototype booking widget — UI only. Real enquiries go via hausanna.fi or <a href="mailto:info@hausanna.fi">info@hausanna.fi</a>.</p>
+          <div class="booking-result" id="bookingResult" role="status"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rooms" id="rooms">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Majoitus</p>
+          <h2 class="section-title">Rooms as listed on Haus Anna</h2>
+          <p class="section-desc">Rates from the live site (seasonal variation noted). Rooms include fridge, coffee maker, and TV; a shared lounge kitchenette is available upstairs.</p>
+        </div>
+        <div class="rooms-grid">
+          <article class="room-card">
+            <img src="https://www.hausanna.fi/wp-content/themes/yootheme/cache/ec/241i-ec3fbb8f.jpeg" alt="Single room interior at Haus Anna">
+            <div class="room-card-body">
+              <h3>Single room</h3>
+              <p>Homelike guest room for one. Breakfast can be added via partner coupons at Hotel Kalliohovi or Café Sali in Old Rauma.</p>
+              <p class="room-price">From 70 € <span>/ night</span></p>
+              <div class="room-meta">
+                <span>With breakfast 85 €</span>
+                <span>VAT 14% included</span>
+              </div>
+            </div>
+          </article>
+          <article class="room-card">
+            <img src="https://www.hausanna.fi/wp-content/themes/yootheme/cache/02/241f-02dde2d0.jpeg" alt="Twin room interior at Haus Anna">
+            <div class="room-card-body">
+              <h3>Twin room</h3>
+              <p>Room for two guests. Extra bed available on request (20 € / night); baby crib is free of charge.</p>
+              <p class="room-price">From 90 € <span>/ night</span></p>
+              <div class="room-meta">
+                <span>With breakfast 120 €</span>
+                <span>Prices may vary seasonally</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">What we offer</p>
+          <h2 class="section-title">Amenities from the source site</h2>
+          <p class="section-desc">Only facilities and services described on hausanna.fi — no invented claims.</p>
+        </div>
+        <div class="amenities-grid">
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 18h16M6 18V9l6-4 6 4v9M9 18v-5h6v5"/></svg>
+            </div>
+            <div>
+              <strong>Traditional sauna</strong>
+              <span>Private hire up to 15 guests</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 14c2-4 4-6 8-6s6 2 8 6M8 18h8"/><circle cx="12" cy="8" r="2"/></svg>
+            </div>
+            <div>
+              <strong>Steam sauna</strong>
+              <span>Alongside the traditional sauna</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11h16v8H4zM8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            </div>
+            <div>
+              <strong>Breakfast option</strong>
+              <span>Kalliohovi buffet or Café Sali</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8.5 17h7M6 14.5V7h8l4 5v2.5"/></svg>
+            </div>
+            <div>
+              <strong>Bike rental</strong>
+              <span>4 bikes · 15 € / day</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="6" width="14" height="14" rx="2"/><path d="M5 10h14M9 3v3M15 3v3"/></svg>
+            </div>
+            <div>
+              <strong>Fridge &amp; TV</strong>
+              <span>In every guest room</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h16v9H4zM8 10V7h8v3M9 14h2M13 14h2"/></svg>
+            </div>
+            <div>
+              <strong>Shared lounge kitchenette</strong>
+              <span>Microwave, coffee, kettle, toaster</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 18h16M6 18V8l6-3 6 3v10"/><path d="M10 11h4v7h-4z"/></svg>
+            </div>
+            <div>
+              <strong>Extra bed / crib</strong>
+              <span>Extra bed 20 € · crib free</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19V7l7-3 7 3v12"/><path d="M9 19v-6h6v6"/></svg>
+            </div>
+            <div>
+              <strong>Longer stays</strong>
+              <span>Weekly / monthly offers on request</span>
+            </div>
+          </div>
+        </div>
+        <p class="amenity-note">Not listed on the source site: pool, parking policy, pet policy, Wi‑Fi details, and guest rating badges.</p>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Atmosphere</p>
+          <h2 class="section-title">Photo gallery</h2>
+          <p class="section-desc">Real images from hausanna.fi — exterior, rooms, lounge corner, sauna, and breakfast.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="https://www.hausanna.fi/wp-content/uploads/2022/02/hausannakyltti.jpg" alt="Haus Anna exterior sign">
+            <figcaption>Exterior</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.hausanna.fi/wp-content/themes/yootheme/cache/0a/241a-0a47053f.jpeg" alt="Guest room at Haus Anna">
+            <figcaption>Room</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.hausanna.fi/wp-content/themes/yootheme/cache/bf/241g-bf56e25c.jpeg" alt="Lounge corner with Rauma map prints">
+            <figcaption>Lounge</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.hausanna.fi/wp-content/themes/yootheme/cache/93/sauna2w-937d2c96.jpeg" alt="Sauna ladle and wooden benches">
+            <figcaption>Sauna</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.hausanna.fi/wp-content/themes/yootheme/cache/9b/aamiainen-9bc74efb.jpeg" alt="Breakfast bowl with strawberries and walnuts">
+            <figcaption>Breakfast</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Rauma, Finland</p>
+          <h2 class="section-title">Beside Old Rauma</h2>
+        </div>
+        <div class="location-grid">
+          <div class="location-text">
+            <h3>Satamakatu 7, Rauma</h3>
+            <p>Haus Anna is a homelike majatalo in Rauma. Breakfast coupons can be used at Café Sali on the market square of Old Rauma (Vanha Rauma), or at Hotel Kalliohovi across the street. Bike rental makes the city’s attractions easy to reach.</p>
+            <ul class="location-details">
+              <li><strong>Address</strong><span>Satamakatu 7, Rauma, Finland</span></li>
+              <li><strong>Landmark</strong><span>Old Rauma / Vanha Rauma — Café Sali at the market square</span></li>
+              <li><strong>Nearby</strong><span>Hotel Kalliohovi breakfast (building across the street)</span></li>
+              <li><strong>Phone</strong><span><a href="tel:+358505667388">050 566 7388</a></span></li>
+              <li><strong>Email</strong><span><a href="mailto:info@hausanna.fi">info@hausanna.fi</a></span></li>
+            </ul>
+          </div>
+          <div class="map-placeholder" aria-label="Static map placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            <p><strong>Map placeholder</strong></p>
+            <p style="margin-top:0.55rem;font-size:0.9rem;">Satamakatu 7, Rauma<br>Near Old Rauma, Finland</p>
+            <p style="margin-top:0.85rem;font-size:0.8rem;opacity:0.75;">Live map available on hausanna.fi / Google Maps</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" id="trust">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Guest voice</p>
+          <h2 class="section-title">Trust strip</h2>
+          <p class="section-desc">No public rating badge was found on the source website, so these sample testimonials are clearly marked as placeholders.</p>
+        </div>
+        <div class="placeholder-badge">Placeholder testimonials — not from hausanna.fi</div>
+        <div class="testimonials">
+          <article class="testimonial">
+            <p class="quote">“Quiet rooms and an easy walk toward Old Rauma — felt like a private home stay.”</p>
+            <p class="who">Sample guest · Placeholder</p>
+          </article>
+          <article class="testimonial">
+            <p class="quote">“The sauna evening for our small group was the highlight of the trip.”</p>
+            <p class="who">Sample guest · Placeholder</p>
+          </article>
+          <article class="testimonial">
+            <p class="quote">“Breakfast coupons at Café Sali made mornings simple and local.”</p>
+            <p class="who">Sample guest · Placeholder</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://www.hausanna.fi/wp-content/uploads/2022/02/hausannasvglogo.svg" alt="Haus Anna">
+          <p>Haus Anna – Sleep Well. Homelike accommodation in Rauma. Check-in by 15:00 · Check-out by 12:00.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Booking</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Satamakatu 7<br>Rauma, Finland</p>
+          <a href="tel:+358505667388">050 566 7388</a>
+          <a href="mailto:info@hausanna.fi">info@hausanna.fi</a>
+          <a href="https://www.hausanna.fi" rel="noopener noreferrer" target="_blank">www.hausanna.fi</a>
+          <a href="https://www.instagram.com/hausanna_sleepwell" rel="noopener noreferrer" target="_blank">Instagram</a>
+          <a href="https://www.facebook.com/Haus-Anna-100698669215411/" rel="noopener noreferrer" target="_blank">Facebook</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© Haus Anna · Prototype demo homepage</p>
+        <p>Lead reference: Hotel Vanha Rauma · Brand on source site: Haus Anna</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById("header");
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileNav = document.getElementById("mobileNav");
+      const navClose = document.getElementById("navClose");
+
+      window.addEventListener("scroll", function () {
+        header.classList.toggle("scrolled", window.scrollY > 60);
+      });
+
+      menuToggle.addEventListener("click", function () {
+        mobileNav.classList.add("open");
+      });
+      navClose.addEventListener("click", function () {
+        mobileNav.classList.remove("open");
+      });
+      mobileNav.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          mobileNav.classList.remove("open");
+        });
+      });
+
+      const checkin = document.getElementById("checkin");
+      const checkout = document.getElementById("checkout");
+      const nightsCount = document.getElementById("nightsCount");
+      const guestChip = document.getElementById("guestChip");
+      const bookingResult = document.getElementById("bookingResult");
+      const roomType = document.getElementById("roomType");
+
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      const dayAfter = new Date(today);
+      dayAfter.setDate(today.getDate() + 3);
+
+      function fmt(d) {
+        return d.toISOString().split("T")[0];
+      }
+
+      function nightsBetween(a, b) {
+        const start = new Date(a + "T00:00:00");
+        const end = new Date(b + "T00:00:00");
+        const diff = Math.round((end - start) / 86400000);
+        return Math.max(diff, 0);
+      }
+
+      function updateNights() {
+        const n = nightsBetween(checkin.value, checkout.value);
+        nightsCount.textContent = n + (n === 1 ? " night" : " nights");
+      }
+
+      checkin.min = fmt(today);
+      checkout.min = fmt(tomorrow);
+      checkin.value = fmt(tomorrow);
+      checkout.value = fmt(dayAfter);
+      updateNights();
+
+      checkin.addEventListener("change", function () {
+        const ci = new Date(checkin.value + "T00:00:00");
+        const minCo = new Date(ci);
+        minCo.setDate(ci.getDate() + 1);
+        checkout.min = fmt(minCo);
+        if (new Date(checkout.value + "T00:00:00") <= ci) {
+          checkout.value = fmt(minCo);
+        }
+        updateNights();
+      });
+
+      checkout.addEventListener("change", updateNights);
+
+      let adults = 2;
+      let children = 0;
+      const adultsCount = document.getElementById("adultsCount");
+      const childrenCount = document.getElementById("childrenCount");
+      const guestSummary = document.getElementById("guestSummary");
+      const guestTrigger = document.getElementById("guestTrigger");
+      const guestDropdown = document.getElementById("guestDropdown");
+
+      function guestText() {
+        var text = adults + " adult" + (adults !== 1 ? "s" : "");
+        if (children > 0) {
+          text += ", " + children + " child" + (children !== 1 ? "ren" : "");
+        }
+        return text;
+      }
+
+      function updateGuestSummary() {
+        var text = guestText();
+        guestSummary.textContent = text;
+        guestChip.textContent = text;
+        adultsCount.textContent = adults;
+        childrenCount.textContent = children;
+        document.getElementById("adultsMinus").disabled = adults <= 1;
+        document.getElementById("adultsPlus").disabled = adults >= 10;
+        document.getElementById("childrenMinus").disabled = children <= 0;
+        document.getElementById("childrenPlus").disabled = children >= 10;
+      }
+
+      guestTrigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = !guestDropdown.classList.contains("open");
+        guestDropdown.classList.toggle("open", open);
+        if (open) {
+          var rect = guestTrigger.getBoundingClientRect();
+          var spaceBelow = window.innerHeight - rect.bottom;
+          var preferUp = window.innerWidth <= 640 || spaceBelow < 200;
+          guestDropdown.classList.toggle("open-up", preferUp);
+        } else {
+          guestDropdown.classList.remove("open-up");
+        }
+        guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!guestDropdown.contains(e.target) && e.target !== guestTrigger && !guestTrigger.contains(e.target)) {
+          guestDropdown.classList.remove("open");
+          guestDropdown.classList.remove("open-up");
+          guestTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.getElementById("adultsPlus").addEventListener("click", function () {
+        if (adults < 10) {
+          adults++;
+          updateGuestSummary();
+        }
+      });
+      document.getElementById("adultsMinus").addEventListener("click", function () {
+        if (adults > 1) {
+          adults--;
+          updateGuestSummary();
+        }
+      });
+      document.getElementById("childrenPlus").addEventListener("click", function () {
+        if (children < 10) {
+          children++;
+          updateGuestSummary();
+        }
+      });
+      document.getElementById("childrenMinus").addEventListener("click", function () {
+        if (children > 0) {
+          children--;
+          updateGuestSummary();
+        }
+      });
+
+      updateGuestSummary();
+
+      document.getElementById("bookingForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        guestDropdown.classList.remove("open");
+        guestTrigger.setAttribute("aria-expanded", "false");
+        var n = nightsBetween(checkin.value, checkout.value);
+        var roomLabel = roomType.options[roomType.selectedIndex].text;
+        bookingResult.classList.add("show");
+        bookingResult.textContent =
+          "Prototype search recorded: " +
+          checkin.value +
+          " → " +
+          checkout.value +
+          " · " +
+          n +
+          (n === 1 ? " night" : " nights") +
+          " · " +
+          guestText() +
+          " · " +
+          roomLabel +
+          ". (UI only — no live inventory.)";
+      });
+    })();
+  </script>
+</body>
+</html>
