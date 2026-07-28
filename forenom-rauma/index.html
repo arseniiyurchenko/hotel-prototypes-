@@ -251,8 +251,12 @@
     .hero-bg {
       position: absolute;
       inset: 0;
+      /* Primary: https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png
+         Fallback local mirror when CDN blocks off-site referrers. */
       background:
         url("https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png")
+        center / cover no-repeat,
+        url("images/rauma-living.png")
         center / cover no-repeat;
       transform: scale(1.04);
       animation: heroZoom 18s ease-out forwards;
@@ -906,7 +910,7 @@
   <header class="site-header" id="header">
     <div class="container header-inner">
       <a class="logo" href="#top" aria-label="Forenom Rauma home">
-        <img src="https://www.forenom.com/wp-content/uploads/2023/03/Forenom-logo-40px.png" alt="Forenom logo">
+        <img src="https://www.forenom.com/wp-content/uploads/2023/03/Forenom-logo-40px.png" data-fallback="images/logo.png" alt="Forenom logo">
         <span class="logo-text">
           <span class="brand">Forenom</span>
           <span class="place">Rauma</span>
@@ -1004,7 +1008,7 @@
         </div>
         <div class="rooms-grid">
           <article class="room-card reveal">
-            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17093613/Forenom_Rauma_Serviced_Apartments.jpg" alt="Studio bedroom at Forenom Rauma Kaivopuisto" loading="lazy">
+            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17093613/Forenom_Rauma_Serviced_Apartments.jpg" data-fallback="images/rauma-bedroom.jpg" alt="Studio bedroom at Forenom Rauma Kaivopuisto" loading="lazy">
             <div class="room-card-body">
               <h3>Studio · Yksiö</h3>
               <p class="room-meta">Fully furnished · private kitchen · washer</p>
@@ -1013,7 +1017,7 @@
             </div>
           </article>
           <article class="room-card reveal">
-            <img src="https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png" alt="Living area in a Forenom Rauma apartment" loading="lazy">
+            <img src="https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png" data-fallback="images/rauma-living.png" alt="Living area in a Forenom Rauma apartment" loading="lazy">
             <div class="room-card-body">
               <h3>Two-room · Kaksio</h3>
               <p class="room-meta">Living space + bedroom · code-lock access</p>
@@ -1022,7 +1026,7 @@
             </div>
           </article>
           <article class="room-card reveal">
-            <img src="https://www.forenom.com/wp-content/uploads/2026/04/Serviced-apartment.png" alt="Forenom serviced apartment kitchen and dining area" loading="lazy">
+            <img src="https://www.forenom.com/wp-content/uploads/2026/04/Serviced-apartment.png" data-fallback="images/kitchen.png" alt="Forenom serviced apartment kitchen and dining area" loading="lazy">
             <div class="room-card-body">
               <h3>Three-room · Kolmio</h3>
               <p class="room-meta">Larger layout for longer work stays</p>
@@ -1110,27 +1114,27 @@
         </div>
         <div class="gallery-grid reveal">
           <div class="gallery-item">
-            <img src="https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png" alt="Rauma apartment living room with sofa and dining table">
+            <img src="https://www.forenom.com/wp-content/uploads/2024/10/Rauma.png" data-fallback="images/rauma-living.png" alt="Rauma apartment living room with sofa and dining table">
             <span class="gallery-caption">Rauma · living area</span>
           </div>
           <div class="gallery-item">
-            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17093613/Forenom_Rauma_Serviced_Apartments.jpg" alt="Rauma apartment bedroom" loading="lazy">
+            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17093613/Forenom_Rauma_Serviced_Apartments.jpg" data-fallback="images/rauma-bedroom.jpg" alt="Rauma apartment bedroom" loading="lazy">
             <span class="gallery-caption">Rauma · bedroom</span>
           </div>
           <div class="gallery-item">
-            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17093553/Forenom_Rauma_Serviced_Apartments_2.jpg" alt="Rauma apartment work desk and seating" loading="lazy">
+            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17093553/Forenom_Rauma_Serviced_Apartments_2.jpg" data-fallback="images/rauma-desk.jpg" alt="Rauma apartment work desk and seating" loading="lazy">
             <span class="gallery-caption">Rauma · work corner</span>
           </div>
           <div class="gallery-item">
-            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17101226/Banner_Rauma_Forenom_isompi.png" alt="Rauma apartment living space banner photo" loading="lazy">
+            <img src="https://www.forenom.com/wp-content/uploads/2018/12/17101226/Banner_Rauma_Forenom_isompi.png" data-fallback="images/rauma-banner.png" alt="Rauma apartment living space banner photo" loading="lazy">
             <span class="gallery-caption">Rauma · living detail</span>
           </div>
           <div class="gallery-item">
-            <img src="https://www.forenom.com/wp-content/uploads/2026/04/Serviced-apartment.png" alt="Forenom serviced apartment kitchen" loading="lazy">
+            <img src="https://www.forenom.com/wp-content/uploads/2026/04/Serviced-apartment.png" data-fallback="images/kitchen.png" alt="Forenom serviced apartment kitchen" loading="lazy">
             <span class="gallery-caption">Forenom · kitchen</span>
           </div>
           <div class="gallery-item">
-            <img src="https://www.forenom.com/wp-content/uploads/2026/06/Forenom_man-in-kitchen-1920x1080-1.png" alt="Guest cooking in a Forenom kitchen" loading="lazy">
+            <img src="https://www.forenom.com/wp-content/uploads/2026/06/Forenom_man-in-kitchen-1920x1080-1.png" data-fallback="images/man-kitchen.png" alt="Guest cooking in a Forenom kitchen" loading="lazy">
             <span class="gallery-caption">Forenom · feel at home</span>
           </div>
         </div>
@@ -1322,6 +1326,19 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Local fallbacks when Forenom CDN rejects off-site hotlinking
+    document.querySelectorAll('img[data-fallback]').forEach((img) => {
+      const swap = () => {
+        const fb = img.getAttribute('data-fallback');
+        if (fb && !img.dataset.fellBack) {
+          img.dataset.fellBack = '1';
+          img.src = fb;
+        }
+      };
+      img.addEventListener('error', swap);
+      if (img.complete && img.naturalWidth === 0) swap();
+    });
   </script>
 </body>
 </html>
