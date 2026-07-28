@@ -48,20 +48,27 @@ def main():
         summary = page.locator("#guestSummary").inner_text()
         if "3 adults" not in summary or "1 child" not in summary:
             errors.append(f"Guest summary unexpected: {summary}")
+        page.mouse.click(10, 10)
+        page.wait_for_timeout(200)
 
         for sel in ["#rooms", "#amenities", "#gallery", "#location", "#trust"]:
             page.locator(sel).scroll_into_view_if_needed()
             page.wait_for_timeout(300)
 
+        page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(400)
         page.screenshot(path=str(ARTIFACTS / "forenom-rauma-desktop.png"), full_page=True)
 
         page.set_viewport_size({"width": 390, "height": 844})
         page.wait_for_timeout(500)
+        page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(400)
         page.locator("#menuToggle").click()
         page.wait_for_timeout(400)
         if not page.locator("#navMobile.open").count():
             errors.append("Mobile nav did not open")
         page.locator("#navClose").click()
+        page.wait_for_timeout(300)
         page.screenshot(path=str(ARTIFACTS / "forenom-rauma-mobile.png"), full_page=True)
 
         browser.close()
