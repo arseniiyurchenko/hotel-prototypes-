@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kylmäpihlaja Sea View Cottages — Maisemamökit | Rauma Archipelago</title>
+  <meta name="description" content="Eight glass-walled sea view cottages on Kylmäpihlaja lighthouse island in the Rauma archipelago. From €125/night. Seasonal ferry access.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sea: #1e5d7c;
+      --sea-deep: #143f56;
+      --sea-mist: #e8f1f5;
+      --teal: #3db3cc;
+      --teal-soft: rgba(61, 179, 204, 0.15);
+      --amber: #cb711f;
+      --amber-soft: rgba(203, 113, 31, 0.12);
+      --ink: #1a2429;
+      --ink-soft: #4a5a63;
+      --foam: #f4f8fa;
+      --white: #ffffff;
+      --line: rgba(30, 93, 124, 0.14);
+      --shadow: 0 18px 48px rgba(20, 63, 86, 0.14);
+      --radius: 4px;
+      --transition: 0.28s ease;
+      --font-display: "Newsreader", Georgia, serif;
+      --font-body: "Sora", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--foam);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    h1, h2, h3, .brand-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.6rem;
+      border: 1.5px solid transparent;
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--amber); color: var(--white); }
+    .btn-primary:hover { background: #b56218; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+    .btn-sea { background: var(--sea); color: var(--white); width: 100%; }
+    .btn-sea:hover { background: var(--sea-deep); }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 0.85rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(20, 63, 86, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 28px rgba(20, 63, 86, 0.22);
+      padding: 0.55rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+    }
+
+    .logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .brand-sub {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 0.1rem;
+    }
+
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-desktop a {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    .nav-desktop a:hover { color: var(--teal); }
+
+    .header-cta {
+      display: none;
+      background: var(--amber);
+      color: var(--white) !important;
+      padding: 0.7rem 1.15rem;
+      border-radius: var(--radius);
+    }
+
+    .header-cta:hover { background: #b56218; color: var(--white) !important; }
+
+    #menuToggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    #navMobile {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: linear-gradient(160deg, var(--sea-deep), var(--sea));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.4rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition), visibility var(--transition);
+    }
+
+    #navMobile.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #navMobile a {
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+    }
+
+    #navClose {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--white);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      animation: heroDrift 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 63, 86, 0.45) 0%, rgba(20, 63, 86, 0.18) 38%, rgba(20, 63, 86, 0.78) 100%),
+        radial-gradient(ellipse at 20% 80%, rgba(61, 179, 204, 0.22), transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 7.5rem 0 5.5rem;
+      max-width: 42rem;
+      animation: riseIn 1s ease both;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.02;
+      margin-bottom: 0.85rem;
+      text-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-brand span {
+      display: block;
+      font-size: 0.42em;
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 0.55rem;
+    }
+
+    .hero-line {
+      font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+      font-weight: 300;
+      max-width: 32rem;
+      opacity: 0.95;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* Booking */
+    #booking {
+      position: relative;
+      z-index: 5;
+      margin-top: -3rem;
+      padding-bottom: 4rem;
+    }
+
+    .booking-card {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      animation: riseIn 0.9s ease 0.2s both;
+    }
+
+    .booking-card h2 {
+      font-size: 1.45rem;
+      color: var(--sea-deep);
+      margin-bottom: 0.35rem;
+    }
+
+    .booking-note {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .booking-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.85rem 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--foam);
+      color: var(--ink);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px var(--teal-soft);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    #guestPanel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 0.4rem);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      z-index: 20;
+      display: none;
+    }
+
+    #guestPanel.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--foam);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--sea);
+    }
+
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .form-message {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      background: var(--teal-soft);
+      color: var(--sea-deep);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+    }
+
+    .form-message.show { display: block; }
+
+    /* Sections */
+    section { padding: 4.5rem 0; }
+
+    .section-header {
+      max-width: 38rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.55rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.55rem);
+      color: var(--sea-deep);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-desc {
+      color: var(--ink-soft);
+      font-size: 1rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Cottages */
+    #rooms {
+      background:
+        linear-gradient(180deg, var(--foam), var(--sea-mist) 40%, var(--foam));
+    }
+
+    .cottage-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .cottage-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      display: grid;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .cottage-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .cottage-card.featured {
+      border-color: rgba(30, 93, 124, 0.28);
+    }
+
+    .cottage-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .cottage-card.featured img {
+      height: 280px;
+      object-position: center;
+    }
+
+    .cottage-body { padding: 1.35rem 1.4rem 1.55rem; }
+
+    .cottage-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .chip {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: var(--sea-mist);
+      color: var(--sea);
+    }
+
+    .cottage-body h3 {
+      font-size: 1.45rem;
+      color: var(--sea-deep);
+      margin-bottom: 0.55rem;
+    }
+
+    .cottage-body p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .cottage-price {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--sea);
+      font-weight: 700;
+    }
+
+    .cottage-price span {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+
+    /* Amenities */
+    #amenities { background: var(--white); }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--foam);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .amenity-item:hover {
+      border-color: var(--teal);
+      background: var(--white);
+    }
+
+    .amenity-icon {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--teal-soft);
+      color: var(--sea);
+    }
+
+    .amenity-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity-item span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* Gallery */
+    #gallery {
+      background:
+        linear-gradient(165deg, var(--sea-deep), #1a4f6a 45%, var(--sea));
+      color: var(--white);
+    }
+
+    #gallery .section-eyebrow { color: var(--teal); }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-desc { color: rgba(255, 255, 255, 0.78); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 6px;
+      position: relative;
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-item:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 8;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 0.9rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+    }
+
+    /* Location */
+    #location { background: var(--foam); }
+
+    .location-grid {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .location-text h3 {
+      font-size: 1.5rem;
+      color: var(--sea-deep);
+      margin-bottom: 0.85rem;
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 0.9rem;
+    }
+
+    .location-details {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+
+    .location-details li {
+      padding: 0.75rem 0.9rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-size: 0.92rem;
+    }
+
+    .location-details strong {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.2rem;
+    }
+
+    .map-placeholder {
+      min-height: 320px;
+      border-radius: 8px;
+      border: 1px dashed rgba(30, 93, 124, 0.35);
+      background:
+        linear-gradient(135deg, rgba(30, 93, 124, 0.08), rgba(61, 179, 204, 0.12)),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 12px,
+          rgba(30, 93, 124, 0.04) 12px,
+          rgba(30, 93, 124, 0.04) 24px
+        );
+      display: grid;
+      place-content: center;
+      text-align: center;
+      gap: 0.45rem;
+      padding: 2rem;
+      color: var(--sea);
+    }
+
+    .map-placeholder svg {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 0.4rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .map-placeholder strong {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--sea-deep);
+    }
+
+    /* Trust */
+    #trust { background: var(--white); }
+
+    .placeholder-badge {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: var(--amber-soft);
+      color: var(--amber);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .testimonial-card {
+      padding: 1.4rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--foam);
+      position: relative;
+    }
+
+    .testimonial-card .tag {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      background: var(--amber-soft);
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .testimonial-card blockquote {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--sea-deep);
+      margin: 0.4rem 0 1rem;
+      line-height: 1.45;
+      padding-right: 4rem;
+    }
+
+    .testimonial-author {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .testimonial-source {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--sea-deep);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 3.5rem 0 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-brand .brand-name {
+      color: var(--white);
+      font-size: 1.35rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .footer-brand p { font-size: 0.92rem; max-width: 28rem; }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-nav a,
+    .footer-contact a {
+      display: block;
+      padding: 0.25rem 0;
+      color: rgba(255, 255, 255, 0.82);
+      transition: color var(--transition);
+    }
+
+    .footer-nav a:hover,
+    .footer-contact a:hover { color: var(--white); }
+
+    .footer-contact p { margin-bottom: 0.75rem; font-size: 0.92rem; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1.2rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    @media (min-width: 720px) {
+      .booking-form {
+        grid-template-columns: repeat(2, 1fr) auto;
+        align-items: end;
+      }
+
+      .booking-form .form-group:nth-child(3),
+      .booking-form .form-group:nth-child(4) {
+        grid-column: span 1;
+      }
+
+      .booking-form .btn-sea {
+        width: auto;
+        min-width: 180px;
+        height: 52px;
+        align-self: end;
+      }
+
+      .cottage-grid {
+        grid-template-columns: 1.2fr 1fr;
+      }
+
+      .cottage-card.featured {
+        grid-row: span 2;
+      }
+
+      .cottage-card.featured img { height: 100%; min-height: 360px; }
+
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 2;
+        aspect-ratio: auto;
+        min-height: 100%;
+      }
+
+      .location-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: stretch;
+      }
+
+      .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+
+      .footer-grid {
+        grid-template-columns: 1.4fr 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .nav-desktop { display: flex; }
+      .header-cta { display: inline-flex; }
+      #menuToggle { display: none; }
+
+      .booking-form {
+        grid-template-columns: 1.1fr 1.1fr 1.2fr 1.1fr auto;
+      }
+
+      .cottage-grid {
+        grid-template-columns: 1.35fr 1fr 1fr;
+      }
+
+      .cottage-card.featured { grid-row: span 1; }
+
+      .cottage-card.featured,
+      .cottage-card {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .cottage-card.featured img,
+      .cottage-card img {
+        height: 240px;
+        min-height: 0;
+      }
+
+      .amenities-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Kylmäpihlaja Sea View Cottages home">
+        <img src="https://www.kylmapihlaja.com/images/logo.png" alt="Kylmäpihlajan Majakkahotelli logo">
+        <div>
+          <div class="brand-name">Kylmäpihlaja</div>
+          <span class="brand-sub">Sea View Cottages</span>
+        </div>
+      </a>
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#rooms">Cottages</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#trust">Guests</a>
+      </nav>
+      <a href="#booking" class="header-cta">Check availability</a>
+      <button type="button" id="menuToggle" aria-label="Open menu" aria-controls="navMobile">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav id="navMobile" aria-label="Mobile">
+    <button type="button" id="navClose" aria-label="Close menu">&times;</button>
+    <a href="#rooms">Cottages</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#trust">Guests</a>
+    <a href="#booking" class="btn btn-primary">Check availability</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero" aria-label="Hero">
+      <div class="hero-media">
+        <img src="https://www.kylmapihlaja.com/images/majakka.jpg" alt="Rocky shoreline and lighthouse on Kylmäpihlaja island in the Rauma archipelago">
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-brand">
+            <span>Kylmäpihlaja</span>
+            Sea View Cottages
+          </h1>
+          <p class="hero-line">Glass-walled maisemamökit on the outermost island of the Rauma archipelago — open sea outside your window.</p>
+          <div class="hero-actions">
+            <a href="#booking" class="btn btn-primary">Request a stay</a>
+            <a href="#rooms" class="btn btn-ghost">See the cottages</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="container">
+        <div class="booking-card">
+          <h2>Availability &amp; booking request</h2>
+          <p class="booking-note">Prototype UI only — not connected to live booking. Peak season is typically late May through early September; ferry tickets to the island are booked separately.</p>
+          <form class="booking-form" id="bookingForm">
+            <div class="form-group">
+              <label for="checkin">Check-in</label>
+              <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="form-group">
+              <label for="checkout">Check-out</label>
+              <input type="date" id="checkout" name="checkout" required>
+            </div>
+            <div class="form-group guest-selector">
+              <label>Guests</label>
+              <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+                <span id="guestSummary">2 adults</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div id="guestPanel" role="dialog" aria-label="Guest selector">
+                <div class="guest-row">
+                  <span>Adults</span>
+                  <div class="guest-controls">
+                    <button type="button" class="guest-btn" id="adultsMinus" aria-label="Fewer adults">−</button>
+                    <span id="adultsCount">2</span>
+                    <button type="button" class="guest-btn" id="adultsPlus" aria-label="More adults">+</button>
+                  </div>
+                </div>
+                <div class="guest-row">
+                  <span>Children</span>
+                  <div class="guest-controls">
+                    <button type="button" class="guest-btn" id="childrenMinus" aria-label="Fewer children">−</button>
+                    <span id="childrenCount">0</span>
+                    <button type="button" class="guest-btn" id="childrenPlus" aria-label="More children">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="roomType">Cottage</label>
+              <select id="roomType" name="roomType">
+                <option value="maisemamokki">Maisemamökki / Sea View Cottage</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-sea">Request booking</button>
+          </form>
+          <div class="form-message" id="formMessage" role="status">Thanks — this is a UI prototype only. No request was sent. Book online via kylmapihlaja.bookingonline.fi when ready.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rooms">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Maisemamökit</p>
+          <h2 class="section-title">Sea view cottages</h2>
+          <p class="section-desc">Eight identical 2-person landscape cottages on the lighthouse island. The site lists one cottage type: Maisemamökki / Sea View Cottage.</p>
+        </div>
+        <div class="cottage-grid">
+          <article class="cottage-card featured reveal">
+            <img src="https://www.kylmapihlaja.com/images/kylmapihlaja-maisema-maja.jpg" alt="Maisemamökki sea view cottage interior, exterior, and row of A-frame cabins on the island">
+            <div class="cottage-body">
+              <div class="cottage-meta">
+                <span class="chip">2 persons</span>
+                <span class="chip">8 cottages</span>
+                <span class="chip">Sea view</span>
+              </div>
+              <h3>Maisemamökki</h3>
+              <p>Stunning sea view cottage for 2 people on the lighthouse island. Large glass wall facing the open sea. Two single beds, bedside table, bed linen, towels, and electricity. Toilet and shower are in the lighthouse building and at the beach sauna. General sauna turn included. No pets.</p>
+              <p class="cottage-price">From €125 <span>/ night</span></p>
+            </div>
+          </article>
+          <article class="cottage-card reveal">
+            <img src="https://www.kylmapihlaja.com/images/maisemamaja26.jpg" alt="View from inside a Maisemamökki looking out over rocky shoreline and sea">
+            <div class="cottage-body">
+              <div class="cottage-meta">
+                <span class="chip">Glass wall</span>
+              </div>
+              <h3>Open-sea outlook</h3>
+              <p>Wake to the archipelago through the full glass façade — the cottage’s defining feature on the source site.</p>
+              <p class="cottage-price">From €125 <span>/ night</span></p>
+            </div>
+          </article>
+          <article class="cottage-card reveal">
+            <img src="https://www.kylmapihlaja.com/images/rantasauna-02.jpg" alt="Interior of the beach sauna on Kylmäpihlaja island">
+            <div class="cottage-body">
+              <div class="cottage-meta">
+                <span class="chip">Included</span>
+              </div>
+              <h3>Sauna with your stay</h3>
+              <p>A general sauna turn (separate for men and women) is included in the cottage price. Private sauna slots and hot tubs are available separately on the island.</p>
+              <p class="cottage-price">Included <span>in cottage rate</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="amenities">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">On the island</p>
+          <h2 class="section-title">Amenities</h2>
+          <p class="section-desc">Features listed for the Maisemamökki and shared island facilities on kylmapihlaja.com — nothing invented beyond the source site.</p>
+        </div>
+        <div class="amenities-grid reveal">
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 16c4-6 6-6 9-6s5 0 9 6"/><path d="M3 20h18"/><path d="M7 10l2-4 2 3 2-5 2 4"/></svg>
+            </div>
+            <span>Open-sea glass wall</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 18V10l8-5 8 5v8"/><path d="M9 18v-5h6v5"/></svg>
+            </div>
+            <span>2 single beds</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 7h16v10H4z"/><path d="M8 7V5h8v2"/><path d="M4 12h16"/></svg>
+            </div>
+            <span>Bed linen &amp; towels</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 10-14h-7l0-6z"/></svg>
+            </div>
+            <span>Electricity</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 4h8v4H8z"/><path d="M6 8h12v12H6z"/><path d="M10 12h4"/></svg>
+            </div>
+            <span>Shared WC &amp; shower</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 20c2-6 4-8 8-8s6 2 8 8"/><path d="M8 8a4 4 0 018 0"/></svg>
+            </div>
+            <span>General sauna included</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M5 19l1.5-1.5"/></svg>
+            </div>
+            <span>Hot tubs available</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 10h16v8H4z"/><path d="M7 10V7a5 5 0 0110 0v3"/><path d="M8 14h2M14 14h2"/></svg>
+            </div>
+            <span>Breakfast optional</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 17c3-2 5-2 9-2s6 0 9 2"/><path d="M5 12c2-4 4-5 7-5s5 1 7 5"/><path d="M12 7V4"/></svg>
+            </div>
+            <span>Guest harbour on island</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 19V9l5-4 5 4v10"/><path d="M10 19v-5h4v5"/></svg>
+            </div>
+            <span>Restaurant &amp; café</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </div>
+            <span>Selkämeri National Park</span>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5 12h14M12 5c2.5 2.5 2.5 11.5 0 14M12 5c-2.5 2.5-2.5 11.5 0 14"/></svg>
+            </div>
+            <span>No pets in cottages</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">See the island</p>
+          <h2 class="section-title">Photo gallery</h2>
+          <p class="section-desc">Real photographs from kylmapihlaja.com — cottages, sauna, sea, and the lighthouse island setting.</p>
+        </div>
+        <div class="gallery-grid reveal">
+          <figure class="gallery-item">
+            <img src="https://www.kylmapihlaja.com/images/kylmapihlaja-maisema-maja.jpg" alt="Maisemamökki collage: interior beds facing the sea, A-frame exterior, and row of cottages">
+            <figcaption>Maisemamökit — interior &amp; exterior</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.kylmapihlaja.com/images/maisemamaja26.jpg" alt="Guest looking out from cottage glass wall toward the sea">
+            <figcaption>Sea view from the cottage</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.kylmapihlaja.com/images/sauna.jpg" alt="Barrel sauna and outdoor hot tub on the rocky shore">
+            <figcaption>Hot tub &amp; barrel sauna</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.kylmapihlaja.com/images/meri.jpg" alt="Waves breaking on the rocky shore of Kylmäpihlaja">
+            <figcaption>Open sea at the island edge</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.kylmapihlaja.com/images/rantasauna-02.jpg" alt="Wooden beach sauna interior with stove and benches">
+            <figcaption>Beach sauna interior</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="https://www.kylmapihlaja.com/images/majakka.jpg" alt="Smooth coastal rock and lighthouse on Kylmäpihlaja">
+            <figcaption>Lighthouse island landscape</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Rauma archipelago</p>
+          <h2 class="section-title">Location &amp; access</h2>
+          <p class="section-desc">Kylmäpihlaja is the outermost of the large islands off Rauma and part of Selkämeri National Park.</p>
+        </div>
+        <div class="location-grid reveal">
+          <div class="location-text">
+            <h3>Arrive by ferry to a lighthouse island</h3>
+            <p>Reach Kylmäpihlaja with Rauman Saaristokuljetus vessels M/V Apollonia and M/V Linnea. Home harbour: Marina Vista, Suvitie 14, 26100 Rauma. Remember to book your ferry separately from the cottage.</p>
+            <p>Hotel, restaurant, and beach café operate daily in peak summer (listed for 29.05–6.9, plus selected late-May and mid-September weekends). The island can also open for groups by arrangement in May and September.</p>
+            <ul class="location-details">
+              <li><strong>Coordinates</strong> 61°8′40″N, 21°18′10″E</li>
+              <li><strong>Setting</strong> Outermost Rauma island · Selkämeri National Park</li>
+              <li><strong>Landmark</strong> Kylmäpihlaja lighthouse (36 m above sea level)</li>
+              <li><strong>Ferry base</strong> Marina Vista, Suvitie 14, 26100 Rauma</li>
+            </ul>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Static map placeholder for Kylmäpihlaja island">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <strong>Map placeholder</strong>
+            <p>Kylmäpihlaja · Rauma archipelago</p>
+            <p>61°8′40″N, 21°18′10″E</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trust">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Guest voices</p>
+          <h2 class="section-title">Why travellers stay</h2>
+          <p class="section-desc">No public star rating badge was found on the source website. Sample testimonials below are clearly marked as placeholders.</p>
+        </div>
+        <div class="reveal">
+          <span class="placeholder-badge">Placeholder testimonials — not from kylmapihlaja.com</span>
+        </div>
+        <div class="testimonials-grid reveal">
+          <article class="testimonial-card">
+            <span class="tag">Placeholder</span>
+            <blockquote>“Falling asleep with the open sea outside the glass wall is something you don’t forget.”</blockquote>
+            <p class="testimonial-author">Sample guest A</p>
+            <p class="testimonial-source">Placeholder review for prototype</p>
+          </article>
+          <article class="testimonial-card">
+            <span class="tag">Placeholder</span>
+            <blockquote>“A midsummer island escape — cottage, sauna, and the lighthouse a short walk away.”</blockquote>
+            <p class="testimonial-author">Sample guest B</p>
+            <p class="testimonial-source">Placeholder review for prototype</p>
+          </article>
+          <article class="testimonial-card">
+            <span class="tag">Placeholder</span>
+            <blockquote>“Simple, atmospheric, and deeply tied to the archipelago — exactly what we wanted.”</blockquote>
+            <p class="testimonial-author">Sample guest C</p>
+            <p class="testimonial-source">Placeholder review for prototype</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://www.kylmapihlaja.com/images/logo.png" alt="Kylmäpihlajan Majakkahotelli logo">
+          <div class="brand-name">Kylmäpihlaja Sea View Cottages</div>
+          <p>Maisemamökit on Kylmäpihlaja lighthouse island — operated with the majakkahotelli by West Coast Seaservice. Prototype landing page for the cottage product line.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Cottages</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#booking">Availability</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Kylmäpihlaja<br>Rauma archipelago, Finland<br>61°8′40″N, 21°18′10″E</p>
+          <a href="tel:+358451750619">Puh: 045 175 0619</a>
+          <a href="mailto:info@kylmapihlaja.com">info@kylmapihlaja.com</a>
+          <a href="https://www.kylmapihlaja.com" target="_blank" rel="noopener">kylmapihlaja.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Kylmäpihlaja — Cottage homepage prototype for demonstration</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 48);
+    }, { passive: true });
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navMobile = document.getElementById("navMobile");
+    const navClose = document.getElementById("navClose");
+
+    menuToggle.addEventListener("click", () => navMobile.classList.add("open"));
+    navClose.addEventListener("click", () => navMobile.classList.remove("open"));
+    navMobile.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => navMobile.classList.remove("open"));
+    });
+
+    const today = new Date().toISOString().split("T")[0];
+    const checkin = document.getElementById("checkin");
+    const checkout = document.getElementById("checkout");
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener("change", () => {
+      if (!checkin.value) return;
+      const next = new Date(checkin.value);
+      next.setDate(next.getDate() + 1);
+      checkout.min = next.toISOString().split("T")[0];
+      if (checkout.value && checkout.value <= checkin.value) {
+        checkout.value = checkout.min;
+      }
+    });
+
+    let adults = 2;
+    let children = 0;
+    const guestTrigger = document.getElementById("guestTrigger");
+    const guestPanel = document.getElementById("guestPanel");
+    const guestSummary = document.getElementById("guestSummary");
+    const adultsCount = document.getElementById("adultsCount");
+    const childrenCount = document.getElementById("childrenCount");
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? " adult" : " adults");
+      if (children > 0) text += ", " + children + (children === 1 ? " child" : " children");
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById("adultsMinus").disabled = adults <= 1;
+      document.getElementById("childrenMinus").disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = guestPanel.classList.toggle("open");
+      guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+
+    document.addEventListener("click", () => {
+      guestPanel.classList.remove("open");
+      guestTrigger.setAttribute("aria-expanded", "false");
+    });
+    guestPanel.addEventListener("click", (e) => e.stopPropagation());
+
+    document.getElementById("adultsPlus").addEventListener("click", () => {
+      if (adults < 4) { adults++; updateGuestSummary(); }
+    });
+    document.getElementById("adultsMinus").addEventListener("click", () => {
+      if (adults > 1) { adults--; updateGuestSummary(); }
+    });
+    document.getElementById("childrenPlus").addEventListener("click", () => {
+      if (children < 2) { children++; updateGuestSummary(); }
+    });
+    document.getElementById("childrenMinus").addEventListener("click", () => {
+      if (children > 0) { children--; updateGuestSummary(); }
+    });
+    updateGuestSummary();
+
+    document.getElementById("bookingForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.getElementById("formMessage").classList.add("show");
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
