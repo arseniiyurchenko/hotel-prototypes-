@@ -15,7 +15,22 @@ def main():
         browser = p.chromium.launch(headless=True)
         page = browser.new_page(viewport={"width": 1280, "height": 800})
         page.goto(URL, wait_until="networkidle", timeout=90000)
-        page.wait_for_timeout(2000)
+        page.wait_for_timeout(1500)
+
+        # Force-load lazy images by scrolling full page
+        page.evaluate(
+            """async () => {
+              const imgs = [...document.images];
+              for (const img of imgs) {
+                img.loading = 'eager';
+                img.scrollIntoView({block: 'center'});
+                if (!img.complete) {
+                  await new Promise(r => { img.onload = r; img.onerror = r; });
+                }
+              }
+              await new Promise(r => setTimeout(r, 800));
+            }"""
+        )
 
         imgs = page.locator("img").all()
         for i, img in enumerate(imgs):
