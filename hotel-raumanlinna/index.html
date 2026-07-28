@@ -1022,7 +1022,38 @@
         width: calc(100% - 1.5rem);
       }
 
-      .hero-content { padding-bottom: 7.5rem; }
+      .hero {
+        align-items: flex-start;
+        min-height: 100svh;
+      }
+
+      .hero-media {
+        position: absolute;
+        inset: 0;
+        min-height: 100%;
+      }
+
+      .hero-content {
+        padding: calc(var(--header-h) + 1.6rem) 0 5.5rem;
+      }
+
+      .brand-mark {
+        font-size: clamp(3.4rem, 13vw, 4.4rem);
+        max-width: none;
+      }
+
+      .hero-value {
+        font-size: 1rem;
+        margin-top: 0.85rem;
+      }
+
+      .hero-actions {
+        margin-top: 1.25rem;
+      }
+
+      .booking {
+        margin-top: -2.75rem;
+      }
 
       .booking-panel {
         grid-template-columns: 1fr;
@@ -1047,6 +1078,8 @@
       .section { padding: 4rem 0; }
 
       .logo-text { display: none; }
+
+      .trust-badges img { height: 52px; }
     }
   </style>
 </head>
@@ -1291,8 +1324,8 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">On board</p>
-          <h2 class="section-title">Amenities from the source</h2>
-          <p class="section-lead">Everything listed here appears on the hotel’s own website — from the courtyard terrace to Green Key certification.</p>
+          <h2 class="section-title">Comforts of a small inn</h2>
+          <p class="section-lead">From the sheltered courtyard terrace to evening sauna and Green Key certification — the essentials of a Kalliohovi stay.</p>
         </div>
         <div class="amenities-grid">
           <article class="amenity">
