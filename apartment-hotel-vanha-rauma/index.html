@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huoneistohotelli Vanha Rauma | Apartment Hotel in Old Rauma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #055a5a;
+      --teal-dark: #033d3d;
+      --teal-light: #0a7a7a;
+      --teal-mist: #e6f2f2;
+      --ink: #1c1a17;
+      --ink-soft: #5a5550;
+      --paper: #faf8f5;
+      --paper-warm: #f3efe8;
+      --white: #ffffff;
+      --line: #e2ddd4;
+      --shadow: 0 8px 32px rgba(5, 90, 90, 0.12);
+      --radius: 10px;
+      --transition: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1160px, 92vw);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(3, 61, 61, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      padding: 0.7rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo-img {
+      height: 42px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      color: #fff;
+    }
+
+    .logo-text .brand-name {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+
+    .logo-text .brand-tagline {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 0.2rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      transition: opacity var(--transition);
+    }
+
+    .nav-desktop a:hover { opacity: 1; }
+
+    .header-contact a {
+      color: #fff;
+      font-size: 0.85rem;
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 61, 61, 0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: #fff;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.65rem;
+      font-style: italic;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.001-2880w.jpg')
+        center/cover no-repeat;
+      transform: scale(1.04);
+      animation: heroZoom 18s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(3, 40, 40, 0.88) 0%,
+        rgba(3, 50, 50, 0.45) 45%,
+        rgba(3, 40, 40, 0.25) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 0 7.5rem;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.1;
+      margin-bottom: 0.85rem;
+      max-width: 14ch;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 300;
+      opacity: 0.92;
+      max-width: 38ch;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 2.1rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(5, 90, 90, 0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.45);
+      margin-left: 0.75rem;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+    }
+
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+
+    /* Booking */
+    .booking-section {
+      position: relative;
+      z-index: 10;
+      margin-top: -3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .booking-widget {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.6rem 1.85rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1.1rem;
+      align-items: end;
+      animation: fadeUp 0.8s ease 0.5s both;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--paper);
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+
+    .guest-selector { position: relative; }
+
+    .guest-trigger {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--paper);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      z-index: 50;
+      min-width: 220px;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .guest-row span { font-size: 0.9rem; }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+
+    .guest-btn:hover { background: var(--teal-mist); }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .booking-widget .btn-primary {
+      padding: 0.85rem 1.75rem;
+      white-space: nowrap;
+      height: fit-content;
+    }
+
+    .booking-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-top: 1rem;
+    }
+
+    /* Sections */
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .section-desc {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    /* Intro */
+    .intro {
+      background: var(--white);
+      padding: 4.5rem 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .intro-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .intro-text .highlight {
+      color: var(--teal);
+      font-weight: 500;
+    }
+
+    .intro-image {
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .intro-image img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .intro-image:hover img { transform: scale(1.04); }
+
+    /* Rooms */
+    .rooms { background: var(--paper); }
+
+    .rooms-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin: -1.5rem auto 2rem;
+      max-width: 560px;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(5, 90, 90, 0.07);
+      transition: transform var(--transition), box-shadow var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--teal-mist);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-card-body { padding: 1.4rem 1.5rem 1.6rem; }
+
+    .room-card h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+      font-style: italic;
+    }
+
+    .room-meta {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+
+    .room-price {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--teal);
+    }
+
+    .room-price span {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+    }
+
+    .stay-banner {
+      margin-top: 2.5rem;
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 2rem 2.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stay-banner h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+    }
+
+    .stay-banner p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      max-width: 48ch;
+    }
+
+    /* Amenities */
+    .amenities { background: var(--white); }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .amenity-item {
+      text-align: center;
+      padding: 1.6rem 1rem;
+      background: var(--paper);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      transition: border-color var(--transition), transform var(--transition), background var(--transition);
+    }
+
+    .amenity-item:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+      background: var(--teal-mist);
+    }
+
+    .amenity-icon {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 0.85rem;
+      color: var(--teal);
+    }
+
+    .amenity-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .amenity-item span {
+      font-size: 0.84rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      display: block;
+      line-height: 1.35;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: var(--teal-dark);
+      color: #fff;
+    }
+
+    .gallery .section-title { color: #fff; }
+    .gallery .section-desc { color: rgba(255,255,255,0.72); }
+    .gallery .section-eyebrow { color: #9fd4d4; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 240px);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .gallery-item:first-child { grid-row: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Location */
+    .location { background: var(--paper); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .location-text h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.65rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1.4rem;
+    }
+
+    .location-details { list-style: none; }
+
+    .location-details li {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .location-details li strong {
+      min-width: 100px;
+      font-weight: 500;
+      color: var(--teal);
+    }
+
+    .map-placeholder {
+      background: var(--white);
+      border-radius: var(--radius);
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--line);
+      color: var(--ink-soft);
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, var(--teal-mist) 0%, transparent 50%),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 28px,
+          rgba(5,90,90,0.04) 28px,
+          rgba(5,90,90,0.04) 29px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 28px,
+          rgba(5,90,90,0.04) 28px,
+          rgba(5,90,90,0.04) 29px
+        );
+    }
+
+    .map-placeholder > * { position: relative; z-index: 1; }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      color: var(--teal);
+      opacity: 0.7;
+    }
+
+    /* Trust */
+    .trust { background: var(--white); }
+
+    .trust-placeholder-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--teal);
+      font-style: italic;
+      margin-bottom: 2rem;
+      padding: 0.55rem 1rem;
+      background: var(--teal-mist);
+      border-radius: 6px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--paper);
+      padding: 1.85rem;
+      border-radius: var(--radius);
+      border-top: 3px solid var(--teal);
+    }
+
+    .testimonial-card blockquote {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 1.15rem;
+      line-height: 1.55;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .testimonial-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--teal-mist);
+      color: var(--teal);
+      padding: 0.25rem 0.55rem;
+      border-radius: 3px;
+      margin-top: 0.55rem;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--teal-dark);
+      color: rgba(255,255,255,0.8);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo-text { margin-bottom: 1rem; }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 340px;
+      opacity: 0.75;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: #fff;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-nav ul { list-style: none; }
+    .footer-nav li { margin-bottom: 0.6rem; }
+
+    .footer-nav a {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      transition: opacity var(--transition);
+    }
+
+    .footer-nav a:hover { opacity: 1; }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      opacity: 0.75;
+    }
+
+    .footer-contact a:hover { opacity: 1; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .nav-desktop, .header-contact { display: none; }
+      .menu-toggle { display: block; }
+
+      .booking-widget { grid-template-columns: 1fr 1fr; }
+      .booking-widget .btn-primary { grid-column: span 2; }
+
+      .intro-grid { grid-template-columns: 1fr; }
+      .intro-image img { height: 280px; }
+
+      .rooms-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { height: 200px; }
+
+      .location-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .stay-banner { flex-direction: column; text-align: center; }
+      .btn-ghost { margin-left: 0; }
+    }
+
+    @media (max-width: 560px) {
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item { height: 220px; }
+      .hero-content { padding-bottom: 6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo-text" aria-label="Huoneistohotelli Vanha Rauma">
+        <img
+          class="logo-img"
+          src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/Vanha-Rauman-Huoneistohotelli.logo-280w.png"
+          alt="Huoneistohotelli Vanha Rauma"
+          width="200"
+          height="38"
+        >
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Huoneistot</a></li>
+          <li><a href="#amenities">Varustelu</a></li>
+          <li><a href="#gallery">Galleria</a></li>
+          <li><a href="#location">Sijainti</a></li>
+        </ul>
+      </nav>
+      <div class="header-contact">
+        <a href="tel:+358500785304">050 078 5304</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Huoneistot</a>
+    <a href="#amenities">Varustelu</a>
+    <a href="#gallery">Galleria</a>
+    <a href="#location">Sijainti</a>
+    <a href="tel:+358500785304">050 078 5304</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="Wooden houses on a street in Old Rauma"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="container">
+        <p class="hero-eyebrow">Vanha Rauma · UNESCO World Heritage</p>
+        <h1>Huoneistohotelli Vanha Rauma</h1>
+        <p class="hero-tagline">Fully furnished boutique apartments in the heart of Old Rauma — a home away from home from three nights onward.</p>
+        <div class="hero-ctas">
+          <a href="#booking" class="btn btn-primary">Check availability</a>
+          <a href="#rooms" class="btn btn-ghost">View apartments</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestDropdown">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomType">Apartment</label>
+          <select id="roomType" name="roomType">
+            <option value="any">Any apartment</option>
+            <option value="kaksio">Kaksio (40 m²)</option>
+            <option value="kolmio">Kolmio (55 m²)</option>
+            <option value="luksus">Luksushuoneisto (140 m²)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p class="booking-note">Minimum stay 3 nights · Availability calendar UI prototype (no live booking backend)</p>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="container intro-grid">
+      <div class="intro-text">
+        <p class="section-eyebrow" style="text-align:left;margin-bottom:0.5rem;">Ol niingon gotonas!</p>
+        <h2 class="section-title" style="text-align:left;margin-bottom:1rem;">A home in Old Rauma</h2>
+        <p>Huoneistohotelli Vanha Rauma offers <span class="highlight">comfortable, high-quality apartments</span> in the heart of Old Rauma — a UNESCO World Heritage site.</p>
+        <p>The property sits in an early-1800s estate with classic high ceilings and airy interiors, while every apartment has modern comforts from washing machines to broadband.</p>
+        <p>Whether you travel alone, as a couple, or with family, stay at least three nights and live as if at home — just steps from cobbled streets, cafés, and craft shops.</p>
+      </div>
+      <div class="intro-image">
+        <img
+          src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.002%20%281%29-2880w.jpg"
+          alt="Kauppatori market square in Old Rauma"
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Stay with us</p>
+        <h2 class="section-title">Apartments &amp; rates</h2>
+        <p class="section-desc">Apartment types and daily rates as listed on vanharauma.com — each with 2–4 beds, extra beds available on request.</p>
+      </div>
+      <p class="rooms-note">Prices include VAT. Cleaning and linen change once per week are included. Stays over four weeks are priced by agreement.</p>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img
+            src="https://de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/pod1_880.jpg"
+            alt="Kaksio kitchenette and dining area"
+          >
+          <div class="room-card-body">
+            <h3>Kaksio</h3>
+            <p class="room-meta">40 m² · double-room apartment · 2–4 beds</p>
+            <p class="room-price">90 € <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img
+            src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.008-1920w.jpg"
+            alt="Kolmio bedroom"
+          >
+          <div class="room-card-body">
+            <h3>Kolmio</h3>
+            <p class="room-meta">55 m² · three-room apartment · 2–4 beds</p>
+            <p class="room-price">130 € <span>/ night</span></p>
+          </div>
+        </article>
+        <article class="room-card">
+          <img
+            src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.004-1920w.jpg"
+            alt="Luksushuoneisto living salon"
+          >
+          <div class="room-card-body">
+            <h3>Luksushuoneisto</h3>
+            <p class="room-meta">140 m² · kitchen, 2 bedrooms, dining room &amp; salon</p>
+            <p class="room-price">By agreement <span>/ sopimuksen mukaan</span></p>
+          </div>
+        </article>
+      </div>
+
+      <div class="stay-banner">
+        <div>
+          <h3>Book by email or phone</h3>
+          <p>Reserve via info@vanharauma.com or call 050 078 5304 — ask about last-minute availability.</p>
+        </div>
+        <a href="mailto:info@vanharauma.com" class="btn btn-primary" style="background:#fff;color:var(--teal-dark);">Email to reserve</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="amenities" id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">What we offer</p>
+        <h2 class="section-title">Amenities &amp; services</h2>
+        <p class="section-desc">Equipment and services listed on the official Huoneistot / rooms page.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <span>Fully furnished apartments</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v4M16 4v4"/></svg></div>
+          <span>Fully equipped kitchen</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14v12H5z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div>
+          <span>Refrigerator</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <span>Dishwasher</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
+          <span>Washing machine</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 16l4-8 3 5 2-3 3 6"/></svg></div>
+          <span>Ironing equipment</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5c2-4 5-6.5 7-6.5s5 2.5 7 6.5"/><path d="M8 14v2M12 13v3M16 14v2"/><path d="M5 18h14"/></svg></div>
+          <span>Steam-jet shower cabinets</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5a7 7 0 0 1 14 0"/><path d="M12 5v2"/><path d="M8 20h8"/><circle cx="12" cy="14" r="2"/></svg></div>
+          <span>Broadband internet</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M8 21h8M12 19v2"/></svg></div>
+          <span>Cable TV</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 6v2M12 16v2M6 12h2M16 12h2"/></svg></div>
+          <span>Radio &amp; DVD player</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div>
+          <span>Soundproofed doors &amp; walls</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/><path d="M9 12h6"/></svg></div>
+          <span>Weekly cleaning &amp; linen</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Discover</p>
+        <h2 class="section-title">Photo gallery</h2>
+        <p class="section-desc">Images from the official vanharauma.com website.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img
+            src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.001-2880w.jpg"
+            alt="Old Rauma wooden streetscape"
+          >
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.004-1920w.jpg"
+            alt="Apartment living room with chandelier"
+          >
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.006-1920w.jpg"
+            alt="Fully equipped apartment kitchen"
+          >
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.007-1920w.jpg"
+            alt="Classic dining room"
+          >
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.008-1920w.jpg"
+            alt="Bedroom with patterned wallpaper"
+          >
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://le-de.cdn-website.com/733c87a82f4144f4bb02701505b9527c/dms3rep/multi/opt/VanhaRaumanHuoneistohotelli.010-2880w.jpg"
+            alt="Old Rauma Town Hall clock tower"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="location" id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Location</h2>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>In the heart of Old Rauma</h3>
+          <p>The apartment hotel is located on Kauppakatu in Vanha Rauma (Old Rauma), a UNESCO World Heritage site since 1991 — about 50 metres from Kauppatori market square.</p>
+          <p>Step outside to craft workshops, cafés, restaurants, and museums including Rauman museo, Rauman taidemuseo, and Rauman Merimuseo.</p>
+          <ul class="location-details">
+            <li><strong>Address</strong> Kauppakatu 18, 26100 Rauma</li>
+            <li><strong>Landmark</strong> Kauppatori (~50 m)</li>
+            <li><strong>Nearby</strong> Rauman museo · Taidemuseo · Merimuseo</li>
+            <li><strong>Phone</strong> 050 078 5304</li>
+            <li><strong>Email</strong> info@vanharauma.com</li>
+          </ul>
+        </div>
+        <div class="map-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="font-size:0.85rem;margin-top:0.5rem;">Kauppakatu 18, 26100 Rauma, Finland</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Guest experiences</p>
+        <h2 class="section-title">What guests say</h2>
+      </div>
+      <p class="trust-placeholder-note">No public rating badge or guest reviews were found on vanharauma.com — the three cards below are clearly marked sample placeholders for this prototype.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>“Waking up steps from Old Rauma’s wooden streets felt magical. The apartment had everything we needed for a week-long stay.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest A</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Quiet, spotless, and truly home-like. The steam shower after museum days was a highlight. We would not stay elsewhere in Rauma.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest B</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Perfect base for a longer work-remote stretch — kitchen, laundry, and Kauppatori around the corner.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest C</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-text">
+            <span class="brand-name">Huoneistohotelli Vanha Rauma</span>
+            <span class="brand-tagline">Apartment Hotel · Old Rauma</span>
+          </div>
+          <p>Boutique apartment hotel in the UNESCO-listed heart of Old Rauma — furnished homes with modern comforts from three nights onward.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Apartments &amp; rates</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Check availability</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Kauppakatu 18<br>26100 Rauma, Finland</p>
+          <a href="tel:+358500785304">050 078 5304</a>
+          <a href="mailto:info@vanharauma.com">info@vanharauma.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Huoneistohotelli Vanha Rauma — Prototype demo (source: vanharauma.com)</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+
+    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (checkin.value) {
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = checkout.min;
+        }
+      }
+    });
+
+    let adults = 2;
+    let children = 0;
+
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestDropdown = document.getElementById('guestDropdown');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' adult' : ' adults');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' child' : ' children');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      guestDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => guestDropdown.classList.remove('open'));
+    guestDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => { if (adults < 8) { adults++; updateGuestSummary(); } });
+    document.getElementById('adultsMinus').addEventListener('click', () => { if (adults > 1) { adults--; updateGuestSummary(); } });
+    document.getElementById('childrenPlus').addEventListener('click', () => { if (children < 6) { children++; updateGuestSummary(); } });
+    document.getElementById('childrenMinus').addEventListener('click', () => { if (children > 0) { children--; updateGuestSummary(); } });
+
+    updateGuestSummary();
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Booking search is a UI prototype only — no reservation system connected.');
+    });
+  </script>
+</body>
+</html>
