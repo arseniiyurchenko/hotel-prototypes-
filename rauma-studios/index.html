@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rauma Studios — Modern Downtown Studios in the center of Rauma</title>
+  <meta name="description" content="Rauma Studios offers three modern furnished apartments in the heart of Rauma, Finland. Short and long stays from €109/night. Near UNESCO Old Rauma.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #141c2d;
+      --navy-mid: #1e2a42;
+      --navy-soft: #2a3a58;
+      --amber: #f9a825;
+      --amber-dark: #e09210;
+      --amber-soft: #fcd56a;
+      --bg: #eef1f5;
+      --bg-warm: #f5f6f8;
+      --surface: #ffffff;
+      --text: #1a2233;
+      --muted: #5a6478;
+      --line: #d5dbe6;
+      --success: #2f7d4a;
+      --radius: 10px;
+      --shadow: 0 8px 32px rgba(20, 28, 45, 0.1);
+      --shadow-sm: 0 2px 12px rgba(20, 28, 45, 0.06);
+      --font-display: "Fraunces", Georgia, serif;
+      --font-body: "Manrope", sans-serif;
+      --max: 1160px;
+      --header-h: 76px;
+      --ease: 0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg-warm);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .container {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* Motion */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes softZoom {
+      from { transform: scale(1.06); }
+      to { transform: scale(1); }
+    }
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      transition: background var(--ease), box-shadow var(--ease), backdrop-filter var(--ease);
+    }
+    .site-header.scrolled {
+      background: rgba(20, 28, 45, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-sm);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo img {
+      height: 42px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+    .logo-fallback {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-desktop a {
+      color: rgba(255,255,255,0.88);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--ease);
+    }
+    .nav-desktop a:hover { color: var(--amber); }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem 1.15rem;
+      background: var(--amber);
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: background var(--ease), transform var(--ease);
+    }
+    .header-cta:hover {
+      background: var(--amber-soft);
+      transform: translateY(-1px);
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 28, 45, 0.98);
+      z-index: 300;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 500;
+    }
+    .nav-close {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url("https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000114-acb06acb09/_DSC4505-Edit-3.jpg?ph=310393e93e")
+        center / cover no-repeat;
+      animation: softZoom 8s ease-out forwards;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20,28,45,0.35) 0%, rgba(20,28,45,0.28) 35%, rgba(20,28,45,0.78) 100%),
+        radial-gradient(ellipse at 20% 80%, rgba(249,168,37,0.18), transparent 50%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(100% - 2rem, var(--max));
+      margin: 0 auto;
+      padding: 0 0 7.5rem;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+    .hero-brand {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+    }
+    .hero-brand span {
+      color: var(--amber);
+    }
+    .hero-value {
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+      font-weight: 500;
+      max-width: 34rem;
+      margin-bottom: 2rem;
+      color: rgba(255,255,255,0.92);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.7rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--ease), color var(--ease), transform var(--ease), border-color var(--ease);
+    }
+    .btn-primary {
+      background: var(--amber);
+      color: var(--navy);
+    }
+    .btn-primary:hover {
+      background: var(--amber-soft);
+      transform: translateY(-2px);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.55);
+    }
+    .btn-ghost:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Booking */
+    .booking-section {
+      position: relative;
+      z-index: 20;
+      margin-top: -3.5rem;
+      padding-bottom: 2rem;
+    }
+    .booking-widget {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1.6rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+      animation: floatIn 0.8s ease 0.45s both;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(249,168,37,0.18);
+    }
+    .guest-selector { position: relative; }
+    .guest-trigger {
+      width: 100%;
+      padding: 0.8rem 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--text);
+      background: var(--bg);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .guest-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      min-width: 220px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      z-index: 60;
+    }
+    .guest-dropdown.open { display: block; }
+    .guest-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.45rem 0;
+    }
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .guest-btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background var(--ease);
+    }
+    .guest-btn:hover { background: var(--bg); }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .booking-widget .btn-primary {
+      padding: 0.9rem 1.5rem;
+      white-space: nowrap;
+      height: fit-content;
+    }
+    .booking-note {
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Sections */
+    section { padding: 5rem 0; }
+    .section-header {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 3rem;
+    }
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber-dark);
+      margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.02em;
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    /* Studios */
+    .studios { background: var(--bg); }
+    .studios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    .studio-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(20,28,45,0.05);
+      transition: transform var(--ease), box-shadow var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+    .studio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .studio-media {
+      position: relative;
+      overflow: hidden;
+    }
+    .studio-media img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .studio-card:hover .studio-media img { transform: scale(1.04); }
+    .avail-badge {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.95);
+      color: var(--success);
+      box-shadow: var(--shadow-sm);
+    }
+    .avail-badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .avail-badge.limited { color: var(--amber-dark); }
+    .studio-body {
+      padding: 1.35rem 1.35rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.55rem;
+    }
+    .studio-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .studio-meta {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+    .studio-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      flex: 1;
+    }
+    .studio-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--line);
+    }
+    .studio-price {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .studio-price span {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .studio-link {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--amber-dark);
+    }
+
+    .stay-banner {
+      margin-top: 2.5rem;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #243552 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 2rem 2.25rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .stay-banner h3 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      color: var(--amber);
+      margin-bottom: 0.6rem;
+    }
+    .stay-banner p { opacity: 0.85; font-size: 0.95rem; }
+    .stay-banner ul {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+    }
+    .stay-banner li {
+      font-size: 0.95rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: baseline;
+    }
+    .stay-banner li strong { color: var(--amber); min-width: 4.5rem; }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .amenity-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.35rem 1rem;
+      text-align: center;
+      transition: border-color var(--ease), transform var(--ease);
+    }
+    .amenity-item:hover {
+      border-color: rgba(249,168,37,0.55);
+      transform: translateY(-2px);
+    }
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 0.8rem;
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+    }
+    .amenity-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .amenity-item span {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    /* Gallery */
+    .gallery {
+      background:
+        linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+      color: #fff;
+    }
+    .gallery .section-title { color: #fff; }
+    .gallery .section-desc { color: rgba(255,255,255,0.7); }
+    .gallery .section-eyebrow { color: var(--amber); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 0.75rem;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+    .location-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      color: var(--navy);
+      margin-bottom: 0.9rem;
+    }
+    .location-text p {
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .location-details {
+      list-style: none;
+    }
+    .location-details li {
+      display: flex;
+      gap: 0.85rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+    .location-details strong {
+      min-width: 6.5rem;
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .map-placeholder {
+      background:
+        linear-gradient(145deg, #dfe6f0 0%, #c8d2e0 45%, #b7c4d6 100%);
+      border-radius: var(--radius);
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--navy-soft);
+      border: 1px dashed rgba(20,28,45,0.25);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-placeholder::before {
+      content: "";
+      position: absolute;
+      inset: 18% 22%;
+      border: 2px solid rgba(20,28,45,0.12);
+      border-radius: 50%;
+    }
+    .map-placeholder svg {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 0.85rem;
+      color: var(--navy);
+      position: relative;
+      z-index: 1;
+    }
+    .map-placeholder p { position: relative; z-index: 1; }
+    .map-label {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.35rem 0.7rem;
+      background: var(--amber);
+      color: var(--navy);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+
+    /* Inquiry */
+    .inquiry {
+      background: var(--bg);
+      padding-top: 0;
+    }
+    .inquiry-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      overflow: hidden;
+    }
+    .inquiry-copy {
+      padding: 2.25rem;
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+      color: #fff;
+    }
+    .inquiry-copy h3 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      margin: 0.5rem 0 0.85rem;
+      color: var(--amber);
+    }
+    .inquiry-copy p { opacity: 0.85; margin-bottom: 1rem; }
+    .inquiry-copy ul {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.92rem;
+      opacity: 0.9;
+    }
+    .inquiry-copy li::before {
+      content: "– ";
+      color: var(--amber);
+    }
+    .inquiry-form {
+      padding: 2.25rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+    .inquiry-form .btn-primary { width: fit-content; margin-top: 0.35rem; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+    .form-status {
+      display: none;
+      font-size: 0.88rem;
+      color: var(--success);
+      font-weight: 600;
+    }
+    .form-status.show { display: block; }
+
+    /* Trust */
+    .trust { background: var(--bg-warm); }
+    .trust-note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--amber-dark);
+      font-style: italic;
+      margin: -1.5rem auto 2rem;
+      max-width: 640px;
+      padding: 0.65rem 1rem;
+      background: rgba(249,168,37,0.12);
+      border-radius: 6px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .testimonial-card {
+      background: var(--surface);
+      padding: 1.75rem;
+      border-radius: var(--radius);
+      border-top: 3px solid var(--amber);
+      box-shadow: var(--shadow-sm);
+    }
+    .testimonial-card blockquote {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      font-style: italic;
+      color: var(--navy);
+      margin-bottom: 1.1rem;
+      line-height: 1.45;
+    }
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .testimonial-badge {
+      display: inline-block;
+      margin-top: 0.55rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--bg);
+      color: var(--amber-dark);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.78);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand img {
+      height: 40px;
+      width: auto;
+      margin-bottom: 1rem;
+      filter: brightness(0) invert(1);
+    }
+    .footer-brand p {
+      font-size: 0.92rem;
+      max-width: 320px;
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: #fff;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+    .footer-nav ul { list-style: none; }
+    .footer-nav li { margin-bottom: 0.55rem; }
+    .footer-nav a,
+    .footer-contact a,
+    .footer-contact p {
+      font-size: 0.92rem;
+      opacity: 0.78;
+      display: block;
+      margin-bottom: 0.4rem;
+      transition: opacity var(--ease), color var(--ease);
+    }
+    .footer-nav a:hover,
+    .footer-contact a:hover {
+      opacity: 1;
+      color: var(--amber);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.35rem;
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .nav-desktop, .header-cta { display: none; }
+      .menu-toggle { display: block; }
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+      .booking-widget .btn-primary { grid-column: span 2; }
+      .studios-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { height: 200px; }
+      .location-grid,
+      .inquiry-card,
+      .stay-banner,
+      .testimonials-grid,
+      .footer-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-content { padding-bottom: 6.5rem; }
+      .booking-widget { grid-template-columns: 1fr; }
+      .booking-widget .btn-primary { grid-column: span 1; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#top" class="logo" aria-label="Rauma Studios home">
+        <img
+          src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000106-2a54e2a551/RaumaStudios_logo_valkoinen2-6.png?ph=310393e93e"
+          alt="Rauma Studios"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="logo-fallback" style="display:none;">Rauma Studios</span>
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="#booking">Book</a></li>
+          <li><a href="#rooms">Studios</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#inquiry">Inquire</a></li>
+        </ul>
+      </nav>
+      <a class="header-cta" href="#booking">Check dates</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#booking">Book</a>
+    <a href="#rooms">Studios</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#inquiry">Inquire</a>
+    <a href="mailto:mail@raumastudios.com">mail@raumastudios.com</a>
+  </nav>
+
+  <section class="hero" id="top">
+    <div class="hero-bg" role="img" aria-label="Modern furnished studio interior at Rauma Studios"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-brand">Rauma <span>Studios</span></h1>
+      <p class="hero-value">Modern downtown studios in the center of Rauma — furnished apartments for short stays, long stays, and corporate travel.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">Check availability</a>
+        <a href="#inquiry" class="btn btn-ghost">Long-stay inquiry</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+            <span id="guestSummary">1 adult</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestPanel">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">1</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+            <p style="font-size:0.72rem;color:var(--muted);margin-top:0.5rem;">Max 2 guests per apartment (site policy).</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomType">Studio</label>
+          <select id="roomType" name="roomType">
+            <option value="any">Any studio</option>
+            <option value="loisto-i">Loisto I</option>
+            <option value="loisto-ii">Loisto II</option>
+            <option value="pooki">Pooki</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p class="booking-note">UI prototype — search checks apartment availability tracking locally. Live booking calendars remain on raumastudios.com. Check-in 15:00 · Check-out 12:00.</p>
+    </div>
+  </section>
+
+  <section class="studios" id="rooms">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Three modern studios</p>
+        <h2 class="section-title">Choose your apartment</h2>
+        <p class="section-desc">Fully furnished home-like studios built in 2022–2023. Final cleaning, bed linen, and towels are always included.</p>
+      </div>
+
+      <div class="studios-grid">
+        <article class="studio-card reveal" data-studio="loisto-i">
+          <div class="studio-media">
+            <img
+              src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000048-cf5c5cf5c8/_DSC4505-Edit-9.jpg?ph=310393e93e"
+              alt="Loisto I studio apartment">
+            <span class="avail-badge" data-avail>Available</span>
+          </div>
+          <div class="studio-body">
+            <h3>Loisto I</h3>
+            <p class="studio-meta">29 m² · 1–2 guests · Double bed · French balcony</p>
+            <p class="studio-desc">Spacious cozy studio with rain shower and floor cooling. Built 2022 — one of two nearly identical Loisto apartments on different floors.</p>
+            <div class="studio-footer">
+              <p class="studio-price">From €109 <span>/ night</span></p>
+              <a class="studio-link" href="#booking">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="studio-card reveal" data-studio="loisto-ii">
+          <div class="studio-media">
+            <img
+              src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000114-acb06acb09/_DSC4505-Edit-3.jpg?ph=310393e93e"
+              alt="Loisto II studio apartment">
+            <span class="avail-badge limited" data-avail>Limited dates</span>
+          </div>
+          <div class="studio-body">
+            <h3>Loisto II</h3>
+            <p class="studio-meta">29 m² · 1–2 guests · Double bed · French balcony</p>
+            <p class="studio-desc">Almost identical to Loisto I — same layout, rain shower, floor cooling, and French balcony — on a different floor of the house.</p>
+            <div class="studio-footer">
+              <p class="studio-price">From €109 <span>/ night</span></p>
+              <a class="studio-link" href="#booking">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="studio-card reveal" data-studio="pooki">
+          <div class="studio-media">
+            <img
+              src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000088-bbbd1bbbd4/002__DSC4484-Edit.jpg?ph=310393e93e"
+              alt="Pooki studio apartment">
+            <span class="avail-badge" data-avail>Available</span>
+          </div>
+          <div class="studio-body">
+            <h3>Pooki</h3>
+            <p class="studio-meta">29.5 m² · 1–2 guests · 2 separate beds · Parquet</p>
+            <p class="studio-desc">Brand-new downtown studio completed January 2023. Parquet floor and excellent bed comfort with two separate beds.</p>
+            <div class="studio-footer">
+              <p class="studio-price">From €109 <span>/ night</span></p>
+              <a class="studio-link" href="#booking">Book</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="stay-banner reveal">
+        <div>
+          <h3>Stay longer, save more</h3>
+          <p>For bookings over 7 days, reserve via the inquiry form or email to receive the long-stay discount (the appointment system does not apply discounts).</p>
+        </div>
+        <ul>
+          <li><strong>8–28 days</strong> −15%</li>
+          <li><strong>28–56 days</strong> −40%</li>
+          <li><strong>56+ days</strong> −50%</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Well equipped</p>
+        <h2 class="section-title">Amenities included</h2>
+        <p class="section-desc">Features listed on the Rauma Studios apartment pages — everything you need for a home-like stay.</p>
+      </div>
+      <div class="amenities-grid reveal">
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M5 12.5c2-4 5-6.5 7-6.5s5 2.5 7 6.5"/><path d="M8 15h8"/><circle cx="12" cy="18" r="1"/></svg></div>
+          <span>Wifi</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 10h16v8H4z"/><path d="M8 10V7h8v3"/><path d="M7 14h2M15 14h2"/></svg></div>
+          <span>Coffee maker</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M6 8h10a2 2 0 0 1 2 2v1H6z"/><path d="M6 11h14v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2z"/><path d="M9 18v2M15 18v2"/></svg></div>
+          <span>Kettle</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 13h5"/></svg></div>
+          <span>Dishwasher</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="5.5" r="0.8" fill="currentColor" stroke="none"/></svg></div>
+          <span>Washing machine</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16v10H4z"/><path d="M8 7V5h8v2"/><path d="M7 17v2M17 17v2"/></svg></div>
+          <span>Tumble dryer / drying washer</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 10h2M14 10h2"/></svg></div>
+          <span>TV</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M6 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M9 18h6"/><path d="M12 8V5"/></svg></div>
+          <span>Hair dryer</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M5 18h10l4-8H9z"/><path d="M8 10V6h4"/></svg></div>
+          <span>Iron</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 10h16l-1.5 8H5.5z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+          <span>Cooking utensils &amp; dinnerware</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="8" rx="1"/><path d="M7 10V8a5 5 0 0 1 10 0v2"/><circle cx="8.5" cy="14" r="1"/><circle cx="15.5" cy="14" r="1"/></svg></div>
+          <span>Free parking</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 8h4M10 12h4M10 16h4"/></svg></div>
+          <span>Elevator</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M8 4h8v4H8z"/><path d="M6 8h12v12H6z"/><path d="M10 12h4"/></svg></div>
+          <span>Soap &amp; shampoo</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M5 8h14v10H5z"/><path d="M8 8V6h8v2"/><path d="M9 13h6"/></svg></div>
+          <span>Bed linen &amp; towels included</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 18c2-4 5-7 8-7s6 3 8 7"/><path d="M8 8a4 4 0 0 1 8 0"/></svg></div>
+          <span>Final cleaning included</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M12 4v8"/><path d="M8 8l4 4 4-4"/><path d="M5 18h14"/></svg></div>
+          <span>Rain shower &amp; floor cooling (Loisto)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Inside the studios</p>
+        <h2 class="section-title">Photo gallery</h2>
+        <p class="section-desc">Real photos from raumastudios.com — interiors, kitchen, and living spaces.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <img src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000114-acb06acb09/_DSC4505-Edit-3.jpg?ph=310393e93e" alt="Studio living area with sofa and dining">
+        </div>
+        <div class="gallery-item">
+          <img src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000152-68f4a68f4e/002__DSC4484-Edit-5.jpg?ph=310393e93e" alt="Studio bedroom and workspace">
+        </div>
+        <div class="gallery-item">
+          <img src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000008-8219182194/_DSC4517-Edit.jpg?ph=310393e93e" alt="Studio interior detail">
+        </div>
+        <div class="gallery-item">
+          <img src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000010-89b1089b12/002__DSC0061-Edit.jpg?ph=310393e93e" alt="Kitchen and dining area">
+        </div>
+        <div class="gallery-item">
+          <img src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000108-277e1277e5/001__DSC4480-Edit-9.jpg?ph=310393e93e" alt="Bedroom and seating area">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Rauma, Finland</p>
+        <h2 class="section-title">In the middle of everything</h2>
+      </div>
+      <div class="location-grid reveal">
+        <div class="location-text">
+          <h3>Heart of downtown Rauma</h3>
+          <p>Three comfortable apartments in the center of Rauma, in the middle of all services. The UNESCO World Heritage Site Old Rauma is a few hundred meters away.</p>
+          <ul class="location-details">
+            <li><strong>Address</strong> Ajurinkatu 2, Rauma</li>
+            <li><strong>Landmark</strong> UNESCO Old Rauma</li>
+            <li><strong>Landmark</strong> Old town hall &amp; square</li>
+            <li><strong>Landmark</strong> Kitukränn — Finland’s narrowest street</li>
+            <li><strong>Email</strong> mail@raumastudios.com</li>
+            <li><strong>Phone</strong> +358 40 729 4466</li>
+          </ul>
+        </div>
+        <div class="map-placeholder" aria-label="Static map placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="font-size:0.88rem;margin-top:0.4rem;max-width:16rem;">Ajurinkatu 2 · near Old Rauma UNESCO site</p>
+          <span class="map-label">Static map — prototype</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="inquiry" id="inquiry">
+    <div class="container">
+      <div class="inquiry-card reveal">
+        <div class="inquiry-copy">
+          <p class="section-eyebrow" style="color:var(--amber);">Corporate &amp; long stays</p>
+          <h3>Send an inquiry</h3>
+          <p>Questions about longer stays, corporate travel, or booking more than 7 nights? Leave a message — hosts Niina &amp; Mikko will get back to you.</p>
+          <ul>
+            <li>Stays from one night to several weeks</li>
+            <li>Long-stay discounts via contact form / email</li>
+            <li>Invoice by email after reservation</li>
+            <li>Access codes after payment</li>
+          </ul>
+        </div>
+        <form class="inquiry-form" id="inquiryForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inqName">Name</label>
+              <input type="text" id="inqName" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="inqEmail">Email</label>
+              <input type="email" id="inqEmail" name="email" required placeholder="you@company.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inqType">Stay type</label>
+              <select id="inqType" name="type">
+                <option value="long">Long stay (8+ nights)</option>
+                <option value="corporate">Corporate / business</option>
+                <option value="other">Other inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inqStudio">Preferred studio</label>
+              <select id="inqStudio" name="studio">
+                <option value="any">Any available</option>
+                <option value="loisto-i">Loisto I</option>
+                <option value="loisto-ii">Loisto II</option>
+                <option value="pooki">Pooki</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inqMessage">Message</label>
+            <textarea id="inqMessage" name="message" rows="4" required placeholder="Dates, guests, and anything we should know…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send inquiry</button>
+          <p class="form-status" id="inquiryStatus">Prototype only — message not sent. Please email mail@raumastudios.com.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Guest voices</p>
+        <h2 class="section-title">What guests say</h2>
+      </div>
+      <p class="trust-note">No public rating badge was found on raumastudios.com — the three cards below are clearly marked sample placeholders for this prototype.</p>
+      <div class="testimonials-grid reveal">
+        <div class="testimonial-card">
+          <blockquote>“Modern studio right in the center — walking distance to Old Rauma made exploring effortless.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest A</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Clean, well-equipped apartment with everything included. Ideal for a work trip of several nights.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest B</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Hosts made longer-stay booking simple. The downtown location and kitchen setup felt like home.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest C</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img
+            src="https://310393e93e.clvaw-cdnwnd.com/43b19221911585241ad69d3f548ac841/200000106-2a54e2a551/RaumaStudios_logo_valkoinen2-6.png?ph=310393e93e"
+            alt="Rauma Studios">
+          <p>Modern downtown studios in the center of Rauma. Three fully furnished apartments for short stays, long stays, and comfortable corporate travel.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Studios</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Book</a></li>
+            <li><a href="#inquiry">Inquire</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Ajurinkatu 2<br>Rauma, Finland</p>
+          <a href="mailto:mail@raumastudios.com">mail@raumastudios.com</a>
+          <a href="tel:+358407294466">+358 40 729 4466</a>
+          <p style="margin-top:0.75rem;opacity:0.65;">Hosts: Niina &amp; Mikko Koistinen</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Rauma Studios — homepage prototype (source: raumastudios.com)</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navMobile = document.getElementById("navMobile");
+    const navClose = document.getElementById("navClose");
+    menuToggle.addEventListener("click", () => navMobile.classList.add("open"));
+    navClose.addEventListener("click", () => navMobile.classList.remove("open"));
+    navMobile.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => navMobile.classList.remove("open"));
+    });
+
+    const today = new Date().toISOString().split("T")[0];
+    const checkin = document.getElementById("checkin");
+    const checkout = document.getElementById("checkout");
+    checkin.min = today;
+    checkout.min = today;
+    checkin.addEventListener("change", () => {
+      if (!checkin.value) return;
+      const next = new Date(checkin.value);
+      next.setDate(next.getDate() + 1);
+      checkout.min = next.toISOString().split("T")[0];
+      if (checkout.value && checkout.value <= checkin.value) checkout.value = checkout.min;
+    });
+
+    let adults = 1;
+    let children = 0;
+    const guestTrigger = document.getElementById("guestTrigger");
+    const guestPanel = document.getElementById("guestPanel");
+    const guestSummary = document.getElementById("guestSummary");
+    const adultsCount = document.getElementById("adultsCount");
+    const childrenCount = document.getElementById("childrenCount");
+
+    function updateGuests() {
+      let text = adults + (adults === 1 ? " adult" : " adults");
+      if (children > 0) text += ", " + children + (children === 1 ? " child" : " children");
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById("adultsMinus").disabled = adults <= 1;
+      document.getElementById("adultsPlus").disabled = adults >= 2;
+      document.getElementById("childrenMinus").disabled = children <= 0;
+      document.getElementById("childrenPlus").disabled = children >= 2;
+    }
+
+    guestTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = guestPanel.classList.toggle("open");
+      guestTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.addEventListener("click", () => {
+      guestPanel.classList.remove("open");
+      guestTrigger.setAttribute("aria-expanded", "false");
+    });
+    guestPanel.addEventListener("click", (e) => e.stopPropagation());
+
+    document.getElementById("adultsPlus").addEventListener("click", () => {
+      if (adults < 2) { adults++; updateGuests(); }
+    });
+    document.getElementById("adultsMinus").addEventListener("click", () => {
+      if (adults > 1) { adults--; updateGuests(); }
+    });
+    document.getElementById("childrenPlus").addEventListener("click", () => {
+      if (children < 2) { children++; updateGuests(); }
+    });
+    document.getElementById("childrenMinus").addEventListener("click", () => {
+      if (children > 0) { children--; updateGuests(); }
+    });
+    updateGuests();
+
+    // Lightweight apartment availability tracking (prototype / UI only)
+    const bookedRanges = {
+      "loisto-i": [["2026-08-01", "2026-08-05"]],
+      "loisto-ii": [["2026-07-28", "2026-08-12"], ["2026-08-20", "2026-08-24"]],
+      "pooki": [["2026-08-10", "2026-08-14"]]
+    };
+
+    function overlaps(start, end, ranges) {
+      const s = new Date(start);
+      const e = new Date(end);
+      return ranges.some(([a, b]) => !(e <= new Date(a) || s >= new Date(b)));
+    }
+
+    function refreshAvailability() {
+      const start = checkin.value;
+      const end = checkout.value;
+      document.querySelectorAll(".studio-card").forEach((card) => {
+        const key = card.dataset.studio;
+        const badge = card.querySelector("[data-avail]");
+        if (!start || !end) {
+          badge.textContent = key === "loisto-ii" ? "Limited dates" : "Available";
+          badge.classList.toggle("limited", key === "loisto-ii");
+          return;
+        }
+        const blocked = overlaps(start, end, bookedRanges[key] || []);
+        badge.textContent = blocked ? "Unavailable" : "Available";
+        badge.classList.toggle("limited", blocked);
+      });
+    }
+
+    checkin.addEventListener("change", refreshAvailability);
+    checkout.addEventListener("change", refreshAvailability);
+
+    document.getElementById("bookingForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      refreshAvailability();
+      const selected = document.getElementById("roomType").value;
+      const cards = [...document.querySelectorAll(".studio-card")];
+      const open = cards.filter((c) => {
+        if (selected !== "any" && c.dataset.studio !== selected) return false;
+        return !c.querySelector("[data-avail]").textContent.includes("Unavailable");
+      });
+      document.getElementById("rooms").scrollIntoView({ behavior: "smooth" });
+      alert(
+        open.length
+          ? "Prototype availability: " + open.map((c) => c.querySelector("h3").textContent).join(", ") + " match your search."
+          : "Prototype availability: no studios match these dates (UI only — not live inventory)."
+      );
+    });
+
+    document.getElementById("inquiryForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const status = document.getElementById("inquiryStatus");
+      status.classList.add("show");
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
