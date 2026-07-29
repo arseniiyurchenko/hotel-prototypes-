@@ -1371,7 +1371,7 @@
       document.getElementById("adultsMinus").disabled = adults <= 1;
       document.getElementById("adultsPlus").disabled = adults >= 2;
       document.getElementById("childrenMinus").disabled = children <= 0;
-      document.getElementById("childrenPlus").disabled = adults + children >= 2;
+      document.getElementById("childrenPlus").disabled = children >= 2;
     }
 
     guestTrigger.addEventListener("click", (e) => {
@@ -1386,13 +1386,13 @@
     guestPanel.addEventListener("click", (e) => e.stopPropagation());
 
     document.getElementById("adultsPlus").addEventListener("click", () => {
-      if (adults < 2 && adults + children < 2) { adults++; updateGuests(); }
+      if (adults < 2) { adults++; updateGuests(); }
     });
     document.getElementById("adultsMinus").addEventListener("click", () => {
       if (adults > 1) { adults--; updateGuests(); }
     });
     document.getElementById("childrenPlus").addEventListener("click", () => {
-      if (adults + children < 2) { children++; updateGuests(); }
+      if (children < 2) { children++; updateGuests(); }
     });
     document.getElementById("childrenMinus").addEventListener("click", () => {
       if (children > 0) { children--; updateGuests(); }

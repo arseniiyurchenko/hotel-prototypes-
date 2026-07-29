@@ -45,9 +45,6 @@ def main():
         page.wait_for_timeout(600)
         page.locator("#adultsPlus").click()
         page.wait_for_timeout(400)
-        # Max 2 guests — decrease adults then add a child to show controls
-        page.locator("#adultsMinus").click()
-        page.wait_for_timeout(300)
         page.locator("#childrenPlus").click()
         page.wait_for_timeout(400)
         page.locator("#roomType").select_option("pooki")
@@ -55,11 +52,9 @@ def main():
         page.mouse.click(400, 200)
         page.wait_for_timeout(400)
 
+        page.once("dialog", lambda d: d.accept())
         page.locator("#bookingForm button[type='submit']").click()
-        page.wait_for_timeout(800)
-        page.on("dialog", lambda d: d.accept())
-        # Re-bind after handler — submit may have already fired; dismiss if still open
-        page.wait_for_timeout(500)
+        page.wait_for_timeout(1000)
 
         for section in ["#rooms", "#amenities", "#gallery", "#location", "#inquiry", "#trust"]:
             page.locator(section).scroll_into_view_if_needed()
