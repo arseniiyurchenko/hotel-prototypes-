@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parimi Oy — Helppoa asumista | Rauma</title>
+  <meta name="description" content="Parimi Oy — full-service furnished accommodation in Rauma city center. Check availability across dozens of apartments.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --ink-soft: #4a4d48;
+      --bronze: #897248;
+      --bronze-dark: #6b5938;
+      --bronze-light: #a8905c;
+      --paper: #f4f5f3;
+      --paper-deep: #e6e8e3;
+      --white: #ffffff;
+      --line: rgba(26, 26, 26, 0.1);
+      --shadow: 0 12px 40px rgba(26, 26, 26, 0.1);
+      --radius: 10px;
+      --transition: 0.28s ease;
+      --font-display: "Fraunces", Georgia, serif;
+      --font-body: "Figtree", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, input, select {
+      font: inherit;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0.85rem 0;
+      transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+    }
+
+    .site-header.scrolled {
+      background: rgba(26, 26, 26, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #fff;
+    }
+
+    .logo img {
+      height: 42px;
+      width: 42px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 6px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-text .brand-tagline {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 0.2rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-desktop a {
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      transition: opacity var(--transition), color var(--transition);
+    }
+
+    .nav-desktop a:hover { opacity: 1; color: var(--bronze-light); }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-contact a.phone {
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--bronze);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--bronze-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(137, 114, 72, 0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #fff;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.35rem;
+    }
+
+    .menu-toggle svg { width: 26px; height: 26px; }
+
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition), visibility var(--transition);
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-mobile a {
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url("https://parimi.fi/wp-content/uploads/2019/10/keys-1317391_1920-e1571919751838.jpg")
+        center / cover no-repeat;
+      transform: scale(1.04);
+      animation: heroZoom 18s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(26, 26, 26, 0.45) 0%, rgba(26, 26, 26, 0.25) 40%, rgba(26, 26, 26, 0.78) 100%),
+        radial-gradient(ellipse at 20% 80%, rgba(137, 114, 72, 0.28), transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      padding: 0 0 7.5rem;
+      animation: heroRise 1s ease-out 0.15s both;
+    }
+
+    @keyframes heroRise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 9vw, 5.8rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 0.95;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-weight: 300;
+      max-width: 34rem;
+      opacity: 0.92;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* Booking */
+    .booking-section {
+      position: relative;
+      z-index: 5;
+      margin-top: -3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .booking-widget {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr 1.2fr auto;
+      gap: 1rem;
+      align-items: end;
+      background: var(--white);
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      position: relative;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .form-group input,
+    .form-group select,
+    .guest-trigger {
+      width: 100%;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--paper);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .guest-trigger:focus {
+      outline: none;
+      border-color: var(--bronze);
+      box-shadow: 0 0 0 3px rgba(137, 114, 72, 0.18);
+    }
+
+    .guest-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .guest-dropdown {
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 0.85rem;
+      z-index: 20;
+      display: none;
+    }
+
+    .guest-dropdown.open { display: block; }
+
+    .guest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+    }
+
+    .guest-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .guest-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .guest-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .booking-widget .btn-primary {
+      height: 48px;
+      padding-inline: 1.6rem;
+      white-space: nowrap;
+    }
+
+    .booking-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-top: 0.85rem;
+    }
+
+    /* Sections shared */
+    section { padding: 5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 38rem;
+      margin: 0 auto 2.75rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+    }
+
+    /* Intro / offer */
+    .intro {
+      padding-top: 3.5rem;
+      background:
+        linear-gradient(180deg, transparent, rgba(230, 232, 227, 0.55)),
+        var(--paper);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .intro-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .intro-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+
+    .intro-text .highlight {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .offer-panel {
+      background: var(--ink);
+      color: #fff;
+      padding: 2rem;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offer-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(137, 114, 72, 0.45), transparent 70%);
+      pointer-events: none;
+    }
+
+    .offer-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+
+    .offer-panel p {
+      opacity: 0.85;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .offer-panel ul {
+      list-style: none;
+      margin-top: 1.25rem;
+      position: relative;
+    }
+
+    .offer-panel li {
+      padding: 0.55rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.92rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .offer-panel li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 0.45rem;
+      border-radius: 50%;
+      background: var(--bronze-light);
+      flex-shrink: 0;
+    }
+
+    /* Apartments */
+    .rooms { background: var(--white); }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .room-card {
+      background: var(--paper);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .room-card:nth-child(2) { animation-delay: 0.08s; }
+    .room-card:nth-child(3) { animation-delay: 0.16s; }
+    .room-card:nth-child(4) { animation-delay: 0.24s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-card-body { padding: 1.35rem 1.4rem 1.5rem; }
+
+    .room-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .room-meta {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.9rem;
+    }
+
+    .price-tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .price-tier {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.65rem 0.5rem;
+      text-align: center;
+    }
+
+    .price-tier .tier-name {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.25rem;
+    }
+
+    .price-tier .tier-price {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .price-tier .tier-price span {
+      font-weight: 400;
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+    }
+
+    .rooms-footnote {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1.1rem 1.15rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .amenity-item:hover {
+      border-color: var(--bronze);
+      transform: translateY(-2px);
+    }
+
+    .amenity-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: rgba(137, 114, 72, 0.12);
+      color: var(--bronze-dark);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .amenity-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .amenity-item span {
+      font-weight: 500;
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+
+    /* Gallery */
+    .gallery { background: var(--white); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 220px 220px;
+      gap: 0.85rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: var(--radius);
+      position: relative;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(transparent, rgba(26, 26, 26, 0.7));
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .location-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .location-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+
+    .location-details {
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .location-details li {
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(135deg, rgba(137, 114, 72, 0.12), transparent 50%),
+        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(26, 26, 26, 0.04) 24px, rgba(26, 26, 26, 0.04) 25px),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(26, 26, 26, 0.04) 24px, rgba(26, 26, 26, 0.04) 25px),
+        var(--paper-deep);
+      border: 1px dashed rgba(137, 114, 72, 0.45);
+      border-radius: var(--radius);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--ink-soft);
+    }
+
+    .map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: var(--bronze);
+      margin-bottom: 0.85rem;
+    }
+
+    /* Trust */
+    .trust { background: var(--paper-deep); }
+
+    .trust-placeholder-note {
+      text-align: center;
+      max-width: 40rem;
+      margin: -1.5rem auto 2rem;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      background: rgba(137, 114, 72, 0.1);
+      border: 1px solid rgba(137, 114, 72, 0.25);
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.15rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .testimonial-card blockquote {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      line-height: 1.45;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .testimonial-author {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    .testimonial-badge {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bronze-dark);
+      background: rgba(137, 114, 72, 0.14);
+      padding: 0.3rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 4rem 0 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .footer-brand .brand-tagline {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bronze-light);
+      margin: 0.35rem 0 1rem;
+    }
+
+    .footer-brand p { font-size: 0.92rem; max-width: 28rem; }
+
+    .footer-nav h4,
+    .footer-contact h4 {
+      color: #fff;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-nav ul { list-style: none; }
+
+    .footer-nav li { margin-bottom: 0.55rem; }
+
+    .footer-nav a:hover,
+    .footer-contact a:hover { color: var(--bronze-light); }
+
+    .footer-contact p,
+    .footer-contact a {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-size: 0.92rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1.25rem;
+      font-size: 0.8rem;
+      opacity: 0.65;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .nav-desktop,
+      .header-contact .phone { display: none; }
+
+      .menu-toggle { display: block; }
+
+      .booking-widget {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-widget .btn-primary {
+        grid-column: span 2;
+      }
+
+      .intro-grid,
+      .location-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rooms-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .amenities-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        min-height: 260px;
+      }
+
+      .gallery-item { min-height: 180px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-content { padding-bottom: 6.5rem; }
+
+      .booking-widget {
+        grid-template-columns: 1fr;
+        margin-inline: 0;
+      }
+
+      .booking-widget .btn-primary { grid-column: span 1; }
+
+      .rooms-grid,
+      .amenities-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-tiers { grid-template-columns: 1fr; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item:first-child { grid-column: span 1; }
+
+      .logo-text .brand-tagline { display: none; }
+
+      section { padding: 3.5rem 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#top" class="logo" id="top">
+        <img src="https://parimi.fi/wp-content/uploads/2019/11/cropped-logo-suomeksi-kopio.png" alt="Parimi Oy logo">
+        <span class="logo-text">
+          <span class="brand-name">Parimi</span>
+          <span class="brand-tagline">Helppoa asumista</span>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-desktop">
+          <li><a href="#rooms">Apartments</a></li>
+          <li><a href="#amenities">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#booking">Availability</a></li>
+        </ul>
+      </nav>
+      <div class="header-contact">
+        <a class="phone" href="tel:+358440231090">+358 44 023 1090</a>
+        <a href="#booking" class="btn btn-primary">Check availability</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#rooms">Apartments</a>
+    <a href="#amenities">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#booking">Availability</a>
+    <a href="tel:+358440231090">+358 44 023 1090</a>
+  </nav>
+
+  <section class="hero" aria-label="Hero">
+    <div class="hero-bg" role="img" aria-label="Keys — Parimi accommodation"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Parimi</h1>
+      <p class="hero-tagline">Helppoa asumista — full-service furnished apartments across Rauma city center, ready when you are.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">Check availability</a>
+        <a href="#rooms" class="btn btn-ghost">View apartments</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <form class="booking-widget" id="bookingForm">
+        <div class="form-group">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+        <div class="form-group guest-selector">
+          <label>Guests</label>
+          <button type="button" class="guest-trigger" id="guestTrigger" aria-expanded="false" aria-controls="guestPanel">
+            <span id="guestSummary">2 adults</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="guest-dropdown" id="guestPanel">
+            <div class="guest-row">
+              <span>Adults</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="adultsMinus" aria-label="Decrease adults">−</button>
+                <span id="adultsCount">2</span>
+                <button type="button" class="guest-btn" id="adultsPlus" aria-label="Increase adults">+</button>
+              </div>
+            </div>
+            <div class="guest-row">
+              <span>Children</span>
+              <div class="guest-controls">
+                <button type="button" class="guest-btn" id="childrenMinus" aria-label="Decrease children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" class="guest-btn" id="childrenPlus" aria-label="Increase children">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="roomType">Apartment type</label>
+          <select id="roomType" name="roomType">
+            <option value="any">Any type</option>
+            <option value="two">Kaksi huonetta</option>
+            <option value="three">Kolme huonetta</option>
+            <option value="four">Neljä huonetta</option>
+            <option value="okt">OKT (detached house)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p class="booking-note">Prototype booking widget — search is UI only. Typical stays are 2+ months; shorter terms can be arranged.</p>
+    </div>
+  </section>
+
+  <section class="intro" id="about">
+    <div class="container intro-grid">
+      <div class="intro-text">
+        <p class="section-eyebrow" style="text-align:left;">Rauma · Finland</p>
+        <h2>Full-service accommodation under one roof</h2>
+        <p>Do you need full-service accommodation in Rauma? Parimi Oy is a young local company offering tailored majoituspalvelu for companies and partners.</p>
+        <p>We own just over ten apartments, and through a partner network we can offer <span class="highlight">dozens of furnished homes</span> of different sizes across Rauma city center — strongest selection in three- and four-room apartments, plus smaller units and detached houses.</p>
+      </div>
+      <aside class="offer-panel">
+        <h3>Centralized availability &amp; booking</h3>
+        <p>One website for every apartment — live availability, guest details, and booking requests in one place instead of scattered messages.</p>
+        <ul>
+          <li>Search across all locations from one booking form</li>
+          <li>Track occupancy for Basic, Premium &amp; Gold packages</li>
+          <li>Manage guest stays and service schedules together</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Tarjonta</p>
+        <h2 class="section-title">Apartment types &amp; rates</h2>
+        <p class="section-desc">Types and monthly prices as published on parimi.fi. VAT not included. Water fee: 25€ per person / month.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <img src="https://parimi.fi/wp-content/uploads/2019/11/canva-living-room-interior.jpg" alt="Living room interior — Parimi apartment">
+          <div class="room-card-body">
+            <h3>Kaksi huonetta</h3>
+            <p class="room-meta">Two rooms · 1–4 beds · Rauma city center</p>
+            <div class="price-tiers">
+              <div class="price-tier"><span class="tier-name">Basic</span><span class="tier-price">900€ <span>/kk</span></span></div>
+              <div class="price-tier"><span class="tier-name">Premium</span><span class="tier-price">1500€ <span>/kk</span></span></div>
+              <div class="price-tier"><span class="tier-name">Gold</span><span class="tier-price">1800€ <span>/kk</span></span></div>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://parimi.fi/wp-content/uploads/2019/11/canva-turned-on-flat-screen-smart-television-ahead.jpg" alt="Furnished living area with television">
+          <div class="room-card-body">
+            <h3>Kolme huonetta</h3>
+            <p class="room-meta">Three rooms · 1–5 beds · Strongest selection</p>
+            <div class="price-tiers">
+              <div class="price-tier"><span class="tier-name">Basic</span><span class="tier-price">1000€ <span>/kk</span></span></div>
+              <div class="price-tier"><span class="tier-name">Premium</span><span class="tier-price">1600€ <span>/kk</span></span></div>
+              <div class="price-tier"><span class="tier-name">Gold</span><span class="tier-price">1900€ <span>/kk</span></span></div>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://parimi.fi/wp-content/uploads/2019/11/canva-white-ceramic-mug-on-black-dining-table-with-four-chair-set.jpg" alt="Dining area in a Parimi apartment">
+          <div class="room-card-body">
+            <h3>Neljä huonetta</h3>
+            <p class="room-meta">Four rooms · 1–6 beds · City-center locations</p>
+            <div class="price-tiers">
+              <div class="price-tier"><span class="tier-name">Basic</span><span class="tier-price">1200€ <span>/kk</span></span></div>
+              <div class="price-tier"><span class="tier-name">Premium</span><span class="tier-price">1800€ <span>/kk</span></span></div>
+              <div class="price-tier"><span class="tier-name">Gold</span><span class="tier-price">2200€ <span>/kk</span></span></div>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <img src="https://parimi.fi/wp-content/uploads/2019/10/keys-1317391_1920-e1571919751838.jpg" alt="Keys — Parimi detached house stays">
+          <div class="room-card-body">
+            <h3>OKT</h3>
+            <p class="room-meta">Detached house · 1–8 beds · By arrangement</p>
+            <div class="price-tiers">
+              <div class="price-tier"><span class="tier-name">Basic</span><span class="tier-price">2000€ <span>/kk</span></span></div>
+              <div class="price-tier"><span class="tier-name">Premium</span><span class="tier-price">2800€ <span>/kk</span></span></div>
+              <div class="price-tier"><span class="tier-name">Gold</span><span class="tier-price">3500€ <span>/kk</span></span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="rooms-footnote">Basic = furnished apartment · Premium = Basic + weekly cleaning · Gold = Premium + weekly linen change. Prices from parimi.fi; excl. VAT.</p>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Palvelut</p>
+        <h2 class="section-title">Amenities &amp; services</h2>
+        <p class="section-desc">Only services described on the official Parimi website.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5z"/></svg>
+          </div>
+          <span>Furnished apartments</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16v12H4z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M4 12h16"/></svg>
+          </div>
+          <span>Everyday essentials included</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20h16"/><path d="M6 20V10l6-4 6 4v10"/><path d="M9 20v-5h6v5"/></svg>
+          </div>
+          <span>Basic · Premium · Gold packages</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 14c2-4 4-6 8-6s6 2 8 6"/><path d="M7 17h10"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
+          </div>
+          <span>Weekly cleaning (Premium)</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h12l4 4v9H4V7z"/><path d="M8 7V5h6v2"/><path d="M8 12h8"/></svg>
+          </div>
+          <span>Weekly linen change (Gold)</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+          </div>
+          <span>Long-stay focus (2+ months)</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <span>Locations around Rauma center</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16"/><path d="M12 4v16"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <span>Partner network for extra capacity</span>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M7 8h7a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h8"/></svg>
+          </div>
+          <span>Water fee 25€ / person / month</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Gallery</p>
+        <h2 class="section-title">A look inside</h2>
+        <p class="section-desc">Images from the official Parimi website. No additional property photos were published on the source site.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://parimi.fi/wp-content/uploads/2019/11/canva-living-room-interior.jpg" alt="Living room interior">
+          <span class="gallery-caption">Living room</span>
+        </div>
+        <div class="gallery-item">
+          <img src="https://parimi.fi/wp-content/uploads/2019/11/canva-turned-on-flat-screen-smart-television-ahead.jpg" alt="Living area with television">
+          <span class="gallery-caption">Furnished living</span>
+        </div>
+        <div class="gallery-item">
+          <img src="https://parimi.fi/wp-content/uploads/2019/11/canva-white-ceramic-mug-on-black-dining-table-with-four-chair-set.jpg" alt="Dining table setting">
+          <span class="gallery-caption">Dining</span>
+        </div>
+        <div class="gallery-item">
+          <img src="https://parimi.fi/wp-content/uploads/2019/10/keys-1317391_1920-e1571919751838.jpg" alt="Apartment keys">
+          <span class="gallery-caption">Ready to stay</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Sijainti</p>
+        <h2 class="section-title">Location</h2>
+        <p class="section-desc">As described on parimi.fi — apartments throughout Rauma city center.</p>
+      </div>
+      <div class="location-grid">
+        <div class="location-text">
+          <h3>Rauman keskusta</h3>
+          <p>Parimi offers furnished apartments of different sizes around Rauma city center (ympäri Rauman keskustaa), via owned stock and a partner network.</p>
+          <p>The source site does not list a public street address or named landmarks beyond the city center — those details are left as placeholders here.</p>
+          <ul class="location-details">
+            <li><strong>Area</strong> Rauma city center, Finland</li>
+            <li><strong>Landmark reference on site</strong> Rauman keskusta (city center)</li>
+            <li><strong>Street address</strong> Not published on source site</li>
+            <li><strong>Phone</strong> <a href="tel:+358440231090">+358 44 023 1090</a></li>
+            <li><strong>Email</strong> <a href="mailto:info@parimi.fi">info@parimi.fi</a></li>
+          </ul>
+        </div>
+        <div class="map-placeholder" role="img" aria-label="Static map placeholder for Rauma city center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <p><strong>Map placeholder</strong></p>
+          <p style="font-size:0.88rem;margin-top:0.5rem;">Rauma city center, Finland<br>Exact pin not published on parimi.fi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Guests</p>
+        <h2 class="section-title">Trust &amp; feedback</h2>
+      </div>
+      <p class="trust-placeholder-note">No rating badge or guest reviews were found on the source website. The three cards below are clearly marked sample placeholders for this prototype.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>“Placeholder — a furnished three-room apartment in Rauma center made our company relocation simple.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest A</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Placeholder — Premium weekly cleaning kept the apartment ready for rotating staff stays.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest B</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>“Placeholder — one contact for several apartment sizes across the city center was easy to manage.”</blockquote>
+          <p class="testimonial-author">— Placeholder Guest C</p>
+          <span class="testimonial-badge">Sample testimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">Parimi</div>
+          <span class="brand-tagline">Helppoa asumista</span>
+          <p>Parimi Oy — full-service furnished accommodation in Rauma. Prototype homepage demonstrating centralized availability and booking management.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#rooms">Apartments &amp; rates</a></li>
+            <li><a href="#amenities">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Check availability</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Parimi Oy<br>Rauma, Finland</p>
+          <a href="mailto:info@parimi.fi">info@parimi.fi</a>
+          <a href="mailto:riku@parimi.fi">Riku Laikku · riku@parimi.fi</a>
+          <a href="tel:+358440231090">+358 44 023 1090</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Parimi Oy — Prototype demo (source: parimi.fi)</p>
+        <p>Not an official Parimi website</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navMobile = document.getElementById('navMobile');
+    const navClose = document.getElementById('navClose');
+
+    menuToggle.addEventListener('click', () => navMobile.classList.add('open'));
+    navClose.addEventListener('click', () => navMobile.classList.remove('open'));
+    navMobile.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => navMobile.classList.remove('open'));
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      if (checkin.value) {
+        const nextDay = new Date(checkin.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkout.min = nextDay.toISOString().split('T')[0];
+        if (checkout.value && checkout.value <= checkin.value) {
+          checkout.value = checkout.min;
+        }
+      }
+    });
+
+    let adults = 2;
+    let children = 0;
+
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestPanel = document.getElementById('guestPanel');
+    const guestSummary = document.getElementById('guestSummary');
+    const adultsCount = document.getElementById('adultsCount');
+    const childrenCount = document.getElementById('childrenCount');
+
+    function updateGuestSummary() {
+      let text = adults + (adults === 1 ? ' adult' : ' adults');
+      if (children > 0) text += ', ' + children + (children === 1 ? ' child' : ' children');
+      guestSummary.textContent = text;
+      adultsCount.textContent = adults;
+      childrenCount.textContent = children;
+      document.getElementById('adultsMinus').disabled = adults <= 1;
+      document.getElementById('childrenMinus').disabled = children <= 0;
+    }
+
+    guestTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = guestPanel.classList.toggle('open');
+      guestTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', () => {
+      guestPanel.classList.remove('open');
+      guestTrigger.setAttribute('aria-expanded', 'false');
+    });
+    guestPanel.addEventListener('click', (e) => e.stopPropagation());
+
+    document.getElementById('adultsPlus').addEventListener('click', () => {
+      if (adults < 8) { adults++; updateGuestSummary(); }
+    });
+    document.getElementById('adultsMinus').addEventListener('click', () => {
+      if (adults > 1) { adults--; updateGuestSummary(); }
+    });
+    document.getElementById('childrenPlus').addEventListener('click', () => {
+      if (children < 6) { children++; updateGuestSummary(); }
+    });
+    document.getElementById('childrenMinus').addEventListener('click', () => {
+      if (children > 0) { children--; updateGuestSummary(); }
+    });
+
+    updateGuestSummary();
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Availability search is a UI prototype only — no reservation system connected yet.');
+    });
+  </script>
+</body>
+</html>
